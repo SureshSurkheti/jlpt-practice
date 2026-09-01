@@ -292,11 +292,12 @@ Anything malformed is reported and skipped rather than silently breaking the
 site — bad ids, out-of-range answers, unknown categories and missing fields
 are all caught, with the file and question index named.
 
-## Word meanings (N2 and N3)
+## Word meanings (N1, N2 and N3)
 
 `tools/build_glossary.py` writes one file per paper into `data/glossary/`,
-which the player fetches only for papers that have one. A missing file is the
-normal case for N1, N4 and N5 — the word buttons simply do not appear.
+which the player fetches only for papers that have one. 83 of the 86 papers
+have one; the two N4 papers and the single N5 paper do not, and there the word
+buttons simply do not appear.
 
 ### Sources
 
@@ -415,16 +416,17 @@ near-synonyms.
 ```bash
 pip3 install janome
 python3 tools/fetch_dicts.py       # once, ~59 MB into data/dict/
-python3 tools/build_glossary.py    # ~1 minute for 54 papers
+python3 tools/build_glossary.py    # ~45 seconds for 83 papers
 ```
 
-Current output: 54 papers, **51,533 word entries**, 7.9 MB, split
-N3 16,171 / N5 11,487 / N4 8,641 / unlisted 6,943 / N1 4,178 / N2 4,113.
+Current output: 83 papers, **95,032 word entries**, 14.6 MB, split
+N3 29,700 / N5 16,943 / unlisted 16,270 / N4 13,512 / N1 10,868 / N2 7,739.
 The N5 and N4 entries are all kanji words; no kana word below N4 is included.
 
-Opening every panel on a paper renders ~1,500 (N3) to ~2,300 (N2) rows. That
-was measured rather than assumed: the open-all button takes 1 ms and jumping
-to a question 5 ms, so the full glossary costs nothing noticeable.
+Opening every panel renders ~1,500 rows on an N3 paper, ~2,300 on an N2 and
+~2,550 on an N1. That was measured rather than assumed: the open-all button
+takes 1 ms and jumping to a question 5 ms, so the full glossary costs nothing
+noticeable.
 
 Change `LEVELS` at the top of `tools/build_glossary.py` to cover other levels.
 Nothing else needs editing: the exam library reads

@@ -42,7 +42,7 @@ DICT_DIR = os.path.join(ROOT, "data", "dict")
 OUT_DIR = os.path.join(ROOT, "data", "glossary")
 
 # Levels to build.
-LEVELS = ("N2", "N3")
+LEVELS = ("N1", "N2", "N3")
 
 # ---------------------------------------------------------------------------
 # text helpers

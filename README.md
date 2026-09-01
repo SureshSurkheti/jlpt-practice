@@ -39,7 +39,7 @@ assets/js/stats.js           statistics page
 
 data/exams/index.json        catalogue of every built exam
 data/exams/<id>.json         one exam (questions, keys, explanations)
-data/glossary/<id>.json      word meanings for one paper (N2 and N3)
+data/glossary/<id>.json      word meanings for one paper (N1, N2, N3)
 data/dict/                   dictionary build inputs, never served
 tools/build_exams.py         rebuilds data/exams from the archived sources
 tools/fetch_dicts.py         downloads JMdict and the JLPT level lists
@@ -75,7 +75,7 @@ all, and where to practise listening if audio will not play for you.
 
 ## Word meanings
 
-The **N2 and N3** papers carry a built-in glossary. Every question, reading
+The **N1, N2 and N3** papers carry a built-in glossary. Every question, reading
 passage and listening transcript has a **Word meanings** button, and one button
 in the command bar opens them all at once. Each entry gives the word with
 furigana over the kanji, its JLPT level, its part of speech, and a short
@@ -110,7 +110,8 @@ the paper's:
 Meanings are always English — they are the help, not the thing being tested —
 while the buttons and headings follow the language picker.
 
-To rebuild, or to extend it to another level (edit `LEVELS` in the script):
+83 of the 86 papers have one — every N1, N2 and N3 sitting. To rebuild, or to
+extend it to the remaining N4 and N5 papers (edit `LEVELS` in the script):
 
 ```bash
 pip3 install janome            # tokenizer, needed once
