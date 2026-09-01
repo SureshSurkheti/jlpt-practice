@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>JLPT Practice Hub</title>
+    <meta name="description" content="Professional JLPT preparation platform for foreigners living in Japan." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="home-page">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag" data-i18n="tag.home"></span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="active" data-i18n="nav.home">Home</a>
+          <a href="levels.html" data-i18n="nav.levels">Levels</a>
+          <a href="practice.html" data-i18n="nav.practice">Practice</a>
+          <a href="exams.html" data-i18n="nav.exams">Exams</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+        </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">Language</span>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ne">नेपाली</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="fil">Filipino</option>
+              <option value="si">සිංහල</option>
+              <option value="hi">हिन्दी</option>
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </label>
+          <a href="practice.html?lv=N5" class="btn btn-primary" data-i18n="home.start"></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1 data-i18n="home.title"></h1>
+            <p data-i18n="home.body"></p>
+            <div class="hero-actions">
+              <a href="exams.html" class="btn btn-primary" data-i18n="home.browseExams"></a>
+              <a href="levels.html" class="btn btn-secondary" data-i18n="home.viewAllLevels"></a>
+            </div>
+          </div>
+
+          <div class="mini-panel">
+            <div class="mini-head" data-i18n="home.progress"></div>
+            <div class="mini-value" id="progressValue">0</div>
+            <ul>
+              <li><span data-i18n="home.progressLevels"></span><strong id="miniLevels">0 / 5</strong></li>
+              <li><span data-i18n="home.progressAccuracy"></span><strong id="miniAccuracy">0%</strong></li>
+              <li><span data-i18n="home.progressDetails"></span><a href="stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="container notice-section">
+        <div class="notice-card" id="noticeCard">
+          <div class="notice-head">
+            <h2 data-i18n="notice.title"></h2>
+            <p data-i18n="notice.intro"></p>
+          </div>
+          <div class="notice-table-wrap">
+            <table class="notice-table" id="noticeTable"></table>
+          </div>
+          <div class="notice-foot" id="noticeFoot"></div>
+        </div>
+      </section>
+
+      <section class="stats-strip">
+        <div class="container stats-grid">
+          <div class="stat-card">
+            <span data-i18n="home.statAnswered"></span>
+            <strong id="stat-answered">0</strong>
+          </div>
+          <div class="stat-card">
+            <span data-i18n="home.statAccuracy"></span>
+            <strong id="stat-accuracy">0%</strong>
+          </div>
+          <div class="stat-card">
+            <span data-i18n="home.statLevels"></span>
+            <strong id="stat-levels">0 / 5</strong>
+          </div>
+          <div class="stat-card">
+            <span data-i18n="home.statStreak"></span>
+            <strong id="stat-streak">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="container level-section">
+        <div class="section-header level-header-row">
+          <div>
+            <h2 data-i18n="home.chooseLevel"></h2>
+            <p data-i18n="home.chooseLevelBody"></p>
+          </div>
+          <a href="levels.html" class="text-link" data-i18n="home.viewAllLevels"></a>
+        </div>
+
+        <div class="level-grid">
+          <a class="level-card level-n5" href="practice.html?lv=N5">
+            <span class="level-code">N5</span>
+            <span class="level-desc" data-i18n="level.N5"></span>
+          </a>
+          <a class="level-card level-n4" href="practice.html?lv=N4">
+            <span class="level-code">N4</span>
+            <span class="level-desc" data-i18n="level.N4"></span>
+          </a>
+          <a class="level-card level-n3" href="practice.html?lv=N3">
+            <span class="level-code">N3</span>
+            <span class="level-desc" data-i18n="level.N3"></span>
+          </a>
+          <a class="level-card level-n2" href="practice.html?lv=N2">
+            <span class="level-code">N2</span>
+            <span class="level-desc" data-i18n="level.N2"></span>
+          </a>
+          <a class="level-card level-n1" href="practice.html?lv=N1">
+            <span class="level-code">N1</span>
+            <span class="level-desc" data-i18n="level.N1"></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 Suresh Surkheti</div>
+        <div data-i18n="footer.tagline">Study smarter. Live better in Japan.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/i18n-strings.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

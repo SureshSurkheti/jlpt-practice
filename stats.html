@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>My Statistics - JLPT Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>
+      .stats-hero {
+        background: linear-gradient(135deg, #112d4e 0%, #183765 38%, #2d6eb4 100%);
+        color: #f5f8fd;
+        border-radius: 28px;
+        padding: 42px 34px;
+        margin-bottom: 32px;
+        box-shadow: 0 18px 36px rgba(17, 45, 78, 0.12);
+      }
+
+      .stats-hero h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        line-height: 1.05;
+        font-family: var(--font-display);
+      }
+
+      .stats-grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .big-stat-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        padding: 24px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .big-stat-label {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #dfeaf7;
+        opacity: 0.8;
+      }
+
+      .big-stat-number {
+        font-size: 2.4rem;
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      .big-stat-meta {
+        font-size: 0.85rem;
+        color: #e7f0ff;
+      }
+
+      .level-progress-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px;
+        display: grid;
+        gap: 16px;
+        box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
+      }
+
+      .level-progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .level-progress-header h3 {
+        margin: 0;
+        color: var(--navy);
+        font-size: 1.4rem;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 12px;
+        background: var(--line);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--blue), var(--gold));
+        transition: width 0.3s ease;
+      }
+
+      .progress-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        font-size: 0.9rem;
+      }
+
+      .progress-stat {
+        background: rgba(17, 45, 78, 0.04);
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+
+      .progress-stat strong {
+        display: block;
+        color: var(--navy);
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+
+      .progress-stat span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .section-performance {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
+      }
+
+      .section-performance h2 {
+        margin: 0 0 20px;
+        color: var(--navy);
+        font-size: 1.6rem;
+        font-family: var(--font-display);
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .section-card {
+        text-align: center;
+        padding: 18px;
+        background: linear-gradient(135deg, #f9fbff 0%, #f2f6fb 100%);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+
+      .section-card .icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .section-card .score {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--blue);
+        font-family: var(--font-display);
+        margin: 8px 0;
+      }
+
+      .section-card .label {
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+
+      .achievement-badge {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 16px;
+        text-align: center;
+        background: linear-gradient(135deg, #fffaf0 0%, #fff6dc 100%);
+        border: 1px solid rgba(217, 166, 58, 0.3);
+        border-radius: 16px;
+      }
+
+      .achievement-badge .icon {
+        font-size: 40px;
+      }
+
+      .achievement-badge .label {
+        font-weight: 700;
+        color: var(--navy);
+        font-size: 0.9rem;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(17, 45, 78, 0.02);
+        border-radius: 20px;
+        border: 1px solid var(--line);
+      }
+
+      .empty-state-icon {
+        font-size: 60px;
+        margin-bottom: 16px;
+      }
+
+      .empty-state h3 {
+        color: var(--navy);
+        margin: 0 0 8px;
+      }
+
+      .empty-state p {
+        color: var(--muted);
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body class="stats-page">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag" data-i18n="tag.stats"></span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="levels.html" data-i18n="nav.levels">Levels</a>
+          <a href="practice.html" data-i18n="nav.practice">Practice</a>
+          <a href="exams.html" data-i18n="nav.exams">Exams</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+        </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">Language</span>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ne">नेपाली</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="fil">Filipino</option>
+              <option value="si">සිංහල</option>
+              <option value="hi">हिन्दी</option>
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-shell">
+      <section class="page-intro">
+        <h1 data-i18n="stats.title"></h1>
+        <p data-i18n="stats.body"></p>
+      </section>
+
+      <div class="stats-grid-4">
+        <div class="big-stat-card">
+          <div class="big-stat-label" data-i18n="home.statAnswered"></div>
+          <div class="big-stat-number" id="totalAnswered">0</div>
+        </div>
+        <div class="big-stat-card">
+          <div class="big-stat-label" data-i18n="home.statAccuracy"></div>
+          <div class="big-stat-number" id="overallAccuracy">0%</div>
+        </div>
+        <div class="big-stat-card">
+          <div class="big-stat-label" data-i18n="home.statLevels"></div>
+          <div class="big-stat-number" id="levelsProgressed">0 / 5</div>
+        </div>
+      </div>
+
+      <section id="levelProgressSection" class="level-progress-grid"></section>
+
+      <section class="section-performance">
+        <h2 data-i18n="exam.breakdown"></h2>
+        <div class="section-score-grid" id="sectionPerformanceGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 Suresh Surkheti</div>
+        <div data-i18n="footer.tagline">Study smarter. Live better in Japan.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/i18n-strings.js"></script>
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/stats.js"></script>
+  </body>
+</html>
