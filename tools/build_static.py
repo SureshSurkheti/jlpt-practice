@@ -178,6 +178,11 @@ TITLE_KEY = {
 
 SITE_NAME = "JLPT Practice"
 
+# Where takedown and rights requests go. Published on the about page, so it
+# must be an address the owner is willing to make public - change it here and
+# rebuild; it is not written into any template by hand.
+CONTACT_EMAIL = "CHANGE-ME@example.com"
+
 
 def meta_for(lang, page, table, en):
     body_key = EN_META[page][1]
@@ -467,6 +472,7 @@ def main():
         for page, indexable in CORE_PAGES.items():
             src = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
             html = apply_i18n(src, table, en)
+            html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
             html = rewrite_head(html, lang, page, langs, indexable, table, en)
             if lang != DEFAULT_LANG:
                 html = absolutise(html)
@@ -601,8 +607,17 @@ def main():
     io.open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(
         "User-agent: *\nAllow: /\n\n"
         "# One paper per ?id=, all served from the same shell.\n"
-        "Disallow: /exam.html\nDisallow: /stats.html\n"
+        "Disallow: /exam.html\n"
+        "Disallow: /kanji.html\n"
+        "Disallow: /stats.html\n"
         "Disallow: /_src/\n\n"
+        "# The exam papers themselves. The questions are the copyright of\n"
+        "# JEES and the Japan Foundation; this site holds them so a learner\n"
+        "# can sit a paper, not so they can be re-indexed and re-published.\n"
+        "# Search engines index the library page instead.\n"
+        "Disallow: /data/exams/\n"
+        "Disallow: /data/glossary/\n"
+        "Disallow: /data/exams-manual/\n\n"
         "Sitemap: %s/sitemap.xml\n" % SITE)
     print("robots.txt written")
 

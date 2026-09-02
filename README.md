@@ -176,3 +176,43 @@ tested.
 gokakumichi.com — 合格道, "the road to passing". Distinctive, brandable, meaningful to learners, no trademark exposure. This is the one I'd register.
 shikenhall.com — 試験場, and it already matches your existing tagline "Examination hall", so your branding needs no change.
 nihongomock.com — least clever, clearest: says "mock tests" immediately, which helps a stranger who lands on it.
+
+
+
+Main post (recommended)
+
+Free JLPT mock exams — N5 to N1.
+
+86 full-length practice papers. Timed, marked instantly, with listening audio and answer explanations.
+
+You also get a score for vocabulary, grammar, reading and listening separately — so you know which one is actually holding you back.
+
+No signup. No app. Nothing saved anywhere but your own browser.
+
+👉 jlpt.sureshsurkheti.com
+
+If your audience is Nepali speakers in Japan — this is your real edge, and nothing else has it. Lead with it:
+
+जापानमा हुनुहुन्छ? JLPT को तयारी गर्दै?
+
+N5 र N4 का ७५७ + ७१६ शब्द नेपाली अर्थसहित। सबै लेभलका व्याकरण ढाँचा पनि नेपालीमा।
+
+८६ वटा पूरा मक टेस्ट — समयसहित, तुरुन्तै नतिजा। पूरै निःशुल्क, दर्ता चाहिँदैन।
+
+👉 jlpt.sureshsurkheti.com
+
+A shorter one for reposting later:
+
+2,211 kanji with stroke-order animation. 9,639 words. 86 mock exams. All free, no signup.
+
+jlpt.sureshsurkheti.com
+
+Three things that will matter more than the wording:
+
+Post it where your people already are. Nepali-in-Japan groups, 技能実習生 groups, JLPT study groups, university international-student pages. One post in the right group beats ten on your own timeline.
+
+Lead with the differentiator, not the category. "Free JLPT practice" is a crowded phrase. "Nepali meanings" and "separate score per skill" are things the big sites genuinely don't offer.
+
+Don't say "past papers" or "real JLPT questions." We deliberately took that wording off the site — repeating it in an ad puts it right back in front of the people most likely to object.
+
+One practical check before you post: paste your URL into Facebook's Sharing Debugger and hit "Scrape Again". Facebook caches link previews aggressively, and if it looked at your site before the OG card existed, it'll keep showing the old empty preview until you force a refresh.

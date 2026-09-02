@@ -142,7 +142,10 @@
             "<b>" + g.questions.toLocaleString() + "</b> " +
               esc(t("exams.questionsShort")) +
           "</span>" +
-          '<span class="lvcard-go" aria-hidden="true">&rarr;</span>' +
+          /* A bare arrow said "something happens" without saying what.
+             The words are the button; the arrow is punctuation. */
+          '<span class="lvcard-go">' + esc(t("exams.seePapers")) +
+            '<i aria-hidden="true">&rarr;</i></span>' +
         "</button>";
     });
     html += "</div>";

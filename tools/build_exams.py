@@ -2,7 +2,7 @@
 """
 Build clean, English-named exam data from the archived JLPT exam pages.
 
-Reads:  jlpt_n{1..4}_pages/*.html   (Wayback snapshots of dethitiengnhat.com)
+Reads:  .cache/source-pages/jlpt_n{1..4}_pages/*.html
 Writes: data/exams/<id>.json        (one file per exam session)
         data/exams/index.json       (catalogue used by the site)
 
@@ -31,7 +31,13 @@ from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "data", "exams")
-SRC_DIRS = ["jlpt_n1_pages", "jlpt_n2_pages", "jlpt_n3_pages", "jlpt_n4_pages"]
+# The scraped source pages live under .cache/, which is gitignored and is not
+# part of the published site. They used to sit at the repository root, which
+# meant 258 verbatim copies of someone else's pages were being served with a
+# 200 - unlinked, but reachable by anyone who guessed a URL, and indexable.
+# They are build input, so they belong with the other downloaded sources.
+SRC_ROOT = os.path.join(".cache", "source-pages")
+SRC_DIRS = [os.path.join(SRC_ROOT, "jlpt_n%d_pages" % n) for n in (1, 2, 3, 4)]
 
 MONTHS = ["", "January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]

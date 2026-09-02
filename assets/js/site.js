@@ -506,6 +506,21 @@ function renderNotice() {
   const noListening = exams.filter(
     (e) => !e.parts.some((p) => p.id === 'listening')).length;
 
+  /* Word meanings are the thing this site has that the others do not - 95,000
+     of them, on a button under every question of 83 papers - and until now
+     the only place that was explained was inside a collapsed <details>. The
+     table above says "Yes" in a column; that is not an explanation. Say what
+     it means, in the open, with the number. */
+  const lead = document.getElementById('noticeWords');
+  if (lead) {
+    const glossed = (glossary && glossary.exams ? glossary.exams : [])
+      .reduce((n, e) => n + e.words, 0);
+    lead.innerHTML =
+      `<strong>${glossed.toLocaleString()}</strong> ` +
+      `${t('notice.colWords').toLowerCase()} &middot; ${t('notice.wordsBody')}`;
+    lead.hidden = false;
+  }
+
   const foot = document.getElementById('noticeFoot');
   if (foot) {
     foot.innerHTML =

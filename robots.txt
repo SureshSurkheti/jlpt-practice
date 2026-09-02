@@ -3,7 +3,16 @@ Allow: /
 
 # One paper per ?id=, all served from the same shell.
 Disallow: /exam.html
+Disallow: /kanji.html
 Disallow: /stats.html
 Disallow: /_src/
+
+# The exam papers themselves. The questions are the copyright of
+# JEES and the Japan Foundation; this site holds them so a learner
+# can sit a paper, not so they can be re-indexed and re-published.
+# Search engines index the library page instead.
+Disallow: /data/exams/
+Disallow: /data/glossary/
+Disallow: /data/exams-manual/
 
 Sitemap: https://jlpt.sureshsurkheti.com/sitemap.xml
