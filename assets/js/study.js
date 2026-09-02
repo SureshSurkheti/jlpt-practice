@@ -31,7 +31,8 @@
     host.innerHTML = '<div class="exam-loading"><div class="spinner"></div></div>';
 
     var dir = state.kind === "words" ? "words" : "grammar";
-    fetch("data/" + dir + "/" + state.level.toLowerCase() + ".json",
+    fetch(SITE_ROOT + "data/" + dir + "/" +
+          state.level.toLowerCase() + ".json",
           { cache: "no-cache" })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);

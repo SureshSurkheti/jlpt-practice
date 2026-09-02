@@ -24,8 +24,8 @@
   var root = document.getElementById("examRoot");
   if (!root) return;
 
-  var DATA_DIR = "data/exams/";
-  var GLOSSARY_DIR = "data/glossary/";
+  var DATA_DIR = (window.SITE_ROOT || "") + "data/exams/";
+  var GLOSSARY_DIR = (window.SITE_ROOT || "") + "data/glossary/";
 
   /* Where to send people when a paper's listening audio will not play.
      Change these three lines to point somewhere else. */

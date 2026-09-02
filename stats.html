@@ -9,18 +9,19 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#112d4e" />
     <title>Your JLPT Progress — JLPT Practice</title>
-    <meta name="description" content="Your accuracy and activity for each JLPT level you have studied." />
+    <meta name="description" content="Accuracy and activity for each level you have studied." />
     <meta name="robots" content="noindex, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="en" />
     <meta property="og:title" content="Your JLPT Progress — JLPT Practice" />
-    <meta property="og:description" content="Your accuracy and activity for each JLPT level you have studied." />
+    <meta property="og:description" content="Accuracy and activity for each level you have studied." />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/stats.html" />
-    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/icon-512.png" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Your JLPT Progress — JLPT Practice" />
-    <meta name="twitter:description" content="Your accuracy and activity for each JLPT level you have studied." />
-    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/icon-512.png" />
+    <meta name="twitter:description" content="Accuracy and activity for each level you have studied." />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -89,7 +90,7 @@
           <span class="brand-mark">JL</span>
           <span class="brand-text">
             <span class="brand-name">JLPT Practice</span>
-            <span class="brand-tag" data-i18n="tag.stats"></span>
+            <span class="brand-tag" data-i18n="tag.stats">Your progress</span>
           </span>
         </a>
 
@@ -126,21 +127,21 @@
 
     <main class="container page-shell">
       <section class="page-intro">
-        <h1 data-i18n="stats.title"></h1>
-        <p data-i18n="stats.body"></p>
+        <h1 data-i18n="stats.title">Your progress</h1>
+        <p data-i18n="stats.body">Accuracy and activity for each level you have studied.</p>
       </section>
 
       <div class="stats-grid-4">
         <div class="big-stat-card">
-          <div class="big-stat-label" data-i18n="home.statAnswered"></div>
+          <div class="big-stat-label" data-i18n="home.statAnswered">Questions answered</div>
           <div class="big-stat-number" id="totalAnswered">0</div>
         </div>
         <div class="big-stat-card">
-          <div class="big-stat-label" data-i18n="home.statAccuracy"></div>
+          <div class="big-stat-label" data-i18n="home.statAccuracy">Accuracy</div>
           <div class="big-stat-number" id="overallAccuracy">0%</div>
         </div>
         <div class="big-stat-card">
-          <div class="big-stat-label" data-i18n="home.statLevels"></div>
+          <div class="big-stat-label" data-i18n="home.statLevels">Levels started</div>
           <div class="big-stat-number" id="levelsProgressed">0 / 5</div>
         </div>
       </div>
@@ -148,7 +149,7 @@
       <section id="levelProgressSection" class="level-progress-grid"></section>
 
       <section class="section-performance">
-        <h2 data-i18n="exam.breakdown"></h2>
+        <h2 data-i18n="exam.breakdown">Section breakdown</h2>
         <div class="section-score-grid" id="sectionPerformanceGrid"></div>
       </section>
     </main>
@@ -159,6 +160,10 @@
         <div data-i18n="footer.tagline">Study smarter. Live better in Japan.</div>
       </div>
     </footer>
+    <nav class="lang-links" aria-label="Languages">
+      <ul><li><a href="https://jlpt.sureshsurkheti.com/ja/stats.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/stats.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/stats.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/zh/stats.html" hreflang="zh" lang="zh">中文</a></li><li><a href="https://jlpt.sureshsurkheti.com/ko/stats.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="https://jlpt.sureshsurkheti.com/id/stats.html" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="https://jlpt.sureshsurkheti.com/fil/stats.html" hreflang="fil" lang="fil">Filipino</a></li><li><a href="https://jlpt.sureshsurkheti.com/pt-BR/stats.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="https://jlpt.sureshsurkheti.com/hi/stats.html" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="https://jlpt.sureshsurkheti.com/bn/stats.html" hreflang="bn" lang="bn">বাংলা</a></li><li><a href="https://jlpt.sureshsurkheti.com/si/stats.html" hreflang="si" lang="si">සිංහල</a></li></ul>
+    </nav>
+
 
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/i18n-strings.js"></script>

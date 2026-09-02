@@ -53,7 +53,7 @@
   /* Which papers carry word meanings is read from the glossary index rather
      than assumed from the level, so extending the build to another level
      needs no change here. Absent file just means no papers are tagged. */
-  fetch("data/glossary/index.json", { cache: "no-cache" })
+  fetch(SITE_ROOT + "data/glossary/index.json", { cache: "no-cache" })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (idx) {
       (idx && idx.exams ? idx.exams : []).forEach(function (e) {
@@ -63,7 +63,7 @@
     })
     .catch(function () { /* tags simply do not appear */ });
 
-  fetch("data/exams/index.json", { cache: "no-cache" })
+  fetch(SITE_ROOT + "data/exams/index.json", { cache: "no-cache" })
     .then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();

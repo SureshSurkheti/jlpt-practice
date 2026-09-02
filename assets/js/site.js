@@ -476,9 +476,9 @@ function renderNotice() {
 
   if (!noticeData) {
     Promise.all([
-      fetch('data/exams/index.json', { cache: 'no-cache' })
+      fetch(SITE_ROOT + 'data/exams/index.json', { cache: 'no-cache' })
         .then((r) => (r.ok ? r.json() : null)),
-      fetch('data/glossary/index.json', { cache: 'no-cache' })
+      fetch(SITE_ROOT + 'data/glossary/index.json', { cache: 'no-cache' })
         .then((r) => (r.ok ? r.json() : null)).catch(() => null)
     ]).then(([exams, glossary]) => {
       if (!exams) return;

@@ -1,0 +1,437 @@
+#!/usr/bin/env python3
+"""
+Pre-render the site: one real HTML file per page per language.
+
+Why this exists
+---------------
+Everything used to be assembled in the browser. A crawler asking for
+/study.html got an empty <div> and a script tag, so the 9,639 word entries and
+280 grammar patterns - the most searchable thing on the site - were invisible
+to it. And all twelve languages shared one URL, because the picker only wrote
+to localStorage, so there was nothing for hreflang to point at.
+
+This writes the translated text and the study tables straight into the markup,
+and gives every language its own address:
+
+    /                     English (also x-default)
+    /ne/, /ja/, /vi/ ...  the other eleven
+    /study/n5-words.html  one page per level per list, content in the HTML
+
+The pages still load the same scripts afterwards, so behaviour is unchanged
+for a browser; the difference is only what arrives before JavaScript runs.
+
+Run:  python3 tools/build_static.py
+"""
+
+import io
+import json
+import os
+import re
+import shutil
+from datetime import date
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE = "https://jlpt.sureshsurkheti.com"
+DEFAULT_LANG = "en"
+
+# Page -> whether search engines should index it.
+CORE_PAGES = {
+    "index.html": True,
+    "levels.html": True,
+    "practice.html": True,
+    "exams.html": True,
+    "study.html": True,
+    "about.html": True,
+    "stats.html": False,
+    "exam.html": False,
+}
+
+LEVELS = ["n5", "n4", "n3", "n2", "n1"]
+KINDS = ["words", "grammar"]
+
+
+# --------------------------------------------------------------------------
+# translations
+# --------------------------------------------------------------------------
+
+def load_translations():
+    src = io.open(os.path.join(ROOT, "assets/js/i18n-strings.js"),
+                  encoding="utf-8").read()
+    out = {}
+    for lang, body in re.findall(r'I18N\.register\("([\w-]+)",\s*(\{.*?\n\}\);)',
+                                 src, re.S):
+        body = re.sub(r",(\s*\})", r"\1", body.rstrip(");").rstrip())
+        out[lang] = json.loads(body)
+    return out
+
+
+def t(table, key, fallback_table):
+    if key in table:
+        return table[key]
+    return fallback_table.get(key, key)
+
+
+def esc(text):
+    return (str(text).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+# --------------------------------------------------------------------------
+# rendering one page
+# --------------------------------------------------------------------------
+
+def apply_i18n(html, table, en):
+    """Fill every data-i18n hook the way the browser script would."""
+
+    def text_sub(m):
+        tag, attrs, key = m.group(1), m.group(2), m.group(3)
+        return "<%s%s>%s</%s>" % (tag, attrs, esc(t(table, key, en)), tag)
+
+    html = re.sub(
+        r'<(\w+)([^>]*\sdata-i18n="([^"]+)"[^>]*)>.*?</\1>',
+        text_sub, html, flags=re.S)
+
+    def html_sub(m):
+        tag, attrs, key = m.group(1), m.group(2), m.group(3)
+        return "<%s%s>%s</%s>" % (tag, attrs, t(table, key, en), tag)
+
+    html = re.sub(
+        r'<(\w+)([^>]*\sdata-i18n-html="([^"]+)"[^>]*)>.*?</\1>',
+        html_sub, html, flags=re.S)
+
+    def attr_sub(m):
+        spec = m.group(1)
+        parts = []
+        for pair in spec.split(","):
+            bits = pair.split(":")
+            if len(bits) == 2:
+                parts.append('%s="%s"' % (bits[0].strip(),
+                                          esc(t(table, bits[1].strip(), en))))
+        return 'data-i18n-attr="%s" %s' % (spec, " ".join(parts))
+
+    return re.sub(r'data-i18n-attr="([^"]+)"', attr_sub, html)
+
+
+def absolutise(html):
+    """Root-relative asset paths, so /ne/index.html loads the same files."""
+    for attr in ("href", "src"):
+        html = re.sub(r'(%s=")(assets/|favicon|apple-touch|icon-|site\.web)'
+                      % attr, r"\1/\2", html)
+    # internal page links keep working from inside a language directory
+    html = re.sub(r'href="((?:index|levels|practice|exams|study|about|stats|exam)\.html[^"]*)"',
+                  r'href="./\1"', html)
+    return html
+
+
+def page_url(lang, page):
+    prefix = "" if lang == DEFAULT_LANG else "/" + lang
+    if page == "index.html":
+        return SITE + prefix + "/"
+    return SITE + prefix + "/" + page
+
+
+def study_url(lang, level, kind):
+    prefix = "" if lang == DEFAULT_LANG else "/" + lang
+    return "%s%s/study/%s-%s.html" % (SITE, prefix, level, kind)
+
+
+# English titles are hand-tuned for the phrases people actually search. Every
+# other language derives its title and description from strings the site is
+# already translated with, so there is nothing extra to keep in sync.
+EN_META = {
+    "index.html": ("JLPT Practice — Free Mock Exams for N1, N2, N3, N4 and N5",
+                   "home.body"),
+    "exams.html": ("JLPT Mock Exam Library — 84 Full-Length Practice Papers",
+                   "exams.body"),
+    "study.html": ("JLPT Vocabulary and Grammar Lists — N5 to N1", "study.body"),
+    "levels.html": ("JLPT Levels Explained — N1, N2, N3, N4 and N5 Requirements",
+                    "levels.body"),
+    "practice.html": ("JLPT Practice by Section — Vocabulary, Grammar, Reading, "
+                      "Listening", "practice.body"),
+    "about.html": ("About JLPT Practice — Free and Private JLPT Study",
+                   "about.body"),
+    "stats.html": ("Your JLPT Progress — JLPT Practice", "stats.body"),
+    "exam.html": ("JLPT Mock Exam — JLPT Practice", "exam.setupNote"),
+}
+
+TITLE_KEY = {
+    "index.html": "home.title", "exams.html": "exams.title",
+    "study.html": "study.title", "levels.html": "levels.title",
+    "practice.html": "practice.title", "about.html": "about.title",
+    "stats.html": "stats.title", "exam.html": "tag.exam",
+}
+
+SITE_NAME = "JLPT Practice"
+
+
+def meta_for(lang, page, table, en):
+    body_key = EN_META[page][1]
+    desc = t(table, body_key, en)
+    if lang == DEFAULT_LANG:
+        return EN_META[page][0], desc
+    title = t(table, TITLE_KEY[page], en)
+    if page != "index.html":
+        title = "%s — %s" % (title, SITE_NAME)
+    return title, desc
+
+
+def hreflang_block(langs, url_of):
+    rows = ['    <link rel="alternate" hreflang="%s" href="%s" />' % (l, url_of(l))
+            for l in langs]
+    rows.append('    <link rel="alternate" hreflang="x-default" href="%s" />'
+                % url_of(DEFAULT_LANG))
+    return "\n".join(rows)
+
+
+def seo_head(lang, url, title, desc, langs, url_of, indexable, extra=""):
+    out = ["    <title>%s</title>" % esc(title),
+           '    <meta name="description" content="%s" />' % esc(desc)]
+    if indexable:
+        out.append('    <link rel="canonical" href="%s" />' % url)
+        out.append('    <meta name="robots" content="index, follow, '
+                   'max-image-preview:large" />')
+        out.append(hreflang_block(langs, url_of))
+    else:
+        out.append('    <meta name="robots" content="noindex, follow" />')
+    out += [
+        '    <meta property="og:type" content="website" />',
+        '    <meta property="og:site_name" content="%s" />' % SITE_NAME,
+        '    <meta property="og:locale" content="%s" />' % lang.replace("-", "_"),
+        '    <meta property="og:title" content="%s" />' % esc(title),
+        '    <meta property="og:description" content="%s" />' % esc(desc),
+        '    <meta property="og:url" content="%s" />' % url,
+        '    <meta property="og:image" content="%s/og-card.png" />' % SITE,
+        '    <meta name="twitter:card" content="summary_large_image" />',
+        '    <meta name="twitter:title" content="%s" />' % esc(title),
+        '    <meta name="twitter:description" content="%s" />' % esc(desc),
+        '    <meta name="twitter:image" content="%s/og-card.png" />' % SITE,
+    ]
+    if extra:
+        out.append(extra)
+    return "\n".join(out) + "\n"
+
+
+def rewrite_head(html, lang, page, langs, indexable, table, en, extra=""):
+    html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang, html, count=1)
+    title, desc = meta_for(lang, page, table, en)
+    head = seo_head(lang, page_url(lang, page), title, desc, langs,
+                    lambda l: page_url(l, page), indexable, extra)
+    # replace everything the previous generator left between <title> and the fonts
+    start = html.index("<title>")
+    end = html.index('<link rel="preconnect"')
+    return html[:start] + head.lstrip() + "    " + html[end:]
+
+
+def language_links(langs, page, current, names):
+    """A crawlable set of links to the other languages."""
+    items = []
+    for lang in langs:
+        if lang == current:
+            continue
+        items.append('<li><a href="%s" hreflang="%s" lang="%s">%s</a></li>'
+                     % (page_url(lang, page), lang, lang, esc(names[lang])))
+    return ('\n    <nav class="lang-links" aria-label="Languages">\n'
+            '      <ul>%s</ul>\n    </nav>\n' % "".join(items))
+
+
+# --------------------------------------------------------------------------
+# study tables, written into the markup
+# --------------------------------------------------------------------------
+
+def study_rows(level, kind, table, en):
+    path = os.path.join(ROOT, "data",
+                        "words" if kind == "words" else "grammar",
+                        level + ".json")
+    if not os.path.exists(path):
+        return "", 0
+    data = json.load(io.open(path, encoding="utf-8"))
+    rows = data["words"] if kind == "words" else data["patterns"]
+
+    out = []
+    if kind == "words":
+        out.append('<div class="study-row is-head"><span>%s</span>'
+                   '<span>%s</span><span>%s</span></div>'
+                   % (esc(t(table, "study.colWord", en)),
+                      esc(t(table, "study.colReading", en)),
+                      esc(t(table, "study.colMeaning", en))))
+        for r in rows:
+            ne = ('<em class="study-ne">%s</em>' % esc(r["ne"])) \
+                if (table is not en and r.get("ne")) else ""
+            affix = ('<b class="study-affix">%s</b>'
+                     % esc(t(table, "study.affix", en))) if r.get("affix") else ""
+            out.append(
+                '<div class="study-row">'
+                '<span class="study-jp">%s%s</span>'
+                '<span class="study-reading">%s%s</span>'
+                '<span class="study-en">%s%s</span></div>'
+                % (esc(r["w"]), affix, esc(r.get("r", "")),
+                   ('<em>%s</em>' % esc(r["romaji"])) if r.get("romaji") else "",
+                   esc(r["en"]), ne))
+    else:
+        out.append('<div class="study-row is-head is-grammar"><span>%s</span>'
+                   '<span>%s</span><span>%s</span></div>'
+                   % (esc(t(table, "study.colPattern", en)),
+                      esc(t(table, "study.colMeaning", en)),
+                      esc(t(table, "study.colExample", en))))
+        for r in rows:
+            ne = ('<em class="study-ne">%s</em>' % esc(r["ne"])) \
+                if (table is not en and r.get("ne")) else ""
+            out.append(
+                '<div class="study-row is-grammar">'
+                '<span class="study-jp">%s</span>'
+                '<span class="study-en">%s%s</span>'
+                '<span class="study-example"><b>%s</b><em>%s</em></span></div>'
+                % (esc(r["p"]), esc(r["en"]), ne, esc(r["ja"]), esc(r["ex"])))
+    return "\n      ".join(out), len(rows)
+
+
+def main():
+    tr = load_translations()
+    en = tr[DEFAULT_LANG]
+    langs = list(tr.keys())
+    names = {"en": "English", "ja": "日本語", "ne": "नेपाली", "vi": "Tiếng Việt",
+             "id": "Bahasa Indonesia", "fil": "Filipino", "si": "සිංහල",
+             "hi": "हिन्दी", "pt-BR": "Português (Brasil)", "zh": "中文",
+             "ko": "한국어", "bn": "বাংলা"}
+
+    written = []
+    for lang in langs:
+        table = tr[lang]
+        outdir = ROOT if lang == DEFAULT_LANG else os.path.join(ROOT, lang)
+        if lang != DEFAULT_LANG:
+            os.makedirs(outdir, exist_ok=True)
+
+        for page, indexable in CORE_PAGES.items():
+            src = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
+            html = apply_i18n(src, table, en)
+            html = rewrite_head(html, lang, page, langs, indexable, table, en)
+            if lang != DEFAULT_LANG:
+                html = absolutise(html)
+
+            # the study page carries its first list in the markup
+            if page == "study.html":
+                body, n = study_rows("n5", "words", table, en)
+                html = html.replace(
+                    '<div id="studyContent" aria-live="polite"></div>',
+                    '<div id="studyContent" aria-live="polite">\n'
+                    '      <p class="study-count">%d %s</p>\n'
+                    '      <div class="study-list">\n      %s\n      </div>\n'
+                    '    </div>' % (n, esc(t(table, "study.wordsCount", en)), body))
+
+            html = html.replace("</footer>",
+                                "</footer>" + language_links(langs, page, lang, names))
+
+            io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(html)
+            if indexable:
+                written.append((page_url(lang, page), lang, page))
+
+    # ---------------------------------------------------------------- study
+    # One address per level per list. This is the content most likely to be
+    # searched for ("N5 vocabulary list with meanings"), and until now all ten
+    # of them shared a single URL that arrived empty.
+    tpl = io.open(os.path.join(ROOT, "_src", "study.html"), encoding="utf-8").read()
+    study_pages = 0
+    for lang in langs:
+        table = tr[lang]
+        base = ROOT if lang == DEFAULT_LANG else os.path.join(ROOT, lang)
+        os.makedirs(os.path.join(base, "study"), exist_ok=True)
+
+        for level in LEVELS:
+            for kind in KINDS:
+                body, n = study_rows(level, kind, table, en)
+                if not n:
+                    continue
+                lv = level.upper()
+                noun = t(table, "study.words" if kind == "words"
+                         else "study.grammar", en)
+                title = "%s %s — %s" % (lv, noun, SITE_NAME)
+                desc = "%s %s: %d %s. %s" % (
+                    lv, noun, n,
+                    t(table, "study.wordsCount" if kind == "words"
+                      else "study.patternsCount", en),
+                    t(table, "study.body", en))
+
+                url = study_url(lang, level, kind)
+                ld = ('    <script type="application/ld+json">'
+                      '{"@context":"https://schema.org","@type":"DefinedTermSet",'
+                      '"name":%s,"url":%s,"inDefinedTermSet":%s,'
+                      '"numberOfItems":%d}</script>'
+                      % (json.dumps(title), json.dumps(url),
+                         json.dumps(SITE + "/study.html"), n))
+
+                html = apply_i18n(tpl, table, en)
+                html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang,
+                              html, count=1)
+                head = seo_head(lang, url, title, desc, langs,
+                                lambda l, lv=level, k=kind: study_url(l, lv, k),
+                                True, ld)
+                a, b = html.index("<title>"), html.index('<link rel="preconnect"')
+                html = html[:a] + head.lstrip() + "    " + html[b:]
+
+                # The heading must name this page, not the section it lives
+                # in: ten pages all headed "Vocabulary and grammar lists"
+                # compete with each other for the same phrase. Dropping the
+                # data-i18n hook stops the script overwriting it on load.
+                html = re.sub(r'<h1 data-i18n="study.title">[^<]*</h1>',
+                              "<h1>%s %s</h1>" % (esc(lv), esc(noun)), html)
+
+                html = html.replace(
+                    '<div id="studyContent" aria-live="polite"></div>',
+                    '<div id="studyContent" aria-live="polite">\n'
+                    '      <p class="study-count">%d %s</p>\n'
+                    '      <div class="study-list">\n      %s\n      </div>\n'
+                    '    </div>' % (n, esc(t(table, "study.wordsCount"
+                                            if kind == "words"
+                                            else "study.patternsCount", en)), body))
+                # mark the level and list this page opens on
+                html = html.replace('data-level="N5" role="tab">N5',
+                                    'data-level="N5" role="tab" %s>N5'
+                                    % ("" if lv != "N5" else ""))
+                html = re.sub(r'class="study-tab is-on" data-level="N5"',
+                              'class="study-tab" data-level="N5"', html)
+                html = re.sub(r'class="study-tab" data-level="%s"' % lv,
+                              'class="study-tab is-on" data-level="%s"' % lv, html)
+                if kind == "grammar":
+                    html = html.replace('class="study-tab is-on" data-kind="words"',
+                                        'class="study-tab" data-kind="words"')
+                    html = html.replace('class="study-tab" data-kind="grammar"',
+                                        'class="study-tab is-on" data-kind="grammar"')
+                html = html.replace("</footer>", "</footer>" + language_links(
+                    langs, "study/%s-%s.html" % (level, kind), lang, names))
+                html = absolutise(html)
+                html = html.replace('href="./', 'href="../' if lang == DEFAULT_LANG
+                                    else 'href="../')
+
+                io.open(os.path.join(base, "study", "%s-%s.html" % (level, kind)),
+                        "w", encoding="utf-8").write(html)
+                written.append((url, lang, "study"))
+                study_pages += 1
+
+    print("wrote %d core pages and %d study pages across %d languages"
+          % (len(CORE_PAGES) * len(langs), study_pages, len(langs)))
+
+    # -------------------------------------------------------------- sitemap
+    today = date.today().isoformat()
+    rows = []
+    for url, lang, page in written:
+        pri = "1.0" if page == "index.html" else (
+            "0.9" if page in ("study", "exams.html") else "0.7")
+        rows.append("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
+                    "    <priority>%s</priority>\n  </url>" % (url, today, pri))
+    io.open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(rows) + "\n</urlset>\n")
+    print("sitemap.xml: %d urls" % len(rows))
+
+    io.open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(
+        "User-agent: *\nAllow: /\n\n"
+        "# One paper per ?id=, all served from the same shell.\n"
+        "Disallow: /exam.html\nDisallow: /stats.html\n"
+        "Disallow: /_src/\n\n"
+        "Sitemap: %s/sitemap.xml\n" % SITE)
+    print("robots.txt written")
+
+
+if __name__ == "__main__":
+    main()

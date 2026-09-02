@@ -22,6 +22,16 @@
   var STORE = "jlpt-language";
   var DEFAULT = "en";
 
+  /* Pages are pre-rendered at several depths - /index.html, /ne/index.html,
+     /study/n5-words.html, /ne/study/n5-words.html - so a data file cannot be
+     fetched by a path relative to the page. Work out how far down we are once
+     and let every script prefix its fetches with it. */
+  var ROOT = (function () {
+    var dir = location.pathname.replace(/\/[^/]*$/, "/");
+    var depth = dir.split("/").length - 2;
+    return depth > 0 ? new Array(depth + 1).join("../") : "";
+  })();
+
   /* Right-to-left languages would need dir="rtl"; none of ours are. */
   var LANGUAGES = ["en", "ja", "ne", "vi", "id", "fil", "si", "hi",
                    "pt-BR", "zh", "ko", "bn"];
@@ -76,9 +86,38 @@
     });
   }
 
+  /* Every language has its own address now (English at the root, the rest
+     under /<lang>/), so the picker navigates instead of just re-rendering.
+     Without this the translated pages would exist for crawlers but be
+     unreachable by clicking. */
+  function urlFor(lang) {
+    var path = location.pathname;
+    var known = LANGUAGES.filter(function (l) { return l !== DEFAULT; });
+
+    for (var i = 0; i < known.length; i++) {
+      var pre = "/" + known[i];
+      if (path === pre || path.indexOf(pre + "/") === 0) {
+        path = path.slice(pre.length) || "/";
+        break;
+      }
+    }
+    if (lang !== DEFAULT) path = "/" + lang + (path === "/" ? "/" : path);
+    return path + location.search + location.hash;
+  }
+
   function setLanguage(lang) {
     if (LANGUAGES.indexOf(lang) === -1) lang = DEFAULT;
     try { localStorage.setItem(STORE, lang); } catch (e) { /* ignore */ }
+
+    /* Only move if there is somewhere to move to: the pre-rendered pages sit
+       at fixed paths, so a page opened from the file system or a path this
+       build does not produce just re-renders in place as before. */
+    var target = urlFor(lang);
+    if (location.protocol.indexOf("http") === 0 &&
+        target !== location.pathname + location.search + location.hash) {
+      location.assign(target);
+      return;
+    }
 
     document.documentElement.setAttribute("lang", lang);
     applyTo(document);
@@ -106,7 +145,10 @@
     });
   }
 
+  global.SITE_ROOT = ROOT;
+
   global.I18N = {
+    root: ROOT,
     t: t,
     tf: tf,
     current: current,

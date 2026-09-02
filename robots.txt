@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# One paper per ?id=, all served from the same empty shell.
+# One paper per ?id=, all served from the same shell.
 Disallow: /exam.html
 Disallow: /stats.html
+Disallow: /_src/
 
 Sitemap: https://jlpt.sureshsurkheti.com/sitemap.xml
