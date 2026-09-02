@@ -228,3 +228,5 @@ and also make the numbering method make in the format of jlpt exam for all remov
 and when in study mode select once canot edit so what is the good method for that do accordingly.
 for the listening part can we keep the listening part in above every questions above part instead of listening one audio for many questions??
 if there is already finished parts like any vocab grammer reading or listening make to show the total mark of last time and if second time is practiced same and if it second time got more than last time update the score and if less donot update the score... 
+also in the page of mock start page at first make not select any vocab grammer reading or listening and when user go to this gamen make select and when noone is selected and click the start mock make to see the error please select desired practice parts or anything good error.
+and also the latest score and update detail also make on this page.
