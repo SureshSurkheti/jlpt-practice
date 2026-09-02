@@ -43,6 +43,13 @@ PAGES = {
         "explanations and listening scripts.",
         True, "0.9",
     ),
+    "study.html": (
+        "JLPT N5 and N4 Vocabulary and Grammar Lists",
+        "Every JLPT N5 and N4 word with its reading, romaji and English "
+        "meaning, plus the core grammar patterns with example sentences. "
+        "Searchable in Japanese, romaji or English.",
+        True, "0.9",
+    ),
     "levels.html": (
         "JLPT Levels Explained — N1, N2, N3, N4 and N5 Requirements",
         "What each JLPT level asks for: kanji and vocabulary counts, pass "

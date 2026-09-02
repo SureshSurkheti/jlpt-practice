@@ -56,6 +56,14 @@
     listening: { key: "section.listening", sub: "聴解" }
   };
 
+  /* Same four colours the practice page uses for its skill buttons. */
+  var CATEGORY_COLOR = {
+    vocabulary: "#2d6eb4",
+    grammar: "#d9a63a",
+    reading: "#2f7d57",
+    listening: "#c84a52"
+  };
+
   var SECTION_LABEL = {
     language: "exam.sectionLanguage",
     reading: "exam.sectionReading",
@@ -760,7 +768,8 @@
     var backLabel = t("exam.backToExams");
     var left =
       '<div class="exam-bar-id">' +
-        '<a class="exam-back" href="exams.html" aria-label="' + esc(backLabel) +
+        '<a class="exam-back" href="exams.html?lv=' + esc(state.exam.level) +
+          '" aria-label="' + esc(backLabel) +
           '" title="' + esc(backLabel) + '">' +
           '<span class="exam-back-arrow" aria-hidden="true">\u2190</span>' +
           '<span class="exam-back-text">' + esc(backLabel) + "</span>" +
@@ -1043,6 +1052,29 @@
     }
   }
 
+  /* Accuracy per skill. Deliberately not dressed up as a score out of 60:
+     the exam does not award one for vocabulary or grammar on their own, and
+     inventing one would read as an official mark. */
+  function buildSkillTable(s) {
+    var box = el("div", "result-skills");
+    box.appendChild(el("h2", null, t("exam.skillBreakdown")));
+
+    var grid = el("div", "skill-rows");
+    s.skills.forEach(function (sk) {
+      var row = el("div", "skill-row");
+      row.style.setProperty("--accent", CATEGORY_COLOR[sk.key] || "var(--blue)");
+      row.innerHTML =
+        '<div class="skill-name">' + esc(sk.label) + "</div>" +
+        '<div class="skill-bar"><div class="skill-bar-fill" style="width:' +
+          sk.percent + '%"></div></div>' +
+        '<div class="skill-val"><strong>' + sk.percent + "%</strong>" +
+          "<span>" + sk.right + " / " + sk.total + "</span></div>";
+      grid.appendChild(row);
+    });
+    box.appendChild(grid);
+    return box;
+  }
+
   function buildScorecard() {
     var s = state.score;
     var box = el("div", "scorecard");
@@ -1098,6 +1130,8 @@
       s.sections.map(function (x) { return x.label + " " + x.minimum; })
         .join(" · ") + ")."));
     box.appendChild(table);
+
+    if (s.skills && s.skills.length > 1) box.appendChild(buildSkillTable(s));
 
     var acts = el("div", "review-bar");
     acts.innerHTML =
@@ -1522,11 +1556,22 @@
 
   function score(timeUp) {
     var buckets = {};
+    /* The official result only has three parts, because that is how the exam
+       is scored. Vocabulary and grammar are marked together inside 言語知識,
+       so a weak half hides behind a strong one. Tally each skill separately
+       as well - as plain accuracy, since only the three official parts have a
+       scaled score to report. */
+    var skills = {};
     var rightTotal = 0, wrongTotal = 0, blankTotal = 0;
 
     state.questions.forEach(function (item) {
       var q = item.q;
       var sec = sectionOf(q, state.exam.level);
+      var sk = skills[item.category] ||
+        (skills[item.category] = { right: 0, total: 0 });
+      sk.total++;
+      if (state.answers[item.key] && q.answer &&
+          state.answers[item.key] === q.answer) sk.right++;
       var b = buckets[sec] || (buckets[sec] = {
         earned: 0, max: 0, right: 0, wrong: 0, blank: 0, total: 0
       });
@@ -1572,7 +1617,24 @@
     var passMark = Math.round(lv.pass * (capTotal / 180));
     var allMins = sections.every(function (s) { return s.clearedMin; });
 
+    /* Kept in the paper's own order - vocabulary, grammar, reading, listening
+       - rather than sorted by score, so the row you look for is always in the
+       same place. */
+    var skillOrder = ["vocabulary", "grammar", "reading", "listening"];
+    var skillRows = skillOrder.filter(function (k) { return skills[k]; })
+      .map(function (k) {
+        var b = skills[k];
+        return {
+          key: k,
+          label: metaLabel(CATEGORY_META, k),
+          right: b.right,
+          total: b.total,
+          percent: b.total ? Math.round((b.right / b.total) * 100) : 0
+        };
+      });
+
     state.score = {
+      skills: skillRows,
       sections: sections,
       scaledTotal: scaledTotal,
       capTotal: capTotal,

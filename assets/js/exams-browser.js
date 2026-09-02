@@ -19,8 +19,25 @@
 
   var exams = [];
   var withWords = {};   // exam id -> word count, for the papers that have one
-  var filterLevel = "all";
   var query = "";
+
+  /* ?lv=N3 opens the library already narrowed to that level. The back button
+     inside a paper carries its own level here, so leaving an N3 paper puts you
+     back among the N3 papers rather than at the top of the whole library. */
+  var filterLevel = (function () {
+    var m = /[?&]lv=(N[1-5])/i.exec(window.location.search);
+    return m ? m[1].toUpperCase() : "all";
+  })();
+
+  function syncChips() {
+    Array.prototype.forEach.call(
+      document.querySelectorAll("#examsFilters .chip"),
+      function (c) {
+        var on = filterLevel !== "all" && c.dataset.level === filterLevel;
+        c.classList.toggle("is-on", on);
+        c.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+  }
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -54,6 +71,7 @@
     .then(function (data) {
       exams = data.exams || [];
       renderStats();
+      syncChips();
       render();
     })
     .catch(function (err) {
@@ -167,14 +185,18 @@
     "</article>";
   }
 
+  /* The chips are toggles, not a radio group. There used to be an "All
+     levels" chip sitting permanently on beside them, which is the state you
+     are already in before you touch anything - so it was a button whose whole
+     job was to undo the other buttons. Pressing a lit chip clears it instead,
+     and the listing goes back to every level. */
   document.getElementById("examsFilters")
     .addEventListener("click", function (ev) {
       var chip = ev.target.closest(".chip");
       if (!chip) return;
-      Array.prototype.forEach.call(
-        document.querySelectorAll("#examsFilters .chip"),
-        function (c) { c.classList.toggle("is-on", c === chip); });
-      filterLevel = chip.dataset.level;
+
+      filterLevel = chip.classList.contains("is-on") ? "all" : chip.dataset.level;
+      syncChips();
       render();
     });
 

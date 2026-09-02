@@ -274,124 +274,186 @@ function factGrid(cfg) {
     </div>`;
 }
 
+/* The levels page answers one question: which level am I, and what does it
+   ask of me? That is a comparison, so it is a table - five rows you can read
+   down a single column of - rather than five cards you have to hold in your
+   head. Practising happens on the practice page; this one links there. */
 function renderLevels() {
   const container = document.getElementById('levelsContent');
   if (!container) return;
 
-  container.innerHTML = Object.entries(LEVEL_CONFIG).map(([key, cfg]) => {
+  /* Total sitting time for each level, from the JLPT's published timetable. */
+  const MINUTES = { N5: 105, N4: 115, N3: 140, N2: 155, N1: 170 };
+
+  const rows = LEVEL_ORDER.slice().reverse().map((key) => {
+    const cfg = LEVEL_CONFIG[key];
     const stats = progress.getStats(key);
-    const examUrl = mockExamUrl(key);
-
     return `
-      <article class="level-detail-card level-${key.toLowerCase()}">
-        <div class="level-card-head">
-          <h3>${key}</h3>
-          ${stats.total > 0
-            ? `<div class="level-accuracy">
-                 <strong>${stats.accuracy}%</strong>
-                 <span>${stats.correct} / ${stats.total} ${t('levels.correct')}</span>
-               </div>`
-            : ''}
-        </div>
-
-        <p class="level-desc-line">${levelDesc(key)}</p>
-        ${factGrid(cfg)}
-
-        <div class="level-card-foot">
-          ${examUrl
-            ? `<a href="${examUrl}" class="btn btn-gold">${t('levels.mockTest')}</a>`
-            : ''}
-          <a href="practice.html?lv=${key}" class="btn btn-ghost">${t('levels.open')} ${key}</a>
-        </div>
-      </article>`;
+      <tr class="level-${key.toLowerCase()}">
+        <th scope="row"><span class="lv-chip">${key}</span></th>
+        <td class="lv-covers">${levelDesc(key)}</td>
+        <td>${cfg.kanji}</td>
+        <td>${cfg.vocab}</td>
+        <td class="lv-pass">${cfg.pass}</td>
+        <td>${MINUTES[key]} ${t('levels.minutes')}</td>
+        <td class="lv-you">${stats.total > 0
+          ? `<strong>${stats.accuracy}%</strong>`
+          : '<span class="lv-dash">—</span>'}</td>
+        <td class="lv-go">
+          <a href="practice.html?lv=${key}" class="btn btn-ghost">${t('levels.open')}</a>
+        </td>
+      </tr>`;
   }).join('');
+
+  container.innerHTML = `
+    <div class="levels-table-wrap">
+      <table class="levels-table">
+        <thead>
+          <tr>
+            <th scope="col">${t('notice.colLevel')}</th>
+            <th scope="col">${t('levels.colCovers')}</th>
+            <th scope="col">${t('level.kanji')}</th>
+            <th scope="col">${t('level.vocab')}</th>
+            <th scope="col">${t('level.pass')}</th>
+            <th scope="col">${t('levels.colTime')}</th>
+            <th scope="col">${t('levels.yourScore')}</th>
+            <th scope="col"><span class="sr-only">${t('levels.open')}</span></th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <p class="levels-note">${t('levels.scoringNote')}</p>
+  `;
 }
 
 function renderPractice() {
   const container = document.getElementById('practiceContent');
   if (!container) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const lv = params.get('lv') || 'N5';
-  const cfg = LEVEL_CONFIG[lv] || LEVEL_CONFIG.N5;
-  const stats = progress.getStats(lv);
-  const examLabel = MOCK_EXAMS[lv] ? MOCK_EXAMS[lv].label : '';
+  const wanted = (new URLSearchParams(window.location.search).get('lv') || '')
+    .toUpperCase();
+  const overall = progress.getOverallStats();
 
   container.innerHTML = `
-    <section class="practice-panel">
-      <div class="practice-header">
-        <div>
-          <h1>${lv}</h1>
-          <p>${levelDesc(lv)}</p>
-        </div>
-        <a href="levels.html" class="btn btn-ghost">${t('home.viewAllLevels')}</a>
-      </div>
-
-      <div class="progress-grid">
-        <div class="progress-card accent-blue">
-          <span class="card-label">${t('home.progressAccuracy')}</span>
-          <div class="card-value">${stats.accuracy}<span class="card-unit">%</span></div>
-          <div class="card-meta">${stats.correct} / ${stats.total} ${t('levels.correct')}</div>
-        </div>
-        <div class="progress-card accent-gold">
-          <span class="card-label">${t('home.statStreak')}</span>
-          <div class="card-value">${stats.streak}</div>
-          <div class="card-meta">${t('levels.lastStudied')}: ${stats.lastStudied || t('levels.never')}</div>
-        </div>
-        <div class="progress-card accent-purple">
-          <span class="card-label">${t('level.vocab')}</span>
-          <div class="card-value card-large">${cfg.vocab}</div>
-          <div class="card-meta">${lv}</div>
-        </div>
-        <div class="progress-card accent-teal">
-          <span class="card-label">${t('level.kanji')}</span>
-          <div class="card-value card-large">${cfg.kanji}</div>
-          <div class="card-meta">${lv}</div>
-        </div>
-      </div>
-
-      <div class="section-grid">
-        ${Object.entries(SECTIONS).map(([key, section]) => {
-          const examUrl = mockExamUrl(lv, key);
-          return `
-            <div class="section-card" style="--accent: ${section.color}">
-              <h4>${t(section.key)}</h4>
-              ${examUrl
-                ? `<a href="${examUrl}" class="btn btn-gold section-exam">${t('practice.mockTest')}</a>
-                   <p class="section-note">${t('practice.officialPaper')} · ${examLabel}</p>`
-                : `<button class="section-btn" data-section="${key}" data-level="${lv}">${t('practice.practise')}</button>`}
-            </div>`;
-        }).join('')}
-      </div>
-
-      <div class="mode-grid">
-        <button class="mode-card" data-mode="study" data-level="${lv}">
-          <span>${t('practice.studyMode')}</span>
-          <strong>${t('practice.studyModeTitle')}</strong>
-          <div class="mode-note">${t('practice.studyModeBody')}</div>
-        </button>
-        <button class="mode-card" data-mode="mock" data-level="${lv}">
-          <span>${t('practice.mockMode')}</span>
-          <strong>${t('practice.mockModeTitle')}</strong>
-          <div class="mode-note">${t('practice.mockModeBody')}</div>
-        </button>
-      </div>
+    <section class="page-intro">
+      <h1>${t('practice.title')}</h1>
+      <p>${t('practice.body')}</p>
     </section>
+
+    <div class="practice-summary-row">
+      ${summaryStat(overall.totalAnswered, t('home.statAnswered'))}
+      ${summaryStat(overall.overallAccuracy + '%', t('home.statAccuracy'))}
+      ${summaryStat(overall.levelsCompleted + ' / 5', t('home.statLevels'))}
+    </div>
+
+    <div class="practice-levels">
+      ${LEVEL_ORDER.map(levelBlock).join('')}
+    </div>
   `;
 
-  /* Both mode cards and section buttons open the real exam player. */
-  document.querySelectorAll('.mode-card').forEach((button) => {
+  wirePracticeButtons();
+
+  /* Deep link from elsewhere on the site: bring that level into view. */
+  if (LEVEL_ORDER.indexOf(wanted) !== -1) {
+    const node = document.getElementById('lv-' + wanted);
+    if (node) {
+      node.classList.add('is-target');
+      node.scrollIntoView({ block: 'center', behavior: 'instant' });
+    }
+  }
+}
+
+function summaryStat(value, label) {
+  return `
+    <div class="summary-stat">
+      <strong>${value}</strong>
+      <span>${label}</span>
+    </div>`;
+}
+
+function levelBlock(lv) {
+  const stats = progress.getStats(lv);
+  const cfg = LEVEL_CONFIG[lv] || LEVEL_CONFIG.N5;
+  const exam = MOCK_EXAMS[lv];
+  const examUrl = mockExamUrl(lv);
+  const hasLists = lv === 'N5' || lv === 'N4';
+
+  const bar = stats.total > 0
+    ? `<div class="plevel-bar"><div class="plevel-bar-fill"
+         style="width:${stats.accuracy}%"></div></div>`
+    : '';
+
+  const score = stats.total > 0
+    ? `<div class="plevel-score"><strong>${stats.accuracy}%</strong>
+         <span>${stats.correct} / ${stats.total} ${t('levels.correct')}</span></div>`
+    : `<div class="plevel-score is-empty"><span>${t('levels.never')}</span></div>`;
+
+  /* Buttons stay live even when the level has no paper. Disabling them left
+     four grey rectangles and no explanation; pressing one now says what is
+     missing and points at what does exist. */
+  const skills = Object.entries(SECTIONS).map(([key, section]) => `
+    <button type="button" class="skill-btn" style="--accent: ${section.color}"
+            data-section="${key}" data-level="${lv}">
+      ${t(section.key)}
+    </button>`).join('');
+
+  return `
+    <article class="plevel level-${lv.toLowerCase()}" id="lv-${lv}">
+      <div class="plevel-head">
+        <span class="plevel-code">${lv}</span>
+        ${score}
+      </div>
+      <p class="plevel-desc">${levelDesc(lv)}</p>
+      ${bar}
+      <dl class="plevel-facts">
+        <div><dt>${t('level.kanji')}</dt><dd>${cfg.kanji}</dd></div>
+        <div><dt>${t('level.vocab')}</dt><dd>${cfg.vocab}</dd></div>
+        <div><dt>${t('level.pass')}</dt><dd>${cfg.pass}</dd></div>
+      </dl>
+      <div class="plevel-skills">${skills}</div>
+      <div class="plevel-foot">
+        <button type="button" class="btn btn-gold plevel-mock" data-level="${lv}">
+          ${t('practice.mockTest')}
+        </button>
+        ${hasLists
+          ? `<a href="study.html" class="btn btn-ghost">${t('practice.studyLists')}</a>`
+          : ''}
+      </div>
+      <p class="plevel-note">${examUrl
+        ? `${t('practice.officialPaper')} · ${exam.label}`
+        : ''}</p>
+      <p class="plevel-msg" hidden></p>
+    </article>`;
+}
+
+/* Nothing on this page is disabled. A level with no paper says so when you
+   press it, in the card you pressed, rather than looking broken on arrival. */
+function announceNoPaper(card) {
+  const msg = card.querySelector('.plevel-msg');
+  if (!msg) return;
+  msg.innerHTML = `${t('practice.noneYet')}
+    <a href="study.html">${t('practice.studyLists')}</a>`;
+  msg.hidden = false;
+  msg.classList.remove('is-flash');
+  void msg.offsetWidth;               // restart the highlight on a repeat press
+  msg.classList.add('is-flash');
+}
+
+function wirePracticeButtons() {
+  document.querySelectorAll('.skill-btn').forEach((button) => {
     button.addEventListener('click', () => {
-      const url = mockExamUrl(button.dataset.level);
-      if (!url) { window.location.href = 'exams.html'; return; }
-      window.location.href = button.dataset.mode === 'study' ? `${url}&mode=study` : url;
+      const url = mockExamUrl(button.dataset.level, button.dataset.section);
+      if (url) { window.location.href = `${url}&mode=study`; return; }
+      announceNoPaper(button.closest('.plevel'));
     });
   });
 
-  document.querySelectorAll('.section-btn').forEach((button) => {
+  document.querySelectorAll('.plevel-mock').forEach((button) => {
     button.addEventListener('click', () => {
-      const url = mockExamUrl(button.dataset.level, button.dataset.section);
-      window.location.href = url ? `${url}&mode=study` : 'exams.html';
+      const url = mockExamUrl(button.dataset.level);
+      if (url) { window.location.href = url; return; }
+      announceNoPaper(button.closest('.plevel'));
     });
   });
 }
