@@ -133,7 +133,18 @@
   }
 
   function init() {
-    var lang = current();
+    /* The address decides the language, not the saved preference. Each page
+       is pre-rendered in one language and says so in <html lang>; if someone
+       arrives on the English URL from a search while their last choice was
+       Nepali, honouring the preference would repaint half the page into a
+       language the URL and the canonical tag both disagree with. Sync the
+       preference to the page instead. */
+    var marked = (document.documentElement.getAttribute("lang") || "").trim();
+    var lang = LANGUAGES.indexOf(marked) !== -1 ? marked : current();
+    if (lang !== current()) {
+      try { localStorage.setItem(STORE, lang); } catch (e) { /* ignore */ }
+    }
+
     document.documentElement.setAttribute("lang", lang);
     applyTo(document);
 
