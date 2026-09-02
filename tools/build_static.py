@@ -181,7 +181,7 @@ SITE_NAME = "JLPT Practice"
 # Where takedown and rights requests go. Published on the about page, so it
 # must be an address the owner is willing to make public - change it here and
 # rebuild; it is not written into any template by hand.
-CONTACT_EMAIL = "CHANGE-ME@example.com"
+CONTACT_EMAIL = "surkhetisuresh123@gmail.com"
 
 COUNTS = {}
 
