@@ -44,10 +44,10 @@ PAGES = {
         True, "0.9",
     ),
     "study.html": (
-        "JLPT N5 and N4 Vocabulary and Grammar Lists",
-        "Every JLPT N5 and N4 word with its reading, romaji and English "
-        "meaning, plus the core grammar patterns with example sentences. "
-        "Searchable in Japanese, romaji or English.",
+        "JLPT Vocabulary and Grammar Lists — N5 to N1",
+        "Every JLPT word from N5 to N1 with its reading, romaji and English "
+        "meaning, plus the core grammar patterns for each level with example "
+        "sentences. Searchable in Japanese, romaji or English.",
         True, "0.9",
     ),
     "levels.html": (

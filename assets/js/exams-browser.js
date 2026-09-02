@@ -102,7 +102,57 @@
       esc(value) + "</strong><span>" + esc(label) + "</span></div>";
   }
 
+  /* Eighty-six cards on arrival is not a library, it is a wall. Choose a
+     level first; the papers for it come after. A search jumps straight to
+     matching papers across every level, because someone typing a year knows
+     what they are looking for. */
   function render() {
+    if (filterLevel === "all" && !query) { renderLevels(); return; }
+    renderPapers();
+  }
+
+  function renderLevels() {
+    var filters = document.getElementById("examsFilters");
+    if (filters) filters.hidden = true;
+
+    var byLevel = {};
+    exams.forEach(function (e) {
+      var g = byLevel[e.level] || (byLevel[e.level] = {
+        papers: 0, questions: 0, listening: 0, words: 0
+      });
+      g.papers++;
+      g.questions += e.totalQuestions;
+      if (e.parts.some(function (p) { return p.id === "listening"; })) g.listening++;
+      if (withWords[e.id]) g.words++;
+    });
+
+    var html = '<div class="level-picker">';
+    ["N1", "N2", "N3", "N4", "N5"].forEach(function (lv) {
+      var g = byLevel[lv];
+      if (!g) return;
+      html +=
+        '<button type="button" class="lvcard" data-level="' + lv + '" ' +
+          'style="--level-color:' + (LEVEL_COLOR[lv] || "#2d6eb4") + '">' +
+          '<span class="lvcard-code">' + lv + "</span>" +
+          '<span class="lvcard-desc">' + esc(t("level." + lv)) + "</span>" +
+          '<span class="lvcard-facts">' +
+            "<b>" + g.papers + "</b> " +
+              esc(t(g.papers === 1 ? "exams.paper" : "exams.papers")) +
+            '<i aria-hidden="true">·</i>' +
+            "<b>" + g.questions.toLocaleString() + "</b> " +
+              esc(t("exams.questionsShort")) +
+          "</span>" +
+          '<span class="lvcard-go" aria-hidden="true">&rarr;</span>' +
+        "</button>";
+    });
+    html += "</div>";
+    list.innerHTML = html;
+  }
+
+  function renderPapers() {
+    var filters = document.getElementById("examsFilters");
+    if (filters) filters.hidden = false;
+
     var shown = exams.filter(function (e) {
       if (filterLevel !== "all" && e.level !== filterLevel) return false;
       if (!query) return true;
@@ -115,6 +165,7 @@
       list.innerHTML = '<p class="exams-empty">' + esc(t("exams.noMatch")) + '</p>';
       return;
     }
+
 
     var groups = {};
     var order = [];
@@ -190,6 +241,15 @@
      are already in before you touch anything - so it was a button whose whole
      job was to undo the other buttons. Pressing a lit chip clears it instead,
      and the listing goes back to every level. */
+  list.addEventListener("click", function (ev) {
+    var card = ev.target.closest(".lvcard");
+    if (!card) return;
+    filterLevel = card.dataset.level;
+    syncChips();
+    render();
+    window.scrollTo(0, 0);
+  });
+
   document.getElementById("examsFilters")
     .addEventListener("click", function (ev) {
       var chip = ev.target.closest(".chip");
@@ -199,6 +259,17 @@
       syncChips();
       render();
     });
+
+  var back = document.getElementById("examsBack");
+  if (back) {
+    back.addEventListener("click", function () {
+      filterLevel = "all";
+      if (search) { search.value = ""; query = ""; }
+      syncChips();
+      render();
+      window.scrollTo(0, 0);
+    });
+  }
 
   var search = document.getElementById("examsSearch");
   if (search) {

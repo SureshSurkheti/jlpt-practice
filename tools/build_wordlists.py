@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Build the N5 and N4 study word lists.
+Build the study word list for every JLPT level.
 
 Reads:  data/dict/jlpt-levels.json   the JLPT level lists
         data/dict/jmdict-eng.json    JMdict, to fill in missing meanings
-Writes: data/words/n5.json
-        data/words/n4.json
+Writes: data/words/n5.json ... data/words/n1.json
 
 The level list arrives as two merged sources: one carries meanings and romaji,
 the other is a fuller alphabetical list with furigana only. Most words appear
@@ -121,7 +120,7 @@ def main():
 
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    for num, name in ((5, "n5"), (4, "n4")):
+    for num, name in ((5, "n5"), (4, "n4"), (3, "n3"), (2, "n2"), (1, "n1")):
         rows = merge([r for r in levels if r.get("level") == num])
 
         filled = 0
