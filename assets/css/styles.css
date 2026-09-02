@@ -49,6 +49,14 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: var(--font-sans);
+  /* Cormorant Garamond defaults to old-style figures: 1 and 2 sit at
+     x-height, 3 4 5 7 9 hang below the baseline. In a heading that is
+     handsome; in "9,639" it reads as a mistake. Ask for lining figures,
+     which the font does carry, and let every number on the site inherit it.
+     Any rule that sets font-variant-numeric sets it wholesale, so the
+     tabular-nums declarations elsewhere name lining-nums too or they would
+     switch this back off. */
+  font-variant-numeric: lining-nums;
   background: linear-gradient(180deg, #edf3f9 0%, #f6f8fb 100%);
   color: var(--text);
 }
@@ -1120,7 +1128,7 @@ body > main { flex: 1 0 auto; }
 .fact strong {
   font-size: 1.15rem;
   color: var(--navy);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .level-card-foot {
@@ -1522,7 +1530,7 @@ body.is-leaving { opacity: 0; }
   font-size: clamp(1.7rem, 2.2vw, 2.3rem);
   color: var(--navy);
   line-height: 1;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .summary-stat span {
@@ -1586,7 +1594,7 @@ body.is-leaving { opacity: 0; }
   font-size: 1.3rem;
   line-height: 1;
   color: var(--success);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .plevel-score span { font-size: 0.74rem; color: var(--muted); }
 .plevel-score.is-empty span { font-style: italic; }
@@ -1636,7 +1644,7 @@ body.is-leaving { opacity: 0; }
   font-weight: 700;
   color: var(--navy);
   font-size: 0.95rem;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 /* Four ways into the same level, so they are one control group of four equal
@@ -1780,7 +1788,7 @@ body.is-leaving { opacity: 0; }
   font-size: clamp(1.7rem, 2.2vw, 2.3rem);
   line-height: 1;
   color: var(--accent, var(--navy));
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .feature-stat-label {
@@ -1819,7 +1827,7 @@ body.is-leaving { opacity: 0; }
 }
 .notice-words strong {
   color: var(--navy);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 /* A pill that goes back one step. Used by the exam library, the kanji page
@@ -1882,7 +1890,7 @@ body.is-leaving { opacity: 0; }
 .coverage-table {
   width: 100%;
   border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .coverage-table th,
@@ -1978,7 +1986,7 @@ body.is-leaving { opacity: 0; }
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 /* The list now starts under that caption, so it squares off its own top. */
@@ -2189,7 +2197,7 @@ body.is-leaving { opacity: 0; }
 .kanji-strokes {
   font-size: 0.7rem;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .kanji-readings { font-size: 0.9rem; color: var(--text); line-height: 1.7; }
@@ -2292,7 +2300,7 @@ body.is-leaving { opacity: 0; }
   left: 5px;
   font-size: 0.6rem;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .kanji-open-actions { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -2360,7 +2368,7 @@ body.is-leaving { opacity: 0; }
 .kanji-pos {
   font-size: 0.78rem;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .kanji-hero {
@@ -2468,7 +2476,7 @@ body.is-leaving { opacity: 0; }
   left: 7px;
   font-size: 0.66rem;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .kanji-ink.is-static path { stroke: rgba(17, 45, 78, 0.28); stroke-width: 5; }
 .kanji-ink.is-static path.is-new { stroke: var(--blue); }

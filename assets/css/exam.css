@@ -258,7 +258,7 @@
   border-radius: 999px;
   background: var(--panel-soft);
   border: 1px solid var(--line);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   color: var(--navy);
   font-size: 0.95rem;
 }
@@ -415,7 +415,7 @@
   color: #fff;
   font-size: 0.82rem;
   font-weight: 800;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .pq-prompt {
@@ -440,7 +440,7 @@
   color: var(--navy);
   font-size: 0.8rem;
   font-weight: 800;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   white-space: nowrap;
   vertical-align: 2px;
 }
@@ -750,7 +750,7 @@
   font-size: 3.2rem;
   font-weight: 800;
   line-height: 1;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .result-score-num span {
   font-size: 1.05rem;
@@ -829,7 +829,7 @@
   text-align: right;
   font-weight: 800;
   color: var(--navy);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .section-val span { font-weight: 500; font-size: 0.8rem; color: var(--muted); }
 .section-legend { margin: 20px 0 0; font-size: 0.8rem; color: var(--muted); }
@@ -1049,7 +1049,7 @@
 }
 .words-n {
   padding: 1px 7px; border-radius: 999px;
-  font-size: .74rem; font-variant-numeric: tabular-nums;
+  font-size: .74rem; font-variant-numeric: lining-nums tabular-nums;
   color: var(--ink-soft); background: var(--panel);
   border: 1px solid var(--line);
 }
@@ -1283,7 +1283,7 @@
   font-size: 0.74rem;
   font-weight: 600;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .paper-tab.is-on .paper-tab-count { color: var(--level-color, var(--blue)); }
@@ -1354,7 +1354,7 @@
   display: block;
   font-size: 1.1rem;
   color: var(--navy);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   line-height: 1.1;
 }
 .skill-val span { font-size: 0.76rem; color: var(--muted); }
@@ -1444,7 +1444,7 @@
   color: var(--muted);
   font-size: 0.78rem;
 }
-.lvcard-facts b { color: var(--navy); font-variant-numeric: tabular-nums; }
+.lvcard-facts b { color: var(--navy); font-variant-numeric: lining-nums tabular-nums; }
 .lvcard-facts i { font-style: normal; margin: 0 7px; opacity: 0.5; }
 
 /* The way in. It was a bare arrow glyph in the corner - the one part of the
