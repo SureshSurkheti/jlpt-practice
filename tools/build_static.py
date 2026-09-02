@@ -57,8 +57,12 @@ LEVELS = ["n5", "n4", "n3", "n2", "n1"]
 KINDS = ["words", "kanji", "grammar"]
 COUNT_KEY = {"words": "study.wordsCount", "kanji": "study.kanjiCount",
              "grammar": "study.patternsCount"}
+# The noun the page calls itself. Grammar is the exception: the tab beside
+# Vocabulary and Kanji stays "Grammar" because that is navigation, but the
+# heading and the <title> say "Core Grammar" - 59 patterns presented as "N1
+# Grammar" claims to be the level's grammar, and it is about a third of it.
 NOUN_KEY = {"words": "study.words", "kanji": "study.kanji",
-            "grammar": "study.grammar"}
+            "grammar": "study.grammarCore"}
 
 
 # --------------------------------------------------------------------------
@@ -589,6 +593,13 @@ def main():
                     '      <p class="study-count">%d %s</p>\n'
                     '      <div class="study-list">\n      %s\n      </div>\n'
                     '    </div>' % (n, esc(t(table, COUNT_KEY[kind], en)), body))
+
+                if kind == "grammar":
+                    html = html.replace(
+                        '<div class="study-list">',
+                        '<p class="study-note">%s</p>\n      '
+                        '<div class="study-list">'
+                        % esc(t(table, "study.grammarNote", en)), 1)
                 # mark the level and list this page opens on
                 html = html.replace('data-level="N5" role="tab">N5',
                                     'data-level="N5" role="tab" %s>N5'

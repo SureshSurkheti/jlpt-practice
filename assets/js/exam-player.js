@@ -94,6 +94,32 @@
     return order;
   }
 
+  /* Is the paper currently on screen already marked?
+
+     A sitting is three separate papers - language knowledge, reading,
+     listening - and people practise one at a time. Making them submit the
+     whole thing to find out how the vocabulary went meant either sitting all
+     101 questions or submitting a paper three-quarters blank and reading a
+     score that was mostly zeroes.
+
+     So each paper can be marked on its own. Only one paper renders at a
+     time, so everything that used to ask "is the attempt submitted?" can ask
+     this instead, and gets the right answer for the questions in front of
+     it. state.reviewed still means the whole sitting is done.
+
+     Do not use this for anything that spans papers - the scorecard totals,
+     the pass verdict - because those are only meaningful once every section
+     has been marked. */
+  function currentMarked() {
+    return state.reviewed || !!(state.paper && state.marked[state.paper]);
+  }
+
+  function allMarked() {
+    return state.papers.length > 0 && state.papers.every(function (p) {
+      return state.marked[p.key];
+    });
+  }
+
   function paperOfCategory(category) {
     return sectionOf({ category: category }, state.exam.level);
   }
@@ -113,6 +139,7 @@
     deadline: null,
     startedAt: 0,       // study mode counts up from here
     categories: null,   // which skills the attempt was started with
+    marked: {},         // paper key -> marked on its own, before the rest
     ticker: null,
     reviewed: false,
     score: null,
@@ -317,6 +344,7 @@
         deadline: state.deadline,
         startedAt: state.startedAt,
         reviewed: state.reviewed,
+        marked: state.marked,
         savedAt: Date.now()
       }));
       state.saveFailed = false;
@@ -350,7 +378,7 @@
     if (detail) card.appendChild(el("p", "exam-error-detail", esc(detail)));
     card.appendChild(el("div", "exam-error-links",
       '<a class="btn btn-primary" href="exams.html">' + esc(t("exam.browseAll")) + '</a>' +
-      '<a class="btn btn-ghost" href="levels.html">' + esc(t("exam.backToPractice")) + '</a>'));
+      '<a class="btn btn-ghost" href="levels.html">' + esc(t("nav.levels")) + '</a>'));
     box.appendChild(card);
     root.appendChild(box);
   }
@@ -688,6 +716,7 @@
     state.answers = (saved && saved.answers) || {};
     state.flags = (saved && saved.flags) || {};
     state.reviewed = false;
+    state.marked = (saved && saved.marked) || {};
     state.filter = "all";
     state.current = 0;
 
@@ -804,7 +833,12 @@
     var main = el("div", "exam-paper");
     main.id = "examPaper";
 
+    /* The full scorecard - verdict, three official sections, pass mark -
+       only once the whole sitting has been marked, because a pass verdict
+       computed over one section is not a verdict. Mark a single section and
+       you get that section's own result instead. */
     if (state.reviewed) main.appendChild(buildScorecard());
+    else if (currentMarked()) main.appendChild(buildSectionCard());
 
     /* One paper at a time, the way the real sitting works. */
     if (state.papers.length > 1) main.appendChild(buildPaperTabs());
@@ -823,7 +857,7 @@
         "<h3>" + esc(t("exam.questionMap")) + "</h3>" +
         '<div id="palette"></div>' +
         '<div class="palette-legend">' +
-          (state.reviewed
+          (currentMarked()
             ? '<span><i class="dot dot-done"></i>' + esc(t("exam.legendCorrect")) + '</span>' +
               '<span><i class="dot dot-bad"></i>' + esc(t("exam.legendIncorrect")) + '</span>' +
               '<span><i class="dot dot-todo"></i>' + esc(t("exam.legendBlank")) + '</span>'
@@ -1012,7 +1046,7 @@
         (q.prompt || "") +
       "</div>";
 
-    if (!state.reviewed) {
+    if (!currentMarked()) {
       var flag = el("button", "flag-btn" +
         (state.flags[item.key] ? " is-on" : ""), '<span aria-hidden="true">⚑</span>');
       flag.type = "button";
@@ -1028,7 +1062,7 @@
     q.choices.forEach(function (text, ci) {
       var value = ci + 1;
       var cls = "choice";
-      if (state.reviewed) {
+      if (currentMarked()) {
         if (q.answer === value) cls += " is-correct";
         if (picked === value && q.answer !== value) cls += " is-wrong";
         if (picked === value) cls += " is-picked";
@@ -1040,13 +1074,13 @@
       b.dataset.value = String(value);
       b.dataset.index = String(item.index);
       b.setAttribute("aria-pressed", picked === value ? "true" : "false");
-      if (state.reviewed) b.disabled = true;
+      if (currentMarked()) b.disabled = true;
       b.innerHTML =
         '<span class="choice-num">' + value + "</span>" +
         (blank ? "" : '<span class="choice-text">' + text + "</span>") +
-        (state.reviewed && q.answer === value
+        (currentMarked() && q.answer === value
           ? '<span class="choice-mark">' + esc(t("exam.legendCorrect")) + '</span>' : "") +
-        (state.reviewed && picked === value && q.answer !== value
+        (currentMarked() && picked === value && q.answer !== value
           ? '<span class="choice-mark">' + esc(t("exam.legendIncorrect")) + '</span>' : "");
       choices.appendChild(b);
     });
@@ -1063,7 +1097,7 @@
     fb.dataset.feedback = String(item.index);
     node.appendChild(fb);
 
-    if (state.reviewed) {
+    if (currentMarked()) {
       annotate(item, node);
     } else if (state.mode === "study" && picked) {
       reveal(item, node);
@@ -1183,6 +1217,47 @@
     return box;
   }
 
+  /* One section's result, for when that is all that has been marked. Its
+     own accuracy and the skills inside it - vocabulary and grammar are
+     marked together in 言語知識, so a weak half hides behind a strong one
+     unless they are shown apart. No pass or fail: that needs every section.
+     -------------------------------------------------------------------- */
+  function buildSectionCard() {
+    var s = state.score;
+    if (!s) return el("div", "");
+
+    var sec = null;
+    (s.sections || []).forEach(function (x) { if (x.key === state.paper) sec = x; });
+    if (!sec) return el("div", "");
+
+    var box = el("div", "section-card");
+    var pct = sec.total ? Math.round((sec.right / sec.total) * 100) : 0;
+
+    var skills = (s.skills || []).filter(function (sk) {
+      return paperOfCategory(sk.key) === state.paper;
+    });
+
+    box.innerHTML =
+      '<div class="section-card-head">' +
+        "<h2>" + esc(sec.label) + "</h2>" +
+        '<div class="section-card-score"><strong>' + pct + "%</strong>" +
+          "<span>" + sec.right + " / " + sec.total + " " +
+          esc(t("exam.correctLower")) + "</span></div>" +
+      "</div>" +
+      (skills.length > 1
+        ? '<div class="section-card-skills">' + skills.map(function (sk) {
+            return '<div class="section-card-skill" style="--accent:' +
+              (CATEGORY_COLOR[sk.key] || "var(--blue)") + '">' +
+              "<span>" + esc(sk.label) + "</span>" +
+              "<b>" + sk.percent + "%</b>" +
+              "<i>" + sk.right + " / " + sk.total + "</i></div>";
+          }).join("") + "</div>"
+        : "") +
+      '<p class="section-card-note">' + esc(t("exam.sectionMarkedNote")) + "</p>";
+
+    return box;
+  }
+
   function buildScorecard() {
     var s = state.score;
     var box = el("div", "scorecard");
@@ -1256,7 +1331,7 @@
       '<div class="review-actions">' +
         '<a class="btn btn-gold" href="exams.html">' + esc(t("exam.anotherExam")) + '</a>' +
         '<a class="btn btn-ghost" href="levels.html?lv=' +
-          esc(state.exam.level) + '">' + esc(t("exam.backToPractice")) + '</a>' +
+          esc(state.exam.level) + '">' + esc(t("nav.levels")) + '</a>' +
       "</div>";
     box.appendChild(acts);
 
@@ -1319,13 +1394,37 @@
       return box;
     }
 
+    /* This paper is already marked but others are not: nothing to submit
+       here, just the way on to the next one. */
+    if (currentMarked()) {
+      box.innerHTML = "<h2>" + esc(t("exam.endOfPaper")) + "</h2>" +
+        "<p>" + esc(t("exam.reviewHint")) + "</p>";
+      return box;
+    }
+
     box.innerHTML =
       "<h2>" + esc(t("exam.endOfPaper")) + "</h2>" +
       '<p id="finishSummary"></p>';
-    var submit = el("button", "btn btn-primary btn-lg", t("exam.submitExam"));
-    submit.type = "button";
-    submit.id = "submitBtn2";
-    box.appendChild(submit);
+
+    /* Mark this paper on its own. It is the primary action because it is the
+       one that matches how people actually practise - a section at a time -
+       and because submitting the whole sitting after doing one section
+       produces a score that is mostly zeroes. */
+    var here = el("button", "btn btn-primary btn-lg", t("exam.markSection"));
+    here.type = "button";
+    here.id = "markSectionBtn";
+    box.appendChild(here);
+
+    /* The whole sitting, still available, but secondary once there is more
+       than one paper to lose. */
+    if (state.papers.length > 1) {
+      var all = el("button", "btn btn-ghost btn-lg", t("exam.submitExam"));
+      all.type = "button";
+      all.id = "submitBtn2";
+      box.appendChild(all);
+    } else {
+      here.textContent = t("exam.submitExam");
+    }
     return box;
   }
 
@@ -1366,7 +1465,7 @@
 
   function statusOf(item) {
     var picked = state.answers[item.key];
-    if (!state.reviewed) return picked ? "done" : "todo";
+    if (!currentMarked()) return picked ? "done" : "todo";
     if (!picked) return "blank";
     if (!item.q.answer) return "unknown";
     return picked === item.q.answer ? "right" : "wrong";
@@ -1380,7 +1479,7 @@
         cell.classList.toggle("is-done", st === "done" || st === "right");
         cell.classList.toggle("is-bad", st === "wrong");
         cell.classList.toggle("is-flagged",
-          !state.reviewed && !!state.flags[item.key]);
+          !currentMarked() && !!state.flags[item.key]);
         cell.classList.toggle("is-current", item.index === state.current);
       });
   }
@@ -1426,7 +1525,7 @@
 
   function setBarSection(index) {
     var label = document.getElementById("barSection");
-    if (!label || state.reviewed) return;
+    if (!label || currentMarked()) return;
     var item = state.questions[index];
     if (!item) return;
     var tag = sectionTag(item.q.instruction);
@@ -1488,7 +1587,7 @@
 
     paper.addEventListener("click", function (ev) {
       var choice = ev.target.closest(".choice");
-      if (choice && !state.reviewed) {
+      if (choice && !currentMarked()) {
         select(parseInt(choice.dataset.index, 10),
                parseInt(choice.dataset.value, 10));
         return;
@@ -1513,6 +1612,7 @@
         return;
       }
 
+      if (ev.target.closest("#markSectionBtn")) confirmSection();
       if (ev.target.closest("#submitBtn2")) confirmSubmit();
       if (ev.target.closest("#retryBtn2")) retake();
 
@@ -1644,6 +1744,20 @@
 
   /* ------------------------------------------------------------- scoring */
 
+  /* Same warning as the whole-paper submit, but counted over this section
+     only - "48 unanswered" when 44 of them are in a section you have not
+     opened yet is not a warning, it is noise. */
+  function confirmSection() {
+    var here = state.questions.filter(function (item) {
+      return paperOfCategory(item.category) === state.paper;
+    });
+    var blanks = here.filter(function (item) {
+      return !state.answers[item.key];
+    }).length;
+    if (blanks > 0 && !window.confirm(blanks + " " + t("exam.confirmBlanks"))) return;
+    submitSection(state.paper);
+  }
+
   function confirmSubmit() {
     var total = state.questions.length;
     var blanks = total - answeredCount();
@@ -1657,6 +1771,7 @@
     state.answers = {};
     state.flags = {};
     state.reviewed = false;
+    state.marked = {};
     state.score = null;
     renderSetup();
     window.scrollTo(0, 0);
@@ -1760,9 +1875,26 @@
     };
   }
 
+  /* Mark the paper on screen and nothing else. The score is recomputed over
+     everything - it is cheap and the totals have to stay consistent - but
+     only the sections that have been marked are shown. */
+  function submitSection(key) {
+    if (!key) return;
+    state.marked[key] = true;
+    score();
+    if (allMarked()) {
+      state.reviewed = true;
+      stopTicker();
+    }
+    saveProgress();
+    renderPaper();
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
   function submitExam(timeUp) {
     stopTicker();
     score(timeUp);
+    state.papers.forEach(function (p) { state.marked[p.key] = true; });
     state.reviewed = true;
     state.filter = "all";
     saveProgress();
@@ -1773,7 +1905,7 @@
   /* ---------------------------------------------------- keyboard controls */
 
   document.addEventListener("keydown", function (ev) {
-    if (!state.questions.length || state.reviewed) return;
+    if (!state.questions.length || currentMarked()) return;
     if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
 

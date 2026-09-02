@@ -1989,12 +1989,27 @@ body.is-leaving { opacity: 0; }
   font-variant-numeric: lining-nums tabular-nums;
 }
 
+/* A caveat that belongs to the list, so it sits between the caption and the
+   rows rather than floating above both. Only the grammar lists use it. */
+.study-note {
+  margin: 0;
+  padding: 0 18px 12px;
+  background: var(--panel);
+  border-inline: 1px solid var(--line);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.study-count + .study-note { border-top: 0; }
+
 /* The list now starts under that caption, so it squares off its own top. */
-.study-count + .study-list {
+.study-count + .study-list,
+.study-note + .study-list {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.study-count + .study-list .study-row.is-head { border-radius: 0; }
+.study-count + .study-list .study-row.is-head,
+.study-note + .study-list .study-row.is-head { border-radius: 0; }
 
 /* No overflow:hidden here. It would make this element the scroll container
    for the sticky heading row inside it, which parks the heading below the

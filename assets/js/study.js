@@ -117,10 +117,15 @@
     var body = rows.map(ROW[state.kind]).join("");
 
     openRow = null;
+    /* Only the grammar lists carry a note: they are a core set, not the
+       level's whole grammar, and the count alone does not say so. */
+    var note = state.kind === "grammar"
+      ? '<p class="study-note">' + esc(t("study.grammarNote")) + "</p>" : "";
+
     host.innerHTML =
       '<p class="study-count">' + rows.length + " " +
         esc(t(COUNT[state.kind])) +
-      "</p>" +
+      "</p>" + note +
       '<div class="study-list">' + head + body + "</div>";
   }
 
