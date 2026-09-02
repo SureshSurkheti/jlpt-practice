@@ -8,6 +8,11 @@
   var list = document.getElementById("examsList");
   if (!list) return;
 
+  /* N5 first. The site reads bottom-up everywhere - the levels page, the
+     study tabs, the home cards, the coverage table - because that is the
+     order a learner meets them in. This list is the one definition. */
+  var LEVELS_EASIEST_FIRST = ["N5", "N4", "N3", "N2", "N1"];
+
   var LEVEL_COLOR = {
     N1: "#d9a63a", N2: "#2d6eb4", N3: "#2f7d57", N4: "#7c3ac8", N5: "#5c697a"
   };
@@ -127,7 +132,7 @@
     });
 
     var html = '<div class="level-picker">';
-    ["N1", "N2", "N3", "N4", "N5"].forEach(function (lv) {
+    LEVELS_EASIEST_FIRST.forEach(function (lv) {
       var g = byLevel[lv];
       if (!g) return;
       html +=
@@ -176,7 +181,12 @@
       if (!groups[e.level]) { groups[e.level] = []; order.push(e.level); }
       groups[e.level].push(e);
     });
-    order.sort();
+    /* Easiest first, like every other list of levels on the site. A plain
+       sort() put N1 at the top, which is the order the levels are numbered
+       in but the reverse of the order anybody learns them in. */
+    order.sort(function (a, b) {
+      return LEVELS_EASIEST_FIRST.indexOf(a) - LEVELS_EASIEST_FIRST.indexOf(b);
+    });
 
     var html = "";
     order.forEach(function (lv) {

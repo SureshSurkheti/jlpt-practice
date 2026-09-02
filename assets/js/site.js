@@ -441,6 +441,44 @@ let noticeData = null;
 /* The home page notice: how many papers exist per level, which of them have a
    listening section, and which have word meanings. Read from the built data
    rather than written by hand, so it cannot drift out of date. */
+/* ==========================================================================
+   What the site holds
+
+   Six figures, read from the data files rather than typed, so the panel
+   cannot claim something the site no longer has. Numbers lead because a
+   number is the same sentence in twelve languages, and because "2,211 kanji"
+   argues better than "kanji lists" ever will.
+   ========================================================================== */
+function renderFeatures() {
+  const host = document.getElementById('featureGrid');
+  if (!host) return;
+
+  const counts = window.SITE_COUNTS;
+  if (!counts) return;
+
+  const card = (n, label, sub, accent) => `
+    <div class="feature-stat" style="--accent:${accent}">
+      <strong>${n}</strong>
+      <span class="feature-stat-label">${label}</span>
+      <span class="feature-stat-sub">${sub}</span>
+    </div>`;
+
+  const nf = (v) => v.toLocaleString();
+  const levels = 'N5 &rarr; N1';
+
+  host.innerHTML =
+    card(nf(counts.words), t('study.words'), levels, '#2d6eb4') +
+    card(nf(counts.kanji), t('study.kanji'), t('study.strokeOrder'), '#7c3ac8') +
+    card(nf(counts.grammar), t('study.grammar'), levels, '#2f7d57') +
+    card(nf(counts.papers), t('exams.statPapers'),
+         t('exams.statScoredValue'), '#d9a63a') +
+    /* The Nepali card names itself in Nepali whatever language the page is
+       in - somebody looking for it is looking for that word. */
+    card(nf(counts.nepali), '\u0928\u0947\u092a\u093e\u0932\u0940',
+         t('home.inNepali'), '#c84a52') +
+    card('12', t('lang.label'), t('home.featuresBody'), '#5c697a');
+}
+
 function renderNotice() {
   const table = document.getElementById('noticeTable');
   if (!table) return;
@@ -714,6 +752,7 @@ function mountBackToTop() {
 
 function renderAll() {
   updateHomePageStats();
+  renderFeatures();
   renderLevels();
   renderNotice();
 }

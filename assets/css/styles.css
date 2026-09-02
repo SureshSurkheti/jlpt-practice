@@ -1746,6 +1746,64 @@ body.is-leaving { opacity: 0; }
    characters a line whatever the grid around it is doing.
    -------------------------------------------------------------------------- */
 
+/* ==========================================================================
+   What the site holds - six figures on the home page
+
+   Number first and large, label under it, one line of detail below that.
+   The figure is the argument: "2,211 kanji" persuades where "kanji lists"
+   does not, and a number needs no translating.
+   ========================================================================== */
+
+.features-section { padding-top: var(--sp-section); }
+
+.feature-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(10px, 1.1vw, 16px);
+}
+
+.feature-stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 16px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent, var(--blue));
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(17, 45, 78, 0.05);
+}
+
+.feature-stat strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.2vw, 2.3rem);
+  line-height: 1;
+  color: var(--accent, var(--navy));
+  font-variant-numeric: tabular-nums;
+}
+
+.feature-stat-label {
+  margin-top: 6px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--navy);
+}
+
+.feature-stat-sub {
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+@media (max-width: 1080px) {
+  .feature-stat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .feature-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .feature-stat { padding: 14px 13px 13px; }
+}
+
 /* The word-meanings line under the coverage table on the home page. Tinted
    rather than plain, because it is the one line on that panel doing sales
    rather than reporting. */

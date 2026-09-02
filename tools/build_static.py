@@ -183,6 +183,8 @@ SITE_NAME = "JLPT Practice"
 # rebuild; it is not written into any template by hand.
 CONTACT_EMAIL = "CHANGE-ME@example.com"
 
+COUNTS = {}
+
 
 def meta_for(lang, page, table, en):
     body_key = EN_META[page][1]
@@ -276,6 +278,29 @@ def language_links(langs, page, current, names, table, en):
 
 LEVEL_COLOR_CLASS = {"n1": "level-n1", "n2": "level-n2", "n3": "level-n3",
                      "n4": "level-n4", "n5": "level-n5"}
+
+
+def site_counts():
+    """The figures the home page advertises, counted from the data files at
+    build time. Typed into a template they would quietly go stale the first
+    time a list grew; counted here they cannot."""
+    counts = {"words": 0, "kanji": 0, "grammar": 0, "nepali": 0, "papers": 0}
+    for level in LEVELS:
+        for kind, field in (("words", "words"), ("kanji", "kanji"),
+                            ("grammar", "patterns")):
+            path = os.path.join(ROOT, "data", kind, level + ".json")
+            if not os.path.exists(path):
+                continue
+            items = json.load(io.open(path, encoding="utf-8"))[field]
+            counts[kind] += len(items)
+            # Nepali is counted across words and grammar together, because
+            # that is what somebody asking "is it in Nepali?" wants to know.
+            if kind != "kanji":
+                counts["nepali"] += sum(1 for x in items if x.get("ne"))
+    idx = os.path.join(ROOT, "data", "exams", "index.json")
+    if os.path.exists(idx):
+        counts["papers"] = len(json.load(io.open(idx, encoding="utf-8"))["exams"])
+    return counts
 
 
 def coverage_counts():
@@ -455,6 +480,8 @@ def study_rows(level, kind, table, en, up=""):
 
 def main():
     tr = load_translations()
+    global COUNTS
+    COUNTS = site_counts()
     en = tr[DEFAULT_LANG]
     langs = list(tr.keys())
     names = {"en": "English", "ja": "日本語", "ne": "नेपाली", "vi": "Tiếng Việt",
@@ -473,6 +500,11 @@ def main():
             src = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
             html = apply_i18n(src, table, en)
             html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
+            if page == "index.html":
+                html = html.replace(
+                    "</head>",
+                    '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
+                    % json.dumps(COUNTS, separators=(",", ":")))
             html = rewrite_head(html, lang, page, langs, indexable, table, en)
             if lang != DEFAULT_LANG:
                 html = absolutise(html)

@@ -216,3 +216,6 @@ Lead with the differentiator, not the category. "Free JLPT practice" is a crowde
 Don't say "past papers" or "real JLPT questions." We deliberately took that wording off the site — repeating it in an ad puts it right back in front of the people most likely to object.
 
 One practical check before you post: paste your URL into Facebook's Sharing Debugger and hit "Scrape Again". Facebook caches link previews aggressively, and if it looked at your site before the OG card existed, it'll keep showing the old empty preview until you force a refresh.
+
+1,753 Nepali meanings. 9,639 words, 2,211 kanji with stroke-order animation, 86 full mock exams — N5 to N1, free, no signup.
+jlpt.sureshsurkheti.com
