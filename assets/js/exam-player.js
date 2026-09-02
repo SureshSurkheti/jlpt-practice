@@ -773,12 +773,19 @@
       : "";
     /* Leaving is safe at any point: answers, flags and the deadline are all
        written to storage as you go, and reopening the paper offers Resume. */
-    /* Back goes to the library the paper was opened from, which is where a
-       learner picking a different paper wants to land. */
-    var backLabel = t("exam.backToExams");
+    /* Back steps out one level, to this paper's own setup screen - the place
+       to change which sections you are sitting, switch between exam and study
+       mode, or reset the timer. It used to jump straight to the library,
+       which meant the only way to change your mind about the mode was to
+       find the same paper again and reopen it. The setup screen's own back
+       button carries on to the library, so the way out is two presses and
+       each one is reversible. Dropping the query string is what returns the
+       page to setup: with no ?cat= or ?mode= it renders the chooser, and the
+       saved attempt shows up there as Resume. */
+    var backLabel = t("exam.backToSetup");
     var left =
       '<div class="exam-bar-id">' +
-        '<a class="exam-back" href="exams.html?lv=' + esc(state.exam.level) +
+        '<a class="exam-back" href="exam.html?id=' + esc(state.exam.id) +
           '" aria-label="' + esc(backLabel) +
           '" title="' + esc(backLabel) + '">' +
           '<span class="exam-back-arrow" aria-hidden="true">\u2190</span>' +

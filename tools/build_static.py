@@ -49,7 +49,11 @@ CORE_PAGES = {
 }
 
 LEVELS = ["n5", "n4", "n3", "n2", "n1"]
-KINDS = ["words", "grammar"]
+KINDS = ["words", "kanji", "grammar"]
+COUNT_KEY = {"words": "study.wordsCount", "kanji": "study.kanjiCount",
+             "grammar": "study.patternsCount"}
+NOUN_KEY = {"words": "study.words", "kanji": "study.kanji",
+            "grammar": "study.grammar"}
 
 
 # --------------------------------------------------------------------------
@@ -145,7 +149,8 @@ EN_META = {
                    "home.body"),
     "exams.html": ("JLPT Mock Exam Library — 84 Full-Length Practice Papers",
                    "exams.body"),
-    "study.html": ("JLPT Vocabulary and Grammar Lists — N5 to N1", "study.body"),
+    "study.html": ("JLPT Kanji, Vocabulary and Grammar Lists — N5 to N1",
+                   "study.body"),
     "levels.html": ("JLPT Levels Explained — N1, N2, N3, N4 and N5 Requirements",
                     "levels.body"),
     "practice.html": ("JLPT Practice by Section — Vocabulary, Grammar, Reading, "
@@ -267,9 +272,9 @@ def coverage_counts():
     out = {}
     for level in LEVELS:
         row = {}
-        for kind, folder, field in (("words", "words", "words"),
-                                    ("grammar", "grammar", "patterns")):
-            path = os.path.join(ROOT, "data", folder, level + ".json")
+        for kind, field in (("words", "words"), ("kanji", "kanji"),
+                            ("grammar", "patterns")):
+            path = os.path.join(ROOT, "data", kind, level + ".json")
             if not os.path.exists(path):
                 row[kind] = (0, 0)
                 continue
@@ -293,6 +298,7 @@ def coverage_panel(table, en, here=None, prefix="study/"):
         '<th scope="col"%s>%s</th>' % (attr, label) for attr, label in (
             (' data-i18n="notice.colLevel"', esc(t(table, "notice.colLevel", en))),
             (' data-i18n="study.words"', esc(t(table, "study.words", en))),
+            (' data-i18n="study.kanji"', esc(t(table, "study.kanji", en))),
             (' data-i18n="study.grammar"', esc(t(table, "study.grammar", en))),
             ("", "English"),
             (' lang="ne"', "\u0928\u0947\u092a\u093e\u0932\u0940"),
@@ -302,7 +308,7 @@ def coverage_panel(table, en, here=None, prefix="study/"):
     for level in ["n5", "n4", "n3", "n2", "n1"]:
         c = counts[level]
         cells = []
-        for kind in ("words", "grammar"):
+        for kind in ("words", "kanji", "grammar"):
             total = c[kind][0]
             if not total:
                 cells.append('<td><span class="coverage-no">&mdash;</span></td>')
@@ -343,14 +349,15 @@ def coverage_panel(table, en, here=None, prefix="study/"):
             % (esc(t(table, "notice.title", en)), head, "".join(rows)))
 
 
+FIELD = {"words": "words", "kanji": "kanji", "grammar": "patterns"}
+
+
 def study_rows(level, kind, table, en):
-    path = os.path.join(ROOT, "data",
-                        "words" if kind == "words" else "grammar",
-                        level + ".json")
+    path = os.path.join(ROOT, "data", kind, level + ".json")
     if not os.path.exists(path):
         return "", 0
     data = json.load(io.open(path, encoding="utf-8"))
-    rows = data["words"] if kind == "words" else data["patterns"]
+    rows = data[FIELD[kind]]
 
     out = []
     if kind == "words":
@@ -372,6 +379,46 @@ def study_rows(level, kind, table, en):
                 % (esc(r["w"]), affix, esc(r.get("r", "")),
                    ('<em>%s</em>' % esc(r["romaji"])) if r.get("romaji") else "",
                    esc(r["en"]), ne))
+    elif kind == "kanji":
+        out.append('<div class="study-row is-head is-kanji"><span>%s</span>'
+                   '<span>%s</span><span>%s</span></div>'
+                   % (esc(t(table, "study.kanji", en)),
+                      esc(t(table, "study.colReading", en)),
+                      esc(t(table, "study.colMeaning", en))))
+        strokes = esc(t(table, "study.colStrokes", en))
+        order = esc(t(table, "study.strokeOrder", en))
+        for r in rows:
+            # KANJIDIC's own notation is kept: a dot in a kun reading is the
+            # boundary between the character and its okurigana, a hyphen marks
+            # a prefix or suffix reading. Stripping either would teach the
+            # wrong word.
+            on = ('<b>\u97f3</b> %s' % "\u30fb".join(esc(x) for x in r["on"])) \
+                if r["on"] else ""
+            kun = ("<b>\u8a13</b> " + "\u30fb".join(
+                (esc(x.split(".", 1)[0]) +
+                 '<i class="kanji-okuri">%s</i>' % esc(x.split(".", 1)[1]))
+                if "." in x else esc(x) for x in r["kun"])) if r["kun"] else ""
+
+            ex = "".join(
+                '<span class="kanji-ex"><b>%s</b> <i>%s</i> %s%s</span>'
+                % (esc(e["w"]), esc(e.get("r", "")), esc(e.get("en", "")),
+                   ('<em class="study-ne">%s</em>' % esc(e["ne"]))
+                   if (table is not en and e.get("ne")) else "")
+                for e in r["ex"])
+
+            out.append(
+                '<div class="study-row is-kanji" data-kanji="%s">'
+                '<span class="kanji-cell">'
+                '<button type="button" class="kanji-char" data-kanji="%s" '
+                'title="%s">%s</button>'
+                '<span class="kanji-strokes">%d %s</span></span>'
+                '<span class="kanji-readings">%s%s%s</span>'
+                '<span class="study-en">%s%s</span></div>'
+                % (esc(r["k"]), esc(r["k"]), order, esc(r["k"]),
+                   r["s"], strokes,
+                   on, "<br />" if on and kun else "", kun,
+                   esc(", ".join(r["en"])),
+                   ('<span class="kanji-exs">%s</span>' % ex) if ex else ""))
     else:
         out.append('<div class="study-row is-head is-grammar"><span>%s</span>'
                    '<span>%s</span><span>%s</span></div>'
@@ -450,13 +497,10 @@ def main():
                 if not n:
                     continue
                 lv = level.upper()
-                noun = t(table, "study.words" if kind == "words"
-                         else "study.grammar", en)
+                noun = t(table, NOUN_KEY[kind], en)
                 title = "%s %s — %s" % (lv, noun, SITE_NAME)
                 desc = "%s %s: %d %s. %s" % (
-                    lv, noun, n,
-                    t(table, "study.wordsCount" if kind == "words"
-                      else "study.patternsCount", en),
+                    lv, noun, n, t(table, COUNT_KEY[kind], en),
                     t(table, "study.body", en))
 
                 url = study_url(lang, level, kind)
@@ -495,9 +539,7 @@ def main():
                     '<div id="studyContent" aria-live="polite">\n'
                     '      <p class="study-count">%d %s</p>\n'
                     '      <div class="study-list">\n      %s\n      </div>\n'
-                    '    </div>' % (n, esc(t(table, "study.wordsCount"
-                                            if kind == "words"
-                                            else "study.patternsCount", en)), body))
+                    '    </div>' % (n, esc(t(table, COUNT_KEY[kind], en)), body))
                 # mark the level and list this page opens on
                 html = html.replace('data-level="N5" role="tab">N5',
                                     'data-level="N5" role="tab" %s>N5'
@@ -506,11 +548,12 @@ def main():
                               'class="study-tab" data-level="N5"', html)
                 html = re.sub(r'class="study-tab" data-level="%s"' % lv,
                               'class="study-tab is-on" data-level="%s"' % lv, html)
-                if kind == "grammar":
+                if kind != "words":
                     html = html.replace('class="study-tab is-on" data-kind="words"',
                                         'class="study-tab" data-kind="words"')
-                    html = html.replace('class="study-tab" data-kind="grammar"',
-                                        'class="study-tab is-on" data-kind="grammar"')
+                    html = html.replace(
+                        'class="study-tab" data-kind="%s"' % kind,
+                        'class="study-tab is-on" data-kind="%s"' % kind)
                 html = html.replace("</footer>", language_links(
                     langs, "study/%s-%s.html" % (level, kind), lang, names,
                     table, en) + "</footer>")

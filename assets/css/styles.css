@@ -1607,12 +1607,32 @@ body.is-leaving { opacity: 0; }
   width: clamp(200px, 24vw, 320px);
 }
 
+/* The row count. It used to be a bare grey line floating in the gap between
+   the tabs and the list, belonging to neither: no container, no alignment to
+   the table header under it, and a full 10px of nothing on each side of it.
+   Attach it to the list instead - it is a caption for the table, so it sits
+   on the list's own top edge, in the same tinted band as the column headings,
+   and reads as part of the thing it counts. */
 .study-count {
-  margin: 0 0 10px;
-  font-size: 0.8rem;
+  margin: 0;
+  padding: 10px 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 17px 17px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+
+/* The list now starts under that caption, so it squares off its own top. */
+.study-count + .study-list {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.study-count + .study-list .study-row.is-head { border-radius: 0; }
 
 /* No overflow:hidden here. It would make this element the scroll container
    for the sticky heading row inside it, which parks the heading below the
@@ -1774,6 +1794,169 @@ body.is-leaving { opacity: 0; }
 @media (max-width: 430px) {
   .main-nav a { padding: 8px 9px; font-size: 0.86rem; }
   .main-nav { gap: 2px; }
+}
+
+/* ==========================================================================
+   Kanji
+
+   Three columns like the other two lists, but the first one carries the
+   character itself at reading size: a kanji at 0.95rem is a smudge, and the
+   whole point of the page is seeing the shape.
+   ========================================================================== */
+
+.study-row.is-kanji { grid-template-columns: 116px 210px minmax(0, 1fr); }
+
+.kanji-cell { display: flex; flex-direction: column; gap: 4px; }
+
+.kanji-char {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  font-size: 2.1rem;
+  line-height: 1;
+  color: var(--navy);
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.kanji-char:hover,
+.kanji-char:focus-visible {
+  background: #fff;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(45, 110, 180, 0.14);
+}
+
+.kanji-strokes {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kanji-readings { font-size: 0.9rem; color: var(--text); line-height: 1.7; }
+.kanji-readings b {
+  display: inline-block;
+  min-width: 1.5em;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+/* The okurigana half of a kun reading: the part you write in kana, not in
+   the character. Dimmed so the boundary is visible at a glance. */
+.kanji-okuri { font-style: normal; color: var(--muted); }
+
+.kanji-exs {
+  display: block;
+  margin-top: 7px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.kanji-ex { display: block; }
+.kanji-ex b { color: var(--navy); font-weight: 700; margin-right: 2px; }
+.kanji-ex i { font-style: normal; color: var(--blue); margin-right: 6px; }
+
+/* ------------------------------------------------------- stroke order --- */
+
+.kanji-panel {
+  width: min(100%, 1040px);
+  margin: 16px auto 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.kanji-panel-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 30px);
+  padding: var(--card-pad);
+}
+
+.kanji-draw-box {
+  display: grid;
+  place-items: center;
+  width: 208px;
+  height: 208px;
+  flex: 0 0 auto;
+  background: var(--panel-soft);
+  border-radius: 16px;
+}
+
+.kanji-svg { width: 100%; height: 100%; }
+
+/* The quarter lines of a squared practice sheet, which is what a learner
+   copies onto. Dashed and pale: a guide, not part of the character. */
+.kanji-guide line {
+  stroke: rgba(17, 45, 78, 0.16);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.kanji-ink path {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes kanji-draw { to { stroke-dashoffset: 0; } }
+
+.kanji-panel-side { min-width: 0; }
+.kanji-panel-side h3 {
+  margin: 0;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--navy);
+}
+.kanji-panel-en { margin: 6px 0 0; color: var(--text); }
+.kanji-panel-count {
+  margin: 2px 0 12px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.kanji-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+.kanji-close:hover { background: var(--panel-soft); color: var(--navy); }
+
+/* Somebody who has turned animation off still needs the finished character,
+   so the strokes are simply drawn complete. */
+@media (prefers-reduced-motion: reduce) {
+  .kanji-ink path { animation: none !important; stroke-dashoffset: 0 !important; }
+}
+
+@media (max-width: 700px) {
+  .study-row.is-kanji,
+  .study-row.is-head.is-kanji {
+    grid-template-columns: 78px minmax(0, 1fr);
+  }
+  .study-row.is-kanji .kanji-readings { grid-column: 2; }
+  .study-row.is-kanji .study-en { grid-column: 1 / -1; }
+  .study-row.is-head.is-kanji span:nth-child(2),
+  .study-row.is-head.is-kanji span:nth-child(3) { display: none; }
+  .kanji-char { width: 54px; height: 54px; font-size: 1.8rem; }
+
+  .kanji-panel-inner { flex-direction: column; align-items: flex-start; }
+  .kanji-draw-box { width: 100%; height: auto; aspect-ratio: 1; max-width: 260px; }
 }
 
 /* A word written with a wave dash is an affix, not a standalone word. Say so,

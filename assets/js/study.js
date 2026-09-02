@@ -51,8 +51,8 @@
         '<div class="exam-loading"><div class="spinner"></div></div>';
     }
 
-    var dir = state.kind === "words" ? "words" : "grammar";
-    fetch(SITE_ROOT + "data/" + dir + "/" +
+    var FIELD = { words: "words", grammar: "patterns", kanji: "kanji" };
+    fetch(SITE_ROOT + "data/" + state.kind + "/" +
           state.level.toLowerCase() + ".json",
           { cache: "no-cache" })
       .then(function (r) {
@@ -60,7 +60,7 @@
         return r.json();
       })
       .then(function (d) {
-        cache[key()] = state.kind === "words" ? d.words : d.patterns;
+        cache[key()] = d[FIELD[state.kind]];
         render();
       })
       .catch(function () {
@@ -71,9 +71,15 @@
 
   function matches(row) {
     if (!state.query) return true;
-    var hay = state.kind === "words"
-      ? [row.w, row.r, row.romaji, row.en]
-      : [row.p, row.en, row.ne, row.ja, row.ex];
+    var hay;
+    if (state.kind === "words") {
+      hay = [row.w, row.r, row.romaji, row.en];
+    } else if (state.kind === "kanji") {
+      hay = [row.k, row.en.join(" "), row.on.join(" "), row.kun.join(" "),
+             row.ex.map(function (e) { return e.w + " " + e.en; }).join(" ")];
+    } else {
+      hay = [row.p, row.en, row.ne, row.ja, row.ex];
+    }
     return hay.join(" ").toLowerCase().indexOf(state.query) !== -1;
   }
 
@@ -85,23 +91,27 @@
       return;
     }
 
-    var head = state.kind === "words"
-      ? '<div class="study-row is-head">' +
-          "<span>" + esc(t("study.colWord")) + "</span>" +
-          "<span>" + esc(t("study.colReading")) + "</span>" +
-          "<span>" + esc(t("study.colMeaning")) + "</span>" +
-        "</div>"
-      : '<div class="study-row is-head is-grammar">' +
-          "<span>" + esc(t("study.colPattern")) + "</span>" +
-          "<span>" + esc(t("study.colMeaning")) + "</span>" +
-          "<span>" + esc(t("study.colExample")) + "</span>" +
-        "</div>";
+    var HEAD = {
+      words: ["study.colWord", "study.colReading", "study.colMeaning"],
+      grammar: ["study.colPattern", "study.colMeaning", "study.colExample"],
+      kanji: ["study.kanji", "study.colReading", "study.colMeaning"]
+    };
+    var cls = { words: "", grammar: " is-grammar", kanji: " is-kanji" };
+    var head = '<div class="study-row is-head' + cls[state.kind] + '">' +
+      HEAD[state.kind].map(function (k) {
+        return "<span>" + esc(t(k)) + "</span>";
+      }).join("") + "</div>";
 
-    var body = rows.map(state.kind === "words" ? wordRow : grammarRow).join("");
+    var ROW = { words: wordRow, grammar: grammarRow, kanji: kanjiRow };
+    var COUNT = {
+      words: "study.wordsCount", grammar: "study.patternsCount",
+      kanji: "study.kanjiCount"
+    };
+    var body = rows.map(ROW[state.kind]).join("");
 
     host.innerHTML =
       '<p class="study-count">' + rows.length + " " +
-        esc(t(state.kind === "words" ? "study.wordsCount" : "study.patternsCount")) +
+        esc(t(COUNT[state.kind])) +
       "</p>" +
       '<div class="study-list">' + head + body + "</div>";
   }
@@ -121,6 +131,173 @@
       '<span class="study-en">' + esc(row.en) + ne + "</span>" +
     "</div>";
   }
+
+  /* ------------------------------------------------------------- kanji --
+     One row per character. The readings carry KANJIDIC's own notation: a dot
+     in a kun reading marks where the character stops and the okurigana
+     begins (おお.きい), and a hyphen marks a reading only used as a prefix or
+     suffix (-び). Both are shown, dimmed, rather than stripped - a learner
+     who does not know where 大 ends and きい begins will write it wrong.
+     -------------------------------------------------------------------- */
+
+  function reading(text) {
+    var dot = text.indexOf(".");
+    if (dot === -1) return esc(text);
+    return esc(text.slice(0, dot)) +
+      '<i class="kanji-okuri">' + esc(text.slice(dot + 1)) + "</i>";
+  }
+
+  function kanjiRow(row) {
+    var on = row.on.length
+      ? '<b>\u97f3</b> ' + row.on.map(esc).join("\u30fb") : "";
+    var kun = row.kun.length
+      ? '<b>\u8a13</b> ' + row.kun.map(reading).join("\u30fb") : "";
+
+    var ex = row.ex.map(function (e) {
+      var ne = (I18N.current() === "ne" && e.ne)
+        ? ' <em class="study-ne">' + esc(e.ne) + "</em>" : "";
+      return '<span class="kanji-ex"><b>' + esc(e.w) + "</b> " +
+        '<i>' + esc(e.r) + "</i> " + esc(e.en) + ne + "</span>";
+    }).join("");
+
+    return '<div class="study-row is-kanji" data-kanji="' + esc(row.k) + '">' +
+      '<span class="kanji-cell">' +
+        '<button type="button" class="kanji-char" data-kanji="' + esc(row.k) +
+          '" title="' + esc(t("study.strokeOrder")) + '">' + esc(row.k) +
+        "</button>" +
+        '<span class="kanji-strokes">' + row.s + " " +
+          esc(t("study.colStrokes")) + "</span>" +
+      "</span>" +
+      '<span class="kanji-readings">' + on +
+        (on && kun ? "<br />" : "") + kun + "</span>" +
+      '<span class="study-en">' + esc(row.en.join(", ")) +
+        (ex ? '<span class="kanji-exs">' + ex + "</span>" : "") + "</span>" +
+    "</div>";
+  }
+
+  /* ------------------------------------------------- how it is written --
+     Stroke order is drawn rather than shown as a grid of numbered stamps:
+     the thing a learner needs is the direction and the sequence, which a
+     still image cannot carry. Each KanjiVG path is drawn by animating its
+     own dash offset, one after another, and the finished character stays on
+     screen with every stroke numbered at its start point.
+
+     The path data is a separate file per level - N1 alone is 1.2MB of
+     curves - so it is fetched the first time somebody opens a character and
+     kept for the rest of the session.
+     -------------------------------------------------------------------- */
+
+  var strokeCache = {};
+
+  function strokesFor(level) {
+    if (strokeCache[level]) return Promise.resolve(strokeCache[level]);
+    return fetch(SITE_ROOT + "data/kanji/strokes/" + level.toLowerCase() +
+                 ".json", { cache: "no-cache" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (d) { strokeCache[level] = d; return d; });
+  }
+
+  function drawKanji(box, paths) {
+    /* KanjiVG draws on a 109x109 grid. The guide lines are the same quarters
+       a squared practice sheet has, which is what people learn to write on. */
+    var svg =
+      '<svg viewBox="0 0 109 109" class="kanji-svg" aria-hidden="true">' +
+        '<g class="kanji-guide">' +
+          '<line x1="54.5" y1="0" x2="54.5" y2="109" />' +
+          '<line x1="0" y1="54.5" x2="109" y2="54.5" />' +
+        "</g>" +
+        '<g class="kanji-ink">' +
+          paths.map(function (d, n) {
+            return '<path d="' + d + '" style="--i:' + n + '" />';
+          }).join("") +
+        "</g>" +
+      "</svg>";
+    box.innerHTML = svg;
+
+    /* Each stroke waits for the ones before it. Measuring the real length
+       means a long sweep and a short tick take the time each deserves. */
+    var delay = 0;
+    Array.prototype.forEach.call(box.querySelectorAll(".kanji-ink path"),
+      function (path) {
+        var len = path.getTotalLength();
+        var secs = Math.max(0.22, Math.min(0.85, len / 190));
+        path.style.strokeDasharray = len + " " + len;
+        path.style.strokeDashoffset = len;
+        path.style.animation =
+          "kanji-draw " + secs + "s linear " + delay + "s forwards";
+        delay += secs + 0.09;
+      });
+    return delay;
+  }
+
+  function openKanji(char) {
+    var panel = document.getElementById("kanjiPanel");
+    if (!panel) return;
+
+    var row = (cache[key()] || []).filter(function (r) {
+      return r.k === char;
+    })[0];
+    if (!row) return;
+
+    panel.hidden = false;
+    panel.innerHTML =
+      '<div class="kanji-panel-inner">' +
+        '<div class="kanji-draw-box" id="kanjiDraw"></div>' +
+        '<div class="kanji-panel-side">' +
+          '<h3>' + esc(char) + "</h3>" +
+          '<p class="kanji-panel-en">' + esc(row.en.join(", ")) + "</p>" +
+          '<p class="kanji-panel-count">' + row.s + " " +
+            esc(t("study.colStrokes")) + "</p>" +
+          '<button type="button" class="btn btn-ghost" id="kanjiReplay">' +
+            esc(t("study.replay")) + "</button>" +
+        "</div>" +
+        '<button type="button" class="kanji-close" aria-label="&times;">' +
+          "&times;</button>" +
+      "</div>";
+
+    var box = document.getElementById("kanjiDraw");
+    box.innerHTML = '<div class="spinner"></div>';
+
+    strokesFor(state.level).then(function (all) {
+      var paths = all[char];
+      if (!paths) {
+        box.innerHTML = '<p class="stats-empty">' +
+          esc(t("study.unavailable")) + "</p>";
+        return;
+      }
+      drawKanji(box, paths);
+      var replay = document.getElementById("kanjiReplay");
+      if (replay) {
+        replay.onclick = function () { drawKanji(box, paths); };
+      }
+    }).catch(function () {
+      box.innerHTML = '<p class="stats-empty">' +
+        esc(t("study.unavailable")) + "</p>";
+    });
+
+    panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  host.addEventListener("click", function (ev) {
+    var hit = ev.target.closest(".kanji-char");
+    if (hit) { openKanji(hit.dataset.kanji); return; }
+  });
+
+  document.addEventListener("click", function (ev) {
+    if (ev.target.closest(".kanji-close")) {
+      var panel = document.getElementById("kanjiPanel");
+      if (panel) { panel.hidden = true; panel.innerHTML = ""; }
+    }
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Escape") return;
+    var panel = document.getElementById("kanjiPanel");
+    if (panel && !panel.hidden) { panel.hidden = true; panel.innerHTML = ""; }
+  });
 
   function grammarRow(row) {
     /* The Nepali gloss only shows when the reader is actually reading in
