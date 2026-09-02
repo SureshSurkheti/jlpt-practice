@@ -4,6 +4,7 @@ Build the study word list for every JLPT level.
 
 Reads:  data/dict/jlpt-levels.json   the JLPT level lists
         data/dict/jmdict-eng.json    JMdict, to fill in missing meanings
+        data/words/ne/<level>.json   hand-written Nepali glosses, if present
 Writes: data/words/n5.json ... data/words/n1.json
 
 The level list arrives as two merged sources: one carries meanings and romaji,
@@ -142,6 +143,31 @@ def main():
                 rec["r"] = to_hira(rec["w"]) if KATA.search(rec["w"]) else rec["w"]
             rec.pop("romaji") if not rec["romaji"] else None
 
+        # Nepali is written by hand, a level at a time, and merged here so a
+        # level that has not been translated yet simply carries no "ne" field
+        # and the page falls back to English for it.
+        ne_path = os.path.join(OUT_DIR, "ne", name + ".json")
+        ne_map = {}
+        if os.path.exists(ne_path):
+            with io.open(ne_path, encoding="utf-8") as fh:
+                ne_map = json.load(fh)
+        ne_hits = 0
+        for rec in rows:
+            gloss = ne_map.get(rec["w"])
+            if gloss:
+                rec["ne"] = gloss
+                ne_hits += 1
+
+        # A word written with a wave dash is an affix or a counter, not a
+        # standalone word: 〜階 is "-th floor", お〜 is the polite prefix. The
+        # JMdict lookup that fills them in strips the dash and returns the
+        # bare noun, which is close for counters and can be wrong for the
+        # rest. Flag them so the page can say what they are rather than
+        # presenting the gloss as an equal.
+        for rec in rows:
+            if "～" in rec["w"] or "~" in rec["w"]:
+                rec["affix"] = 1
+
         bare = [r for r in rows if not r["en"]]
         rows = [r for r in rows if r["en"]]
 
@@ -150,8 +176,9 @@ def main():
             json.dump({"level": name.upper(), "count": len(rows), "words": rows},
                       fh, ensure_ascii=False, separators=(",", ":"))
 
-        print("%s: %d words (%d filled from JMdict, %d dropped for having no "
-              "meaning anywhere)" % (name.upper(), len(rows), filled, len(bare)))
+        print("%s: %d words (%d filled from JMdict, %d Nepali, %d dropped for "
+              "having no meaning anywhere)"
+              % (name.upper(), len(rows), filled, ne_hits, len(bare)))
         if bare[:5]:
             print("   dropped e.g.:", ", ".join(r["w"] for r in bare[:5]))
 

@@ -85,11 +85,18 @@
   }
 
   function wordRow(row) {
+    /* Same rule as the grammar rows: the Nepali gloss appears only while the
+       page is being read in Nepali, and only for the levels translated so far.
+       Everywhere else the English gloss stands on its own. */
+    var ne = (I18N.current() === "ne" && row.ne)
+      ? '<em class="study-ne">' + esc(row.ne) + "</em>" : "";
+    var affix = row.affix
+      ? '<b class="study-affix">' + esc(t("study.affix")) + "</b>" : "";
     return '<div class="study-row">' +
-      '<span class="study-jp">' + esc(row.w) + "</span>" +
+      '<span class="study-jp">' + esc(row.w) + affix + "</span>" +
       '<span class="study-reading">' + esc(row.r || "") +
         (row.romaji ? '<em>' + esc(row.romaji) + "</em>" : "") + "</span>" +
-      '<span class="study-en">' + esc(row.en) + "</span>" +
+      '<span class="study-en">' + esc(row.en) + ne + "</span>" +
     "</div>";
   }
 

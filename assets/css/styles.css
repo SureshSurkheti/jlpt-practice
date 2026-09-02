@@ -1682,3 +1682,110 @@ body.is-leaving { opacity: 0; }
   color: #7a5f19;
   max-width: 78ch;
 }
+
+/* ==========================================================================
+   Phone: the three places the desktop layout does not survive a 390px screen
+   ========================================================================== */
+
+/* -- 1. The nav row scrolls sideways. Fade the edge that has more behind it,
+      so a half-cut word reads as "there is more" rather than as breakage. -- */
+.main-nav.can-scroll:not(.at-end) {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+.main-nav.can-scroll:not(.at-start):not(.at-end) {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 24px,
+                                      #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 24px,
+                                      #000 calc(100% - 28px), transparent);
+}
+.main-nav.can-scroll.at-end:not(.at-start) {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 24px);
+          mask-image: linear-gradient(to right, transparent, #000 24px);
+}
+
+/* Buy back some of the overflow before relying on the fade at all. */
+@media (max-width: 430px) {
+  .main-nav a { padding: 8px 9px; font-size: 0.86rem; }
+  .main-nav { gap: 2px; }
+}
+
+/* -- 2. The levels comparison becomes five cards. A table that shows one
+      column at a time is not a comparison, and sideways scrolling to reach
+      "pass mark" is worse than reading it in a list. -- */
+@media (max-width: 700px) {
+  .levels-table-wrap { overflow-x: visible; background: none; border: 0; box-shadow: none; }
+  .levels-table { min-width: 0; }
+  .levels-table thead { display: none; }
+
+  .levels-table,
+  .levels-table tbody,
+  .levels-table tr,
+  .levels-table th,
+  .levels-table td { display: block; }
+
+  .levels-table tr {
+    margin-bottom: 14px;
+    padding: 16px 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent, var(--blue));
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(17, 45, 78, 0.05);
+  }
+  .levels-table tr:hover { background: var(--panel); }
+
+  .levels-table th,
+  .levels-table td { padding: 0; border: 0; }
+
+  .levels-table .lv-covers {
+    margin: 10px 0 12px;
+    color: var(--muted);
+    min-width: 0;
+  }
+
+  /* Label and value on one line, the way a spec sheet reads. */
+  .levels-table td[data-label] {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 7px 0;
+    border-top: 1px solid var(--line);
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .levels-table td[data-label]::before {
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    align-self: center;
+  }
+
+  .levels-table .lv-go {
+    margin-top: 14px;
+    text-align: left;
+  }
+  .levels-table .lv-go .btn { width: 100%; }
+
+  .levels-note { margin-top: 4px; }
+}
+
+/* A word written with a wave dash is an affix, not a standalone word. Say so,
+   quietly, because its English gloss describes the root it attaches to. */
+.study-affix {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}

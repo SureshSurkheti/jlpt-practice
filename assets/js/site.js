@@ -292,11 +292,11 @@ function renderLevels() {
       <tr class="level-${key.toLowerCase()}">
         <th scope="row"><span class="lv-chip">${key}</span></th>
         <td class="lv-covers">${levelDesc(key)}</td>
-        <td>${cfg.kanji}</td>
-        <td>${cfg.vocab}</td>
-        <td class="lv-pass">${cfg.pass}</td>
-        <td>${MINUTES[key]} ${t('levels.minutes')}</td>
-        <td class="lv-you">${stats.total > 0
+        <td data-label="${t('level.kanji')}">${cfg.kanji}</td>
+        <td data-label="${t('level.vocab')}">${cfg.vocab}</td>
+        <td class="lv-pass" data-label="${t('level.pass')}">${cfg.pass}</td>
+        <td data-label="${t('levels.colTime')}">${MINUTES[key]} ${t('levels.minutes')}</td>
+        <td class="lv-you" data-label="${t('levels.yourScore')}">${stats.total > 0
           ? `<strong>${stats.accuracy}%</strong>`
           : '<span class="lv-dash">—</span>'}</td>
         <td class="lv-go">
@@ -553,6 +553,35 @@ function renderNotice() {
   }
 }
 
+/* The six nav links do not fit a phone in any language - English needs 434px
+   of a 358px row, Japanese 478 - so the row scrolls sideways. On its own that
+   just looks like a word cut in half at the edge, so fade whichever side has
+   more to see. */
+function wireNavScroll() {
+  const nav = document.querySelector('.main-nav');
+  if (!nav) return;
+
+  const sync = () => {
+    const over = nav.scrollWidth - nav.clientWidth;
+    nav.classList.toggle('can-scroll', over > 1);
+    nav.classList.toggle('at-start', nav.scrollLeft <= 1);
+    nav.classList.toggle('at-end', nav.scrollLeft >= over - 1);
+  };
+
+  sync();
+  nav.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  document.addEventListener('languagechange', () => setTimeout(sync, 0));
+
+  /* Open the row on the link you are actually on. */
+  const active = nav.querySelector('.active');
+  if (active) {
+    const off = active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2;
+    nav.scrollLeft = Math.max(0, off);
+    sync();
+  }
+}
+
 /* Pressing the wordmark or the JL badge plays a short transition before the
    page changes. On the home page there is nowhere to go, so it returns to the
    top instead of reloading. */
@@ -588,6 +617,7 @@ function renderAll() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  wireNavScroll();
   I18N.init();
   renderAll();
   wireBrand();

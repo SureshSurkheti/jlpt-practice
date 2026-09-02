@@ -1301,8 +1301,18 @@
 @media (max-width: 560px) {
   /* Fill the width here - the names are what is left to tap. */
   .paper-tabs { gap: 4px; padding: 4px; width: 100%; }
-  .paper-tab { flex: 1 1 0; padding: 9px 6px; font-size: 0.8rem; }
-  .paper-tab-count { font-size: 0.68rem; }
+  .paper-tab { flex: 1 1 0; padding: 9px 5px; font-size: 0.76rem; }
+  .paper-tab-count { font-size: 0.66rem; }
+
+  /* Let the name wrap instead of clipping it. "Language K..." told the reader
+     nothing; two short lines tell them which paper they are on. */
+  .paper-tab-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.2;
+    hyphens: auto;
+  }
 }
 
 /* ==========================================================================
