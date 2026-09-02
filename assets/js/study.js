@@ -162,9 +162,10 @@
 
     return '<div class="study-row is-kanji" data-kanji="' + esc(row.k) + '">' +
       '<span class="kanji-cell">' +
-        '<button type="button" class="kanji-char" data-kanji="' + esc(row.k) +
+        '<a class="kanji-char" href="kanji.html?k=' +
+          encodeURIComponent(row.k) + "&lv=" + state.level.toLowerCase() +
           '" title="' + esc(t("study.strokeOrder")) + '">' + esc(row.k) +
-        "</button>" +
+        "</a>" +
         '<span class="kanji-strokes">' + row.s + " " +
           esc(t("study.colStrokes")) + "</span>" +
       "</span>" +
@@ -174,130 +175,6 @@
         (ex ? '<span class="kanji-exs">' + ex + "</span>" : "") + "</span>" +
     "</div>";
   }
-
-  /* ------------------------------------------------- how it is written --
-     Stroke order is drawn rather than shown as a grid of numbered stamps:
-     the thing a learner needs is the direction and the sequence, which a
-     still image cannot carry. Each KanjiVG path is drawn by animating its
-     own dash offset, one after another, and the finished character stays on
-     screen with every stroke numbered at its start point.
-
-     The path data is a separate file per level - N1 alone is 1.2MB of
-     curves - so it is fetched the first time somebody opens a character and
-     kept for the rest of the session.
-     -------------------------------------------------------------------- */
-
-  var strokeCache = {};
-
-  function strokesFor(level) {
-    if (strokeCache[level]) return Promise.resolve(strokeCache[level]);
-    return fetch(SITE_ROOT + "data/kanji/strokes/" + level.toLowerCase() +
-                 ".json", { cache: "no-cache" })
-      .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        return r.json();
-      })
-      .then(function (d) { strokeCache[level] = d; return d; });
-  }
-
-  function drawKanji(box, paths) {
-    /* KanjiVG draws on a 109x109 grid. The guide lines are the same quarters
-       a squared practice sheet has, which is what people learn to write on. */
-    var svg =
-      '<svg viewBox="0 0 109 109" class="kanji-svg" aria-hidden="true">' +
-        '<g class="kanji-guide">' +
-          '<line x1="54.5" y1="0" x2="54.5" y2="109" />' +
-          '<line x1="0" y1="54.5" x2="109" y2="54.5" />' +
-        "</g>" +
-        '<g class="kanji-ink">' +
-          paths.map(function (d, n) {
-            return '<path d="' + d + '" style="--i:' + n + '" />';
-          }).join("") +
-        "</g>" +
-      "</svg>";
-    box.innerHTML = svg;
-
-    /* Each stroke waits for the ones before it. Measuring the real length
-       means a long sweep and a short tick take the time each deserves. */
-    var delay = 0;
-    Array.prototype.forEach.call(box.querySelectorAll(".kanji-ink path"),
-      function (path) {
-        var len = path.getTotalLength();
-        var secs = Math.max(0.22, Math.min(0.85, len / 190));
-        path.style.strokeDasharray = len + " " + len;
-        path.style.strokeDashoffset = len;
-        path.style.animation =
-          "kanji-draw " + secs + "s linear " + delay + "s forwards";
-        delay += secs + 0.09;
-      });
-    return delay;
-  }
-
-  function openKanji(char) {
-    var panel = document.getElementById("kanjiPanel");
-    if (!panel) return;
-
-    var row = (cache[key()] || []).filter(function (r) {
-      return r.k === char;
-    })[0];
-    if (!row) return;
-
-    panel.hidden = false;
-    panel.innerHTML =
-      '<div class="kanji-panel-inner">' +
-        '<div class="kanji-draw-box" id="kanjiDraw"></div>' +
-        '<div class="kanji-panel-side">' +
-          '<h3>' + esc(char) + "</h3>" +
-          '<p class="kanji-panel-en">' + esc(row.en.join(", ")) + "</p>" +
-          '<p class="kanji-panel-count">' + row.s + " " +
-            esc(t("study.colStrokes")) + "</p>" +
-          '<button type="button" class="btn btn-ghost" id="kanjiReplay">' +
-            esc(t("study.replay")) + "</button>" +
-        "</div>" +
-        '<button type="button" class="kanji-close" aria-label="&times;">' +
-          "&times;</button>" +
-      "</div>";
-
-    var box = document.getElementById("kanjiDraw");
-    box.innerHTML = '<div class="spinner"></div>';
-
-    strokesFor(state.level).then(function (all) {
-      var paths = all[char];
-      if (!paths) {
-        box.innerHTML = '<p class="stats-empty">' +
-          esc(t("study.unavailable")) + "</p>";
-        return;
-      }
-      drawKanji(box, paths);
-      var replay = document.getElementById("kanjiReplay");
-      if (replay) {
-        replay.onclick = function () { drawKanji(box, paths); };
-      }
-    }).catch(function () {
-      box.innerHTML = '<p class="stats-empty">' +
-        esc(t("study.unavailable")) + "</p>";
-    });
-
-    panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  }
-
-  host.addEventListener("click", function (ev) {
-    var hit = ev.target.closest(".kanji-char");
-    if (hit) { openKanji(hit.dataset.kanji); return; }
-  });
-
-  document.addEventListener("click", function (ev) {
-    if (ev.target.closest(".kanji-close")) {
-      var panel = document.getElementById("kanjiPanel");
-      if (panel) { panel.hidden = true; panel.innerHTML = ""; }
-    }
-  });
-
-  document.addEventListener("keydown", function (ev) {
-    if (ev.key !== "Escape") return;
-    var panel = document.getElementById("kanjiPanel");
-    if (panel && !panel.hidden) { panel.hidden = true; panel.innerHTML = ""; }
-  });
 
   function grammarRow(row) {
     /* The Nepali gloss only shows when the reader is actually reading in

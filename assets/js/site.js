@@ -580,6 +580,71 @@ function wireBrand() {
   });
 }
 
+/* ==========================================================================
+   Back to top
+
+   The study lists run to 3,759 rows and a finished paper to 180 questions;
+   on a phone that is a long way back to the nav. The button is created here
+   rather than written into eight templates, so it exists on every page
+   including the ones the generator produces.
+
+   It appears only once there is something to go back to - two screens of
+   scrolling - and it is a real <button>, so it is reachable by keyboard and
+   announces itself.
+   ========================================================================== */
+function mountBackToTop() {
+  if (document.getElementById("toTop")) return;
+
+  var btn = document.createElement("button");
+  btn.id = "toTop";
+  btn.type = "button";
+  btn.className = "to-top";
+  btn.innerHTML = '<span aria-hidden="true">\u2303</span>';
+  document.body.appendChild(btn);
+
+  function label() {
+    var text = t("nav.top");
+    btn.setAttribute("aria-label", text);
+    btn.title = text;
+  }
+  label();
+  document.addEventListener("languagechange", label);
+
+  btn.addEventListener("click", function () {
+    /* Respect a reduced-motion preference: jump rather than sweep. */
+    var reduce = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    /* Send focus back to the top of the document, or a keyboard user is
+       returned to the top of the page with their focus still at the bottom. */
+    var first = document.querySelector(".brand-wrap");
+    if (first) first.focus({ preventScroll: true });
+  });
+
+  var shown = false;
+  var ticking = false;
+  function check() {
+    ticking = false;
+    var want = window.scrollY > window.innerHeight * 2;
+    if (want === shown) return;
+    shown = want;
+    btn.classList.toggle("is-on", want);
+  }
+  window.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(check);
+  }, { passive: true });
+
+  check();
+  /* A browser restores the scroll position on reload and on Back, and it
+     does that after this runs - so the first check can read 0 on a page that
+     is already halfway down, and no scroll event follows to correct it.
+     Check again once the restore has happened. */
+  window.addEventListener("load", check);
+  window.addEventListener("pageshow", check);
+}
+
 function renderAll() {
   updateHomePageStats();
   renderLevels();
@@ -589,6 +654,7 @@ function renderAll() {
 document.addEventListener('DOMContentLoaded', () => {
   wireNavScroll();
   I18N.init();
+  mountBackToTop();
   renderAll();
   wireBrand();
 });

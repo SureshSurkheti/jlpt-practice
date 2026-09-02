@@ -28,6 +28,7 @@ import json
 import os
 import re
 import shutil
+from urllib.parse import quote
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,6 +47,10 @@ CORE_PAGES = {
     "about.html": True,
     "stats.html": False,
     "exam.html": False,
+    # A viewer for one character, built in the browser from ?k=. The content
+    # a crawler should have is the level list it opens from, which is already
+    # indexed; 2,211 near-identical shells would only compete with it.
+    "kanji.html": False,
 }
 
 LEVELS = ["n5", "n4", "n3", "n2", "n1"]
@@ -159,6 +164,8 @@ EN_META = {
                    "about.body"),
     "stats.html": ("Your JLPT Progress — JLPT Practice", "stats.body"),
     "exam.html": ("JLPT Mock Exam — JLPT Practice", "exam.setupNote"),
+    "kanji.html": ("Kanji Stroke Order and Readings — JLPT Practice",
+                   "study.body"),
 }
 
 TITLE_KEY = {
@@ -166,6 +173,7 @@ TITLE_KEY = {
     "study.html": "study.title", "levels.html": "levels.title",
     "practice.html": "practice.title", "about.html": "about.title",
     "stats.html": "stats.title", "exam.html": "tag.exam",
+    "kanji.html": "study.kanji",
 }
 
 SITE_NAME = "JLPT Practice"
@@ -352,7 +360,10 @@ def coverage_panel(table, en, here=None, prefix="study/"):
 FIELD = {"words": "words", "kanji": "kanji", "grammar": "patterns"}
 
 
-def study_rows(level, kind, table, en):
+def study_rows(level, kind, table, en, up=""):
+    """`up` is the hop back to the language root: the hub page at
+    /study.html links to kanji.html beside it, the level pages at
+    /study/n5-kanji.html need ../kanji.html."""
     path = os.path.join(ROOT, "data", kind, level + ".json")
     if not os.path.exists(path):
         return "", 0
@@ -409,12 +420,12 @@ def study_rows(level, kind, table, en):
             out.append(
                 '<div class="study-row is-kanji" data-kanji="%s">'
                 '<span class="kanji-cell">'
-                '<button type="button" class="kanji-char" data-kanji="%s" '
-                'title="%s">%s</button>'
+                '<a class="kanji-char" href="%skanji.html?k=%s&amp;lv=%s" '
+                'title="%s">%s</a>'
                 '<span class="kanji-strokes">%d %s</span></span>'
                 '<span class="kanji-readings">%s%s%s</span>'
                 '<span class="study-en">%s%s</span></div>'
-                % (esc(r["k"]), esc(r["k"]), order, esc(r["k"]),
+                % (esc(r["k"]), up, quote(r["k"]), level, order, esc(r["k"]),
                    r["s"], strokes,
                    on, "<br />" if on and kun else "", kun,
                    esc(", ".join(r["en"])),
@@ -493,7 +504,7 @@ def main():
 
         for level in LEVELS:
             for kind in KINDS:
-                body, n = study_rows(level, kind, table, en)
+                body, n = study_rows(level, kind, table, en, "../")
                 if not n:
                     continue
                 lv = level.upper()

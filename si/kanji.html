@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="si">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>කන්ජි — JLPT Practice</title>
+    <meta name="description" content="N5 සිට N1 දක්වා සියලු වචන, කියවීම් හා අර්ථ සමඟ, එක් එක් මට්ටමේ මූලික ව්‍යාකරණ රටා ද සමඟ. ජපන්, රෝමාජි හෝ ඉංග්‍රීසියෙන් සොයන්න." />
+    <meta name="robots" content="noindex, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="si" />
+    <meta property="og:title" content="කන්ජි — JLPT Practice" />
+    <meta property="og:description" content="N5 සිට N1 දක්වා සියලු වචන, කියවීම් හා අර්ථ සමඟ, එක් එක් මට්ටමේ මූලික ව්‍යාකරණ රටා ද සමඟ. ජපන්, රෝමාජි හෝ ඉංග්‍රීසියෙන් සොයන්න." />
+    <meta property="og:url" content="https://jlpt.sureshsurkheti.com/si/kanji.html" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="JLPT Practice" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="කන්ජි — JLPT Practice" />
+    <meta name="twitter:description" content="N5 සිට N1 දක්වා සියලු වචන, කියවීම් හා අර්ථ සමඟ, එක් එක් මට්ටමේ මූලික ව්‍යාකරණ රටා ද සමඟ. ජපන්, රෝමාජි හෝ ඉංග්‍රීසියෙන් සොයන්න." />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body class="study-page kanji-page">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="./index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag" data-i18n="tag.study">වචන හා ව්‍යාකරණ ලැයිස්තු</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="./index.html" data-i18n="nav.home">මුල් පිටුව</a>
+          <a href="./levels.html" data-i18n="nav.levels">මට්ටම්</a>
+          <a href="./exams.html" data-i18n="nav.exams">පුහුණු ප්‍රශ්න පත්‍ර</a>
+          <a href="./study.html" class="active" data-i18n="nav.study">වචන·ව්‍යාකරණ</a>
+          <a href="./about.html" data-i18n="nav.about">පිළිබඳව</a>
+        </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">භාෂාව</span>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ne">नेपाली</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="fil">Filipino</option>
+              <option value="si">සිංහල</option>
+              <option value="hi">हिन्दी</option>
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-shell">
+      <!-- Everything below is written by assets/js/kanji-page.js from
+           ?k=<character>&lv=<level>. This page is a viewer for one character;
+           the indexable content is the level list it was opened from, which
+           is why the head marks this noindex. -->
+      <div id="kanjiView" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 Suresh Surkheti</div>
+        <div data-i18n="footer.tagline">වඩාත් හොඳින් ඉගෙන ගන්න. ජපානයේ වඩාත් හොඳින් ජීවත් වන්න.</div>
+      </div>
+          <nav class="container lang-links" aria-label="භාෂාව">
+        <span>භාෂාව</span>
+        <ul><li><a href="https://jlpt.sureshsurkheti.com/kanji.html" hreflang="en" lang="en">English</a></li><li><a href="https://jlpt.sureshsurkheti.com/ja/kanji.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/kanji.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/kanji.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/zh/kanji.html" hreflang="zh" lang="zh">中文</a></li><li><a href="https://jlpt.sureshsurkheti.com/ko/kanji.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="https://jlpt.sureshsurkheti.com/id/kanji.html" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="https://jlpt.sureshsurkheti.com/fil/kanji.html" hreflang="fil" lang="fil">Filipino</a></li><li><a href="https://jlpt.sureshsurkheti.com/pt-BR/kanji.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="https://jlpt.sureshsurkheti.com/hi/kanji.html" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="https://jlpt.sureshsurkheti.com/bn/kanji.html" hreflang="bn" lang="bn">বাংলা</a></li></ul>
+      </nav>
+    </footer>
+
+    <script src="/assets/js/i18n.js"></script>
+    <script src="/assets/js/i18n-strings.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script src="/assets/js/kanji-page.js"></script>
+  </body>
+</html>

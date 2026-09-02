@@ -25,11 +25,18 @@
      laptop edge to edge leaves no frame, so the page reads as a document
      dumped into a window rather than one laid out in it - and a table row or
      a paragraph stretched that far is genuinely harder to track back to the
-     next line. 1240px is the widest the four-column study list and the
-     paper + palette exam grid actually need; past that the gutter takes the
-     rest and grows with the screen. */
-  --gutter: clamp(18px, 3.2vw, 64px);
-  --content: clamp(960px, 86vw, 1240px);
+     next line.
+
+     One number, used by everything. The study lists briefly had a narrower
+     measure of their own, which read better on its own but put the brand and
+     the nav 100px to the left of the first word under them - the header and
+     the page looked like two documents on one screen. A per-page width also
+     means the header changes size as you navigate, which is worse than either
+     width. So the measure the reading columns want is the measure the whole
+     site uses: 1120px is wide enough for the paper-and-palette exam grid and
+     narrow enough that a row of vocabulary does not run away from the eye. */
+  --gutter: clamp(18px, 3.4vw, 72px);
+  --content: clamp(940px, 84vw, 1120px);
 
   /* One vertical rhythm for every section, tightened on short screens by the
      laptop-height query at the end of this file. */
@@ -601,6 +608,72 @@ body > main { flex: 1 0 auto; }
   line-height: 1.3;
 }
 
+/* ==========================================================================
+   Back to top
+
+   Fixed to the bottom-right corner, and out of the way until it is earned:
+   nothing appears until you are two screens down, because a button offering
+   to take you to the top of a page you are already at the top of is noise.
+
+   It sits above the sticky exam bar in the stacking order but below the
+   header, and it is inset with env(safe-area-inset-*) so it clears the home
+   indicator on a phone rather than sitting under it.
+   ========================================================================== */
+
+.to-top {
+  position: fixed;
+  right: calc(18px + env(safe-area-inset-right, 0px));
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 45;
+
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+
+  background: var(--navy);
+  color: #fff;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 10px 26px rgba(17, 45, 78, 0.28);
+  cursor: pointer;
+
+  /* Hidden by default without display:none, so the fade has something to
+     animate and the button never steals a tab stop while it is invisible. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.94);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+
+.to-top.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top span {
+  font-size: 1.5rem;
+  line-height: 1;
+  /* The caret glyph sits low on its own baseline; nudge it onto the centre. */
+  margin-top: -3px;
+}
+
+.to-top:hover { background: var(--blue); }
+.to-top:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .to-top { width: 44px; height: 44px; right: 14px; bottom: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top { transition: none; }
+}
+
 .site-footer {
   padding: 20px 0 32px;
 }
@@ -670,7 +743,7 @@ body > main { flex: 1 0 auto; }
    Ordered widest to narrowest so the later, narrower rule wins.
    ========================================================================== */
 
-/* -- Large desktops. The container has hit its 1240px ceiling by now and the
+/* -- Large desktops. The container has hit its 1120px ceiling by now and the
       surplus width is deliberately margin, so the extra room goes into the
       cards themselves rather than into more columns or a wider measure. -- */
 @media (min-width: 1560px) {
@@ -1479,31 +1552,12 @@ body.is-leaving { opacity: 0; }
 /* --------------------------------------------------------------------------
    Study page
 
-   The lists are three narrow columns of text. Left-aligned across the full
-   1240px container, the meaning column was handed all the slack - about
-   790px for glosses that are often two words long - so every row read as a
-   short line followed by half a screen of nothing, and the whole page looked
-   as if it had been pushed to the left.
-
-   Give this page its own narrower measure and centre it. The columns sit
-   together and the leftover width lands evenly on both sides. The text
-   inside a cell stays left-aligned: centring the words themselves would give
-   every row a different starting edge, which is unreadable at 3,759 rows.
+   No width of its own: the lists sit on the same column as the header, the
+   footer and every other page (see --content). The one thing kept from the
+   narrower measure is the cap on running text - a paragraph wants ~68
+   characters a line whatever the grid around it is doing.
    -------------------------------------------------------------------------- */
 
-.study-page .page-intro,
-.study-page .study-coverage,
-.study-page .study-controls,
-.study-page #studyContent {
-  width: min(100%, 1040px);
-  margin-inline: auto;
-}
-
-/* .page-intro caps itself at 68ch, which would centre the heading on a
-   different line from the list below it. Let the block take the full column
-   and cap the running text instead, so the h1, the panel, the tabs and the
-   first row all start on one edge. */
-.study-page .page-intro { max-width: none; }
 .study-page .page-intro p { max-width: 68ch; }
 
 /* What each level actually contains, and which languages the meanings are
@@ -1808,6 +1862,8 @@ body.is-leaving { opacity: 0; }
 
 .kanji-cell { display: flex; flex-direction: column; gap: 4px; }
 
+/* A link now, not a button - it opens the character's own page. It keeps the
+   button's shape because the shape is what says "this is tappable". */
 .kanji-char {
   display: grid;
   place-items: center;
@@ -1858,33 +1914,63 @@ body.is-leaving { opacity: 0; }
 .kanji-ex b { color: var(--navy); font-weight: 700; margin-right: 2px; }
 .kanji-ex i { font-style: normal; color: var(--blue); margin-right: 6px; }
 
-/* ------------------------------------------------------- stroke order --- */
+/* ------------------------------------------------------- stroke order ---
+   Its own page rather than a panel under the list. A character being studied
+   gets the screen: the animation large enough to follow a brush direction,
+   the finished sequence printed underneath the way a textbook does it, and
+   the words that use it below that.
+   ------------------------------------------------------------------------ */
 
-.kanji-panel {
-  width: min(100%, 1040px);
-  margin: 16px auto 0;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.kanji-panel-inner {
-  position: relative;
+.kanji-topbar {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2vw, 30px);
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: clamp(18px, 2vw, 30px);
+}
+
+.kanji-steps-nav { display: flex; align-items: center; gap: 10px; }
+
+.kanji-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 1.05rem;
+  color: var(--navy);
+  font-weight: 700;
+}
+.kanji-nav:hover { border-color: var(--blue); color: var(--blue); }
+.kanji-nav span { color: var(--muted); font-size: 0.85rem; }
+.kanji-pos {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kanji-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: center;
+  margin-top: 18px;
   padding: var(--card-pad);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.05);
 }
 
 .kanji-draw-box {
   display: grid;
   place-items: center;
-  width: 208px;
-  height: 208px;
-  flex: 0 0 auto;
+  aspect-ratio: 1;
   background: var(--panel-soft);
-  border-radius: 16px;
+  border-radius: 18px;
 }
 
 .kanji-svg { width: 100%; height: 100%; }
@@ -1900,48 +1986,116 @@ body.is-leaving { opacity: 0; }
 .kanji-ink path {
   fill: none;
   stroke: var(--navy);
-  stroke-width: 4.5;
+  stroke-width: 5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 @keyframes kanji-draw { to { stroke-dashoffset: 0; } }
 
-.kanji-panel-side { min-width: 0; }
-.kanji-panel-side h3 {
+.kanji-facts h1 {
   margin: 0;
-  font-size: 2.6rem;
-  line-height: 1.1;
+  font-size: clamp(3.4rem, 7vw, 5rem);
+  line-height: 1;
   color: var(--navy);
+  font-family: var(--font-sans);
 }
-.kanji-panel-en { margin: 6px 0 0; color: var(--text); }
-.kanji-panel-count {
-  margin: 2px 0 12px;
-  font-size: 0.8rem;
-  color: var(--muted);
+.kanji-facts-en {
+  margin: 8px 0 16px;
+  font-size: 1.05rem;
+  color: var(--text);
 }
 
-.kanji-close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  background: none;
-  border: 0;
-  border-radius: 8px;
-  font-size: 1.4rem;
-  line-height: 1;
-  color: var(--muted);
-  cursor: pointer;
+.kanji-readings-list { margin: 0 0 18px; }
+.kanji-readings-list .kr {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
 }
-.kanji-close:hover { background: var(--panel-soft); color: var(--navy); }
+.kanji-readings-list dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.kanji-readings-list dd { margin: 0; color: var(--text); }
+
+/* The okurigana half of a kun reading: the part written in kana, not in the
+   character itself. */
+.kanji-okuri { font-style: normal; color: var(--muted); }
+
+/* Every stroke again, small and in order - the sequence at a glance once the
+   animation has run, the way a textbook prints it. The newest stroke of each
+   step is picked out so the eye knows what was added. */
+.kanji-steps { margin-top: clamp(22px, 2.6vw, 34px); }
+.kanji-steps h2,
+.kanji-words h2 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+.kanji-steps ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kanji-steps li {
+  position: relative;
+  padding: 6px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.kanji-steps svg { display: block; width: 100%; }
+.kanji-steps b {
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  font-size: 0.66rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.kanji-ink.is-static path { stroke: rgba(17, 45, 78, 0.28); stroke-width: 5; }
+.kanji-ink.is-static path.is-new { stroke: var(--blue); }
+
+.kanji-words { margin-top: clamp(22px, 2.6vw, 34px); }
+.kanji-words ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.kanji-words li {
+  display: grid;
+  grid-template-columns: 150px 150px minmax(0, 1fr);
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+}
+.kanji-words li:first-child { border-top: 0; }
+.kanji-words b { font-size: 1.15rem; color: var(--navy); }
+.kanji-words i { font-style: normal; color: var(--muted); font-size: 0.9rem; }
 
 /* Somebody who has turned animation off still needs the finished character,
    so the strokes are simply drawn complete. */
 @media (prefers-reduced-motion: reduce) {
   .kanji-ink path { animation: none !important; stroke-dashoffset: 0 !important; }
+}
+
+@media (max-width: 860px) {
+  .kanji-hero { grid-template-columns: minmax(0, 1fr); }
+  .kanji-draw-box { max-width: 320px; margin-inline: auto; }
+  .kanji-facts { text-align: center; }
+  .kanji-readings-list .kr { text-align: left; }
+  .kanji-words li { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .kanji-words li span { grid-column: 1 / -1; }
 }
 
 @media (max-width: 700px) {
@@ -1954,9 +2108,6 @@ body.is-leaving { opacity: 0; }
   .study-row.is-head.is-kanji span:nth-child(2),
   .study-row.is-head.is-kanji span:nth-child(3) { display: none; }
   .kanji-char { width: 54px; height: 54px; font-size: 1.8rem; }
-
-  .kanji-panel-inner { flex-direction: column; align-items: flex-start; }
-  .kanji-draw-box { width: 100%; height: auto; aspect-ratio: 1; max-width: 260px; }
 }
 
 /* A word written with a wave dash is an affix, not a standalone word. Say so,
