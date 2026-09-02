@@ -24,9 +24,16 @@
     return on ? on.getAttribute("data-" + attr) : fallback;
   }
 
+  /* ?lv= and ?kind= win over the markup, so a shared link, a refresh or a
+     step back through history all open the list they name. */
+  var qs = new URLSearchParams(location.search);
+  var qLevel = (qs.get("lv") || "").toUpperCase();
+  var qKind = (qs.get("kind") || "").toLowerCase();
+
   var state = {
-    level: tabOn("level", "N5"),
-    kind: tabOn("kind", "words"),
+    level: /^N[1-5]$/.test(qLevel) ? qLevel : tabOn("level", "N5"),
+    kind: ["words", "kanji", "grammar"].indexOf(qKind) !== -1
+      ? qKind : tabOn("kind", "words"),
     query: ""
   };
   var cache = {};          // "words:N5" -> rows
@@ -353,6 +360,55 @@
   window.addEventListener("resize", syncHeaderOffset);
   document.addEventListener("languagechange", syncHeaderOffset);
 
+  /* Put the chosen list in the address bar.
+
+     The tabs used to change the page without changing the URL, so Back went
+     to whatever you were on before the study page rather than to the list
+     you were last looking at, a refresh dropped you on N5 vocabulary, and
+     the link you sent someone opened on something else entirely. This is the
+     same failure the exam setup had with its mode: state the interface holds
+     but the address does not.
+
+     replaceState on the first change and pushState after, so the tabs build
+     a history you can walk back through without burying the page you
+     arrived from under five entries. */
+  var urlSynced = false;
+
+  function syncUrl() {
+    if (!window.history || !history.replaceState) return;
+    var here = location.pathname.replace(/[^/]*$/, "");
+    var url = here + "study.html?lv=" + state.level.toLowerCase() +
+      "&kind=" + state.kind;
+    /* The pre-rendered level pages have their own addresses; leave them. */
+    if (/\/study\/[a-z0-9-]+\.html$/.test(location.pathname)) return;
+    try {
+      history[urlSynced ? "pushState" : "replaceState"]({
+        lv: state.level, kind: state.kind
+      }, "", url);
+      urlSynced = true;
+    } catch (e) { /* a file:// page cannot, and does not need to */ }
+  }
+
+  /* Walking back through those entries has to move the list, not just the
+     address. */
+  window.addEventListener("popstate", function (ev) {
+    var st = ev.state;
+    if (!st || !st.lv) return;
+    state.level = st.lv;
+    state.kind = st.kind;
+    syncTabs();
+    load();
+  });
+
+  function syncTabs() {
+    document.querySelectorAll(".study-tab").forEach(function (tab) {
+      var want = tab.dataset.level
+        ? tab.dataset.level === state.level
+        : tab.dataset.kind === state.kind;
+      tab.classList.toggle("is-on", want);
+    });
+  }
+
   document.querySelectorAll(".study-tab").forEach(function (tab) {
     tab.addEventListener("click", function () {
       var group = tab.parentNode;
@@ -362,6 +418,7 @@
       });
       if (tab.dataset.level) state.level = tab.dataset.level;
       if (tab.dataset.kind) state.kind = tab.dataset.kind;
+      syncUrl();
       load();
     });
   });
@@ -379,5 +436,6 @@
     if (cache[key()]) render();
   });
 
+  syncTabs();
   load();
 })();

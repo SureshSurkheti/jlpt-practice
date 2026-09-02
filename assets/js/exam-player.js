@@ -112,6 +112,7 @@
     minutes: 0,
     deadline: null,
     startedAt: 0,       // study mode counts up from here
+    categories: null,   // which skills the attempt was started with
     ticker: null,
     reviewed: false,
     score: null,
@@ -251,6 +252,17 @@
       .filter(function (c) { return have.indexOf(c) !== -1; });
     if (wanted.length) return wanted;
 
+    /* No ?cat= in the address, but an attempt already under way: show the
+       sections it was started with. Pressing Back from a reading-only drill
+       used to come back with every section ticked. */
+    var saved = loadProgress();
+    if (saved && saved.categories && saved.categories.length) {
+      var kept = saved.categories.filter(function (c) {
+        return have.indexOf(c) !== -1;
+      });
+      if (kept.length) return kept;
+    }
+
     var part = (qs("part") || "").toLowerCase();
     if (part) {
       var found = [];
@@ -296,6 +308,12 @@
         answers: state.answers,
         flags: state.flags,
         mode: state.mode,
+        /* The whole setup, not just the answers. Leaving a paper and coming
+           back should find the screen exactly as it was left - the mode, the
+           clock, the sections - rather than reset to the defaults. */
+        timed: state.timed,
+        minutes: state.minutes,
+        categories: state.categories,
         deadline: state.deadline,
         startedAt: state.startedAt,
         reviewed: state.reviewed,
@@ -393,6 +411,19 @@
     root.style.setProperty("--level-color", lv.color);
     var wrap = el("div", "container");
 
+    /* Which mode to show selected. The URL wins - somebody who clicked
+       "Study mode" on a level card means it - then the attempt already in
+       progress, then the default.
+
+       That middle case is the one that was missing. Pressing Back from
+       inside a paper goes to exam.html?id=..., which carries no ?mode=, so
+       a study session came back with Exam mode selected: the setting looked
+       as though it had reset itself. The saved attempt knew all along. */
+    var modeParam = (qs("mode") || "").toLowerCase();
+    var wantStudy = modeParam
+      ? modeParam === "study"
+      : !!(saved && saved.mode === "study");
+
     var heroCats = examCategories(exam);
     /* The setup screen had no way back to the library: the back control lives
        in the sticky bar, and the bar only exists once a paper is open. Same
@@ -450,7 +481,6 @@
     /* -- mode -- */
     var modeBox = el("div", "setup-block");
     modeBox.appendChild(el("h2", "setup-title", "2 · " + t("exam.chooseMode")));
-    var wantStudy = (qs("mode") || "") === "study";
     modeBox.appendChild(el("div", "mode-grid",
       '<label class="mode-card' + (wantStudy ? "" : " is-on") + '">' +
         '<input type="radio" name="mode" value="exam"' +
@@ -471,19 +501,22 @@
     timeBox.appendChild(el("h2", "setup-title", "3 · " + t("exam.timer")));
     /* Exam mode is timed by default because that is what an exam is. Study
        mode is not: a countdown that ends the session is the opposite of
-       working through a paper at your own pace with the answers showing. */
+       working through a paper at your own pace with the answers showing.
+       An attempt already under way keeps whatever it was started with. */
+    var wantTimed = saved && typeof saved.timed === "boolean"
+      ? saved.timed : !wantStudy;
     timeBox.appendChild(el("div", "timer-row",
       '<label class="switch">' +
         '<input type="checkbox" id="timerOn"' +
-          (wantStudy ? "" : " checked") + " />" +
+          (wantTimed ? " checked" : "") + " />" +
         '<span class="switch-track"><span class="switch-dot"></span></span>' +
         "<span>" + esc(t("exam.timed")) + "</span>" +
       "</label>" +
       '<label class="minutes-field">' +
         "<span>" + esc(t("exam.minutes")) + "</span>" +
         '<input type="number" id="timerMinutes" min="1" max="300"' +
-          (wantStudy ? " disabled" : "") + ' value="' +
-          lv.minutes + '" />' +
+          (wantTimed ? "" : " disabled") + ' value="' +
+          ((saved && saved.minutes) || lv.minutes) + '" />' +
       "</label>" +
       '<span class="setup-hint" id="timeHint"></span>'));
     card.appendChild(timeBox);
@@ -651,6 +684,7 @@
     state.mode = (saved && saved.mode) || setup.mode;
     state.timed = setup.timed;
     state.minutes = setup.minutes;
+    state.categories = setup.categories;
     state.answers = (saved && saved.answers) || {};
     state.flags = (saved && saved.flags) || {};
     state.reviewed = false;
@@ -686,6 +720,14 @@
     } else {
       state.deadline = null;
     }
+
+    /* Write the attempt out as soon as it starts, not on the first answer.
+       Progress used to be saved only when something was answered or flagged,
+       so opening a paper and pressing Back before answering anything left
+       nothing on disk - and the setup screen, having no attempt to read,
+       fell back to its defaults. That is what made a study session come
+       back as an exam. */
+    saveProgress();
 
     /* a saved attempt that was already submitted reopens as the marked paper */
     if (saved && saved.reviewed) {
