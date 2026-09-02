@@ -1474,3 +1474,11 @@
 @media (max-width: 640px) {
   .exams-searchrow .exams-search { margin-left: 0; width: 100%; }
 }
+
+/* The back link above the setup hero. Its label always shows here - there is
+   room, unlike the sticky bar on a phone. */
+.exam-setup-back { margin-bottom: 14px; }
+.exam-setup-back .exam-back-text { display: inline; }
+@media (max-width: 860px) {
+  .exam-setup-back .exam-back span:not(.exam-back-arrow) { display: inline; }
+}

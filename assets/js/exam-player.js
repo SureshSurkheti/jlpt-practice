@@ -386,6 +386,16 @@
     var wrap = el("div", "container");
 
     var heroCats = examCategories(exam);
+    /* The setup screen had no way back to the library: the back control lives
+       in the sticky bar, and the bar only exists once a paper is open. Same
+       link, same place, so it does not move when the paper starts. */
+    var setupBack = t("exam.backToExams");
+    wrap.appendChild(el("div", "exam-setup-back",
+      '<a class="exam-back" href="exams.html?lv=' + esc(exam.level) + '">' +
+        '<span class="exam-back-arrow" aria-hidden="true">\u2190</span>' +
+        '<span>' + esc(setupBack) + "</span>" +
+      "</a>"));
+
     var hero = el("div", "exam-hero");
     hero.innerHTML =
       '<div class="exam-hero-top">' +
