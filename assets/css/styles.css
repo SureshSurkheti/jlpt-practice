@@ -1914,6 +1914,117 @@ body.is-leaving { opacity: 0; }
 .kanji-ex b { color: var(--navy); font-weight: 700; margin-right: 2px; }
 .kanji-ex i { font-style: normal; color: var(--blue); margin-right: 6px; }
 
+/* --------------------------------------------------- opened in the list ---
+   The row's own drawer. It is a sibling of the row rather than a child so it
+   can span the full width of the list: the row is a three-column grid, and
+   anything inside it would be trapped in one of those columns.
+   ------------------------------------------------------------------------ */
+
+.study-row.is-kanji.is-open { background: var(--panel-soft); }
+.study-row.is-kanji.is-open .kanji-char {
+  background: #fff;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.kanji-open {
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--panel-soft), var(--panel));
+  animation: kanji-open 0.2s ease;
+}
+
+@keyframes kanji-open {
+  from { opacity: 0; transform: translateY(-5px); }
+}
+
+.kanji-open-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 172px minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 26px);
+  align-items: start;
+  padding: 18px 18px 20px;
+}
+
+.kanji-open-draw {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.kanji-open-body { min-width: 0; }
+.kanji-open-body h3 {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* The steps run in one line and scroll sideways if the character has many:
+   a wrapping grid would make the drawer taller than the screen for a
+   twenty-stroke N1 kanji. */
+.kanji-open-steps {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 0 0 4px;
+  list-style: none;
+  overflow-x: auto;
+}
+.kanji-open-steps li {
+  position: relative;
+  flex: 0 0 auto;
+  width: 58px;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.kanji-open-steps svg { display: block; width: 100%; }
+.kanji-open-steps b {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 0.6rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kanji-open-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.kanji-open-actions .btn { font-size: 0.84rem; padding: 9px 16px; }
+
+.kanji-open-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+.kanji-open-close:hover { background: #fff; color: var(--navy); }
+
+@media (prefers-reduced-motion: reduce) {
+  .kanji-open { animation: none; }
+}
+
+@media (max-width: 700px) {
+  .kanji-open-inner { grid-template-columns: minmax(0, 1fr); padding: 14px; }
+  .kanji-open-draw { max-width: 190px; }
+  .kanji-open-actions .btn { flex: 1 1 auto; text-align: center; }
+}
+
 /* ------------------------------------------------------- stroke order ---
    Its own page rather than a panel under the list. A character being studied
    gets the screen: the animation large enough to follow a brush direction,

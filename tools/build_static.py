@@ -421,7 +421,7 @@ def study_rows(level, kind, table, en, up=""):
                 '<div class="study-row is-kanji" data-kanji="%s">'
                 '<span class="kanji-cell">'
                 '<a class="kanji-char" href="%skanji.html?k=%s&amp;lv=%s" '
-                'title="%s">%s</a>'
+                'aria-expanded="false" title="%s">%s</a>'
                 '<span class="kanji-strokes">%d %s</span></span>'
                 '<span class="kanji-readings">%s%s%s</span>'
                 '<span class="study-en">%s%s</span></div>'

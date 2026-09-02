@@ -109,6 +109,7 @@
     };
     var body = rows.map(ROW[state.kind]).join("");
 
+    openRow = null;
     host.innerHTML =
       '<p class="study-count">' + rows.length + " " +
         esc(t(COUNT[state.kind])) +
@@ -164,8 +165,8 @@
       '<span class="kanji-cell">' +
         '<a class="kanji-char" href="kanji.html?k=' +
           encodeURIComponent(row.k) + "&lv=" + state.level.toLowerCase() +
-          '" title="' + esc(t("study.strokeOrder")) + '">' + esc(row.k) +
-        "</a>" +
+          '" aria-expanded="false" title="' + esc(t("study.strokeOrder")) +
+          '">' + esc(row.k) + "</a>" +
         '<span class="kanji-strokes">' + row.s + " " +
           esc(t("study.colStrokes")) + "</span>" +
       "</span>" +
@@ -175,6 +176,156 @@
         (ex ? '<span class="kanji-exs">' + ex + "</span>" : "") + "</span>" +
     "</div>";
   }
+
+  /* ------------------------------------------------- how it is written --
+     The character opens in place, in its own row.
+
+     This started as a panel pinned under the whole list, which was the worst
+     of both: on a phone the animation was off-screen beneath seven hundred
+     rows, and on a laptop the one character being studied shared the screen
+     with the hundred that were not. Expanding the row itself keeps the
+     answer next to the question and keeps your place in the list.
+
+     The <a> is real and points at the character's own page, so this is an
+     enhancement rather than a requirement: without JavaScript the link
+     simply navigates, and the full page is still one click away from inside
+     the open row for anyone who wants the large version, the example words
+     and the walk to the next character.
+
+     One row open at a time. Two half-drawn characters in a list is not a
+     comparison, it is clutter, and the second one pushes the first off the
+     screen anyway.
+     -------------------------------------------------------------------- */
+
+  var strokeCache = {};
+  var openRow = null;
+
+  function strokesFor(level) {
+    if (strokeCache[level]) return Promise.resolve(strokeCache[level]);
+    return fetch(SITE_ROOT + "data/kanji/strokes/" + level.toLowerCase() +
+                 ".json", { cache: "no-cache" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (d) { strokeCache[level] = d; return d; });
+  }
+
+  function draw(box, paths) {
+    box.innerHTML =
+      '<svg viewBox="0 0 109 109" class="kanji-svg" aria-hidden="true">' +
+        '<g class="kanji-guide">' +
+          '<line x1="54.5" y1="0" x2="54.5" y2="109" />' +
+          '<line x1="0" y1="54.5" x2="109" y2="54.5" />' +
+        "</g>" +
+        '<g class="kanji-ink">' +
+          paths.map(function (d) { return '<path d="' + d + '" />'; }).join("") +
+        "</g>" +
+      "</svg>";
+
+    /* Each stroke waits for the ones before it, and takes time in proportion
+       to its own measured length: a long sweep and a short tick should not
+       be given the same quarter second. */
+    var delay = 0;
+    Array.prototype.forEach.call(box.querySelectorAll(".kanji-ink path"),
+      function (path) {
+        var len = path.getTotalLength();
+        var secs = Math.max(0.22, Math.min(0.85, len / 190));
+        path.style.strokeDasharray = len + " " + len;
+        path.style.strokeDashoffset = len;
+        path.style.animation =
+          "kanji-draw " + secs + "s linear " + delay + "s forwards";
+        delay += secs + 0.09;
+      });
+  }
+
+  /* Every stroke again, small and in order - the sequence at a glance once
+     the animation has finished, the way a textbook prints it. */
+  function steps(paths) {
+    return paths.map(function (_d, n) {
+      var upto = paths.slice(0, n + 1).map(function (d, i) {
+        return '<path d="' + d + '"' + (i === n ? ' class="is-new"' : "") + " />";
+      }).join("");
+      return '<li><svg viewBox="0 0 109 109" aria-hidden="true">' +
+        '<g class="kanji-ink is-static">' + upto + "</g></svg>" +
+        "<b>" + (n + 1) + "</b></li>";
+    }).join("");
+  }
+
+  function closeKanji() {
+    if (!openRow) return;
+    var link = openRow.querySelector(".kanji-char");
+    if (link) link.setAttribute("aria-expanded", "false");
+    openRow.classList.remove("is-open");
+    var panel = openRow.nextElementSibling;
+    if (panel && panel.classList.contains("kanji-open")) panel.remove();
+    openRow = null;
+  }
+
+  function openKanji(rowEl) {
+    var char = rowEl.dataset.kanji;
+    var href = rowEl.querySelector(".kanji-char").getAttribute("href");
+    var wasOpen = rowEl === openRow;
+    closeKanji();
+    if (wasOpen) return;               // a second press closes it
+
+    var panel = document.createElement("div");
+    panel.className = "kanji-open";
+    panel.innerHTML =
+      '<div class="kanji-open-inner">' +
+        '<div class="kanji-open-draw"><div class="spinner"></div></div>' +
+        '<div class="kanji-open-body">' +
+          '<h3>' + esc(t("study.strokeOrder")) + "</h3>" +
+          '<ol class="kanji-open-steps"></ol>' +
+          '<div class="kanji-open-actions">' +
+            '<button type="button" class="btn btn-ghost kanji-replay">' +
+              esc(t("study.replay")) + "</button>" +
+            '<a class="btn btn-primary" href="' + href + '">' +
+              esc(char) + ' <span aria-hidden="true">\u2197</span></a>' +
+          "</div>" +
+        "</div>" +
+        '<button type="button" class="kanji-open-close" ' +
+          'aria-label="&times;">&times;</button>' +
+      "</div>";
+
+    rowEl.parentNode.insertBefore(panel, rowEl.nextSibling);
+    rowEl.classList.add("is-open");
+    rowEl.querySelector(".kanji-char").setAttribute("aria-expanded", "true");
+    openRow = rowEl;
+
+    var box = panel.querySelector(".kanji-open-draw");
+    strokesFor(state.level).then(function (all) {
+      var paths = all[char];
+      if (!paths) {
+        box.innerHTML = '<p class="stats-empty">' +
+          esc(t("study.unavailable")) + "</p>";
+        return;
+      }
+      draw(box, paths);
+      panel.querySelector(".kanji-open-steps").innerHTML = steps(paths);
+      panel.querySelector(".kanji-replay").addEventListener("click",
+        function () { draw(box, paths); });
+    }).catch(function () {
+      box.innerHTML = '<p class="stats-empty">' +
+        esc(t("study.unavailable")) + "</p>";
+    });
+  }
+
+  host.addEventListener("click", function (ev) {
+    if (ev.target.closest(".kanji-open-close")) { closeKanji(); return; }
+
+    var link = ev.target.closest(".kanji-char");
+    if (!link) return;
+    /* Leave the modified clicks alone: someone holding Cmd wants the page in
+       a new tab, not an accordion in this one. */
+    if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
+    ev.preventDefault();
+    openKanji(link.closest(".study-row"));
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape") closeKanji();
+  });
 
   function grammarRow(row) {
     /* The Nepali gloss only shows when the reader is actually reading in
