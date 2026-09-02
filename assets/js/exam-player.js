@@ -11,7 +11,11 @@
    URL parameters
      ?id=n1-2024-12        load a specific exam
      ?level=N1             load that level's newest exam
-     ?part=listening       preselect a single part
+     ?cat=reading          preselect one skill to drill (comma-separate for
+                           several); the skills are vocabulary, grammar,
+                           reading and listening
+     ?part=listening       older form, naming a booklet rather than a skill;
+                           resolves to whichever skills that booklet holds
      ?mode=study           start in study mode (instant feedback)
    ========================================================================== */
 (function () {
@@ -41,12 +45,6 @@
 
   /* Labels come from the translation table; the Japanese subtitle is the
      section's real name on the paper, so it stays as-is. */
-  var PART_META = {
-    vocabulary: { key: "section.vocabulary", sub: "文字・語彙" },
-    "grammar-reading": { key: "section.grammarReading", sub: "文法・読解" },
-    listening: { key: "section.listening", sub: "聴解" }
-  };
-
   /* A paper covers more than one question type - the N2 vocabulary booklet
      also carries the grammar questions, for instance. Every question records
      its own type, and those types run in contiguous blocks, so headings and
@@ -64,10 +62,34 @@
     listening: "exam.sectionListening"
   };
 
+  /* The three papers a JLPT sitting is actually split into, which are also
+     the three blocks it is scored in: 言語知識 (vocabulary + grammar), 読解
+     and 聴解. N4 and N5 are scored with reading inside the language block, so
+     they come back as two. Built from whatever the learner chose, so a single
+     skill drill produces one and no switcher is drawn. */
+  function examPapers() {
+    var order = [], seen = {};
+    state.questions.forEach(function (item, i) {
+      var key = sectionOf(item.q, state.exam.level);
+      if (!seen[key]) {
+        seen[key] = { key: key, label: t(SECTION_LABEL[key] || key), items: [] };
+        order.push(seen[key]);
+      }
+      seen[key].items.push(i);
+    });
+    return order;
+  }
+
+  function paperOfCategory(category) {
+    return sectionOf({ category: category }, state.exam.level);
+  }
+
   var state = {
     exam: null,
     questions: [],      // flat, in paper order
     sections: [],        // grouped for rendering
+    papers: [],          // the scored blocks: language / reading / listening
+    paper: null,         // which of those is on screen
     answers: {},
     flags: {},
     current: 0,          // question nearest the top of the viewport
@@ -181,6 +203,52 @@
     if (cat === "listening") return "listening";
     if (cat === "reading") return combined ? "language" : "reading";
     return "language";
+  }
+
+  /* The paper is stored as the booklets the exam is actually sat in, but a
+     booklet is not a skill: at N1/N2 the 文字・語彙 booklet also carries the
+     grammar questions, so "grammar-reading" there holds nothing but reading.
+     Every question records the skill it tests, and the paper, its headings and
+     the question map have always been grouped by that. Read the skills off the
+     questions so the chooser agrees with everything else. */
+  function examCategories(exam) {
+    var order = [], seen = {};
+    exam.parts.forEach(function (part) {
+      part.questions.forEach(function (q) {
+        var id = q.category || "vocabulary";
+        if (!seen[id]) { seen[id] = { id: id, count: 0 }; order.push(seen[id]); }
+        seen[id].count++;
+      });
+    });
+    return order;
+  }
+
+  /* Which skills start ticked. ?cat=reading drills one skill; ?part=<booklet>
+     is the older link shape and still works, resolving to whichever skills
+     that booklet turns out to hold. Anything unrecognised opens the full
+     paper, which is the safe default. */
+  function presetCategories(exam, cats) {
+    var have = cats.map(function (c) { return c.id; });
+    var all = have.slice();
+
+    var wanted = (qs("cat") || "").toLowerCase().split(",")
+      .map(function (c) { return c.trim(); })
+      .filter(function (c) { return have.indexOf(c) !== -1; });
+    if (wanted.length) return wanted;
+
+    var part = (qs("part") || "").toLowerCase();
+    if (part) {
+      var found = [];
+      exam.parts.forEach(function (bk) {
+        if (bk.id !== part) return;
+        bk.questions.forEach(function (q) {
+          if (found.indexOf(q.category) === -1) found.push(q.category);
+        });
+      });
+      if (found.length) return found;
+    }
+
+    return all;
   }
 
   /* Meta tables store keys; resolve to the active language. */
@@ -309,6 +377,7 @@
     root.style.setProperty("--level-color", lv.color);
     var wrap = el("div", "container");
 
+    var heroCats = examCategories(exam);
     var hero = el("div", "exam-hero");
     hero.innerHTML =
       '<div class="exam-hero-top">' +
@@ -318,36 +387,33 @@
       "</div>" +
       "<h1>" + esc(exam.title) + "</h1>" +
       '<p class="exam-hero-meta">' + exam.totalQuestions +
-        " " + esc(t("exam.questionsAcross")) + " " + exam.parts.length + " " +
-        esc(t(exam.parts.length === 1 ? "exam.sectionWord" : "exam.sectionsWord")) +
+        " " + esc(t("exam.questionsAcross")) + " " + heroCats.length + " " +
+        esc(t(heroCats.length === 1 ? "exam.sectionWord" : "exam.sectionsWord")) +
         "</p>";
     wrap.appendChild(hero);
 
     var card = el("div", "exam-setup");
 
-    /* -- part selection -- */
-    var preset = (qs("part") || "").toLowerCase();
-    // a requested section that this paper does not have falls back to "all"
-    if (preset && !exam.parts.some(function (p) { return p.id === preset; })) {
-      preset = "";
-    }
+    /* -- skill selection -- */
+    var cats = examCategories(exam);
+    var preset = presetCategories(exam, cats);
 
     var partsBox = el("div", "setup-block");
     partsBox.appendChild(el("h2", "setup-title", "1 · " + t("exam.chooseSections")));
     partsBox.appendChild(el("p", "setup-hint", t("exam.chooseSectionsHint")));
 
     var grid = el("div", "part-grid");
-    exam.parts.forEach(function (p) {
-      var meta = PART_META[p.id] || { key: null, sub: "" };
-      var on = !preset || preset === p.id;
+    cats.forEach(function (c) {
+      var meta = CATEGORY_META[c.id] || { key: null, sub: "" };
+      var on = preset.indexOf(c.id) !== -1;
       var lab = el("label", "part-card" + (on ? " is-on" : ""));
       lab.innerHTML =
-        '<input type="checkbox" name="part" value="' + esc(p.id) + '"' +
+        '<input type="checkbox" name="part" value="' + esc(c.id) + '"' +
           (on ? " checked" : "") + " />" +
         '<span class="part-text">' +
-          '<span class="part-label">' + esc(metaLabel(PART_META, p.id)) + "</span>" +
+          '<span class="part-label">' + esc(metaLabel(CATEGORY_META, c.id)) + "</span>" +
           '<span class="part-sub">' + esc(meta.sub) + " · " +
-            p.questions.length + " " + esc(t("exams.questionsShort")) + "</span>" +
+            c.count + " " + esc(t("exams.questionsShort")) + "</span>" +
         "</span>" +
         '<span class="part-check" aria-hidden="true">✓</span>';
       grid.appendChild(lab);
@@ -421,8 +487,7 @@
     var minutesEdited = false;   // stop suggesting a duration once set by hand
 
     function refreshHint() {
-      var n = 0;
-      pickedParts().forEach(function (p) { n += p.questions.length; });
+      var n = pickedCount(pickedCategories());
       var hint = document.getElementById("timeHint");
       if (hint) {
         hint.textContent = n
@@ -469,16 +534,24 @@
     refreshHint();
   }
 
-  function pickedParts() {
+  /* The checkboxes carry skill ids (see renderSetup). */
+  function pickedCategories() {
     var chosen = [];
     Array.prototype.forEach.call(
       document.querySelectorAll('input[name="part"]:checked'),
-      function (i) {
-        state.exam.parts.forEach(function (p) {
-          if (p.id === i.value) chosen.push(p);
-        });
-      });
+      function (i) { chosen.push(i.value); });
     return chosen;
+  }
+
+  /* How many questions the current tick-boxes add up to. */
+  function pickedCount(categories) {
+    var n = 0;
+    state.exam.parts.forEach(function (part) {
+      part.questions.forEach(function (q) {
+        if (categories.indexOf(q.category) !== -1) n++;
+      });
+    });
+    return n;
   }
 
   function collectSetup() {
@@ -486,7 +559,7 @@
     var timerOn = document.getElementById("timerOn");
     var minutes = document.getElementById("timerMinutes");
     return {
-      parts: pickedParts(),
+      categories: pickedCategories(),
       mode: modeInput ? modeInput.value : "exam",
       timed: timerOn ? timerOn.checked : true,
       minutes: minutes ? Math.max(1, parseInt(minutes.value, 10) || 60) : 60
@@ -542,9 +615,14 @@
     state.filter = "all";
     state.current = 0;
 
+    /* Walk every booklet and keep the questions whose skill was chosen. The
+       key keeps the booklet in it so a saved attempt still lines up. */
+    var wanted = (setup.categories && setup.categories.length)
+      ? setup.categories : null;
     var list = [];
-    (setup.parts.length ? setup.parts : state.exam.parts).forEach(function (p) {
+    state.exam.parts.forEach(function (p) {
       p.questions.forEach(function (q) {
+        if (wanted && wanted.indexOf(q.category) === -1) return;
         list.push({
           key: p.id + "-" + q.n,
           part: p.id,
@@ -556,6 +634,8 @@
     });
     state.questions = list;
     state.sections = buildSections(list);
+    state.papers = examPapers();
+    state.paper = state.papers.length ? state.papers[0].key : null;
 
     if (state.timed) {
       state.deadline = (saved && saved.deadline) ||
@@ -623,7 +703,11 @@
 
     if (state.reviewed) main.appendChild(buildScorecard());
 
+    /* One paper at a time, the way the real sitting works. */
+    if (state.papers.length > 1) main.appendChild(buildPaperTabs());
+
     state.sections.forEach(function (section) {
+      if (state.paper && paperOfCategory(section.category) !== state.paper) return;
       main.appendChild(buildSection(section));
     });
 
@@ -669,10 +753,20 @@
         '<span class="words-all-short" aria-hidden="true">\u8a9e</span>' +
         "</button>"
       : "";
+    /* Leaving is safe at any point: answers, flags and the deadline are all
+       written to storage as you go, and reopening the paper offers Resume. */
+    /* Back goes to the library the paper was opened from, which is where a
+       learner picking a different paper wants to land. */
+    var backLabel = t("exam.backToExams");
     var left =
       '<div class="exam-bar-id">' +
+        '<a class="exam-back" href="exams.html" aria-label="' + esc(backLabel) +
+          '" title="' + esc(backLabel) + '">' +
+          '<span class="exam-back-arrow" aria-hidden="true">\u2190</span>' +
+          '<span class="exam-back-text">' + esc(backLabel) + "</span>" +
+        "</a>" +
         '<span class="exam-level-chip">' + esc(state.exam.level) + "</span>" +
-        "<span>" + esc(state.exam.periodLabel) + "</span>" +
+        '<span class="exam-bar-period">' + esc(state.exam.periodLabel) + "</span>" +
       "</div>";
 
     if (state.reviewed) {
@@ -1027,6 +1121,49 @@
     return box;
   }
 
+  /* The switcher. Each tab carries how much of that paper is done, which is
+     the one number worth showing here - the bar above already has the total. */
+  function buildPaperTabs() {
+    var nav = el("div", "paper-tabs");
+    nav.setAttribute("role", "tablist");
+
+    state.papers.forEach(function (paper) {
+      var done = 0;
+      paper.items.forEach(function (i) {
+        if (state.answers[state.questions[i].key]) done++;
+      });
+      var on = paper.key === state.paper;
+      var b = el("button", "paper-tab" + (on ? " is-on" : ""));
+      b.type = "button";
+      b.dataset.paper = paper.key;
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", on ? "true" : "false");
+      b.innerHTML =
+        '<span class="paper-tab-name">' + esc(paper.label) + "</span>" +
+        '<span class="paper-tab-count">' + done + " / " + paper.items.length + "</span>";
+      nav.appendChild(b);
+    });
+
+    nav.addEventListener("click", function (ev) {
+      var tab = ev.target.closest(".paper-tab");
+      if (!tab || tab.dataset.paper === state.paper) return;
+      showPaper(tab.dataset.paper);
+    });
+
+    return nav;
+  }
+
+  function showPaper(key) {
+    state.paper = key;
+    var first = null;
+    state.papers.forEach(function (p) {
+      if (p.key === key && p.items.length) first = p.items[0];
+    });
+    if (first !== null) state.current = first;
+    renderPaper();
+    window.scrollTo(0, 0);
+  }
+
   function buildFinish() {
     var box = el("div", "paper-finish");
     if (state.reviewed) {
@@ -1060,6 +1197,9 @@
     var lastCategory = null;
     var group = null;
     state.questions.forEach(function (item, i) {
+      /* Only the paper on screen: a map of questions you cannot see from here
+         would jump the reader somewhere else without saying so. */
+      if (state.paper && paperOfCategory(item.category) !== state.paper) return;
       if (item.category !== lastCategory) {
         lastCategory = item.category;
         var meta = CATEGORY_META[item.category] || { label: item.partLabel };
@@ -1123,6 +1263,12 @@
   }
 
   function jumpTo(index) {
+    /* A question on another paper: switch to it first, then jump. */
+    var item = state.questions[index];
+    if (item && state.paper && paperOfCategory(item.category) !== state.paper) {
+      state.paper = paperOfCategory(item.category);
+      renderPaper();
+    }
     var node = document.getElementById("q-" + index);
     if (!node) return;
     state.current = index;

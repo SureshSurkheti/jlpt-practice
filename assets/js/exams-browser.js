@@ -75,12 +75,13 @@
       stat(exams.length, t("exams.statPapers")) +
       stat(questions.toLocaleString(), t("exams.statQuestions")) +
       stat(Object.keys(levels).length, t("exams.statLevels")) +
-      stat(t("exams.statScoredValue"), t("exams.statScored"));
+      /* This one is a word ("Automatically"), not a count - see .is-word. */
+      stat(t("exams.statScoredValue"), t("exams.statScored"), "is-word");
   }
 
-  function stat(value, label) {
-    return '<div class="exams-stat"><strong>' + esc(value) + "</strong><span>" +
-      esc(label) + "</span></div>";
+  function stat(value, label, kind) {
+    return '<div class="exams-stat' + (kind ? " " + kind : "") + '"><strong>' +
+      esc(value) + "</strong><span>" + esc(label) + "</span></div>";
   }
 
   function render() {

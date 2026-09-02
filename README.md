@@ -46,8 +46,8 @@ tools/fetch_dicts.py         downloads JMdict and the JLPT level lists
 tools/build_glossary.py      rebuilds data/glossary
 
 jlpt_n1_pages/ … jlpt_n4_pages/
-    257 archived source pages. Input to the build script only — never
-    shown to users.
+    258 archived source pages, named <exam-id>-<paper>.html. Input to the
+    build script only — never served to users.
 ```
 
 ## The exams

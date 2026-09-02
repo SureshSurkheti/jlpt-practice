@@ -6,10 +6,12 @@ Reads:  jlpt_n{1..4}_pages/*.html   (Wayback snapshots of dethitiengnhat.com)
 Writes: data/exams/<id>.json        (one file per exam session)
         data/exams/index.json       (catalogue used by the site)
 
-Each source session is made of up to three source files:
-  "N1 12_2024.html"            -> grammar + reading paper
-  "Đề Từ Vựng N1 12_2024.html" -> vocabulary paper
-  "Đề nghe N1 12_2024.html"    -> listening paper
+Each source session is made of up to three source files, named after the
+exam id they belong to:
+  "n1-2024-12-grammar-reading.html"
+  "n1-2024-12-vocabulary.html"
+  "n1-2024-12-listening.html"
+and for the undated practice sets, "n4-practice-2-vocabulary.html".
 
 Question metadata embedded in the source pages:
   div.question_list            -> question prompt
@@ -54,33 +56,41 @@ ALLOWED_ATTRS = {
 # source file naming
 # --------------------------------------------------------------------------
 
+KINDS = ("grammar-reading", "vocabulary", "listening")
+
+
 def normalize(name):
-    """NFC-normalize so the Vietnamese prefixes compare reliably on macOS."""
+    """NFC-normalize so accented names still compare on macOS."""
     return unicodedata.normalize("NFC", name)
 
 
 def classify_source(filename):
-    """Return (kind, level, period_key, period_label) or None."""
+    """Return (kind, level, period_key, period_label) or None.
+
+    The files were once named in Vietnamese, after the site they were
+    archived from ("Đề Từ Vựng N1 12_2024.html"). They now carry the exam id
+    and the paper, which is the same shape the output files use.
+    """
     name = normalize(filename)
     stem = name[:-5] if name.lower().endswith(".html") else name
 
-    if stem.startswith("Đề Từ Vựng "):
-        kind, rest = "vocabulary", stem[len("Đề Từ Vựng "):]
-    elif stem.startswith("Đề nghe "):
-        kind, rest = "listening", stem[len("Đề nghe "):]
-    else:
-        kind, rest = "grammar-reading", stem
+    kind = next((k for k in KINDS if stem.endswith("-" + k)), None)
+    if not kind:
+        return None
+    rest = stem[: -(len(kind) + 1)]
 
-    # dated session: "N1 12_2024"
-    m = re.match(r"^(N[1-5])\s+(\d{1,2})_(\d{4})$", rest)
+    # dated session: "n1-2024-12"
+    m = re.match(r"^(n[1-5])-(\d{4})-(\d{2})$", rest)
     if m:
-        level, month, year = m.group(1), int(m.group(2)), int(m.group(3))
+        level, year, month = m.group(1).upper(), int(m.group(2)), int(m.group(3))
+        if not 1 <= month <= 12:
+            return None
         return kind, level, f"{year:04d}-{month:02d}", f"{MONTHS[month]} {year}"
 
-    # practice paper: "N4 1_1"
-    m = re.match(r"^(N[1-5])\s+(\d+)_(\d+)$", rest)
+    # practice set: "n4-practice-2"
+    m = re.match(r"^(n[1-5])-practice-(\d+)$", rest)
     if m:
-        level, num = m.group(1), int(m.group(2))
+        level, num = m.group(1).upper(), int(m.group(2))
         return kind, level, f"practice-{num}", f"Practice Test {num}"
 
     return None

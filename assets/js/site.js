@@ -17,20 +17,16 @@ const MOCK_EXAMS = {
   N5: null
 };
 
-/* Practice sections map onto the papers a real exam is split into. */
-const SECTION_TO_PART = {
-  vocabulary: 'vocabulary',
-  grammar: 'grammar-reading',
-  reading: 'grammar-reading',
-  listening: 'listening'
-};
-
+/* A section button drills one skill. It used to name the booklet the real
+   exam is sat in instead, which meant Grammar and Reading both opened the
+   whole 文法・読解 booklet - and at N1/N2, where the grammar questions are
+   printed in the 文字・語彙 booklet, both of them opened reading only. The
+   player filters on the skill recorded against each question. */
 function mockExamUrl(level, section) {
   const exam = MOCK_EXAMS[level];
   if (!exam) return null;
   let url = `exam.html?id=${encodeURIComponent(exam.id)}`;
-  const part = section ? SECTION_TO_PART[section] : null;
-  if (part) url += `&part=${encodeURIComponent(part)}`;
+  if (section) url += `&cat=${encodeURIComponent(section)}`;
   return url;
 }
 

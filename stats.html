@@ -8,219 +8,77 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#112d4e" />
-    <title>My Statistics - JLPT Practice</title>
+    <title>Your JLPT Progress — JLPT Practice</title>
+    <meta name="description" content="Your accuracy and activity for each JLPT level you have studied." />
+    <meta name="robots" content="noindex, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:title" content="Your JLPT Progress — JLPT Practice" />
+    <meta property="og:description" content="Your accuracy and activity for each JLPT level you have studied." />
+    <meta property="og:url" content="https://jlpt.sureshsurkheti.com/stats.html" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/icon-512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Your JLPT Progress — JLPT Practice" />
+    <meta name="twitter:description" content="Your accuracy and activity for each JLPT level you have studied." />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/icon-512.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <style>
-      .stats-hero {
-        background: linear-gradient(135deg, #112d4e 0%, #183765 38%, #2d6eb4 100%);
-        color: #f5f8fd;
-        border-radius: 28px;
-        padding: 42px 34px;
-        margin-bottom: 32px;
-        box-shadow: 0 18px 36px rgba(17, 45, 78, 0.12);
-      }
+      /* Stats page only. Everything shared with the rest of the site lives in
+         styles.css; these are the four blocks unique to this page. */
 
-      .stats-hero h1 {
-        margin: 18px 0 12px;
-        font-size: clamp(2.2rem, 4vw, 3.5rem);
-        line-height: 1.05;
-        font-family: var(--font-display);
-      }
-
+      /* Three cards, so auto-fit rather than a fixed four-column track that
+         left a hole on the right. They sit on the light page background, not
+         on a hero, so they are panels like every other card on the site. */
       .stats-grid-4 {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
-        margin-top: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: clamp(12px, 1.2vw, 18px);
+        margin-top: clamp(18px, 2vw, 28px);
       }
 
       .big-stat-card {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(8px);
-        border-radius: 20px;
-        padding: 24px;
-        display: grid;
-        gap: 12px;
-      }
-
-      .big-stat-label {
-        font-size: 12px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #dfeaf7;
-        opacity: 0.8;
-      }
-
-      .big-stat-number {
-        font-size: 2.4rem;
-        font-family: var(--font-display);
-        font-weight: 700;
-        color: var(--gold);
-      }
-
-      .big-stat-meta {
-        font-size: 0.85rem;
-        color: #e7f0ff;
-      }
-
-      .level-progress-card {
         background: var(--panel);
         border: 1px solid var(--line);
         border-radius: 20px;
-        padding: 22px;
+        padding: var(--card-pad);
         display: grid;
-        gap: 16px;
+        gap: 10px;
         box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
       }
 
-      .level-progress-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .level-progress-header h3 {
-        margin: 0;
-        color: var(--navy);
-        font-size: 1.4rem;
-      }
-
-      .progress-bar {
-        width: 100%;
-        height: 12px;
-        background: var(--line);
-        border-radius: 999px;
-        overflow: hidden;
-      }
-
-      .progress-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--blue), var(--gold));
-        transition: width 0.3s ease;
-      }
-
-      .progress-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        font-size: 0.9rem;
-      }
-
-      .progress-stat {
-        background: rgba(17, 45, 78, 0.04);
-        padding: 10px 12px;
-        border-radius: 8px;
-      }
-
-      .progress-stat strong {
-        display: block;
-        color: var(--navy);
-        font-size: 1.1rem;
-        margin-bottom: 4px;
-      }
-
-      .progress-stat span {
+      .big-stat-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 700;
         color: var(--muted);
-        font-size: 0.8rem;
+      }
+
+      .big-stat-number {
+        font-size: clamp(2rem, 2.4vw, 2.6rem);
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--navy);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
       }
 
       .section-performance {
         background: var(--panel);
         border: 1px solid var(--line);
         border-radius: 20px;
-        padding: 22px;
+        padding: clamp(18px, 1.8vw, 26px);
         box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
       }
 
       .section-performance h2 {
-        margin: 0 0 20px;
+        margin: 0 0 18px;
         color: var(--navy);
-        font-size: 1.6rem;
+        font-size: clamp(1.3rem, 1.6vw, 1.6rem);
         font-family: var(--font-display);
-      }
-
-      .section-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .section-card {
-        text-align: center;
-        padding: 18px;
-        background: linear-gradient(135deg, #f9fbff 0%, #f2f6fb 100%);
-        border: 1px solid var(--line);
-        border-radius: 16px;
-      }
-
-      .section-card .icon {
-        font-size: 32px;
-        margin-bottom: 8px;
-      }
-
-      .section-card .score {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--blue);
-        font-family: var(--font-display);
-        margin: 8px 0;
-      }
-
-      .section-card .label {
-        color: var(--muted);
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-weight: 700;
-      }
-
-      .achievement-badge {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        padding: 16px;
-        text-align: center;
-        background: linear-gradient(135deg, #fffaf0 0%, #fff6dc 100%);
-        border: 1px solid rgba(217, 166, 58, 0.3);
-        border-radius: 16px;
-      }
-
-      .achievement-badge .icon {
-        font-size: 40px;
-      }
-
-      .achievement-badge .label {
-        font-weight: 700;
-        color: var(--navy);
-        font-size: 0.9rem;
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 40px 20px;
-        background: rgba(17, 45, 78, 0.02);
-        border-radius: 20px;
-        border: 1px solid var(--line);
-      }
-
-      .empty-state-icon {
-        font-size: 60px;
-        margin-bottom: 16px;
-      }
-
-      .empty-state h3 {
-        color: var(--navy);
-        margin: 0 0 8px;
-      }
-
-      .empty-state p {
-        color: var(--muted);
-        margin: 0;
       }
     </style>
   </head>

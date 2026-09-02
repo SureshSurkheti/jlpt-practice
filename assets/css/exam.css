@@ -247,6 +247,28 @@
   padding: 14px 0;
 }
 .exam-bar-id { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+
+/* The way out of the paper. Sits first in the bar because that is where a
+   back control is looked for, and keeps a real hit area rather than being a
+   bare arrow glyph. */
+.exam-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px 7px 10px;
+  margin-right: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy);
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: 0.16s ease;
+}
+.exam-back:hover { background: var(--panel-soft); border-color: var(--blue); color: var(--blue); }
+.exam-back-arrow { font-size: 1rem; line-height: 1; }
+.exam-bar-period { white-space: nowrap; }
 .exam-bar-progress { flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0; }
 .exam-bar-progress span { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
 .progress-track { flex: 1; height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; min-width: 60px; }
@@ -272,8 +294,11 @@
 
 .exam-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 250px;
-  gap: 24px;
+  /* The palette column tracks the viewport a little so it does not look
+     stranded beside the paper on a wide desktop, but never grows past the
+     width its five-across question grid actually needs. */
+  grid-template-columns: minmax(0, 1fr) clamp(232px, 17vw, 300px);
+  gap: clamp(20px, 1.8vw, 32px);
   align-items: start;
   padding-top: 26px;
 }
@@ -863,7 +888,7 @@
 /* ------------------------------------------------------- exam browser */
 
 .exams-hero {
-  padding: 36px 38px;
+  padding: clamp(24px, 3vw, 40px) clamp(22px, 3vw, 42px);
   border-radius: var(--radius);
   background: linear-gradient(135deg, var(--navy), var(--blue));
   color: #fff;
@@ -873,6 +898,9 @@
 .exams-hero p { margin: 0; opacity: 0.86; max-width: 62ch; line-height: 1.7; }
 .exams-stats { display: flex; gap: 30px; margin-top: 24px; flex-wrap: wrap; }
 .exams-stat strong { display: block; font-size: 1.9rem; font-weight: 800; line-height: 1; }
+/* One of the four "stats" is a word, not a count. At the numeric size it ran
+   twice as wide as the rest of the row and read as the headline of the hero. */
+.exams-stat.is-word strong { font-size: 1.15rem; line-height: 1.25; padding-top: 6px; }
 .exams-stat span { font-size: 0.78rem; opacity: 0.78; letter-spacing: 0.06em; text-transform: uppercase; }
 
 .exams-filters {
@@ -889,7 +917,8 @@
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #fff;
-  min-width: 220px;
+  /* The placeholder spells out an example year, so give it room to finish. */
+  width: clamp(240px, 22vw, 320px);
 }
 
 .exam-group-title {
@@ -1136,3 +1165,142 @@
 .q-audio-help summary:hover { color: var(--ink); }
 .q-audio-help p { margin: 8px 0 0; color: var(--ink-soft); line-height: 1.55; }
 .q-audio-help a { color: var(--blue, #2d6eb4); font-weight: 600; }
+
+/* ==========================================================================
+   Laptop height
+
+   Sitting an exam is the one screen a user stares at for two hours, and on a
+   14" laptop the sticky bar plus the section head plus the paper padding left
+   very little of the actual question visible. Trim the chrome, not the type:
+   the question text and its options keep their size.
+   ========================================================================== */
+
+@media (min-width: 1024px) and (max-height: 900px) {
+  .exam-root, .exams-root { padding-bottom: 48px; }
+  .exam-root > .container,
+  .exams-root > .container { padding-top: 18px; }
+  .exam-root > .container.exam-body { padding-top: 18px; }
+
+  .exam-body { padding-top: 18px; }
+  .paper-block { padding: 18px 22px; }
+  .exams-hero { padding: 22px 26px; }
+  .exams-filters { margin: 18px 0 16px; }
+  .exam-group-title { margin: 22px 0 12px; }
+}
+
+/* On a wide laptop or desktop the paper column is over 1000px, which turned
+   every answer into a 1000px-wide button for three characters of kana and put
+   the stem and its options on very different scales. Cap the measure instead:
+   long grammar and reading options still wrap at a comfortable line, short
+   ones stop being a hallway. The passage layout is already narrower than this,
+   so it is unaffected. */
+.paper-question { max-width: min(100%, 78ch); }
+
+/* ==========================================================================
+   Phones: keep the sticky chrome small
+
+   Sitting a paper on a phone, the site header and the exam bar between them
+   were taking about a third of the screen before the first question. The bar
+   keeps everything that is needed mid-exam - a way out, the level, the
+   glossary, the clock, submit - and drops what is not.
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  /* The arrow alone is understood here, and the label is still on the button
+     for a screen reader through aria-label. */
+  .exam-back-text { display: none; }
+  .exam-back { padding: 7px 11px; }
+
+  /* Which sitting of the exam this is does not change while you answer it. */
+  .exam-bar-period { display: none; }
+}
+
+/* The identity and the tools were 7px wider than a 390px phone, so they wrapped
+   onto separate lines and the bar cost three rows instead of two. Take the
+   padding down until they share one. */
+@media (max-width: 560px) {
+  .exam-bar-inner { gap: 10px; }
+  .exam-bar-tools { gap: 8px; }
+  .exam-bar-id { gap: 8px; }
+
+  .exam-timer { padding: 7px 11px; font-size: 0.85rem; }
+  .exam-timer strong { font-size: 0.95rem; }
+  .exam-bar-tools .btn { padding: 9px 14px; font-size: 0.85rem; }
+  .exam-bar-tools .words-all { padding: 9px 11px; }
+}
+
+/* ==========================================================================
+   Paper switcher
+
+   A sitting is three papers - 言語知識, 読解, 聴解 - and they are the same
+   three blocks the result is scored in. Showing all of them in one column
+   meant scrolling past forty vocabulary questions to reach the reading, so
+   they get a tab each. The clock and the submit button stay shared: it is
+   still one sitting, not three.
+   ========================================================================== */
+
+.paper-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  /* Sized to its tabs rather than to the column: stretched across a desktop
+     paper, two tabs became two 550px slabs with a word floating in each. */
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.paper-tab {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: 0.16s ease;
+}
+
+.paper-tab:hover { background: rgba(255, 255, 255, 0.7); color: var(--navy); }
+
+.paper-tab.is-on {
+  background: #fff;
+  border-color: var(--line);
+  color: var(--navy);
+  box-shadow: 0 4px 12px rgba(17, 45, 78, 0.08);
+}
+
+.paper-tab-name {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paper-tab-count {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-tab.is-on .paper-tab-count { color: var(--level-color, var(--blue)); }
+
+/* On a phone the three names do not fit side by side as one word each, so the
+   pill becomes a row of stacked labels that still reads at a glance. */
+@media (max-width: 560px) {
+  /* Fill the width here - the names are what is left to tap. */
+  .paper-tabs { gap: 4px; padding: 4px; width: 100%; }
+  .paper-tab { flex: 1 1 0; padding: 9px 6px; font-size: 0.8rem; }
+  .paper-tab-count { font-size: 0.68rem; }
+}

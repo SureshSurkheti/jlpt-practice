@@ -1,7 +1,7 @@
 {
   "name": "JLPT Practice",
   "short_name": "JLPT",
-  "description": "JLPT past papers played as timed, auto-scored exams, with English word meanings on the N2 and N3 papers.",
+  "description": "Full-length JLPT practice papers played as timed, auto-scored mock exams, with English word meanings on the N2 and N3 papers.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

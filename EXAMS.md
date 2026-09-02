@@ -44,13 +44,15 @@ sections.
 
 ## Exam ids and file naming
 
-Source names were Vietnamese and inconsistent. Built data uses English,
-sortable ids:
+Source names were once Vietnamese and inconsistent (`Đề Từ Vựng N1
+12_2024.html`, after the site they were archived from). They were renamed to
+match the exam id they build into, so a source file and its output line up by
+name:
 
 | Source files (3 per sitting) | Built as |
 |---|---|
-| `N1 12_2024.html`, `Đề Từ Vựng N1 12_2024.html`, `Đề nghe N1 12_2024.html` | `data/exams/n1-2024-12.json` |
-| `N4 2_2.html`, `Đề Từ Vựng N4 2_2.html`, `Đề nghe N4 2_2.html` | `data/exams/n4-practice-2.json` |
+| `n1-2024-12-vocabulary.html`, `n1-2024-12-grammar-reading.html`, `n1-2024-12-listening.html` | `data/exams/n1-2024-12.json` |
+| `n4-practice-2-vocabulary.html`, `n4-practice-2-grammar-reading.html`, `n4-practice-2-listening.html` | `data/exams/n4-practice-2.json` |
 
 Each JSON holds the three papers as `parts`:
 `vocabulary`, `grammar-reading`, `listening`.
@@ -171,8 +173,8 @@ adding more source pages; nothing in the build is limiting it.
 page for that sitting's listening paper is an empty placeholder — the original
 site itself said *"Đề thi năm này đang được cập nhật"* ("this year's exam is
 being updated") and declared `totalQUestion = 0`. Compare
-`Đề nghe N4 1_1.html` (12 KB, empty) with `Đề nghe N4 2_2.html` (73 KB, 28
-questions). The data was never there to extract. Those exams now say
+`n4-practice-1-listening.html` (12 KB, empty) with
+`n4-practice-2-listening.html` (73 KB, 28 questions). The data was never there to extract. Those exams now say
 "No listening section" on their card in the library, so nobody discovers it
 mid-exam.
 
