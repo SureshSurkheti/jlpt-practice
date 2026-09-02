@@ -206,10 +206,18 @@
   top: var(--header-h, 74px);
   z-index: 40;
   background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
+  /* Same prefix and same fallback as the site header - this bar sits over a
+     paper of dense Japanese, where bleed-through is at its worst. */
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--line);
   box-shadow: 0 6px 18px rgba(17, 45, 78, 0.06);
 }
+@supports not ((backdrop-filter: blur(1px)) or
+               (-webkit-backdrop-filter: blur(1px))) {
+  .exam-bar { background: #fff; }
+}
+
 .exam-bar-inner {
   display: flex;
   align-items: center;

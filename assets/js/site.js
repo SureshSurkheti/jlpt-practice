@@ -672,6 +672,25 @@ function wireBrand() {
    arriving from Google, opening the page in a new tab, and having no
    JavaScript at all - and it is what the link does before this script runs.
    ========================================================================== */
+/* Tell the header whether the page has moved, so it can carry a shadow over
+   content and none at the top. Cheaper and steadier than a scroll handler:
+   a zero-height sentinel at the very top of the page, watched by an
+   IntersectionObserver - the browser reports when it leaves the viewport and
+   nothing runs in between. */
+function wireStickyHeader() {
+  var header = document.querySelector(".site-header");
+  if (!header || !window.IntersectionObserver) return;
+
+  var mark = document.createElement("div");
+  mark.setAttribute("aria-hidden", "true");
+  mark.style.cssText = "position:absolute;top:0;height:1px;width:1px;";
+  document.body.insertBefore(mark, document.body.firstChild);
+
+  new IntersectionObserver(function (entries) {
+    header.classList.toggle("is-stuck", !entries[0].isIntersecting);
+  }).observe(mark);
+}
+
 function mountPageBack() {
   var target = document.body.dataset.backTo;
   if (!target) return;
@@ -785,6 +804,7 @@ function renderAll() {
 
 document.addEventListener('DOMContentLoaded', () => {
   wireNavScroll();
+  wireStickyHeader();
   I18N.init();
   mountPageBack();
   mountBackToTop();

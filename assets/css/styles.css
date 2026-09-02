@@ -79,13 +79,38 @@ body {
 }
 body > main { flex: 1 0 auto; }
 
+/* The frosted header.
+
+   Two things were wrong with it. backdrop-filter had no -webkit- prefix, so
+   on Safari - a large share of the phones this site is read on - the blur
+   never applied and the header was simply 78% white with sharp kanji sliding
+   underneath it. And there was no fallback at all for a browser that cannot
+   blur, which is the same failure again.
+
+   So: blur where it is supported, and opaque where it is not. 0.88 rather
+   than 0.78 because even a correct blur leaves dark text visible as a smudge
+   at 0.78, and a header you can read through is not a header. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
+  background: rgba(255, 255, 255, 0.88);
   border-bottom: 1px solid rgba(17, 45, 78, 0.08);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or
+               (-webkit-backdrop-filter: blur(1px))) {
+  .site-header { background: #fff; }
+}
+
+/* Once the page has moved, the header needs an edge of its own: at the top
+   it sits on the same pale ground as the page and does not need one, but
+   over content a hairline alone reads as a seam rather than a layer. */
+.site-header.is-stuck {
+  box-shadow: 0 6px 20px -8px rgba(17, 45, 78, 0.28);
+  border-bottom-color: rgba(17, 45, 78, 0.12);
 }
 
 .nav-wrap {
