@@ -158,6 +158,16 @@ def main():
                 rec["ne"] = gloss
                 ne_hits += 1
 
+        # Hand-written corrections for glosses the JMdict lookup got wrong,
+        # which is mostly the affixes: 〜やすい is "easy to do", not "cheap".
+        fix_path = os.path.join(OUT_DIR, "fix", name + ".json")
+        if os.path.exists(fix_path):
+            with io.open(fix_path, encoding="utf-8") as fh:
+                for word, gloss in json.load(fh).items():
+                    for rec in rows:
+                        if rec["w"] == word:
+                            rec["en"] = gloss
+
         # A word written with a wave dash is an affix or a counter, not a
         # standalone word: 〜階 is "-th floor", お〜 is the polite prefix. The
         # JMdict lookup that fills them in strips the dash and returns the
