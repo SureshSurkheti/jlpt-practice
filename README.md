@@ -219,3 +219,11 @@ One practical check before you post: paste your URL into Facebook's Sharing Debu
 
 1,753 Nepali meanings. 9,639 words, 2,211 kanji with stroke-order animation, 86 full mock exams — N5 to N1, free, no signup.
 jlpt.sureshsurkheti.com
+
+
+tod o things tomorrow
+make the app icon very good when installing in mobile
+remove the questions map
+and also make the numbering method make in the format of jlpt exam for all remove the custom numbering and question map
+and when in study mode select once canot edit so what is the good method for that do accordingly.
+for the listening part can we keep the listening part in above every questions above part instead of listening one audio for many questions??
