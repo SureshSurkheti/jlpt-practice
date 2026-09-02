@@ -1237,13 +1237,26 @@
       return paperOfCategory(sk.key) === state.paper;
     });
 
+    /* The JLPT's own unit for this section - out of 60, or out of 120 where
+       N4 and N5 combine language knowledge and reading - alongside plain
+       accuracy. The sectional minimum belongs here too: it is the one
+       pass-related fact that IS answerable from a single section, and it is
+       the fact that decides a paper. Miss 19 in one section and the sitting
+       fails however high the total, so somebody who has just marked their
+       vocabulary deserves to know they are under it. */
     box.innerHTML =
       '<div class="section-card-head">' +
-        "<h2>" + esc(sec.label) + "</h2>" +
-        '<div class="section-card-score"><strong>' + pct + "%</strong>" +
-          "<span>" + sec.right + " / " + sec.total + " " +
-          esc(t("exam.correctLower")) + "</span></div>" +
+        '<div><h2>' + esc(sec.label) + "</h2>" +
+          '<p class="section-card-raw">' + sec.right + " / " + sec.total + " " +
+          esc(t("exam.correctLower")) + " &middot; " + pct + "%</p></div>" +
+        '<div class="section-card-score"><strong>' + sec.scaled +
+          '<i>/' + sec.cap + "</i></strong>" +
+          "<span>" + esc(t("exam.scaledScore")) + "</span></div>" +
       "</div>" +
+      '<p class="section-card-min' + (sec.clearedMin ? " is-ok" : " is-below") +
+        '"><b aria-hidden="true">' + (sec.clearedMin ? "\u2713" : "\u2715") +
+        "</b> " + esc(t("exam.sectionMinLabel")) + " " + sec.minimum +
+        " / " + sec.cap + "</p>" +
       (skills.length > 1
         ? '<div class="section-card-skills">' + skills.map(function (sk) {
             return '<div class="section-card-skill" style="--accent:' +

@@ -678,17 +678,57 @@
   font-size: 1.15rem;
   color: var(--navy);
 }
+.section-card-raw {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
 .section-card-score { text-align: right; }
 .section-card-score strong {
+  display: block;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1;
   color: var(--level-color, var(--navy));
+  font-variant-numeric: lining-nums tabular-nums;
+}
+/* The denominator is context, not the number - half the size and grey, so
+   the eye lands on the score. */
+.section-card-score strong i {
+  font-style: normal;
+  font-size: 0.5em;
+  color: var(--muted);
+  margin-left: 1px;
 }
 .section-card-score span {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--muted);
+}
+
+/* Cleared the sectional minimum, or not. Stated plainly rather than implied
+   by a colour, because this single number can fail an otherwise good paper. */
+.section-card-min {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 0 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.section-card-min b { font-size: 0.9rem; line-height: 1; }
+.section-card-min.is-ok {
+  background: #eaf6ef;
+  color: var(--success);
+}
+.section-card-min.is-below {
+  background: #fdeeef;
+  color: var(--danger);
 }
 
 .section-card-skills {
