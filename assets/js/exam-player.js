@@ -105,6 +105,7 @@
     timed: true,
     minutes: 0,
     deadline: null,
+    startedAt: 0,       // study mode counts up from here
     ticker: null,
     reviewed: false,
     score: null,
@@ -290,6 +291,7 @@
         flags: state.flags,
         mode: state.mode,
         deadline: state.deadline,
+        startedAt: state.startedAt,
         reviewed: state.reviewed,
         savedAt: Date.now()
       }));
@@ -461,15 +463,20 @@
     /* -- timer -- */
     var timeBox = el("div", "setup-block");
     timeBox.appendChild(el("h2", "setup-title", "3 · " + t("exam.timer")));
+    /* Exam mode is timed by default because that is what an exam is. Study
+       mode is not: a countdown that ends the session is the opposite of
+       working through a paper at your own pace with the answers showing. */
     timeBox.appendChild(el("div", "timer-row",
       '<label class="switch">' +
-        '<input type="checkbox" id="timerOn" checked />' +
+        '<input type="checkbox" id="timerOn"' +
+          (wantStudy ? "" : " checked") + " />" +
         '<span class="switch-track"><span class="switch-dot"></span></span>' +
         "<span>" + esc(t("exam.timed")) + "</span>" +
       "</label>" +
       '<label class="minutes-field">' +
         "<span>" + esc(t("exam.minutes")) + "</span>" +
-        '<input type="number" id="timerMinutes" min="1" max="300" value="' +
+        '<input type="number" id="timerMinutes" min="1" max="300"' +
+          (wantStudy ? " disabled" : "") + ' value="' +
           lv.minutes + '" />' +
       "</label>" +
       '<span class="setup-hint" id="timeHint"></span>'));
@@ -503,6 +510,7 @@
 
     /* -- interactions -- */
     var minutesEdited = false;   // stop suggesting a duration once set by hand
+    var timerTouched = false;    // ...and stop moving the clock with the mode
 
     function refreshHint() {
       var n = pickedCount(pickedCategories());
@@ -532,8 +540,18 @@
           function (m) {
             m.classList.toggle("is-on", m.contains(t) && t.checked);
           });
+        /* Follow the mode unless the visitor has already made up their own
+           mind about the clock. */
+        if (!timerTouched) {
+          var on = document.getElementById("timerOn");
+          var mins = document.getElementById("timerMinutes");
+          on.checked = t.value === "exam";
+          mins.disabled = !on.checked;
+        }
+        refreshHint();
       }
       if (t.id === "timerOn") {
+        timerTouched = true;
         document.getElementById("timerMinutes").disabled = !t.checked;
         refreshHint();
       }
@@ -655,6 +673,7 @@
     state.papers = examPapers();
     state.paper = state.papers.length ? state.papers[0].key : null;
 
+    state.startedAt = (saved && saved.startedAt) || Date.now();
     if (state.timed) {
       state.deadline = (saved && saved.deadline) ||
         (Date.now() + state.minutes * 60000);
@@ -675,11 +694,29 @@
     window.scrollTo(0, 0);
   }
 
+  /* Two different clocks wearing the same face.
+
+     In exam mode it counts down to a deadline and submits the paper when it
+     reaches zero, because that is what sitting an exam means.
+
+     In study mode it counts up. A study session has no deadline - the whole
+     point is to read the explanation, go back, try again - and a countdown
+     that force-submits your paper mid-question is the opposite of that. It
+     used to do exactly that: the timer was on by default in both modes and
+     `submitExam(true)` fired regardless, so anyone working slowly through an
+     N2 reading section was ejected to a score screen they never asked for.
+     Now it is a stopwatch: useful for pacing, harmless if ignored. */
   function startTicker() {
     stopTicker();
+    var studying = state.mode === "study";
     state.ticker = setInterval(function () {
-      var left = Math.round((state.deadline - Date.now()) / 1000);
       var out = document.getElementById("examClock");
+      if (studying) {
+        if (out) out.textContent = clock(Math.round(
+          (Date.now() - state.startedAt) / 1000));
+        return;
+      }
+      var left = Math.round((state.deadline - Date.now()) / 1000);
       if (out) {
         out.textContent = clock(left);
         out.parentNode.classList.toggle("is-urgent", left <= 300);
@@ -822,9 +859,15 @@
         '<div class="exam-bar-tools">' +
           '<span class="bar-section" id="barSection"></span>' + wordsAll +
           (state.timed
-            ? '<div class="exam-timer"><span aria-hidden="true">⏱</span>' +
+            ? '<div class="exam-timer' +
+              /* A stopwatch is not a deadline: no urgency colour, no ticking
+                 down towards anything. */
+              (state.mode === "study" ? " is-stopwatch" : "") +
+              '"><span aria-hidden="true">⏱</span>' +
               '<strong id="examClock">' +
-              clock(Math.round((state.deadline - Date.now()) / 1000)) +
+              clock(state.mode === "study"
+                ? Math.round((Date.now() - state.startedAt) / 1000)
+                : Math.round((state.deadline - Date.now()) / 1000)) +
               "</strong></div>"
             : '<div class="exam-timer is-off">' + esc(t("exam.untimed")) + '</div>') +
           '<button type="button" class="btn btn-primary" id="submitBtn">' +

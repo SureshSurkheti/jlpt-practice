@@ -264,6 +264,16 @@
 }
 .exam-timer strong { font-size: 1.05rem; }
 .exam-timer.is-urgent { background: rgba(200, 74, 82, 0.12); border-color: var(--danger); color: var(--danger); animation: pulse 1s ease-in-out infinite; }
+/* Counting up, not down. Quieter than the exam clock because nothing is
+   running out - it is there to answer "how long am I taking?", not to
+   hurry anyone. */
+.exam-timer.is-stopwatch {
+  background: var(--panel-soft);
+  color: var(--muted);
+  border-color: var(--line);
+}
+.exam-timer.is-stopwatch strong { color: var(--navy); font-weight: 600; }
+
 .exam-timer.is-off { color: var(--muted); font-size: 0.85rem; }
 @keyframes pulse { 50% { opacity: 0.62; } }
 
