@@ -2119,6 +2119,17 @@ body.is-leaving { opacity: 0; }
 .lv-chip.level-n4 { --accent: #7c3ac8; }
 .lv-chip.level-n5 { --accent: #5c697a; }
 
+/* Where the numbers come from, and which of them are estimates. Quiet, but
+   present: a site that states a pass mark should say who says so. */
+.levels-source {
+  margin: 10px 0 0;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.levels-source a { color: var(--blue); font-weight: 600; }
+.levels-source a:hover { text-decoration: underline; }
+
 .levels-note {
   margin: 18px 0 0;
   padding: 14px 16px;

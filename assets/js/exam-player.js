@@ -35,8 +35,14 @@
     ios: "https://apps.apple.com/us/app/japanese-listening-jsempai/id1469694693"
   };
 
+  /* pass, sectionMin and minutes are the official figures:
+       https://www.jlpt.jp/e/guideline/results.html
+       https://www.jlpt.jp/e/guideline/testsections.html
+     sectionMin is the 19 that each 60-point section needs. N4 and N5 combine
+     language knowledge and reading into one 120-point section needing 38,
+     which buildSkillTable() applies where the cap is 120. */
   var LEVELS = {
-    N1: { color: "#d9a63a", name: "N1 Professional", pass: 100, sectionMin: 19, minutes: 170 },
+    N1: { color: "#d9a63a", name: "N1 Professional", pass: 100, sectionMin: 19, minutes: 165 },
     N2: { color: "#2d6eb4", name: "N2 Upper-Intermediate", pass: 90, sectionMin: 19, minutes: 155 },
     N3: { color: "#2f7d57", name: "N3 Intermediate", pass: 95, sectionMin: 19, minutes: 140 },
     N4: { color: "#7c3ac8", name: "N4 Lower-Intermediate", pass: 90, sectionMin: 19, minutes: 115 },

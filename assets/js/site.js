@@ -1,6 +1,16 @@
 /* Only language-neutral facts live here now. The one-line description per
    level is a translated string (level.N5 … level.N1), so the page changes
    language with everything else. */
+/* Pass marks are official, from
+   https://www.jlpt.jp/e/guideline/results.html - and a pass needs both the
+   total and every scoring section on its own.
+
+   The kanji and vocabulary figures are NOT official and cannot be. The JLPT
+   has published no list since the 2010 revision, and says so plainly in its
+   own FAQ: the goal is communication, not memorising a set. These are the
+   widely-used community estimates, carried here because a learner asking
+   "roughly how much is this?" deserves an answer - which is why they are
+   written with a ~ and footnoted on the levels page. */
 const LEVEL_CONFIG = {
   N5: { kanji: '~100',  vocab: '~800',  pass: '80 / 180' },
   N4: { kanji: '~300',  vocab: '~1500', pass: '90 / 180' },
@@ -295,7 +305,20 @@ function factGrid(cfg) {
    ========================================================================== */
 
 /* Total sitting time for each level, from the JLPT's published timetable. */
-const LEVEL_MINUTES = { N5: 105, N4: 115, N3: 140, N2: 155, N1: 170 };
+/* Total sitting time per level, from the official timetable at
+   https://www.jlpt.jp/e/guideline/testsections.html
+
+     N5  20 + 40 + 30           =  90
+     N4  25 + 55 + 35           = 115
+     N3  30 + 70 + 40           = 140
+     N2  105 + 50               = 155   (N2 and N1 combine vocabulary,
+     N1  110 + 55               = 165    grammar and reading into one paper)
+
+   These were wrong for two levels. The JLPT shortened its test times from
+   2022 and this table held a mix of both: N4, N3 and N2 had the current
+   figures while N5 (105) and N1 (170) were still the pre-2022 ones. A mix is
+   worse than being uniformly out of date, because nothing looks wrong. */
+const LEVEL_MINUTES = { N5: 90, N4: 115, N3: 140, N2: 155, N1: 165 };
 
 function renderLevels() {
   const container = document.getElementById('levelsContent');
@@ -317,6 +340,9 @@ function renderLevels() {
     </div>
 
     <p class="levels-note">${t('levels.scoringNote')}</p>
+    <p class="levels-source">${t('levels.sourceNote')}
+      <a href="https://www.jlpt.jp/e/guideline/testsections.html"
+         target="_blank" rel="noopener">jlpt.jp</a></p>
   `;
 
   wirePracticeButtons();
