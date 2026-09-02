@@ -278,57 +278,27 @@ function factGrid(cfg) {
    ask of me? That is a comparison, so it is a table - five rows you can read
    down a single column of - rather than five cards you have to hold in your
    head. Practising happens on the practice page; this one links there. */
+/* ==========================================================================
+   Levels
+
+   This page used to be two. "Levels" was a comparison table whose every row
+   held a description, a kanji count, a vocabulary count, a pass mark and
+   your accuracy, and whose only action was a button to "Practice"; the
+   Practice page then showed you the same five descriptions, the same three
+   counts and the same accuracy again, this time with the buttons that
+   actually did something. One of them was a table of contents for the other.
+
+   They are one page now. Everything the table carried that the cards did not
+   - the sitting time for each level - moved into the cards, and the table
+   went. Five cards also survive a phone without the table-to-card fallback
+   the old markup needed, which is where the last layout bug came from.
+   ========================================================================== */
+
+/* Total sitting time for each level, from the JLPT's published timetable. */
+const LEVEL_MINUTES = { N5: 105, N4: 115, N3: 140, N2: 155, N1: 170 };
+
 function renderLevels() {
   const container = document.getElementById('levelsContent');
-  if (!container) return;
-
-  /* Total sitting time for each level, from the JLPT's published timetable. */
-  const MINUTES = { N5: 105, N4: 115, N3: 140, N2: 155, N1: 170 };
-
-  const rows = LEVEL_ORDER.slice().reverse().map((key) => {
-    const cfg = LEVEL_CONFIG[key];
-    const stats = progress.getStats(key);
-    return `
-      <tr class="level-${key.toLowerCase()}">
-        <th scope="row"><span class="lv-chip">${key}</span></th>
-        <td class="lv-covers">${levelDesc(key)}</td>
-        <td data-label="${t('level.kanji')}">${cfg.kanji}</td>
-        <td data-label="${t('level.vocab')}">${cfg.vocab}</td>
-        <td class="lv-pass" data-label="${t('level.pass')}">${cfg.pass}</td>
-        <td data-label="${t('levels.colTime')}">${MINUTES[key]} ${t('levels.minutes')}</td>
-        <td class="lv-you" data-label="${t('levels.yourScore')}">${stats.total > 0
-          ? `<strong>${stats.accuracy}%</strong>`
-          : '<span class="lv-dash">—</span>'}</td>
-        <td class="lv-go">
-          <a href="practice.html?lv=${key}" class="btn btn-ghost">${t('levels.open')}</a>
-        </td>
-      </tr>`;
-  }).join('');
-
-  container.innerHTML = `
-    <div class="levels-table-wrap">
-      <table class="levels-table">
-        <thead>
-          <tr>
-            <th scope="col">${t('notice.colLevel')}</th>
-            <th scope="col">${t('levels.colCovers')}</th>
-            <th scope="col">${t('level.kanji')}</th>
-            <th scope="col">${t('level.vocab')}</th>
-            <th scope="col">${t('level.pass')}</th>
-            <th scope="col">${t('levels.colTime')}</th>
-            <th scope="col">${t('levels.yourScore')}</th>
-            <th scope="col"><span class="sr-only">${t('levels.open')}</span></th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    <p class="levels-note">${t('levels.scoringNote')}</p>
-  `;
-}
-
-function renderPractice() {
-  const container = document.getElementById('practiceContent');
   if (!container) return;
 
   const wanted = (new URLSearchParams(window.location.search).get('lv') || '')
@@ -336,11 +306,6 @@ function renderPractice() {
   const overall = progress.getOverallStats();
 
   container.innerHTML = `
-    <section class="page-intro">
-      <h1>${t('practice.title')}</h1>
-      <p>${t('practice.body')}</p>
-    </section>
-
     <div class="practice-summary-row">
       ${summaryStat(overall.totalAnswered, t('home.statAnswered'))}
       ${summaryStat(overall.overallAccuracy + '%', t('home.statAccuracy'))}
@@ -350,11 +315,14 @@ function renderPractice() {
     <div class="practice-levels">
       ${LEVEL_ORDER.map(levelBlock).join('')}
     </div>
+
+    <p class="levels-note">${t('levels.scoringNote')}</p>
   `;
 
   wirePracticeButtons();
 
-  /* Deep link from elsewhere on the site: bring that level into view. */
+  /* Deep link from the home page, the stats page or a finished paper:
+     bring that level into view rather than dropping you at N5. */
   if (LEVEL_ORDER.indexOf(wanted) !== -1) {
     const node = document.getElementById('lv-' + wanted);
     if (node) {
@@ -377,7 +345,10 @@ function levelBlock(lv) {
   const cfg = LEVEL_CONFIG[lv] || LEVEL_CONFIG.N5;
   const exam = MOCK_EXAMS[lv];
   const examUrl = mockExamUrl(lv);
-  const hasLists = lv === 'N5' || lv === 'N4';
+  /* Every level has its own vocabulary page now, so this points at that one
+     rather than at the shared list page with the wrong level selected. The
+     relative path keeps it inside whichever language directory we are in. */
+  const listUrl = `study/${lv.toLowerCase()}-words.html`;
 
   const bar = stats.total > 0
     ? `<div class="plevel-bar"><div class="plevel-bar-fill"
@@ -410,15 +381,15 @@ function levelBlock(lv) {
         <div><dt>${t('level.kanji')}</dt><dd>${cfg.kanji}</dd></div>
         <div><dt>${t('level.vocab')}</dt><dd>${cfg.vocab}</dd></div>
         <div><dt>${t('level.pass')}</dt><dd>${cfg.pass}</dd></div>
+        <div><dt>${t('levels.colTime')}</dt>
+          <dd>${LEVEL_MINUTES[lv]} ${t('levels.minutes')}</dd></div>
       </dl>
       <div class="plevel-skills">${skills}</div>
       <div class="plevel-foot">
         <button type="button" class="btn btn-gold plevel-mock" data-level="${lv}">
           ${t('practice.mockTest')}
         </button>
-        ${hasLists
-          ? `<a href="study.html" class="btn btn-ghost">${t('practice.studyLists')}</a>`
-          : ''}
+        <a href="${listUrl}" class="btn btn-ghost">${t('practice.studyLists')}</a>
       </div>
       <p class="plevel-note">${examUrl
         ? `${t('practice.officialPaper')} · ${exam.label}`
@@ -612,7 +583,6 @@ function wireBrand() {
 function renderAll() {
   updateHomePageStats();
   renderLevels();
-  renderPractice();
   renderNotice();
 }
 

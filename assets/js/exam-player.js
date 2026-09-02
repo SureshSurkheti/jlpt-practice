@@ -324,7 +324,7 @@
     if (detail) card.appendChild(el("p", "exam-error-detail", esc(detail)));
     card.appendChild(el("div", "exam-error-links",
       '<a class="btn btn-primary" href="exams.html">' + esc(t("exam.browseAll")) + '</a>' +
-      '<a class="btn btn-ghost" href="practice.html">' + esc(t("exam.backToPractice")) + '</a>'));
+      '<a class="btn btn-ghost" href="levels.html">' + esc(t("exam.backToPractice")) + '</a>'));
     box.appendChild(card);
     root.appendChild(box);
   }
@@ -1157,7 +1157,7 @@
       "</div>" +
       '<div class="review-actions">' +
         '<a class="btn btn-gold" href="exams.html">' + esc(t("exam.anotherExam")) + '</a>' +
-        '<a class="btn btn-ghost" href="practice.html?lv=' +
+        '<a class="btn btn-ghost" href="levels.html?lv=' +
           esc(state.exam.level) + '">' + esc(t("exam.backToPractice")) + '</a>' +
       "</div>";
     box.appendChild(acts);

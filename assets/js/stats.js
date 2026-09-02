@@ -44,7 +44,7 @@ function renderLevelProgress() {
           &nbsp;·&nbsp; ${t('levels.lastStudied')}: ${stats.lastStudied || t('levels.never')}
         </div>
         <div class="lp-actions">
-          <a href="practice.html?lv=${lv}" class="btn btn-ghost">${t('stats.practise')} ${lv}</a>
+          <a href="levels.html?lv=${lv}" class="btn btn-ghost">${t('stats.practise')} ${lv}</a>
           <a href="${mockExamUrl(lv) || 'exams.html'}" class="btn btn-gold">${t('stats.takeMock')}</a>
         </div>
       </div>`;

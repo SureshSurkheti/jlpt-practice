@@ -38,7 +38,9 @@ DEFAULT_LANG = "en"
 CORE_PAGES = {
     "index.html": True,
     "levels.html": True,
-    "practice.html": True,
+    # Merged into levels.html; the file survives only to forward old links,
+    # so it must stay out of the index and out of the sitemap.
+    "practice.html": False,
     "exams.html": True,
     "study.html": True,
     "about.html": True,
@@ -254,6 +256,93 @@ def language_links(langs, page, current, names, table, en):
 # study tables, written into the markup
 # --------------------------------------------------------------------------
 
+LEVEL_COLOR_CLASS = {"n1": "level-n1", "n2": "level-n2", "n3": "level-n3",
+                     "n4": "level-n4", "n5": "level-n5"}
+
+
+def coverage_counts():
+    """How many words and patterns each level holds, and how many of them
+    carry a Nepali gloss. Read from the data files at build time so the panel
+    cannot drift from what the lists actually contain."""
+    out = {}
+    for level in LEVELS:
+        row = {}
+        for kind, folder, field in (("words", "words", "words"),
+                                    ("grammar", "grammar", "patterns")):
+            path = os.path.join(ROOT, "data", folder, level + ".json")
+            if not os.path.exists(path):
+                row[kind] = (0, 0)
+                continue
+            items = json.load(io.open(path, encoding="utf-8"))[field]
+            row[kind] = (len(items), sum(1 for x in items if x.get("ne")))
+        out[level] = row
+    return out
+
+
+def coverage_panel(table, en, here=None, prefix="study/"):
+    """A five-row summary of what the lists hold and which languages the
+    meanings are written in.
+
+    It answers the two questions somebody arrives with - "is my level here?"
+    and "is it in my language?" - without clicking through five tabs, and it
+    is the only thing that links the ten list pages to each other. `here` is
+    the "<level>-<kind>" page being written, so the panel does not link a
+    page to itself."""
+    counts = coverage_counts()
+    head = "".join(
+        '<th scope="col"%s>%s</th>' % (attr, label) for attr, label in (
+            (' data-i18n="notice.colLevel"', esc(t(table, "notice.colLevel", en))),
+            (' data-i18n="study.words"', esc(t(table, "study.words", en))),
+            (' data-i18n="study.grammar"', esc(t(table, "study.grammar", en))),
+            ("", "English"),
+            (' lang="ne"', "\u0928\u0947\u092a\u093e\u0932\u0940"),
+        ))
+
+    rows = []
+    for level in ["n5", "n4", "n3", "n2", "n1"]:
+        c = counts[level]
+        cells = []
+        for kind in ("words", "grammar"):
+            total = c[kind][0]
+            if not total:
+                cells.append('<td><span class="coverage-no">&mdash;</span></td>')
+                continue
+            text = "{:,}".format(total)
+            page = "%s-%s" % (level, kind)
+            cells.append('<td>%s</td>' % (
+                '<span class="is-here">%s</span>' % text if page == here
+                else '<a href="%s%s.html">%s</a>' % (prefix, page, text)))
+
+        # English is on every entry; Nepali is complete for N5 and N4 and
+        # covers the grammar patterns at every level. Say which, rather than
+        # printing a tick that overstates it.
+        ne_words, ne_gram = c["words"][1], c["grammar"][1]
+        if ne_words and ne_gram:
+            ne = '<span class="coverage-yes">&#10003;</span>'
+        elif ne_gram:
+            ne = ('<span class="coverage-yes">&#10003;</span> '
+                  '<span class="coverage-part">%s</span>'
+                  % esc(t(table, "study.grammar", en)))
+        else:
+            ne = '<span class="coverage-no">&mdash;</span>'
+
+        rows.append(
+            '<tr><th scope="row"><span class="lv-chip %s">%s</span></th>'
+            '%s<td><span class="coverage-yes">&#10003;</span></td><td>%s</td></tr>'
+            % (LEVEL_COLOR_CLASS[level], level.upper(), "".join(cells), ne))
+
+    return ('<section class="study-coverage">\n'
+            '        <h2 data-i18n="notice.title">%s</h2>\n'
+            '        <div class="coverage-wrap">\n'
+            '          <table class="coverage-table">\n'
+            '            <thead><tr>%s</tr></thead>\n'
+            '            <tbody>%s</tbody>\n'
+            '          </table>\n'
+            '        </div>\n'
+            '      </section>'
+            % (esc(t(table, "notice.title", en)), head, "".join(rows)))
+
+
 def study_rows(level, kind, table, en):
     path = os.path.join(ROOT, "data",
                         "words" if kind == "words" else "grammar",
@@ -326,6 +415,8 @@ def main():
 
             # the study page carries its first list in the markup
             if page == "study.html":
+                html = html.replace('<div id="studyCoverage"></div>',
+                                    coverage_panel(table, en, None, "study/"))
                 body, n = study_rows("n5", "words", table, en)
                 html = html.replace(
                     '<div id="studyContent" aria-live="polite"></div>',
@@ -391,6 +482,13 @@ def main():
                 # data-i18n hook stops the script overwriting it on load.
                 html = re.sub(r'<h1 data-i18n="study.title">[^<]*</h1>',
                               "<h1>%s %s</h1>" % (esc(lv), esc(noun)), html)
+
+                # Same panel, but the links are siblings in this directory
+                # and this page is not a link to itself. It is what connects
+                # the ten list pages: without it each one is a dead end.
+                html = html.replace(
+                    '<div id="studyCoverage"></div>',
+                    coverage_panel(table, en, "%s-%s" % (level, kind), ""))
 
                 html = html.replace(
                     '<div id="studyContent" aria-live="polite"></div>',

@@ -5,26 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#112d4e" />
     <title>अभ्यास — JLPT Practice</title>
     <meta name="description" content="सभी स्तर यहीं हैं। एक भाग का अभ्यास करें, या पूरा प्रश्नपत्र दें।" />
-    <link rel="canonical" href="https://jlpt.sureshsurkheti.com/hi/practice.html" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="alternate" hreflang="en" href="https://jlpt.sureshsurkheti.com/practice.html" />
-    <link rel="alternate" hreflang="ja" href="https://jlpt.sureshsurkheti.com/ja/practice.html" />
-    <link rel="alternate" hreflang="vi" href="https://jlpt.sureshsurkheti.com/vi/practice.html" />
-    <link rel="alternate" hreflang="ne" href="https://jlpt.sureshsurkheti.com/ne/practice.html" />
-    <link rel="alternate" hreflang="zh" href="https://jlpt.sureshsurkheti.com/zh/practice.html" />
-    <link rel="alternate" hreflang="ko" href="https://jlpt.sureshsurkheti.com/ko/practice.html" />
-    <link rel="alternate" hreflang="id" href="https://jlpt.sureshsurkheti.com/id/practice.html" />
-    <link rel="alternate" hreflang="fil" href="https://jlpt.sureshsurkheti.com/fil/practice.html" />
-    <link rel="alternate" hreflang="pt-BR" href="https://jlpt.sureshsurkheti.com/pt-BR/practice.html" />
-    <link rel="alternate" hreflang="hi" href="https://jlpt.sureshsurkheti.com/hi/practice.html" />
-    <link rel="alternate" hreflang="bn" href="https://jlpt.sureshsurkheti.com/bn/practice.html" />
-    <link rel="alternate" hreflang="si" href="https://jlpt.sureshsurkheti.com/si/practice.html" />
-    <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/practice.html" />
+    <meta name="robots" content="noindex, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
     <meta property="og:locale" content="hi" />
@@ -43,66 +26,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <!--
+      This page's content moved into levels.html, which now carries both the
+      level facts and the drill buttons. The file stays because it was live,
+      indexed and linked: deleting it would turn every one of those links into
+      a 404. A static host has no 301 to offer, so this is the next best
+      thing - a noindex page that carries the visitor and their ?lv= across,
+      with a real link for anyone whose browser will not run the script.
+    -->
+    <script>
+      (function () {
+        var q = window.location.search || "";
+        window.location.replace("levels.html" + q);
+      })();
+    </script>
   </head>
-  <body class="practice-page">
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="brand-wrap" href="./index.html" id="brandLink">
-          <span class="brand-mark">JL</span>
-          <span class="brand-text">
-            <span class="brand-name">JLPT Practice</span>
-            <span class="brand-tag" data-i18n="tag.practice">अभ्यास कक्ष</span>
-          </span>
-        </a>
-
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="./index.html" data-i18n="nav.home">होम</a>
-          <a href="./levels.html" data-i18n="nav.levels">स्तर</a>
-          <a href="./practice.html" class="active" data-i18n="nav.practice">अभ्यास</a>
-          <a href="./exams.html" data-i18n="nav.exams">अभ्यास प्रश्नपत्र</a>
-          <a href="./study.html" data-i18n="nav.study">शब्द·व्याकरण</a>
-          <a href="./about.html" data-i18n="nav.about">परिचय</a>
-        </nav>
-
-        <div class="nav-tools">
-          <label class="language-select">
-            <span data-i18n="lang.label">भाषा</span>
-            <select id="languageSelect">
-              <option value="en">English</option>
-              <option value="ja">日本語</option>
-              <option value="ne">नेपाली</option>
-              <option value="vi">Tiếng Việt</option>
-              <option value="id">Bahasa Indonesia</option>
-              <option value="fil">Filipino</option>
-              <option value="si">සිංහල</option>
-              <option value="hi">हिन्दी</option>
-              <option value="pt-BR">Português (Brasil)</option>
-              <option value="zh">中文</option>
-              <option value="ko">한국어</option>
-              <option value="bn">বাংলা</option>
-            </select>
-          </label>
-        </div>
-      </div>
-    </header>
-
-    <main class="container page-shell practice-shell">
-      <div id="practiceContent"></div>
+  <body class="about-page">
+    <main class="container page-shell">
+      <section class="page-intro">
+        <h1 data-i18n="levels.title">JLPT के पाँच स्तर</h1>
+        <p data-i18n="levels.body">अभ्यास के लिए स्तर चुनें, या पूरा मॉक टेस्ट खोलें।</p>
+      </section>
+      <section class="about-plain">
+        <p><a class="text-link" href="./levels.html">levels.html</a></p>
+      </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div>© 2026 Suresh Surkheti</div>
-        <div data-i18n="footer.tagline">समझदारी से पढ़ें। जापान में बेहतर जीवन जिएँ।</div>
-      </div>
-          <nav class="container lang-links" aria-label="भाषा">
-        <span>भाषा</span>
-        <ul><li><a href="https://jlpt.sureshsurkheti.com/practice.html" hreflang="en" lang="en">English</a></li><li><a href="https://jlpt.sureshsurkheti.com/ja/practice.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/practice.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/practice.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/zh/practice.html" hreflang="zh" lang="zh">中文</a></li><li><a href="https://jlpt.sureshsurkheti.com/ko/practice.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="https://jlpt.sureshsurkheti.com/id/practice.html" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="https://jlpt.sureshsurkheti.com/fil/practice.html" hreflang="fil" lang="fil">Filipino</a></li><li><a href="https://jlpt.sureshsurkheti.com/pt-BR/practice.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="https://jlpt.sureshsurkheti.com/bn/practice.html" hreflang="bn" lang="bn">বাংলা</a></li><li><a href="https://jlpt.sureshsurkheti.com/si/practice.html" hreflang="si" lang="si">සිංහල</a></li></ul>
-      </nav>
-    </footer>
-
     <script src="/assets/js/i18n.js"></script>
     <script src="/assets/js/i18n-strings.js"></script>
-    <script src="/assets/js/site.js"></script>
   </body>
 </html>

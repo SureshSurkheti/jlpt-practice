@@ -14,7 +14,21 @@
   var host = document.getElementById("studyContent");
   if (!host) return;
 
-  var state = { level: "N5", kind: "words", query: "" };
+  /* Read the starting list off the markup rather than assuming N5. Each of
+     the ten pre-rendered pages (/study/n1-grammar.html and friends) ships
+     with its own level and kind already marked on the tabs, and hard-coding
+     N5 here meant every one of them painted its real content, then replaced
+     it with N5 vocabulary the moment this script ran. */
+  function tabOn(attr, fallback) {
+    var on = document.querySelector(".study-tab.is-on[data-" + attr + "]");
+    return on ? on.getAttribute("data-" + attr) : fallback;
+  }
+
+  var state = {
+    level: tabOn("level", "N5"),
+    kind: tabOn("kind", "words"),
+    query: ""
+  };
   var cache = {};          // "words:N5" -> rows
 
   function esc(s) {
@@ -28,7 +42,14 @@
   function load() {
     if (cache[key()]) { render(); return; }
 
-    host.innerHTML = '<div class="exam-loading"><div class="spinner"></div></div>';
+    /* The generator already wrote this list into the page. Search and the
+       language picker both need the parsed rows, so the fetch still happens,
+       but blanking real content to a spinner for the length of one request
+       is a flash of nothing for no gain. Leave what is there. */
+    if (!host.querySelector(".study-row")) {
+      host.innerHTML =
+        '<div class="exam-loading"><div class="spinner"></div></div>';
+    }
 
     var dir = state.kind === "words" ? "words" : "grammar";
     fetch(SITE_ROOT + "data/" + dir + "/" +

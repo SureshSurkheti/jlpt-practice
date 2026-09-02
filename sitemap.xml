@@ -11,11 +11,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/practice.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jlpt.sureshsurkheti.com/exams.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.9</priority>
@@ -37,11 +32,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/ja/levels.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/ja/practice.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>
@@ -71,11 +61,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/vi/practice.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jlpt.sureshsurkheti.com/vi/exams.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.9</priority>
@@ -97,11 +82,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/ne/levels.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/ne/practice.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>
@@ -131,11 +111,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/zh/practice.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jlpt.sureshsurkheti.com/zh/exams.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.9</priority>
@@ -157,11 +132,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/ko/levels.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/ko/practice.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>
@@ -191,11 +161,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/id/practice.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jlpt.sureshsurkheti.com/id/exams.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.9</priority>
@@ -217,11 +182,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/fil/levels.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/fil/practice.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>
@@ -251,11 +211,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/pt-BR/practice.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jlpt.sureshsurkheti.com/pt-BR/exams.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.9</priority>
@@ -277,11 +232,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/hi/levels.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/hi/practice.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>
@@ -311,11 +261,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/bn/practice.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://jlpt.sureshsurkheti.com/bn/exams.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.9</priority>
@@ -337,11 +282,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/si/levels.html</loc>
-    <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/si/practice.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>

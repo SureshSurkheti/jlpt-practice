@@ -1476,6 +1476,92 @@ body.is-leaving { opacity: 0; }
    cannot do without losing its column.
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   Study page
+
+   The lists are three narrow columns of text. Left-aligned across the full
+   1240px container, the meaning column was handed all the slack - about
+   790px for glosses that are often two words long - so every row read as a
+   short line followed by half a screen of nothing, and the whole page looked
+   as if it had been pushed to the left.
+
+   Give this page its own narrower measure and centre it. The columns sit
+   together and the leftover width lands evenly on both sides. The text
+   inside a cell stays left-aligned: centring the words themselves would give
+   every row a different starting edge, which is unreadable at 3,759 rows.
+   -------------------------------------------------------------------------- */
+
+.study-page .page-intro,
+.study-page .study-coverage,
+.study-page .study-controls,
+.study-page #studyContent {
+  width: min(100%, 1040px);
+  margin-inline: auto;
+}
+
+/* .page-intro caps itself at 68ch, which would centre the heading on a
+   different line from the list below it. Let the block take the full column
+   and cap the running text instead, so the h1, the panel, the tabs and the
+   first row all start on one edge. */
+.study-page .page-intro { max-width: none; }
+.study-page .page-intro p { max-width: 68ch; }
+
+/* What each level actually contains, and which languages the meanings are
+   written in. Answering "is my level covered, and is it in my language?"
+   before someone clicks through five tabs to find out. Doubles as the only
+   cross-link between the ten list pages. */
+.study-coverage { margin-top: clamp(18px, 2vw, 26px); }
+
+.study-coverage h2 {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+.coverage-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.coverage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.coverage-table th,
+.coverage-table td {
+  padding: 11px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.coverage-table thead th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--panel-soft);
+}
+
+.coverage-table tbody tr:last-child th,
+.coverage-table tbody tr:last-child td { border-bottom: 0; }
+.coverage-table tbody tr:hover { background: var(--panel-soft); }
+
+.coverage-table a { color: var(--blue); font-weight: 700; }
+.coverage-table a:hover { text-decoration: underline; }
+
+/* The row you are already reading is not a link to itself. */
+.coverage-table .is-here { color: var(--navy); font-weight: 800; }
+
+.coverage-yes { color: var(--success); font-weight: 700; }
+.coverage-part { color: var(--muted); font-size: 0.82rem; }
+.coverage-no { color: var(--line); }
+
 .study-controls {
   display: flex;
   align-items: center;
@@ -1618,9 +1704,9 @@ body.is-leaving { opacity: 0; }
 /* ==========================================================================
    Levels comparison table
 
-   Five levels side by side. The point of the page is comparing them, so the
-   numbers line up in columns and the row you belong on can be read straight
-   across.
+   Five level cards, each carrying what the level asks of you and the buttons
+   that start a drill. This used to be a comparison table on one page and the
+   same facts as cards on another; see renderLevels() in site.js.
    ========================================================================== */
 
 .sr-only {
@@ -1631,54 +1717,6 @@ body.is-leaving { opacity: 0; }
   clip-path: inset(50%);
   white-space: nowrap;
 }
-
-.levels-table-wrap {
-  margin-top: clamp(18px, 2vw, 28px);
-  overflow-x: auto;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
-}
-
-.levels-table {
-  width: 100%;
-  min-width: 780px;         /* below this the columns stop lining up: scroll */
-  border-collapse: collapse;
-}
-
-.levels-table th,
-.levels-table td {
-  /* A containing block for the visually-hidden label in the last heading.
-     Without one it resolves against the page, and because its static position
-     is ~900px along a table that scrolls sideways, it dragged the whole
-     document's scroll width out to 893px on a 390px phone. */
-  position: relative;
-  padding: 15px 16px;
-  text-align: left;
-  border-bottom: 1px solid var(--line);
-  vertical-align: middle;
-  font-variant-numeric: tabular-nums;
-}
-
-.levels-table thead th {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-  background: var(--panel-soft);
-}
-
-.levels-table tbody tr:last-child th,
-.levels-table tbody tr:last-child td { border-bottom: 0; }
-
-/* The level classes also carry the tinted card gradient used on the home page.
-   In a table that reads as five differently coloured rows rather than one
-   comparison, so it is cleared here. */
-.levels-table tbody tr { background: none; }
-.levels-table tbody tr:hover { background: var(--panel-soft); }
 
 /* One chip per level, in that level's colour, as everywhere else. */
 .lv-chip {
@@ -1693,18 +1731,11 @@ body.is-leaving { opacity: 0; }
   font-size: 0.84rem;
   letter-spacing: 0.05em;
 }
-.levels-table .level-n1 { --accent: #d9a63a; }
-.levels-table .level-n2 { --accent: #2d6eb4; }
-.levels-table .level-n3 { --accent: #2f7d57; }
-.levels-table .level-n4 { --accent: #7c3ac8; }
-.levels-table .level-n5 { --accent: #5c697a; }
-
-.lv-covers { color: var(--muted); line-height: 1.5; min-width: 230px; }
-.lv-pass { font-weight: 700; color: var(--navy); white-space: nowrap; }
-.lv-you strong { color: var(--success); font-size: 1.05rem; }
-.lv-dash { color: var(--line); }
-.lv-go { text-align: right; white-space: nowrap; }
-.lv-go .btn { padding: 8px 16px; font-size: 0.84rem; }
+.lv-chip.level-n1 { --accent: #d9a63a; }
+.lv-chip.level-n2 { --accent: #2d6eb4; }
+.lv-chip.level-n3 { --accent: #2f7d57; }
+.lv-chip.level-n4 { --accent: #7c3ac8; }
+.lv-chip.level-n5 { --accent: #5c697a; }
 
 .levels-note {
   margin: 18px 0 0;
@@ -1743,69 +1774,6 @@ body.is-leaving { opacity: 0; }
 @media (max-width: 430px) {
   .main-nav a { padding: 8px 9px; font-size: 0.86rem; }
   .main-nav { gap: 2px; }
-}
-
-/* -- 2. The levels comparison becomes five cards. A table that shows one
-      column at a time is not a comparison, and sideways scrolling to reach
-      "pass mark" is worse than reading it in a list. -- */
-@media (max-width: 700px) {
-  .levels-table-wrap { overflow-x: visible; background: none; border: 0; box-shadow: none; }
-  .levels-table { min-width: 0; }
-  .levels-table thead { display: none; }
-
-  .levels-table,
-  .levels-table tbody,
-  .levels-table tr,
-  .levels-table th,
-  .levels-table td { display: block; }
-
-  .levels-table tr {
-    margin-bottom: 14px;
-    padding: 16px 18px;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--accent, var(--blue));
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(17, 45, 78, 0.05);
-  }
-  .levels-table tr:hover { background: var(--panel); }
-
-  .levels-table th,
-  .levels-table td { padding: 0; border: 0; }
-
-  .levels-table .lv-covers {
-    margin: 10px 0 12px;
-    color: var(--muted);
-    min-width: 0;
-  }
-
-  /* Label and value on one line, the way a spec sheet reads. */
-  .levels-table td[data-label] {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 7px 0;
-    border-top: 1px solid var(--line);
-    font-weight: 700;
-    color: var(--navy);
-  }
-  .levels-table td[data-label]::before {
-    content: attr(data-label);
-    font-weight: 700;
-    font-size: 0.68rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--muted);
-    align-self: center;
-  }
-
-  .levels-table .lv-go {
-    margin-top: 14px;
-    text-align: left;
-  }
-  .levels-table .lv-go .btn { width: 100%; }
-
-  .levels-note { margin-top: 4px; }
 }
 
 /* A word written with a wave dash is an affix, not a standalone word. Say so,

@@ -59,7 +59,6 @@
         <nav class="main-nav" aria-label="Main navigation">
           <a href="../index.html" data-i18n="nav.home">ホーム</a>
           <a href="../levels.html" data-i18n="nav.levels">レベル</a>
-          <a href="../practice.html" data-i18n="nav.practice">練習</a>
           <a href="../exams.html" data-i18n="nav.exams">模擬試験</a>
           <a href="../study.html" class="active" data-i18n="nav.study">単語・文法</a>
           <a href="../about.html" data-i18n="nav.about">このサイト</a>
@@ -91,6 +90,18 @@
       <section class="page-intro">
         <h1>N3 文法</h1>
         <p data-i18n="study.body">N5からN1までの全単語を読み方と意味付きで、各レベルの主要な文型も合わせて。日本語・ローマ字・英語で検索できます。</p>
+      </section>
+
+      <!-- Filled in by tools/build_static.py: the counts come from the data
+           files, so they are written into the markup rather than fetched. -->
+      <section class="study-coverage">
+        <h2 data-i18n="notice.title">現在利用できるもの</h2>
+        <div class="coverage-wrap">
+          <table class="coverage-table">
+            <thead><tr><th scope="col" data-i18n="notice.colLevel">レベル</th><th scope="col" data-i18n="study.words">単語</th><th scope="col" data-i18n="study.grammar">文法</th><th scope="col">English</th><th scope="col" lang="ne">नेपाली</th></tr></thead>
+            <tbody><tr><th scope="row"><span class="lv-chip level-n5">N5</span></th><td><a href="n5-words.html">757</a></td><td><a href="n5-grammar.html">52</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span></td></tr><tr><th scope="row"><span class="lv-chip level-n4">N4</span></th><td><a href="n4-words.html">716</a></td><td><a href="n4-grammar.html">56</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span></td></tr><tr><th scope="row"><span class="lv-chip level-n3">N3</span></th><td><a href="n3-words.html">2,287</a></td><td><span class="is-here">59</span></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">文法</span></td></tr><tr><th scope="row"><span class="lv-chip level-n2">N2</span></th><td><a href="n2-words.html">2,120</a></td><td><a href="n2-grammar.html">54</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">文法</span></td></tr><tr><th scope="row"><span class="lv-chip level-n1">N1</span></th><td><a href="n1-words.html">3,759</a></td><td><a href="n1-grammar.html">59</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">文法</span></td></tr></tbody>
+          </table>
+        </div>
       </section>
 
       <div class="study-controls">
