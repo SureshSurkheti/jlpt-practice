@@ -200,11 +200,17 @@ def seo_head(lang, url, title, desc, langs, url_of, indexable, extra=""):
         '    <meta property="og:title" content="%s" />' % esc(title),
         '    <meta property="og:description" content="%s" />' % esc(desc),
         '    <meta property="og:url" content="%s" />' % url,
-        '    <meta property="og:image" content="%s/og-card.png" />' % SITE,
+        '    <meta property="og:image" content="%s/og-card.jpg" />' % SITE,
+        # Stated dimensions let a platform reserve the right box before it has
+        # fetched the file, which is the difference between a large card and a
+        # small one on a first paste.
+        '    <meta property="og:image:width" content="1200" />',
+        '    <meta property="og:image:height" content="630" />',
+        '    <meta property="og:image:alt" content="%s" />' % esc(SITE_NAME),
         '    <meta name="twitter:card" content="summary_large_image" />',
         '    <meta name="twitter:title" content="%s" />' % esc(title),
         '    <meta name="twitter:description" content="%s" />' % esc(desc),
-        '    <meta name="twitter:image" content="%s/og-card.png" />' % SITE,
+        '    <meta name="twitter:image" content="%s/og-card.jpg" />' % SITE,
     ]
     if extra:
         out.append(extra)
@@ -222,16 +228,26 @@ def rewrite_head(html, lang, page, langs, indexable, table, en, extra=""):
     return html[:start] + head.lstrip() + "    " + html[end:]
 
 
-def language_links(langs, page, current, names):
-    """A crawlable set of links to the other languages."""
+def language_links(langs, page, current, names, table, en):
+    """A crawlable set of links to the other languages.
+
+    The picker in the header is a <select>, which no crawler can follow, so
+    each translation needs a real <a> somewhere on the page or the twelve
+    language trees are invisible to everything but the sitemap. This row is
+    that link. It goes inside the footer's own .container - written loose
+    after </footer> it inherited no width and no list styling, and landed as
+    a bulleted list against the left edge of every page."""
     items = []
     for lang in langs:
         if lang == current:
             continue
         items.append('<li><a href="%s" hreflang="%s" lang="%s">%s</a></li>'
                      % (page_url(lang, page), lang, lang, esc(names[lang])))
-    return ('\n    <nav class="lang-links" aria-label="Languages">\n'
-            '      <ul>%s</ul>\n    </nav>\n' % "".join(items))
+    label = esc(t(table, "lang.label", en))
+    return ('      <nav class="container lang-links" aria-label="%s">\n'
+            '        <span>%s</span>\n'
+            '        <ul>%s</ul>\n'
+            '      </nav>\n    ' % (label, label, "".join(items)))
 
 
 # --------------------------------------------------------------------------
@@ -318,8 +334,9 @@ def main():
                     '      <div class="study-list">\n      %s\n      </div>\n'
                     '    </div>' % (n, esc(t(table, "study.wordsCount", en)), body))
 
-            html = html.replace("</footer>",
-                                "</footer>" + language_links(langs, page, lang, names))
+            html = html.replace(
+                "</footer>",
+                language_links(langs, page, lang, names, table, en) + "</footer>")
 
             io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(html)
             if indexable:
@@ -396,8 +413,9 @@ def main():
                                         'class="study-tab" data-kind="words"')
                     html = html.replace('class="study-tab" data-kind="grammar"',
                                         'class="study-tab is-on" data-kind="grammar"')
-                html = html.replace("</footer>", "</footer>" + language_links(
-                    langs, "study/%s-%s.html" % (level, kind), lang, names))
+                html = html.replace("</footer>", language_links(
+                    langs, "study/%s-%s.html" % (level, kind), lang, names,
+                    table, en) + "</footer>")
                 html = absolutise(html)
                 html = html.replace('href="./', 'href="../' if lang == DEFAULT_LANG
                                     else 'href="../')

@@ -16,12 +16,20 @@
   --font-sans: "Inter", sans-serif;
   --font-display: "Cormorant Garamond", serif;
 
-  /* Layout scale. The container grows with the viewport instead of stopping
-     dead at 1200px, so a 14" laptop (1440-1512px wide) uses its width and a
-     large desktop does not leave the page marooned in the middle. The upper
-     bound keeps line lengths readable on 4K. */
-  --gutter: clamp(16px, 2.6vw, 44px);
-  --content: clamp(1040px, 92vw, 1420px);
+  /* Layout scale. Every shell on the site - header, hero, page body, footer -
+     is a .container, so these two numbers set the single pair of vertical
+     lines the whole site is built on. Alignment is most of what reads as
+     "designed": nothing should start or end at a width nothing else uses.
+
+     The container is capped well before the viewport is. Filling a 1512px
+     laptop edge to edge leaves no frame, so the page reads as a document
+     dumped into a window rather than one laid out in it - and a table row or
+     a paragraph stretched that far is genuinely harder to track back to the
+     next line. 1240px is the widest the four-column study list and the
+     paper + palette exam grid actually need; past that the gutter takes the
+     rest and grows with the screen. */
+  --gutter: clamp(18px, 3.2vw, 64px);
+  --content: clamp(960px, 86vw, 1240px);
 
   /* One vertical rhythm for every section, tightened on short screens by the
      laptop-height query at the end of this file. */
@@ -606,6 +614,33 @@ body > main { flex: 1 0 auto; }
   padding-top: 18px;
 }
 
+/* The generator writes one real link per translation into every page. The
+   picker in the header is a <select>, which nothing but a person with a
+   mouse can follow, so without this row the eleven other language trees are
+   reachable only from the sitemap. Kept quiet: it is wayfinding for crawlers
+   and for anyone whose language the picker did not guess, not a feature. */
+.lang-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding-top: 14px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.lang-links > span { font-weight: 600; color: var(--navy); }
+.lang-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.lang-links a { color: var(--muted); }
+.lang-links a:hover,
+.lang-links a:focus-visible { color: var(--blue); text-decoration: underline; }
+
 /* Below this width the six nav links no longer fit beside the brand and the
    language picker, and the wrapped header grew to ~130px of sticky chrome.
    Scroll the nav sideways instead so the header stays a single row. */
@@ -635,9 +670,9 @@ body > main { flex: 1 0 auto; }
    Ordered widest to narrowest so the later, narrower rule wins.
    ========================================================================== */
 
-/* -- Large desktops. The container has hit its 1420px ceiling by now, so the
-      extra room goes into the cards themselves rather than more columns:
-      widening further would stretch the reading measure past comfort. -- */
+/* -- Large desktops. The container has hit its 1240px ceiling by now and the
+      surplus width is deliberately margin, so the extra room goes into the
+      cards themselves rather than into more columns or a wider measure. -- */
 @media (min-width: 1560px) {
   .stat-card { padding: 26px 24px; }
   .level-card { min-height: 226px; }
