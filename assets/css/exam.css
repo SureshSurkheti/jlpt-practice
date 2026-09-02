@@ -730,6 +730,8 @@
   color: var(--muted);
 }
 
+.section-card .btn { margin-top: 14px; }
+
 /* ------------------------------------------------------------- palette */
 
 .exam-side {

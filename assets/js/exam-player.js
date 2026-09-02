@@ -1255,6 +1255,14 @@
         : "") +
       '<p class="section-card-note">' + esc(t("exam.sectionMarkedNote")) + "</p>";
 
+    /* Beside the result, not at the foot of the paper: this is where you
+       decide you want another go, and a 51-question section is a long way
+       to scroll back down to a button. */
+    var again = el("button", "btn btn-ghost", t("exam.retakeSection"));
+    again.type = "button";
+    again.id = "retrySectionBtn";
+    box.appendChild(again);
+
     return box;
   }
 
@@ -1613,6 +1621,7 @@
       }
 
       if (ev.target.closest("#markSectionBtn")) confirmSection();
+      if (ev.target.closest("#retrySectionBtn")) retakeSection(state.paper);
       if (ev.target.closest("#submitBtn2")) confirmSubmit();
       if (ev.target.closest("#retryBtn2")) retake();
 
@@ -1763,6 +1772,29 @@
     var blanks = total - answeredCount();
     if (blanks > 0 && !window.confirm(blanks + " " + t("exam.confirmBlanks"))) return;
     submitExam(false);
+  }
+
+  /* Undo one section. Marking a section can only be undone for the whole
+     sitting otherwise, which is a poor trade: getting 40% on the vocabulary
+     and wanting another go should not cost you the reading you already did.
+
+     Only that section's answers and flags go. The clock is left alone - in
+     exam mode it is still the same sitting, and in study mode it is a
+     stopwatch that should keep counting. */
+  function retakeSection(key) {
+    if (!key) return;
+    state.questions.forEach(function (item) {
+      if (paperOfCategory(item.category) !== key) return;
+      delete state.answers[item.key];
+      delete state.flags[item.key];
+    });
+    delete state.marked[key];
+    state.reviewed = false;
+    state.filter = "all";
+    score();
+    saveProgress();
+    renderPaper();
+    window.scrollTo({ top: 0, behavior: "instant" });
   }
 
   function retake() {
