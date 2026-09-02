@@ -386,7 +386,7 @@ function levelBlock(lv) {
       </dl>
       <div class="plevel-skills">${skills}</div>
       <div class="plevel-foot">
-        <button type="button" class="btn btn-gold plevel-mock" data-level="${lv}">
+        <button type="button" class="btn btn-primary plevel-mock" data-level="${lv}">
           ${t('practice.mockTest')}
         </button>
         <a href="${listUrl}" class="btn btn-ghost">${t('practice.studyLists')}</a>

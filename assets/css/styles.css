@@ -166,51 +166,212 @@ body > main { flex: 1 0 auto; }
   outline: none;
 }
 
+/* ==========================================================================
+   Buttons
+
+   One definition for the whole site. This block used to exist twice - once
+   here and once in exam.css - with different values, so the same
+   .btn-primary was a 12px-radius rectangle on the home page and a full pill
+   inside a paper. exam.css now only adds what is genuinely exam-only.
+
+   Three tiers, and the gap between them is the point. A primary button is
+   noticeable because the things around it are not: give every control a
+   gradient and a glow and the eye has nowhere to land. So the weight goes
+   almost entirely into tier one.
+
+     .btn-primary   the one action - filled, lit, with a coloured shadow
+     .btn-gold      picking a paper back up, and nothing else
+     .btn-ghost     the alternative - raised white, quiet until touched
+     .btn-secondary the same, on a dark hero
+
+   Every tier gets the same three states, which is most of what makes a
+   button feel solid: it lifts under the pointer, it presses in when clicked,
+   and it shows a ring when focused by keyboard.
+   ========================================================================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-  color: #fff;
-  box-shadow: var(--shadow);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
-/* Used on the levels, practice and stats pages too, so they live here rather
-   than in exam.css, which only the exam pages load. */
-.btn-gold {
-  background: linear-gradient(135deg, #e2b74f, var(--gold));
-  color: #3a2a06;
-  box-shadow: 0 8px 20px rgba(217, 166, 58, 0.26);
+  gap: 8px;
+  padding: 12px 22px;
   border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  /* Slight overshoot on the way up, so the lift reads as a response rather
+     than a slide. */
+  transition: transform 0.18s cubic-bezier(0.34, 1.4, 0.64, 1),
+              box-shadow 0.18s ease, background 0.18s ease,
+              border-color 0.18s ease, color 0.18s ease;
 }
 
+.btn:hover { transform: translateY(-2px); }
+/* Pressed: the button goes back down and its shadow tightens under it, which
+   is what "pushed" looks like. Without this a click has no feedback at all
+   until the next page loads. */
+.btn:active { transform: translateY(0); transition-duration: 0.06s; }
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-lg { padding: 15px 32px; font-size: 1rem; }
+.btn-sm { padding: 9px 16px; font-size: 0.84rem; }
+
+/* -- tier one ------------------------------------------------------------ */
+
+/* The shadow is tinted with the button's own colour rather than plain black:
+   a navy button casting a navy shadow looks lit, a black one looks dirty.
+   The inset hairline along the top edge is the light catching it. */
+.btn-primary {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: #fff;
+  box-shadow: 0 6px 18px -4px rgba(45, 110, 180, 0.55),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--navy-2) 0%, #3a82cd 100%);
+  box-shadow: 0 12px 26px -6px rgba(45, 110, 180, 0.62),
+              inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.btn-primary:active {
+  box-shadow: 0 3px 10px -3px rgba(45, 110, 180, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #e8c163 0%, var(--gold) 100%);
+  color: #3a2a06;
+  box-shadow: 0 6px 18px -4px rgba(217, 166, 58, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #f0cd76 0%, #e0af44 100%);
+  box-shadow: 0 12px 26px -6px rgba(217, 166, 58, 0.68),
+              inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+.btn-gold:active {
+  box-shadow: 0 3px 10px -3px rgba(217, 166, 58, 0.55),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* -- tier two ------------------------------------------------------------ */
+
+/* Raised, not flat. A white button with a hairline border and no shadow at
+   all reads as disabled next to a lit one; a small shadow is what separates
+   "quiet" from "off". */
 .btn-ghost {
   background: #fff;
-  border: 1px solid var(--line);
+  border-color: #dbe4f0;
   color: var(--navy);
+  box-shadow: 0 2px 6px rgba(17, 45, 78, 0.07);
+}
+.btn-ghost:hover {
+  background: #f7fafd;
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 8px 18px -5px rgba(45, 110, 180, 0.32);
+}
+.btn-ghost:active { box-shadow: 0 1px 4px rgba(17, 45, 78, 0.1); }
+
+/* The same tier, sitting on one of the dark hero panels. */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.19);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 10px 22px -8px rgba(0, 0, 0, 0.45);
+}
+.btn-secondary:active { box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.4); }
+
+/* Nobody who has asked for less motion wants a button springing at them. */
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: background 0.15s ease, border-color 0.15s ease; }
+  .btn:hover, .btn:active { transform: none; }
 }
 
-.btn-ghost:hover { background: var(--panel-soft); }
+/* ==========================================================================
+   Everything else that is pressable
 
-.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+   Chips, tabs, the palette cells, the back links, the kanji tiles. These are
+   tier three: they must feel like the same family as the buttons above -
+   same easing, same press, same focus ring - without competing with them.
+   So they get the press and the ring, but no lift and no glow. The lift is
+   reserved for things that are actually a call to action; when a filter chip
+   jumps at the pointer too, nothing on the page has priority.
+
+   Written as one list so a new control cannot quietly miss out.
+   ========================================================================== */
+
+.chip,
+.chip-back,
+.skill-btn,
+.study-tab,
+.paper-tab,
+.exam-back,
+.kanji-nav,
+.kanji-char,
+.words-btn,
+.flag-btn,
+.palette-cell,
+.lvcard,
+.to-top,
+.language-select {
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease,
+              color 0.16s ease, box-shadow 0.16s ease,
+              transform 0.12s ease;
+}
+
+/* Every one of them acknowledges the press. */
+.chip:active,
+.chip-back:active,
+.skill-btn:active,
+.study-tab:active,
+.paper-tab:active,
+.exam-back:active,
+.kanji-nav:active,
+.kanji-char:active,
+.words-btn:active,
+.flag-btn:active,
+.palette-cell:active,
+.to-top:active { transform: scale(0.96); }
+
+.lvcard:active { transform: scale(0.995); }
+
+/* One ring, everywhere, so keyboard focus is never a guess. */
+:where(a, button, select, input, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* On the dark panels the blue ring disappears into the background. */
+.hero-section :where(a, button, select, input):focus-visible,
+.stats-hero :where(a, button, select, input):focus-visible,
+.exam-hero :where(a, button, select, input):focus-visible,
+.exams-hero :where(a, button, select, input):focus-visible {
+  outline-color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip:active, .chip-back:active, .skill-btn:active, .study-tab:active,
+  .paper-tab:active, .exam-back:active, .kanji-nav:active, .kanji-char:active,
+  .words-btn:active, .flag-btn:active, .palette-cell:active,
+  .to-top:active, .lvcard:active { transform: none; }
+}
 
 .hero-section {
   padding: clamp(34px, 4.4vw, 64px) 0 clamp(26px, 2.6vw, 38px);
@@ -1241,26 +1402,6 @@ body.is-leaving { opacity: 0; }
 }
 
 /* ==========================================================================
-   Keyboard focus
-
-   Every interactive element on the site is a link, a select or a button, and
-   several of them sit on the navy hero where the browser default ring is
-   invisible. One visible ring, drawn outside the element so it never shifts
-   the layout.
-   ========================================================================== */
-
-:where(a, button, select, input, [tabindex]):focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
-  border-radius: 8px;
-}
-
-.hero-section :where(a, button):focus-visible,
-.stats-hero :where(a, button):focus-visible {
-  outline-color: var(--gold);
-}
-
-/* ==========================================================================
    About page
 
    A single column of prose with nothing beside it. Left-aligned against the
@@ -1440,19 +1581,25 @@ body.is-leaving { opacity: 0; }
 }
 .plevel-bar-fill { height: 100%; background: var(--success); border-radius: 999px; }
 
+/* The four facts. They were four boxed chips in a three-wide grid, so the
+   fourth sat alone with a hole beside it, and the boxes gave the card a third
+   separate visual language on top of the buttons below them. A plain row of
+   figures divided by hairlines carries the same information at a fraction of
+   the weight, and four of them fit. */
 .plevel-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin: 0 0 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 18px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 .plevel-facts div {
-  padding: 9px 11px;
-  background: var(--panel-soft);
-  border-radius: 10px;
+  padding: 11px 0 11px 12px;
+  border-left: 1px solid var(--line);
 }
+.plevel-facts div:first-child { padding-left: 0; border-left: 0; }
 .plevel-facts dt {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -1466,30 +1613,42 @@ body.is-leaving { opacity: 0; }
   font-variant-numeric: tabular-nums;
 }
 
+/* Four ways into the same level, so they are one control group of four equal
+   things: a single row, one weight, one colour.
+
+   They used to carry a coloured stripe each - blue, gold, green, red - which
+   was decoration pretending to be information. Nothing on this site teaches
+   that blue means vocabulary, and worse, the stripes reused the five level
+   colours: a green Reading bar sat directly under a green N3 heading and a
+   gold Listening bar under gold N1, implying a relationship that does not
+   exist. They are secondary actions and now look like it. */
 .plevel-skills {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin-bottom: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
 .skill-btn {
-  padding: 11px 10px;
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--accent, var(--blue));
-  border-radius: 10px;
-  background: #fff;
+  padding: 10px 6px;
+  border: 1px solid transparent;
+  /* A pill, like every other chip on the site. It was a 10px rectangle,
+     which made the four of them the one control family with a different
+     shape from all the rest. */
+  border-radius: 999px;
+  background: var(--panel-soft);
   color: var(--navy);
-  font-weight: 700;
-  font-size: 0.88rem;
+  font-weight: 600;
+  font-size: 0.82rem;
   cursor: pointer;
   transition: 0.16s ease;
 }
 
 .skill-btn:hover {
-  background: var(--panel-soft);
-  border-color: var(--accent, var(--blue));
-  transform: translateY(-1px);
+  background: #e6eff9;
+  border-color: #b9d3ec;
+  color: var(--blue);
+  box-shadow: 0 4px 10px -4px rgba(45, 110, 180, 0.4);
 }
 
 .plevel-foot {
@@ -1535,9 +1694,12 @@ body.is-leaving { opacity: 0; }
   .summary-stat { padding: 14px 12px; }
   .summary-stat strong { font-size: 1.4rem; }
   .summary-stat span { font-size: 0.62rem; letter-spacing: 0.05em; }
-  .plevel-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-  .plevel-facts div { padding: 7px 8px; }
-  .plevel-facts dd { font-size: 0.85rem; }
+  /* Four across stops being readable at this width for both rows. */
+  .plevel-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plevel-facts div:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .plevel-facts div:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  .plevel-facts dd { font-size: 0.9rem; }
+  .plevel-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plevel-foot .btn { width: 100%; }
 }
 
@@ -1649,7 +1811,7 @@ body.is-leaving { opacity: 0; }
   background: #fff;
   border-color: var(--line);
   color: var(--navy);
-  box-shadow: 0 3px 10px rgba(17, 45, 78, 0.08);
+  box-shadow: 0 3px 10px -3px rgba(17, 45, 78, 0.32);
 }
 
 .study-search {

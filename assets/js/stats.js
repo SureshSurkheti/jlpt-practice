@@ -45,7 +45,7 @@ function renderLevelProgress() {
         </div>
         <div class="lp-actions">
           <a href="levels.html?lv=${lv}" class="btn btn-ghost">${t('stats.practise')} ${lv}</a>
-          <a href="${mockExamUrl(lv) || 'exams.html'}" class="btn btn-gold">${t('stats.takeMock')}</a>
+          <a href="${mockExamUrl(lv) || 'exams.html'}" class="btn btn-primary">${t('stats.takeMock')}</a>
         </div>
       </div>`;
   }).join('');
