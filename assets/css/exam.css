@@ -1372,40 +1372,58 @@
    level to open: how many papers, and how many questions in them.
    ========================================================================== */
 
+/* Five levels, five columns, one row. auto-fit with a 215px minimum meant
+   the fifth card dropped to a line of its own the moment the container went
+   under 1,100px, and a lone N5 sitting below four siblings reads as if it
+   were a different kind of thing. They are one scale, so they line up. */
 .level-picker {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-  gap: clamp(14px, 1.4vw, 20px);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(10px, 1.1vw, 16px);
   margin-top: 6px;
 }
 
 /* A column layout, not a row: five of these sit side by side, and a row
    layout squeezed the description into three words per line. */
 .lvcard {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: clamp(18px, 1.8vw, 24px);
+  gap: 7px;
+  padding: clamp(15px, 1.4vw, 20px);
   text-align: left;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--level-color, var(--blue));
+  border-top: 4px solid var(--level-color, var(--blue));
   border-radius: 18px;
   box-shadow: 0 10px 24px rgba(17, 45, 78, 0.05);
-  cursor: pointer;
-  transition: 0.18s ease;
+  overflow: hidden;
+}
+
+/* The level's own colour washes up from the bottom on hover, so the card the
+   pointer is on is unmistakable among five near-identical ones. */
+.lvcard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%,
+              color-mix(in srgb, var(--level-color, #2d6eb4) 12%, transparent));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
 }
 
 .lvcard:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--level-color, var(--blue));
-  border-left-color: var(--level-color, var(--blue));
-  box-shadow: 0 16px 32px rgba(17, 45, 78, 0.12);
+  border-top-color: var(--level-color, var(--blue));
+  box-shadow: 0 18px 34px -10px rgba(17, 45, 78, 0.28);
 }
+.lvcard:hover::before { opacity: 1; }
 
 .lvcard-code {
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 2.6vw, 2.8rem);
+  font-size: clamp(1.9rem, 2.2vw, 2.5rem);
   font-weight: 700;
   line-height: 1;
   color: var(--level-color, var(--navy));
@@ -1414,7 +1432,7 @@
 .lvcard-desc {
   color: var(--navy);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   line-height: 1.4;
 }
 
@@ -1422,43 +1440,69 @@
    became separate boxes and the space between them collapsed away. */
 .lvcard-facts {
   margin-top: 2px;
+  margin-bottom: 4px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
 }
 .lvcard-facts b { color: var(--navy); font-variant-numeric: tabular-nums; }
 .lvcard-facts i { font-style: normal; margin: 0 7px; opacity: 0.5; }
 
+/* The way in. It was a bare arrow glyph in the corner - the one part of the
+   card that actually does something, drawn as the faintest thing on it. Now
+   a filled pill in the level's colour that widens under the pointer: it
+   looks pressable standing still, and it answers the press. */
 .lvcard-go {
+  position: relative;
   margin-top: auto;
-  align-self: flex-end;
-  font-size: 1.2rem;
-  color: var(--level-color, var(--blue));
-  transition: transform 0.18s ease;
+  align-self: flex-start;
+  display: inline-grid;
+  place-items: center;
+  min-width: 40px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--level-color, var(--blue));
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1;
+  box-shadow: 0 4px 12px -3px
+              color-mix(in srgb, var(--level-color, #2d6eb4) 65%, transparent);
+  transition: min-width 0.2s cubic-bezier(0.34, 1.4, 0.64, 1),
+              box-shadow 0.2s ease, transform 0.2s ease;
 }
-.lvcard:hover .lvcard-go { transform: translateX(3px); }
+.lvcard:hover .lvcard-go {
+  min-width: 58px;
+  box-shadow: 0 8px 18px -4px
+              color-mix(in srgb, var(--level-color, #2d6eb4) 75%, transparent);
+}
+.lvcard:active .lvcard-go { transform: scale(0.94); }
+
+/* Five across needs about 900px of container. Below that the cards get
+   narrower than their own descriptions, so step down rather than squeeze:
+   three, then two, then one. Never four - a 4+1 split puts N5 alone on a
+   line, which is the thing this layout exists to avoid. */
+@media (max-width: 1080px) {
+  .level-picker { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .level-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 460px) {
+  .level-picker { grid-template-columns: minmax(0, 1fr); }
+  .lvcard { flex-direction: row; align-items: center; gap: 14px; }
+  .lvcard-code { flex: 0 0 auto; }
+  .lvcard-desc, .lvcard-facts { flex: 1 1 auto; }
+  .lvcard-go { margin-top: 0; align-self: center; }
+}
 
 /* The way back out of a level, sitting first in the filter row. */
 /* .exams-filters sets display:flex, which outranks the browser's own rule for
    the hidden attribute, so the row stayed on screen while empty. */
 .exams-filters[hidden] { display: none; }
 
-.chip-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 16px 9px 13px;
-  margin-right: 4px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel-soft);
-  color: var(--navy);
-  font-weight: 700;
-  font-size: 0.86rem;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: 0.16s ease;
-}
-.chip-back:hover { background: #fff; border-color: var(--blue); color: var(--blue); }
+/* .chip-back moved to styles.css: the levels, study and stats pages use it
+   for their back link too, and they never load this file. */
+
 
 .exams-searchrow { display: flex; margin: 18px 0 20px; }
 .exams-searchrow .exams-search { margin-left: auto; }

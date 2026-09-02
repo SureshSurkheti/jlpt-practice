@@ -568,6 +568,10 @@ def main():
                 html = html.replace("</footer>", language_links(
                     langs, "study/%s-%s.html" % (level, kind), lang, names,
                     table, en) + "</footer>")
+                # These sit a directory down, and the page above them is the
+                # study hub, not the home page the template names.
+                html = html.replace('data-back-to="index.html"',
+                                    'data-back-to="../study.html"')
                 html = absolutise(html)
                 html = html.replace('href="./', 'href="../' if lang == DEFAULT_LANG
                                     else 'href="../')

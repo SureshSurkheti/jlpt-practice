@@ -1720,6 +1720,42 @@ body.is-leaving { opacity: 0; }
    characters a line whatever the grid around it is doing.
    -------------------------------------------------------------------------- */
 
+/* A pill that goes back one step. Used by the exam library, the kanji page
+   and the back link every other page mounts, so it lives here rather than in
+   exam.css, which only the exam pages load. */
+.chip-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px 9px 13px;
+  margin-right: 4px;
+  border: 1px solid #dbe4f0;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.86rem;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(17, 45, 78, 0.06);
+}
+.chip-back:hover {
+  background: #fff;
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 6px 14px -5px rgba(45, 110, 180, 0.35);
+}
+
+/* The back link the script adds to the top of a page. It is the first thing
+   in <main>, above the heading, so it reads as "out of here" rather than as
+   part of the content. */
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: clamp(18px, 2vw, 28px);
+}
+.page-back + .page-intro { padding-top: 14px; }
+
 .study-page .page-intro p { max-width: 68ch; }
 
 /* What each level actually contains, and which languages the meanings are

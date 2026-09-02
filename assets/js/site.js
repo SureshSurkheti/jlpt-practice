@@ -581,6 +581,58 @@ function wireBrand() {
 }
 
 /* ==========================================================================
+   Back
+
+   Returns you to the page you actually came from, not to a fixed parent.
+   /study/n1-words.html is reached from the study hub, from the coverage
+   table on any of the other nine list pages, from a level card, and from a
+   search result - a hard-coded "up" link would be wrong for three of those.
+
+   So: history.back() when the previous page was this site, and a real href
+   otherwise. The href matters in three cases the history cannot cover -
+   arriving from Google, opening the page in a new tab, and having no
+   JavaScript at all - and it is what the link does before this script runs.
+   ========================================================================== */
+function mountPageBack() {
+  var target = document.body.dataset.backTo;
+  if (!target) return;
+
+  var main = document.querySelector("main");
+  if (!main || document.getElementById("pageBack")) return;
+
+  var a = document.createElement("a");
+  a.id = "pageBack";
+  a.className = "chip-back page-back";
+  a.href = target;
+
+  function label() {
+    a.innerHTML = '<span aria-hidden="true">\u2190</span> ' + t("nav.back");
+  }
+  label();
+  document.addEventListener("languagechange", label);
+
+  /* Same-origin referrer means the visitor arrived from somewhere on this
+     site, so there is a real previous page to return to. Anything else -
+     a search engine, a pasted link, a fresh tab - leaves the href alone. */
+  var fromHere = false;
+  try {
+    fromHere = !!document.referrer &&
+      new URL(document.referrer).origin === window.location.origin &&
+      document.referrer !== window.location.href;
+  } catch (e) { fromHere = false; }
+
+  if (fromHere) {
+    a.addEventListener("click", function (ev) {
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
+      ev.preventDefault();
+      history.back();
+    });
+  }
+
+  main.insertBefore(a, main.firstChild);
+}
+
+/* ==========================================================================
    Back to top
 
    The study lists run to 3,759 rows and a finished paper to 180 questions;
@@ -654,6 +706,7 @@ function renderAll() {
 document.addEventListener('DOMContentLoaded', () => {
   wireNavScroll();
   I18N.init();
+  mountPageBack();
   mountBackToTop();
   renderAll();
   wireBrand();
