@@ -878,6 +878,17 @@
       if (wasReload() && saved && saved.answers &&
           Object.keys(saved.answers).length) {
         startExam(collectSetup(), saved);
+        /* The browser restores the scroll of a reloaded page on its own, but
+           only if the page is that tall when it tries - and this paper is
+           built by script after the JSON arrives, so on anything slower than
+           localhost the restore runs against an empty document, finds
+           nothing to scroll, and leaves you at the top. Locally it worked
+           and this looked unnecessary; against the live site it did not. So
+           the position is carried in the saved attempt and reapplied here,
+           once the questions actually exist. */
+        if (saved.scrollY > 0) {
+          window.scrollTo({ top: saved.scrollY, behavior: "instant" });
+        }
         return;
       }
     }
@@ -2449,6 +2460,21 @@
      was a false alarm on every reload. It is left in place for the one case
      where it is true: storage that refused the write, in private browsing or
      with a full quota. */
+  /* Where you were reading, written at the last possible moment. saveProgress
+     runs when an answer or a flag changes, which is nowhere near often enough
+     to keep a scroll position current, and pagehide is the one event that
+     fires for a reload, a Back and a phone discarding the tab alike. */
+  window.addEventListener("pagehide", function () {
+    if (!state.exam || !state.questions.length) return;
+    try {
+      var raw = localStorage.getItem(storeKey());
+      if (!raw) return;
+      var rec = JSON.parse(raw);
+      rec.scrollY = Math.round(window.scrollY || window.pageYOffset || 0);
+      localStorage.setItem(storeKey(), JSON.stringify(rec));
+    } catch (e) { /* storage refused the write; the paper still resumes */ }
+  });
+
   window.addEventListener("beforeunload", function (ev) {
     if (state.saveFailed && state.questions.length && !state.reviewed &&
         answeredCount() > 0) {
