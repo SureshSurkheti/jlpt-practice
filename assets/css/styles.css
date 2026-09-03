@@ -418,16 +418,16 @@ body > main { flex: 1 0 auto; }
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
   gap: clamp(24px, 3vw, 48px);
-  /* Both columns run the full height of the taller one, so the headline
-     starts level with the top of the level panel and the buttons finish
-     level with its bottom. Centred, the two blocks were eighteen pixels out
-     at each end - close enough to look like a mistake rather than a choice. */
-  align-items: stretch;
-}
-.hero-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  /* Centred, not stretched.
+
+     Stretching the copy to the panel's height and spacing it out did line
+     the two columns up at top and bottom - but the copy's own content is
+     192px inside a 284px column, so it bought that edge with a 39px hole
+     under the headline and a 53px hole above the buttons. A headline, its
+     sentence and its buttons are one thing; pulling them apart to make an
+     edge agree is the wrong trade. The panel is tightened instead, so the
+     two columns end up close in height on their own. */
+  align-items: center;
 }
 
 /* Five ways straight into the library, one per level. */
@@ -455,7 +455,7 @@ body > main { flex: 1 0 auto; }
   grid-template-columns: 2.6rem minmax(0, 1fr) auto;
   align-items: center;
   gap: 10px;
-  padding: 9px 10px;
+  padding: 7px 10px;
   border-radius: 12px;
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
@@ -524,7 +524,7 @@ body > main { flex: 1 0 auto; }
 }
 
 .hero-copy p {
-  margin: 0;
+  margin: 4px 0 0;
   max-width: 62ch;
   font-size: 1.06rem;
   line-height: 1.7;
@@ -535,7 +535,7 @@ body > main { flex: 1 0 auto; }
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 26px;
+  margin-top: 30px;
 }
 
 .feature-section,
@@ -671,81 +671,14 @@ body > main { flex: 1 0 auto; }
   max-width: 68ch;
 }
 
-.level-detail-grid,
-.about-grid,
-.steps-grid {
-  display: grid;
-  gap: 18px;
-}
-
-.level-detail-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 28px;
-}
-
-.level-detail-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
-}
-
-.level-detail-card h3 {
-  margin: 0 0 10px;
-  color: var(--navy);
-  font-size: 1.5rem;
-}
-
-.level-detail-card p {
-  margin: 0 0 14px;
-  color: var(--muted);
-}
-
-.level-detail-card ul {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
 .about-card h3,
 .step-item h4 {
   margin: 0 0 14px;
   color: var(--navy);
 }
 
-.about-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 24px;
-}
-
-.about-card {
-  padding: 22px;
-}
-
-.about-card ul {
-  padding-left: 18px;
-  margin: 0;
-  line-height: 1.8;
-}
-
 .about-card.highlight {
   background: linear-gradient(135deg, #fffaf0, #fff6dc);
-}
-
-.steps-panel {
-  margin-top: 28px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  padding: 22px;
-  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
-}
-
-.steps-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 18px;
 }
 
 .step-item {
@@ -920,7 +853,6 @@ body > main { flex: 1 0 auto; }
       cards themselves rather than into more columns or a wider measure. -- */
 @media (min-width: 1560px) {
   .level-card { min-height: 226px; }
-  .steps-panel { padding: 32px; }
 }
 
 /* -- Laptops below ~1180px. Five level cards across gets cramped here; three
@@ -1389,35 +1321,41 @@ body.is-leaving { opacity: 0; }
 /* ==========================================================================
    About page
 
-   A single column of prose with nothing beside it. Left-aligned against the
-   full page width it sat in the corner of a wide screen with everything to
-   its right empty. Centre the column and the text inside it: every paragraph
-   here is only one to three lines, which is short enough for centred text to
-   read as deliberate rather than as a wall to track back across.
-   ========================================================================== */
+   Two columns on a desktop: the prose on the left at a reading measure, the
+   attribution and the rights notice beside it.
 
-.about-page .page-intro,
-.about-page .about-plain {
-  max-width: 66ch;
-  margin-inline: auto;
-  text-align: center;
+   It used to be one centred column with centred text, on the reasoning that
+   every paragraph was one to three lines - short enough for centring to read
+   as deliberate. The page has grown since: five body paragraphs, three
+   credit lines and a four-paragraph rights notice. Centred body text at that
+   length has no left edge to come back to, and one column left half of a
+   desktop empty. */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+  margin-top: 26px;
 }
 
-/* ...but not the rights notice, which is the one block on this page meant to
-   be read closely rather than skimmed. */
-.about-page .about-rights { text-align: left; }
+.about-intro { max-width: 64ch; }
+.about-plain { text-align: left; }
+.about-aside { display: grid; gap: 18px; }
 
-/* The lead sentence and the first paragraph both sit in the same centred
-   column, so without this they read as one run-on block. */
-.about-page .about-plain { margin-top: 20px; }
+/* The credits sit in the sidebar now, so the rule that used to separate them
+   from the prose above would be a line across the top of the column. */
+.about-aside .about-credits {
+  border-top: 0;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.about-aside .about-rights { margin-top: 0; }
 
-.about-page .page-intro p { margin-inline: auto; }
-
-/* Lists would lose their left edge if they were centred with the prose. */
-.about-page .about-plain ul,
-.about-page .about-plain ol {
-  display: inline-block;
-  text-align: left;
+@media (max-width: 960px) {
+  .about-layout { grid-template-columns: minmax(0, 1fr); }
 }
 
 .about-page .about-credits {

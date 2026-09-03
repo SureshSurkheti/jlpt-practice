@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">Tentang</h1>
         <p data-i18n="about.body">Situs belajar JLPT gratis untuk orang yang tinggal di Jepang.</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">Setiap soal di sini dikerjakan dalam format JLPT itu sendiri — berwaktu, dinilai otomatis, dengan penjelasan jawaban dan transkrip menyimak.</p>
         <p data-i18n="about.p2">Tidak ada akun dan tidak perlu mendaftar. Jawaban, nilai, dan kemajuan Anda hanya tersimpan di peramban ini dan tidak pernah diunggah.</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">Selain soal, ada daftar belajar untuk setiap level: 9.639 kata dengan cara baca, romaji dan arti bahasa Inggris, 2.211 kanji dengan animasi urutan goresan, serta pola tata bahasa inti beserta contoh kalimat. Antarmuka tersedia dalam 12 bahasa, dan daftar kata N5 dan N4 juga memuat arti bahasa Nepal.</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">Kredit</h2>
         <p data-i18n="about.creditsCode">Dibuat oleh Suresh Surkheti. Kode berlisensi MIT.</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

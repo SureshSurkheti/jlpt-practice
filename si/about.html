@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">පිළිබඳව</h1>
         <p data-i18n="about.body">ජපානයේ ජීවත් වන අය සඳහා නොමිලේ JLPT ඉගෙනුම් අඩවියක්.</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">මෙහි ඇති සෑම ප්‍රශ්න පත්‍රයක්ම JLPT හි ම ආකෘතියෙන් කළ හැක — කාලය ගණන් කර, ස්වයංක්‍රීයව ලකුණු දී, පිළිතුරු පැහැදිලි කිරීම් සහ ශ්‍රවණ පිටපත් සමඟ.</p>
         <p data-i18n="about.p2">ගිණුමක් හෝ ලියාපදිංචියක් නැත. ඔබේ පිළිතුරු, ලකුණු සහ ප්‍රගතිය මෙම බ්‍රවුසරයේ පමණක් සුරැකෙන අතර කිසිවිටෙකත් උඩුගත නොවේ.</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">ප්‍රශ්න පත්‍රවලට අමතරව සෑම මට්ටමකටම අධ්‍යයන ලැයිස්තු ඇත: කියවීම්, රෝමාජි සහ ඉංග්‍රීසි අර්ථ සහිත වචන 9,639ක්, ලිවීමේ අනුපිළිවෙළ සජීවිකරණය සහිත කන්ජි 2,211ක්, සහ උදාහරණ වාක්‍ය සහිත මූලික ව්‍යාකරණ රටා. අතුරුමුහුණත භාෂා 12කින් ඇති අතර, N5 සහ N4 වචන ලැයිස්තුවල නේපාල අර්ථද ඇත.</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">ස්තුතිය</h2>
         <p data-i18n="about.creditsCode">නිර්මාණය: Suresh Surkheti. කේතය MIT බලපත්‍රය යටතේ ය.</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">Tungkol</h1>
         <p data-i18n="about.body">Libreng JLPT study site para sa mga naninirahan sa Japan.</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">Ang bawat papel dito ay sinasagutan sa mismong pormat ng JLPT — may timer, automatic na pagmamarka, at may paliwanag ng sagot at transcript ng pakikinig.</p>
         <p data-i18n="about.p2">Walang account at walang sign-up. Ang mga sagot, iskor at progreso mo ay nakatago lang sa browser na ito at hindi kailanman ina-upload.</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">Bukod sa mga papel, may study list para sa bawat antas: 9,639 salita na may bigkas, romaji at kahulugan sa Ingles, 2,211 kanji na may animated na stroke order, at ang pangunahing mga pattern ng gramatika na may halimbawang pangungusap. Available ang interface sa 12 wika, at may kahulugan sa Nepali din ang mga salitang N5 at N4.</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">Mga kredito</h2>
         <p data-i18n="about.creditsCode">Ginawa ni Suresh Surkheti. Ang code ay lisensyadong MIT.</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

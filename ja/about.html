@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">このサイトについて</h1>
         <p data-i18n="about.body">日本に住む人のための無料のJLPT学習サイトです。</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">ここにある問題はJLPTと同じ形式で解けます。時間を計って自動採点され、解説と聴解スクリプトが付いています。</p>
         <p data-i18n="about.p2">アカウント登録はありません。解答・スコア・進捗はこのブラウザ内にのみ保存され、どこにも送信されません。</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">問題以外にも各レベルの学習リストがあります。読み・ローマ字・英語訳つきの単語 9,639 語、筆順アニメーションつきの漢字 2,211 字、例文つきの主要文法パターン。画面表示は12言語に対応し、N5・N4 の単語にはネパール語訳もついています。</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">クレジット</h2>
         <p data-i18n="about.creditsCode">制作：Suresh Surkheti。コードはMITライセンスです。</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

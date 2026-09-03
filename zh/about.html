@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">关于</h1>
         <p data-i18n="about.body">为在日本生活的人提供的免费JLPT学习网站。</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">这里的试题按JLPT本身的格式作答 — 计时、自动评分，并附答案解析和听力原文。</p>
         <p data-i18n="about.p2">无需账号，无需注册。你的作答、成绩和进度只保存在本浏览器中，绝不会上传。</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">除了试题，每个级别还有学习清单：9,639 个单词，附读音、罗马字和英文释义；2,211 个汉字，附笔顺动画；以及核心语法句型和例句。界面支持 12 种语言，N5 和 N4 的词表还附有尼泊尔语释义。</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">致谢</h2>
         <p data-i18n="about.creditsCode">由 Suresh Surkheti 制作。代码采用 MIT 许可。</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

@@ -1165,17 +1165,30 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 3px 9px;
+  /* Wide enough that the three scored sections read as three things. They
+     used to be separated by a middot at nine pixels, which ran them into one
+     stream you had to parse rather than scan. */
+  gap: 4px 22px;
   min-width: 0;
   font-size: 0.78rem;
   color: var(--muted);
+}
+.exam-row-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  min-width: 0;
+}
+.exam-row-parts > span { white-space: nowrap; }
+.exam-row-parts b {
+  color: var(--ink-soft);
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .exam-row-count {
   font-weight: 700;
   color: var(--ink-soft);
   font-variant-numeric: lining-nums tabular-nums;
 }
-.exam-row-parts { font-variant-numeric: lining-nums tabular-nums; }
 .exam-row-origin {
   padding: 2px 9px;
   border-radius: 999px;

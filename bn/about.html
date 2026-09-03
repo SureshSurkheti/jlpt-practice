@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">পরিচিতি</h1>
         <p data-i18n="about.body">জাপানে বসবাসকারীদের জন্য বিনামূল্যের JLPT অধ্যয়ন সাইট।</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায় — সময় গণনা, স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।</p>
         <p data-i18n="about.p2">কোনো অ্যাকাউন্ট বা সাইন-আপ নেই। আপনার উত্তর, স্কোর ও অগ্রগতি কেবল এই ব্রাউজারেই সংরক্ষিত থাকে, কোথাও আপলোড হয় না।</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">পেপার ছাড়াও প্রতিটি স্তরের জন্য অধ্যয়ন তালিকা আছে: উচ্চারণ, রোমাজি ও ইংরেজি অর্থসহ ৯,৬৩৯টি শব্দ, স্ট্রোক অর্ডার অ্যানিমেশনসহ ২,২১১টি কাঞ্জি, এবং উদাহরণ বাক্যসহ মূল ব্যাকরণ প্যাটার্ন। ইন্টারফেস ১২টি ভাষায় পাওয়া যায়, আর N5 ও N4-এর শব্দতালিকায় নেপালি অর্থও আছে।</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">কৃতজ্ঞতা</h2>
         <p data-i18n="about.creditsCode">নির্মাতা: Suresh Surkheti। কোড MIT লাইসেন্সের অধীনে।</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

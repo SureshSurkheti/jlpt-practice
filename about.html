@@ -88,11 +88,16 @@
     </header>
 
     <main class="container page-shell">
-      <section class="page-intro">
+      <section class="page-intro about-intro">
         <h1 data-i18n="about.title">About</h1>
         <p data-i18n="about.body">A free JLPT study site for people living in Japan.</p>
       </section>
 
+      <!-- Prose on the left, the attribution and rights material beside it
+           on a wide screen. As one centred column it left half a desktop
+           empty and set five paragraphs of centred body text, which has no
+           left edge to return to. -->
+      <div class="about-layout">
       <section class="about-plain">
         <p data-i18n="about.p1">Each paper here is played in the JLPT's own format — timed, marked automatically, with answer explanations and listening scripts.</p>
         <p data-i18n="about.p2">There is no account and no sign-up. Your answers, scores and progress are stored only in this browser and are never uploaded.</p>
@@ -105,6 +110,7 @@
         <p data-i18n="about.p4">Beyond the papers there are study lists for every level: 9,639 words with readings, romaji and English meanings, 2,211 kanji with animated stroke order, and the core grammar patterns with example sentences. The interface is available in 12 languages, and the N5 and N4 word lists also carry Nepali meanings.</p>
       </section>
 
+      <aside class="about-aside">
       <section class="about-plain about-credits">
         <h2 data-i18n="about.creditsTitle">Credits</h2>
         <p data-i18n="about.creditsCode">Built by Suresh Surkheti. The code is MIT licensed.</p>
@@ -127,6 +133,8 @@
              target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
         </p>
       </section>
+      </aside>
+      </div>
     </main>
 
     <footer class="site-footer">

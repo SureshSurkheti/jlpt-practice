@@ -16,42 +16,50 @@
   var LEVEL_COLOR = {
     N1: "#d9a63a", N2: "#2d6eb4", N3: "#2f7d57", N4: "#7c3ac8", N5: "#5c697a"
   };
-  /* How the JLPT is actually sat, which is not how this archive stored it.
+  /* The sections the JLPT actually scores, which is what a learner needs to
+     see before opening a paper - and which is not how this archive stored
+     it, nor how the booklets are handed out on the day.
 
-     N1 and N2 are two papers: 言語知識（文字・語彙・文法）・読解 in one
-     sitting, then 聴解. N3, N4 and N5 are three: 言語知識（文字・語彙）,
-     then 言語知識（文法）・読解, then 聴解.
+     N1, N2 and N3 are scored in three parts: 言語知識（文字・語彙・文法）,
+     then 読解, then 聴解. N4 and N5 in two, because there language
+     knowledge and reading are marked together.
 
-     The archive split every level the same way, into a "vocabulary" file and
-     a "grammar-reading" file - and at N1 and N2 the vocabulary file holds
-     the grammar questions too, while the grammar-reading file holds nothing
-     but reading. So the library was printing "Vocabulary 54 · Grammar &
-     Reading 21" for an N2 paper whose grammar is inside that 54 and whose
-     21 is reading alone. Both labels wrong, and the missing-part warning
-     wrong with them: it said "No Grammar & Reading" for papers that have
-     their grammar and are missing only the reading.
+     The archive split every level the same way instead, into a "vocabulary"
+     file and a "grammar-reading" file - and at N1 and N2 the vocabulary
+     file holds the grammar questions too, while the grammar-reading file
+     holds nothing but reading. So the library printed "Vocabulary 54 ·
+     Grammar & Reading 21" for an N2 paper whose grammar is inside that 54
+     and whose 21 is reading alone. Both labels wrong, and the missing-part
+     warning wrong with them: it said "No Grammar & Reading" for papers that
+     have their grammar and are missing only the reading.
 
-     Read the skills, not the files, and lay them out per level. */
+     This is the same grouping the exam player scores by (sectionOf in
+     exam-player.js), so the library now promises exactly what the scorecard
+     reports. */
   /* A section is named after what the paper actually holds. Nine N1 and N2
      papers were archived without their reading, and a section headed
      "Language Knowledge & Reading" on a paper with no reading in it
      contradicts the red note sitting beside it. */
   function sectionLabel(full, present) {
+    /* One skill left standing: name it, rather than keeping a heading that
+       promises two. Nine N1 and N2 papers were archived without their
+       reading, and "Language Knowledge & Reading" over a paper with no
+       reading in it contradicts the red note beside it. */
     if (present.length === 1) return SKILL_KEY[present[0]];
     if (present.indexOf("reading") === -1) return "exam.sectionLanguage";
     return full;
   }
 
   var SITTINGS = {
-    N1: [{ key: "section.languageReading", cats: ["vocabulary", "grammar", "reading"] },
-         { key: "section.listening", cats: ["listening"] }],
-    N3: [{ key: "section.vocabulary", cats: ["vocabulary"] },
-         { key: "section.grammarReading", cats: ["grammar", "reading"] },
-         { key: "section.listening", cats: ["listening"] }]
+    N1: [{ key: "exam.sectionLanguage", cats: ["vocabulary", "grammar"] },
+         { key: "exam.sectionReading", cats: ["reading"] },
+         { key: "exam.sectionListening", cats: ["listening"] }],
+    N4: [{ key: "section.languageReading", cats: ["vocabulary", "grammar", "reading"] },
+         { key: "exam.sectionListening", cats: ["listening"] }]
   };
   SITTINGS.N2 = SITTINGS.N1;
-  SITTINGS.N4 = SITTINGS.N3;
-  SITTINGS.N5 = SITTINGS.N3;
+  SITTINGS.N3 = SITTINGS.N1;
+  SITTINGS.N5 = SITTINGS.N4;
 
   /* The four skills a complete paper tests. Any of them a paper does not
      have is named on its row, in red. */
@@ -329,8 +337,9 @@
       var present = sec.cats.filter(function (c) { return counts[c]; });
       if (!present.length) return null;
       var n = present.reduce(function (sum, c) { return sum + counts[c]; }, 0);
-      return esc(t(sectionLabel(sec.key, present))) + " " + n;
-    }).filter(Boolean).join(" · ");
+      return '<span>' + esc(t(sectionLabel(sec.key, present))) +
+        " <b>" + n + "</b></span>";
+    }).filter(Boolean).join("");
 
     /* Every skill this paper was archived without. Written the same way the
        make-up beside it is written - plain words on the same line, coloured
