@@ -149,7 +149,7 @@ I18N.register("ja", {
  "exams.study": "学習",
  "exams.title": "模擬試験ライブラリ",
  "footer.tagline": "賢く学び、日本での生活をより良く。",
- "home.body": "N5からN1までの模擬試験86回分。時間を計って自動採点、解説と聴解スクリプト付き。",
+ "home.body": "N5からN1までの模擬試験%%PAPERS%%回分。時間を計って自動採点、解説と聴解スクリプト付き。",
  "home.browseExams": "過去問を見る",
  "home.chooseLevel": "レベルを選ぶ",
  "home.chooseLevelBody": "初級の基礎から上級の日本語まで。",

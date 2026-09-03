@@ -79,9 +79,21 @@
      the rights paragraph is the one string that carries it, and it is the
      one string that must never render wrong. */
   function fillTokens(value) {
-    if (typeof value !== "string" || value.indexOf("%%CONTACT%%") === -1) {
-      return value;
+    if (typeof value !== "string") return value;
+
+    /* How many papers there are, from the count the generator writes into
+       every page. It used to be typed into the sentence in each of the
+       twelve languages, so adding a paper silently made all twelve wrong -
+       and it did: the home page still read "86 practice papers" with 87 of
+       them in the library. A number that describes the data belongs to the
+       data. */
+    if (value.indexOf("%%PAPERS%%") !== -1) {
+      var counts = global.SITE_COUNTS || {};
+      value = value.replace(/%%PAPERS%%/g,
+        counts.papers != null ? String(counts.papers) : "");
     }
+
+    if (value.indexOf("%%CONTACT%%") === -1) return value;
     var email = contact();
     /* With no address to put in, leave the sentence intact and drop the
        broken mailto rather than printing a placeholder at a rights holder. */

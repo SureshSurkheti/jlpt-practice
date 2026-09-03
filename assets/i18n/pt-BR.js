@@ -149,7 +149,7 @@ I18N.register("pt-BR", {
  "exams.study": "Estudar",
  "exams.title": "Acervo de simulados",
  "footer.tagline": "Estude melhor. Viva melhor no Japão.",
- "home.body": "86 provas de treino de N5 a N1, cronometradas e corrigidas automaticamente, com explicações das respostas e transcrições da audição.",
+ "home.body": "%%PAPERS%% provas de treino de N5 a N1, cronometradas e corrigidas automaticamente, com explicações das respostas e transcrições da audição.",
  "home.browseExams": "Ver provas",
  "home.chooseLevel": "Escolha seu nível",
  "home.chooseLevelBody": "Da base para iniciantes ao japonês avançado.",

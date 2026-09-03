@@ -27,6 +27,7 @@ import os
 import re
 import sys
 import unicodedata
+import collections
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -500,6 +501,15 @@ def load_manual():
                 total += 1
 
         exam["totalQuestions"] = total
+        # The library lays a paper out by skill, and reads these to do it. The
+        # scraped path built them and this one did not, so every hand-authored
+        # paper arrived in the listing with an empty set and was drawn as
+        # having no vocabulary, no grammar, no reading and no listening - all
+        # four in red - however many questions it actually held.
+        counts = collections.Counter(
+            q["category"] for part in exam["parts"] for q in part["questions"]
+        )
+        exam["categoryCounts"] = dict(counts)
         exam.setdefault("period", exam["id"])
         exam.setdefault("title", f"JLPT {exam['level']} — {exam['periodLabel']}")
         # never claim official provenance for a hand-written paper

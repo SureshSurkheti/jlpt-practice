@@ -149,7 +149,7 @@ I18N.register("id", {
  "exams.study": "Belajar",
  "exams.title": "Perpustakaan soal latihan",
  "footer.tagline": "Belajar lebih cerdas. Hidup lebih baik di Jepang.",
- "home.body": "86 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.",
+ "home.body": "%%PAPERS%% soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.",
  "home.browseExams": "Lihat soal ujian",
  "home.chooseLevel": "Pilih level Anda",
  "home.chooseLevelBody": "Dari dasar pemula hingga bahasa Jepang tingkat lanjut.",

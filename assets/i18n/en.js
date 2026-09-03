@@ -156,7 +156,7 @@ I18N.register("en", {
  "exams.title": "Practice paper library",
  "exams.unavailable": "Exam library unavailable",
  "footer.tagline": "Study smarter. Live better in Japan.",
- "home.body": "86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.",
+ "home.body": "%%PAPERS%% practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.",
  "home.browseExams": "Browse exams",
  "home.chooseLevel": "Choose your level",
  "home.chooseLevelBody": "From beginner foundations to advanced Japanese.",

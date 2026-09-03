@@ -149,7 +149,7 @@ I18N.register("fil", {
  "exams.study": "Mag-aral",
  "exams.title": "Aklatan ng pagsasanay",
  "footer.tagline": "Mag-aral nang mas matalino. Mamuhay nang mas maayos sa Japan.",
- "home.body": "86 na pagsasanay na pagsusulit mula N5 hanggang N1, may timer at automatic na pagmamarka, kasama ang paliwanag ng sagot at transcript ng pakikinig.",
+ "home.body": "%%PAPERS%% na pagsasanay na pagsusulit mula N5 hanggang N1, may timer at automatic na pagmamarka, kasama ang paliwanag ng sagot at transcript ng pakikinig.",
  "home.browseExams": "Tingnan ang mga pagsusulit",
  "home.chooseLevel": "Pumili ng antas",
  "home.chooseLevelBody": "Mula sa panimula hanggang sa mataas na antas ng Nihongo.",

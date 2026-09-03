@@ -149,7 +149,7 @@ I18N.register("ko", {
  "exams.study": "학습",
  "exams.title": "모의고사 모음",
  "footer.tagline": "더 똑똑하게 공부하고, 일본에서 더 잘 살기.",
- "home.body": "N5부터 N1까지 모의고사 86회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.",
+ "home.body": "N5부터 N1까지 모의고사 %%PAPERS%%회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.",
  "home.browseExams": "기출문제 보기",
  "home.chooseLevel": "레벨 선택",
  "home.chooseLevelBody": "초급 기초부터 고급 일본어까지.",

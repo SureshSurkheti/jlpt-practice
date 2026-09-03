@@ -1,0 +1,577 @@
+{
+ "id": "n5-practice-2",
+ "level": "N5",
+ "periodLabel": "Practice Test 2",
+ "parts": [
+  {
+   "id": "vocabulary",
+   "label": "Vocabulary (文字・語彙)",
+   "questions": [
+    {
+     "prompt": "あしたは <u>山</u> に のぼります。",
+     "choices": [
+      "やま",
+      "うみ",
+      "そら",
+      "かわ"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "山 is read やま and means mountain.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "わたしの <u>父</u> は せんせいです。",
+     "choices": [
+      "はは",
+      "あに",
+      "ちち",
+      "あね"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "父 is read ちち when you talk about your own father."
+    },
+    {
+     "prompt": "まいあさ <u>七時</u> に おきます。",
+     "choices": [
+      "ななつ",
+      "しちがつ",
+      "しちじ",
+      "なながつ"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "七時 is しちじ. なながつ would be 七月, a month."
+    },
+    {
+     "prompt": "この <u>本</u> は おもしろいです。",
+     "choices": [
+      "ほん",
+      "もの",
+      "もと",
+      "ひと"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "本 is read ほん and means book."
+    },
+    {
+     "prompt": "つぎの かどを <u>右</u> に まがって ください。",
+     "choices": [
+      "みぎ",
+      "うえ",
+      "ひだり",
+      "した"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "右 is みぎ, right. Its opposite 左 is ひだり."
+    },
+    {
+     "prompt": "まいにち <u>新聞</u> を よみます。",
+     "choices": [
+      "しんもん",
+      "じんぶん",
+      "しぶん",
+      "しんぶん"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "新聞 is しんぶん, newspaper."
+    },
+    {
+     "prompt": "<u>来週</u> ともだちが 来ます。",
+     "choices": [
+      "らいねん",
+      "らいしゅう",
+      "せんしゅう",
+      "こんしゅう"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "来週 is らいしゅう, next week. 先週 せんしゅう is last week."
+    },
+    {
+     "prompt": "この <u>みず</u> は つめたいです。",
+     "choices": [
+      "木",
+      "永",
+      "氷",
+      "水"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "みず is written 水.",
+     "instruction": "問題2　＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "にわに <u>おおきい</u> 犬が います。",
+     "choices": [
+      "大きい",
+      "天きい",
+      "太きい",
+      "犬きい"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "おおきい is 大きい."
+    },
+    {
+     "prompt": "八時に <u>がっこう</u> へ 行きます。",
+     "choices": [
+      "学交",
+      "学校",
+      "字校",
+      "学枚"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "がっこう is 学校."
+    },
+    {
+     "prompt": "<u>やすみ</u> の 日は 何を しますか。",
+     "choices": [
+      "休み",
+      "本み",
+      "体み",
+      "木み"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "やすみ is 休み. 体 (からだ, body) looks similar but is a different kanji."
+    },
+    {
+     "prompt": "パンを <u>ひゃくえん</u> で かいました。",
+     "choices": [
+      "白円",
+      "万円",
+      "百円",
+      "千円"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "ひゃく is 百."
+    },
+    {
+     "prompt": "のどが かわきましたから、水を（　）。",
+     "choices": [
+      "たべます",
+      "みます",
+      "のみます",
+      "ききます"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "水 goes with のむ, to drink.",
+     "instruction": "問題3　（　）に 何を 入れますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "きょうは あめですから、（　）を もって 行きます。",
+     "choices": [
+      "くつ",
+      "かさ",
+      "かばん",
+      "ぼうし"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "かさ is an umbrella, the thing you take when it rains."
+    },
+    {
+     "prompt": "えきまで バスに（　）行きます。",
+     "choices": [
+      "のって",
+      "あるいて",
+      "おりて",
+      "はいって"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "バスに のる is to get on / ride a bus."
+    },
+    {
+     "prompt": "この もんだいは（　）です。むずかしく ないです。",
+     "choices": [
+      "しずか",
+      "たいへん",
+      "ゆうめい",
+      "かんたん"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "かんたん (easy) is the opposite of むずかしい."
+    },
+    {
+     "prompt": "ともだちに てがみを（　）。",
+     "choices": [
+      "よみます",
+      "ききます",
+      "みます",
+      "かきます"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "てがみを かく is to write a letter."
+    },
+    {
+     "prompt": "へやが くらいですから、でんきを（　）ください。",
+     "choices": [
+      "けして",
+      "つけて",
+      "あけて",
+      "しめて"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "でんきを つける is to turn a light on; けす is to turn it off."
+    },
+    {
+     "prompt": "この へやは <u>しずかでは ありません</u>。",
+     "choices": [
+      "この へやは あかるいです。",
+      "この へやは きれいです。",
+      "この へやは にぎやかです。",
+      "この へやは ひろいです。"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "しずかでは ない means not quiet, so にぎやか (lively, noisy) is closest.",
+     "instruction": "問題4　＿＿＿の ぶんと だいたい おなじ いみの ぶんが あります。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "きのう <u>デパートで</u> シャツを かいました。",
+     "choices": [
+      "きのう がっこうで シャツを かいました。",
+      "きのう うちで シャツを かいました。",
+      "きのう えきで シャツを かいました。",
+      "きのう みせで シャツを かいました。"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "A デパート is a kind of みせ (shop)."
+    },
+    {
+     "prompt": "ちちは <u>いしゃ</u> です。",
+     "choices": [
+      "ちちは がっこうで おしえて います。",
+      "ちちは くるまを つくって います。",
+      "ちちは びょういんで はたらいて います。",
+      "ちちは みせで はたらいて います。"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "An いしゃ is a doctor, who works in a びょういん (hospital)."
+    }
+   ]
+  },
+  {
+   "id": "grammar-reading",
+   "label": "Grammar & Reading (文法・読解)",
+   "questions": [
+    {
+     "prompt": "わたしは まいあさ 六時（　）おきます。",
+     "choices": [
+      "へ",
+      "を",
+      "で",
+      "に"
+     ],
+     "answer": 4,
+     "category": "grammar",
+     "explanation": "に marks the specific time at which something happens.",
+     "instruction": "問題5　（　）に 何を 入れますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "これは だれ（　）かばんですか。",
+     "choices": [
+      "の",
+      "を",
+      "に",
+      "が"
+     ],
+     "answer": 1,
+     "category": "grammar",
+     "explanation": "の links two nouns: だれの かばん, whose bag."
+    },
+    {
+     "prompt": "きのう えきで ともだち（　）あいました。",
+     "choices": [
+      "で",
+      "を",
+      "に",
+      "が"
+     ],
+     "answer": 3,
+     "category": "grammar",
+     "explanation": "あう takes に for the person you meet."
+    },
+    {
+     "prompt": "へやの 中（　）ねこが います。",
+     "choices": [
+      "に",
+      "と",
+      "を",
+      "へ"
+     ],
+     "answer": 1,
+     "category": "grammar",
+     "explanation": "に marks where something exists with います / あります."
+    },
+    {
+     "prompt": "あした ともだちと えいがを 見（　）行きます。",
+     "choices": [
+      "が",
+      "に",
+      "で",
+      "を"
+     ],
+     "answer": 2,
+     "category": "grammar",
+     "explanation": "The stem of a verb plus に 行く means to go in order to do something."
+    },
+    {
+     "prompt": "しゅくだいは まだ して（　）。",
+     "choices": [
+      "ないです",
+      "ありません",
+      "くないです",
+      "いません"
+     ],
+     "answer": 4,
+     "category": "grammar",
+     "explanation": "まだ 〜て いません is the set way to say you have not done something yet."
+    },
+    {
+     "prompt": "この コーヒーは あまり（　）。",
+     "choices": [
+      "あつくて",
+      "あつかったです",
+      "あついです",
+      "あつくないです"
+     ],
+     "answer": 4,
+     "category": "grammar",
+     "explanation": "あまり is used with a negative: あまり 〜ない, not very."
+    },
+    {
+     "prompt": "すみません、もう いちど 言って（　）。",
+     "choices": [
+      "ください",
+      "います",
+      "あります",
+      "おきます"
+     ],
+     "answer": 1,
+     "category": "grammar",
+     "explanation": "〜て ください is how you ask someone to do something."
+    },
+    {
+     "prompt": "きょうは にちようびですから、がっこうへ 行か（　）。",
+     "choices": [
+      "なくても",
+      "ないです",
+      "なくて いいです",
+      "なくて"
+     ],
+     "answer": 3,
+     "category": "grammar",
+     "explanation": "〜なくて いいです means you do not have to do it."
+    },
+    {
+     "prompt": "わたしは　＿＿＿　＿★＿　＿＿＿　＿＿＿　が すきです。",
+     "choices": [
+      "とても",
+      "うたを",
+      "きく こと",
+      "ふるい"
+     ],
+     "answer": 4,
+     "category": "grammar",
+     "explanation": "わたしは とても ふるい うたを きく ことが すきです. The second slot, marked ★, is ふるい.",
+     "instruction": "問題6　★ に 入る ものは どれですか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "あの　＿＿＿　＿＿＿　＿★＿　＿＿＿　です。",
+     "choices": [
+      "めがねを",
+      "かけて いる 人",
+      "せんせい",
+      "は"
+     ],
+     "answer": 4,
+     "category": "grammar",
+     "explanation": "あの めがねを かけて いる 人は せんせいです. The third slot, marked ★, is は."
+    },
+    {
+     "prompt": "きょうしつ　＿＿＿　＿＿＿　＿＿＿　＿★＿　ください。",
+     "choices": [
+      "中では",
+      "すわないで",
+      "の",
+      "たばこを"
+     ],
+     "answer": 2,
+     "category": "grammar",
+     "explanation": "きょうしつの 中では たばこを すわないで ください. The fourth slot, marked ★, is すわないで."
+    },
+    {
+     "prompt": "きのうは　＿＿＿　＿＿＿　＿★＿　＿＿＿　ました。",
+     "choices": [
+      "うちに",
+      "い",
+      "でしたから",
+      "あめ"
+     ],
+     "answer": 1,
+     "category": "grammar",
+     "explanation": "きのうは あめでしたから うちに いました. The third slot, marked ★, is うちに."
+    },
+    {
+     "prompt": "（　1　）",
+     "choices": [
+      "で",
+      "を",
+      "へ",
+      "に"
+     ],
+     "answer": 1,
+     "category": "grammar",
+     "explanation": "で marks the means of transport: でんしゃで 行きます.",
+     "instruction": "問題7　つぎの ぶんしょうを よんで、（　）に 入る ものを 1・2・3・4から 一つ えらんで ください。",
+     "passage": "わたしは 先月 日本へ 来ました。いまは 東京の 小さい アパートに 一人で すんで います。まいあさ 七時に おきて、パンと たまごを たべます。それから でんしゃ（　1　）学校へ 行きます。学校では 日本語を べんきょうして います。日本語は かんたんでは ありませんが、とても（　2　）です。ひるごはんは 学校の しょくどうで 友だちと（　3　）。土よう日と 日よう日は 学校が ありませんから、公園へ 行ったり、友だちの うちへ 行ったり します。来年は 日本の 大学に（　4　）と おもって います。"
+    },
+    {
+     "prompt": "（　2　）",
+     "choices": [
+      "おもしろく",
+      "おもしろい",
+      "おもしろくて",
+      "おもしろかった"
+     ],
+     "answer": 2,
+     "category": "grammar",
+     "explanation": "The plain adjective before です is おもしろい."
+    },
+    {
+     "prompt": "（　3　）",
+     "choices": [
+      "たべます",
+      "たべたいです",
+      "たべて います",
+      "たべました"
+     ],
+     "answer": 1,
+     "category": "grammar",
+     "explanation": "The paragraph describes a daily routine, so the plain present たべます fits."
+    },
+    {
+     "prompt": "（　4　）",
+     "choices": [
+      "入る",
+      "入った",
+      "入ります",
+      "入りたい"
+     ],
+     "answer": 4,
+     "category": "grammar",
+     "explanation": "〜たいと おもって います expresses a wish: 入りたいと おもって います."
+    },
+    {
+     "prompt": "あしたの かいぎに ついて、正しい ものは どれですか。",
+     "choices": [
+      "かいぎは 十時から はじまります。",
+      "山田さんは 田中さんに でんわを しなければ なりません。",
+      "山田さんは しりょうを もって 行かなくても いいです。",
+      "かいぎの ばしょが かわりました。"
+     ],
+     "answer": 3,
+     "category": "reading",
+     "explanation": "The memo says 田中さん will bring the materials, so 山田さん does not need to.",
+     "instruction": "問題8　つぎの ぶんを よんで、しつもんに こたえて ください。こたえは 1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+     "passage": "（会社で）\n山田さんの つくえの 上に、この メモが あります。\n\n山田さん\n\nけさ、田中さんから でんわが ありました。\nあしたの かいぎは 十時からでしたが、十一時からに なりました。\nばしょは 三かいの 会議室で、かわりません。\nしりょうは 田中さんが もって 来ますから、山田さんは もって 来なくても いいです。\n\n　　　　　　　　　　　　　　　　　　　　　　　　　鈴木"
+    },
+    {
+     "prompt": "この メモを 書いたのは だれですか。",
+     "choices": [
+      "会議室の 人",
+      "田中さん",
+      "鈴木さん",
+      "山田さん"
+     ],
+     "answer": 3,
+     "category": "reading",
+     "explanation": "The note is signed 鈴木 at the end.",
+     "passage": "（会社で）\n山田さんの つくえの 上に、この メモが あります。\n\n山田さん\n\nけさ、田中さんから でんわが ありました。\nあしたの かいぎは 十時からでしたが、十一時からに なりました。\nばしょは 三かいの 会議室で、かわりません。\nしりょうは 田中さんが もって 来ますから、山田さんは もって 来なくても いいです。\n\n　　　　　　　　　　　　　　　　　　　　　　　　　鈴木"
+    },
+    {
+     "prompt": "この 人は いつ 図書館へ 行きますか。",
+     "choices": [
+      "毎日",
+      "月に 一かい",
+      "毎週 土よう日",
+      "毎週 月よう日"
+     ],
+     "answer": 3,
+     "category": "reading",
+     "explanation": "毎週 土よう日に そこへ 行きます - every Saturday.",
+     "instruction": "問題9　つぎの ぶんしょうを よんで、しつもんに こたえて ください。",
+     "passage": "わたしの まちには 大きい 図書館が あります。えきから あるいて 五分ぐらいです。本が たくさん あって、しずかですから、わたしは 毎週 土よう日に そこへ 行きます。\n図書館は 朝 九時から 夜 七時まで あいて います。でも 月よう日は 休みです。本は 二週間 かりる ことが できます。一どに 十さつまで かりられます。\n先月、わたしは 日本の りょうりの 本を かりました。その 本を 見ながら、うちで てんぷらを つくりました。あまり じょうずに できませんでしたが、家族は おいしいと 言って くれました。こんどは すしを つくって みたいです。"
+    },
+    {
+     "prompt": "図書館に ついて、正しい ものは どれですか。",
+     "choices": [
+      "日よう日は 休みです。",
+      "一どに 十さつまで かりる ことが できます。",
+      "夜 九時まで あいて います。",
+      "本は 三週間 かりる ことが できます。"
+     ],
+     "answer": 2,
+     "category": "reading",
+     "explanation": "一どに 十さつまで かりられます - up to ten books at a time.",
+     "passage": "わたしの まちには 大きい 図書館が あります。えきから あるいて 五分ぐらいです。本が たくさん あって、しずかですから、わたしは 毎週 土よう日に そこへ 行きます。\n図書館は 朝 九時から 夜 七時まで あいて います。でも 月よう日は 休みです。本は 二週間 かりる ことが できます。一どに 十さつまで かりられます。\n先月、わたしは 日本の りょうりの 本を かりました。その 本を 見ながら、うちで てんぷらを つくりました。あまり じょうずに できませんでしたが、家族は おいしいと 言って くれました。こんどは すしを つくって みたいです。"
+    },
+    {
+     "prompt": "この 人は 先月 何を しましたか。",
+     "choices": [
+      "家族と レストランへ 行きました。",
+      "てんぷらを つくりました。",
+      "りょうりの 本を かいました。",
+      "すしを つくりました。"
+     ],
+     "answer": 2,
+     "category": "reading",
+     "explanation": "They borrowed a cookery book and made てんぷら at home.",
+     "passage": "わたしの まちには 大きい 図書館が あります。えきから あるいて 五分ぐらいです。本が たくさん あって、しずかですから、わたしは 毎週 土よう日に そこへ 行きます。\n図書館は 朝 九時から 夜 七時まで あいて います。でも 月よう日は 休みです。本は 二週間 かりる ことが できます。一どに 十さつまで かりられます。\n先月、わたしは 日本の りょうりの 本を かりました。その 本を 見ながら、うちで てんぷらを つくりました。あまり じょうずに できませんでしたが、家族は おいしいと 言って くれました。こんどは すしを つくって みたいです。"
+    },
+    {
+     "prompt": "日本語を べんきょうした ことが ない 人は、どの クラスに 入りますか。",
+     "choices": [
+      "C",
+      "A",
+      "B",
+      "A と C"
+     ],
+     "answer": 2,
+     "category": "reading",
+     "explanation": "Class A is はじめて の 人の クラス, the class for complete beginners.",
+     "instruction": "問題10　右の ページを 見て、しつもんに こたえて ください。",
+     "passage": "【ひまわり日本語教室　クラスの あんない】\n\n■ はじめて の 人の クラス（A）\n　火よう日・木よう日　午後 6時〜7時30分　　1か月 3,000円\n\n■ すこし できる 人の クラス（B）\n　月よう日・水よう日　午後 7時〜8時30分　　1か月 4,000円\n\n■ 会話だけの クラス（C）\n　土よう日　午前 10時〜12時　　1か月 3,500円\n\n※ どの クラスも はじめの 1回は 無料です。\n※ 土よう日の クラスは 6月から はじまります。\n※ 申しこみは 受付で。電話では できません。"
+    },
+    {
+     "prompt": "この あんないに ついて、正しい ものは どれですか。",
+     "choices": [
+      "Bの クラスは 1か月 3,500円です。",
+      "Cの クラスは 6月から はじまります。",
+      "電話で 申しこむ ことが できます。",
+      "はじめの 1回も お金が かかります。"
+     ],
+     "answer": 2,
+     "category": "reading",
+     "explanation": "Class C is the Saturday class, and the notes say the Saturday class starts in June.",
+     "passage": "【ひまわり日本語教室　クラスの あんない】\n\n■ はじめて の 人の クラス（A）\n　火よう日・木よう日　午後 6時〜7時30分　　1か月 3,000円\n\n■ すこし できる 人の クラス（B）\n　月よう日・水よう日　午後 7時〜8時30分　　1か月 4,000円\n\n■ 会話だけの クラス（C）\n　土よう日　午前 10時〜12時　　1か月 3,500円\n\n※ どの クラスも はじめの 1回は 無料です。\n※ 土よう日の クラスは 6月から はじまります。\n※ 申しこみは 受付で。電話では できません。"
+    }
+   ]
+  }
+ ]
+}

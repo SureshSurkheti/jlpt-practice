@@ -575,6 +575,12 @@ def main():
                     '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
                     % json.dumps(COUNTS, separators=(",", ":")))
             html = rewrite_head(html, lang, page, langs, indexable, table, en)
+            # After rewrite_head, not before: that is what writes the meta
+            # description and the og/twitter copy out of the same translation
+            # table, so substituting earlier only to have it put the raw token
+            # back is exactly what happened the first time. The client-side
+            # pass covers visible text; this covers what a crawler reads.
+            html = html.replace("%%PAPERS%%", str(COUNTS["papers"]))
             # The takedown address again, this time for the interface strings.
             #
             # %%CONTACT%% is substituted in the markup above, which is what a

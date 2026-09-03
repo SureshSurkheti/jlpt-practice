@@ -1,1 +1,2965 @@
-{"exams":[{"id":"n5-practice-1","origin":"practice","level":"N5","title":"JLPT N5 — Practice Test 1","period":"n5-practice-1","periodLabel":"Practice Test 1","totalQuestions":3,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":2,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":1,"audio":0}],"sortKey":"n5-practice-1","categoryCounts":{"vocabulary":2,"grammar":1}},{"id":"n4-practice-2","origin":"archive","level":"N4","title":"JLPT N4 — Practice Test 2","period":"practice-2","periodLabel":"Practice Test 2","totalQuestions":98,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":35,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":0}],"sortKey":"practice-2","categoryCounts":{"vocabulary":35,"grammar":25,"reading":10,"listening":28}},{"id":"n4-practice-1","origin":"archive","level":"N4","title":"JLPT N4 — Practice Test 1","period":"practice-1","periodLabel":"Practice Test 1","totalQuestions":75,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":39,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":36,"audio":0}],"sortKey":"practice-1","categoryCounts":{"vocabulary":39,"grammar":36}},{"id":"n3-2024-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2024","period":"2024-12","periodLabel":"December 2024","totalQuestions":73,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0}],"sortKey":"2024-12","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16}},{"id":"n3-2024-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2024","period":"2024-07","periodLabel":"July 2024","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2024-07","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2023-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2023","period":"2023-12","periodLabel":"December 2023","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2023-12","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2023-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2023","period":"2023-07","periodLabel":"July 2023","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2023-07","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2022-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2022","period":"2022-12","periodLabel":"December 2022","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2022-12","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2022-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2022","period":"2022-07","periodLabel":"July 2022","totalQuestions":100,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":34,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2022-07","categoryCounts":{"vocabulary":34,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2021-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2021","period":"2021-12","periodLabel":"December 2021","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2021-12","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2021-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2021","period":"2021-07","periodLabel":"July 2021","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2021-07","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2020-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2020","period":"2020-12","periodLabel":"December 2020","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":38,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2020-12","categoryCounts":{"vocabulary":35,"grammar":22,"reading":16,"listening":28}},{"id":"n3-2019-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2019","period":"2019-12","periodLabel":"December 2019","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2019-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2019-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2019","period":"2019-07","periodLabel":"July 2019","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2019-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2018-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2018","period":"2018-12","periodLabel":"December 2018","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2018-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2018-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2018","period":"2018-07","periodLabel":"July 2018","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":25}],"sortKey":"2018-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2017-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2017","period":"2017-12","periodLabel":"December 2017","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2017-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2017-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2017","period":"2017-07","periodLabel":"July 2017","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2017-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2016-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2016","period":"2016-12","periodLabel":"December 2016","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2016-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2016-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2016","period":"2016-07","periodLabel":"July 2016","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":25}],"sortKey":"2016-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2015-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2015","period":"2015-12","periodLabel":"December 2015","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":25}],"sortKey":"2015-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2015-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2015","period":"2015-07","periodLabel":"July 2015","totalQuestions":74,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0}],"sortKey":"2015-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16}},{"id":"n3-2014-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2014","period":"2014-12","periodLabel":"December 2014","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":6}],"sortKey":"2014-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2014-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2014","period":"2014-07","periodLabel":"July 2014","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":28}],"sortKey":"2014-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2013-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2013","period":"2013-12","periodLabel":"December 2013","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":6}],"sortKey":"2013-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2013-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2013","period":"2013-07","periodLabel":"July 2013","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":6}],"sortKey":"2013-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2012-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2012","period":"2012-12","periodLabel":"December 2012","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":6}],"sortKey":"2012-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2012-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2012","period":"2012-07","periodLabel":"July 2012","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":28,"audio":6}],"sortKey":"2012-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":28}},{"id":"n3-2011-12","origin":"archive","level":"N3","title":"JLPT N3 — December 2011","period":"2011-12","periodLabel":"December 2011","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":27,"audio":6}],"sortKey":"2011-12","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":27}},{"id":"n3-2011-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2011","period":"2011-07","periodLabel":"July 2011","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0},{"id":"listening","label":"Listening (聴解)","count":27,"audio":6}],"sortKey":"2011-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16,"listening":27}},{"id":"n3-2010-07","origin":"archive","level":"N3","title":"JLPT N3 — July 2010","period":"2010-07","periodLabel":"July 2010","totalQuestions":74,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":35,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":39,"audio":0}],"sortKey":"2010-07","categoryCounts":{"vocabulary":35,"grammar":23,"reading":16}},{"id":"n2-2024-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2024","period":"2024-07","periodLabel":"July 2024","totalQuestions":51,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0}],"sortKey":"2024-07","categoryCounts":{"vocabulary":30,"grammar":21}},{"id":"n2-2023-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2023","period":"2023-12","periodLabel":"December 2023","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":20,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2023-12","categoryCounts":{"vocabulary":30,"grammar":21,"reading":20,"listening":30}},{"id":"n2-2023-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2023","period":"2023-07","periodLabel":"July 2023","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":20,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2023-07","categoryCounts":{"vocabulary":30,"grammar":21,"reading":20,"listening":30}},{"id":"n2-2022-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2022","period":"2022-12","periodLabel":"December 2022","totalQuestions":81,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2022-12","categoryCounts":{"vocabulary":30,"grammar":21,"listening":30}},{"id":"n2-2022-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2022","period":"2022-07","periodLabel":"July 2022","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":20,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2022-07","categoryCounts":{"vocabulary":30,"grammar":21,"reading":20,"listening":30}},{"id":"n2-2021-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2021","period":"2021-12","periodLabel":"December 2021","totalQuestions":101,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":20,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2021-12","categoryCounts":{"vocabulary":30,"grammar":21,"reading":20,"listening":30}},{"id":"n2-2021-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2021","period":"2021-07","periodLabel":"July 2021","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":51,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2021-07","categoryCounts":{"vocabulary":30,"grammar":21,"reading":21,"listening":30}},{"id":"n2-2020-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2020","period":"2020-12","periodLabel":"December 2020","totalQuestions":51,"parts":[{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":28}],"sortKey":"2020-12","categoryCounts":{"reading":21,"listening":30}},{"id":"n2-2019-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2019","period":"2019-12","periodLabel":"December 2019","totalQuestions":102,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":52,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":20,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2019-12","categoryCounts":{"vocabulary":30,"grammar":22,"reading":20,"listening":30}},{"id":"n2-2019-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2019","period":"2019-07","periodLabel":"July 2019","totalQuestions":103,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":52,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2019-07","categoryCounts":{"vocabulary":30,"grammar":22,"reading":21,"listening":30}},{"id":"n2-2018-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2018","period":"2018-12","periodLabel":"December 2018","totalQuestions":103,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":52,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":28}],"sortKey":"2018-12","categoryCounts":{"vocabulary":30,"grammar":22,"reading":21,"listening":30}},{"id":"n2-2018-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2018","period":"2018-07","periodLabel":"July 2018","totalQuestions":75,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0}],"sortKey":"2018-07","categoryCounts":{"vocabulary":30,"grammar":24,"reading":21}},{"id":"n2-2017-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2017","period":"2017-12","periodLabel":"December 2017","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":32}],"sortKey":"2017-12","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":32}},{"id":"n2-2016-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2016","period":"2016-07","periodLabel":"July 2016","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":32}],"sortKey":"2016-07","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":32}},{"id":"n2-2015-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2015","period":"2015-12","periodLabel":"December 2015","totalQuestions":86,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":32}],"sortKey":"2015-12","categoryCounts":{"vocabulary":32,"grammar":22,"listening":32}},{"id":"n2-2015-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2015","period":"2015-07","periodLabel":"July 2015","totalQuestions":86,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":32}],"sortKey":"2015-07","categoryCounts":{"vocabulary":30,"grammar":24,"listening":32}},{"id":"n2-2014-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2014","period":"2014-12","periodLabel":"December 2014","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":5}],"sortKey":"2014-12","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":32}},{"id":"n2-2014-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2014","period":"2014-07","periodLabel":"July 2014","totalQuestions":86,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":5}],"sortKey":"2014-07","categoryCounts":{"vocabulary":32,"grammar":22,"listening":32}},{"id":"n2-2013-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2013","period":"2013-12","periodLabel":"December 2013","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":5}],"sortKey":"2013-12","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":32}},{"id":"n2-2013-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2013","period":"2013-07","periodLabel":"July 2013","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":31,"audio":5}],"sortKey":"2013-07","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":31}},{"id":"n2-2012-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2012","period":"2012-12","periodLabel":"December 2012","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":31,"audio":5}],"sortKey":"2012-12","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":31}},{"id":"n2-2012-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2012","period":"2012-07","periodLabel":"July 2012","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":31,"audio":5}],"sortKey":"2012-07","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":31}},{"id":"n2-2011-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2011","period":"2011-12","periodLabel":"December 2011","totalQuestions":85,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"listening","label":"Listening (聴解)","count":31,"audio":5}],"sortKey":"2011-12","categoryCounts":{"vocabulary":32,"grammar":22,"listening":31}},{"id":"n2-2011-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2011","period":"2011-07","periodLabel":"July 2011","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":31,"audio":5}],"sortKey":"2011-07","categoryCounts":{"vocabulary":32,"grammar":22,"reading":21,"listening":31}},{"id":"n2-2010-12","origin":"archive","level":"N2","title":"JLPT N2 — December 2010","period":"2010-12","periodLabel":"December 2010","totalQuestions":75,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0}],"sortKey":"2010-12","categoryCounts":{"vocabulary":30,"grammar":24,"reading":21}},{"id":"n2-2010-07","origin":"archive","level":"N2","title":"JLPT N2 — July 2010","period":"2010-07","periodLabel":"July 2010","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":54,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":21,"audio":0},{"id":"listening","label":"Listening (聴解)","count":32,"audio":32}],"sortKey":"2010-07","categoryCounts":{"vocabulary":30,"grammar":24,"reading":21,"listening":32}},{"id":"n1-2025-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2025","period":"2025-07","periodLabel":"July 2025","totalQuestions":44,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0}],"sortKey":"2025-07","categoryCounts":{"vocabulary":25,"grammar":19}},{"id":"n1-2024-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2024","period":"2024-12","periodLabel":"December 2024","totalQuestions":66,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":22,"audio":0}],"sortKey":"2024-12","categoryCounts":{"vocabulary":25,"grammar":19,"reading":22}},{"id":"n1-2024-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2024","period":"2024-07","periodLabel":"July 2024","totalQuestions":96,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":22,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2024-07","categoryCounts":{"vocabulary":25,"grammar":19,"reading":22,"listening":30}},{"id":"n1-2023-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2023","period":"2023-12","periodLabel":"December 2023","totalQuestions":96,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":22,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2023-12","categoryCounts":{"vocabulary":25,"grammar":19,"reading":22,"listening":30}},{"id":"n1-2023-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2023","period":"2023-07","periodLabel":"July 2023","totalQuestions":96,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":22,"audio":0},{"id":"listening","label":"Listening (聴解)","count":30,"audio":30}],"sortKey":"2023-07","categoryCounts":{"vocabulary":25,"grammar":19,"reading":22,"listening":30}},{"id":"n1-2022-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2022","period":"2022-12","periodLabel":"December 2022","totalQuestions":97,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":22,"audio":0},{"id":"listening","label":"Listening (聴解)","count":31,"audio":31}],"sortKey":"2022-12","categoryCounts":{"vocabulary":25,"grammar":19,"reading":22,"listening":31}},{"id":"n1-2022-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2022","period":"2022-07","periodLabel":"July 2022","totalQuestions":103,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":24,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":35}],"sortKey":"2022-07","categoryCounts":{"vocabulary":25,"grammar":19,"reading":24,"listening":35}},{"id":"n1-2021-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2021","period":"2021-12","periodLabel":"December 2021","totalQuestions":104,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":35}],"sortKey":"2021-12","categoryCounts":{"vocabulary":25,"grammar":19,"reading":25,"listening":35}},{"id":"n1-2021-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2021","period":"2021-07","periodLabel":"July 2021","totalQuestions":104,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":35}],"sortKey":"2021-07","categoryCounts":{"vocabulary":25,"grammar":19,"reading":25,"listening":35}},{"id":"n1-2020-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2020","period":"2020-12","periodLabel":"December 2020","totalQuestions":68,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":44,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":24,"audio":0}],"sortKey":"2020-12","categoryCounts":{"vocabulary":25,"grammar":19,"reading":24}},{"id":"n1-2019-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2019","period":"2019-12","periodLabel":"December 2019","totalQuestions":104,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":24,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":35}],"sortKey":"2019-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":24,"listening":35}},{"id":"n1-2019-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2019","period":"2019-07","periodLabel":"July 2019","totalQuestions":104,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":24,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":6}],"sortKey":"2019-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":24,"listening":35}},{"id":"n1-2018-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2018","period":"2018-12","periodLabel":"December 2018","totalQuestions":105,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":6}],"sortKey":"2018-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":35}},{"id":"n1-2018-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2018","period":"2018-07","periodLabel":"July 2018","totalQuestions":105,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":6}],"sortKey":"2018-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":35}},{"id":"n1-2017-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2017","period":"2017-12","periodLabel":"December 2017","totalQuestions":105,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":6}],"sortKey":"2017-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":35}},{"id":"n1-2017-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2017","period":"2017-07","periodLabel":"July 2017","totalQuestions":105,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":35,"audio":6}],"sortKey":"2017-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":35}},{"id":"n1-2016-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2016","period":"2016-12","periodLabel":"December 2016","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":37,"audio":6}],"sortKey":"2016-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":37}},{"id":"n1-2016-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2016","period":"2016-07","periodLabel":"July 2016","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":36,"audio":6}],"sortKey":"2016-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":36}},{"id":"n1-2015-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2015","period":"2015-12","periodLabel":"December 2015","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":37,"audio":6}],"sortKey":"2015-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":37}},{"id":"n1-2015-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2015","period":"2015-07","periodLabel":"July 2015","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":37,"audio":6}],"sortKey":"2015-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":37}},{"id":"n1-2014-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2014","period":"2014-12","periodLabel":"December 2014","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":37,"audio":6}],"sortKey":"2014-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":37}},{"id":"n1-2014-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2014","period":"2014-07","periodLabel":"July 2014","totalQuestions":107,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":37,"audio":6}],"sortKey":"2014-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":37}},{"id":"n1-2013-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2013","period":"2013-12","periodLabel":"December 2013","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":36,"audio":6}],"sortKey":"2013-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":36}},{"id":"n1-2013-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2013","period":"2013-07","periodLabel":"July 2013","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":36,"audio":6}],"sortKey":"2013-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":36}},{"id":"n1-2012-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2012","period":"2012-12","periodLabel":"December 2012","totalQuestions":106,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0},{"id":"listening","label":"Listening (聴解)","count":36,"audio":36}],"sortKey":"2012-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25,"listening":36}},{"id":"n1-2012-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2012","period":"2012-07","periodLabel":"July 2012","totalQuestions":70,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0}],"sortKey":"2012-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25}},{"id":"n1-2011-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2011","period":"2011-12","periodLabel":"December 2011","totalQuestions":70,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0}],"sortKey":"2011-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25}},{"id":"n1-2011-07","origin":"archive","level":"N1","title":"JLPT N1 — July 2011","period":"2011-07","periodLabel":"July 2011","totalQuestions":70,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":25,"audio":0}],"sortKey":"2011-07","categoryCounts":{"vocabulary":25,"grammar":20,"reading":25}},{"id":"n1-2010-12","origin":"archive","level":"N1","title":"JLPT N1 — December 2010","period":"2010-12","periodLabel":"December 2010","totalQuestions":71,"parts":[{"id":"vocabulary","label":"Vocabulary (文字・語彙)","count":45,"audio":0},{"id":"grammar-reading","label":"Grammar & Reading (文法・読解)","count":26,"audio":0}],"sortKey":"2010-12","categoryCounts":{"vocabulary":25,"grammar":20,"reading":26}}]}
+{
+ "exams": [
+  {
+   "id": "n5-practice-2",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 2",
+   "period": "n5-practice-2",
+   "periodLabel": "Practice Test 2",
+   "totalQuestions": 45,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 7
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 24,
+     "audio": 0
+    }
+   ],
+   "sortKey": "n5-practice-2"
+  },
+  {
+   "id": "n5-practice-1",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 1",
+   "period": "n5-practice-1",
+   "periodLabel": "Practice Test 1",
+   "totalQuestions": 3,
+   "categoryCounts": {
+    "vocabulary": 2,
+    "grammar": 1
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 2,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 1,
+     "audio": 0
+    }
+   ],
+   "sortKey": "n5-practice-1"
+  },
+  {
+   "id": "n4-practice-2",
+   "origin": "archive",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 2",
+   "period": "practice-2",
+   "periodLabel": "Practice Test 2",
+   "totalQuestions": 98,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 0
+    }
+   ],
+   "sortKey": "practice-2"
+  },
+  {
+   "id": "n4-practice-1",
+   "origin": "archive",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 1",
+   "period": "practice-1",
+   "periodLabel": "Practice Test 1",
+   "totalQuestions": 75,
+   "categoryCounts": {
+    "vocabulary": 39,
+    "grammar": 36
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 36,
+     "audio": 0
+    }
+   ],
+   "sortKey": "practice-1"
+  },
+  {
+   "id": "n3-2024-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2024",
+   "period": "2024-12",
+   "periodLabel": "December 2024",
+   "totalQuestions": 73,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2024-12"
+  },
+  {
+   "id": "n3-2024-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2024",
+   "period": "2024-07",
+   "periodLabel": "July 2024",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2024-07"
+  },
+  {
+   "id": "n3-2023-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2023",
+   "period": "2023-12",
+   "periodLabel": "December 2023",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2023-12"
+  },
+  {
+   "id": "n3-2023-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2023",
+   "period": "2023-07",
+   "periodLabel": "July 2023",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2023-07"
+  },
+  {
+   "id": "n3-2022-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2022",
+   "period": "2022-12",
+   "periodLabel": "December 2022",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2022-12"
+  },
+  {
+   "id": "n3-2022-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2022",
+   "period": "2022-07",
+   "periodLabel": "July 2022",
+   "totalQuestions": 100,
+   "categoryCounts": {
+    "vocabulary": 34,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 34,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2022-07"
+  },
+  {
+   "id": "n3-2021-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2021",
+   "period": "2021-12",
+   "periodLabel": "December 2021",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2021-12"
+  },
+  {
+   "id": "n3-2021-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2021",
+   "period": "2021-07",
+   "periodLabel": "July 2021",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2021-07"
+  },
+  {
+   "id": "n3-2020-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2020",
+   "period": "2020-12",
+   "periodLabel": "December 2020",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 22,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 38,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2020-12"
+  },
+  {
+   "id": "n3-2019-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2019",
+   "period": "2019-12",
+   "periodLabel": "December 2019",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2019-12"
+  },
+  {
+   "id": "n3-2019-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2019",
+   "period": "2019-07",
+   "periodLabel": "July 2019",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2019-07"
+  },
+  {
+   "id": "n3-2018-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2018",
+   "period": "2018-12",
+   "periodLabel": "December 2018",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2018-12"
+  },
+  {
+   "id": "n3-2018-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2018",
+   "period": "2018-07",
+   "periodLabel": "July 2018",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 25
+    }
+   ],
+   "sortKey": "2018-07"
+  },
+  {
+   "id": "n3-2017-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2017",
+   "period": "2017-12",
+   "periodLabel": "December 2017",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2017-12"
+  },
+  {
+   "id": "n3-2017-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2017",
+   "period": "2017-07",
+   "periodLabel": "July 2017",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2017-07"
+  },
+  {
+   "id": "n3-2016-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2016",
+   "period": "2016-12",
+   "periodLabel": "December 2016",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2016-12"
+  },
+  {
+   "id": "n3-2016-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2016",
+   "period": "2016-07",
+   "periodLabel": "July 2016",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 25
+    }
+   ],
+   "sortKey": "2016-07"
+  },
+  {
+   "id": "n3-2015-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2015",
+   "period": "2015-12",
+   "periodLabel": "December 2015",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 25
+    }
+   ],
+   "sortKey": "2015-12"
+  },
+  {
+   "id": "n3-2015-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2015",
+   "period": "2015-07",
+   "periodLabel": "July 2015",
+   "totalQuestions": 74,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2015-07"
+  },
+  {
+   "id": "n3-2014-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2014",
+   "period": "2014-12",
+   "periodLabel": "December 2014",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2014-12"
+  },
+  {
+   "id": "n3-2014-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2014",
+   "period": "2014-07",
+   "periodLabel": "July 2014",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2014-07"
+  },
+  {
+   "id": "n3-2013-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2013",
+   "period": "2013-12",
+   "periodLabel": "December 2013",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2013-12"
+  },
+  {
+   "id": "n3-2013-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2013",
+   "period": "2013-07",
+   "periodLabel": "July 2013",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2013-07"
+  },
+  {
+   "id": "n3-2012-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2012",
+   "period": "2012-12",
+   "periodLabel": "December 2012",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2012-12"
+  },
+  {
+   "id": "n3-2012-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2012",
+   "period": "2012-07",
+   "periodLabel": "July 2012",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2012-07"
+  },
+  {
+   "id": "n3-2011-12",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — December 2011",
+   "period": "2011-12",
+   "periodLabel": "December 2011",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 27
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 27,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2011-12"
+  },
+  {
+   "id": "n3-2011-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2011",
+   "period": "2011-07",
+   "periodLabel": "July 2011",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16,
+    "listening": 27
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 27,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2011-07"
+  },
+  {
+   "id": "n3-2010-07",
+   "origin": "archive",
+   "level": "N3",
+   "title": "JLPT N3 — July 2010",
+   "period": "2010-07",
+   "periodLabel": "July 2010",
+   "totalQuestions": 74,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 23,
+    "reading": 16
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 39,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2010-07"
+  },
+  {
+   "id": "n2-2024-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2024",
+   "period": "2024-07",
+   "periodLabel": "July 2024",
+   "totalQuestions": 51,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2024-07"
+  },
+  {
+   "id": "n2-2023-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2023",
+   "period": "2023-12",
+   "periodLabel": "December 2023",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "reading": 20,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2023-12"
+  },
+  {
+   "id": "n2-2023-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2023",
+   "period": "2023-07",
+   "periodLabel": "July 2023",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "reading": 20,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2023-07"
+  },
+  {
+   "id": "n2-2022-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2022",
+   "period": "2022-12",
+   "periodLabel": "December 2022",
+   "totalQuestions": 81,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2022-12"
+  },
+  {
+   "id": "n2-2022-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2022",
+   "period": "2022-07",
+   "periodLabel": "July 2022",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "reading": 20,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2022-07"
+  },
+  {
+   "id": "n2-2021-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2021",
+   "period": "2021-12",
+   "periodLabel": "December 2021",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "reading": 20,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2021-12"
+  },
+  {
+   "id": "n2-2021-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2021",
+   "period": "2021-07",
+   "periodLabel": "July 2021",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "reading": 21,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2021-07"
+  },
+  {
+   "id": "n2-2020-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2020",
+   "period": "2020-12",
+   "periodLabel": "December 2020",
+   "totalQuestions": 51,
+   "categoryCounts": {
+    "reading": 21,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2020-12"
+  },
+  {
+   "id": "n2-2019-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2019",
+   "period": "2019-12",
+   "periodLabel": "December 2019",
+   "totalQuestions": 102,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 22,
+    "reading": 20,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 52,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2019-12"
+  },
+  {
+   "id": "n2-2019-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2019",
+   "period": "2019-07",
+   "periodLabel": "July 2019",
+   "totalQuestions": 103,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 52,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2019-07"
+  },
+  {
+   "id": "n2-2018-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2018",
+   "period": "2018-12",
+   "periodLabel": "December 2018",
+   "totalQuestions": 103,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 52,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 28
+    }
+   ],
+   "sortKey": "2018-12"
+  },
+  {
+   "id": "n2-2018-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2018",
+   "period": "2018-07",
+   "periodLabel": "July 2018",
+   "totalQuestions": 75,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 24,
+    "reading": 21
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2018-07"
+  },
+  {
+   "id": "n2-2017-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2017",
+   "period": "2017-12",
+   "periodLabel": "December 2017",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32
+    }
+   ],
+   "sortKey": "2017-12"
+  },
+  {
+   "id": "n2-2016-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2016",
+   "period": "2016-07",
+   "periodLabel": "July 2016",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32
+    }
+   ],
+   "sortKey": "2016-07"
+  },
+  {
+   "id": "n2-2015-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2015",
+   "period": "2015-12",
+   "periodLabel": "December 2015",
+   "totalQuestions": 86,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32
+    }
+   ],
+   "sortKey": "2015-12"
+  },
+  {
+   "id": "n2-2015-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2015",
+   "period": "2015-07",
+   "periodLabel": "July 2015",
+   "totalQuestions": 86,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 24,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32
+    }
+   ],
+   "sortKey": "2015-07"
+  },
+  {
+   "id": "n2-2014-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2014",
+   "period": "2014-12",
+   "periodLabel": "December 2014",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2014-12"
+  },
+  {
+   "id": "n2-2014-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2014",
+   "period": "2014-07",
+   "periodLabel": "July 2014",
+   "totalQuestions": 86,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2014-07"
+  },
+  {
+   "id": "n2-2013-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2013",
+   "period": "2013-12",
+   "periodLabel": "December 2013",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2013-12"
+  },
+  {
+   "id": "n2-2013-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2013",
+   "period": "2013-07",
+   "periodLabel": "July 2013",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 31
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 31,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2013-07"
+  },
+  {
+   "id": "n2-2012-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2012",
+   "period": "2012-12",
+   "periodLabel": "December 2012",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 31
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 31,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2012-12"
+  },
+  {
+   "id": "n2-2012-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2012",
+   "period": "2012-07",
+   "periodLabel": "July 2012",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 31
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 31,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2012-07"
+  },
+  {
+   "id": "n2-2011-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2011",
+   "period": "2011-12",
+   "periodLabel": "December 2011",
+   "totalQuestions": 85,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "listening": 31
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 31,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2011-12"
+  },
+  {
+   "id": "n2-2011-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2011",
+   "period": "2011-07",
+   "periodLabel": "July 2011",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 31
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 31,
+     "audio": 5
+    }
+   ],
+   "sortKey": "2011-07"
+  },
+  {
+   "id": "n2-2010-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2010",
+   "period": "2010-12",
+   "periodLabel": "December 2010",
+   "totalQuestions": 75,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 24,
+    "reading": 21
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2010-12"
+  },
+  {
+   "id": "n2-2010-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2010",
+   "period": "2010-07",
+   "periodLabel": "July 2010",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 24,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32
+    }
+   ],
+   "sortKey": "2010-07"
+  },
+  {
+   "id": "n1-2025-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2025",
+   "period": "2025-07",
+   "periodLabel": "July 2025",
+   "totalQuestions": 44,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2025-07"
+  },
+  {
+   "id": "n1-2024-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2024",
+   "period": "2024-12",
+   "periodLabel": "December 2024",
+   "totalQuestions": 66,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 22
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2024-12"
+  },
+  {
+   "id": "n1-2024-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2024",
+   "period": "2024-07",
+   "periodLabel": "July 2024",
+   "totalQuestions": 96,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 22,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2024-07"
+  },
+  {
+   "id": "n1-2023-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2023",
+   "period": "2023-12",
+   "periodLabel": "December 2023",
+   "totalQuestions": 96,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 22,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2023-12"
+  },
+  {
+   "id": "n1-2023-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2023",
+   "period": "2023-07",
+   "periodLabel": "July 2023",
+   "totalQuestions": 96,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 22,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30
+    }
+   ],
+   "sortKey": "2023-07"
+  },
+  {
+   "id": "n1-2022-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2022",
+   "period": "2022-12",
+   "periodLabel": "December 2022",
+   "totalQuestions": 97,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 22,
+    "listening": 31
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 31,
+     "audio": 31
+    }
+   ],
+   "sortKey": "2022-12"
+  },
+  {
+   "id": "n1-2022-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2022",
+   "period": "2022-07",
+   "periodLabel": "July 2022",
+   "totalQuestions": 103,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 24,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 24,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 35
+    }
+   ],
+   "sortKey": "2022-07"
+  },
+  {
+   "id": "n1-2021-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2021",
+   "period": "2021-12",
+   "periodLabel": "December 2021",
+   "totalQuestions": 104,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 25,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 35
+    }
+   ],
+   "sortKey": "2021-12"
+  },
+  {
+   "id": "n1-2021-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2021",
+   "period": "2021-07",
+   "periodLabel": "July 2021",
+   "totalQuestions": 104,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 25,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 35
+    }
+   ],
+   "sortKey": "2021-07"
+  },
+  {
+   "id": "n1-2020-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2020",
+   "period": "2020-12",
+   "periodLabel": "December 2020",
+   "totalQuestions": 68,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 19,
+    "reading": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 44,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 24,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2020-12"
+  },
+  {
+   "id": "n1-2019-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2019",
+   "period": "2019-12",
+   "periodLabel": "December 2019",
+   "totalQuestions": 104,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 24,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 24,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 35
+    }
+   ],
+   "sortKey": "2019-12"
+  },
+  {
+   "id": "n1-2019-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2019",
+   "period": "2019-07",
+   "periodLabel": "July 2019",
+   "totalQuestions": 104,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 24,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 24,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2019-07"
+  },
+  {
+   "id": "n1-2018-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2018",
+   "period": "2018-12",
+   "periodLabel": "December 2018",
+   "totalQuestions": 105,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2018-12"
+  },
+  {
+   "id": "n1-2018-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2018",
+   "period": "2018-07",
+   "periodLabel": "July 2018",
+   "totalQuestions": 105,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2018-07"
+  },
+  {
+   "id": "n1-2017-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2017",
+   "period": "2017-12",
+   "periodLabel": "December 2017",
+   "totalQuestions": 105,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2017-12"
+  },
+  {
+   "id": "n1-2017-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2017",
+   "period": "2017-07",
+   "periodLabel": "July 2017",
+   "totalQuestions": 105,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 35
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 35,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2017-07"
+  },
+  {
+   "id": "n1-2016-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2016",
+   "period": "2016-12",
+   "periodLabel": "December 2016",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 37
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 37,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2016-12"
+  },
+  {
+   "id": "n1-2016-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2016",
+   "period": "2016-07",
+   "periodLabel": "July 2016",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 36
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 36,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2016-07"
+  },
+  {
+   "id": "n1-2015-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2015",
+   "period": "2015-12",
+   "periodLabel": "December 2015",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 37
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 37,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2015-12"
+  },
+  {
+   "id": "n1-2015-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2015",
+   "period": "2015-07",
+   "periodLabel": "July 2015",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 37
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 37,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2015-07"
+  },
+  {
+   "id": "n1-2014-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2014",
+   "period": "2014-12",
+   "periodLabel": "December 2014",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 37
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 37,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2014-12"
+  },
+  {
+   "id": "n1-2014-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2014",
+   "period": "2014-07",
+   "periodLabel": "July 2014",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 37
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 37,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2014-07"
+  },
+  {
+   "id": "n1-2013-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2013",
+   "period": "2013-12",
+   "periodLabel": "December 2013",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 36
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 36,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2013-12"
+  },
+  {
+   "id": "n1-2013-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2013",
+   "period": "2013-07",
+   "periodLabel": "July 2013",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 36
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 36,
+     "audio": 6
+    }
+   ],
+   "sortKey": "2013-07"
+  },
+  {
+   "id": "n1-2012-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2012",
+   "period": "2012-12",
+   "periodLabel": "December 2012",
+   "totalQuestions": 106,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25,
+    "listening": 36
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 36,
+     "audio": 36
+    }
+   ],
+   "sortKey": "2012-12"
+  },
+  {
+   "id": "n1-2012-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2012",
+   "period": "2012-07",
+   "periodLabel": "July 2012",
+   "totalQuestions": 70,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2012-07"
+  },
+  {
+   "id": "n1-2011-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2011",
+   "period": "2011-12",
+   "periodLabel": "December 2011",
+   "totalQuestions": 70,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2011-12"
+  },
+  {
+   "id": "n1-2011-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2011",
+   "period": "2011-07",
+   "periodLabel": "July 2011",
+   "totalQuestions": 70,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 25
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 25,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2011-07"
+  },
+  {
+   "id": "n1-2010-12",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — December 2010",
+   "period": "2010-12",
+   "periodLabel": "December 2010",
+   "totalQuestions": 71,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 26
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 26,
+     "audio": 0
+    }
+   ],
+   "sortKey": "2010-12"
+  }
+ ]
+}

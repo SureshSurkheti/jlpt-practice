@@ -149,7 +149,7 @@ I18N.register("vi", {
  "exams.study": "Học",
  "exams.title": "Thư viện đề luyện tập",
  "footer.tagline": "Học thông minh hơn. Sống tốt hơn ở Nhật.",
- "home.body": "86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.",
+ "home.body": "%%PAPERS%% đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.",
  "home.browseExams": "Xem đề thi",
  "home.chooseLevel": "Chọn cấp độ của bạn",
  "home.chooseLevelBody": "Từ nền tảng cơ bản đến tiếng Nhật nâng cao.",

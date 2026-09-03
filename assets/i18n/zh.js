@@ -149,7 +149,7 @@ I18N.register("zh", {
  "exams.study": "学习",
  "exams.title": "模拟题库",
  "footer.tagline": "更聪明地学习，在日本生活得更好。",
- "home.body": "N5到N1共86套模拟题，计时并自动评分，附答案解析和听力原文。",
+ "home.body": "N5到N1共%%PAPERS%%套模拟题，计时并自动评分，附答案解析和听力原文。",
  "home.browseExams": "浏览真题",
  "home.chooseLevel": "选择你的级别",
  "home.chooseLevelBody": "从入门基础到高级日语。",
