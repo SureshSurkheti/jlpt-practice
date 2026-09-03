@@ -12,7 +12,7 @@ I18N.register("ja", {
  "about.p4": "問題以外にも各レベルの学習リストがあります。読み・ローマ字・英語訳つきの単語 9,639 語、筆順アニメーションつきの漢字 2,211 字、例文つきの主要文法パターン。画面表示は12言語に対応し、N5・N4 の単語にはネパール語訳もついています。",
  "about.title": "このサイトについて",
  "exam.allAnswered": "すべて解答済みです。提出できます。",
- "exam.allSections": "全セクション",
+ "exam.allSections": "すべて選択",
  "exam.anotherExam": "他の過去問",
  "exam.answered": "解答済み",
  "exam.attempt": "回",

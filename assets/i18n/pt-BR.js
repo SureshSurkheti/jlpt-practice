@@ -12,7 +12,7 @@ I18N.register("pt-BR", {
  "about.p4": "Além das provas, há listas de estudo para cada nível: 9.639 palavras com leitura, romaji e significado em inglês, 2.211 kanji com animação da ordem dos traços, e os padrões gramaticais essenciais com frases de exemplo. A interface está disponível em 12 idiomas, e as listas de N5 e N4 também trazem significados em nepalês.",
  "about.title": "Sobre",
  "exam.allAnswered": "Tudo respondido. Você pode entregar.",
- "exam.allSections": "Prova inteira",
+ "exam.allSections": "Selecionar tudo",
  "exam.anotherExam": "Outra prova",
  "exam.answered": "respondidas",
  "exam.attempt": "tentativa",

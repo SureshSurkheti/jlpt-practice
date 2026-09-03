@@ -12,7 +12,7 @@ I18N.register("id", {
  "about.p4": "Selain soal, ada daftar belajar untuk setiap level: 9.639 kata dengan cara baca, romaji dan arti bahasa Inggris, 2.211 kanji dengan animasi urutan goresan, serta pola tata bahasa inti beserta contoh kalimat. Antarmuka tersedia dalam 12 bahasa, dan daftar kata N5 dan N4 juga memuat arti bahasa Nepal.",
  "about.title": "Tentang",
  "exam.allAnswered": "Semua sudah dijawab. Anda siap mengumpulkan.",
- "exam.allSections": "Seluruh soal",
+ "exam.allSections": "Pilih semua",
  "exam.anotherExam": "Ujian lain",
  "exam.answered": "dijawab",
  "exam.attempt": "kali",

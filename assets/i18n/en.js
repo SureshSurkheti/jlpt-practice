@@ -17,7 +17,7 @@ I18N.register("en", {
  "about.rightsTitle": "Copyright and removal requests",
  "about.title": "About",
  "exam.allAnswered": "Everything is answered. You are ready to submit.",
- "exam.allSections": "Whole paper",
+ "exam.allSections": "Select all",
  "exam.anotherExam": "Another exam",
  "exam.answered": "answered",
  "exam.attempt": "attempt",

@@ -12,7 +12,7 @@ I18N.register("ko", {
  "about.p4": "시험지 외에도 레벨별 학습 목록이 있습니다. 읽기·로마자·영어 뜻이 붙은 단어 9,639개, 획순 애니메이션이 있는 한자 2,211자, 예문이 딸린 핵심 문법 패턴입니다. 인터페이스는 12개 언어를 지원하며, N5·N4 단어에는 네팔어 뜻도 있습니다.",
  "about.title": "소개",
  "exam.allAnswered": "모두 응답했습니다. 제출할 수 있습니다.",
- "exam.allSections": "전체 시험지",
+ "exam.allSections": "전체 선택",
  "exam.anotherExam": "다른 기출",
  "exam.answered": "응답",
  "exam.attempt": "회",

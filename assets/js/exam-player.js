@@ -595,8 +595,13 @@
     var partsBox = el("div", "setup-block");
     partsBox.appendChild(el("div", "setup-title-row",
       '<h2 class="setup-title">1 · ' + esc(t("exam.chooseSections")) + "</h2>" +
-      '<button type="button" class="setup-all" id="pickAllBtn">' +
-        esc(t("exam.allSections")) + "</button>"));
+      /* Built on the real .btn tier rather than styled to look like a chip:
+         it was read as a label, not a control. The tick is part of the
+         label so the shape says "press me" before the words do. */
+      '<button type="button" class="btn btn-ghost setup-all" id="pickAllBtn">' +
+        '<span class="setup-all-icon" aria-hidden="true">\u2713</span>' +
+        '<span class="setup-all-text">' + esc(t("exam.allSections")) +
+        "</span></button>"));
     partsBox.appendChild(el("p", "setup-hint", t("exam.chooseSectionsHint")));
 
     var grid = el("div", "part-grid");
@@ -786,7 +791,11 @@
       var btn = document.getElementById("pickAllBtn");
       if (!btn) return;
       var full = allPicked();
-      btn.textContent = t(full ? "exam.clearSections" : "exam.allSections");
+      var text = btn.querySelector(".setup-all-text");
+      var icon = btn.querySelector(".setup-all-icon");
+      if (text) text.textContent = t(full ? "exam.clearSections" : "exam.allSections");
+      /* A tick to add them all, a cross to take them all away. */
+      if (icon) icon.textContent = full ? "\u2715" : "\u2713";
       btn.classList.toggle("is-clear", full);
     }
 

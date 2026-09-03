@@ -12,7 +12,7 @@ I18N.register("fil", {
  "about.p4": "Bukod sa mga papel, may study list para sa bawat antas: 9,639 salita na may bigkas, romaji at kahulugan sa Ingles, 2,211 kanji na may animated na stroke order, at ang pangunahing mga pattern ng gramatika na may halimbawang pangungusap. Available ang interface sa 12 wika, at may kahulugan sa Nepali din ang mga salitang N5 at N4.",
  "about.title": "Tungkol",
  "exam.allAnswered": "Lahat ay nasagutan. Maaari nang i-submit.",
- "exam.allSections": "Buong papel",
+ "exam.allSections": "Piliin lahat",
  "exam.anotherExam": "Ibang pagsusulit",
  "exam.answered": "nasagutan",
  "exam.attempt": "beses",

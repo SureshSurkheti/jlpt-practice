@@ -12,7 +12,7 @@ I18N.register("zh", {
  "about.p4": "除了试题，每个级别还有学习清单：9,639 个单词，附读音、罗马字和英文释义；2,211 个汉字，附笔顺动画；以及核心语法句型和例句。界面支持 12 种语言，N5 和 N4 的词表还附有尼泊尔语释义。",
  "about.title": "关于",
  "exam.allAnswered": "全部已作答，可以提交了。",
- "exam.allSections": "整套试题",
+ "exam.allSections": "全选",
  "exam.anotherExam": "换一套",
  "exam.answered": "已作答",
  "exam.attempt": "次",

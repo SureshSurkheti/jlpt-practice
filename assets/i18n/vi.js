@@ -12,7 +12,7 @@ I18N.register("vi", {
  "about.p4": "Ngoài các đề thi còn có danh sách học cho từng cấp độ: 9.639 từ kèm cách đọc, romaji và nghĩa tiếng Anh, 2.211 kanji có hoạt hình thứ tự nét, và các mẫu ngữ pháp cốt lõi kèm câu ví dụ. Giao diện có 12 ngôn ngữ, và danh sách từ N5, N4 còn có nghĩa tiếng Nepal.",
  "about.title": "Giới thiệu",
  "exam.allAnswered": "Đã trả lời hết. Bạn có thể nộp bài.",
- "exam.allSections": "Toàn bộ đề",
+ "exam.allSections": "Chọn tất cả",
  "exam.anotherExam": "Đề khác",
  "exam.answered": "đã trả lời",
  "exam.attempt": "lần",
