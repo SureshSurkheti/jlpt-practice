@@ -711,6 +711,14 @@ body > main { flex: 1 0 auto; }
   max-width: 68ch;
 }
 
+/* ...but not when it is the first thing on the page. <main> already carries a
+   section's worth of top padding, so the two stacked: 46px from main plus 37
+   here put 84px of nothing between the header and the title on Study, Levels
+   and About - three times the 28px the exams page uses. This padding is for
+   separating the intro from something above it inside main, and when it
+   leads there is nothing above it. */
+.page-intro:first-child { padding-top: 0; }
+
 .about-card h3,
 .step-item h4 {
   margin: 0 0 14px;

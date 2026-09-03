@@ -213,32 +213,48 @@ function readBests() {
   }
 }
 
-/* Everything recorded for one level, summed over the sections actually sat.
-   The cap follows the sections you have done, not the whole exam, so "32 /
-   60" after one section is true where "32 / 180" would not be. */
+/* Your best at one level: the best score for each scored section, added up.
+
+   This used to add every result from every paper together, so sitting the
+   same N4 section on two papers reported "34 / 240" - a total out of twice
+   what the exam is even marked out of, which grew every time you practised
+   and so made a diligent learner's percentage fall. It was also comparable
+   to nothing: the JLPT gives you a mark out of 180, and the pass mark for
+   the level is a number on that scale.
+
+   Best-of-each-section keeps it on that scale. The cap follows the sections
+   you have actually sat, so it reads "32 / 60" after one section rather than
+   claiming the other two were failed. */
 function levelBest(level) {
   const all = readBests();
-  let scored = 0, cap = 0, papers = 0, sections = 0, last = 0;
+  const best = {};
+  const papers = new Set();
+  let last = 0;
 
   Object.keys(all).forEach((id) => {
     if (id.toUpperCase().indexOf(level.toUpperCase() + '-') !== 0) return;
     const rec = all[id];
-    let touched = false;
     SECTION_KEYS.forEach((k) => {
       if (!rec[k]) return;
-      scored += rec[k].best;
-      cap += rec[k].cap;
-      sections++;
-      touched = true;
+      papers.add(id);
       if (rec[k].lastAt > last) last = rec[k].lastAt;
+      if (!best[k] || rec[k].best > best[k].best) {
+        best[k] = { best: rec[k].best, cap: rec[k].cap };
+      }
     });
-    if (touched) papers++;
   });
 
-  return sections
-    ? { scored, cap, papers, sections, last,
-        percent: cap ? Math.round((scored / cap) * 100) : 0 }
-    : null;
+  const keys = Object.keys(best);
+  if (!keys.length) return null;
+
+  const scored = keys.reduce((n, k) => n + best[k].best, 0);
+  const cap = keys.reduce((n, k) => n + best[k].cap, 0);
+  return {
+    scored, cap, last,
+    papers: papers.size,
+    sections: keys.length,
+    percent: cap ? Math.round((scored / cap) * 100) : 0
+  };
 }
 
 function levelDesc(key) {

@@ -28,6 +28,19 @@ function statsRows() {
   return rows;
 }
 
+/* Best-of-each-section, not every result added together. Adding them made a
+   total out of more than the exam is marked out of, and one that grew each
+   time you practised - see the note above levelBest() in site.js. Keyed by
+   level and section so two attempts at the same section count once. */
+function bestPerSection(rows) {
+  const best = {};
+  rows.forEach((r) => {
+    const key = r.level + ':' + r.key;
+    if (!best[key] || r.best > best[key].best) best[key] = r;
+  });
+  return Object.keys(best).map((k) => best[k]);
+}
+
 function renderStatsPage() {
   const rows = statsRows();
 
@@ -38,8 +51,9 @@ function renderStatsPage() {
 
   const papers = new Set(rows.map((r) => r.id));
   const levels = new Set(rows.map((r) => r.level));
-  const scored = rows.reduce((n, r) => n + r.best, 0);
-  const cap = rows.reduce((n, r) => n + r.cap, 0);
+  const top = bestPerSection(rows);
+  const scored = top.reduce((n, r) => n + r.best, 0);
+  const cap = top.reduce((n, r) => n + r.cap, 0);
 
   set('totalAnswered', papers.size);
   set('overallAccuracy', cap ? Math.round((scored / cap) * 100) + '%' : '—');
@@ -61,11 +75,12 @@ function renderLevelProgress(rows) {
   }
 
   container.innerHTML = studied.map((lv) => {
-    const mine = rows.filter((r) => r.level === lv);
+    const mine = bestPerSection(rows.filter((r) => r.level === lv));
     const scored = mine.reduce((n, r) => n + r.best, 0);
     const cap = mine.reduce((n, r) => n + r.cap, 0);
     const pct = cap ? Math.round((scored / cap) * 100) : 0;
-    const papers = new Set(mine.map((r) => r.id)).size;
+    const papers = new Set(rows.filter((r) => r.level === lv)
+      .map((r) => r.id)).size;
     const last = Math.max(...mine.map((r) => r.lastAt || 0));
 
     return `
@@ -118,7 +133,7 @@ function renderSectionPerformance(rows) {
   const COLOR = { language: '#2d6eb4', reading: '#2f7d57', listening: '#c84a52' };
 
   container.innerHTML = SECTION_KEYS.map((key) => {
-    const mine = rows.filter((r) => r.key === key);
+    const mine = bestPerSection(rows).filter((r) => r.key === key);
     if (!mine.length) return '';
     const scored = mine.reduce((n, r) => n + r.best, 0);
     const cap = mine.reduce((n, r) => n + r.cap, 0);
