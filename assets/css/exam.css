@@ -146,22 +146,40 @@
 .part-text { display: flex; flex-direction: column; gap: 3px; }
 .part-label { font-weight: 700; color: var(--navy); }
 .part-sub { font-size: 0.8rem; color: var(--muted); }
+/* A hollow ring when unticked. It used to be a solid grey disc, which is
+   what a disabled control looks like - so four unticked sections read as
+   four things you were not allowed to choose. */
 .part-check {
   margin-left: auto;
   width: 24px; height: 24px;
   display: grid; place-items: center;
   border-radius: 50%;
-  background: var(--line);
+  background: transparent;
+  border: 2px solid var(--line);
   color: transparent;
   font-size: 0.75rem;
   font-weight: 800;
   transition: 0.18s ease;
 }
-.part-card.is-on .part-check { background: var(--level-color); color: #fff; }
+.part-card:hover .part-check { border-color: var(--blue); }
+.part-card.is-on .part-check {
+  background: var(--level-color);
+  border-color: var(--level-color);
+  color: #fff;
+}
 
 .mode-card { flex-direction: column; align-items: flex-start; gap: 6px; }
 .mode-card strong { color: var(--navy); font-size: 1rem; }
-.mode-card span { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+.mode-card span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  /* Restated, not inherited: a stale copy of these rules on the other
+     stylesheet used to shout this sentence in tracked-out bold capitals. */
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
 
 .timer-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 .switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; color: var(--navy); }
@@ -579,7 +597,21 @@
   align-self: center;
 }
 
-.choice.is-chosen { border-color: var(--blue); background: rgba(45, 110, 180, 0.08); }
+/* The answer you picked, and there must be no doubt which one it is. A 1.5px
+   tint was easy to lose halfway down a page of fifty identical boxes, and the
+   number beside it stayed grey, so nothing about a chosen row looked chosen.
+   The ring is an inset shadow rather than a thicker border, so the box does
+   not shift by half a pixel when you press it. */
+.choice.is-chosen {
+  border-color: var(--blue);
+  background: rgba(45, 110, 180, 0.11);
+  box-shadow: inset 0 0 0 1.5px var(--blue);
+}
+.choice.is-chosen .choice-num {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
 .choice.is-chosen .choice-num { background: var(--blue); border-color: var(--blue); color: #fff; }
 .choice.is-correct { border-color: var(--success); background: rgba(47, 125, 87, 0.1); }
 .choice.is-correct .choice-num { background: var(--success); border-color: var(--success); color: #fff; }
@@ -977,7 +1009,14 @@
 
 /* ------------------------------------------------------- exam browser */
 
+/* Copy on the left at a readable measure, the counts on the right. As one
+   column the paragraph stopped at 62ch and left the right-hand half of a
+   1120px card empty, with four counts crowded along the bottom-left. */
 .exams-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(24px, 3.4vw, 52px);
   padding: clamp(24px, 3vw, 40px) clamp(22px, 3vw, 42px);
   border-radius: var(--radius);
   background: linear-gradient(135deg, var(--navy), var(--blue));
@@ -985,21 +1024,59 @@
   box-shadow: var(--shadow);
 }
 .exams-hero h1 { margin: 0 0 10px; font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.8rem); }
-.exams-hero p { margin: 0; opacity: 0.86; max-width: 62ch; line-height: 1.7; }
-.exams-stats { display: flex; gap: 30px; margin-top: 24px; flex-wrap: wrap; }
-.exams-stat strong { display: block; font-size: 1.9rem; font-weight: 800; line-height: 1; }
-/* One of the four "stats" is a word, not a count. At the numeric size it ran
-   twice as wide as the rest of the row and read as the headline of the hero. */
-.exams-stat.is-word strong { font-size: 1.15rem; line-height: 1.25; padding-top: 6px; }
-.exams-stat span { font-size: 0.78rem; opacity: 0.78; letter-spacing: 0.06em; text-transform: uppercase; }
+.exams-hero p { margin: 0; opacity: 0.86; line-height: 1.7; }
 
+.exams-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+  padding-left: clamp(0px, 2vw, 32px);
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+.exams-stat strong {
+  display: block;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.exams-stat span {
+  font-size: 0.75rem;
+  opacity: 0.78;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  display: block;
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .exams-hero { grid-template-columns: minmax(0, 1fr); }
+  .exams-stats {
+    padding-left: 0;
+    border-left: 0;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+}
+
+/* The level chips and the search share one row. The chips are hidden until a
+   level is open; the search never is, so it used to sit on a line of its own
+   underneath, costing a row of vertical space to hold one field. */
+.exams-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 26px 0 20px;
+}
 .exams-filters {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin: 26px 0 20px;
 }
+.exams-filters[hidden] { display: none; }
 .exams-filters .chip.is-on { background: var(--level-color); border-color: var(--level-color); }
 .exams-search {
   margin-left: auto;
@@ -1131,7 +1208,10 @@
   font-size: 0.76rem;
   color: var(--muted);
 }
-.exam-row-best.is-empty { min-width: 74px; }
+/* Only hold the column open when some row in view actually has a score in
+   it; otherwise it is 74px of nothing on every row. */
+.exam-row-best.is-empty { min-width: 0; }
+.exam-rows.has-bests .exam-row-best.is-empty { min-width: 74px; }
 
 .exam-row-go { display: flex; gap: 8px; justify-self: end; }
 .exam-row-go .btn { padding: 9px 18px; font-size: 0.82rem; }
@@ -1710,11 +1790,8 @@
    for their back link too, and they never load this file. */
 
 
-.exams-searchrow { display: flex; margin: 18px 0 20px; }
-.exams-searchrow .exams-search { margin-left: auto; }
-
 @media (max-width: 640px) {
-  .exams-searchrow .exams-search { margin-left: 0; width: 100%; }
+  .exams-search { margin-left: 0; width: 100%; }
 }
 
 /* The back link above the setup hero. Its label always shows here - there is
@@ -1934,4 +2011,13 @@
   margin-left: 8px;
   color: var(--gold);
   font-weight: 700;
+}
+
+/* The running total of what step 1 has selected. */
+.setup-count {
+  margin: 14px 0 0;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
 }

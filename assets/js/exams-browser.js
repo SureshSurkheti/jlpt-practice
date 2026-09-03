@@ -91,7 +91,7 @@
       (idx && idx.exams ? idx.exams : []).forEach(function (e) {
         withWords[e.id] = e.words;
       });
-      if (exams.length) render();
+      if (exams.length) { renderStats(); render(); }
     })
     .catch(function () { /* tags simply do not appear */ });
 
@@ -121,16 +121,22 @@
     var questions = exams.reduce(function (s, e) { return s + e.totalQuestions; }, 0);
     var levels = {};
     exams.forEach(function (e) { levels[e.level] = 1; });
+    /* The fourth used to be the word "Automatically" under the label
+       "Marked" - which is not a count, so it broke the row it sat in, and
+       which the sentence directly above it already says ("timed and marked
+       automatically"). Replaced with a real number, and one that is a
+       genuine difference from other free JLPT sites rather than a claim. */
+    var glossed = exams.filter(function (e) { return withWords[e.id]; }).length;
+
     host.innerHTML =
       stat(exams.length, t("exams.statPapers")) +
       stat(questions.toLocaleString(), t("exams.statQuestions")) +
       stat(Object.keys(levels).length, t("exams.statLevels")) +
-      /* This one is a word ("Automatically"), not a count - see .is-word. */
-      stat(t("exams.statScoredValue"), t("exams.statScored"), "is-word");
+      (glossed ? stat(glossed, t("exams.statWordMeanings")) : "");
   }
 
-  function stat(value, label, kind) {
-    return '<div class="exams-stat' + (kind ? " " + kind : "") + '"><strong>' +
+  function stat(value, label) {
+    return '<div class="exams-stat"><strong>' +
       esc(value) + "</strong><span>" + esc(label) + "</span></div>";
   }
 
@@ -222,6 +228,12 @@
     var wordsVaries = shown.some(function (e) { return withWords[e.id]; }) &&
                       shown.some(function (e) { return !withWords[e.id]; });
 
+    /* The best column is held open so the scores line up down the page -
+       but only when there is something to line up. Reserving it for a level
+       you have never sat left an empty stripe between every row and its
+       buttons. */
+    var anyBest = shown.some(function (e) { return !!bestOf(e.id); });
+
     var html = "";
     order.forEach(function (lv) {
       var papers = groups[lv];
@@ -231,7 +243,7 @@
         "<span>" + papers.length + " " +
         esc(t(papers.length === 1 ? "exams.paper" : "exams.papers")) +
         "</span></h2>";
-      html += '<div class="exam-rows">';
+      html += '<div class="exam-rows' + (anyBest ? " has-bests" : "") + '">';
       papers.forEach(function (e) { html += card(e, wordsVaries); });
       html += "</div>";
     });
@@ -285,6 +297,7 @@
           "<b>" + b.scored + "<i>/" + b.cap + "</i></b>" +
         "</div>"
       : '<div class="exam-row-best is-empty" aria-hidden="true"></div>';
+
 
     return '<article class="exam-row' + (b ? " is-sat" : "") +
         '" style="--level-color:' + color + '">' +

@@ -578,6 +578,11 @@
       grid.appendChild(lab);
     });
     partsBox.appendChild(grid);
+    /* How much you have chosen, under the thing you choose it with. This
+       used to sit in the timer row three steps down, where it read as a
+       remark about the clock. */
+    partsBox.appendChild(el("p", "setup-count", ""));
+    partsBox.lastChild.id = "timeHint";
     card.appendChild(partsBox);
 
     /* -- mode -- */
@@ -619,8 +624,7 @@
         '<input type="number" id="timerMinutes" min="1" max="300"' +
           (wantTimed ? "" : " disabled") + ' value="' +
           ((saved && saved.minutes) || lv.minutes) + '" />' +
-      "</label>" +
-      '<span class="setup-hint" id="timeHint"></span>'));
+      "</label>"));
     card.appendChild(timeBox);
 
     /* -- actions -- */

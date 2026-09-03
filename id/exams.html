@@ -88,14 +88,23 @@
 
     <main class="exams-root">
       <div class="container">
+        <!-- Copy on the left, counts on the right. The copy stops at a
+             readable measure, which on a wide screen left the right-hand
+             half of the card empty with the counts bunched along the
+             bottom-left. -->
         <section class="exams-hero">
-          <h1 data-i18n="exams.title">Perpustakaan soal latihan</h1>
-          <p data-i18n="exams.body">Setiap soal di sini adalah simulasi lengkap dengan format JLPT, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.</p>
+          <div class="exams-hero-copy">
+            <h1 data-i18n="exams.title">Perpustakaan soal latihan</h1>
+            <p data-i18n="exams.body">Setiap soal di sini adalah simulasi lengkap dengan format JLPT, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.</p>
+          </div>
           <div class="exams-stats" id="examsStats"></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
-             open, because until then it has nothing to filter. -->
+             open, because until then it has nothing to filter - but the
+             search does, so both share one row rather than the search
+             sitting on an orphan line of its own beneath it. -->
+        <div class="exams-toolbar">
         <div class="exams-filters" id="examsFilters" hidden>
           <button type="button" class="chip-back" id="examsBack">
             <span aria-hidden="true">&larr;</span>
@@ -108,7 +117,6 @@
           <button type="button" class="chip" data-level="N1" aria-pressed="false">N1</button>
         </div>
 
-        <div class="exams-searchrow">
           <input
             type="search"
             class="exams-search"
