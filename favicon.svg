@@ -1,14 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img"
-     aria-label="JLPT Practice">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="64" height="64"
+     role="img" aria-label="JLPT Practice">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#112d4e"/>
-      <stop offset="1" stop-color="#2d6eb4"/>
+    <linearGradient id="bg" x1="0.08" y1="0" x2="0.92" y2="1">
+      <stop offset="0" stop-color="#0f2c4c"/>
+      <stop offset="0.52" stop-color="#1d5490"/>
+      <stop offset="1" stop-color="#2f74bd"/>
     </linearGradient>
+    <radialGradient id="sheen" cx="0.22" cy="0.12" r="0.92">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <text x="32" y="43" text-anchor="middle"
-        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
-        font-size="30" font-weight="800" letter-spacing="1.5"
-        fill="#ffffff">JL</text>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect width="512" height="512" fill="url(#sheen)"/>
+  <g transform="translate(256 256) scale(1) translate(-256 -256)">
+    <!-- 日: square corners bar one soft shoulder top-right, the way a gothic
+         face draws it. Drawn as geometry so it never depends on a font. -->
+    <path d="M148 76 H340 a24 24 0 0 1 24 24 V436 H316 V100 H196 V436 H148 Z"
+          fill="#ffffff"/>
+    <rect x="148" y="236" width="216" height="40" fill="#ffffff"/>
+    <rect x="148" y="396" width="216" height="40" fill="#ffffff"/>
+  </g>
 </svg>

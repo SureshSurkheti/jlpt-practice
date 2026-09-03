@@ -285,15 +285,11 @@
 .exam-timer.is-off { color: var(--muted); font-size: 0.85rem; }
 @keyframes pulse { 50% { opacity: 0.62; } }
 
+/* One column. There was a sticky question-map column here; it is gone, and
+   the paper has the width back - which reading passages and four-option
+   listening questions both wanted. */
 .exam-body {
-  display: grid;
-  /* The palette column tracks the container, not the viewport. It used to
-     use vw, which was the same thing back when the container filled the
-     screen; now that the container stops at 1240px a vw-sized palette would
-     keep growing on a 27" monitor while the paper beside it did not. */
-  grid-template-columns: minmax(0, 1fr) clamp(232px, 21%, 300px);
-  gap: clamp(20px, 1.8vw, 32px);
-  align-items: start;
+  display: block;
   padding-top: 26px;
 }
 /* ------------------------------------------------------------- the paper */
@@ -422,17 +418,23 @@
   margin-bottom: 14px;
 }
 
+/* The booklet's own number - 23, or 3番 in listening. A circle could not hold
+   two characters plus 番, so it is a pill that grows with what is in it. */
 .pq-num {
   flex: none;
-  width: 30px;
+  min-width: 34px;
   height: 30px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
   background: var(--navy);
   color: #fff;
   font-size: 0.82rem;
   font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
   font-variant-numeric: lining-nums tabular-nums;
 }
 
@@ -446,23 +448,6 @@
 }
 .pq-prompt u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .pq-prompt img { margin: 14px 0; border-radius: 8px; }
-
-/* the paper's own question number, e.g. "45" or "1番" - sits inline in front
-   of the prompt text, so it reads as part of the question, not as an option */
-.q-number {
-  display: inline-block;
-  margin-right: 10px;
-  padding: 2px 10px;
-  border-radius: 8px;
-  background: var(--panel-soft);
-  color: var(--navy);
-  font-size: 0.8rem;
-  font-weight: 800;
-  font-variant-numeric: lining-nums tabular-nums;
-  white-space: nowrap;
-  vertical-align: 2px;
-}
-.pq-prompt.is-bare .q-number { margin-right: 0; }
 
 .flag-btn {
   flex: none;
@@ -485,29 +470,58 @@
 
 /* -- audio -- */
 
+/* The listening player, pinned above the questions it belongs to.
+
+   One recording covers a whole 問題 - six questions in sequence - and there
+   is no way to cut it into six from the browser. Pinning it is the next best
+   thing: it stays above whichever of those six you are looking at, so going
+   back to catch 4番 again is a press, not a scroll.
+
+   Opaque, not the old translucent gradient: questions now pass underneath it.
+   It stops travelling at the end of its own 問題, because that is where its
+   parent .paper-section ends. */
 .q-audio {
-  margin-top: 16px;
-  padding: 16px 18px;
-  background: linear-gradient(135deg,
-    rgba(45, 110, 180, 0.08), rgba(47, 125, 87, 0.06));
-  border: 1px solid var(--line);
-  border-radius: 16px;
-}
-.q-audio-head {
+  position: sticky;
+  top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 10px);
+  z-index: 4;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 14px;
+  margin: 14px 0 18px;
+  padding: 10px 16px;
+  background: #eef4fb;
+  border: 1px solid rgba(45, 110, 180, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px -12px rgba(17, 45, 78, 0.4);
+}
+.q-audio-label {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
   color: var(--navy);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+}
+.q-audio-label b { font-weight: 700; }
+.q-audio-label i {
+  font-style: normal;
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .q-audio iframe {
+  flex: 1;
+  min-width: 0;
   border: 0;
   border-radius: 10px;
-  width: 100%;
   background: #fff;
 }
-.q-audio-note { margin: 8px 0 0; font-size: 0.76rem; color: var(--muted); }
+
+/* Everything about the audio that is not a control: the note, and the way
+   out when it will not play. Left in the section head so the pinned bar
+   stays one line tall on a phone. */
+.q-audio-aside { margin-top: 14px; }
+.q-audio-note { margin: 0; font-size: 0.76rem; color: var(--muted); }
 
 /* -- choices -- */
 
@@ -772,69 +786,12 @@
 
 .section-card .btn { margin-top: 14px; }
 
-/* ------------------------------------------------------------- palette */
-
-.exam-side {
-  position: sticky;
-  top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 16px);
-}
-.palette-card {
-  padding: 20px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  max-height: calc(100vh - var(--header-h, 74px) - var(--bar-h, 62px) - 48px);
-  overflow-y: auto;
-}
-.palette-card h3 { margin: 0 0 14px; font-size: 0.94rem; color: var(--navy); }
-.palette-part {
-  margin: 16px 0 8px;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.palette-part:first-of-type { margin-top: 0; }
-.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-
-.palette-cell {
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: #fff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--muted);
-  cursor: pointer;
-  transition: 0.14s ease;
-}
-.palette-cell:hover {
-  border-color: var(--blue);
-  color: var(--blue);
-  box-shadow: 0 0 0 2px rgba(45, 110, 180, 0.16);
-}
-.palette-cell.is-done { background: var(--success); border-color: var(--success); color: #fff; }
-.palette-cell.is-bad { background: var(--danger); border-color: var(--danger); color: #fff; }
-.palette-cell.is-flagged { background: var(--gold); border-color: var(--gold); color: #3a2a06; }
-.palette-cell.is-current { outline: 2px solid var(--navy); outline-offset: 1px; }
-
-.palette-legend {
-  margin-top: 16px;
-  display: grid;
-  gap: 7px;
-  font-size: 0.76rem;
-  color: var(--muted);
-}
-.palette-legend span { display: flex; align-items: center; gap: 8px; }
-.dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
-.dot-done { background: var(--success); }
-.dot-bad { background: var(--danger); }
-.dot-flag { background: var(--gold); }
-.dot-todo { background: #fff; border: 1px solid var(--line); }
+/* The question map that used to live here - a sticky grid of 101 numbered
+   cells beside the paper - was removed rather than repaired. Below 960px it
+   dropped to the bottom of the page, so on a phone it was a hundred shortcuts
+   you only reached after scrolling past everything they pointed at; and it
+   printed a second set of numbers next to a paper that now shows its own.
+   "How much is left?" is answered by the progress bar in the command bar. */
 
 .bar-section {
   font-size: 0.8rem;
@@ -1062,47 +1019,152 @@
   align-items: center;
   gap: 12px;
 }
-.exam-group-title span { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+/* The count beside the level, not the level chip itself - which this used to
+   grey out, printing white-on-green as muted grey on green. */
+.exam-group-title > span:not(.exam-level-chip) {
+  font-size: 0.8rem; font-weight: 500; color: var(--muted);
+}
 
-.exam-card-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
-.exam-card {
+/* ------------------------------------------------------- the paper list
+
+   A list of dates, not a wall of cards. Twenty-eight sittings of one level
+   differ by their date and almost nothing else, so the date leads each row,
+   the identical booklet make-up is one quiet line, and the columns that do
+   vary - anything missing, and your own best - line up down the page where
+   they can be compared at a glance. */
+.exam-rows {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.exam-row {
   --level-color: var(--blue);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 22px;
+  display: grid;
+  /* Date sized to its own content, everything the paper is made of taking
+     the rest, then the three fixed columns. Giving the make-up a fraction
+     instead left it wrapping to two lines beside an acre of empty gap.
+
+     Each row is its own grid, so the date column is a fixed width rather
+     than sized to its content: with auto, "December 2018" and "July 2019"
+     produced different column widths and nothing lined up down the page. */
+  grid-template-columns: 190px minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 22px);
+  padding: 12px clamp(14px, 1.6vw, 20px);
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 20px;
-  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.07);
-  transition: 0.2s ease;
+  border-radius: 14px;
+  transition: 0.18s ease;
 }
-.exam-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--level-color); }
-.exam-card-top { display: flex; align-items: center; gap: 10px; }
-.exam-card-title { font-weight: 700; color: var(--navy); font-size: 1.02rem; }
-.exam-card-parts { display: flex; flex-wrap: wrap; gap: 6px; }
+.exam-row:hover {
+  border-color: var(--level-color);
+  box-shadow: 0 8px 20px -10px rgba(17, 45, 78, 0.35);
+}
+/* A paper you have already sat carries a hairline in the level colour, so a
+   run down the list shows where you have been without reading a word. */
+.exam-row.is-sat { box-shadow: inset 3px 0 0 0 var(--level-color); }
+
+.exam-row-when { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.exam-row-title {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1rem;
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+}
+
+.exam-row-makeup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 9px;
+  min-width: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.exam-row-count {
+  font-weight: 700;
+  color: var(--ink-soft);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.exam-row-parts { font-variant-numeric: lining-nums tabular-nums; }
+.exam-row-origin {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.exam-row-origin.is-practice { color: var(--blue); opacity: 1; }
+
+.exam-row-flags { display: flex; flex-wrap: wrap; gap: 6px; }
 .exam-part-tag {
   padding: 4px 11px;
   border-radius: 999px;
   background: var(--panel-soft);
   border: 1px solid var(--line);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--muted);
+  white-space: nowrap;
 }
-.exam-card-foot { display: flex; align-items: center; gap: 10px; margin-top: auto; }
-.exam-card-foot .btn { padding: 10px 18px; font-size: 0.85rem; }
-.exam-card-count { font-size: 0.78rem; color: var(--muted); margin-left: auto; }
+
+.exam-row-best {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 74px;
+  justify-content: flex-end;
+  color: var(--gold);
+  font-size: 0.86rem;
+}
+.exam-row-best b {
+  color: var(--navy);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.exam-row-best b i {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.exam-row-best.is-empty { min-width: 74px; }
+
+.exam-row-go { display: flex; gap: 8px; justify-self: end; }
+.exam-row-go .btn { padding: 9px 18px; font-size: 0.82rem; }
+
+@media (max-width: 1040px) {
+  .exam-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 10px;
+  }
+  .exam-row-when { grid-column: 1; }
+  .exam-row-best { grid-column: 2; grid-row: 1; }
+  .exam-row-makeup { grid-column: 1 / -1; grid-row: 2; }
+  .exam-row-flags { grid-column: 1 / -1; grid-row: 3; }
+  .exam-row-flags:empty { display: none; }
+  .exam-row-go { grid-column: 1 / -1; justify-self: stretch; }
+  .exam-row-go .btn { flex: 1; justify-content: center; }
+}
+
 .exams-empty { padding: 50px 0; text-align: center; color: var(--muted); }
 
-/* ------------------------------------------------------------ responsive */
-
-@media (max-width: 1080px) {
-  .exam-body { grid-template-columns: minmax(0, 1fr); }
-  .exam-side { position: static; }
-  .palette-card { max-height: none; }
-  .palette-grid { grid-template-columns: repeat(10, 1fr); }
+/* On a phone the label and the player cannot share a line: the Drive player
+   was squeezed to a third of the width and its controls fell off. Stack, and
+   keep the whole pinned bar under a seventh of the viewport. */
+@media (max-width: 620px) {
+  .q-audio {
+    display: block;
+    padding: 8px 12px 10px;
+  }
+  .q-audio-label { margin-bottom: 4px; font-size: 0.78rem; }
+  .q-audio iframe { display: block; width: 100%; height: 68px; }
 }
+
+/* ------------------------------------------------------------ responsive */
 
 @media (max-width: 960px) {
   /* Not enough width to keep a passage beside its questions: stack them and
@@ -1116,9 +1178,10 @@
      header scroll away and give the command bar the top of the screen. */
   .exam-page .site-header { position: static; }
   .exam-page .exam-bar { top: 0; }
-  .exam-page .exam-side { top: calc(var(--bar-h, 62px) + 12px); }
-  .exam-page .palette-card { max-height: calc(100vh - var(--bar-h, 62px) - 32px); }
   .exam-page .paper-question { scroll-margin-top: calc(var(--bar-h, 62px) + 14px); }
+  /* The site header scrolls away here, so the pinned player must not leave a
+     header's worth of gap above itself. */
+  .exam-page .q-audio { top: calc(var(--bar-h, 62px) + 10px); }
   .exam-page .q-passage {
     top: calc(var(--bar-h, 62px) + 12px);
     max-height: 42vh;
@@ -1142,7 +1205,6 @@
 }
 
 @media (max-width: 560px) {
-  .palette-grid { grid-template-columns: repeat(6, 1fr); }
   .setup-actions .btn, .paper-finish .btn { width: 100%; }
   .pq-head { flex-wrap: wrap; }
   .is-reviewed .paper-question { padding-left: 12px; }
@@ -1154,16 +1216,6 @@
   border-color: rgba(200, 74, 82, 0.3);
   color: #93353c;
 }
-
-/* Provenance line on each exam card. */
-.exam-card-origin {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.exam-card-origin.is-practice { color: var(--blue); }
 
 /* ============================================================ word meanings
    The glossary for one question or one reading passage: the words a learner
@@ -1279,14 +1331,12 @@
   color: #1f6b45; background: #e6f4ec; border-color: #bfe0cd;
 }
 
-/* Native audio player: the archived Drive iframe never played. */
-.q-audio-player { width: 100%; margin: 4px 0 8px; }
-.q-audio.is-failed .q-audio-player { display: none; }
-.q-audio.is-failed .q-audio-note {
+/* The one recording the archive lost upstream: named, with the way on. */
+.q-audio-aside.is-failed .q-audio-note {
   color: #8a4b1e; background: #fdf3e7;
   border: 1px solid #f0d8b8; border-radius: 8px; padding: 10px 12px;
 }
-.q-audio.is-failed .q-audio-note a { color: #8a4b1e; font-weight: 600; }
+.q-audio-aside.is-failed .q-audio-note a { color: #8a4b1e; font-weight: 600; }
 
 /* "Not playing?" - the way out, offered before a failure we cannot detect:
    a cross-origin iframe fires no error event. */
@@ -1673,4 +1723,215 @@
 .exam-setup-back .exam-back-text { display: inline; }
 @media (max-width: 860px) {
   .exam-setup-back .exam-back span:not(.exam-back-arrow) { display: inline; }
+}
+
+/* ====================================================== study mode: try again
+
+   The undo for a question study mode has locked. Deliberately quiet and
+   deliberately inside the feedback box: it belongs to that one question, and
+   it should not compete with the answer it is sitting under. */
+.q-again {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 7px 15px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.78;
+  cursor: pointer;
+  transition: 0.18s cubic-bezier(.34, 1.56, .64, 1);
+}
+.q-again:hover { opacity: 1; transform: translateY(-1px); }
+.q-again:active { transform: scale(0.96); }
+.q-again span { font-size: 0.95rem; line-height: 1; }
+.q-again:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ============================================================ setup screen
+
+   "Whole paper" beside the heading, because nothing is ticked on arrival any
+   more and one press is the right cost for the one choice that used to be
+   made for you. */
+.setup-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.setup-all {
+  padding: 7px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+  font-size: 0.79rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.18s cubic-bezier(.34, 1.56, .64, 1);
+}
+.setup-all:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-1px);
+}
+.setup-all:active { transform: scale(0.96); }
+.setup-all:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* Pressing Start with nothing chosen. Says what is missing where the button
+   is, and nudges once so it is noticed even mid-scroll. */
+.setup-error {
+  margin: 18px 0 0;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: rgba(200, 74, 82, 0.09);
+  border: 1px solid rgba(200, 74, 82, 0.34);
+  color: #93353c;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.setup-error.is-shake { animation: setup-shake 0.42s ease; }
+@keyframes setup-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .setup-error.is-shake { animation: none; }
+}
+
+/* ========================================================= personal bests
+
+   What you have already scored on this paper, on the way in. Two numbers per
+   section: the best, which is what is kept, and the last attempt, which is
+   what makes the keeping rule visible instead of looking like a bug. */
+.best-panel {
+  margin-top: 22px;
+  padding: 24px clamp(18px, 2.4vw, 30px);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.06);
+}
+.best-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.best-panel-head h2 { margin: 0; font-size: 1.02rem; color: var(--navy); }
+.best-panel-when {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums;
+}
+.best-rows { display: grid; gap: 14px; }
+.best-row {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+}
+.best-name {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.9rem;
+  min-width: 0;
+}
+.best-name span {
+  display: block;
+  font-weight: 500;
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.best-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.best-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--blue), var(--success));
+}
+.best-val { text-align: right; white-space: nowrap; }
+.best-val strong {
+  display: block;
+  font-size: 1.24rem;
+  color: var(--navy);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.best-val strong i {
+  font-style: normal;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.best-last {
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.best-last em { font-style: normal; font-weight: 700; }
+.best-last em.is-up { color: var(--success); }
+.best-last em.is-down { color: var(--danger); }
+.best-note {
+  margin: 18px 0 0;
+  font-size: 0.79rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+@media (max-width: 620px) {
+  .best-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .best-row .best-bar { grid-column: 1 / -1; order: 3; }
+}
+
+/* Where this attempt stands against the record, under the section's score. */
+/* Same shape as the sectional-minimum badge beside it, so the two sit on one
+   line whichever of them is showing. */
+.section-card-best {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.section-card-best.is-new {
+  background: rgba(217, 166, 58, 0.16);
+  border-color: rgba(217, 166, 58, 0.4);
+  color: #7a5709;
+}
+.section-card-best.is-new b { font-size: 0.9rem; }
+
+/* The section switcher carries each section's record, so you can see where
+   you stand before you open it. */
+.paper-tab-best {
+  font-style: normal;
+  margin-left: 8px;
+  color: var(--gold);
+  font-weight: 700;
 }

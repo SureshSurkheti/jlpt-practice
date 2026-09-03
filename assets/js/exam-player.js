@@ -4,8 +4,9 @@
 
    The exam is presented the way the printed booklet is: one continuous page,
    questions grouped under their 問題 instruction, each reading passage kept
-   beside the questions that use it. There is no next/previous stepping - the
-   question map on the right is the navigation, and submitting annotates the
+   beside the questions that use it, and every question carrying the number
+   the booklet prints beside it. There is no next/previous stepping and no
+   question map: the paper is the navigation, and submitting annotates the
    same page in place rather than moving to a separate results view.
 
    URL parameters
@@ -268,11 +269,16 @@
 
   /* Which skills start ticked. ?cat=reading drills one skill; ?part=<booklet>
      is the older link shape and still works, resolving to whichever skills
-     that booklet turns out to hold. Anything unrecognised opens the full
-     paper, which is the safe default. */
+     that booklet turns out to hold.
+
+     With none of those, nothing starts ticked. Every box used to be ticked on
+     arrival, which quietly made "sit all 101 questions, timed" the thing that
+     happened if you pressed the big button without reading the screen - and
+     it is the most demanding thing on the page, not the most likely. Starting
+     empty makes the choice a choice. Whole paper, one press away, is beside
+     the boxes for anyone who did mean all of it. */
   function presetCategories(exam, cats) {
     var have = cats.map(function (c) { return c.id; });
-    var all = have.slice();
 
     var wanted = (qs("cat") || "").toLowerCase().split(",")
       .map(function (c) { return c.trim(); })
@@ -302,7 +308,7 @@
       if (found.length) return found;
     }
 
-    return all;
+    return [];
   }
 
   /* Meta tables store keys; resolve to the active language. */
@@ -326,6 +332,71 @@
 
   function storeKey() {
     return "jlpt.exam." + (state.exam ? state.exam.id : "none");
+  }
+
+  /* ------------------------------------------------------ personal bests
+
+     One record per paper per section, kept across attempts so that sitting
+     the N3 vocabulary a second time has something to beat. Only a higher
+     scaled score replaces the stored one - practising a section when you are
+     tired should not cost you the result you earned when you were not - but
+     the most recent attempt is kept alongside it, because "you scored 24
+     this time, your best is 32" is the sentence that makes the rule visible
+     instead of looking like the score failed to save.
+
+     Separate from the in-progress attempt (storeKey) on purpose: clearing an
+     attempt to retake it must not clear the history of what you have done. */
+  var BEST_KEY = "jlpt.best";
+
+  function readBests() {
+    try {
+      var raw = localStorage.getItem(BEST_KEY);
+      var all = raw ? JSON.parse(raw) : null;
+      return (all && typeof all === "object") ? all : {};
+    } catch (e) { return {}; }
+  }
+
+  function writeBests(all) {
+    try { localStorage.setItem(BEST_KEY, JSON.stringify(all)); }
+    catch (e) { /* private browsing: the history simply is not kept */ }
+  }
+
+  function bestsFor(examId) {
+    var all = readBests();
+    return all[examId] || null;
+  }
+
+  /* Returns true when this attempt set a new best, so the caller can say so. */
+  function recordBest(examId, sec) {
+    var all = readBests();
+    var paper = all[examId] || (all[examId] = {});
+    var prev = paper[sec.key] || null;
+    var improved = !prev || sec.scaled > prev.best;
+
+    paper[sec.key] = {
+      best: improved ? sec.scaled : prev.best,
+      bestRight: improved ? sec.right : prev.bestRight,
+      bestTotal: improved ? sec.total : prev.bestTotal,
+      bestAt: improved ? Date.now() : prev.bestAt,
+      cap: sec.cap,
+      last: sec.scaled,
+      lastRight: sec.right,
+      lastTotal: sec.total,
+      lastAt: Date.now(),
+      attempts: (prev && prev.attempts ? prev.attempts : 0) + 1
+    };
+    writeBests(all);
+    return improved;
+  }
+
+  /* Dates are shown in whichever language the page is in, so the panel does
+     not switch to English halfway down. */
+  function whenText(ms) {
+    if (!ms) return "";
+    try {
+      return new Date(ms).toLocaleDateString(document.documentElement.lang ||
+        undefined, { year: "numeric", month: "short", day: "numeric" });
+    } catch (e) { return new Date(ms).toDateString(); }
   }
 
   function saveProgress() {
@@ -484,7 +555,10 @@
     var preset = presetCategories(exam, cats);
 
     var partsBox = el("div", "setup-block");
-    partsBox.appendChild(el("h2", "setup-title", "1 · " + t("exam.chooseSections")));
+    partsBox.appendChild(el("div", "setup-title-row",
+      '<h2 class="setup-title">1 · ' + esc(t("exam.chooseSections")) + "</h2>" +
+      '<button type="button" class="setup-all" id="pickAllBtn">' +
+        esc(t("exam.allSections")) + "</button>"));
     partsBox.appendChild(el("p", "setup-hint", t("exam.chooseSectionsHint")));
 
     var grid = el("div", "part-grid");
@@ -550,6 +624,15 @@
     card.appendChild(timeBox);
 
     /* -- actions -- */
+    /* Said where the mistake is, not in a browser alert: the boxes are two
+       inches above this button and the message points straight at them. */
+    var errBox = el("p", "setup-error");
+    errBox.id = "setupError";
+    errBox.hidden = true;
+    errBox.setAttribute("role", "alert");
+    errBox.textContent = t("exam.errorPickSection");
+    card.appendChild(errBox);
+
     var actions = el("div", "setup-actions");
     var startBtn = el("button", "btn btn-primary btn-lg", t("exam.start"));
     startBtn.type = "button";
@@ -573,6 +656,10 @@
     card.appendChild(el("p", "setup-note", t("exam.setupNote")));
 
     wrap.appendChild(card);
+
+    var bests = buildBestPanel(exam);
+    if (bests) wrap.appendChild(bests);
+
     root.appendChild(wrap);
 
     /* -- interactions -- */
@@ -587,7 +674,14 @@
           ? n + " " + t("exam.selected")
           : t("exam.selectOne");
       }
-      startBtn.disabled = !n;
+      /* Start stays live with nothing ticked. A disabled button gives no
+         reason for being disabled, and on a phone the boxes it refers to are
+         off the top of the screen by the time you reach it. Pressing it says
+         what is missing instead. */
+      if (n) {
+        var err = document.getElementById("setupError");
+        if (err) err.hidden = true;
+      }
       var mins = document.getElementById("timerMinutes");
       if (mins && n && !minutesEdited &&
           document.getElementById("timerOn").checked) {
@@ -629,12 +723,89 @@
       if (ev.target.id === "timerMinutes") minutesEdited = true;
     });
 
+    var pickAll = document.getElementById("pickAllBtn");
+    if (pickAll) {
+      pickAll.addEventListener("click", function () {
+        Array.prototype.forEach.call(
+          card.querySelectorAll('input[name="part"]'), function (i) {
+            i.checked = true;
+            i.closest(".part-card").classList.add("is-on");
+          });
+        refreshHint();
+      });
+    }
+
     startBtn.addEventListener("click", function () {
+      if (!pickedCategories().length) {
+        var err = document.getElementById("setupError");
+        if (err) {
+          err.hidden = false;
+          err.classList.remove("is-shake");
+          void err.offsetWidth;          /* restart the animation */
+          err.classList.add("is-shake");
+        }
+        grid.scrollIntoView({ block: "center", behavior: "smooth" });
+        return;
+      }
       clearProgress();
       startExam(collectSetup(), null);
     });
 
     refreshHint();
+  }
+
+  /* What you have already scored on this paper, section by section, shown on
+     the way in rather than only on the way out. Two numbers per section, and
+     the difference between them is the whole rule: the best is what is kept,
+     the last is what you did most recently. Without the second number a lower
+     re-sit looks like the site forgot to save it. */
+  function buildBestPanel(exam) {
+    var saved = bestsFor(exam.id);
+    if (!saved) return null;
+
+    var order = ["language", "reading", "listening"];
+    var rows = order.filter(function (k) { return saved[k]; });
+    if (!rows.length) return null;
+
+    var box = el("div", "best-panel");
+    var latest = 0;
+    rows.forEach(function (k) {
+      if (saved[k].lastAt > latest) latest = saved[k].lastAt;
+    });
+
+    box.innerHTML =
+      '<div class="best-panel-head">' +
+        "<h2>" + esc(t("exam.yourBest")) + "</h2>" +
+        '<span class="best-panel-when">' + esc(t("exam.lastSat")) + " " +
+          esc(whenText(latest)) + "</span>" +
+      "</div>" +
+      '<div class="best-rows">' +
+        rows.map(function (k) {
+          var b = saved[k];
+          var pct = b.cap ? Math.min(100, (b.best / b.cap) * 100) : 0;
+          var moved = b.last - b.best;
+          return '<div class="best-row">' +
+            '<div class="best-name">' + esc(t(SECTION_LABEL[k] || k)) +
+              "<span>" + b.attempts + " " +
+              esc(t(b.attempts === 1 ? "exam.attempt" : "exam.attempts")) +
+              "</span></div>" +
+            '<div class="best-bar"><div class="best-bar-fill" style="width:' +
+              pct + '%"></div></div>' +
+            '<div class="best-val"><strong>' + b.best +
+              "<i>/" + b.cap + "</i></strong>" +
+              '<span class="best-last">' + esc(t("exam.lastTime")) + " " +
+                b.last +
+                (moved === 0 ? ""
+                  : ' <em class="' + (moved > 0 ? "is-up" : "is-down") + '">' +
+                    (moved > 0 ? "+" : "") + moved + "</em>") +
+              "</span>" +
+            "</div>" +
+          "</div>";
+        }).join("") +
+      "</div>" +
+      '<p class="best-note">' + esc(t("exam.bestNote")) + "</p>";
+
+    return box;
   }
 
   /* The checkboxes carry skill ids (see renderSetup). */
@@ -690,10 +861,14 @@
           audio: q.audio || null,
           category: item.category,
           tag: sectionTag(q.instruction),
+          seen: 0,
           blocks: []
         };
         sections.push(last);
       }
+
+      item.number = paperNumber(item, last.seen);
+      last.seen++;
 
       var block = last.blocks[last.blocks.length - 1];
       if (!block || block.passage !== (q.passage || null)) {
@@ -704,6 +879,28 @@
     });
 
     return sections;
+  }
+
+  /* The number the booklet itself prints beside the question: 23 in the
+     written papers, where numbering runs straight through the booklet, and
+     3番 in listening, where it restarts inside every 問題.
+
+     There used to be a second, invented number as well - a running 1..101
+     count of whatever the learner had chosen to sit - shown in the badge,
+     with the paper's real number demoted to a small chip beside the prompt
+     when the two disagreed. Sitting reading on its own therefore labelled
+     question 23 as "1", while the 問題 instruction above it still said 23.
+     Two numbering systems on one page, one of them ours and wrong.
+
+     The archive lost the printed number on about a tenth of the questions.
+     Rebuild it the way the booklet does rather than leaving a gap: position
+     in the booklet for the written papers (q.n is exactly that), position
+     within this 問題 for listening. */
+  function paperNumber(item, seenInSection) {
+    var q = item.q;
+    if (q.number) return String(q.number);
+    if (item.category === "listening") return (seenInSection + 1) + "\u756a";
+    return String(q.n || (item.index + 1));
   }
 
   /* ---------------------------------------------------------- exam screen */
@@ -850,27 +1047,8 @@
 
     main.appendChild(buildFinish());
     wrap.appendChild(main);
-
-    var side = el("aside", "exam-side");
-    side.innerHTML =
-      '<div class="palette-card">' +
-        "<h3>" + esc(t("exam.questionMap")) + "</h3>" +
-        '<div id="palette"></div>' +
-        '<div class="palette-legend">' +
-          (currentMarked()
-            ? '<span><i class="dot dot-done"></i>' + esc(t("exam.legendCorrect")) + '</span>' +
-              '<span><i class="dot dot-bad"></i>' + esc(t("exam.legendIncorrect")) + '</span>' +
-              '<span><i class="dot dot-todo"></i>' + esc(t("exam.legendBlank")) + '</span>'
-            : '<span><i class="dot dot-done"></i>' + esc(t("exam.legendAnswered")) + '</span>' +
-              '<span><i class="dot dot-flag"></i>' + esc(t("exam.legendFlagged")) + '</span>' +
-              '<span><i class="dot dot-todo"></i>' + esc(t("exam.legendBlank")) + '</span>') +
-        "</div>" +
-      "</div>";
-    wrap.appendChild(side);
-
     root.appendChild(wrap);
 
-    buildPalette();
     wirePaper();
     syncStickyOffsets();
     refreshProgress();
@@ -975,24 +1153,49 @@
         ? '<div class="section-instruction">' + section.instruction + "</div>"
         : "");
 
-    if (section.audio) {
-      var dead = DEAD_AUDIO_IDS.indexOf(driveId(section.audio)) !== -1;
-      head.appendChild(el("div", "q-audio" + (dead ? " is-failed" : ""),
-        '<div class="q-audio-head"><strong>' + esc(t("exam.audio")) +
-          "</strong></div>" +
-        (dead
-          ? '<p class="q-audio-note">' + deadAudioHTML() + "</p>"
-          : '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
-            'height="80" allow="autoplay" title="' + esc(t("exam.audio")) +
-            '" loading="lazy"></iframe>' +
-            '<p class="q-audio-note">' + esc(t("exam.audioNote")) + "</p>" +
-            /* No error event fires for a cross-origin iframe, so the way out
-               is offered up front rather than after a failure we cannot see. */
-            '<details class="q-audio-help"><summary>' +
-              esc(t("exam.audioTrouble")) + "</summary><p>" +
-              audioHelpHTML() + "</p></details>")));
+    /* One recording per 問題, not per question: the sitting plays a single
+       track that runs through all six items in turn, and there is no way to
+       cut it into six from here - the files are hosted read-only and served
+       through an iframe we cannot script.
+
+       What we can do is stop it scrolling away. The player is pinned to the
+       top of the reading area for as long as any question in this 問題 is on
+       screen, so it really is above every question rather than only above the
+       first. Rewinding to catch 4番 again no longer means scrolling back up
+       past three questions to find the play button.
+
+       It sits outside .section-head for that reason: sticky boxes are bound
+       by their own parent, and the head is only as tall as the instruction.
+       As a direct child of the section it can travel the whole 問題. */
+    var deadAudio = section.audio &&
+      DEAD_AUDIO_IDS.indexOf(driveId(section.audio)) !== -1;
+
+    if (section.audio && deadAudio) {
+      head.appendChild(el("div", "q-audio-aside is-failed",
+        '<p class="q-audio-note">' + deadAudioHTML() + "</p>"));
+    } else if (section.audio) {
+      /* No error event fires for a cross-origin iframe, so the way out is
+         offered up front rather than after a failure we cannot see. Kept out
+         of the pinned bar: it is help, not a control. */
+      head.appendChild(el("div", "q-audio-aside",
+        '<p class="q-audio-note">' + esc(t("exam.audioNote")) + "</p>" +
+        '<details class="q-audio-help"><summary>' +
+          esc(t("exam.audioTrouble")) + "</summary><p>" +
+          audioHelpHTML() + "</p></details>"));
     }
+
     node.appendChild(head);
+
+    if (section.audio && !deadAudio) {
+      node.appendChild(el("div", "q-audio",
+        '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
+          "<b>" + esc(t("exam.audio")) + "</b>" +
+          (section.tag ? "<i>" + esc(section.tag) + "</i>" : "") +
+        "</span>" +
+        '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
+          'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
+          '" loading="lazy"></iframe>'));
+    }
 
     section.blocks.forEach(function (block) {
       node.appendChild(buildBlock(block));
@@ -1034,15 +1237,11 @@
     var blank = isBlankChoices(q);
     var picked = state.answers[item.key] || null;
 
-    /* running number | (the paper's own number + prompt) | flag.
-       The paper number is only worth showing when it differs from the running
-       count - otherwise it just repeats the badge next to it. */
-    var showNumber = q.number && String(q.number) !== String(item.index + 1);
+    /* The paper's own number, and only that - see paperNumber(). */
     var head = el("div", "pq-head");
     head.innerHTML =
-      '<span class="pq-num">' + (item.index + 1) + "</span>" +
+      '<span class="pq-num">' + esc(item.number) + "</span>" +
       '<div class="pq-prompt' + (q.prompt ? "" : " is-bare") + '">' +
-        (showNumber ? '<span class="q-number">' + esc(q.number) + "</span>" : "") +
         (q.prompt || "") +
       "</div>";
 
@@ -1052,7 +1251,7 @@
       flag.type = "button";
       flag.dataset.flag = String(item.index);
       flag.title = t("exam.flag");
-      flag.setAttribute("aria-label", t("exam.flag") + " " + (item.index + 1));
+      flag.setAttribute("aria-label", t("exam.flag") + " " + item.number);
       flag.setAttribute("aria-pressed", state.flags[item.key] ? "true" : "false");
       head.appendChild(flag);
     }
@@ -1222,6 +1421,24 @@
      marked together in 言語知識, so a weak half hides behind a strong one
      unless they are shown apart. No pass or fail: that needs every section.
      -------------------------------------------------------------------- */
+  /* How this attempt sits against the record for the same section. Shown
+     under the score rather than beside it: it is context, not the result. */
+  function bestLineHTML(key) {
+    var saved = bestsFor(state.exam.id);
+    var b = saved && saved[key];
+    if (!b) return "";
+
+    if (justBeaten[key]) {
+      return '<p class="section-card-best is-new"><b aria-hidden="true">\u2605</b> ' +
+        (b.attempts < 2
+          ? esc(t("exam.firstResult"))
+          : esc(t("exam.newBest")) + " " + b.best + " / " + b.cap) + "</p>";
+    }
+    return '<p class="section-card-best">' + esc(t("exam.bestKept")) + " " +
+      b.best + " / " + b.cap + " \u00b7 " + esc(t("exam.attemptsCount")) +
+      " " + b.attempts + "</p>";
+  }
+
   function buildSectionCard() {
     var s = state.score;
     if (!s) return el("div", "");
@@ -1257,6 +1474,7 @@
         '"><b aria-hidden="true">' + (sec.clearedMin ? "\u2713" : "\u2715") +
         "</b> " + esc(t("exam.sectionMinLabel")) + " " + sec.minimum +
         " / " + sec.cap + "</p>" +
+      bestLineHTML(state.paper) +
       (skills.length > 1
         ? '<div class="section-card-skills">' + skills.map(function (sk) {
             return '<div class="section-card-skill" style="--accent:' +
@@ -1376,9 +1594,14 @@
       b.dataset.paper = paper.key;
       b.setAttribute("role", "tab");
       b.setAttribute("aria-selected", on ? "true" : "false");
+      var saved = bestsFor(state.exam.id);
+      var pb = saved && saved[paper.key];
       b.innerHTML =
         '<span class="paper-tab-name">' + esc(paper.label) + "</span>" +
-        '<span class="paper-tab-count">' + done + " / " + paper.items.length + "</span>";
+        '<span class="paper-tab-count">' + done + " / " + paper.items.length +
+          (pb ? ' <i class="paper-tab-best" title="' + esc(t("exam.yourBest")) +
+            '">\u2605 ' + pb.best + "</i>" : "") +
+        "</span>";
       nav.appendChild(b);
     });
 
@@ -1449,40 +1672,16 @@
     return box;
   }
 
-  /* ------------------------------------------------------------- palette */
+  /* ------------------------------------------------------------ question state
 
-  function buildPalette() {
-    var host = document.getElementById("palette");
-    if (!host) return;
-    host.innerHTML = "";
-
-    var lastCategory = null;
-    var group = null;
-    state.questions.forEach(function (item, i) {
-      /* Only the paper on screen: a map of questions you cannot see from here
-         would jump the reader somewhere else without saying so. */
-      if (state.paper && paperOfCategory(item.category) !== state.paper) return;
-      if (item.category !== lastCategory) {
-        lastCategory = item.category;
-        var meta = CATEGORY_META[item.category] || { label: item.partLabel };
-        host.appendChild(el("div", "palette-part",
-          esc(metaLabel(CATEGORY_META, item.category))));
-        group = el("div", "palette-grid");
-        host.appendChild(group);
-      }
-      var b = el("button", "palette-cell", String(i + 1));
-      b.type = "button";
-      b.dataset.index = String(i);
-      group.appendChild(b);
-    });
-
-    host.addEventListener("click", function (ev) {
-      var cell = ev.target.closest(".palette-cell");
-      if (cell) jumpTo(parseInt(cell.dataset.index, 10));
-    });
-
-    refreshPalette();
-  }
+     There used to be a question map here - a grid of 101 numbered cells in a
+     sticky column beside the paper. It was dropped rather than fixed. Below
+     960px it fell to the foot of the page, so on a phone it was a hundred
+     buttons you reached only after scrolling past every question they linked
+     to; and on a desktop it was a second, competing set of numbers next to a
+     paper that now prints its own. The paper is the map. What the map was
+     genuinely good for - "how much is left?" - the progress bar in the
+     command bar already answers, on every screen size. */
 
   function statusOf(item) {
     var picked = state.answers[item.key];
@@ -1490,19 +1689,6 @@
     if (!picked) return "blank";
     if (!item.q.answer) return "unknown";
     return picked === item.q.answer ? "right" : "wrong";
-  }
-
-  function refreshPalette() {
-    Array.prototype.forEach.call(document.querySelectorAll(".palette-cell"),
-      function (cell) {
-        var item = state.questions[parseInt(cell.dataset.index, 10)];
-        var st = statusOf(item);
-        cell.classList.toggle("is-done", st === "done" || st === "right");
-        cell.classList.toggle("is-bad", st === "wrong");
-        cell.classList.toggle("is-flagged",
-          !currentMarked() && !!state.flags[item.key]);
-        cell.classList.toggle("is-current", item.index === state.current);
-      });
   }
 
   function refreshProgress() {
@@ -1521,7 +1707,6 @@
         ? t("exam.allAnswered")
         : blanks + " " + t(blanks === 1 ? "exam.blankRemains" : "exam.blanksRemain");
     }
-    refreshPalette();
   }
 
   function jumpTo(index) {
@@ -1540,7 +1725,6 @@
     node.scrollIntoView({ block: "start", behavior: "instant" });
     node.classList.add("is-target");
     setTimeout(function () { node.classList.remove("is-target"); }, 1200);
-    refreshPalette();
     setBarSection(index);   /* don't wait for a scroll event to catch up */
   }
 
@@ -1555,8 +1739,8 @@
       metaLabel(CATEGORY_META, item.category);
   }
 
-  /* Which question is at the top of the viewport, so the question map and the
-     section label in the command bar follow the reader.
+  /* Which question is at the top of the viewport, so the section label in the
+     command bar follows the reader and the number keys answer the right one.
 
      The listener is attached once, at module level: attaching it inside the
      render path stacked a new one on every re-render, and a closure-local
@@ -1587,10 +1771,7 @@
     if (!chosen) return;
 
     var idx = parseInt(chosen.dataset.index, 10);
-    if (idx !== state.current) {
-      state.current = idx;
-      refreshPalette();
-    }
+    if (idx !== state.current) state.current = idx;
     setBarSection(idx);
   }
 
@@ -1620,6 +1801,12 @@
         return;
       }
 
+      var again = ev.target.closest("[data-again]");
+      if (again) {
+        clearAnswer(parseInt(again.dataset.again, 10));
+        return;
+      }
+
       var flag = ev.target.closest("[data-flag]");
       if (flag) {
         var i = parseInt(flag.dataset.flag, 10);
@@ -1629,7 +1816,6 @@
         flag.setAttribute("aria-pressed",
           state.flags[item.key] ? "true" : "false");
         saveProgress();
-        refreshPalette();
         return;
       }
 
@@ -1653,6 +1839,30 @@
     if (submit) submit.addEventListener("click", confirmSubmit);
     var retry = document.getElementById("retryBtn");
     if (retry) retry.addEventListener("click", retake);
+  }
+
+  /* Study mode locks a question the moment it is answered, because the point
+     of the mode is that the answer appears - and once you have seen it, being
+     able to quietly change your pick to the right one turns the exercise into
+     a colouring-in. The lock was the correct behaviour; having no way out of
+     it was not, and a mistyped 3 for a 4 left the question dead for the rest
+     of the session.
+
+     So the way out is explicit rather than silent: Try again clears that one
+     question back to blank and hides the answer with it. You cannot correct a
+     wrong pick, only sit the question again from the start, which is the
+     honest version of a second go. Nothing else is touched. */
+  function clearAnswer(index) {
+    var item = state.questions[index];
+    var node = document.getElementById("q-" + index);
+    if (!item || !node || currentMarked()) return;
+    delete state.answers[item.key];
+    saveProgress();
+    var fresh = buildQuestion(item);
+    node.parentNode.replaceChild(fresh, node);
+    fresh.classList.add("is-target");
+    setTimeout(function () { fresh.classList.remove("is-target"); }, 900);
+    refreshProgress();
   }
 
   function select(index, value) {
@@ -1689,10 +1899,14 @@
         b.disabled = true;
       });
 
+    var againHTML = '<button type="button" class="q-again" data-again="' +
+      item.index + '"><span aria-hidden="true">↺</span>' +
+      esc(t("exam.tryAgain")) + "</button>";
+
     if (!q.answer) {
       host.className = "q-feedback is-neutral";
       host.innerHTML = "<strong>" + esc(t("exam.fbNoKey")) + "</strong>" +
-        "<p>" + esc(t("exam.fbNoKeyBody")) + "</p>";
+        "<p>" + esc(t("exam.fbNoKeyBody")) + "</p>" + againHTML;
       return;
     }
 
@@ -1702,7 +1916,7 @@
       "<strong>" +
       (ok ? "✓ " + esc(t("exam.fbCorrect"))
           : "✗ " + esc(t("exam.fbIncorrectIs")) + " " + q.answer) +
-      "</strong>" + explainHTML(item);
+      "</strong>" + explainHTML(item) + againHTML;
   }
 
   function annotate(item, node) {
@@ -1920,6 +2134,22 @@
     };
   }
 
+  /* File one section's result away, and remember whether it beat what was
+     there. Only sections that were actually sat are filed: marking the whole
+     sitting after answering the vocabulary alone would otherwise write a
+     zero over a good listening score. A section with nothing answered in it
+     is not an attempt. */
+  var justBeaten = {};
+
+  function keepBest(key) {
+    var sec = null;
+    (state.score.sections || []).forEach(function (x) {
+      if (x.key === key) sec = x;
+    });
+    if (!sec || sec.blank === sec.total) return;
+    justBeaten[key] = recordBest(state.exam.id, sec);
+  }
+
   /* Mark the paper on screen and nothing else. The score is recomputed over
      everything - it is cheap and the totals have to stay consistent - but
      only the sections that have been marked are shown. */
@@ -1927,6 +2157,7 @@
     if (!key) return;
     state.marked[key] = true;
     score();
+    keepBest(key);
     if (allMarked()) {
       state.reviewed = true;
       stopTicker();
@@ -1939,7 +2170,10 @@
   function submitExam(timeUp) {
     stopTicker();
     score(timeUp);
-    state.papers.forEach(function (p) { state.marked[p.key] = true; });
+    state.papers.forEach(function (p) {
+      if (!state.marked[p.key]) keepBest(p.key);
+      state.marked[p.key] = true;
+    });
     state.reviewed = true;
     state.filter = "all";
     saveProgress();

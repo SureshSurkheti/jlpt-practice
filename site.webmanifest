@@ -1,15 +1,32 @@
 {
+  "id": "/",
   "name": "JLPT Practice",
   "short_name": "JLPT",
-  "description": "Full-length JLPT practice papers played as timed, auto-scored mock exams, with English word meanings on the N2 and N3 papers.",
+  "lang": "en",
+  "dir": "ltr",
+  "description": "Full-length JLPT practice papers played as timed, auto-marked mock exams, plus vocabulary, kanji stroke order and grammar lists for N5 to N1.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
   "background_color": "#f4f7fb",
   "theme_color": "#112d4e",
+  "categories": ["education", "books"],
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "screenshot-narrow.jpg", "sizes": "390x844", "type": "image/jpeg", "form_factor": "narrow", "label": "Browsing the N3 practice papers" },
+    { "src": "screenshot-wide.jpg", "sizes": "1280x800", "type": "image/jpeg", "form_factor": "wide", "label": "The JLPT Practice home page" }
+  ],
+  "shortcuts": [
+    { "name": "Practice papers", "short_name": "Exams", "url": "./exams.html", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Vocabulary, kanji and grammar", "short_name": "Study", "url": "./study.html", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Kanji stroke order", "short_name": "Kanji", "url": "./study.html?kind=kanji", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
   ]
 }

@@ -26,6 +26,33 @@
   var withWords = {};   // exam id -> word count, for the papers that have one
   var query = "";
 
+  /* What the player filed away after each marked section (see the personal
+     bests block in exam-player.js). Read here so the library can say which
+     papers you have already sat and how you did, which is the one thing that
+     genuinely distinguishes one December sitting from another. */
+  var bests = (function () {
+    try {
+      var raw = localStorage.getItem("jlpt.best");
+      var all = raw ? JSON.parse(raw) : null;
+      return (all && typeof all === "object") ? all : {};
+    } catch (e) { return {}; }
+  })();
+
+  /* Summed over the sections that have been sat, not over the whole paper:
+     "32 / 60" after one section is true, "32 / 180" would not be. */
+  function bestOf(id) {
+    var rec = bests[id];
+    if (!rec) return null;
+    var scored = 0, cap = 0, parts = 0;
+    ["language", "reading", "listening"].forEach(function (k) {
+      if (!rec[k]) return;
+      scored += rec[k].best;
+      cap += rec[k].cap;
+      parts++;
+    });
+    return parts ? { scored: scored, cap: cap, parts: parts } : null;
+  }
+
   /* ?lv=N3 opens the library already narrowed to that level. The back button
      inside a paper carries its own level here, so leaving an N3 paper puts you
      back among the N3 papers rather than at the top of the whole library. */
@@ -188,6 +215,13 @@
       return LEVELS_EASIEST_FIRST.indexOf(a) - LEVELS_EASIEST_FIRST.indexOf(b);
     });
 
+    /* A tag every row carries is not information, it is wallpaper. Nearly
+       every N2 and N3 paper has word meanings, so inside those levels the
+       chip appeared 28 times and distinguished nothing; in a search across
+       levels it distinguishes a great deal. Show it only where it varies. */
+    var wordsVaries = shown.some(function (e) { return withWords[e.id]; }) &&
+                      shown.some(function (e) { return !withWords[e.id]; });
+
     var html = "";
     order.forEach(function (lv) {
       var papers = groups[lv];
@@ -197,54 +231,83 @@
         "<span>" + papers.length + " " +
         esc(t(papers.length === 1 ? "exams.paper" : "exams.papers")) +
         "</span></h2>";
-      html += '<div class="exam-card-grid">';
-      papers.forEach(function (e) { html += card(e); });
+      html += '<div class="exam-rows">';
+      papers.forEach(function (e) { html += card(e, wordsVaries); });
       html += "</div>";
     });
     list.innerHTML = html;
   }
 
-  function card(e) {
-    var color = LEVEL_COLOR[e.level] || "#2d6eb4";
-    var tags = e.parts.map(function (p) {
-      return '<span class="exam-part-tag">' +
-        esc(t(PART_KEY[p.id] || p.label)) + " · " + p.count + "</span>";
-    }).join("");
+  /* One paper, one row.
 
+     This used to be a card in a three-across grid, and twenty-eight of them
+     was the problem: every card carried the same three tags with the same
+     three counts, so nine tenths of the page was the part that never varied,
+     and the part that did - the date - was one line inside it. Twenty-eight
+     cards is a wall; twenty-eight rows is a list of dates you can run your
+     eye down, which is what choosing a sitting actually is.
+
+     What differs now does the work: the date leads, anything unusual about
+     the paper is flagged, and your own best score sits in its own column
+     where it lines up from row to row. */
+  function card(e, wordsVaries) {
+    var color = LEVEL_COLOR[e.level] || "#2d6eb4";
+
+    /* The three standard booklets are identical on almost every paper, so
+       they are one quiet line rather than three chips. Only what is unusual
+       about a paper gets a chip of its own. */
+    var makeup = e.parts.map(function (p) {
+      return esc(t(PART_KEY[p.id] || p.label)) + " " + p.count;
+    }).join(" · ");
+
+    var flags = "";
     /* Some sittings were never archived with their listening paper. Say so
        up front instead of letting people discover it mid-exam. */
-    var hasListening = e.parts.some(function (p) { return p.id === "listening"; });
-    if (!hasListening) {
-      tags += '<span class="exam-part-tag is-missing">' +
+    if (!e.parts.some(function (p) { return p.id === "listening"; })) {
+      flags += '<span class="exam-part-tag is-missing">' +
         esc(t("exams.noListening")) + "</span>";
     }
-
-    if (withWords[e.id]) {
-      tags += '<span class="exam-part-tag is-words">' +
+    if (wordsVaries && withWords[e.id]) {
+      flags += '<span class="exam-part-tag is-words">' +
         esc(t("exams.hasWords")) + "</span>";
     }
 
-    /* Say plainly where a paper came from: a reconstruction of a real sitting,
-       or a practice paper written for this site. */
+    /* Say plainly what this is - kept on every row, not lifted to a heading:
+       it is the line that stops the library reading as a set of official
+       past papers, and it should be beside each paper it describes. */
     var origin = e.origin === "practice"
       ? t("exams.originPractice") : t("exams.originArchive");
 
-    return '<article class="exam-card" style="--level-color:' + color + '">' +
-      '<div class="exam-card-top">' +
+    var b = bestOf(e.id);
+    var bestCell = b
+      ? '<div class="exam-row-best" title="' + esc(t("exam.yourBest")) + '">' +
+          '<span aria-hidden="true">★</span>' +
+          "<b>" + b.scored + "<i>/" + b.cap + "</i></b>" +
+        "</div>"
+      : '<div class="exam-row-best is-empty" aria-hidden="true"></div>';
+
+    return '<article class="exam-row' + (b ? " is-sat" : "") +
+        '" style="--level-color:' + color + '">' +
+      '<div class="exam-row-when">' +
         '<span class="exam-level-chip" style="background:' + color + '">' +
           esc(e.level) + "</span>" +
-        '<span class="exam-card-title">' + esc(e.periodLabel) + "</span>" +
+        '<span class="exam-row-title">' + esc(e.periodLabel) + "</span>" +
       "</div>" +
-      '<div class="exam-card-origin' +
-        (e.origin === "practice" ? " is-practice" : "") + '">' +
-        esc(origin) + "</div>" +
-      '<div class="exam-card-parts">' + tags + "</div>" +
-      '<div class="exam-card-foot">' +
+      '<div class="exam-row-makeup">' +
+        '<span class="exam-row-origin' +
+          (e.origin === "practice" ? " is-practice" : "") + '">' +
+          esc(origin) + "</span>" +
+        '<span class="exam-row-count">' + e.totalQuestions + " " +
+          esc(t("exams.questionsShort")) + "</span>" +
+        '<span class="exam-row-parts">' + makeup + "</span>" +
+      "</div>" +
+      '<div class="exam-row-flags">' + flags + "</div>" +
+      bestCell +
+      '<div class="exam-row-go">' +
         '<a class="btn btn-primary" href="exam.html?id=' + esc(e.id) +
           '">' + esc(t("exams.start")) + '</a>' +
         '<a class="btn btn-ghost" href="exam.html?id=' + esc(e.id) +
           '&mode=study">' + esc(t("exams.study")) + '</a>' +
-        '<span class="exam-card-count">' + e.totalQuestions + "</span>" +
       "</div>" +
     "</article>";
   }
