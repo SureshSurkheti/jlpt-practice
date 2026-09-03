@@ -78,28 +78,6 @@
            files, so they are written into the markup rather than fetched. -->
       <div id="studyCoverage"></div>
 
-      <div class="study-controls">
-        <div class="study-tabs" role="tablist">
-          <button type="button" class="study-tab is-on" data-level="N5" role="tab">N5</button>
-          <button type="button" class="study-tab" data-level="N4" role="tab">N4</button>
-          <button type="button" class="study-tab" data-level="N3" role="tab">N3</button>
-          <button type="button" class="study-tab" data-level="N2" role="tab">N2</button>
-          <button type="button" class="study-tab" data-level="N1" role="tab">N1</button>
-        </div>
-        <div class="study-tabs study-kind" role="tablist">
-          <button type="button" class="study-tab is-on" data-kind="words" role="tab"
-                  data-i18n="study.words"></button>
-          <button type="button" class="study-tab" data-kind="kanji" role="tab"
-                  data-i18n="study.kanji"></button>
-          <button type="button" class="study-tab" data-kind="grammar" role="tab"
-                  data-i18n="study.grammar"></button>
-        </div>
-        <input type="search" class="study-search" id="studySearch"
-               data-i18n-attr="placeholder:study.search,aria-label:study.search" />
-      </div>
-
-      <div id="studyContent" aria-live="polite"></div>
-
       <!-- The guides. Written in English only, and said so on the link: this
            page exists in twelve languages and they do not, and a reader who
            follows a link in their own language to an English article should
@@ -123,6 +101,29 @@
         </ul>
         <p class="study-guides-note" data-i18n="guides.english">These guides are in English only.</p>
       </section>
+
+      <div class="study-controls">
+        <div class="study-tabs" role="tablist">
+          <button type="button" class="study-tab is-on" data-level="N5" role="tab">N5</button>
+          <button type="button" class="study-tab" data-level="N4" role="tab">N4</button>
+          <button type="button" class="study-tab" data-level="N3" role="tab">N3</button>
+          <button type="button" class="study-tab" data-level="N2" role="tab">N2</button>
+          <button type="button" class="study-tab" data-level="N1" role="tab">N1</button>
+        </div>
+        <div class="study-tabs study-kind" role="tablist">
+          <button type="button" class="study-tab is-on" data-kind="words" role="tab"
+                  data-i18n="study.words"></button>
+          <button type="button" class="study-tab" data-kind="kanji" role="tab"
+                  data-i18n="study.kanji"></button>
+          <button type="button" class="study-tab" data-kind="grammar" role="tab"
+                  data-i18n="study.grammar"></button>
+        </div>
+        <input type="search" class="study-search" id="studySearch"
+               data-i18n-attr="placeholder:study.search,aria-label:study.search" />
+      </div>
+
+      <div id="studyContent" aria-live="polite"></div>
+
 
     </main>
 

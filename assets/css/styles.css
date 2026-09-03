@@ -1370,7 +1370,20 @@ body.is-leaving { opacity: 0; }
    read line by line and a 1,100px line makes the eye lose its place coming
    back to the left margin. 68ch is roughly the 75-character line typography
    settles on. */
-.guide { max-width: 68ch; margin-inline: auto; }
+/* One measure, in rem, used by the prose and by the back chip above it.
+
+   It was 68ch, which is the right way to say "about 75 characters" - but ch
+   resolves against each element's own font-size, and the chip's is smaller,
+   so the same 68ch came out narrower there and left the button 28px to the
+   right of the text it belongs to. rem is root-relative, so both agree.
+   43rem is the same 688px the ch value was producing. */
+.guide-page { --measure: 43rem; }
+.guide { max-width: var(--measure); margin-inline: auto; }
+/* The chip is a child of <main>, so without this it sits at the container's
+   left edge - 217px from the prose, reading as part of another page. max()
+   clamps to 0 once the viewport is narrower than the measure, rather than
+   going negative and hanging off the screen. */
+.guide-page #pageBack { margin-left: max(0px, calc((100% - var(--measure)) / 2)); }
 
 .guide-kicker {
   margin: 0 0 8px;
