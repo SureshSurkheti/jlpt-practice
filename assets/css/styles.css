@@ -719,6 +719,18 @@ body > main { flex: 1 0 auto; }
    leads there is nothing above it. */
 .page-intro:first-child { padding-top: 0; }
 
+/* Optical, not geometric.
+
+   The heading's box now starts 46px below the header, the same as the exams
+   hero card - but a card's top edge is its box top, while a line of type
+   begins lower than its own box by the distance between the font's ascender
+   and its cap height. Measured on Cormorant Garamond that is 9px at this
+   size, so the title read as 55px down beside a card at 46. Pulled back up
+   by the same amount, expressed in em so it stays right as the clamp scales
+   the heading. Only the space above closes; the gap to the paragraph below
+   is untouched. */
+.page-intro:first-child h1 { margin-top: -0.2em; }
+
 .about-card h3,
 .step-item h4 {
   margin: 0 0 14px;
@@ -1496,7 +1508,10 @@ body.is-leaving { opacity: 0; }
 
 .plevel-head {
   display: flex;
-  align-items: baseline;
+  /* Tops, not baselines. With baseline alignment the score block's first
+     baseline is its "YOUR BEST" label, so the level code lined up with the
+     caption and the number it belongs to hung twenty pixels below it. */
+  align-items: flex-start;
   justify-content: space-between;
   gap: 14px;
 }
