@@ -36,6 +36,7 @@ I18N.register("pt-BR", {
  "exam.chooseMode": "Como você quer praticar?",
  "exam.chooseSections": "Escolha as seções",
  "exam.chooseSectionsHint": "Selecione tudo para o simulado completo, ou uma seção para treinar.",
+ "exam.clearSections": "Limpar tudo",
  "exam.confirmBlanks": "ainda em branco. Entregar mesmo assim?",
  "exam.correctLower": "corretas",
  "exam.correctOf": "corretas",

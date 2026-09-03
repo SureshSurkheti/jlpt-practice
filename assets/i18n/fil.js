@@ -36,6 +36,7 @@ I18N.register("fil", {
  "exam.chooseMode": "Paano gusto mong magsanay?",
  "exam.chooseSections": "Pumili ng bahagi",
  "exam.chooseSectionsHint": "Piliin lahat para sa buong mock exam, o isang bahagi para sanayin.",
+ "exam.clearSections": "Alisin lahat",
  "exam.confirmBlanks": "ang walang sagot. I-submit pa rin?",
  "exam.correctLower": "tama",
  "exam.correctOf": "tama",

@@ -1917,6 +1917,10 @@
   color: var(--blue);
   transform: translateY(-1px);
 }
+/* Clearing is the destructive half of the toggle, so it does not wear the
+   same inviting blue as the half that fills the form in. */
+.setup-all.is-clear { color: var(--muted); }
+.setup-all.is-clear:hover { border-color: var(--muted); color: var(--ink); }
 .setup-all:active { transform: scale(0.96); }
 .setup-all:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 

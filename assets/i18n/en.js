@@ -41,6 +41,7 @@ I18N.register("en", {
  "exam.chooseMode": "How do you want to practise?",
  "exam.chooseSections": "Choose sections",
  "exam.chooseSectionsHint": "Take everything for a full mock exam, or one section to drill.",
+ "exam.clearSections": "Clear all",
  "exam.confirmBlanks": "still blank. Submit anyway?",
  "exam.correctLower": "correct",
  "exam.correctOf": "correct",

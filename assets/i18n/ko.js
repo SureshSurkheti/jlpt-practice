@@ -36,6 +36,7 @@ I18N.register("ko", {
  "exam.chooseMode": "어떻게 연습하시겠어요?",
  "exam.chooseSections": "과목 선택",
  "exam.chooseSectionsHint": "전체 모의시험은 모두 선택, 한 과목만 골라 연습할 수도 있습니다.",
+ "exam.clearSections": "전체 해제",
  "exam.confirmBlanks": "문제가 비어 있습니다. 그래도 제출하시겠어요?",
  "exam.correctLower": "정답",
  "exam.correctOf": "정답",

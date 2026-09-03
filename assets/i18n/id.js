@@ -36,6 +36,7 @@ I18N.register("id", {
  "exam.chooseMode": "Bagaimana Anda ingin berlatih?",
  "exam.chooseSections": "Pilih bagian",
  "exam.chooseSectionsHint": "Pilih semua untuk ujian simulasi lengkap, atau satu bagian untuk dilatih.",
+ "exam.clearSections": "Hapus semua",
  "exam.confirmBlanks": "masih kosong. Kumpulkan saja?",
  "exam.correctLower": "benar",
  "exam.correctOf": "benar",

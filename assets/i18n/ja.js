@@ -36,6 +36,7 @@ I18N.register("ja", {
  "exam.chooseMode": "練習方法を選ぶ",
  "exam.chooseSections": "科目を選ぶ",
  "exam.chooseSectionsHint": "全科目で模擬試験、1科目だけで演習もできます。",
+ "exam.clearSections": "すべて解除",
  "exam.confirmBlanks": "問が未解答です。このまま提出しますか？",
  "exam.correctLower": "正解",
  "exam.correctOf": "正解",

@@ -724,6 +724,7 @@
         var err = document.getElementById("setupError");
         if (err) err.hidden = true;
       }
+      syncPickAll();
       var mins = document.getElementById("timerMinutes");
       if (mins && n && !minutesEdited &&
           document.getElementById("timerOn").checked) {
@@ -765,14 +766,38 @@
       if (ev.target.id === "timerMinutes") minutesEdited = true;
     });
 
+    /* One control, both directions.
+
+       It only ever selected everything, so once all four were ticked - which
+       is what it had just done - it sat there doing nothing, and getting back
+       to a single section meant unticking three boxes one at a time. It now
+       says what it will do next and does that. */
+    function boxes() {
+      return Array.prototype.slice.call(
+        card.querySelectorAll('input[name="part"]'));
+    }
+
+    function allPicked() {
+      var all = boxes();
+      return all.length > 0 && all.every(function (i) { return i.checked; });
+    }
+
+    function syncPickAll() {
+      var btn = document.getElementById("pickAllBtn");
+      if (!btn) return;
+      var full = allPicked();
+      btn.textContent = t(full ? "exam.clearSections" : "exam.allSections");
+      btn.classList.toggle("is-clear", full);
+    }
+
     var pickAll = document.getElementById("pickAllBtn");
     if (pickAll) {
       pickAll.addEventListener("click", function () {
-        Array.prototype.forEach.call(
-          card.querySelectorAll('input[name="part"]'), function (i) {
-            i.checked = true;
-            i.closest(".part-card").classList.add("is-on");
-          });
+        var want = !allPicked();
+        boxes().forEach(function (i) {
+          i.checked = want;
+          i.closest(".part-card").classList.toggle("is-on", want);
+        });
         refreshHint();
       });
     }

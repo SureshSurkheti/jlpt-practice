@@ -36,6 +36,7 @@ I18N.register("si", {
  "exam.chooseMode": "ඔබට කෙසේ පුහුණු වීමට අවශ්‍යද?",
  "exam.chooseSections": "කොටස් තෝරන්න",
  "exam.chooseSectionsHint": "සම්පූර්ණ ආදර්ශ විභාගය සඳහා සියල්ල තෝරන්න, නැතහොත් පුහුණුව සඳහා එක් කොටසක්.",
+ "exam.clearSections": "සියල්ල ඉවත් කරන්න",
  "exam.confirmBlanks": "ප්‍රශ්න හිස්ව ඇත. කෙසේ වෙතත් ඉදිරිපත් කරන්නද?",
  "exam.correctLower": "නිවැරදි",
  "exam.correctOf": "නිවැරදි",

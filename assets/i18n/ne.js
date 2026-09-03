@@ -36,6 +36,7 @@ I18N.register("ne", {
  "exam.chooseMode": "कसरी अभ्यास गर्न चाहनुहुन्छ?",
  "exam.chooseSections": "भाग छान्नुहोस्",
  "exam.chooseSectionsHint": "पूरा नमुना परीक्षाका लागि सबै छान्नुहोस्, वा अभ्यासका लागि एउटै भाग।",
+ "exam.clearSections": "सबै हटाउनुहोस्",
  "exam.confirmBlanks": "प्रश्न खाली छन्। जे भए पनि बुझाउने?",
  "exam.correctLower": "सही",
  "exam.correctOf": "सही",

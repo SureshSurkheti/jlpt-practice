@@ -36,6 +36,7 @@ I18N.register("zh", {
  "exam.chooseMode": "你想怎么练习？",
  "exam.chooseSections": "选择部分",
  "exam.chooseSectionsHint": "全选做完整模拟考，或只选一个部分练习。",
+ "exam.clearSections": "全部取消",
  "exam.confirmBlanks": "题未作答。仍要提交吗？",
  "exam.correctLower": "正确",
  "exam.correctOf": "正确",

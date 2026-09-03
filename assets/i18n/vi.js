@@ -36,6 +36,7 @@ I18N.register("vi", {
  "exam.chooseMode": "Bạn muốn luyện thế nào?",
  "exam.chooseSections": "Chọn các phần",
  "exam.chooseSectionsHint": "Chọn tất cả để thi thử đầy đủ, hoặc một phần để luyện riêng.",
+ "exam.clearSections": "Bỏ chọn tất cả",
  "exam.confirmBlanks": "câu chưa làm. Vẫn nộp bài?",
  "exam.correctLower": "đúng",
  "exam.correctOf": "đúng",

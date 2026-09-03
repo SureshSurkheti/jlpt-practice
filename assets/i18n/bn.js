@@ -36,6 +36,7 @@ I18N.register("bn", {
  "exam.chooseMode": "কীভাবে অভ্যাস করতে চান?",
  "exam.chooseSections": "অংশ বাছুন",
  "exam.chooseSectionsHint": "পূর্ণ মক পরীক্ষার জন্য সব বাছুন, বা অভ্যাসের জন্য একটি অংশ।",
+ "exam.clearSections": "সব বাদ দিন",
  "exam.confirmBlanks": "প্রশ্ন খালি। তবুও জমা দেবেন?",
  "exam.correctLower": "সঠিক",
  "exam.correctOf": "সঠিক",
