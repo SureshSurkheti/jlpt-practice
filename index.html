@@ -9,7 +9,7 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#112d4e" />
     <title>JLPT Practice — Free Mock Exams for N1, N2, N3, N4 and N5</title>
-    <meta name="description" content="86 full-length practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts." />
+    <meta name="description" content="86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts." />
     <link rel="canonical" href="https://jlpt.sureshsurkheti.com/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="alternate" hreflang="en" href="https://jlpt.sureshsurkheti.com/" />
@@ -29,7 +29,7 @@
     <meta property="og:site_name" content="JLPT Practice" />
     <meta property="og:locale" content="en" />
     <meta property="og:title" content="JLPT Practice — Free Mock Exams for N1, N2, N3, N4 and N5" />
-    <meta property="og:description" content="86 full-length practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts." />
+    <meta property="og:description" content="86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts." />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -37,8 +37,9 @@
     <meta property="og:image:alt" content="JLPT Practice" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="JLPT Practice — Free Mock Exams for N1, N2, N3, N4 and N5" />
-    <meta name="twitter:description" content="86 full-length practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts." />
+    <meta name="twitter:description" content="86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/#website","url":"https://jlpt.sureshsurkheti.com/","name":"JLPT Practice","inLanguage":"en","description":"86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.","publisher":{"@type":"Person","name":"Suresh Surkheti"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/#webpage","url":"https://jlpt.sureshsurkheti.com/","name":"JLPT Practice — Free Mock Exams for N1, N2, N3, N4 and N5","description":"86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.","inLanguage":"en","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/#website"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -92,23 +93,21 @@
       <section class="hero-section">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <h1 data-i18n="home.title">Practise Japanese with full-length mock exams.</h1>
-            <p data-i18n="home.body">86 full-length practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.</p>
+            <h1 data-i18n="home.title">Practise Japanese in the real JLPT format.</h1>
+            <p data-i18n="home.body">86 practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.</p>
             <div class="hero-actions">
               <a href="exams.html" class="btn btn-primary" data-i18n="home.browseExams">Browse exams</a>
               <a href="levels.html" class="btn btn-secondary" data-i18n="home.viewAllLevels">All levels</a>
             </div>
           </div>
 
-          <div class="mini-panel">
-            <div class="mini-head" data-i18n="home.progress">Your progress</div>
-            <div class="mini-value" id="progressValue">0</div>
-            <ul>
-              <li><span data-i18n="home.progressLevels">Levels</span><strong id="miniLevels">0 / 5</strong></li>
-              <li><span data-i18n="home.progressAccuracy">Accuracy</span><strong id="miniAccuracy">0%</strong></li>
-              <li><span data-i18n="home.progressDetails">See details</span><a href="stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
-            </ul>
-          </div>
+          <!-- A "Your progress" panel used to sit here: a big number, a
+               levels count and an accuracy percentage. Nothing ever wrote to
+               the store behind it, so it read 0, 0 / 5 and 0% for every
+               visitor on every visit - a progress feature with no progress
+               feature behind it. The scores that are real live on the
+               statistics page, linked from the footer, and only appear once
+               there is something to show. -->
         </div>
       </section>
 
@@ -137,27 +136,6 @@
             <summary data-i18n="notice.moreLabel">Listening audio, word meanings and help</summary>
             <div class="notice-foot" id="noticeFoot"></div>
           </details>
-        </div>
-      </section>
-
-      <section class="stats-strip">
-        <div class="container stats-grid">
-          <div class="stat-card">
-            <span data-i18n="home.statAnswered">Questions answered</span>
-            <strong id="stat-answered">0</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statAccuracy">Accuracy</span>
-            <strong id="stat-accuracy">0%</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statLevels">Levels started</span>
-            <strong id="stat-levels">0 / 5</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statStreak">Study streak</span>
-            <strong id="stat-streak">0</strong>
-          </div>
         </div>
       </section>
 
@@ -207,7 +185,7 @@
     </footer>
 
     <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/i18n-strings.js"></script>
+    <script src="assets/i18n/en.js"></script>
     <script src="assets/js/site.js"></script>
   </body>
 </html>

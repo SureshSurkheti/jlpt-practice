@@ -306,6 +306,11 @@
           esc(e.level) + "</span>" +
         '<span class="exam-row-title">' + esc(e.periodLabel) + "</span>" +
       "</div>" +
+      /* The flags belong on the end of the make-up line, not in a column of
+         their own. Parked out on the right, "No listening section" floated
+         in dead space with nothing beside it and read as a label for the
+         whole row; sitting after "Vocabulary 35 · Grammar & Reading 38" it
+         reads as what it is - the rest of that sentence. */
       '<div class="exam-row-makeup">' +
         '<span class="exam-row-origin' +
           (e.origin === "practice" ? " is-practice" : "") + '">' +
@@ -313,8 +318,8 @@
         '<span class="exam-row-count">' + e.totalQuestions + " " +
           esc(t("exams.questionsShort")) + "</span>" +
         '<span class="exam-row-parts">' + makeup + "</span>" +
+        flags +
       "</div>" +
-      '<div class="exam-row-flags">' + flags + "</div>" +
       bestCell +
       '<div class="exam-row-go">' +
         '<a class="btn btn-primary" href="exam.html?id=' + esc(e.id) +

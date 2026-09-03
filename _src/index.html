@@ -95,15 +95,13 @@
             </div>
           </div>
 
-          <div class="mini-panel">
-            <div class="mini-head" data-i18n="home.progress"></div>
-            <div class="mini-value" id="progressValue">0</div>
-            <ul>
-              <li><span data-i18n="home.progressLevels"></span><strong id="miniLevels">0 / 5</strong></li>
-              <li><span data-i18n="home.progressAccuracy"></span><strong id="miniAccuracy">0%</strong></li>
-              <li><span data-i18n="home.progressDetails"></span><a href="stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
-            </ul>
-          </div>
+          <!-- A "Your progress" panel used to sit here: a big number, a
+               levels count and an accuracy percentage. Nothing ever wrote to
+               the store behind it, so it read 0, 0 / 5 and 0% for every
+               visitor on every visit - a progress feature with no progress
+               feature behind it. The scores that are real live on the
+               statistics page, linked from the footer, and only appear once
+               there is something to show. -->
         </div>
       </section>
 
@@ -132,27 +130,6 @@
             <summary data-i18n="notice.moreLabel"></summary>
             <div class="notice-foot" id="noticeFoot"></div>
           </details>
-        </div>
-      </section>
-
-      <section class="stats-strip">
-        <div class="container stats-grid">
-          <div class="stat-card">
-            <span data-i18n="home.statAnswered"></span>
-            <strong id="stat-answered">0</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statAccuracy"></span>
-            <strong id="stat-accuracy">0%</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statLevels"></span>
-            <strong id="stat-levels">0 / 5</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statStreak"></span>
-            <strong id="stat-streak">0</strong>
-          </div>
         </div>
       </section>
 
@@ -198,7 +175,7 @@
     </footer>
 
     <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/i18n-strings.js"></script>
+    <script src="assets/i18n/en.js"></script>
     <script src="assets/js/site.js"></script>
   </body>
 </html>

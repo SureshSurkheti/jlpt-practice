@@ -39,6 +39,7 @@
     <meta name="twitter:title" content="本格的な模擬試験で日本語を練習。" />
     <meta name="twitter:description" content="N5からN1までの模擬試験86回分。時間を計って自動採点、解説と聴解スクリプト付き。" />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ja/#website","url":"https://jlpt.sureshsurkheti.com/ja/","name":"JLPT Practice","inLanguage":"ja","description":"N5からN1までの模擬試験86回分。時間を計って自動採点、解説と聴解スクリプト付き。","publisher":{"@type":"Person","name":"Suresh Surkheti"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ja/#webpage","url":"https://jlpt.sureshsurkheti.com/ja/","name":"本格的な模擬試験で日本語を練習。","description":"N5からN1までの模擬試験86回分。時間を計って自動採点、解説と聴解スクリプト付き。","inLanguage":"ja","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ja/#website"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -100,15 +101,13 @@
             </div>
           </div>
 
-          <div class="mini-panel">
-            <div class="mini-head" data-i18n="home.progress">学習状況</div>
-            <div class="mini-value" id="progressValue">0</div>
-            <ul>
-              <li><span data-i18n="home.progressLevels">レベル</span><strong id="miniLevels">0 / 5</strong></li>
-              <li><span data-i18n="home.progressAccuracy">正答率</span><strong id="miniAccuracy">0%</strong></li>
-              <li><span data-i18n="home.progressDetails">詳細を見る</span><a href="./stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
-            </ul>
-          </div>
+          <!-- A "Your progress" panel used to sit here: a big number, a
+               levels count and an accuracy percentage. Nothing ever wrote to
+               the store behind it, so it read 0, 0 / 5 and 0% for every
+               visitor on every visit - a progress feature with no progress
+               feature behind it. The scores that are real live on the
+               statistics page, linked from the footer, and only appear once
+               there is something to show. -->
         </div>
       </section>
 
@@ -137,27 +136,6 @@
             <summary data-i18n="notice.moreLabel">聴解音声・語句の意味・困ったとき</summary>
             <div class="notice-foot" id="noticeFoot"></div>
           </details>
-        </div>
-      </section>
-
-      <section class="stats-strip">
-        <div class="container stats-grid">
-          <div class="stat-card">
-            <span data-i18n="home.statAnswered">解答した問題数</span>
-            <strong id="stat-answered">0</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statAccuracy">正答率</span>
-            <strong id="stat-accuracy">0%</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statLevels">開始したレベル</span>
-            <strong id="stat-levels">0 / 5</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statStreak">連続学習</span>
-            <strong id="stat-streak">0</strong>
-          </div>
         </div>
       </section>
 
@@ -207,7 +185,8 @@
     </footer>
 
     <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/js/i18n-strings.js"></script>
+    <script src="/assets/i18n/en.js"></script>
+    <script src="/assets/i18n/ja.js"></script>
     <script src="/assets/js/site.js"></script>
   </body>
 </html>

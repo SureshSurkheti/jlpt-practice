@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#112d4e" />
-    <title>पूर्ण मॉक टेस्ट से जापानी का अभ्यास करें।</title>
+    <title>JLPT के असली प्रारूप में जापानी का अभ्यास करें।</title>
     <meta name="description" content="N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।" />
     <link rel="canonical" href="https://jlpt.sureshsurkheti.com/hi/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -28,7 +28,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
     <meta property="og:locale" content="hi" />
-    <meta property="og:title" content="पूर्ण मॉक टेस्ट से जापानी का अभ्यास करें।" />
+    <meta property="og:title" content="JLPT के असली प्रारूप में जापानी का अभ्यास करें।" />
     <meta property="og:description" content="N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।" />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/hi/" />
     <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
@@ -36,9 +36,10 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="JLPT Practice" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="पूर्ण मॉक टेस्ट से जापानी का अभ्यास करें।" />
+    <meta name="twitter:title" content="JLPT के असली प्रारूप में जापानी का अभ्यास करें।" />
     <meta name="twitter:description" content="N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।" />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/hi/#website","url":"https://jlpt.sureshsurkheti.com/hi/","name":"JLPT Practice","inLanguage":"hi","description":"N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।","publisher":{"@type":"Person","name":"Suresh Surkheti"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/hi/#webpage","url":"https://jlpt.sureshsurkheti.com/hi/","name":"JLPT के असली प्रारूप में जापानी का अभ्यास करें।","description":"N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।","inLanguage":"hi","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/hi/#website"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -92,7 +93,7 @@
       <section class="hero-section">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <h1 data-i18n="home.title">पूर्ण मॉक टेस्ट से जापानी का अभ्यास करें।</h1>
+            <h1 data-i18n="home.title">JLPT के असली प्रारूप में जापानी का अभ्यास करें।</h1>
             <p data-i18n="home.body">N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।</p>
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">प्रश्नपत्र देखें</a>
@@ -100,15 +101,13 @@
             </div>
           </div>
 
-          <div class="mini-panel">
-            <div class="mini-head" data-i18n="home.progress">आपकी प्रगति</div>
-            <div class="mini-value" id="progressValue">0</div>
-            <ul>
-              <li><span data-i18n="home.progressLevels">स्तर</span><strong id="miniLevels">0 / 5</strong></li>
-              <li><span data-i18n="home.progressAccuracy">शुद्धता</span><strong id="miniAccuracy">0%</strong></li>
-              <li><span data-i18n="home.progressDetails">विवरण देखें</span><a href="./stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
-            </ul>
-          </div>
+          <!-- A "Your progress" panel used to sit here: a big number, a
+               levels count and an accuracy percentage. Nothing ever wrote to
+               the store behind it, so it read 0, 0 / 5 and 0% for every
+               visitor on every visit - a progress feature with no progress
+               feature behind it. The scores that are real live on the
+               statistics page, linked from the footer, and only appear once
+               there is something to show. -->
         </div>
       </section>
 
@@ -137,27 +136,6 @@
             <summary data-i18n="notice.moreLabel">श्रवण ऑडियो, शब्दार्थ और सहायता</summary>
             <div class="notice-foot" id="noticeFoot"></div>
           </details>
-        </div>
-      </section>
-
-      <section class="stats-strip">
-        <div class="container stats-grid">
-          <div class="stat-card">
-            <span data-i18n="home.statAnswered">हल किए गए प्रश्न</span>
-            <strong id="stat-answered">0</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statAccuracy">शुद्धता</span>
-            <strong id="stat-accuracy">0%</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statLevels">शुरू किए स्तर</span>
-            <strong id="stat-levels">0 / 5</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statStreak">लगातार अध्ययन</span>
-            <strong id="stat-streak">0</strong>
-          </div>
         </div>
       </section>
 
@@ -207,7 +185,8 @@
     </footer>
 
     <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/js/i18n-strings.js"></script>
+    <script src="/assets/i18n/en.js"></script>
+    <script src="/assets/i18n/hi.js"></script>
     <script src="/assets/js/site.js"></script>
   </body>
 </html>

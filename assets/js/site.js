@@ -181,94 +181,64 @@ const SAMPLE_QUESTIONS = {
   ]
 };
 
-class StudentProgress {
-  constructor() {
-    this.data = JSON.parse(localStorage.getItem('jlpt-progress')) || {
-      answeredQuestions: {},
-      stats: {
-        N5: { correct: 0, total: 0, streak: 0, lastStudied: null },
-        N4: { correct: 0, total: 0, streak: 0, lastStudied: null },
-        N3: { correct: 0, total: 0, streak: 0, lastStudied: null },
-        N2: { correct: 0, total: 0, streak: 0, lastStudied: null },
-        N1: { correct: 0, total: 0, streak: 0, lastStudied: null }
-      }
-    };
-  }
+/* ==========================================================================
+   Your scores
 
-  recordAnswer(questionId, isCorrect, level) {
-    this.data.answeredQuestions[questionId] = { isCorrect, timestamp: Date.now(), level };
-    this.data.stats[level].total++;
-    if (isCorrect) {
-      this.data.stats[level].correct++;
-      this.data.stats[level].streak++;
-    } else {
-      this.data.stats[level].streak = 0;
-    }
-    this.data.stats[level].lastStudied = new Date().toLocaleDateString();
-    this.save();
-  }
+   There was a StudentProgress class here - a localStorage store with per
+   level totals, accuracy, streaks and a "last studied" date, feeding a
+   panel in the home hero, a strip of four cards under it, a summary row on
+   the levels page and the whole statistics page.
 
-  getStats(level) {
-    const stats = this.data.stats[level];
-    return {
-      ...stats,
-      accuracy: stats.total > 0 ? ((stats.correct / stats.total) * 100).toFixed(1) : 0
-    };
-  }
+   Nothing ever wrote to it. recordAnswer() existed and was never called from
+   the exam player or the study lists, so every one of those numbers was a
+   hard-coded zero shown to every visitor on every visit: "0 answered, 0%
+   accuracy, 0 / 5 levels, streak 0". The furniture of a progress feature
+   with no progress feature behind it.
 
-  save() {
-    localStorage.setItem('jlpt-progress', JSON.stringify(this.data));
-  }
+   The store that does hold real results is jlpt.best, written by the exam
+   player when a section is marked. This reads that, and the places that used
+   to print zeros either show a real score or show nothing at all.
+   ========================================================================== */
 
+const BEST_KEY = 'jlpt.best';
+const SECTION_KEYS = ['language', 'reading', 'listening'];
 
-  getOverallStats() {
-    const levels = ['N5', 'N4', 'N3', 'N2', 'N1'];
-    let totalCorrect = 0, totalAnswered = 0;
-    levels.forEach(lv => {
-      totalCorrect += this.data.stats[lv].correct;
-      totalAnswered += this.data.stats[lv].total;
-    });
-    return {
-      totalAnswered,
-      totalCorrect,
-      overallAccuracy: totalAnswered > 0 ? ((totalCorrect / totalAnswered) * 100).toFixed(1) : 0,
-      levelsCompleted: levels.filter(lv => this.data.stats[lv].total > 0).length
-    };
+function readBests() {
+  try {
+    const raw = localStorage.getItem(BEST_KEY);
+    const all = raw ? JSON.parse(raw) : null;
+    return (all && typeof all === 'object') ? all : {};
+  } catch (e) {
+    return {};
   }
 }
 
-const progress = new StudentProgress();
+/* Everything recorded for one level, summed over the sections actually sat.
+   The cap follows the sections you have done, not the whole exam, so "32 /
+   60" after one section is true where "32 / 180" would not be. */
+function levelBest(level) {
+  const all = readBests();
+  let scored = 0, cap = 0, papers = 0, sections = 0, last = 0;
 
-function updateHomePageStats() {
-  const stats = progress.getOverallStats();
+  Object.keys(all).forEach((id) => {
+    if (id.toUpperCase().indexOf(level.toUpperCase() + '-') !== 0) return;
+    const rec = all[id];
+    let touched = false;
+    SECTION_KEYS.forEach((k) => {
+      if (!rec[k]) return;
+      scored += rec[k].best;
+      cap += rec[k].cap;
+      sections++;
+      touched = true;
+      if (rec[k].lastAt > last) last = rec[k].lastAt;
+    });
+    if (touched) papers++;
+  });
 
-  const answeredEl = document.getElementById('stat-answered');
-  const accuracyEl = document.getElementById('stat-accuracy');
-  const levelsEl = document.getElementById('stat-levels');
-  const streakEl = document.getElementById('stat-streak');
-
-  if (answeredEl) answeredEl.textContent = stats.totalAnswered;
-  if (accuracyEl) accuracyEl.textContent = stats.totalAnswered > 0 ? stats.overallAccuracy + '%' : '0%';
-  if (levelsEl) levelsEl.textContent = stats.levelsCompleted + ' / 5';
-  if (streakEl) {
-    const maxStreak = Math.max(
-      progress.data.stats.N5?.streak || 0,
-      progress.data.stats.N4?.streak || 0,
-      progress.data.stats.N3?.streak || 0,
-      progress.data.stats.N2?.streak || 0,
-      progress.data.stats.N1?.streak || 0
-    );
-    streakEl.textContent = maxStreak > 0 ? String(maxStreak) : t('home.statStreakEmpty');
-  }
-
-  // Update mini-panel
-  const progressValueEl = document.getElementById('progressValue');
-  const miniLevelsEl = document.getElementById('miniLevels');
-  const miniAccuracyEl = document.getElementById('miniAccuracy');
-
-  if (progressValueEl) progressValueEl.textContent = stats.totalAnswered;
-  if (miniLevelsEl) miniLevelsEl.textContent = stats.levelsCompleted + ' / 5';
-  if (miniAccuracyEl) miniAccuracyEl.textContent = stats.totalAnswered > 0 ? stats.overallAccuracy + '%' : '0%';
+  return sections
+    ? { scored, cap, papers, sections, last,
+        percent: cap ? Math.round((scored / cap) * 100) : 0 }
+    : null;
 }
 
 function levelDesc(key) {
@@ -326,15 +296,11 @@ function renderLevels() {
 
   const wanted = (new URLSearchParams(window.location.search).get('lv') || '')
     .toUpperCase();
-  const overall = progress.getOverallStats();
 
+  /* The row of three summary numbers that used to open this page is gone -
+     see the note above readBests(). It read "0 answered, 0% accuracy, 0 / 5
+     levels" for everybody, always. */
   container.innerHTML = `
-    <div class="practice-summary-row">
-      ${summaryStat(overall.totalAnswered, t('home.statAnswered'))}
-      ${summaryStat(overall.overallAccuracy + '%', t('home.statAccuracy'))}
-      ${summaryStat(overall.levelsCompleted + ' / 5', t('home.statLevels'))}
-    </div>
-
     <div class="practice-levels">
       ${LEVEL_ORDER.map(levelBlock).join('')}
     </div>
@@ -358,16 +324,8 @@ function renderLevels() {
   }
 }
 
-function summaryStat(value, label) {
-  return `
-    <div class="summary-stat">
-      <strong>${value}</strong>
-      <span>${label}</span>
-    </div>`;
-}
-
 function levelBlock(lv) {
-  const stats = progress.getStats(lv);
+  const best = levelBest(lv);
   const cfg = LEVEL_CONFIG[lv] || LEVEL_CONFIG.N5;
   const exam = MOCK_EXAMS[lv];
   const examUrl = mockExamUrl(lv);
@@ -376,15 +334,19 @@ function levelBlock(lv) {
      relative path keeps it inside whichever language directory we are in. */
   const listUrl = `study/${lv.toLowerCase()}-words.html`;
 
-  const bar = stats.total > 0
+  /* Your own best on this level, or nothing. It used to say "Never" in a
+     grey box on every level for every visitor, which is a label for an
+     absence - and an absence does not need a label on a page you are
+     reading to decide where to start. */
+  const bar = best
     ? `<div class="plevel-bar"><div class="plevel-bar-fill"
-         style="width:${stats.accuracy}%"></div></div>`
+         style="width:${best.percent}%"></div></div>`
     : '';
 
-  const score = stats.total > 0
-    ? `<div class="plevel-score"><strong>${stats.accuracy}%</strong>
-         <span>${stats.correct} / ${stats.total} ${t('levels.correct')}</span></div>`
-    : `<div class="plevel-score is-empty"><span>${t('levels.never')}</span></div>`;
+  const score = best
+    ? `<div class="plevel-score"><strong>${best.scored}<i>/${best.cap}</i></strong>
+         <span>${best.papers} ${t(best.papers === 1 ? 'exams.paper' : 'exams.papers')}</span></div>`
+    : '';
 
   /* Buttons stay live even when the level has no paper. Disabling them left
      four grey rectangles and no explanation; pressing one now says what is
@@ -496,13 +458,18 @@ function renderFeatures() {
     card(nf(counts.words), t('study.words'), levels, '#2d6eb4') +
     card(nf(counts.kanji), t('study.kanji'), t('study.strokeOrder'), '#7c3ac8') +
     card(nf(counts.grammar), t('study.grammar'), levels, '#2f7d57') +
-    card(nf(counts.papers), t('exams.statPapers'),
-         t('exams.statScoredValue'), '#d9a63a') +
+    /* The sub-line under this one used to read "Automatically" - the value
+       of a stat that was deleted from the exams page, left behind under a
+       count of papers where it means nothing. */
+    card(nf(counts.papers), t('exams.statPapers'), levels, '#d9a63a') +
     /* The Nepali card names itself in Nepali whatever language the page is
        in - somebody looking for it is looking for that word. */
     card(nf(counts.nepali), '\u0928\u0947\u092a\u093e\u0932\u0940',
          t('home.inNepali'), '#c84a52') +
-    card('12', t('lang.label'), t('home.featuresBody'), '#5c697a');
+    /* And this one was labelled with the language picker's own caption -
+       "12 Language" - over a sub-line that repeated the section's heading
+       verbatim. */
+    card('12', t('home.featLanguages'), t('home.featLanguagesSub'), '#5c697a');
 }
 
 function renderNotice() {
@@ -796,7 +763,6 @@ function mountBackToTop() {
 }
 
 function renderAll() {
-  updateHomePageStats();
   renderFeatures();
   renderLevels();
   renderNotice();

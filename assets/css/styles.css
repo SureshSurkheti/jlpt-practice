@@ -202,6 +202,9 @@ body > main { flex: 1 0 auto; }
   color: var(--navy);
   font-weight: 600;
   outline: none;
+  /* The label forwards taps, but the select itself was an 18px strip; on a
+     phone the difference is a control you hit and one you miss. */
+  min-height: 26px;
 }
 
 /* ==========================================================================
@@ -414,14 +417,9 @@ body > main { flex: 1 0 auto; }
   color: white;
 }
 
-.hero-grid {
-  display: grid;
-  /* The panel gets a floor so it never collapses into an unreadable column
-     between the widest laptop and the point where the hero stacks. */
-  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.8fr);
-  gap: clamp(24px, 2.6vw, 40px);
-  align-items: center;
-}
+/* One column since the progress panel that used to sit on the right was
+   removed - it had never shown anything but zeros. */
+.hero-grid { display: block; }
 
 .eyebrow {
   display: inline-block;
@@ -458,80 +456,6 @@ body > main { flex: 1 0 auto; }
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 26px;
-}
-
-.mini-panel {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 20px;
-  padding: 22px 20px;
-  box-shadow: var(--shadow);
-}
-
-.mini-head {
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.72rem;
-}
-
-.mini-value {
-  margin-top: 18px;
-  font-size: 3rem;
-  font-family: var(--font-display);
-  color: var(--gold);
-}
-
-.mini-panel ul {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-  display: grid;
-  gap: 12px;
-}
-
-.mini-panel li {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.stats-strip {
-  padding: var(--sp-section) 0 0;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.2vw, 20px);
-}
-
-.stat-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 22px 18px;
-  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
-
-}
-
-.stat-card span {
-  display: block;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  font-size: 0.72rem;
-}
-
-.stat-card strong {
-  display: block;
-  margin-top: 10px;
-  font-size: clamp(1.8rem, 2vw, 2.4rem);
-  color: var(--navy);
-  font-family: var(--font-display);
 }
 
 .feature-section,
@@ -872,7 +796,13 @@ body > main { flex: 1 0 auto; }
   margin: 0;
   padding: 0;
 }
-.lang-links a { color: var(--muted); }
+/* Sixteen pixels tall was the text, and the text was the whole tap target.
+   Padding gives the row something to hit without changing how it reads. */
+.lang-links a {
+  display: inline-block;
+  padding: 4px 2px;
+  color: var(--muted);
+}
 .lang-links a:hover,
 .lang-links a:focus-visible { color: var(--blue); text-decoration: underline; }
 
@@ -909,7 +839,6 @@ body > main { flex: 1 0 auto; }
       surplus width is deliberately margin, so the extra room goes into the
       cards themselves rather than into more columns or a wider measure. -- */
 @media (min-width: 1560px) {
-  .stat-card { padding: 26px 24px; }
   .level-card { min-height: 226px; }
   .steps-panel { padding: 32px; }
 }
@@ -947,30 +876,11 @@ body > main { flex: 1 0 auto; }
     align-items: start;
   }
 
-  .mini-panel { max-width: 100%; }
-
-  .mini-panel ul {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .mini-panel li {
-    border-top: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 0 0 0 14px;
-    flex-direction: column;
-    gap: 4px;
-  }
-
   .level-detail-grid,
   .about-grid,
   .steps-grid,
   .feature-grid,
   .insight-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1035,14 +945,6 @@ body > main { flex: 1 0 auto; }
   .hero-copy h1 { max-width: 100%; }
 
   /* Undo the sideways progress strip: three columns of it do not fit a phone. */
-  .mini-panel ul { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .mini-panel li {
-    border-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 10px 0 0;
-    flex-direction: row;
-    justify-content: space-between;
-  }
 
 }
 
@@ -1051,13 +953,9 @@ body > main { flex: 1 0 auto; }
    page exists - most of a screen further down. Only the cards that carry a
    full-width button of their own go one across. */
 @media (max-width: 560px) {
-  .stats-grid,
   .level-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .stat-card { padding: 14px 15px; }
-  .stat-card strong { font-size: 1.5rem; }
   .level-card { min-height: 128px; padding: 14px; }
   .level-code { font-size: 1.7rem; }
   .level-desc { font-size: 0.84rem; }
@@ -1204,8 +1102,6 @@ body > main { flex: 1 0 auto; }
   color: var(--muted);
 }
 .about-plain p { margin: 0 0 16px; }
-
-.mini-link { color: var(--gold); font-weight: 700; }
 
 @media (max-width: 620px) {
   .fact-grid { grid-template-columns: 1fr; }
@@ -1387,14 +1283,6 @@ body.is-leaving { opacity: 0; }
   .hero-copy p { font-size: 1rem; line-height: 1.62; }
   .hero-actions { margin-top: 18px; }
 
-  .mini-panel { padding: 18px; }
-  .mini-value { margin-top: 12px; font-size: 2.4rem; }
-  .mini-panel ul { margin-top: 14px; gap: 9px; }
-  .mini-panel li { padding-top: 8px; }
-
-  .stat-card { padding: 15px 18px; }
-  .stat-card strong { margin-top: 6px; font-size: 1.7rem; }
-
   .section-header h2,
   .page-intro h1,
   .steps-panel h2 { font-size: clamp(1.7rem, 2.2vw, 2.2rem); }
@@ -1415,7 +1303,6 @@ body.is-leaving { opacity: 0; }
   .hero-copy h1 { font-size: 2rem; margin: 8px 0; }
   .hero-copy p { font-size: 0.95rem; }
   .hero-actions { margin-top: 14px; }
-  .mini-value { font-size: 2rem; }
   .level-card { min-height: 140px; }
 }
 
@@ -1496,40 +1383,6 @@ body.is-leaving { opacity: 0; }
    more levels, and nothing is disabled: a level with no paper says so when
    you press it.
    ========================================================================== */
-
-.practice-summary-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.2vw, 18px);
-  margin: clamp(18px, 2vw, 28px) 0 var(--sp-section);
-}
-
-.summary-stat {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: var(--card-pad);
-  box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
-}
-
-.summary-stat strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 2.2vw, 2.3rem);
-  color: var(--navy);
-  line-height: 1;
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-.summary-stat span {
-  display: block;
-  margin-top: 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
 .practice-levels {
   display: grid;
@@ -1712,10 +1565,6 @@ body.is-leaving { opacity: 0; }
 }
 
 @media (max-width: 560px) {
-  .practice-summary-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .summary-stat { padding: 14px 12px; }
-  .summary-stat strong { font-size: 1.4rem; }
-  .summary-stat span { font-size: 0.62rem; letter-spacing: 0.05em; }
   /* Four across stops being readable at this width for both rows. */
   .plevel-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plevel-facts div:nth-child(odd) { padding-left: 0; border-left: 0; }
@@ -1846,11 +1695,14 @@ body.is-leaving { opacity: 0; }
 /* The back link the script adds to the top of a page. It is the first thing
    in <main>, above the heading, so it reads as "out of here" rather than as
    part of the content. */
+/* The back link is the first thing inside <main>, and <main> already has a
+   generous top padding - so its own top margin was added to that and left
+   about seventy pixels of nothing above the first control on the page. */
 .page-back {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-top: clamp(18px, 2vw, 28px);
+  margin-top: 0;
 }
 .page-back + .page-intro { padding-top: 14px; }
 
@@ -1920,14 +1772,24 @@ body.is-leaving { opacity: 0; }
   margin: clamp(18px, 2vw, 28px) 0 18px;
 }
 
+/* The five level pills and the three kind pills are fixed-width groups. On a
+   320px screen (an SE, or any phone with the text size turned up) they were
+   ten pixels wider than the viewport, which scrolls the whole page sideways -
+   the one layout failure a phone user cannot ignore. Let the group scroll
+   inside itself instead, and stop the pills being squeezed out of shape. */
 .study-tabs {
-  display: inline-flex;
+  display: flex;
+  max-width: 100%;
   gap: 4px;
   padding: 4px;
   background: var(--panel-soft);
   border: 1px solid var(--line);
   border-radius: 999px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.study-tabs::-webkit-scrollbar { display: none; }
+.study-tab { flex: none; }
 
 .study-tab {
   padding: 9px 18px;

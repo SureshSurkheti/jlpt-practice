@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#112d4e" />
-    <title>Luyện tiếng Nhật với đề mô phỏng đầy đủ.</title>
+    <title>Luyện tiếng Nhật đúng theo định dạng JLPT.</title>
     <meta name="description" content="86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe." />
     <link rel="canonical" href="https://jlpt.sureshsurkheti.com/vi/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -28,7 +28,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
     <meta property="og:locale" content="vi" />
-    <meta property="og:title" content="Luyện tiếng Nhật với đề mô phỏng đầy đủ." />
+    <meta property="og:title" content="Luyện tiếng Nhật đúng theo định dạng JLPT." />
     <meta property="og:description" content="86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe." />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/vi/" />
     <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
@@ -36,9 +36,10 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="JLPT Practice" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Luyện tiếng Nhật với đề mô phỏng đầy đủ." />
+    <meta name="twitter:title" content="Luyện tiếng Nhật đúng theo định dạng JLPT." />
     <meta name="twitter:description" content="86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/vi/#website","url":"https://jlpt.sureshsurkheti.com/vi/","name":"JLPT Practice","inLanguage":"vi","description":"86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.","publisher":{"@type":"Person","name":"Suresh Surkheti"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/vi/#webpage","url":"https://jlpt.sureshsurkheti.com/vi/","name":"Luyện tiếng Nhật đúng theo định dạng JLPT.","description":"86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.","inLanguage":"vi","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/vi/#website"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -92,7 +93,7 @@
       <section class="hero-section">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <h1 data-i18n="home.title">Luyện tiếng Nhật với đề mô phỏng đầy đủ.</h1>
+            <h1 data-i18n="home.title">Luyện tiếng Nhật đúng theo định dạng JLPT.</h1>
             <p data-i18n="home.body">86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.</p>
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">Xem đề thi</a>
@@ -100,15 +101,13 @@
             </div>
           </div>
 
-          <div class="mini-panel">
-            <div class="mini-head" data-i18n="home.progress">Tiến độ của bạn</div>
-            <div class="mini-value" id="progressValue">0</div>
-            <ul>
-              <li><span data-i18n="home.progressLevels">Cấp độ</span><strong id="miniLevels">0 / 5</strong></li>
-              <li><span data-i18n="home.progressAccuracy">Độ chính xác</span><strong id="miniAccuracy">0%</strong></li>
-              <li><span data-i18n="home.progressDetails">Xem chi tiết</span><a href="./stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
-            </ul>
-          </div>
+          <!-- A "Your progress" panel used to sit here: a big number, a
+               levels count and an accuracy percentage. Nothing ever wrote to
+               the store behind it, so it read 0, 0 / 5 and 0% for every
+               visitor on every visit - a progress feature with no progress
+               feature behind it. The scores that are real live on the
+               statistics page, linked from the footer, and only appear once
+               there is something to show. -->
         </div>
       </section>
 
@@ -137,27 +136,6 @@
             <summary data-i18n="notice.moreLabel">Âm thanh nghe, nghĩa từ và trợ giúp</summary>
             <div class="notice-foot" id="noticeFoot"></div>
           </details>
-        </div>
-      </section>
-
-      <section class="stats-strip">
-        <div class="container stats-grid">
-          <div class="stat-card">
-            <span data-i18n="home.statAnswered">Số câu đã trả lời</span>
-            <strong id="stat-answered">0</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statAccuracy">Độ chính xác</span>
-            <strong id="stat-accuracy">0%</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statLevels">Cấp độ đã bắt đầu</span>
-            <strong id="stat-levels">0 / 5</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statStreak">Chuỗi ngày học</span>
-            <strong id="stat-streak">0</strong>
-          </div>
         </div>
       </section>
 
@@ -207,7 +185,8 @@
     </footer>
 
     <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/js/i18n-strings.js"></script>
+    <script src="/assets/i18n/en.js"></script>
+    <script src="/assets/i18n/vi.js"></script>
     <script src="/assets/js/site.js"></script>
   </body>
 </html>

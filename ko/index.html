@@ -39,6 +39,7 @@
     <meta name="twitter:title" content="실전 형식 모의고사로 일본어를 연습하세요." />
     <meta name="twitter:description" content="N5부터 N1까지 모의고사 86회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ko/#website","url":"https://jlpt.sureshsurkheti.com/ko/","name":"JLPT Practice","inLanguage":"ko","description":"N5부터 N1까지 모의고사 86회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.","publisher":{"@type":"Person","name":"Suresh Surkheti"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ko/#webpage","url":"https://jlpt.sureshsurkheti.com/ko/","name":"실전 형식 모의고사로 일본어를 연습하세요.","description":"N5부터 N1까지 모의고사 86회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.","inLanguage":"ko","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ko/#website"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -100,15 +101,13 @@
             </div>
           </div>
 
-          <div class="mini-panel">
-            <div class="mini-head" data-i18n="home.progress">학습 현황</div>
-            <div class="mini-value" id="progressValue">0</div>
-            <ul>
-              <li><span data-i18n="home.progressLevels">레벨</span><strong id="miniLevels">0 / 5</strong></li>
-              <li><span data-i18n="home.progressAccuracy">정답률</span><strong id="miniAccuracy">0%</strong></li>
-              <li><span data-i18n="home.progressDetails">자세히 보기</span><a href="./stats.html" class="mini-link" aria-label="Statistics">&rarr;</a></li>
-            </ul>
-          </div>
+          <!-- A "Your progress" panel used to sit here: a big number, a
+               levels count and an accuracy percentage. Nothing ever wrote to
+               the store behind it, so it read 0, 0 / 5 and 0% for every
+               visitor on every visit - a progress feature with no progress
+               feature behind it. The scores that are real live on the
+               statistics page, linked from the footer, and only appear once
+               there is something to show. -->
         </div>
       </section>
 
@@ -137,27 +136,6 @@
             <summary data-i18n="notice.moreLabel">청해 음성, 단어 뜻, 도움말</summary>
             <div class="notice-foot" id="noticeFoot"></div>
           </details>
-        </div>
-      </section>
-
-      <section class="stats-strip">
-        <div class="container stats-grid">
-          <div class="stat-card">
-            <span data-i18n="home.statAnswered">푼 문제 수</span>
-            <strong id="stat-answered">0</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statAccuracy">정답률</span>
-            <strong id="stat-accuracy">0%</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statLevels">시작한 레벨</span>
-            <strong id="stat-levels">0 / 5</strong>
-          </div>
-          <div class="stat-card">
-            <span data-i18n="home.statStreak">연속 학습</span>
-            <strong id="stat-streak">0</strong>
-          </div>
         </div>
       </section>
 
@@ -207,7 +185,8 @@
     </footer>
 
     <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/js/i18n-strings.js"></script>
+    <script src="/assets/i18n/en.js"></script>
+    <script src="/assets/i18n/ko.js"></script>
     <script src="/assets/js/site.js"></script>
   </body>
 </html>
