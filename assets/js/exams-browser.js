@@ -360,8 +360,15 @@
           esc(origin) + "</span>" +
         '<span class="exam-row-count">' + e.totalQuestions + " " +
           esc(t("exams.questionsShort")) + "</span>" +
-        '<span class="exam-row-parts">' + makeup + "</span>" +
-        flags +
+        /* The make-up and any flags are one span, and CSS gives it a line of
+           its own. Before, the cell wrapped only when it happened to run out
+           of room, so the same page showed some rows on one line and some on
+           two - which ones depended on the language and the window width.
+           Now every row is the same shape: what the paper is, then what is
+           in it. The flags belong inside this span rather than beside it,
+           both because they are part of that sentence and because a sibling
+           would have been pushed onto a third line. */
+        '<span class="exam-row-parts">' + makeup + flags + "</span>" +
       "</div>" +
       bestCell +
       '<div class="exam-row-go">' +

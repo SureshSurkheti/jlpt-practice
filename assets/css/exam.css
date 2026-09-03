@@ -1228,8 +1228,11 @@
   align-items: baseline;
   /* Wide enough that the three scored sections read as three things. They
      used to be separated by a middot at nine pixels, which ran them into one
-     stream you had to parse rather than scan. */
-  gap: 4px 22px;
+     stream you had to parse rather than scan.
+
+     7px between the two rows rather than 4: the break below is deliberate
+     now, and at 4 the second line read as one that had wrapped by accident. */
+  gap: 7px 22px;
   min-width: 0;
   font-size: 0.78rem;
   color: var(--muted);
@@ -1241,6 +1244,17 @@
   min-width: 0;
 }
 .exam-row-parts > span { white-space: nowrap; }
+/* flex-basis:100% takes a line of its own, which is what makes every row the
+   same two-line shape in all twelve languages instead of wrapping only when
+   it ran out of room. A separate zero-height break element did the same job
+   but sat on a flex line of its own, so the cell paid the row gap twice.
+
+   It keeps its wrap. Pinning it to one line with nowrap did stop a ragged
+   third line, but three Filipino rows at 1100px then ran past the cell and
+   the end of the list was simply cut off - and losing "No Listening" off the
+   right edge is worse than an extra line. With a whole line to itself the
+   wrap almost never fires now; when it does, everything is still readable. */
+.exam-row-parts { flex-basis: 100%; }
 .exam-row-parts b {
   color: var(--ink-soft);
   font-variant-numeric: lining-nums tabular-nums;
