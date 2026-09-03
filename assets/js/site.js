@@ -650,6 +650,23 @@ function wireBrand() {
   });
 }
 
+/* The fade above sets body{opacity:0} and then leaves the page. Press Back
+   and the browser restores that page from the back/forward cache exactly as
+   it was frozen - class still on, body still transparent - so the visitor
+   lands on a blank white screen with working, invisible content. Nothing in
+   the normal load path clears it, because a bfcache restore does not re-parse
+   the document.
+
+   pageshow fires on both a fresh load and a restore, so clearing it here
+   covers both. Note that getComputedStyle reported opacity "1" throughout
+   while the page was demonstrably blank in a screenshot - the screenshot is
+   what this was found with. */
+function clearLeavingOnRestore() {
+  window.addEventListener('pageshow', function () {
+    document.body.classList.remove('is-leaving');
+  });
+}
+
 /* ==========================================================================
    Back
 
@@ -880,6 +897,12 @@ function formatSitting(date, lang) {
   }
 }
 
+/* jlpt.jp splits applications into /e/application/domestic_index.html and
+   /e/application/overseas_list.html, and there is no index above them - the
+   /e/application/index.html this used to point at does not exist and served
+   a 404. Since the page cannot know which of the two applies to the reader,
+   it links the English home, which carries both and is stable. Every jlpt.jp
+   URL on this site was re-checked for a 200 when that was fixed. */
 function renderExamCountdown() {
   const mount = document.getElementById('examCountdown');
   if (!mount) return;
@@ -904,7 +927,7 @@ function renderExamCountdown() {
     </p>
     <p class="cal-count">${countdown}</p>
     <p class="cal-note">${isJuly ? t('cal.julyNote') : t('cal.checkNote')}
-      <a class="cal-link" href="https://www.jlpt.jp/e/application/index.html"
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
          target="_blank" rel="noopener">${t('cal.official')}</a></p>
   `;
 }
@@ -922,6 +945,7 @@ document.addEventListener('DOMContentLoaded', () => {
   I18N.init();
   mountPageBack();
   mountBackToTop();
+  clearLeavingOnRestore();
   renderAll();
   wireBrand();
 });

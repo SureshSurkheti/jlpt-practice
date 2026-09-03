@@ -847,7 +847,52 @@
     });
 
     refreshHint();
+
+    /* A reload should not cost you your place.
+
+       Reloading mid-paper used to land on this setup screen. Nothing was
+       lost - the answers were in storage and the Resume button was right
+       there - but the paper vanished and you had to ask for it back, which
+       reads as the browser having gone back a page. Phones reload on their
+       own when a backgrounded tab is evicted, so this was not always a
+       deliberate keypress.
+
+       Only on a reload. Arriving here any other way - from the library, from
+       a level card - still shows the setup, because then you may well want a
+       fresh attempt or a different set of sections; the Resume button covers
+       that case and is unchanged. Either way "Back to setup" in the command
+       bar is the way out of the paper.
+
+       Once per page load: renderSetup() also runs on a language switch, and
+       without the latch that re-entry would inherit this load's reload flag
+       and pull you into the paper unasked.
+
+       Nothing here touches the scroll position. A first attempt at this
+       scrolled to the first unanswered question, which never worked - the
+       browser restores the scroll of a reloaded page after the script has
+       run, so it silently won - and once measured, its restore turned out to
+       be the better answer anyway: it puts you back on the exact question
+       you were reading, not on the next blank one. */
+    if (!state.resumeChecked) {
+      state.resumeChecked = true;
+      if (wasReload() && saved && saved.answers &&
+          Object.keys(saved.answers).length) {
+        startExam(collectSetup(), saved);
+        return;
+      }
+    }
   }
+
+  /* performance.navigation is deprecated but is the only signal older Safari
+     gives; the Level 2 entry is tried first. */
+  function wasReload() {
+    try {
+      var nav = performance.getEntriesByType("navigation")[0];
+      if (nav && nav.type) return nav.type === "reload";
+      return !!(performance.navigation && performance.navigation.type === 1);
+    } catch (e) { return false; }
+  }
+
 
   /* What you have already scored on this paper, section by section, shown on
      the way in rather than only on the way out. Two numbers per section, and
