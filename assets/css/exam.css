@@ -387,10 +387,17 @@
   align-items: start;
 }
 
+/* The gap that separates one question from the next. It has to beat the
+   biggest gap *inside* a question (stem to choices, 18px optical) by enough
+   that the eye groups without being asked to: at 26px the two were 22 and 33,
+   a ratio of 1.5, and the paper read as one even column of parts rather than
+   as a list of questions. 32px puts the ratio at 2.2. Measured optically -
+   from the last glyph of the stem, not from its line box, which carries
+   7.5px of half-leading that the eye does not see. */
 .block-questions {
   min-width: 0;
   display: grid;
-  gap: 26px;
+  gap: 32px;
 }
 
 /* -- reading passage: stays in view while its questions scroll -- */
@@ -437,7 +444,7 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 /* The booklet's own number - 23, or 3番 in listening. A circle could not hold
@@ -470,6 +477,13 @@
 }
 .pq-prompt u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .pq-prompt img { margin: 14px 0; border-radius: 8px; }
+/* A listening question is a picture, and the picture is the last thing in the
+   stem. Its own 14px bottom margin then stacked on .pq-head's 10px, so the
+   answers sat 24px below the image while a text stem holds its answers at 18.
+   The image edge is hard - no half-leading to discount - so 8 here lands it
+   at the same optical 18px, and listening keeps the same grouping rhythm as
+   every other section. */
+.pq-prompt img:last-child { margin-bottom: 8px; }
 
 .flag-btn {
   flex: none;
@@ -484,6 +498,21 @@
   transition: 0.18s ease;
 }
 .flag-btn:hover { border-color: var(--gold); color: var(--gold); }
+/* The drawn button is 34px, which is the right size beside a 30px number
+   pill but five pixels under the 44px a thumb needs. Grow the hit area, not
+   the button: an overlay centred on it reaches 44 without the flag becoming
+   the loudest thing in the row. The 5px it spills sits in .pq-head's 14px
+   gap and in the 12px above the answers, so it takes no press meant for
+   anything else - verified by hit-testing the choice boxes underneath. */
+.flag-btn, .words-btn { position: relative; }
+.flag-btn::after, .words-btn::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 0;
+  height: 44px;
+  transform: translateY(-50%);
+}
+.flag-btn::after { inset-inline: 50%; width: 44px; transform: translate(-50%, -50%); }
 .flag-btn.is-on {
   background: rgba(217, 166, 58, 0.16);
   border-color: var(--gold);
@@ -1365,7 +1394,7 @@
    short English meaning. Collapsed until asked for, so a paper still reads
    like a paper. */
 
-.q-words { margin-top: 14px; }
+.q-words { margin-top: 12px; }
 
 .words-btn {
   display: inline-flex; align-items: center; gap: 8px;
