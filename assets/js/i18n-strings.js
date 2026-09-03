@@ -10,6 +10,9 @@
    ========================================================================== */
 
 I18N.register("en", {
+  "guides.title": "Guides",
+  "guides.body": "How the exam works, written out in full.",
+  "guides.english": "These guides are in English only.",
   "cal.next": "Next JLPT",
   "cal.daysLeft": "{days} days to go",
   "cal.dayLeft": "{days} day to go",
@@ -331,6 +334,9 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
+  "guides.title": "ガイド",
+  "guides.body": "試験のしくみを詳しく解説。",
+  "guides.english": "ガイドは英語のみです。",
   "cal.next": "次回の日本語能力試験",
   "cal.daysLeft": "あと{days}日",
   "cal.dayLeft": "あと{days}日",
@@ -576,6 +582,9 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
+  "guides.title": "Hướng dẫn",
+  "guides.body": "Cách kỳ thi hoạt động, giải thích đầy đủ.",
+  "guides.english": "Các bài hướng dẫn chỉ có tiếng Anh.",
   "cal.next": "Kỳ thi JLPT tiếp theo",
   "cal.daysLeft": "Còn {days} ngày",
   "cal.dayLeft": "Còn {days} ngày",
@@ -821,6 +830,9 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
+  "guides.title": "गाइड",
+  "guides.body": "परीक्षा कसरी चल्छ, विस्तृत रूपमा।",
+  "guides.english": "यी गाइडहरू अङ्ग्रेजीमा मात्र छन्।",
   "cal.next": "आगामी JLPT",
   "cal.daysLeft": "{days} दिन बाँकी",
   "cal.dayLeft": "{days} दिन बाँकी",
@@ -1066,6 +1078,9 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
+  "guides.title": "指南",
+  "guides.body": "考试机制的完整说明。",
+  "guides.english": "指南仅提供英文版。",
   "cal.next": "下一次 JLPT",
   "cal.daysLeft": "还有 {days} 天",
   "cal.dayLeft": "还有 {days} 天",
@@ -1310,6 +1325,9 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
+  "guides.title": "가이드",
+  "guides.body": "시험 구조를 자세히 설명합니다.",
+  "guides.english": "가이드는 영어로만 제공됩니다.",
   "cal.next": "다음 JLPT",
   "cal.daysLeft": "{days}일 남음",
   "cal.dayLeft": "{days}일 남음",
@@ -1554,6 +1572,9 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
+  "guides.title": "Panduan",
+  "guides.body": "Cara kerja ujian, dijelaskan lengkap.",
+  "guides.english": "Panduan ini hanya tersedia dalam bahasa Inggris.",
   "cal.next": "JLPT berikutnya",
   "cal.daysLeft": "{days} hari lagi",
   "cal.dayLeft": "{days} hari lagi",
@@ -1798,6 +1819,9 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
+  "guides.title": "Mga gabay",
+  "guides.body": "Kung paano gumagana ang pagsusulit, buong paliwanag.",
+  "guides.english": "Ang mga gabay na ito ay nasa Ingles lamang.",
   "cal.next": "Susunod na JLPT",
   "cal.daysLeft": "{days} araw na lang",
   "cal.dayLeft": "{days} araw na lang",
@@ -2042,6 +2066,9 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
+  "guides.title": "Guias",
+  "guides.body": "Como o exame funciona, explicado por completo.",
+  "guides.english": "Estes guias estão disponíveis apenas em inglês.",
   "cal.next": "Próximo JLPT",
   "cal.daysLeft": "Faltam {days} dias",
   "cal.dayLeft": "Falta {days} dia",
@@ -2286,6 +2313,9 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
+  "guides.title": "गाइड",
+  "guides.body": "परीक्षा कैसे काम करती है, विस्तार से।",
+  "guides.english": "ये गाइड केवल अंग्रेज़ी में हैं।",
   "cal.next": "अगली JLPT",
   "cal.daysLeft": "{days} दिन बाकी",
   "cal.dayLeft": "{days} दिन बाकी",
@@ -2530,6 +2560,9 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
+  "guides.title": "গাইড",
+  "guides.body": "পরীক্ষা কীভাবে কাজ করে, বিস্তারিত।",
+  "guides.english": "এই গাইডগুলি শুধু ইংরেজিতে।",
   "cal.next": "পরবর্তী JLPT",
   "cal.daysLeft": "আর {days} দিন",
   "cal.dayLeft": "আর {days} দিন",
@@ -2774,6 +2807,9 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
+  "guides.title": "මාර්ගෝපදේශ",
+  "guides.body": "විභාගය ක්‍රියා කරන ආකාරය, සම්පූර්ණයෙන්.",
+  "guides.english": "මෙම මාර්ගෝපදේශ ඉංග්‍රීසියෙන් පමණි.",
   "cal.next": "ඊළඟ JLPT",
   "cal.daysLeft": "තව දින {days}කි",
   "cal.dayLeft": "තව දින {days}කි",

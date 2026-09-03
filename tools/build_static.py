@@ -734,10 +734,20 @@ def main():
 
     # -------------------------------------------------------------- sitemap
     today = date.today().isoformat()
+
+    # The guides, written by tools/build_guides.py. English only and outside
+    # the twelve-language pass, so they are added here by reading the folder
+    # rather than by being listed twice - a list in two files drifts.
+    guide_dir = os.path.join(ROOT, "guide")
+    if os.path.isdir(guide_dir):
+        for fn in sorted(os.listdir(guide_dir)):
+            if fn.endswith(".html"):
+                written.append((SITE + "/guide/" + fn, DEFAULT_LANG, "guide"))
+
     rows = []
     for url, lang, page in written:
         pri = "1.0" if page == "index.html" else (
-            "0.9" if page in ("study", "exams.html") else "0.7")
+            "0.9" if page in ("study", "exams.html", "guide") else "0.7")
         rows.append("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
                     "    <priority>%s</priority>\n  </url>" % (url, today, pri))
     io.open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
