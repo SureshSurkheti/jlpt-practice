@@ -1677,6 +1677,33 @@
     window.scrollTo(0, 0);
   }
 
+  /* Which questions on this paper are flagged.
+
+     The flag used to feed the question map, whose cells turned gold - so
+     flagging a question and finding it again were the same feature. Removing
+     the map removed the second half and left a button that did nothing but
+     turn itself gold, on the question you were already looking at. Marking
+     something to come back to is only worth doing if something brings you
+     back. */
+  function flaggedItems() {
+    return state.questions.filter(function (item) {
+      if (state.paper && paperOfCategory(item.category) !== state.paper) return false;
+      return !!state.flags[item.key];
+    });
+  }
+
+  /* The next flagged question after the one on screen, wrapping round, so
+     the button walks the list rather than sticking on the first. */
+  function jumpToNextFlagged() {
+    var list = flaggedItems();
+    if (!list.length) return;
+    var next = null;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].index > state.current) { next = list[i]; break; }
+    }
+    jumpTo((next || list[0]).index);
+  }
+
   function buildFinish() {
     var box = el("div", "paper-finish");
     if (state.reviewed) {
@@ -1700,7 +1727,11 @@
 
     box.innerHTML =
       "<h2>" + esc(t("exam.endOfPaper")) + "</h2>" +
-      '<p id="finishSummary"></p>';
+      '<p id="finishSummary"></p>' +
+      '<p class="finish-flagged" id="finishFlagged" hidden>' +
+        '<span id="finishFlaggedText"></span>' +
+        '<button type="button" class="btn btn-ghost" id="goFlaggedBtn">' +
+          esc(t("exam.goToFlagged")) + "</button></p>";
 
     /* Mark this paper on its own. It is the primary action because it is the
        one that matches how people actually practise - a section at a time -
@@ -1758,6 +1789,16 @@
       summary.textContent = blanks === 0
         ? t("exam.allAnswered")
         : blanks + " " + t(blanks === 1 ? "exam.blankRemains" : "exam.blanksRemain");
+    }
+
+    /* What the flag is for: a count of what you marked to come back to, and
+       a way back to it, at the point where you are deciding to submit. */
+    var box = document.getElementById("finishFlagged");
+    if (box) {
+      var n = flaggedItems().length;
+      box.hidden = n === 0;
+      var text = document.getElementById("finishFlaggedText");
+      if (text) text.textContent = tf("exam.flaggedCount", { n: n });
     }
   }
 
@@ -1868,9 +1909,15 @@
         flag.setAttribute("aria-pressed",
           state.flags[item.key] ? "true" : "false");
         saveProgress();
+        /* The count at the foot of the paper is the only thing that makes a
+           flag worth setting, so it has to move when one is set. This used
+           to refresh the question map; when the map went, the refresh went
+           with it and nothing was left listening. */
+        refreshProgress();
         return;
       }
 
+      if (ev.target.closest("#goFlaggedBtn")) { jumpToNextFlagged(); return; }
       if (ev.target.closest("#markSectionBtn")) confirmSection();
       if (ev.target.closest("#retrySectionBtn")) retakeSection(state.paper);
       if (ev.target.closest("#submitBtn2")) confirmSubmit();
