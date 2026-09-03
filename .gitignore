@@ -3,3 +3,6 @@ __pycache__/
 
 # Downloaded dictionary sources, rebuilt by tools/build_kanji.py
 .cache/
+
+# Scratch page used when rasterising icons; must never ship.
+_raster.html
