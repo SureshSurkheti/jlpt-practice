@@ -510,6 +510,24 @@ def main():
                     '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
                     % json.dumps(COUNTS, separators=(",", ":")))
             html = rewrite_head(html, lang, page, langs, indexable, table, en)
+            # The takedown address again, this time for the interface strings.
+            #
+            # %%CONTACT%% is substituted in the markup above, which is what a
+            # crawler and a no-script visitor read - but the About page's
+            # rights paragraph carries data-i18n-html, so the client-side
+            # translator overwrote that good markup with the raw table entry
+            # on every page load. Every visitor with JavaScript on was shown
+            # "%%CONTACT%%" and a mailto: link pointing at it, on the one
+            # paragraph whose entire job is to let a rights holder reach the
+            # site without filing a notice.
+            #
+            # The address stays defined once, here. i18n.js substitutes the
+            # same token at lookup time using this value, so the table and
+            # the markup can no longer drift apart.
+            html = html.replace(
+                "</head>",
+                '    <script>window.SITE_CONTACT=%s;</script>\n  </head>'
+                % json.dumps(CONTACT_EMAIL))
             if lang != DEFAULT_LANG:
                 html = absolutise(html)
 

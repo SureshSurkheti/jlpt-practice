@@ -44,14 +44,39 @@
     return LANGUAGES.indexOf(saved) === -1 ? DEFAULT : saved;
   }
 
+  /* The contact address is written into every page by the build, so it is
+     defined in exactly one place (CONTACT_EMAIL in tools/build_static.py)
+     and the translation tables carry a token instead of twelve copies of an
+     email address that would drift the day it changed. */
+  function contact() {
+    return global.SITE_CONTACT || "";
+  }
+
+  /* Substituted on the way out of the table rather than at each call site:
+     the rights paragraph is the one string that carries it, and it is the
+     one string that must never render wrong. */
+  function fillTokens(value) {
+    if (typeof value !== "string" || value.indexOf("%%CONTACT%%") === -1) {
+      return value;
+    }
+    var email = contact();
+    /* With no address to put in, leave the sentence intact and drop the
+       broken mailto rather than printing a placeholder at a rights holder. */
+    if (!email) {
+      return value.replace(/<a[^>]*>%%CONTACT%%<\/a>/g, "")
+                  .replace(/%%CONTACT%%/g, "");
+    }
+    return value.replace(/%%CONTACT%%/g, email);
+  }
+
   /* Look a key up in the active language, falling back to English so a
      missing translation shows real text rather than the raw key. */
   function t(key, lang) {
     lang = lang || current();
     var table = STRINGS[lang];
-    if (table && table[key] != null) return table[key];
+    if (table && table[key] != null) return fillTokens(table[key]);
     var en = STRINGS[DEFAULT];
-    if (en && en[key] != null) return en[key];
+    if (en && en[key] != null) return fillTokens(en[key]);
     return key;
   }
 

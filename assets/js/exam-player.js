@@ -161,8 +161,46 @@
     css.setProperty("--bar-h", (bar ? bar.offsetHeight : 0) + "px");
   }
 
+  /* Measuring once was not enough.
+
+     The command bar wraps to two or three rows on a phone, and it settled
+     into its final height *after* the first measurement - when the webfont
+     arrived, or when the progress row wrapped. So --bar-h stayed seven
+     pixels short for the rest of the session and everything pinned beneath
+     it sat seven pixels too high: the reading passage, the scroll-margin
+     that decides where a jumped-to question lands, and the listening player,
+     which overlapped the bar it is docked to.
+
+     Watch the two elements instead of waiting for a resize event that never
+     comes. Observing fires the callback once by itself, which is the
+     re-measure we want; nothing in the callback changes either element's
+     height, so it settles immediately rather than looping. */
+  var stickyRO = null;
+  var watchedBar = null;
+
+  function watchSticky() {
+    if (typeof ResizeObserver !== "function") return;
+    if (!stickyRO) stickyRO = new ResizeObserver(syncStickyOffsets);
+    var header = document.querySelector(".site-header");
+    if (header && !watchSticky.header) {
+      stickyRO.observe(header);
+      watchSticky.header = header;
+    }
+    /* The bar is rebuilt on every render, so swap the subscription rather
+       than stacking one per render. */
+    var bar = document.querySelector(".exam-bar");
+    if (bar && bar !== watchedBar) {
+      if (watchedBar) stickyRO.unobserve(watchedBar);
+      stickyRO.observe(bar);
+      watchedBar = bar;
+    }
+  }
+
   window.addEventListener("resize", syncStickyOffsets);
   window.addEventListener("orientationchange", syncStickyOffsets);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncStickyOffsets);
+  }
 
   /* ---------------------------------------------------------------- utils */
 
@@ -1055,6 +1093,7 @@
 
     wirePaper();
     syncStickyOffsets();
+    watchSticky();
     refreshProgress();
     updateSpy();
   }
