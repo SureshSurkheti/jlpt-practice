@@ -16,53 +16,23 @@
   var LEVEL_COLOR = {
     N1: "#d9a63a", N2: "#2d6eb4", N3: "#2f7d57", N4: "#7c3ac8", N5: "#5c697a"
   };
-  /* The sections the JLPT actually scores, which is what a learner needs to
-     see before opening a paper - and which is not how this archive stored
-     it, nor how the booklets are handed out on the day.
+  /* The four skills a JLPT paper tests, in the order the paper presents
+     them: 文字・語彙, 文法, 読解, 聴解.
 
-     N1, N2 and N3 are scored in three parts: 言語知識（文字・語彙・文法）,
-     then 読解, then 聴解. N4 and N5 in two, because there language
-     knowledge and reading are marked together.
+     These were grouped for a while into the three parts the exam is *scored*
+     in - 語彙 and 文法 summed into one "Language Knowledge" figure, because
+     that is how the marks are reported. It is how the marks are reported,
+     and it was still the wrong thing to show here: grammar then appeared
+     nowhere on the page at all, folded invisibly into another number, while
+     "No Grammar" could still turn up on a paper missing it. A skill the
+     library is willing to call missing has to be visible when it is there.
+     That grouping still governs the scorecard, where it belongs.
 
-     The archive split every level the same way instead, into a "vocabulary"
-     file and a "grammar-reading" file - and at N1 and N2 the vocabulary
-     file holds the grammar questions too, while the grammar-reading file
-     holds nothing but reading. So the library printed "Vocabulary 54 ·
-     Grammar & Reading 21" for an N2 paper whose grammar is inside that 54
-     and whose 21 is reading alone. Both labels wrong, and the missing-part
-     warning wrong with them: it said "No Grammar & Reading" for papers that
-     have their grammar and are missing only the reading.
-
-     This is the same grouping the exam player scores by (sectionOf in
-     exam-player.js), so the library now promises exactly what the scorecard
-     reports. */
-  /* A section is named after what the paper actually holds. Nine N1 and N2
-     papers were archived without their reading, and a section headed
-     "Language Knowledge & Reading" on a paper with no reading in it
-     contradicts the red note sitting beside it. */
-  function sectionLabel(full, present) {
-    /* One skill left standing: name it, rather than keeping a heading that
-       promises two. Nine N1 and N2 papers were archived without their
-       reading, and "Language Knowledge & Reading" over a paper with no
-       reading in it contradicts the red note beside it. */
-    if (present.length === 1) return SKILL_KEY[present[0]];
-    if (present.indexOf("reading") === -1) return "exam.sectionLanguage";
-    return full;
-  }
-
-  var SITTINGS = {
-    N1: [{ key: "exam.sectionLanguage", cats: ["vocabulary", "grammar"] },
-         { key: "exam.sectionReading", cats: ["reading"] },
-         { key: "exam.sectionListening", cats: ["listening"] }],
-    N4: [{ key: "section.languageReading", cats: ["vocabulary", "grammar", "reading"] },
-         { key: "exam.sectionListening", cats: ["listening"] }]
-  };
-  SITTINGS.N2 = SITTINGS.N1;
-  SITTINGS.N3 = SITTINGS.N1;
-  SITTINGS.N5 = SITTINGS.N4;
-
-  /* The four skills a complete paper tests. Any of them a paper does not
-     have is named on its row, in red. */
+     Every paper prints all four, in this order, and each is either its own
+     count or - in the same place, in red - the note that this paper does not
+     have it. Appended at the end instead, "No Reading" landed after the
+     listening count: neither where the reading would be nor where the eye is
+     looking for it. */
   var SKILLS = ["vocabulary", "grammar", "reading", "listening"];
   var SKILL_KEY = {
     vocabulary: "section.vocabulary",
@@ -329,39 +299,29 @@
   function card(e, wordsVaries) {
     var color = LEVEL_COLOR[e.level] || "#2d6eb4";
 
-    /* The paper laid out in its own level's sitting order, counted by skill.
-       Identical on almost every paper of a level, so it stays one quiet line
-       rather than becoming three chips. */
     var counts = e.categoryCounts || {};
-    var makeup = (SITTINGS[e.level] || SITTINGS.N3).map(function (sec) {
-      var present = sec.cats.filter(function (c) { return counts[c]; });
-      if (!present.length) return null;
-      var n = present.reduce(function (sum, c) { return sum + counts[c]; }, 0);
-      return '<span>' + esc(t(sectionLabel(sec.key, present))) +
-        " <b>" + n + "</b></span>";
-    }).filter(Boolean).join("");
-
-    /* Every skill this paper was archived without. Written the same way the
-       make-up beside it is written - plain words on the same line, coloured
-       red - rather than as a chip, which made an absence look like a button. */
     var have = {};
     e.parts.forEach(function (p) { have[p.id] = p; });
 
-    var flags = SKILLS.filter(function (c) { return !counts[c]; })
-      .map(function (c) {
+    /* All four skills, in paper order, each either its count or its absence.
+       "Has a listening booklet" is not the same as "has the recordings", so
+       the one paper carrying 28 silent listening questions says so beside
+       its count rather than passing as complete. */
+    var makeup = SKILLS.map(function (c) {
+      if (!counts[c]) {
         return '<span class="exam-row-missing">' +
           esc(tf("exams.noPart", { part: t(SKILL_KEY[c]) })) + "</span>";
-      }).join("");
+      }
+      var cell = "<span>" + esc(t(SKILL_KEY[c])) +
+        " <b>" + counts[c] + "</b></span>";
+      if (c === "listening" && have.listening && !have.listening.audio) {
+        cell += '<span class="exam-row-missing">' +
+          esc(t("exams.noAudio")) + "</span>";
+      }
+      return cell;
+    }).join("");
 
-    /* "Has a listening booklet" is not the same as "has the recordings":
-       one paper carries 28 listening questions with no sound file behind any
-       of them, and the library counted it as having listening because the
-       booklet was there. */
-    if (have.listening && !have.listening.audio) {
-      flags += '<span class="exam-row-missing">' +
-        esc(t("exams.noAudio")) + "</span>";
-    }
-
+    var flags = "";
     if (wordsVaries && withWords[e.id]) {
       flags += '<span class="exam-part-tag is-words">' +
         esc(t("exams.hasWords")) + "</span>";
