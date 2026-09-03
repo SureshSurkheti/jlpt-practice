@@ -172,6 +172,7 @@ I18N.register("zh", {
  "level.kanji": "汉字",
  "level.pass": "合格分",
  "level.vocab": "词汇",
+ "levels.bestLabel": "最佳成绩",
  "levels.body": "选择一个级别练习，或打开完整模拟考试。",
  "levels.colCovers": "考查范围",
  "levels.colTime": "考试时间",

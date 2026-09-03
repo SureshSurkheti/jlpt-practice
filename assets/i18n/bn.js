@@ -172,6 +172,7 @@ I18N.register("bn", {
  "level.kanji": "কানজি",
  "level.pass": "উত্তীর্ণ নম্বর",
  "level.vocab": "শব্দভাণ্ডার",
+ "levels.bestLabel": "আপনার সেরা",
  "levels.body": "অভ্যাসের জন্য একটি স্তর বাছুন, বা পূর্ণ মক পরীক্ষা খুলুন।",
  "levels.colCovers": "কী থাকে",
  "levels.colTime": "পরীক্ষার সময়",

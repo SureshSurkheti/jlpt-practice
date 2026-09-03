@@ -172,6 +172,7 @@ I18N.register("id", {
  "level.kanji": "Kanji",
  "level.pass": "Nilai lulus",
  "level.vocab": "Kosakata",
+ "levels.bestLabel": "Nilai terbaik",
  "levels.body": "Pilih level untuk dilatih, atau buka ujian simulasi lengkap.",
  "levels.colCovers": "Cakupan",
  "levels.colTime": "Waktu ujian",

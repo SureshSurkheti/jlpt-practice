@@ -12,7 +12,11 @@
 /* Content gets its own breathing room so the sticky exam bar can sit flush
    against the site header instead of floating below a gap. */
 .exam-root > .container,
-.exams-root > .container { padding-top: 28px; }
+/* The same rhythm token every other page's <main> uses. It was a hardcoded
+   28px, so the exams library started its content eighteen pixels higher than
+   Levels, Study, About and the statistics page - close enough to read as a
+   wobble rather than a decision. */
+.exams-root > .container { padding-top: var(--sp-section); }
 .exam-root > .container.exam-body { padding-top: 26px; }
 
 /* ------------------------------------------------------------- utilities */

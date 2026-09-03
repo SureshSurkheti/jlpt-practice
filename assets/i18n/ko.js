@@ -172,6 +172,7 @@ I18N.register("ko", {
  "level.kanji": "한자",
  "level.pass": "합격점",
  "level.vocab": "어휘",
+ "levels.bestLabel": "최고 점수",
  "levels.body": "연습할 레벨을 고르거나 전체 모의시험을 여세요.",
  "levels.colCovers": "출제 범위",
  "levels.colTime": "시험 시간",

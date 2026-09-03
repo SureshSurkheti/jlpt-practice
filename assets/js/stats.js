@@ -87,7 +87,7 @@ function renderLevelProgress(rows) {
       <div class="level-progress-card level-${lv.toLowerCase()}">
         <div class="lp-head">
           <h3>${lv}</h3>
-          <strong>${scored} / ${cap}</strong>
+          <strong><em>${t('levels.bestLabel')}</em>${scored} / ${cap}</strong>
         </div>
         <div class="lp-bar"><div class="lp-fill" style="width:${pct}%"></div></div>
         <div class="lp-meta">

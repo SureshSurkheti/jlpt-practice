@@ -359,8 +359,13 @@ function levelBlock(lv) {
          style="width:${best.percent}%"></div></div>`
     : '';
 
+  /* Labelled, because a bare "93/180" in the corner of a card that also
+     shows a kanji count, a vocabulary count and a pass mark is one more
+     number with nothing saying whose it is. */
   const score = best
-    ? `<div class="plevel-score"><strong>${best.scored}<i>/${best.cap}</i></strong>
+    ? `<div class="plevel-score">
+         <em>${t('levels.bestLabel')}</em>
+         <strong>${best.scored}<i>/${best.cap}</i></strong>
          <span>${best.papers} ${t(best.papers === 1 ? 'exams.paper' : 'exams.papers')}</span></div>`
     : '';
 

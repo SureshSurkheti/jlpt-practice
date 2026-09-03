@@ -179,6 +179,7 @@ I18N.register("en", {
  "level.kanji": "Kanji",
  "level.pass": "Pass mark",
  "level.vocab": "Vocabulary",
+ "levels.bestLabel": "Your best",
  "levels.body": "Pick a level to practise, or open a full mock exam.",
  "levels.colCovers": "What it covers",
  "levels.colTime": "Exam time",

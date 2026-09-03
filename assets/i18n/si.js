@@ -172,6 +172,7 @@ I18N.register("si", {
  "level.kanji": "කන්ජි",
  "level.pass": "සමත් ලකුණු",
  "level.vocab": "වචන මාලාව",
+ "levels.bestLabel": "ඔබේ හොඳම",
  "levels.body": "පුහුණු වීමට මට්ටමක් තෝරන්න, නැතහොත් සම්පූර්ණ ආදර්ශ විභාගයක් විවෘත කරන්න.",
  "levels.colCovers": "ආවරණය",
  "levels.colTime": "විභාග කාලය",

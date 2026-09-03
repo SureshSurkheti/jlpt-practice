@@ -172,6 +172,7 @@ I18N.register("vi", {
  "level.kanji": "Kanji",
  "level.pass": "Điểm đạt",
  "level.vocab": "Từ vựng",
+ "levels.bestLabel": "Điểm cao nhất",
  "levels.body": "Chọn một cấp độ để luyện tập, hoặc mở đề thi thử đầy đủ.",
  "levels.colCovers": "Phạm vi",
  "levels.colTime": "Thời gian thi",

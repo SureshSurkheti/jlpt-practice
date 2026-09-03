@@ -172,6 +172,7 @@ I18N.register("ne", {
  "level.kanji": "कान्जी",
  "level.pass": "उत्तीर्ण अङ्क",
  "level.vocab": "शब्दावली",
+ "levels.bestLabel": "तपाईंको उत्कृष्ट",
  "levels.body": "अभ्यास गर्न स्तर छान्नुहोस्, वा पूरा नमुना परीक्षा खोल्नुहोस्।",
  "levels.colCovers": "के समेट्छ",
  "levels.colTime": "परीक्षा समय",

@@ -172,6 +172,7 @@ I18N.register("hi", {
  "level.kanji": "कांजी",
  "level.pass": "उत्तीर्ण अंक",
  "level.vocab": "शब्दावली",
+ "levels.bestLabel": "आपका सर्वश्रेष्ठ",
  "levels.body": "अभ्यास के लिए स्तर चुनें, या पूरा मॉक टेस्ट खोलें।",
  "levels.colCovers": "क्या शामिल है",
  "levels.colTime": "परीक्षा समय",

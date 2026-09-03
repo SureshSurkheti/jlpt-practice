@@ -172,6 +172,7 @@ I18N.register("fil", {
  "level.kanji": "Kanji",
  "level.pass": "Pasadong marka",
  "level.vocab": "Bokabularyo",
+ "levels.bestLabel": "Pinakamataas mo",
  "levels.body": "Pumili ng antas na sasanayin, o buksan ang buong mock exam.",
  "levels.colCovers": "Saklaw",
  "levels.colTime": "Oras ng pagsusulit",

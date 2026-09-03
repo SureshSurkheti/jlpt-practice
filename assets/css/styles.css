@@ -1111,7 +1111,21 @@ body > main { flex: 1 0 auto; }
   font-size: 1.7rem;
   color: var(--navy);
 }
-.lp-head strong { font-size: 1.3rem; color: var(--success); }
+.lp-head strong {
+  font-size: 1.3rem;
+  color: var(--success);
+  text-align: right;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.lp-head strong em {
+  display: block;
+  font-style: normal;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .lp-bar {
   height: 8px;
   border-radius: 999px;
@@ -1496,6 +1510,18 @@ body.is-leaving { opacity: 0; }
 }
 
 .plevel-score { text-align: right; }
+/* Same small-caps label the fact grid below it uses, so the score reads as
+   one more labelled figure on the card rather than a loose number. */
+.plevel-score em {
+  display: block;
+  margin-bottom: 3px;
+  font-style: normal;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .plevel-score strong {
   display: block;
   font-size: 1.3rem;

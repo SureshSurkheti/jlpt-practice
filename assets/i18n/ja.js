@@ -172,6 +172,7 @@ I18N.register("ja", {
  "level.kanji": "漢字",
  "level.pass": "合格点",
  "level.vocab": "語彙",
+ "levels.bestLabel": "自己ベスト",
  "levels.body": "練習するレベルを選ぶか、模擬試験を開いてください。",
  "levels.colCovers": "出題範囲",
  "levels.colTime": "試験時間",

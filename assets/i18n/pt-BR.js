@@ -172,6 +172,7 @@ I18N.register("pt-BR", {
  "level.kanji": "Kanji",
  "level.pass": "Nota de corte",
  "level.vocab": "Vocabulário",
+ "levels.bestLabel": "Sua melhor nota",
  "levels.body": "Escolha um nível para praticar ou abra um simulado completo.",
  "levels.colCovers": "O que cobre",
  "levels.colTime": "Tempo de prova",
