@@ -703,7 +703,10 @@
   font-size: 1.5rem;
   color: var(--navy);
 }
-.paper-finish p { margin: 0 0 20px; color: var(--muted); }
+/* :not() so the flagged notice keeps its own auto margins - this rule is
+   one specificity point heavier and was silently resetting them to 0, which
+   left the notice pinned to the left edge of a centred block. */
+.paper-finish p:not(.finish-flagged) { margin: 0 0 20px; color: var(--muted); }
 
 /* ------------------------------------------------- one section's result ---
    Shown when a single paper has been marked. Deliberately lighter than the
@@ -2100,11 +2103,17 @@
 
 /* The flagged count and the way back to them, at the foot of the paper where
    you decide whether to submit. */
+/* Its own line, above the decision.
+
+   As an inline-flex box it sat in the button row, so a note about what you
+   flagged looked like a third button beside "Mark this section" and "Submit
+   exam". It is information with a shortcut in it, not a peer of those two. */
 .finish-flagged {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 14px;
-  margin: 14px 0 0;
+  margin: 16px auto 4px;
   padding: 10px 10px 10px 18px;
   border-radius: 999px;
   background: rgba(217, 166, 58, 0.14);
@@ -2115,9 +2124,18 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 .finish-flagged[hidden] { display: none; }
-.finish-flagged .btn { padding: 8px 16px; font-size: 0.8rem; }
+.finish-flagged .btn { padding: 8px 16px; font-size: 0.8rem; margin: 0; }
+
+/* The buttons are appended straight to a text-align:center block with no
+   whitespace between them, so they were touching edge to edge - which reads
+   as one segmented control rather than two separate decisions, and put
+   "Submit exam" a stray pixel away from "Mark this section". One of those
+   ends the whole sitting. */
+.paper-finish > .btn { margin: 14px 7px 0; }
 
 @media (max-width: 560px) {
-  .finish-flagged { display: flex; border-radius: 16px; }
+  .finish-flagged { width: auto; border-radius: 16px; }
   .paper-finish .finish-flagged .btn { width: auto; }
+  /* Full-width stacked buttons supply their own separation. */
+  .paper-finish > .btn { margin: 12px 0 0; }
 }
