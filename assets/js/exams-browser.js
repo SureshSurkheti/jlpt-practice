@@ -22,6 +22,13 @@
     listening: "section.listening"
   };
 
+  /* The three booklets a complete sitting is made of, in the order a paper
+     prints them. Anything in this list that a paper does not have is said
+     out loud on its row - see card(). Only listening used to be, so seven
+     papers were quietly missing their grammar and reading and one its
+     vocabulary, with nothing on screen to say so. */
+  var STANDARD_PARTS = ["vocabulary", "grammar-reading", "listening"];
+
   var exams = [];
   var withWords = {};   // exam id -> word count, for the papers that have one
   var query = "";
@@ -287,23 +294,29 @@
       return esc(t(PART_KEY[p.id] || p.label)) + " " + p.count;
     }).join(" · ");
 
-    var flags = "";
-    /* Some sittings were never archived with their listening paper. Say so
-       up front instead of letting people discover it mid-exam.
+    /* Every booklet this sitting was archived without, not just the
+       listening one. Written the same way the make-up beside it is written -
+       plain words in the same line, coloured red - rather than as a chip,
+       which made one absence look like a button and left the other two
+       invisible. */
+    var have = {};
+    e.parts.forEach(function (p) { have[p.id] = p; });
 
-       And "has a listening booklet" is not the same as "has the recordings":
-       one paper carried 28 listening questions with no sound file behind any
+    var flags = STANDARD_PARTS.filter(function (id) { return !have[id]; })
+      .map(function (id) {
+        return '<span class="exam-row-missing">' +
+          esc(tf("exams.noPart", { part: t(PART_KEY[id]) })) + "</span>";
+      }).join("");
+
+    /* "Has a listening booklet" is not the same as "has the recordings":
+       one paper carries 28 listening questions with no sound file behind any
        of them, and the library counted it as having listening because the
-       booklet was there. Read the audio count, not the booklet. */
-    var listening = null;
-    e.parts.forEach(function (p) { if (p.id === "listening") listening = p; });
-    if (!listening) {
-      flags += '<span class="exam-part-tag is-missing">' +
-        esc(t("exams.noListening")) + "</span>";
-    } else if (!listening.audio) {
-      flags += '<span class="exam-part-tag is-missing">' +
+       booklet was there. */
+    if (have.listening && !have.listening.audio) {
+      flags += '<span class="exam-row-missing">' +
         esc(t("exams.noAudio")) + "</span>";
     }
+
     if (wordsVaries && withWords[e.id]) {
       flags += '<span class="exam-part-tag is-words">' +
         esc(t("exams.hasWords")) + "</span>";

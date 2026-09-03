@@ -1199,6 +1199,15 @@
   white-space: nowrap;
 }
 
+/* What a paper is missing. Written like the rest of the line it sits in -
+   same size, same weight, no box - and simply red. As a bordered pill it
+   read as a control, and a control is the one thing an absence is not. */
+.exam-row-missing {
+  color: var(--danger);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .exam-row-best {
   display: flex;
   align-items: baseline;

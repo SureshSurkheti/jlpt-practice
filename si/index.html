@@ -101,13 +101,32 @@
             </div>
           </div>
 
-          <!-- A "Your progress" panel used to sit here: a big number, a
-               levels count and an accuracy percentage. Nothing ever wrote to
-               the store behind it, so it read 0, 0 / 5 and 0% for every
-               visitor on every visit - a progress feature with no progress
-               feature behind it. The scores that are real live on the
-               statistics page, linked from the footer, and only appear once
-               there is something to show. -->
+          <!-- A "Your progress" panel used to sit here, reading 0, 0 / 5 and
+               0% for every visitor on every visit because nothing ever wrote
+               to the store behind it. What belongs beside the pitch is the
+               next thing to do, not a scoreboard of zeroes: five real links
+               that skip the library and open one level's papers directly.
+               Written in the markup rather than built in JS, so they are
+               five crawlable internal links as well as a shortcut. -->
+          <nav class="hero-levels" aria-labelledby="heroLevelsHead">
+            <div class="hero-levels-head" id="heroLevelsHead"
+                 data-i18n="home.pickLevel">ඔබේ මට්ටමෙන් අරඹන්න</div>
+            <a class="hero-level" href="./exams.html?lv=N5">
+              <b>N5</b><span data-i18n="level.N5">මූලික ආචාර කිරීම් සහ දෛනික ප්‍රකාශන.</span>
+              <i aria-hidden="true">&rarr;</i></a>
+            <a class="hero-level" href="./exams.html?lv=N4">
+              <b>N4</b><span data-i18n="level.N4">දෛනික සංවාද සහ සරල පෙළ.</span>
+              <i aria-hidden="true">&rarr;</i></a>
+            <a class="hero-level" href="./exams.html?lv=N3">
+              <b>N3</b><span data-i18n="level.N3">ප්‍රවෘත්ති ශෛලියේ කියවීම සහ ස්වාභාවික කථනය.</span>
+              <i aria-hidden="true">&rarr;</i></a>
+            <a class="hero-level" href="./exams.html?lv=N2">
+              <b>N2</b><span data-i18n="level.N2">පුවත්පත්, ව්‍යාපාරික ජපන්, වියුක්ත තර්කනය.</span>
+              <i aria-hidden="true">&rarr;</i></a>
+            <a class="hero-level" href="./exams.html?lv=N1">
+              <b>N1</b><span data-i18n="level.N1">ස්වාභාවික වේගයෙන් ශාස්ත්‍රීය හා සාහිත්‍යමය ජපන්.</span>
+              <i aria-hidden="true">&rarr;</i></a>
+          </nav>
         </div>
       </section>
 
