@@ -156,6 +156,28 @@
         <h2 data-i18n="exam.breakdown">කොටස් අනුව ප්‍රතිඵල</h2>
         <div class="section-score-grid" id="sectionPerformanceGrid"></div>
       </section>
+
+      <!-- Scores live in this browser and nowhere else, which is private but
+           also means they do not follow you to another device, and that a
+           browser two people share shows one set of numbers to both. These
+           three controls are the answer that needs no account and no server:
+           carry them to another device as a file, and clear them when the
+           machine is not yours. -->
+      <section class="stats-data">
+        <h2 data-i18n="stats.dataTitle">ඔබේ ලකුණු මෙම උපාංගයේ ඇත</h2>
+        <p data-i18n="stats.dataBody">ගිණුමක් නැති අතර කිසිවක් උඩුගත නොවේ, එබැවින් මෙම ලකුණු මෙම බ්‍රවුසරයේ පමණක් ඇත. එනම් ඒවා වෙනත් උපාංගයකට නොයන අතර, මෙම බ්‍රවුසරය බෙදාගන්නා ඕනෑම කෙනෙකුට පෙනේ. රැගෙන යාමට ගොනුවකට සුරකින්න, නැතහොත් බෙදාගත් උපාංගයක වැඩ අවසන් වූ පසු මකන්න.</p>
+        <div class="stats-data-actions">
+          <button type="button" class="btn btn-ghost" id="exportScores"
+                  data-i18n="stats.export">ගොනුවකට සුරකින්න</button>
+          <label class="btn btn-ghost stats-import">
+            <span data-i18n="stats.import">ගොනුවකින් පූරණය</span>
+            <input type="file" id="importScores" accept="application/json,.json" />
+          </label>
+          <button type="button" class="btn btn-ghost is-danger" id="clearScores"
+                  data-i18n="stats.clear">මගේ ලකුණු මකන්න</button>
+        </div>
+        <p class="stats-data-msg" id="statsDataMsg" role="status"></p>
+      </section>
     </main>
 
     <footer class="site-footer">

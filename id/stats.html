@@ -156,6 +156,28 @@
         <h2 data-i18n="exam.breakdown">Rincian per bagian</h2>
         <div class="section-score-grid" id="sectionPerformanceGrid"></div>
       </section>
+
+      <!-- Scores live in this browser and nowhere else, which is private but
+           also means they do not follow you to another device, and that a
+           browser two people share shows one set of numbers to both. These
+           three controls are the answer that needs no account and no server:
+           carry them to another device as a file, and clear them when the
+           machine is not yours. -->
+      <section class="stats-data">
+        <h2 data-i18n="stats.dataTitle">Nilai Anda ada di perangkat ini</h2>
+        <p data-i18n="stats.dataBody">Tidak ada akun dan tidak ada yang diunggah, jadi angka-angka ini hanya tersimpan di peramban ini. Artinya nilai tidak ikut ke perangkat lain, dan siapa pun yang berbagi peramban ini bisa melihatnya. Simpan ke berkas untuk dibawa, atau hapus setelah selesai di perangkat bersama.</p>
+        <div class="stats-data-actions">
+          <button type="button" class="btn btn-ghost" id="exportScores"
+                  data-i18n="stats.export">Simpan ke berkas</button>
+          <label class="btn btn-ghost stats-import">
+            <span data-i18n="stats.import">Muat dari berkas</span>
+            <input type="file" id="importScores" accept="application/json,.json" />
+          </label>
+          <button type="button" class="btn btn-ghost is-danger" id="clearScores"
+                  data-i18n="stats.clear">Hapus nilai saya</button>
+        </div>
+        <p class="stats-data-msg" id="statsDataMsg" role="status"></p>
+      </section>
     </main>
 
     <footer class="site-footer">

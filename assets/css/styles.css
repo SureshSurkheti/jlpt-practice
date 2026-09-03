@@ -2552,3 +2552,60 @@ body.is-leaving { opacity: 0; }
   outline: 2px solid #fff;
   outline-offset: 3px;
 }
+
+/* ================================================== scores: where they live
+
+   The controls that make a browser-only score portable: save it, load it,
+   clear it. Set apart at the foot of the statistics page because they act on
+   your data rather than reporting it. */
+.stats-data {
+  margin-top: clamp(24px, 3vw, 40px);
+  padding: clamp(18px, 2vw, 26px);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.stats-data h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--navy);
+}
+.stats-data > p {
+  margin: 0;
+  max-width: 74ch;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.stats-data-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.stats-data-actions .btn { font-size: 0.84rem; }
+
+/* The file picker is the label; the input itself is never seen. */
+.stats-import { position: relative; overflow: hidden; cursor: pointer; }
+.stats-import input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.btn-ghost.is-danger { color: var(--danger); border-color: rgba(200, 74, 82, 0.4); }
+.btn-ghost.is-danger:hover {
+  color: #fff;
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.stats-data-msg {
+  margin: 12px 0 0;
+  min-height: 1.2em;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--success);
+}

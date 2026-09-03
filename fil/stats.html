@@ -156,6 +156,28 @@
         <h2 data-i18n="exam.breakdown">Detalye kada bahagi</h2>
         <div class="section-score-grid" id="sectionPerformanceGrid"></div>
       </section>
+
+      <!-- Scores live in this browser and nowhere else, which is private but
+           also means they do not follow you to another device, and that a
+           browser two people share shows one set of numbers to both. These
+           three controls are the answer that needs no account and no server:
+           carry them to another device as a file, and clear them when the
+           machine is not yours. -->
+      <section class="stats-data">
+        <h2 data-i18n="stats.dataTitle">Nasa device na ito ang mga iskor mo</h2>
+        <p data-i18n="stats.dataBody">Walang account at walang ina-upload, kaya nasa browser na ito lang ang mga numerong ito. Ibig sabihin, hindi ito susunod sa ibang device, at makikita ito ng sinumang kasabay mong gumagamit ng browser na ito. I-save sa file para madala, o burahin kapag tapos ka na sa pinaghahatiang device.</p>
+        <div class="stats-data-actions">
+          <button type="button" class="btn btn-ghost" id="exportScores"
+                  data-i18n="stats.export">I-save sa file</button>
+          <label class="btn btn-ghost stats-import">
+            <span data-i18n="stats.import">I-load mula sa file</span>
+            <input type="file" id="importScores" accept="application/json,.json" />
+          </label>
+          <button type="button" class="btn btn-ghost is-danger" id="clearScores"
+                  data-i18n="stats.clear">Burahin ang iskor ko</button>
+        </div>
+        <p class="stats-data-msg" id="statsDataMsg" role="status"></p>
+      </section>
     </main>
 
     <footer class="site-footer">

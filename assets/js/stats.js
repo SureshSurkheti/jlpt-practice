@@ -147,5 +147,131 @@ function renderSectionPerformance(rows) {
   }).join('');
 }
 
-document.addEventListener('DOMContentLoaded', renderStatsPage);
+/* ========================================================== moving scores
+
+   There is no account and no server, so a score belongs to a browser rather
+   than to a person. That is what keeps the site free and private, and it has
+   two consequences worth handling rather than hiding: your results do not
+   follow you from a phone to a laptop, and a browser two people share shows
+   one set of numbers to both.
+
+   A file solves both without a login. Save it on one device, load it on the
+   other; clear it when the machine is not yours. Loading merges rather than
+   replaces, keeping whichever score is higher, so carrying a phone's results
+   to a laptop never costs you what the laptop already had. */
+
+function statsMessage(text) {
+  const node = document.getElementById('statsDataMsg');
+  if (node) node.textContent = text || '';
+}
+
+function exportScores() {
+  const all = readBests();
+  if (!Object.keys(all).length) {
+    statsMessage(t('stats.nothingToSave'));
+    return;
+  }
+  const payload = {
+    site: 'jlpt.sureshsurkheti.com',
+    kind: 'jlpt-scores',
+    version: 1,
+    savedAt: new Date().toISOString(),
+    best: all
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 1)],
+    { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'jlpt-scores.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  /* Revoked on the next tick: revoking immediately can cancel the download
+     in some browsers before it has read the blob. */
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  statsMessage('');
+}
+
+/* Keep the higher of each section, and the later of the two "last attempt"
+   records, so merging two devices reads as one history rather than whichever
+   file was loaded second. */
+function mergeScores(incoming) {
+  const all = readBests();
+  Object.keys(incoming).forEach((id) => {
+    const from = incoming[id];
+    if (!from || typeof from !== 'object') return;
+    const into = all[id] || (all[id] = {});
+    SECTION_KEYS.forEach((k) => {
+      const rec = from[k];
+      if (!rec || typeof rec.best !== 'number' || typeof rec.cap !== 'number') return;
+      const have = into[k];
+      if (!have) { into[k] = rec; return; }
+      into[k] = {
+        best: Math.max(have.best, rec.best),
+        bestRight: have.best >= rec.best ? have.bestRight : rec.bestRight,
+        bestTotal: have.best >= rec.best ? have.bestTotal : rec.bestTotal,
+        bestAt: have.best >= rec.best ? have.bestAt : rec.bestAt,
+        cap: have.cap || rec.cap,
+        last: (have.lastAt || 0) >= (rec.lastAt || 0) ? have.last : rec.last,
+        lastRight: (have.lastAt || 0) >= (rec.lastAt || 0) ? have.lastRight : rec.lastRight,
+        lastTotal: (have.lastAt || 0) >= (rec.lastAt || 0) ? have.lastTotal : rec.lastTotal,
+        lastAt: Math.max(have.lastAt || 0, rec.lastAt || 0),
+        attempts: (have.attempts || 0) + (rec.attempts || 0)
+      };
+    });
+  });
+  try {
+    localStorage.setItem(BEST_KEY, JSON.stringify(all));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function importScores(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    let data = null;
+    try { data = JSON.parse(reader.result); } catch (e) { data = null; }
+    if (!data || data.kind !== 'jlpt-scores' || !data.best ||
+        typeof data.best !== 'object') {
+      statsMessage(t('stats.importBad'));
+      return;
+    }
+    statsMessage(mergeScores(data.best) ? t('stats.imported') : t('stats.importBad'));
+    renderStatsPage();
+  };
+  reader.onerror = () => statsMessage(t('stats.importBad'));
+  reader.readAsText(file);
+}
+
+function clearScores() {
+  if (!window.confirm(t('stats.clearConfirm'))) return;
+  try { localStorage.removeItem(BEST_KEY); } catch (e) { /* nothing to do */ }
+  renderStatsPage();
+  statsMessage(t('stats.cleared'));
+}
+
+function wireStatsData() {
+  const out = document.getElementById('exportScores');
+  if (out) out.addEventListener('click', exportScores);
+
+  const inp = document.getElementById('importScores');
+  if (inp) {
+    inp.addEventListener('change', () => {
+      if (inp.files && inp.files[0]) importScores(inp.files[0]);
+      /* Cleared so loading the same file twice still fires a change event. */
+      inp.value = '';
+    });
+  }
+
+  const wipe = document.getElementById('clearScores');
+  if (wipe) wipe.addEventListener('click', clearScores);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderStatsPage();
+  wireStatsData();
+});
 document.addEventListener('languagechange', renderStatsPage);
