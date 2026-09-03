@@ -306,16 +306,25 @@ body > main { flex: 1 0 auto; }
 /* Raised, not flat. A white button with a hairline border and no shadow at
    all reads as disabled next to a lit one; a small shadow is what separates
    "quiet" from "off". */
+/* This used to rest on a #dbe4f0 outline, which is 1.28:1 against the white
+   card it sits on - WCAG asks 3:1 of anything that draws the edge of a
+   control, so the button had no visible boundary at all and read as empty
+   space beside the filled Start. The old hover state was already the right
+   answer (blue edge, blue label) and it is what this rule now rests on; the
+   button was only ever legible to a mouse, and a phone has no hover, so on
+   a phone it was never legible at all. Blue edge on white is 5.25:1, and it
+   still reads as the quieter of the pair because Start is filled and this
+   is not. Hover deepens to navy rather than introducing a new colour. */
 .btn-ghost {
   background: #fff;
-  border-color: #dbe4f0;
-  color: var(--navy);
+  border-color: var(--blue);
+  color: var(--blue);
   box-shadow: 0 2px 6px rgba(17, 45, 78, 0.07);
 }
 .btn-ghost:hover {
-  background: #f7fafd;
-  border-color: var(--blue);
-  color: var(--blue);
+  background: #eef4fb;
+  border-color: var(--navy);
+  color: var(--navy);
   box-shadow: 0 8px 18px -5px rgba(45, 110, 180, 0.32);
 }
 .btn-ghost:active { box-shadow: 0 1px 4px rgba(17, 45, 78, 0.1); }
@@ -428,6 +437,72 @@ body > main { flex: 1 0 auto; }
      edge agree is the wrong trade. The panel is tightened instead, so the
      two columns end up close in height on their own. */
   align-items: center;
+}
+
+/* The next sitting, in the hero, on the dark gradient. A quiet strip rather
+   than a panel: it is context for the pitch above it, not a sixth thing to
+   click, so it is bounded by a rule on one edge instead of a box on four.
+
+   Every rule below is written as .hero-countdown <class> - two classes - and
+   not as a bare class. .hero-copy p sets a colour and a margin on every
+   paragraph in this column, and a bare .cal-head would tie with it on
+   specificity and lose on source order, so the gold count and the muted
+   note would both have come out as hero body text. */
+.hero-countdown {
+  margin-top: 22px;
+  padding: 12px 0 12px 16px;
+  border-left: 3px solid var(--gold);
+}
+.hero-countdown p { margin: 0; }
+.hero-countdown .cal-head {
+  color: rgba(255, 255, 255, 0.66);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.hero-countdown .cal-date {
+  margin-top: 3px;
+  color: #fff;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+/* Tabular figures so the number holds its width as the count falls through
+   a digit boundary. */
+.hero-countdown .cal-count {
+  margin-top: 2px;
+  color: var(--gold);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.hero-countdown .cal-note {
+  margin-top: 7px;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+/* a { text-decoration: none } is set globally, so this needs its underline
+   back or it is a bold word in a sentence, not a link. */
+.hero-countdown .cal-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.hero-countdown .cal-link:hover {
+  color: #fff;
+  text-decoration-color: var(--gold);
+}
+
+@media (max-width: 640px) {
+  .hero-countdown { margin-top: 18px; padding-left: 13px; }
+  .hero-countdown .cal-date { font-size: 1.02rem; }
 }
 
 /* Five ways straight into the library, one per level. */
@@ -2595,7 +2670,8 @@ body.is-leaving { opacity: 0; }
   font-size: 0;
 }
 
-.btn-ghost.is-danger { color: var(--danger); border-color: rgba(200, 74, 82, 0.4); }
+/* 0.4 alpha put this edge at 1.76:1 - the same invisible-outline bug. */
+.btn-ghost.is-danger { color: var(--danger); border-color: var(--danger); }
 .btn-ghost.is-danger:hover {
   color: #fff;
   background: var(--danger);

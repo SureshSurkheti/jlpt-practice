@@ -10,6 +10,13 @@
    ========================================================================== */
 
 I18N.register("en", {
+  "cal.next": "Next JLPT",
+  "cal.daysLeft": "{days} days to go",
+  "cal.dayLeft": "{days} day to go",
+  "cal.today": "The exam is today",
+  "cal.checkNote": "The worldwide sitting date. Application dates are set by each country — check yours.",
+  "cal.julyNote": "The worldwide sitting date. July is not held in every country, and application dates are set locally — check yours.",
+  "cal.official": "Official information",
   "about.rightsTitle": "Copyright and removal requests",
   "about.rightsBody": "The exam questions on this site are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation. They are not published with permission. This site is free, carries no advertising, sells nothing and earns nothing; the questions are here so that a learner can sit a paper under exam conditions, and for no other purpose.",
   "about.rightsRemove": "If you hold rights in any material here and want it taken down, email <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> and it will be removed - all of it if you ask - without argument and without requiring a formal notice. Please say which papers or files are involved. Anything reported this way is removed within 72 hours.",
@@ -324,6 +331,13 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
+  "cal.next": "次回の日本語能力試験",
+  "cal.daysLeft": "あと{days}日",
+  "cal.dayLeft": "あと{days}日",
+  "cal.today": "本日が試験日です",
+  "cal.checkNote": "世界共通の試験日です。申し込み期間は国・地域ごとに異なります。",
+  "cal.julyNote": "世界共通の試験日です。7月試験を実施しない国もあり、申し込み期間も地域ごとに異なります。",
+  "cal.official": "公式情報",
   "about.creditsTitle": "クレジット",
   "about.creditsCode": "制作：Suresh Surkheti。コードはMITライセンスです。",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -562,6 +576,13 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
+  "cal.next": "Kỳ thi JLPT tiếp theo",
+  "cal.daysLeft": "Còn {days} ngày",
+  "cal.dayLeft": "Còn {days} ngày",
+  "cal.today": "Hôm nay là ngày thi",
+  "cal.checkNote": "Ngày thi chung toàn cầu. Hạn đăng ký do từng nước quy định — hãy kiểm tra.",
+  "cal.julyNote": "Ngày thi chung toàn cầu. Kỳ tháng 7 không tổ chức ở mọi nước, và hạn đăng ký do địa phương quy định — hãy kiểm tra.",
+  "cal.official": "Thông tin chính thức",
   "about.creditsTitle": "Ghi công",
   "about.creditsCode": "Thực hiện bởi Suresh Surkheti. Mã nguồn theo giấy phép MIT.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -800,6 +821,13 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
+  "cal.next": "आगामी JLPT",
+  "cal.daysLeft": "{days} दिन बाँकी",
+  "cal.dayLeft": "{days} दिन बाँकी",
+  "cal.today": "आज परीक्षाको दिन हो",
+  "cal.checkNote": "यो विश्वभरको परीक्षा मिति हो। आवेदनको मिति प्रत्येक देशमा फरक हुन्छ — आफ्नो जाँच्नुहोस्।",
+  "cal.julyNote": "यो विश्वभरको परीक्षा मिति हो। जुलाईको परीक्षा सबै देशमा हुँदैन, र आवेदन मिति पनि स्थानीय रूपमा तोकिन्छ — आफ्नो जाँच्नुहोस्।",
+  "cal.official": "आधिकारिक जानकारी",
   "about.creditsTitle": "श्रेय",
   "about.creditsCode": "निर्माता: Suresh Surkheti। कोड MIT लाइसेन्समा छ।",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -1038,6 +1066,13 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
+  "cal.next": "下一次 JLPT",
+  "cal.daysLeft": "还有 {days} 天",
+  "cal.dayLeft": "还有 {days} 天",
+  "cal.today": "今天就是考试日",
+  "cal.checkNote": "全球统一考试日。报名时间由各国自行规定，请自行查证。",
+  "cal.julyNote": "全球统一考试日。并非所有国家都举行 7 月考试，报名时间也由当地规定，请自行查证。",
+  "cal.official": "官方信息",
   "about.creditsTitle": "致谢",
   "about.creditsCode": "由 Suresh Surkheti 制作。代码采用 MIT 许可。",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -1275,6 +1310,13 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
+  "cal.next": "다음 JLPT",
+  "cal.daysLeft": "{days}일 남음",
+  "cal.dayLeft": "{days}일 남음",
+  "cal.today": "오늘이 시험일입니다",
+  "cal.checkNote": "전 세계 공통 시험일입니다. 접수 기간은 국가별로 다르니 확인하세요.",
+  "cal.julyNote": "전 세계 공통 시험일입니다. 7월 시험은 모든 국가에서 실시되지 않으며, 접수 기간도 현지별로 다릅니다.",
+  "cal.official": "공식 정보",
   "about.creditsTitle": "크레딧",
   "about.creditsCode": "제작: Suresh Surkheti. 코드는 MIT 라이선스입니다.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -1512,6 +1554,13 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
+  "cal.next": "JLPT berikutnya",
+  "cal.daysLeft": "{days} hari lagi",
+  "cal.dayLeft": "{days} hari lagi",
+  "cal.today": "Ujian berlangsung hari ini",
+  "cal.checkNote": "Tanggal ujian serentak di seluruh dunia. Jadwal pendaftaran ditetapkan tiap negara — periksa milik Anda.",
+  "cal.julyNote": "Tanggal ujian serentak di seluruh dunia. Sesi Juli tidak diadakan di semua negara, dan jadwal pendaftaran ditetapkan secara lokal — periksa milik Anda.",
+  "cal.official": "Informasi resmi",
   "about.creditsTitle": "Kredit",
   "about.creditsCode": "Dibuat oleh Suresh Surkheti. Kode berlisensi MIT.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -1749,6 +1798,13 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
+  "cal.next": "Susunod na JLPT",
+  "cal.daysLeft": "{days} araw na lang",
+  "cal.dayLeft": "{days} araw na lang",
+  "cal.today": "Ngayon ang araw ng pagsusulit",
+  "cal.checkNote": "Ito ang petsa ng pagsusulit sa buong mundo. Ang panahon ng rehistrasyon ay itinatakda ng bawat bansa — tingnan ang sa inyo.",
+  "cal.julyNote": "Ito ang petsa ng pagsusulit sa buong mundo. Hindi lahat ng bansa ay may pagsusulit sa Hulyo, at lokal na itinatakda ang rehistrasyon — tingnan ang sa inyo.",
+  "cal.official": "Opisyal na impormasyon",
   "about.creditsTitle": "Mga kredito",
   "about.creditsCode": "Ginawa ni Suresh Surkheti. Ang code ay lisensyadong MIT.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -1986,6 +2042,13 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
+  "cal.next": "Próximo JLPT",
+  "cal.daysLeft": "Faltam {days} dias",
+  "cal.dayLeft": "Falta {days} dia",
+  "cal.today": "A prova é hoje",
+  "cal.checkNote": "Data mundial da prova. Os prazos de inscrição são definidos por cada país — confira o seu.",
+  "cal.julyNote": "Data mundial da prova. A aplicação de julho não ocorre em todos os países, e os prazos de inscrição são locais — confira o seu.",
+  "cal.official": "Informações oficiais",
   "about.creditsTitle": "Créditos",
   "about.creditsCode": "Feito por Suresh Surkheti. O código é licenciado sob MIT.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -2223,6 +2286,13 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
+  "cal.next": "अगली JLPT",
+  "cal.daysLeft": "{days} दिन बाकी",
+  "cal.dayLeft": "{days} दिन बाकी",
+  "cal.today": "परीक्षा आज है",
+  "cal.checkNote": "यह विश्वभर की परीक्षा तिथि है। आवेदन की तिथियाँ हर देश अलग तय करता है — अपनी जाँचें।",
+  "cal.julyNote": "यह विश्वभर की परीक्षा तिथि है। जुलाई की परीक्षा हर देश में नहीं होती, और आवेदन तिथियाँ स्थानीय होती हैं — अपनी जाँचें।",
+  "cal.official": "आधिकारिक जानकारी",
   "about.creditsTitle": "आभार",
   "about.creditsCode": "निर्माता: Suresh Surkheti। कोड MIT लाइसेंस के अंतर्गत है।",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -2460,6 +2530,13 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
+  "cal.next": "পরবর্তী JLPT",
+  "cal.daysLeft": "আর {days} দিন",
+  "cal.dayLeft": "আর {days} দিন",
+  "cal.today": "আজই পরীক্ষা",
+  "cal.checkNote": "এটি বিশ্বজুড়ে পরীক্ষার তারিখ। আবেদনের সময় প্রতিটি দেশ নিজে ঠিক করে — নিজেরটি দেখে নিন।",
+  "cal.julyNote": "এটি বিশ্বজুড়ে পরীক্ষার তারিখ। সব দেশে জুলাইয়ের পরীক্ষা হয় না, এবং আবেদনের সময়ও স্থানীয়ভাবে ঠিক হয় — নিজেরটি দেখে নিন।",
+  "cal.official": "সরকারি তথ্য",
   "about.creditsTitle": "কৃতজ্ঞতা",
   "about.creditsCode": "নির্মাতা: Suresh Surkheti। কোড MIT লাইসেন্সের অধীনে।",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -2697,6 +2774,13 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
+  "cal.next": "ඊළඟ JLPT",
+  "cal.daysLeft": "තව දින {days}කි",
+  "cal.dayLeft": "තව දින {days}කි",
+  "cal.today": "විභාගය අදයි",
+  "cal.checkNote": "මෙය ලෝක විභාග දිනයයි. අයදුම් කාලය රටෙන් රටට වෙනස් — ඔබේ රටේ දින පරීක්ෂා කරන්න.",
+  "cal.julyNote": "මෙය ලෝක විභාග දිනයයි. ජූලි විභාගය සියලුම රටවල පවත්වනුයේ නොවේ — ඔබේ රටේ දින පරීක්ෂා කරන්න.",
+  "cal.official": "රාජ්‍ය තොරතුරු",
   "about.creditsTitle": "ස්තුතිය",
   "about.creditsCode": "නිර්මාණය: Suresh Surkheti. කේතය MIT බලපත්‍රය යටතේ ය.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",

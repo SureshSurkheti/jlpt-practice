@@ -84,7 +84,12 @@
               <option value="bn">বাংলা</option>
             </select>
           </label>
-          <a href="./levels.html?lv=N5" class="btn btn-primary" data-i18n="home.start">Mulai belajar</a>
+          <!-- A "Start studying" button used to sit here. It was the third
+               link to the same place on this page - the nav has Levels a few
+               pixels to its left, and the hero below it has "View all levels"
+               plus five per-level shortcuts - and it was the only one that
+               guessed your level, hard-coded to N5, which is wrong for
+               anyone who is not a beginner. -->
         </div>
       </div>
     </header>
@@ -95,6 +100,10 @@
           <div class="hero-copy">
             <h1 data-i18n="home.title">Latih bahasa Jepang dalam format asli JLPT.</h1>
             <p data-i18n="home.body">86 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.</p>
+            <!-- Computed from the first-Sunday rule in site.js, not from a
+                 table, so it cannot go stale. -->
+            <div class="hero-countdown" id="examCountdown"></div>
+
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">Lihat soal ujian</a>
               <a href="./levels.html" class="btn btn-secondary" data-i18n="home.viewAllLevels">Semua level</a>

@@ -84,7 +84,12 @@
               <option value="bn">বাংলা</option>
             </select>
           </label>
-          <a href="./levels.html?lv=N5" class="btn btn-primary" data-i18n="home.start">Bắt đầu học</a>
+          <!-- A "Start studying" button used to sit here. It was the third
+               link to the same place on this page - the nav has Levels a few
+               pixels to its left, and the hero below it has "View all levels"
+               plus five per-level shortcuts - and it was the only one that
+               guessed your level, hard-coded to N5, which is wrong for
+               anyone who is not a beginner. -->
         </div>
       </div>
     </header>
@@ -95,6 +100,10 @@
           <div class="hero-copy">
             <h1 data-i18n="home.title">Luyện tiếng Nhật đúng theo định dạng JLPT.</h1>
             <p data-i18n="home.body">86 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.</p>
+            <!-- Computed from the first-Sunday rule in site.js, not from a
+                 table, so it cannot go stale. -->
+            <div class="hero-countdown" id="examCountdown"></div>
+
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">Xem đề thi</a>
               <a href="./levels.html" class="btn btn-secondary" data-i18n="home.viewAllLevels">Tất cả cấp độ</a>

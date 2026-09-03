@@ -798,10 +798,122 @@ function mountBackToTop() {
   window.addEventListener("pageshow", check);
 }
 
+/* ================================================================= next JLPT
+
+   The test is sat on the first Sunday of July and the first Sunday of
+   December. That rule was checked against every sitting on record -
+   2023-07-02, 2023-12-03, 2024-07-07, 2024-12-01, 2025-07-06, 2025-12-07 -
+   and it holds for all six, so the date is computed rather than kept in a
+   table. A table is the obvious way to do this and the wrong one: it needs
+   editing every year, and the year nobody remembers to edit it, the page
+   does not go blank - it confidently shows a date in the past.
+
+   Two things this deliberately does not claim. It does not tell you when
+   applications open or close, because that window is set per country and
+   this site has no idea which one you are sitting in. And it does not
+   promise a July sitting: December runs in every host country, July does
+   not, so a July date carries a line saying to check. Being useful here is
+   worth less than being right. */
+function firstSundayUTC(year, monthIndex) {
+  const first = new Date(Date.UTC(year, monthIndex, 1));
+  return new Date(Date.UTC(year, monthIndex, 1 + ((7 - first.getUTCDay()) % 7)));
+}
+
+function nextSitting(fromUTC) {
+  const y = fromUTC.getUTCFullYear();
+  return [
+    firstSundayUTC(y, 6), firstSundayUTC(y, 11),
+    firstSundayUTC(y + 1, 6), firstSundayUTC(y + 1, 11)
+  ].find((d) => d >= fromUTC);
+}
+
+/* The viewer's own calendar date, then treated as UTC for the subtraction.
+   Reading it in UTC instead would put someone in Kathmandu a day out for
+   most of their evening. */
+function todayUTC() {
+  const n = new Date();
+  return new Date(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()));
+}
+
+/* Chrome carries no ICU date data for Nepali or Sinhala. It does not throw
+   on those tags - it quietly hands back an English date, so the Nepali home
+   page said "Sunday, December 6, 2026" under a Nepali headline and nothing
+   looked broken enough to notice. Two tables are cheaper than the confusion.
+   They are consulted only when Intl says it cannot do the locale, so both
+   languages start using real Intl formatting the day Chrome ships the data.
+   Machine-written, like the rest of the non-English tables in
+   i18n-strings.js, and worth a native-speaker read. */
+const DATE_WORDS = {
+  ne: {
+    days: ['आइतबार', 'सोमबार', 'मङ्गलबार', 'बुधबार', 'बिहीबार', 'शुक्रबार', 'शनिबार'],
+    months: ['जनवरी', 'फेब्रुअरी', 'मार्च', 'अप्रिल', 'मे', 'जुन',
+             'जुलाई', 'अगस्ट', 'सेप्टेम्बर', 'अक्टोबर', 'नोभेम्बर', 'डिसेम्बर']
+  },
+  si: {
+    days: ['ඉරිදා', 'සඳුදා', 'අඟහරුවාදා', 'බදාදා', 'බ්‍රහස්පතින්දා', 'සිකුරාදා', 'සෙනසුරාදා'],
+    months: ['ජනවාරි', 'පෙබරවාරි', 'මාර්තු', 'අප්‍රේල්', 'මැයි', 'ජූනි',
+             'ජූලි', 'අගෝස්තු', 'සැප්තැම්බර්', 'ඔක්තෝබර්', 'නොවැම්බර්', 'දෙසැම්බර්']
+  }
+};
+
+function formatSitting(date, lang) {
+  const opts = { weekday: 'long', year: 'numeric', month: 'long',
+                 day: 'numeric', timeZone: 'UTC' };
+  const base = String(lang).split('-')[0];
+
+  let known = false;
+  try {
+    known = Intl.DateTimeFormat.supportedLocalesOf([lang]).length > 0;
+  } catch (e) { known = false; }
+
+  if (!known && DATE_WORDS[base]) {
+    const w = DATE_WORDS[base];
+    return w.days[date.getUTCDay()] + ', ' + date.getUTCDate() + ' ' +
+           w.months[date.getUTCMonth()] + ' ' + date.getUTCFullYear();
+  }
+
+  try {
+    return date.toLocaleDateString(lang, opts);
+  } catch (e) {
+    /* A tag Intl will not parse at all. */
+    return date.toLocaleDateString('en', opts);
+  }
+}
+
+function renderExamCountdown() {
+  const mount = document.getElementById('examCountdown');
+  if (!mount) return;
+
+  const today = todayUTC();
+  const sitting = nextSitting(today);
+  const days = Math.round((sitting - today) / 86400000);
+  const isJuly = sitting.getUTCMonth() === 6;
+  const lang = (window.I18N && I18N.current && I18N.current()) || 'en';
+
+  /* Three cases, not two: the day itself, the last day before it, and
+     everything else. Without the middle one the strip reads "1 days to go"
+     on exactly the day a reader is most likely to be looking at it. */
+  const countdown = days === 0
+    ? `<b>${t('cal.today')}</b>`
+    : `<b>${tf(days === 1 ? 'cal.dayLeft' : 'cal.daysLeft', { days: days })}</b>`;
+
+  mount.innerHTML = `
+    <p class="cal-head">${t('cal.next')}</p>
+    <p class="cal-date">
+      <time datetime="${sitting.toISOString().slice(0, 10)}">${formatSitting(sitting, lang)}</time>
+    </p>
+    <p class="cal-count">${countdown}</p>
+    <p class="cal-note">${isJuly ? t('cal.julyNote') : t('cal.checkNote')}
+      <a class="cal-link" href="https://www.jlpt.jp/e/application/index.html"
+         target="_blank" rel="noopener">${t('cal.official')}</a></p>
+  `;
+}
+
 function renderAll() {
   renderFeatures();
   renderLevels();
   renderNotice();
+  renderExamCountdown();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

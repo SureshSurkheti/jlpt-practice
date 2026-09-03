@@ -84,7 +84,12 @@
               <option value="bn">বাংলা</option>
             </select>
           </label>
-          <a href="./levels.html?lv=N5" class="btn btn-primary" data-i18n="home.start">학습 시작</a>
+          <!-- A "Start studying" button used to sit here. It was the third
+               link to the same place on this page - the nav has Levels a few
+               pixels to its left, and the hero below it has "View all levels"
+               plus five per-level shortcuts - and it was the only one that
+               guessed your level, hard-coded to N5, which is wrong for
+               anyone who is not a beginner. -->
         </div>
       </div>
     </header>
@@ -95,6 +100,10 @@
           <div class="hero-copy">
             <h1 data-i18n="home.title">실전 형식 모의고사로 일본어를 연습하세요.</h1>
             <p data-i18n="home.body">N5부터 N1까지 모의고사 86회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.</p>
+            <!-- Computed from the first-Sunday rule in site.js, not from a
+                 table, so it cannot go stale. -->
+            <div class="hero-countdown" id="examCountdown"></div>
+
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">기출문제 보기</a>
               <a href="./levels.html" class="btn btn-secondary" data-i18n="home.viewAllLevels">모든 레벨</a>

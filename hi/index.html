@@ -84,7 +84,12 @@
               <option value="bn">বাংলা</option>
             </select>
           </label>
-          <a href="./levels.html?lv=N5" class="btn btn-primary" data-i18n="home.start">पढ़ाई शुरू करें</a>
+          <!-- A "Start studying" button used to sit here. It was the third
+               link to the same place on this page - the nav has Levels a few
+               pixels to its left, and the hero below it has "View all levels"
+               plus five per-level shortcuts - and it was the only one that
+               guessed your level, hard-coded to N5, which is wrong for
+               anyone who is not a beginner. -->
         </div>
       </div>
     </header>
@@ -95,6 +100,10 @@
           <div class="hero-copy">
             <h1 data-i18n="home.title">JLPT के असली प्रारूप में जापानी का अभ्यास करें।</h1>
             <p data-i18n="home.body">N5 से N1 तक 86 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।</p>
+            <!-- Computed from the first-Sunday rule in site.js, not from a
+                 table, so it cannot go stale. -->
+            <div class="hero-countdown" id="examCountdown"></div>
+
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">प्रश्नपत्र देखें</a>
               <a href="./levels.html" class="btn btn-secondary" data-i18n="home.viewAllLevels">सभी स्तर</a>
