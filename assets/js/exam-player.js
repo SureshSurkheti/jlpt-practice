@@ -2076,16 +2076,29 @@
     window.scrollTo({ top: 0, behavior: "instant" });
   }
 
+  /* Sit the same paper again, from the top.
+
+     This used to drop you back on the setup screen - which meant pressing
+     "Retake" at the end of a sitting made you re-pick the sections, the mode
+     and the timer you had just finished using, and it read as being thrown
+     out of the paper rather than restarting it. Retake means sit this again;
+     changing what you are sitting is the Back link in the bar, one press
+     away, which says what it does.
+
+     Everything the attempt was started with is kept. Only the answers, the
+     flags and the clock go. */
   function retake() {
     clearProgress();
     stopTicker();
-    state.answers = {};
-    state.flags = {};
-    state.reviewed = false;
-    state.marked = {};
+    justBeaten = {};
     state.score = null;
-    renderSetup();
-    window.scrollTo(0, 0);
+    startExam({
+      categories: state.categories,
+      mode: state.mode,
+      timed: state.timed,
+      minutes: state.minutes
+    }, null);
+    window.scrollTo({ top: 0, behavior: "instant" });
   }
 
   function score(timeUp) {

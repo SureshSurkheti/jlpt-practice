@@ -507,6 +507,13 @@ body > main { flex: 1 0 auto; }
    is for on a small screen is the five links. So it becomes five level
    buttons in a row: one line instead of five, nothing truncated, and a
    bigger tap target than the row it replaces. */
+/* Fill the row rather than sitting left with the rest of the width empty.
+   Two equal halves keep them on one line and roughly double the tap area of
+   each, which on a phone is the difference between aiming and pressing. */
+@media (max-width: 640px) {
+  .hero-actions .btn { flex: 1 1 0; min-width: 0; }
+}
+
 @media (max-width: 640px) {
   .hero-levels {
     display: flex;
