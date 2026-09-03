@@ -151,6 +151,7 @@ I18N.register("fil", {
  "footer.tagline": "Mag-aral nang mas matalino. Mamuhay nang mas maayos sa Japan.",
  "guides.body": "Kung paano gumagana ang pagsusulit, buong paliwanag.",
  "guides.english": "Ang mga gabay na ito ay nasa Ingles lamang.",
+ "guides.lead": "Bago sa JLPT?",
  "guides.title": "Mga gabay",
  "home.body": "%%PAPERS%% na pagsasanay na pagsusulit mula N5 hanggang N1, may timer at automatic na pagmamarka, kasama ang paliwanag ng sagot at transcript ng pakikinig.",
  "home.browseExams": "Tingnan ang mga pagsusulit",

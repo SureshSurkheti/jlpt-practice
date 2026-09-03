@@ -151,6 +151,7 @@ I18N.register("zh", {
  "footer.tagline": "更聪明地学习，在日本生活得更好。",
  "guides.body": "考试机制的完整说明。",
  "guides.english": "指南仅提供英文版。",
+ "guides.lead": "第一次考 JLPT？",
  "guides.title": "指南",
  "home.body": "N5到N1共%%PAPERS%%套模拟题，计时并自动评分，附答案解析和听力原文。",
  "home.browseExams": "浏览真题",

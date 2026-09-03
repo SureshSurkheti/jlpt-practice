@@ -151,6 +151,7 @@ I18N.register("vi", {
  "footer.tagline": "Học thông minh hơn. Sống tốt hơn ở Nhật.",
  "guides.body": "Cách kỳ thi hoạt động, giải thích đầy đủ.",
  "guides.english": "Các bài hướng dẫn chỉ có tiếng Anh.",
+ "guides.lead": "Mới thi JLPT?",
  "guides.title": "Hướng dẫn",
  "home.body": "%%PAPERS%% đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.",
  "home.browseExams": "Xem đề thi",

@@ -151,6 +151,7 @@ I18N.register("ja", {
  "footer.tagline": "賢く学び、日本での生活をより良く。",
  "guides.body": "試験のしくみを詳しく解説。",
  "guides.english": "ガイドは英語のみです。",
+ "guides.lead": "JLPTが初めての方へ",
  "guides.title": "ガイド",
  "home.body": "N5からN1までの模擬試験%%PAPERS%%回分。時間を計って自動採点、解説と聴解スクリプト付き。",
  "home.browseExams": "過去問を見る",

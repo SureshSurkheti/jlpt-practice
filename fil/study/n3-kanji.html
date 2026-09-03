@@ -63,6 +63,7 @@
           <a href="../exams.html" data-i18n="nav.exams">Pagsasanay</a>
           <a href="../study.html" class="active" data-i18n="nav.study">Salita</a>
           <a href="../about.html" data-i18n="nav.about">Tungkol</a>
+          <a class="nav-guides" href="/guide/">Guides</a>
         </nav>
 
         <div class="nav-tools">
@@ -91,6 +92,17 @@
       <section class="page-intro">
         <h1>N3 Kanji</h1>
         <p data-i18n="study.body">Lahat ng salitang JLPT mula N5 hanggang N1, may basa at kahulugan, kasama ang pangunahing gramatika ng bawat antas. Maghanap sa Hapon, romaji o Ingles.</p>
+        <!-- A line, not a panel. As three cards between the coverage table
+             and the tabs it split one task into two halves with something
+             unrelated in the middle; here it is reachable without scrolling
+             and interrupts nothing. English only, and it says so. -->
+        <p class="intro-guides">
+          <span data-i18n="guides.lead">Bago sa JLPT?</span>
+          <a href="/guide/jlpt-scoring.html">How scoring works</a>
+          <a href="/guide/n4-to-n3.html">N4 to N3</a>
+          <a href="/guide/which-jlpt-level.html">Which level to take</a>
+          <em data-i18n="guides.english">Ang mga gabay na ito ay nasa Ingles lamang.</em>
+        </p>
       </section>
 
       <!-- Filled in by tools/build_static.py: the counts come from the data
@@ -105,29 +117,6 @@
         </div>
       </section>
 
-      <!-- The guides. Written in English only, and said so on the link: this
-           page exists in twelve languages and they do not, and a reader who
-           follows a link in their own language to an English article should
-           have been told first. -->
-      <section class="study-guides">
-        <h2 data-i18n="guides.title">Mga gabay</h2>
-        <p data-i18n="guides.body">Kung paano gumagana ang pagsusulit, buong paliwanag.</p>
-        <ul class="study-guide-list">
-          <li>
-            <a href="/guide/jlpt-scoring.html">How the JLPT is scored</a>
-            <span>Pass marks, and the section minimum that fails people who beat the total.</span>
-          </li>
-          <li>
-            <a href="/guide/n4-to-n3.html">N4 to N3: the biggest jump</a>
-            <span>What doubles, and the structural change that catches people out.</span>
-          </li>
-          <li>
-            <a href="/guide/which-jlpt-level.html">Which level should you take?</a>
-            <span>Choose by what the certificate is for, then check it against a paper.</span>
-          </li>
-        </ul>
-        <p class="study-guides-note" data-i18n="guides.english">Ang mga gabay na ito ay nasa Ingles lamang.</p>
-      </section>
 
       <div class="study-controls">
         <div class="study-tabs" role="tablist">

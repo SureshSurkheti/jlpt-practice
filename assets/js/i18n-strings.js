@@ -10,6 +10,7 @@
    ========================================================================== */
 
 I18N.register("en", {
+  "guides.lead": "New to the JLPT?",
   "guides.title": "Guides",
   "guides.body": "How the exam works, written out in full.",
   "guides.english": "These guides are in English only.",
@@ -334,6 +335,7 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
+  "guides.lead": "JLPTが初めての方へ",
   "guides.title": "ガイド",
   "guides.body": "試験のしくみを詳しく解説。",
   "guides.english": "ガイドは英語のみです。",
@@ -582,6 +584,7 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
+  "guides.lead": "Mới thi JLPT?",
   "guides.title": "Hướng dẫn",
   "guides.body": "Cách kỳ thi hoạt động, giải thích đầy đủ.",
   "guides.english": "Các bài hướng dẫn chỉ có tiếng Anh.",
@@ -830,6 +833,7 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
+  "guides.lead": "JLPT नयाँ हो?",
   "guides.title": "गाइड",
   "guides.body": "परीक्षा कसरी चल्छ, विस्तृत रूपमा।",
   "guides.english": "यी गाइडहरू अङ्ग्रेजीमा मात्र छन्।",
@@ -1078,6 +1082,7 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
+  "guides.lead": "第一次考 JLPT？",
   "guides.title": "指南",
   "guides.body": "考试机制的完整说明。",
   "guides.english": "指南仅提供英文版。",
@@ -1325,6 +1330,7 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
+  "guides.lead": "JLPT가 처음이신가요?",
   "guides.title": "가이드",
   "guides.body": "시험 구조를 자세히 설명합니다.",
   "guides.english": "가이드는 영어로만 제공됩니다.",
@@ -1572,6 +1578,7 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
+  "guides.lead": "Baru mengenal JLPT?",
   "guides.title": "Panduan",
   "guides.body": "Cara kerja ujian, dijelaskan lengkap.",
   "guides.english": "Panduan ini hanya tersedia dalam bahasa Inggris.",
@@ -1819,6 +1826,7 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
+  "guides.lead": "Bago sa JLPT?",
   "guides.title": "Mga gabay",
   "guides.body": "Kung paano gumagana ang pagsusulit, buong paliwanag.",
   "guides.english": "Ang mga gabay na ito ay nasa Ingles lamang.",
@@ -2066,6 +2074,7 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
+  "guides.lead": "Novo no JLPT?",
   "guides.title": "Guias",
   "guides.body": "Como o exame funciona, explicado por completo.",
   "guides.english": "Estes guias estão disponíveis apenas em inglês.",
@@ -2313,6 +2322,7 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
+  "guides.lead": "JLPT में नए हैं?",
   "guides.title": "गाइड",
   "guides.body": "परीक्षा कैसे काम करती है, विस्तार से।",
   "guides.english": "ये गाइड केवल अंग्रेज़ी में हैं।",
@@ -2560,6 +2570,7 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
+  "guides.lead": "JLPT-তে নতুন?",
   "guides.title": "গাইড",
   "guides.body": "পরীক্ষা কীভাবে কাজ করে, বিস্তারিত।",
   "guides.english": "এই গাইডগুলি শুধু ইংরেজিতে।",
@@ -2807,6 +2818,7 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
+  "guides.lead": "JLPT අලුත්ද?",
   "guides.title": "මාර්ගෝපදේශ",
   "guides.body": "විභාගය ක්‍රියා කරන ආකාරය, සම්පූර්ණයෙන්.",
   "guides.english": "මෙම මාර්ගෝපදේශ ඉංග්‍රීසියෙන් පමණි.",

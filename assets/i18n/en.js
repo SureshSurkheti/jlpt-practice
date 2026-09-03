@@ -158,6 +158,7 @@ I18N.register("en", {
  "footer.tagline": "Study smarter. Live better in Japan.",
  "guides.body": "How the exam works, written out in full.",
  "guides.english": "These guides are in English only.",
+ "guides.lead": "New to the JLPT?",
  "guides.title": "Guides",
  "home.body": "%%PAPERS%% practice papers from N5 to N1, timed and marked automatically, with answer explanations and listening scripts.",
  "home.browseExams": "Browse exams",

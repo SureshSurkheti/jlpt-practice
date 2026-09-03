@@ -91,43 +91,31 @@
       <section class="page-intro">
         <h1 data-i18n="study.title">Vocabulário, kanji e gramática</h1>
         <p data-i18n="study.body">Todo o vocabulário do JLPT, de N5 a N1, com leitura e significado, mais as estruturas gramaticais essenciais de cada nível. Busque em japonês, romaji ou inglês.</p>
+        <!-- A line, not a panel. As three cards between the coverage table
+             and the tabs it split one task into two halves with something
+             unrelated in the middle; here it is reachable without scrolling
+             and interrupts nothing. English only, and it says so. -->
+        <p class="intro-guides">
+          <span data-i18n="guides.lead">Novo no JLPT?</span>
+          <a href="/guide/jlpt-scoring.html">How scoring works</a>
+          <a href="/guide/n4-to-n3.html">N4 to N3</a>
+          <a href="/guide/which-jlpt-level.html">Which level to take</a>
+          <em data-i18n="guides.english">Estes guias estão disponíveis apenas em inglês.</em>
+        </p>
       </section>
 
       <!-- Filled in by tools/build_static.py: the counts come from the data
            files, so they are written into the markup rather than fetched. -->
-      <section class="study-coverage">
+      <section class="study-coverage is-static">
         <h2 data-i18n="notice.title">O que está disponível</h2>
         <div class="coverage-wrap">
           <table class="coverage-table">
             <thead><tr><th scope="col" data-i18n="notice.colLevel">Nível</th><th scope="col" data-i18n="study.words">Vocabulário</th><th scope="col" data-i18n="study.kanji">Kanji</th><th scope="col" data-i18n="study.grammar">Gramática</th><th scope="col">English</th><th scope="col" lang="ne">नेपाली</th></tr></thead>
-            <tbody><tr><th scope="row"><span class="lv-chip level-n5">N5</span></th><td><a href="study/n5-words.html">757</a></td><td><a href="study/n5-kanji.html">79</a></td><td><a href="study/n5-grammar.html">52</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span></td></tr><tr><th scope="row"><span class="lv-chip level-n4">N4</span></th><td><a href="study/n4-words.html">716</a></td><td><a href="study/n4-kanji.html">166</a></td><td><a href="study/n4-grammar.html">56</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span></td></tr><tr><th scope="row"><span class="lv-chip level-n3">N3</span></th><td><a href="study/n3-words.html">2,287</a></td><td><a href="study/n3-kanji.html">367</a></td><td><a href="study/n3-grammar.html">59</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">Gramática</span></td></tr><tr><th scope="row"><span class="lv-chip level-n2">N2</span></th><td><a href="study/n2-words.html">2,120</a></td><td><a href="study/n2-kanji.html">367</a></td><td><a href="study/n2-grammar.html">54</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">Gramática</span></td></tr><tr><th scope="row"><span class="lv-chip level-n1">N1</span></th><td><a href="study/n1-words.html">3,759</a></td><td><a href="study/n1-kanji.html">1,232</a></td><td><a href="study/n1-grammar.html">59</a></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">Gramática</span></td></tr></tbody>
+            <tbody><tr><th scope="row"><span class="lv-chip level-n5">N5</span></th><td><span class="is-here">757</span></td><td><span class="is-here">79</span></td><td><span class="is-here">52</span></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span></td></tr><tr><th scope="row"><span class="lv-chip level-n4">N4</span></th><td><span class="is-here">716</span></td><td><span class="is-here">166</span></td><td><span class="is-here">56</span></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span></td></tr><tr><th scope="row"><span class="lv-chip level-n3">N3</span></th><td><span class="is-here">2,287</span></td><td><span class="is-here">367</span></td><td><span class="is-here">59</span></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">Gramática</span></td></tr><tr><th scope="row"><span class="lv-chip level-n2">N2</span></th><td><span class="is-here">2,120</span></td><td><span class="is-here">367</span></td><td><span class="is-here">54</span></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">Gramática</span></td></tr><tr><th scope="row"><span class="lv-chip level-n1">N1</span></th><td><span class="is-here">3,759</span></td><td><span class="is-here">1,232</span></td><td><span class="is-here">59</span></td><td><span class="coverage-yes">&#10003;</span></td><td><span class="coverage-yes">&#10003;</span> <span class="coverage-part">Gramática</span></td></tr></tbody>
           </table>
         </div>
       </section>
 
-      <!-- The guides. Written in English only, and said so on the link: this
-           page exists in twelve languages and they do not, and a reader who
-           follows a link in their own language to an English article should
-           have been told first. -->
-      <section class="study-guides">
-        <h2 data-i18n="guides.title">Guias</h2>
-        <p data-i18n="guides.body">Como o exame funciona, explicado por completo.</p>
-        <ul class="study-guide-list">
-          <li>
-            <a href="/guide/jlpt-scoring.html">How the JLPT is scored</a>
-            <span>Pass marks, and the section minimum that fails people who beat the total.</span>
-          </li>
-          <li>
-            <a href="/guide/n4-to-n3.html">N4 to N3: the biggest jump</a>
-            <span>What doubles, and the structural change that catches people out.</span>
-          </li>
-          <li>
-            <a href="/guide/which-jlpt-level.html">Which level should you take?</a>
-            <span>Choose by what the certificate is for, then check it against a paper.</span>
-          </li>
-        </ul>
-        <p class="study-guides-note" data-i18n="guides.english">Estes guias estão disponíveis apenas em inglês.</p>
-      </section>
 
       <div class="study-controls">
         <div class="study-tabs" role="tablist">

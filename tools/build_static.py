@@ -390,7 +390,7 @@ def coverage_counts():
     return out
 
 
-def coverage_panel(table, en, here=None, prefix="study/"):
+def coverage_panel(table, en, here=None, prefix="study/", linked=True):
     """A five-row summary of what the lists hold and which languages the
     meanings are written in.
 
@@ -421,8 +421,16 @@ def coverage_panel(table, en, here=None, prefix="study/"):
                 continue
             text = "{:,}".format(total)
             page = "%s-%s" % (level, kind)
+            # On the hub the tabs underneath already switch level and list,
+            # so linking these numbers gave the page two complete pickers for
+            # the same fifteen combinations - one that navigates away, one
+            # that filters in place, and nothing to say which. Here the table
+            # is the summary and the tabs are the control. The fifteen list
+            # pages keep the links: there the panel is the only thing joining
+            # them to each other.
             cells.append('<td>%s</td>' % (
-                '<span class="is-here">%s</span>' % text if page == here
+                '<span class="is-here">%s</span>' % text
+                if (page == here or not linked)
                 else '<a href="%s%s.html">%s</a>' % (prefix, page, text)))
 
         # English is on every entry; Nepali is complete for N5 and N4 and
@@ -443,7 +451,7 @@ def coverage_panel(table, en, here=None, prefix="study/"):
             '%s<td><span class="coverage-yes">&#10003;</span></td><td>%s</td></tr>'
             % (LEVEL_COLOR_CLASS[level], level.upper(), "".join(cells), ne))
 
-    return ('<section class="study-coverage">\n'
+    return ('<section class="study-coverage%s">\n' % ("" if linked else " is-static") +
             '        <h2 data-i18n="notice.title">%s</h2>\n'
             '        <div class="coverage-wrap">\n'
             '          <table class="coverage-table">\n'
@@ -574,6 +582,13 @@ def main():
                     "</head>",
                     '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
                     % json.dumps(COUNTS, separators=(",", ":")))
+            # The guides are written once, in English. A nav item on the
+            # Nepali or Vietnamese pages would be a link out of the reader's
+            # language with nothing to warn them, so those keep the five
+            # items they had; the study page still carries the link, with
+            # the note that says which language it is in.
+            if lang != DEFAULT_LANG:
+                html = re.sub(r'\s*<a class="nav-guides"[^>]*>[^<]*</a>', "", html)
             html = rewrite_head(html, lang, page, langs, indexable, table, en)
             # After rewrite_head, not before: that is what writes the meta
             # description and the og/twitter copy out of the same translation
@@ -612,7 +627,7 @@ def main():
             # the study page carries its first list in the markup
             if page == "study.html":
                 html = html.replace('<div id="studyCoverage"></div>',
-                                    coverage_panel(table, en, None, "study/"))
+                                    coverage_panel(table, en, None, "study/", linked=False))
                 body, n = study_rows("n5", "words", table, en)
                 html = html.replace(
                     '<div id="studyContent" aria-live="polite"></div>',

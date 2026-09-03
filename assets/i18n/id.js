@@ -151,6 +151,7 @@ I18N.register("id", {
  "footer.tagline": "Belajar lebih cerdas. Hidup lebih baik di Jepang.",
  "guides.body": "Cara kerja ujian, dijelaskan lengkap.",
  "guides.english": "Panduan ini hanya tersedia dalam bahasa Inggris.",
+ "guides.lead": "Baru mengenal JLPT?",
  "guides.title": "Panduan",
  "home.body": "%%PAPERS%% soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.",
  "home.browseExams": "Lihat soal ujian",

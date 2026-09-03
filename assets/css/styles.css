@@ -1323,6 +1323,27 @@ body.is-leaving { opacity: 0; }
   body, body.is-leaving { transition: none; opacity: 1; }
 }
 
+/* One line under the page intro. Small, quiet, and out of the way of the
+   level tabs below it. */
+.intro-guides {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.intro-guides a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(45, 110, 180, 0.35);
+}
+.intro-guides a:hover { color: var(--navy); text-decoration-color: currentColor; }
+.intro-guides em { font-style: normal; font-size: 0.8rem; opacity: 0.75; }
+
 /* The guide links on the study hub. */
 .study-guides {
   margin-top: clamp(30px, 4vw, 48px);
@@ -1455,6 +1476,20 @@ body.is-leaving { opacity: 0; }
 .guide-cta h2 { margin: 0 0 8px; font-size: 1.2rem; }
 .guide-cta p { margin: 0 0 16px; font-size: 0.95rem; }
 .guide-cta-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* The guide index: three rows, each its own target. */
+.guide-index { margin: 26px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.guide-index li {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.guide-index li:hover { border-color: var(--blue); box-shadow: 0 8px 20px -12px rgba(17,45,78,0.4); }
+.guide-index a { display: block; padding: 16px 18px; }
+.guide-index b { display: block; margin-bottom: 4px; font-size: 1.05rem; color: var(--navy); }
+.guide-index li:hover b { color: var(--blue); }
+.guide-index span { font-size: 0.9rem; line-height: 1.55; color: var(--muted); }
 
 .guide-more { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); }
 .guide-more h2 { margin: 0 0 12px; font-size: 1.1rem; }
@@ -2086,15 +2121,26 @@ body.is-leaving { opacity: 0; }
 
 /* The row you are already reading is not a link to itself. */
 .coverage-table .is-here { color: var(--navy); font-weight: 800; }
+/* On the hub nothing in this table is a link, so every number is an .is-here
+   and 800 across fifteen cells reads as a wall. It is data there, not a
+   current-page marker. */
+.study-coverage.is-static .coverage-table .is-here {
+  color: var(--ink, #26313f);
+  font-weight: 700;
+}
 
 .coverage-yes { color: var(--success); font-weight: 700; }
 .coverage-part { color: var(--muted); font-size: 0.82rem; }
 .coverage-no { color: var(--line); }
 
+/* Three controls that do three different things - filter by level, switch
+   list, search - sat 12px apart and read as one long strip of pills. 22px
+   between them is enough to tell them apart without labelling each one in
+   twelve languages. */
 .study-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px 22px;
   flex-wrap: wrap;
   margin: clamp(18px, 2vw, 28px) 0 18px;
 }

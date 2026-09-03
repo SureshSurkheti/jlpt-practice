@@ -387,7 +387,36 @@ def ld_for(p):
         "publisher": {"@type": "Person", "name": "Suresh Surkheti"},
     }, ensure_ascii=False, separators=(",", ":"))
 
+INDEX = """
+        <p>Three pages on how the exam itself works - the scoring, the step
+           people find hardest, and how to choose a level. Everything here is
+           about the JLPT as an exam rather than about Japanese.</p>
+{cards}
+"""
+
+def write_index():
+    cards = '<ul class="guide-index">' + "".join(
+        '<li><a href="%s"><b>%s</b><span>%s</span></a></li>' % (p["slug"], p["h1"], p["standfirst"])
+        for p in PAGES) + "</ul>"
+    html = HEAD.format(
+        title="JLPT Guides — How the Exam Works",
+        desc="How the JLPT is scored, why N4 to N3 is the hardest step, and which level to take. Written out in full, free to read.",
+        url="%s/guide/" % SITE, site=SITE,
+        h1="JLPT guides",
+        standfirst="How the exam works, written out in full.",
+        body=INDEX.format(cards=cards),
+        more="".join('<li><a href="%s">%s</a></li>' % (q["slug"], q["h1"]) for q in PAGES),
+        ld=json.dumps({"@context":"https://schema.org","@type":"CollectionPage",
+                       "name":"JLPT Guides","inLanguage":"en",
+                       "url":"%s/guide/" % SITE}, ensure_ascii=False, separators=(",",":")))
+    # the index does not need a "more guides" list under a list of the same
+    # three, nor a call to action it already is
+    html = html.replace('<nav class="guide-more" aria-label="More guides">', '<nav hidden>')
+    io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(html)
+    print("%-24s  index" % "index.html")
+
 os.makedirs(OUT, exist_ok=True)
+write_index()
 for p in PAGES:
     others = [q for q in PAGES if q["slug"] != p["slug"]]
     more = "".join('<li><a href="%s">%s</a></li>' % (q["slug"], q["h1"]) for q in others)

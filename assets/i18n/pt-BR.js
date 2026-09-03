@@ -151,6 +151,7 @@ I18N.register("pt-BR", {
  "footer.tagline": "Estude melhor. Viva melhor no Japão.",
  "guides.body": "Como o exame funciona, explicado por completo.",
  "guides.english": "Estes guias estão disponíveis apenas em inglês.",
+ "guides.lead": "Novo no JLPT?",
  "guides.title": "Guias",
  "home.body": "%%PAPERS%% provas de treino de N5 a N1, cronometradas e corrigidas automaticamente, com explicações das respostas e transcrições da audição.",
  "home.browseExams": "Ver provas",
