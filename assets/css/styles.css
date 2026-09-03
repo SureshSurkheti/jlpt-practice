@@ -501,6 +501,39 @@ body > main { flex: 1 0 auto; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* On a phone the panel is 222px wide and the shortest description needs 247,
+   so every one of the five was cut off mid-word - a list where nothing could
+   be read. The descriptions are on the levels page anyway; what this panel
+   is for on a small screen is the five links. So it becomes five level
+   buttons in a row: one line instead of five, nothing truncated, and a
+   bigger tap target than the row it replaces. */
+@media (max-width: 640px) {
+  .hero-levels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px;
+  }
+  .hero-levels-head {
+    flex-basis: 100%;
+    margin-bottom: 0;
+    padding: 0;
+  }
+  .hero-level {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    padding: 11px 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .hero-level span,
+  .hero-level i { display: none; }
+  .hero-level b { font-size: 1.08rem; }
+  .hero-level:hover { background: rgba(255, 255, 255, 0.2); }
+}
+
 .eyebrow {
   display: inline-block;
   padding: 8px 12px;
