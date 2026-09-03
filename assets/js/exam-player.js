@@ -1641,7 +1641,11 @@
         if (state.answers[state.questions[i].key]) done++;
       });
       var on = paper.key === state.paper;
-      var b = el("button", "paper-tab" + (on ? " is-on" : ""));
+      /* The count's colour says how far through this section you are, so it
+         has to know. Started, finished, or neither. */
+      var full = paper.items.length > 0 && done === paper.items.length;
+      var b = el("button", "paper-tab" + (on ? " is-on" : "") +
+        (full ? " is-done" : done > 0 ? " is-started" : ""));
       b.type = "button";
       b.dataset.paper = paper.key;
       b.setAttribute("role", "tab");
@@ -1650,7 +1654,9 @@
       var pb = saved && saved[paper.key];
       b.innerHTML =
         '<span class="paper-tab-name">' + esc(paper.label) + "</span>" +
-        '<span class="paper-tab-count">' + done + " / " + paper.items.length +
+        '<span class="paper-tab-count">' +
+          (full ? '<b aria-hidden="true">\u2713</b> ' : "") +
+          done + " / " + paper.items.length +
           (pb ? ' <i class="paper-tab-best" title="' + esc(t("exam.yourBest")) +
             '">\u2605 ' + pb.best + "</i>" : "") +
         "</span>";
@@ -1790,6 +1796,12 @@
         ? t("exam.allAnswered")
         : blanks + " " + t(blanks === 1 ? "exam.blankRemains" : "exam.blanksRemain");
     }
+
+    /* The switcher carries a per-section count, so it has to move as the
+       section fills - otherwise the tick that says "this one is finished"
+       only appears after you navigate away and come back. */
+    var tabs = document.querySelector(".paper-tabs");
+    if (tabs) tabs.parentNode.replaceChild(buildPaperTabs(), tabs);
 
     /* What the flag is for: a count of what you marked to come back to, and
        a way back to it, at the point where you are deciding to submit. */

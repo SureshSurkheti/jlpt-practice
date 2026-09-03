@@ -1561,7 +1561,10 @@
   border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
-  color: var(--muted);
+  /* Readable rather than greyed out. At --muted, next to a white pill, the
+     two sections you were not on read as unavailable rather than as the
+     other two papers of the sitting. */
+  color: var(--ink-soft);
   font-weight: 700;
   font-size: 0.92rem;
   cursor: pointer;
@@ -1591,7 +1594,18 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 
-.paper-tab.is-on .paper-tab-count { color: var(--level-color, var(--blue)); }
+/* The count is coloured by progress, not by level.
+
+   It used to take the level's own colour, which at N3 is green - so a tab
+   reading "0 / 58" was printed in the colour of a finished thing before a
+   single question had been answered. The level is already named in the chip
+   two lines above; what this number can usefully say is how far in you are.
+
+   Grey at nothing, navy once started, green with a tick when the section is
+   fully answered. */
+.paper-tab.is-started .paper-tab-count { color: var(--navy); }
+.paper-tab.is-done .paper-tab-count { color: var(--success); }
+.paper-tab-count b { font-weight: 800; }
 
 /* On a phone the three names do not fit side by side as one word each, so the
    pill becomes a row of stacked labels that still reads at a glance. */
