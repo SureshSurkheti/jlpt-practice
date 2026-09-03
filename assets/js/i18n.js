@@ -21,6 +21,29 @@
 
   var STORE = "jlpt-language";
   var DEFAULT = "en";
+  var SWITCH_MARK = "jlpt.langswitch";
+
+  /* Changing language is a navigation - each language is a real address - so
+     a page that had built something on screen comes back from scratch at the
+     new one. A paper in progress was the case that showed it: switching
+     language mid-paper reloaded /ja/exam.html?id=... and the player, seeing
+     an ordinary arrival, opened the setup screen instead of the paper. The
+     address was right and the reader's place was gone.
+
+     setLanguage() leaves this mark and the flag is read once, here, as the
+     next page starts - not by whoever happens to want it. Reading it lazily
+     would leave it set on any page that did not ask, and the next arrival at
+     a paper, by whatever route, would resume unasked. sessionStorage keeps it
+     to this tab. */
+  var CAME_FROM_SWITCH = (function () {
+    try {
+      if (sessionStorage.getItem(SWITCH_MARK)) {
+        sessionStorage.removeItem(SWITCH_MARK);
+        return true;
+      }
+    } catch (e) { /* private mode: the language still switches */ }
+    return false;
+  })();
 
   /* Pages are pre-rendered at several depths - /index.html, /ne/index.html,
      /study/n5-words.html, /ne/study/n5-words.html - so a data file cannot be
@@ -140,6 +163,7 @@
     var target = urlFor(lang);
     if (location.protocol.indexOf("http") === 0 &&
         target !== location.pathname + location.search + location.hash) {
+      try { sessionStorage.setItem(SWITCH_MARK, "1"); } catch (e) { /* ignore */ }
       location.assign(target);
       return;
     }
@@ -192,6 +216,8 @@
     apply: applyTo,
     init: init,
     languages: LANGUAGES,
+    /* True when this page load is the far side of a language switch. */
+    switched: function () { return CAME_FROM_SWITCH; },
     register: function (lang, table) { STRINGS[lang] = table; }
   };
 

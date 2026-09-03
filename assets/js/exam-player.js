@@ -885,7 +885,7 @@
          exactly the bug this was meant to fix, still there for the first
          minute of every paper. It was missed because every test answered
          something first. */
-      if (wasReload() && saved && saved.startedAt) {
+      if ((wasReload() || languageJustSwitched()) && saved && saved.startedAt) {
         startExam(collectSetup(), saved);
         /* The browser restores the scroll of a reloaded page on its own, but
            only if the page is that tall when it tries - and this paper is
@@ -901,6 +901,15 @@
         return;
       }
     }
+  }
+
+  /* Each language is its own address, so changing it navigates and the paper
+     is rebuilt at the new one - an ordinary arrival as far as this page can
+     tell, which is why it used to land on the setup screen with the reader's
+     answers still in storage and no sign of them on screen. I18N sets a mark
+     before it goes and reads it once as the next page starts. */
+  function languageJustSwitched() {
+    return !!(window.I18N && I18N.switched && I18N.switched());
   }
 
   /* performance.navigation is deprecated but is the only signal older Safari
