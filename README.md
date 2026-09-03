@@ -179,55 +179,35 @@ nihongomock.com — least clever, clearest: says "mock tests" immediately, which
 
 
 
-Main post (recommended)
+Rewrite — for a Facebook or community group
+Free JLPT practice — full mock exams, N5 to N1
 
-Free JLPT mock exams — N5 to N1.
+No sign-up. No ads. Nothing to pay. Just open it and start.
 
-86 full-length practice papers. Timed, marked instantly, with listening audio and answer explanations.
+📝 87 practice papers, 8,172 questions — N5 through N1, in the real JLPT format
+⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
+🎧 Listening audio on 71 papers, with answer explanations
+🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
+🇳🇵 N5 and N4 word meanings in Nepali — 1,473 words
+📚 9,639 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
+📱 Works on phone and computer. You can install it like an app.
+🔒 Your scores stay on your own device. Nothing is uploaded.
 
-You also get a score for vocabulary, grammar, reading and listening separately — so you know which one is actually holding you back.
+👉 https://jlpt.sureshsurkheti.com
 
-No signup. No app. Nothing saved anywhere but your own browser.
+Shorter version — for a comment or reply
+Free JLPT practice site — 87 full mock papers N5–N1, timed and auto-marked, listening audio, answer explanations. In 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+https://jlpt.sureshsurkheti.com
 
-👉 jlpt.sureshsurkheti.com
+Nepali version
+नि:शुल्क JLPT अभ्यास — N5 देखि N1 सम्म
 
-If your audience is Nepali speakers in Japan — this is your real edge, and nothing else has it. Lead with it:
+दर्ता गर्नु पर्दैन। विज्ञापन छैन। पैसा तिर्नु पर्दैन।
 
-जापानमा हुनुहुन्छ? JLPT को तयारी गर्दै?
+📝 ८७ अभ्यास प्रश्नपत्र, ८,१७२ प्रश्न — वास्तविक JLPT ढाँचामा
+⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
+🎧 सुनाइको अडियो र उत्तरको व्याख्या
+🇳🇵 N5 र N4 का शब्दहरूको अर्थ नेपालीमा
+📱 मोबाइल र कम्प्युटर दुवैमा चल्छ
 
-N5 र N4 का ७५७ + ७१६ शब्द नेपाली अर्थसहित। सबै लेभलका व्याकरण ढाँचा पनि नेपालीमा।
-
-८६ वटा पूरा मक टेस्ट — समयसहित, तुरुन्तै नतिजा। पूरै निःशुल्क, दर्ता चाहिँदैन।
-
-👉 jlpt.sureshsurkheti.com
-
-A shorter one for reposting later:
-
-2,211 kanji with stroke-order animation. 9,639 words. 86 mock exams. All free, no signup.
-
-jlpt.sureshsurkheti.com
-
-Three things that will matter more than the wording:
-
-Post it where your people already are. Nepali-in-Japan groups, 技能実習生 groups, JLPT study groups, university international-student pages. One post in the right group beats ten on your own timeline.
-
-Lead with the differentiator, not the category. "Free JLPT practice" is a crowded phrase. "Nepali meanings" and "separate score per skill" are things the big sites genuinely don't offer.
-
-Don't say "past papers" or "real JLPT questions." We deliberately took that wording off the site — repeating it in an ad puts it right back in front of the people most likely to object.
-
-One practical check before you post: paste your URL into Facebook's Sharing Debugger and hit "Scrape Again". Facebook caches link previews aggressively, and if it looked at your site before the OG card existed, it'll keep showing the old empty preview until you force a refresh.
-
-1,753 Nepali meanings. 9,639 words, 2,211 kanji with stroke-order animation, 86 full mock exams — N5 to N1, free, no signup.
-jlpt.sureshsurkheti.com
-
-
-tod o things tomorrow
-make the app icon very good when installing in mobile
-remove the questions map
-and also make the numbering method make in the format of jlpt exam for all remove the custom numbering and question map
-and when in study mode select once canot edit so what is the good method for that do accordingly.
-for the listening part can we keep the listening part in above every questions above part instead of listening one audio for many questions??
-if there is already finished parts like any vocab grammer reading or listening make to show the total mark of last time and if second time is practiced same and if it second time got more than last time update the score and if less donot update the score... 
-also in the page of mock start page at first make not select any vocab grammer reading or listening and when user go to this gamen make select and when noone is selected and click the start mock make to see the error please select desired practice parts or anything good error.
-and also the latest score and update detail also make on this page.
-what is the best design for the all the block of mock tests i think that is not the best design keeping vertically all??
+👉 https://jlpt.sureshsurkheti.com
