@@ -106,12 +106,18 @@
              open, because until then it has nothing to filter - but the
              search does, so both share one row rather than the search
              sitting on an orphan line of its own beneath it. -->
+        <!-- The way back out of a level sits on its own line above the
+             switcher, in the same shape as the back link every other page
+             uses. It used to be a sixth chip in the row - "All levels" beside
+             N5 N4 N3 N2 N1 - which put a navigation control and a filter
+             control in one strip and made the row read as six levels. -->
+        <button type="button" class="chip-back exams-back" id="examsBack" hidden>
+          <span aria-hidden="true">&larr;</span>
+          <span data-i18n="exams.allLevels">レベル一覧</span>
+        </button>
+
         <div class="exams-toolbar">
         <div class="exams-filters" id="examsFilters" hidden>
-          <button type="button" class="chip-back" id="examsBack">
-            <span aria-hidden="true">&larr;</span>
-            <span data-i18n="exams.allLevels">レベル一覧</span>
-          </button>
           <button type="button" class="chip" data-level="N5" aria-pressed="false">N5</button>
           <button type="button" class="chip" data-level="N4" aria-pressed="false">N4</button>
           <button type="button" class="chip" data-level="N3" aria-pressed="false">N3</button>

@@ -1227,6 +1227,15 @@
           audioHelpHTML() + "</p></details>"));
     }
 
+    /* A listening section whose recording was never archived. Without this
+       the questions simply appeared with no player and no explanation, and
+       the only way to find out was to sit twenty-eight of them in silence. */
+    if (!section.audio && section.category === "listening") {
+      head.appendChild(el("div", "q-audio-aside is-failed",
+        "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
+        "</strong> " + audioHelpHTML() + "</p>"));
+    }
+
     node.appendChild(head);
 
     if (section.audio && !deadAudio) {

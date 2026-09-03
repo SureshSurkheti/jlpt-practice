@@ -42,7 +42,15 @@ DICT_DIR = os.path.join(ROOT, "data", "dict")
 OUT_DIR = os.path.join(ROOT, "data", "glossary")
 
 # Levels to build.
-LEVELS = ("N1", "N2", "N3")
+#
+# N4 and N5 were left out originally and their papers showed a dash in the
+# coverage table, which reads as "this level has no word meanings" - not true
+# of the site, only of the papers. The keep rule (see keep_word) filters by
+# each word's own level rather than the paper's, so it needs no adjustment to
+# run here: an N4 paper still glosses everything written in kanji, everything
+# at N3 and above, and the hard kana-only N4 words, and still skips the N5
+# vocabulary an N4 candidate already knows.
+LEVELS = ("N1", "N2", "N3", "N4", "N5")
 
 # ---------------------------------------------------------------------------
 # text helpers

@@ -2,9 +2,26 @@
  "levels": [
   "N1",
   "N2",
-  "N3"
+  "N3",
+  "N4",
+  "N5"
  ],
  "exams": [
+  {
+   "id": "n5-practice-1",
+   "level": "N5",
+   "words": 6
+  },
+  {
+   "id": "n4-practice-2",
+   "level": "N4",
+   "words": 478
+  },
+  {
+   "id": "n4-practice-1",
+   "level": "N4",
+   "words": 289
+  },
   {
    "id": "n3-2024-12",
    "level": "N3",

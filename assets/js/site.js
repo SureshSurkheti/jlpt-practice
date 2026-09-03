@@ -500,7 +500,10 @@ function renderNotice() {
     const s = stats[e.level];
     if (!s) return;
     s.papers += 1;
-    if (e.parts.some((p) => p.id === 'listening')) s.listening += 1;
+    /* Counted by whether the recordings are there, not by whether the
+       booklet is. One N4 paper has a 28-question listening section and no
+       audio behind any of it; this table used to count it as listening. */
+    if (e.parts.some((p) => p.id === 'listening' && p.audio)) s.listening += 1;
     if (withWords.has(e.id)) s.words += 1;
   });
 
@@ -535,7 +538,7 @@ function renderNotice() {
   table.innerHTML = html;
 
   const noListening = exams.filter(
-    (e) => !e.parts.some((p) => p.id === 'listening')).length;
+    (e) => !e.parts.some((p) => p.id === 'listening' && p.audio)).length;
 
   /* Word meanings are the thing this site has that the others do not - 95,000
      of them, on a button under every question of 83 papers - and until now

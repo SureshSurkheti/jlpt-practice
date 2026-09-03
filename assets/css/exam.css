@@ -1069,13 +1069,18 @@
 /* The level chips and the search share one row. The chips are hidden until a
    level is open; the search never is, so it used to sit on a line of its own
    underneath, costing a row of vertical space to hold one field. */
+/* The way back to the level picker: its own line, above the switcher. */
+.exams-back { margin-top: clamp(18px, 2vw, 26px); }
+.exams-back[hidden] { display: none; }
+
 .exams-toolbar {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin: 26px 0 20px;
+  margin: 14px 0 20px;
 }
+.exams-search[hidden] { display: none; }
 .exams-filters {
   display: flex;
   align-items: center;
@@ -1713,13 +1718,18 @@
 /* Plain inline text, not flex: as flex items the numbers and their words
    became separate boxes and the space between them collapsed away. */
 .lvcard-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
   margin-top: 2px;
   margin-bottom: 4px;
   color: var(--muted);
   font-size: 0.78rem;
 }
+/* Each fact is one unbreakable phrase, so a line break can only fall between
+   them - never between "2,760" and "questions", which is where it used to. */
+.lvcard-facts > span { white-space: nowrap; }
 .lvcard-facts b { color: var(--navy); font-variant-numeric: lining-nums tabular-nums; }
-.lvcard-facts i { font-style: normal; margin: 0 7px; opacity: 0.5; }
 
 /* The way in. It was a bare arrow glyph in the corner - the one part of the
    card that actually does something, drawn as the faintest thing on it. Now
@@ -1731,6 +1741,9 @@
    bar in the level's colour that names the action. The arrow steps right
    under the pointer; the bar answers the press. */
 .lvcard-go {
+  /* Five descriptions of two to four lines each left five buttons sitting at
+     five different heights across the row. */
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: center;

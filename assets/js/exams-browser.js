@@ -149,9 +149,21 @@
     renderPapers();
   }
 
-  function renderLevels() {
+  /* Which chrome belongs to which view. On the level picker there is nothing
+     to filter and nothing to search: a year search there competes with the
+     one choice the screen is asking for, and matches would arrive from five
+     levels at once. Both appear once a level is open. */
+  function setChrome(showing) {
     var filters = document.getElementById("examsFilters");
-    if (filters) filters.hidden = true;
+    var search = document.getElementById("examsSearch");
+    var back = document.getElementById("examsBack");
+    if (filters) filters.hidden = !showing;
+    if (search) search.hidden = !showing;
+    if (back) back.hidden = !showing;
+  }
+
+  function renderLevels() {
+    setChrome(false);
 
     var byLevel = {};
     exams.forEach(function (e) {
@@ -160,7 +172,9 @@
       });
       g.papers++;
       g.questions += e.totalQuestions;
-      if (e.parts.some(function (p) { return p.id === "listening"; })) g.listening++;
+      if (e.parts.some(function (p) {
+        return p.id === "listening" && p.audio;
+      })) g.listening++;
       if (withWords[e.id]) g.words++;
     });
 
@@ -173,12 +187,14 @@
           'style="--level-color:' + (LEVEL_COLOR[lv] || "#2d6eb4") + '">' +
           '<span class="lvcard-code">' + lv + "</span>" +
           '<span class="lvcard-desc">' + esc(t("level." + lv)) + "</span>" +
+          /* Each fact is one unbreakable phrase. Loose text nodes with a
+             separator between them let the line break wherever it liked, so
+             a card read "2,760" on one line and "questions" on the next. */
           '<span class="lvcard-facts">' +
-            "<b>" + g.papers + "</b> " +
-              esc(t(g.papers === 1 ? "exams.paper" : "exams.papers")) +
-            '<i aria-hidden="true">·</i>' +
-            "<b>" + g.questions.toLocaleString() + "</b> " +
-              esc(t("exams.questionsShort")) +
+            "<span><b>" + g.papers + "</b> " +
+              esc(t(g.papers === 1 ? "exams.paper" : "exams.papers")) + "</span>" +
+            "<span><b>" + g.questions.toLocaleString() + "</b> " +
+              esc(t("exams.questionsShort")) + "</span>" +
           "</span>" +
           /* A bare arrow said "something happens" without saying what.
              The words are the button; the arrow is punctuation. */
@@ -191,8 +207,7 @@
   }
 
   function renderPapers() {
-    var filters = document.getElementById("examsFilters");
-    if (filters) filters.hidden = false;
+    setChrome(true);
 
     var shown = exams.filter(function (e) {
       if (filterLevel !== "all" && e.level !== filterLevel) return false;
@@ -274,10 +289,20 @@
 
     var flags = "";
     /* Some sittings were never archived with their listening paper. Say so
-       up front instead of letting people discover it mid-exam. */
-    if (!e.parts.some(function (p) { return p.id === "listening"; })) {
+       up front instead of letting people discover it mid-exam.
+
+       And "has a listening booklet" is not the same as "has the recordings":
+       one paper carried 28 listening questions with no sound file behind any
+       of them, and the library counted it as having listening because the
+       booklet was there. Read the audio count, not the booklet. */
+    var listening = null;
+    e.parts.forEach(function (p) { if (p.id === "listening") listening = p; });
+    if (!listening) {
       flags += '<span class="exam-part-tag is-missing">' +
         esc(t("exams.noListening")) + "</span>";
+    } else if (!listening.audio) {
+      flags += '<span class="exam-part-tag is-missing">' +
+        esc(t("exams.noAudio")) + "</span>";
     }
     if (wordsVaries && withWords[e.id]) {
       flags += '<span class="exam-part-tag is-words">' +

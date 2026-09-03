@@ -602,8 +602,16 @@ def main():
             "period": period,
             "periodLabel": label,
             "totalQuestions": total,
+            # How many of this part's questions actually have a recording.
+            # A listening booklet with no audio in it is not a listening
+            # section, and the library has to be able to say so: one paper
+            # (n4-practice-2) carried 28 listening questions and not one
+            # sound file, and the site advertised it as having listening
+            # because the booklet existed.
             "parts": [{"id": p["id"], "label": p["label"],
-                       "count": len(p["questions"])} for p in parts],
+                       "count": len(p["questions"]),
+                       "audio": sum(1 for q in p["questions"]
+                                    if q.get("audio"))} for p in parts],
             "sortKey": sort_key,
         })
 
@@ -623,8 +631,16 @@ def main():
             "period": exam["period"],
             "periodLabel": exam["periodLabel"],
             "totalQuestions": exam["totalQuestions"],
+            # How many of this part's questions actually have a recording.
+            # A listening booklet with no audio in it is not a listening
+            # section, and the library has to be able to say so: one paper
+            # (n4-practice-2) carried 28 listening questions and not one
+            # sound file, and the site advertised it as having listening
+            # because the booklet existed.
             "parts": [{"id": p["id"], "label": p["label"],
-                       "count": len(p["questions"])} for p in exam["parts"]],
+                       "count": len(p["questions"]),
+                       "audio": sum(1 for q in p["questions"]
+                                    if q.get("audio"))} for p in exam["parts"]],
             "sortKey": exam["period"],
         })
 
