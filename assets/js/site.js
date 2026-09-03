@@ -661,6 +661,18 @@ function wireStickyHeader() {
   }).observe(mark);
 }
 
+/* A back link, on the pages that have somewhere to go back to.
+
+   Not on Levels or Study. Those two are items in the main navigation, three
+   inches above, so a "Back" on them answers a question nobody asked - and
+   when you have arrived from inside the site it calls history.back(), which
+   is precisely what the browser's own back button does, permanently, in
+   every window. Two controls for one job, one of them taking the first line
+   of the page.
+
+   It stays where there is a real parent and no nav item: the fifteen study
+   list pages under /study/, the kanji viewer, the statistics page. You reach
+   those from a tab or a card, and nothing in the header will take you back. */
 function mountPageBack() {
   var target = document.body.dataset.backTo;
   if (!target) return;

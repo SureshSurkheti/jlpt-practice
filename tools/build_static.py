@@ -707,9 +707,12 @@ def main():
                 html = html.replace("</footer>", language_links(
                     langs, "study/%s-%s.html" % (level, kind), lang, names,
                     table, en) + "</footer>")
-                # These sit a directory down, and the page above them is the
-                # study hub, not the home page the template names.
-                html = html.replace('data-back-to="index.html"',
+                # A back link belongs here even though the study hub itself
+                # has none: the hub is an item in the main navigation, these
+                # fifteen pages are not. You arrive from a tab or a level
+                # card and nothing in the header leads back.
+                html = html.replace('<body class="study-page"',
+                                    '<body class="study-page" '
                                     'data-back-to="../study.html"')
                 html = absolutise(html)
                 html = html.replace('href="./', 'href="../' if lang == DEFAULT_LANG
