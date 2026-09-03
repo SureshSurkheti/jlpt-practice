@@ -475,6 +475,27 @@
   font-weight: 600;
   min-width: 0;
 }
+/* The sentence being asked about, on a tint.
+
+   The answers already sit in bordered boxes, so before this the stem was the
+   only unboxed thing in a question and the eye had nothing to catch on it
+   scanning down a 45-question paper. A band gives the question a shape of
+   its own and reads as an exam paper rather than a form.
+
+   Kept very light - 1.12:1 against the card - deliberately. It has to be
+   quiet enough that .paper-question.is-target, the flash that marks the
+   question you jumped to, is still the loudest thing on the page: that one
+   tints the whole card, and this band sits inside it. Navy on the tint is
+   12.4:1, so nothing is lost in readability.
+
+   The negative left margin pulls the band out to sit under the text's own
+   left edge, so the tint does not visually indent the sentence. */
+.pq-prompt:not(.has-media) {
+  margin-left: -12px;
+  padding: 8px 12px;
+  background: #eef2f7;
+  border-radius: 8px;
+}
 .pq-prompt u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .pq-prompt img { margin: 14px 0; border-radius: 8px; }
 /* A listening question is a picture, and the picture is the last thing in the

@@ -1424,9 +1424,17 @@
 
     /* The paper's own number, and only that - see paperNumber(). */
     var head = el("div", "pq-head");
+    /* A listening stem is a label and a picture - "1ばん" and the four
+       drawings. The tint the written stems carry turns that into a wide grey
+       band with three characters in the corner of it, so those are marked and
+       left alone. Decided here rather than with :has(img) in CSS: the class
+       works in every browser and the failure mode of the selector is the
+       exact band this avoids. */
+    var media = /<img/i.test(q.prompt || "");
     head.innerHTML =
       '<span class="pq-num">' + esc(item.number) + "</span>" +
-      '<div class="pq-prompt' + (q.prompt ? "" : " is-bare") + '">' +
+      '<div class="pq-prompt' + (q.prompt ? "" : " is-bare") +
+        (media ? " has-media" : "") + '">' +
         (q.prompt || "") +
       "</div>";
 
