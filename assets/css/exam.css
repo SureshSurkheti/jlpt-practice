@@ -1230,9 +1230,13 @@
      used to be separated by a middot at nine pixels, which ran them into one
      stream you had to parse rather than scan.
 
-     7px between the two rows rather than 4: the break below is deliberate
-     now, and at 4 the second line read as one that had wrapped by accident. */
-  gap: 7px 22px;
+     10px between the two rows rather than the original 4: the break below is
+     deliberate now, and at 4 the second line read as one that had wrapped by
+     accident. 7 fixed that and was still tight - this is 16px of optical gap
+     against 13. It can exceed the 8px between the cards themselves without
+     the rows running together, because each row is a bordered card and the
+     border, not the space, is what separates one from the next. */
+  gap: 10px 22px;
   min-width: 0;
   font-size: 0.78rem;
   color: var(--muted);

@@ -875,8 +875,17 @@
        you were reading, not on the next blank one. */
     if (!state.resumeChecked) {
       state.resumeChecked = true;
-      if (wasReload() && saved && saved.answers &&
-          Object.keys(saved.answers).length) {
+      /* An attempt counts as open from the moment the paper is built, not
+         from the first answer. saveProgress() writes the record in
+         startExam(), so startedAt existing IS the paper having been opened.
+
+         Requiring an answer here was wrong and is what shipped: open a paper,
+         read question one, reload before choosing anything, and the count of
+         answers is zero, so the guard failed and the setup screen came back -
+         exactly the bug this was meant to fix, still there for the first
+         minute of every paper. It was missed because every test answered
+         something first. */
+      if (wasReload() && saved && saved.startedAt) {
         startExam(collectSetup(), saved);
         /* The browser restores the scroll of a reloaded page on its own, but
            only if the page is that tall when it tries - and this paper is
