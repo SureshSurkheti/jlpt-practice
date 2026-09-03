@@ -16,18 +16,52 @@
   var LEVEL_COLOR = {
     N1: "#d9a63a", N2: "#2d6eb4", N3: "#2f7d57", N4: "#7c3ac8", N5: "#5c697a"
   };
-  var PART_KEY = {
+  /* How the JLPT is actually sat, which is not how this archive stored it.
+
+     N1 and N2 are two papers: 言語知識（文字・語彙・文法）・読解 in one
+     sitting, then 聴解. N3, N4 and N5 are three: 言語知識（文字・語彙）,
+     then 言語知識（文法）・読解, then 聴解.
+
+     The archive split every level the same way, into a "vocabulary" file and
+     a "grammar-reading" file - and at N1 and N2 the vocabulary file holds
+     the grammar questions too, while the grammar-reading file holds nothing
+     but reading. So the library was printing "Vocabulary 54 · Grammar &
+     Reading 21" for an N2 paper whose grammar is inside that 54 and whose
+     21 is reading alone. Both labels wrong, and the missing-part warning
+     wrong with them: it said "No Grammar & Reading" for papers that have
+     their grammar and are missing only the reading.
+
+     Read the skills, not the files, and lay them out per level. */
+  /* A section is named after what the paper actually holds. Nine N1 and N2
+     papers were archived without their reading, and a section headed
+     "Language Knowledge & Reading" on a paper with no reading in it
+     contradicts the red note sitting beside it. */
+  function sectionLabel(full, present) {
+    if (present.length === 1) return SKILL_KEY[present[0]];
+    if (present.indexOf("reading") === -1) return "exam.sectionLanguage";
+    return full;
+  }
+
+  var SITTINGS = {
+    N1: [{ key: "section.languageReading", cats: ["vocabulary", "grammar", "reading"] },
+         { key: "section.listening", cats: ["listening"] }],
+    N3: [{ key: "section.vocabulary", cats: ["vocabulary"] },
+         { key: "section.grammarReading", cats: ["grammar", "reading"] },
+         { key: "section.listening", cats: ["listening"] }]
+  };
+  SITTINGS.N2 = SITTINGS.N1;
+  SITTINGS.N4 = SITTINGS.N3;
+  SITTINGS.N5 = SITTINGS.N3;
+
+  /* The four skills a complete paper tests. Any of them a paper does not
+     have is named on its row, in red. */
+  var SKILLS = ["vocabulary", "grammar", "reading", "listening"];
+  var SKILL_KEY = {
     vocabulary: "section.vocabulary",
-    "grammar-reading": "section.grammarReading",
+    grammar: "section.grammar",
+    reading: "section.reading",
     listening: "section.listening"
   };
-
-  /* The three booklets a complete sitting is made of, in the order a paper
-     prints them. Anything in this list that a paper does not have is said
-     out loud on its row - see card(). Only listening used to be, so seven
-     papers were quietly missing their grammar and reading and one its
-     vocabulary, with nothing on screen to say so. */
-  var STANDARD_PARTS = ["vocabulary", "grammar-reading", "listening"];
 
   var exams = [];
   var withWords = {};   // exam id -> word count, for the papers that have one
@@ -287,25 +321,27 @@
   function card(e, wordsVaries) {
     var color = LEVEL_COLOR[e.level] || "#2d6eb4";
 
-    /* The three standard booklets are identical on almost every paper, so
-       they are one quiet line rather than three chips. Only what is unusual
-       about a paper gets a chip of its own. */
-    var makeup = e.parts.map(function (p) {
-      return esc(t(PART_KEY[p.id] || p.label)) + " " + p.count;
-    }).join(" · ");
+    /* The paper laid out in its own level's sitting order, counted by skill.
+       Identical on almost every paper of a level, so it stays one quiet line
+       rather than becoming three chips. */
+    var counts = e.categoryCounts || {};
+    var makeup = (SITTINGS[e.level] || SITTINGS.N3).map(function (sec) {
+      var present = sec.cats.filter(function (c) { return counts[c]; });
+      if (!present.length) return null;
+      var n = present.reduce(function (sum, c) { return sum + counts[c]; }, 0);
+      return esc(t(sectionLabel(sec.key, present))) + " " + n;
+    }).filter(Boolean).join(" · ");
 
-    /* Every booklet this sitting was archived without, not just the
-       listening one. Written the same way the make-up beside it is written -
-       plain words in the same line, coloured red - rather than as a chip,
-       which made one absence look like a button and left the other two
-       invisible. */
+    /* Every skill this paper was archived without. Written the same way the
+       make-up beside it is written - plain words on the same line, coloured
+       red - rather than as a chip, which made an absence look like a button. */
     var have = {};
     e.parts.forEach(function (p) { have[p.id] = p; });
 
-    var flags = STANDARD_PARTS.filter(function (id) { return !have[id]; })
-      .map(function (id) {
+    var flags = SKILLS.filter(function (c) { return !counts[c]; })
+      .map(function (c) {
         return '<span class="exam-row-missing">' +
-          esc(tf("exams.noPart", { part: t(PART_KEY[id]) })) + "</span>";
+          esc(tf("exams.noPart", { part: t(SKILL_KEY[c]) })) + "</span>";
       }).join("");
 
     /* "Has a listening booklet" is not the same as "has the recordings":

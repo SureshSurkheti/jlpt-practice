@@ -602,6 +602,14 @@ def main():
             "period": period,
             "periodLabel": label,
             "totalQuestions": total,
+            # Per-skill counts in the index too, so the library can lay a
+            # paper out the way the JLPT is actually sat - which is not how
+            # the archive split the booklets. At N1 and N2 the "vocabulary"
+            # booklet carries the grammar questions as well, and the real
+            # sitting combines language knowledge and reading into one
+            # paper; at N3 and below they are separate papers. Only the
+            # categories know that.
+            "categoryCounts": dict(counts),
             # How many of this part's questions actually have a recording.
             # A listening booklet with no audio in it is not a listening
             # section, and the library has to be able to say so: one paper
@@ -631,6 +639,14 @@ def main():
             "period": exam["period"],
             "periodLabel": exam["periodLabel"],
             "totalQuestions": exam["totalQuestions"],
+            # Per-skill counts in the index too, so the library can lay a
+            # paper out the way the JLPT is actually sat - which is not how
+            # the archive split the booklets. At N1 and N2 the "vocabulary"
+            # booklet carries the grammar questions as well, and the real
+            # sitting combines language knowledge and reading into one
+            # paper; at N3 and below they are separate papers. Only the
+            # categories know that.
+            "categoryCounts": exam.get("categoryCounts") or {},
             # How many of this part's questions actually have a recording.
             # A listening booklet with no audio in it is not a listening
             # section, and the library has to be able to say so: one paper

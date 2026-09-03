@@ -127,9 +127,8 @@ body > main { flex: 1 0 auto; }
   gap: 12px;
 }
 
-/* The same mark as the installed app icon: 日, white on the brand gradient.
-   It used to read "JL", which meant the icon on a phone home screen and the
-   badge at the top of the site were two different marks for one thing. */
+/* JL, white on the brand gradient - the same mark as the installed app
+   icon. */
 .brand-mark {
   width: 40px;
   height: 40px;
@@ -138,10 +137,8 @@ body > main { flex: 1 0 auto; }
   border-radius: 12px;
   background: linear-gradient(135deg, var(--navy), var(--blue));
   color: #fff;
-  font-size: 1.46rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .brand-name {
@@ -421,7 +418,16 @@ body > main { flex: 1 0 auto; }
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
   gap: clamp(24px, 3vw, 48px);
-  align-items: center;
+  /* Both columns run the full height of the taller one, so the headline
+     starts level with the top of the level panel and the buttons finish
+     level with its bottom. Centred, the two blocks were eighteen pixels out
+     at each end - close enough to look like a mistake rather than a choice. */
+  align-items: stretch;
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Five ways straight into the library, one per level. */
@@ -509,7 +515,7 @@ body > main { flex: 1 0 auto; }
 }
 
 .hero-copy h1 {
-  margin: 18px 0 12px;
+  margin: 0 0 12px;
   max-width: 22ch;
   font-size: clamp(2.3rem, 3.2vw, 3.7rem);
   line-height: 0.98;

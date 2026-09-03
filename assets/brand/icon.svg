@@ -15,11 +15,15 @@
   <rect width="512" height="512" fill="url(#bg)"/>
   <rect width="512" height="512" fill="url(#sheen)"/>
   <g transform="translate(256 256) scale(1) translate(-256 -256)">
-    <!-- 日: square corners bar one soft shoulder top-right, the way a gothic
-         face draws it. Drawn as geometry so it never depends on a font. -->
-    <path d="M148 76 H340 a24 24 0 0 1 24 24 V436 H316 V100 H196 V436 H148 Z"
-          fill="#ffffff"/>
-    <rect x="148" y="236" width="216" height="40" fill="#ffffff"/>
-    <rect x="148" y="396" width="216" height="40" fill="#ffffff"/>
+    <!-- The two glyphs together span 128-430 across and 128-398 down, so the
+         pair is nudged to sit on the tile's real centre. -->
+    <g transform="translate(-23 -7) translate(256 256) scale(0.94) translate(-256 -256)">
+    <!-- JL, drawn as geometry rather than type so it rasterises identically
+         wherever this is built. J: a stem with a hook; L: a stem with a foot.
+         Both 46 units thick, both sitting on the same baseline. -->
+    <path d="M236 128 H282 V330 a68 68 0 0 1 -68 68 h-14 a68 68 0 0 1 -68 -68 v-18 h46 v18
+             a22 22 0 0 0 22 22 h14 a22 22 0 0 0 22 -22 Z" fill="#ffffff"/>
+    <path d="M312 128 H358 V352 H430 V398 H312 Z" fill="#ffffff"/>
+    </g>
   </g>
 </svg>
