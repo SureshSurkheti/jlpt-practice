@@ -555,8 +555,33 @@
 
 .q-choices { display: grid; gap: 10px; }
 .q-choices.is-numeric {
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(80px, 100%), 1fr));
 }
+
+/* Short answers go across the line, the way the printed paper sets them, and
+   only full sentences get a line each. auto-fit rather than a fixed column
+   count so the same rule gives four across on a desktop and two on a phone
+   without a second breakpoint. See longestChoice() in exam-player.js. */
+/* min() inside the minmax, not a bare pixel value: a grid track with a fixed
+   minimum cannot shrink below it, so on a 320px screen the 300px medium
+   track forced its whole section 18px past the viewport and scrolled the
+   page sideways. min(Npx, 100%) lets the track collapse to the column when
+   the column is the smaller of the two.
+
+   146 rather than 158 on the short tier so a 390px phone still gets two
+   across - which is where halving the scroll matters most - while a 320px
+   one falls back to one and keeps the answers readable. */
+.q-choices.is-short {
+  grid-template-columns: repeat(auto-fit, minmax(min(146px, 100%), 1fr));
+}
+.q-choices.is-medium {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+/* A marked paper adds "Correct" / "Incorrect" to the row it belongs to, which
+   a narrow column cannot hold beside the answer. Let it drop underneath. */
+.is-reviewed .q-choices.is-short .choice,
+.q-choices.is-short .choice:disabled { flex-wrap: wrap; }
+.q-choices.is-short .choice-mark { margin-left: 38px; }
 
 .choice {
   display: flex;
@@ -1495,6 +1520,24 @@
    ones stop being a hallway. The passage layout is already narrower than this,
    so it is unaffected. */
 .paper-question { max-width: min(100%, 78ch); }
+
+
+/* One column, centred, for everything that is not a reading block.
+
+   The card spans the container so it lines up with the command bar above it,
+   but its contents stop at a reading measure - which left a third of the
+   card empty on the right of every question and read as a layout that had
+   failed rather than one that had chosen. Centred, the same whitespace
+   becomes a margin on both sides, and the heading, the instruction and the
+   questions still share one left edge.
+
+   Reading blocks are exempt: the passage and its questions need the width. */
+.paper-section:not(.has-passage) .section-head > *,
+.paper-section:not(.has-passage) > .q-audio,
+.paper-block:not(.has-passage) .block-questions {
+  max-width: 78ch;
+  margin-inline: auto;
+}
 
 /* ==========================================================================
    Phones: keep the sticky chrome small

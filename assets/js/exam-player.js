@@ -355,6 +355,25 @@
     return m ? t(m.key) : "";
   }
 
+  /* The longest answer on offer, in characters, with any markup stripped.
+
+     It decides how the four options are laid out. On a printed JLPT paper
+     short answers are set across the line - 1 ちょうさつ 2 ちょうさ 3 かんさ
+     4 かんさつ - and only full sentences get a line each. Here every option
+     was a full-width slab whatever was in it, so a reading like ちょうさつ
+     sat in a 787px box with 60px of text in it, and four of those made a
+     vocabulary question three screens tall in a timed exam.
+
+     Roughly half the questions on the site are in that short bracket. */
+  function longestChoice(q) {
+    var longest = 0;
+    q.choices.forEach(function (c) {
+      var n = c.replace(/<[^>]*>/g, "").trim().length;
+      if (n > longest) longest = n;
+    });
+    return longest;
+  }
+
   function isBlankChoices(q) {
     return q.choices.every(function (c) {
       return !c.replace(/<[^>]*>/g, "").trim();
@@ -1215,7 +1234,13 @@
   }
 
   function buildSection(section) {
-    var node = el("section", "paper-section");
+    /* A section holding a reading passage lays out in two columns and uses
+       the whole card; everything else is one centred column. The heading and
+       the instruction have to follow whichever it is, or their left edge
+       stops agreeing with the questions underneath them. */
+    var hasPassage = section.blocks.some(function (b) { return !!b.passage; });
+    var node = el("section", "paper-section" +
+      (hasPassage ? " has-passage" : ""));
     var meta = CATEGORY_META[section.category] || { label: "", sub: "" };
 
     var head = el("div", "section-head");
@@ -1343,7 +1368,10 @@
     }
     node.appendChild(head);
 
-    var choices = el("div", "q-choices" + (blank ? " is-numeric" : ""));
+    var width = blank ? " is-numeric"
+      : longestChoice(q) <= 8 ? " is-short"
+      : longestChoice(q) <= 16 ? " is-medium" : "";
+    var choices = el("div", "q-choices" + width);
     q.choices.forEach(function (text, ci) {
       var value = ci + 1;
       var cls = "choice";
