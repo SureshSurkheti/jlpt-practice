@@ -545,7 +545,7 @@ def write_language(lang):
     # the index does not need a "more guides" list under a list of the same
     # three, nor a call to action it already is
     html = re.sub(r'<nav class="guide-more" aria-label="[^"]*">', '<nav hidden>', html)
-    io.open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(finish_html(html))
+    io.open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(finish_html(html, table, EN_TABLE))
     print("%-6s %-24s  index" % (lang, "index.html"))
 
     for p in pages:
@@ -564,7 +564,7 @@ def write_language(lang):
             # So the chip returns here, and here only.
             back=' data-back-to="index.html"',
             **common(lang, p["slug"], ui, table))
-        io.open(os.path.join(d, p["slug"]), "w", encoding="utf-8").write(finish_html(html))
+        io.open(os.path.join(d, p["slug"]), "w", encoding="utf-8").write(finish_html(html, table, EN_TABLE))
         words = len(" ".join(re.sub(r"<[^>]+>", " ", p["body"]).split()).split())
         print("%-6s %-24s %5d words" % (lang, p["slug"], words))
 

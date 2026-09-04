@@ -717,12 +717,19 @@ function mountPageBack() {
   if (!target) return;
 
   var main = document.querySelector("main");
-  if (!main || document.getElementById("pageBack")) return;
+  if (!main) return;
 
-  var a = document.createElement("a");
-  a.id = "pageBack";
-  a.className = "chip-back page-back";
-  a.href = target;
+  /* The build writes the chip into the page (see mount_back in
+     build_static.py), so it is on screen from the first paint; this adopts
+     it. Creating it here is kept for a page the build did not produce. */
+  var a = document.getElementById("pageBack");
+  var fresh = !a;
+  if (fresh) {
+    a = document.createElement("a");
+    a.id = "pageBack";
+    a.className = "chip-back page-back";
+    a.href = target;
+  }
 
   function label() {
     a.innerHTML = '<span aria-hidden="true">\u2190</span> ' + t("nav.back");
@@ -748,7 +755,7 @@ function mountPageBack() {
     });
   }
 
-  main.insertBefore(a, main.firstChild);
+  if (fresh) main.insertBefore(a, main.firstChild);
 }
 
 /* ==========================================================================

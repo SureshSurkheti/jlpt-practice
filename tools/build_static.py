@@ -179,7 +179,27 @@ def asset_version(rel):
 ASSET_REF = re.compile(r'((?:href|src)=")((?:\.\./|/)?)(assets/(?!fonts/)[^"?#]+)"')
 
 
-def finish_html(html):
+BACK_ATTR = re.compile(r'<body[^>]*\sdata-back-to="([^"]+)"')
+
+
+def mount_back(html, table, en):
+    """The Back chip, written into the page instead of inserted by site.js
+    after the first paint - which pushed everything below it down by a line
+    and a half on every page that has one (a layout shift of 0.22 on the
+    progress page). site.js adopts this element and wires the same-origin
+    history behaviour to it; the markup is identical to what it built."""
+    m = BACK_ATTR.search(html)
+    if not m or 'id="pageBack"' in html:
+        return html
+    chip = ('<a id="pageBack" class="chip-back page-back" href="%s">'
+            '<span aria-hidden="true">\u2190</span> %s</a>\n      '
+            % (esc(m.group(1)), esc(t(table, "nav.back", en))))
+    return re.sub(r'(<main\b[^>]*>\s*)', lambda mm: mm.group(1) + chip, html, count=1)
+
+
+def finish_html(html, table=None, en=None):
+    if table is not None:
+        html = mount_back(html, table, en if en is not None else table)
     """The last pass over every page before it is written.
 
     Two things, both about the network. Every asset reference gets ?v=<hash>
@@ -986,7 +1006,7 @@ def main():
                 "</footer>",
                 language_links(langs, page, lang, names, table, en) + "</footer>")
 
-            io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(finish_html(html))
+            io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(finish_html(html, table, en))
             if indexable:
                 written.append((page_url(lang, page), lang, page))
 
@@ -1103,7 +1123,7 @@ def main():
                                     else 'href="../')
 
                 io.open(os.path.join(base, "study", "%s-%s.html" % (level, kind)),
-                        "w", encoding="utf-8").write(finish_html(html))
+                        "w", encoding="utf-8").write(finish_html(html, table, en))
                 written.append((url, lang, "study"))
                 study_pages += 1
 
