@@ -987,6 +987,20 @@ body > main { flex: 1 0 auto; }
   border-top: 1px solid var(--line);
   padding-top: 18px;
 }
+/* The reader's own pages - quiz, progress, notebook - on every page. They
+   are not in the main navigation, and the progress page was reachable from
+   nowhere at all: nobody would have found the notebook without finishing a
+   paper first. */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin-top: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.footer-links a { color: var(--blue); text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
 
 /* The generator writes one real link per translation into every page. The
    picker in the header is a <select>, which nothing but a person with a

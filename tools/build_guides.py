@@ -116,6 +116,11 @@ HEAD = """<!DOCTYPE html>
         <div>© 2026 JLPT Practice</div>
         <div data-i18n="footer.tagline">{tagline}</div>
       </div>
+      <nav class="container footer-links" aria-label="Your study">
+        <a href="../quiz.html" data-i18n="quiz.title">{ftquiz}</a>
+        <a href="../stats.html" data-i18n="stats.title">{ftstats}</a>
+        <a href="../review.html" data-i18n="review.title">{ftreview}</a>
+      </nav>
 {langlinks}    </footer>
 
     <script src="/assets/js/i18n.js"></script>
@@ -485,6 +490,9 @@ def common(lang, slug, ui, table):
         ctabrowse=esc(ui["ctaBrowse"]), ctalevels=esc(ui["ctaLevels"]),
         moreh=esc(ui["more"]),
         tagline=esc(t(table, "footer.tagline", EN_TABLE)),
+        ftquiz=esc(t(table, "quiz.title", EN_TABLE)),
+        ftstats=esc(t(table, "stats.title", EN_TABLE)),
+        ftreview=esc(t(table, "review.title", EN_TABLE)),
         langlinks=lang_links(lang, slug, table),
         # The picker lists only the languages the guides exist in. The
         # picker's own code maps /ko/guide/x.html to /ne/guide/x.html, so
