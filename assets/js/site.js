@@ -939,6 +939,51 @@ function renderAll() {
   renderExamCountdown();
 }
 
+/* Offline support.
+
+   Registered after load, not during it: the worker is a background nicety and
+   must never compete with the page's own requests for a first-time visitor,
+   who gets no benefit from it on that visit anyway.
+
+   The update path is the part worth being careful about. A new worker
+   normally waits for every tab of the site to close before taking over, which
+   on a study site can be days. So when one is found waiting we tell it to
+   activate, and reload once - guarded by a flag so an activation loop cannot
+   start. Documents are fetched network-first in sw.js as well, so even if all
+   of this failed the worst case is one stale paint, not a site frozen on an
+   old build.
+
+   Nothing is registered off https or localhost, and nothing is registered if
+   the browser has no service worker at all. */
+function wireServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  if (location.protocol !== 'https:' && location.hostname !== 'localhost'
+      && location.hostname !== '127.0.0.1') return;
+
+  navigator.serviceWorker.register('/sw.js').then((reg) => {
+    const nudge = (worker) => {
+      if (!worker) return;
+      worker.addEventListener('statechange', () => {
+        if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+          worker.postMessage('skip-waiting');
+        }
+      });
+    };
+    if (reg.waiting && navigator.serviceWorker.controller) {
+      reg.waiting.postMessage('skip-waiting');
+    }
+    nudge(reg.installing);
+    reg.addEventListener('updatefound', () => nudge(reg.installing));
+  }).catch(() => { /* a failed registration must not break the page */ });
+
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloaded) return;
+    reloaded = true;
+    location.reload();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   wireNavScroll();
   wireStickyHeader();
@@ -949,6 +994,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAll();
   wireBrand();
 });
+
+window.addEventListener('load', wireServiceWorker);
 
 /* Switching language re-renders the JS-built pages so nothing stays behind. */
 document.addEventListener('languagechange', renderAll);

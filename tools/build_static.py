@@ -23,6 +23,7 @@ for a browser; the difference is only what arrives before JavaScript runs.
 Run:  python3 tools/build_static.py
 """
 
+import hashlib
 import io
 import json
 import os
@@ -225,9 +226,50 @@ CONTACT_EMAIL = "surkhetisuresh123@gmail.com"
 COUNTS = {}
 
 
+def clip_desc(text, budget=155):
+    """Trim a meta description to what a search engine will actually show.
+
+    Measured by display weight, not characters: Google truncates a snippet on
+    pixel width, and a CJK glyph is about twice as wide as a Latin one. So the
+    budget is ~150 Latin characters or ~75 Japanese ones, which is why the
+    Japanese pages needed no trimming while the Vietnamese, Filipino,
+    Indonesian and Brazilian ones ran to 188.
+
+    Cuts at a sentence end where there is one in range, otherwise at a word
+    boundary, and only adds an ellipsis when it actually cut something. CJK
+    has no spaces, so the word-boundary step is skipped there.
+    """
+    def weight(s):
+        return sum(2 if ord(c) > 0x2E7F else 1 for c in s)
+
+    text = " ".join(text.split())
+    if weight(text) <= budget:
+        return text
+
+    out = []
+    used = 0
+    for ch in text:
+        w = 2 if ord(ch) > 0x2E7F else 1
+        if used + w > budget:
+            break
+        out.append(ch)
+        used += w
+    cut = "".join(out)
+
+    for stop in ("\u3002", ". ", "! ", "? ", "\uff01", "\uff1f"):
+        i = cut.rfind(stop)
+        if i > budget // 3:
+            return cut[:i + len(stop)].strip()
+
+    i = cut.rfind(" ")
+    if i > budget // 3:
+        cut = cut[:i]
+    return cut.rstrip(" ,;:\u3001") + "\u2026"
+
+
 def meta_for(lang, page, table, en):
     body_key = EN_META[page][1]
-    desc = t(table, body_key, en)
+    desc = clip_desc(t(table, body_key, en))
     if lang == DEFAULT_LANG:
         return EN_META[page][0], desc
     title = t(table, TITLE_KEY[page], en)
@@ -684,9 +726,9 @@ def main():
                 lv = level.upper()
                 noun = t(table, NOUN_KEY[kind], en)
                 title = "%s %s — %s" % (lv, noun, SITE_NAME)
-                desc = "%s %s: %d %s. %s" % (
+                desc = clip_desc("%s %s: %d %s. %s" % (
                     lv, noun, n, t(table, COUNT_KEY[kind], en),
-                    t(table, "study.body", en))
+                    t(table, "study.body", en)))
 
                 url = study_url(lang, level, kind)
                 ld = ('    <script type="application/ld+json">'
@@ -815,6 +857,29 @@ def main():
         "Disallow: /data/dict/\n\n"
         "Sitemap: %s/sitemap.xml\n" % SITE)
     print("robots.txt written")
+
+    # Stamp the service worker with a hash of what it caches. A deploy that
+    # touches no asset leaves the version alone, so nobody's cache is dropped
+    # for nothing; a deploy that changes one of them invalidates it exactly
+    # once. Hashing the files rather than the clock is what makes that true.
+    sw_path = os.path.join(ROOT, "sw.js")
+    if os.path.exists(sw_path):
+        covered = ["assets/css/styles.css", "assets/css/exam.css",
+                   "assets/js/i18n.js", "assets/js/site.js",
+                   "assets/js/exam-player.js", "assets/js/study.js",
+                   "offline.html"]
+        h = hashlib.sha1()
+        for rel in covered:
+            fp = os.path.join(ROOT, rel)
+            if os.path.exists(fp):
+                with open(fp, "rb") as fh:
+                    h.update(fh.read())
+        stamp = h.hexdigest()[:12]
+        sw = io.open(sw_path, encoding="utf-8").read()
+        sw = re.sub(r'var VERSION = "[^"]*";',
+                    'var VERSION = "%s";' % stamp, sw, count=1)
+        io.open(sw_path, "w", encoding="utf-8").write(sw)
+        print("sw.js version %s" % stamp)
 
 
 if __name__ == "__main__":

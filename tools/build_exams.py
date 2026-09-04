@@ -52,7 +52,7 @@ ALLOWED_TAGS = {
     "ul", "ol", "li", "small",
 }
 ALLOWED_ATTRS = {
-    "img": {"src", "alt", "width", "height"},
+    "img": {"src", "alt", "width", "height", "loading", "decoding"},
     "td": {"colspan", "rowspan"},
     "th": {"colspan", "rowspan"},
     "table": {"border"},
@@ -220,8 +220,17 @@ def clean_html(fragment, japanese=False):
                 # source alt text is the site's Vietnamese boilerplate
                 val = "Exam figure"
             out.append(f'{key}="{val}"')
-        if tag == "img" and not any(a.startswith("alt=") for a in out):
-            out.append('alt="Exam figure"')
+        if tag == "img":
+            if not any(a.startswith("alt=") for a in out):
+                out.append('alt="Exam figure"')
+            # Every figure is a Wayback URL, and each one costs a 302 plus
+            # 2-6 seconds and up to 375KB - measured, not guessed. A listening
+            # 問題 carries up to ten of them, and the browser will only open
+            # about six connections to a host, so they queue. Deferring the
+            # ones below the fold means a section starts with the one or two
+            # you can actually see instead of all ten.
+            out.append('loading="lazy"')
+            out.append('decoding="async"')
         selfclose = " /" if tag in ("br", "img") else ""
         return f"<{tag}{(' ' + ' '.join(out)) if out else ''}{selfclose}>"
 

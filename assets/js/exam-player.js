@@ -2362,17 +2362,23 @@
       var sec = sectionOf(q, state.exam.level);
       var sk = skills[item.category] ||
         (skills[item.category] = { right: 0, total: 0 });
-      sk.total++;
-      if (state.answers[item.key] && q.answer &&
-          state.answers[item.key] === q.answer) sk.right++;
+      /* Accuracy is out of what could be marked. One question in the whole
+         corpus - n1-2022-12 listening 6番 - reached us without an answer key,
+         and counting it in the denominator meant a perfect paper read as 105
+         of 106. The scaled score already excluded it; this is the headline
+         catching up. */
+      if (q.answer) {
+        sk.total++;
+        if (state.answers[item.key] === q.answer) sk.right++;
+      }
       var b = buckets[sec] || (buckets[sec] = {
-        earned: 0, max: 0, right: 0, wrong: 0, blank: 0, total: 0
+        earned: 0, max: 0, right: 0, wrong: 0, blank: 0, total: 0, markable: 0
       });
       var picked = state.answers[item.key] || null;
       var points = q.points || 1;
 
       b.total++;
-      if (q.answer) b.max += points;
+      if (q.answer) { b.max += points; b.markable++; }
 
       if (!picked) { b.blank++; blankTotal++; }
       else if (!q.answer) { /* no key - cannot be marked */ }
@@ -2393,6 +2399,7 @@
         key: key,
         label: t(SECTION_LABEL[key] || key),
         right: b.right, wrong: b.wrong, blank: b.blank, total: b.total,
+        markable: b.markable,
         earned: b.earned, maxRaw: b.max,
         scaled: scaled, cap: cap, minimum: minimum,
         clearedMin: scaled >= minimum
@@ -2405,6 +2412,7 @@
     var scaledTotal = sections.reduce(function (s, x) { return s + x.scaled; }, 0);
     var capTotal = sections.reduce(function (s, x) { return s + x.cap; }, 0);
     var qTotal = sections.reduce(function (s, x) { return s + x.total; }, 0);
+    var qMarkable = sections.reduce(function (s, x) { return s + x.markable; }, 0);
 
     var lv = LEVELS[state.exam.level] || LEVELS.N3;
     var passMark = Math.round(lv.pass * (capTotal / 180));
@@ -2438,8 +2446,9 @@
       rightTotal: rightTotal,
       wrongTotal: wrongTotal,
       blankTotal: blankTotal,
-      qTotal: qTotal,
-      percent: qTotal ? Math.round((rightTotal / qTotal) * 100) : 0,
+      qTotal: qMarkable,
+      qAll: qTotal,
+      percent: qMarkable ? Math.round((rightTotal / qMarkable) * 100) : 0,
       partial: capTotal < 180,
       timeUp: !!timeUp
     };
