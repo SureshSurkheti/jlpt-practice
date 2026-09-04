@@ -1984,8 +1984,15 @@
     if (!item) return;
     var tag = sectionTag(item.q.instruction);
     var meta = CATEGORY_META[item.category] || {};
-    label.textContent = (tag ? tag + " · " : "") +
-      metaLabel(CATEGORY_META, item.category);
+    /* Two parts, because on a laptop the bar cannot hold both. The 問題 number
+       is the half worth keeping - it changes as you scroll and the section
+       head it comes from has usually scrolled away - while the category is
+       already the name of the selected paper tab. CSS drops the category
+       below 1200px; nothing is lost that is not on screen anyway. */
+    label.innerHTML =
+      (tag ? '<b class="bar-section-tag">' + esc(tag) + "</b>" : "") +
+      '<span class="bar-section-cat">' + (tag ? " · " : "") +
+        esc(metaLabel(CATEGORY_META, item.category)) + "</span>";
   }
 
   /* Which question is at the top of the viewport, so the section label in the

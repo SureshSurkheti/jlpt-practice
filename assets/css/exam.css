@@ -274,9 +274,28 @@
 }
 .exam-back-arrow { font-size: 1rem; line-height: 1; }
 .exam-bar-period { white-space: nowrap; }
-.exam-bar-progress { flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0; }
+/* No min-width:0 here. With it, this group could be squeezed narrower than
+   the count inside it - and the count is nowrap, so instead of shrinking it
+   printed over the section label to its right. Between 900px and 1200px
+   "0 / 106 answered" and "問題1 · Vocabulary" were drawn on top of each
+   other. The group now refuses to go below its own contents; the bar takes
+   the pressure on the progress track, which is the one part of it that can
+   lose width without losing meaning. */
+.exam-bar-progress { flex: 1 1 auto; display: flex; align-items: center; gap: 12px; }
 .exam-bar-progress span { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
-.progress-track { flex: 1; height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; min-width: 60px; }
+.progress-track { flex: 1 1 40px; height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; min-width: 40px; }
+
+/* And a floor under the whole thing: if a language sets a section label long
+   enough to run the bar out of room anyway, the label gives way rather than
+   the layout. */
+.exam-bar-tools { min-width: 0; }
+.bar-section {
+  min-width: 0;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .progress-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--success)); transition: width 0.3s ease; }
 .exam-bar-tools { display: flex; align-items: center; gap: 12px; }
 
@@ -435,9 +454,21 @@
   border-radius: 16px;
   transition: background 0.5s ease, box-shadow 0.5s ease;
 }
+/* The flash that marks the question you jumped to.
+
+   The signal is the ring, not the wash. A tint of the level colour towards
+   white carries almost no luminance when the level colour is already light:
+   N1's gold at 10% came out at 1.08:1 against the card, which is quieter
+   than the question band itself, so on every N1 paper the flash was the
+   faintest thing in a question rather than the loudest. Raising the
+   percentage does not fix it - gold only reaches 1.18:1 even at 22%.
+
+   So the ring carries it. It is the level colour at real strength rather
+   than a mix towards white, which means it is as visible on gold as on
+   navy, and it does not depend on luminance at all. The wash stays a wash. */
 .paper-question.is-target {
-  background: color-mix(in srgb, var(--level-color) 10%, #fff);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--level-color) 10%, transparent);
+  background: color-mix(in srgb, var(--level-color) 14%, #fff);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--level-color) 42%, transparent);
 }
 
 .pq-head {
@@ -472,7 +503,7 @@
    those rows are marked has-media and left alone. */
 .pq-head:not(.has-media) {
   padding: 7px 0;
-  background: #eef2f7;
+  background: #e4eaf2;
   border-radius: 12px;
 }
 
@@ -577,7 +608,11 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin: 0 0 16px;
+  /* The space above is back. It only applies in flow - when the player is
+     pinned, `top` governs and it still docks flush against the command bar,
+     which is the point of the square top edge. Sitting at the start of its
+     own section it wants separating from the instruction block above it. */
+  margin: 16px 0;
   padding: 7px 14px;
   background: #eef4fb;
   border: 1px solid rgba(45, 110, 180, 0.28);
@@ -1531,13 +1566,28 @@
 
 /* The command bar already drops its progress meter onto its own row on small
    screens. With the word-meanings button added to the tools group, that group
-   has to be able to wrap as well, or it pushes the page sideways. */
-@media (max-width: 860px) {
+   has to be able to wrap as well, or it pushes the page sideways.
+
+   From 1024px, not 860. Between those two the group had run out of room
+   without being allowed to do anything about it, so "Show word meanings"
+   was drawn over the section label beside it. Wrapping is a last resort here
+   and mostly does not happen: the smaller button usually buys back enough
+   for one row. */
+@media (max-width: 1024px) {
   .exam-bar-tools {
     flex-wrap: wrap; justify-content: flex-end;
     gap: 8px; min-width: 0;
   }
   .words-all { padding: 6px 10px; font-size: .78rem; }
+}
+
+/* Below 900 the tools were taking two rows of their own while the progress
+   meter still sat beside them, which cost more height than simply giving the
+   meter its own row - the arrangement the phone layout already uses. 899
+   rather than 900 so a 900px window keeps its single row. */
+@media (max-width: 899px) {
+  .exam-bar-inner { flex-wrap: wrap; gap: 12px; }
+  .exam-bar-progress { order: 3; width: 100%; flex-basis: 100%; }
 }
 
 /* On a reading passage the button sits above the text, so cap the open list
@@ -1638,8 +1688,16 @@
   .exam-back-text { display: none; }
   .exam-back { padding: 7px 11px; }
 
-  /* Which sitting of the exam this is does not change while you answer it. */
+}
+
+/* Which sitting of the exam this is does not change while you answer it, and
+   the bar runs out of room for it well before the phone breakpoint. */
+@media (max-width: 1200px) {
   .exam-bar-period { display: none; }
+  /* The paper's name is on the selected tab a few pixels below. The 問題
+     number is not anywhere else once the section head has scrolled off, so
+     that is the half that stays. */
+  .bar-section-cat { display: none; }
 }
 
 /* The identity and the tools were 7px wider than a 390px phone, so they wrapped
