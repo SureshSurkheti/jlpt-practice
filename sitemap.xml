@@ -1221,22 +1221,42 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/ja/guide/</loc>
+    <loc>https://jlpt.sureshsurkheti.com/fil/guide/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/ja/guide/jlpt-scoring.html</loc>
+    <loc>https://jlpt.sureshsurkheti.com/fil/guide/jlpt-scoring.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/ja/guide/n4-to-n3.html</loc>
+    <loc>https://jlpt.sureshsurkheti.com/fil/guide/n4-to-n3.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jlpt.sureshsurkheti.com/ja/guide/which-jlpt-level.html</loc>
+    <loc>https://jlpt.sureshsurkheti.com/fil/guide/which-jlpt-level.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ko/guide/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ko/guide/jlpt-scoring.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ko/guide/n4-to-n3.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ko/guide/which-jlpt-level.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.9</priority>
   </url>
@@ -1277,26 +1297,6 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/vi/guide/which-jlpt-level.html</loc>
-    <lastmod>2026-09-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/zh/guide/</loc>
-    <lastmod>2026-09-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/zh/guide/jlpt-scoring.html</loc>
-    <lastmod>2026-09-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/zh/guide/n4-to-n3.html</loc>
-    <lastmod>2026-09-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jlpt.sureshsurkheti.com/zh/guide/which-jlpt-level.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.9</priority>
   </url>
