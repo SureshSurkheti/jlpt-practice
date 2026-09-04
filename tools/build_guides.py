@@ -12,7 +12,8 @@ engine may read. These are written to be the indexable half: real answers to
 questions people actually type, using facts the site already holds so the two
 can never disagree.
 
-The translations are machine-made and say so on the page, with the English
+The header picker lists only these languages. The translations are
+machine-made and say so on the page, with the English
 original one click away, until a native speaker has read them. They exist
 because the site's stated readers are learners in Japan from Nepal, Vietnam
 and China, and an English-only guide reaches none of them in search.
@@ -77,6 +78,15 @@ HEAD = """<!DOCTYPE html>
           <a href="../about.html" data-i18n="nav.about">{navabout}</a>
           <a class="nav-guides active" href="{guideshref}" data-i18n="nav.guides">{navguides}</a>
         </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">{langlabel}</span>
+            <select id="languageSelect" aria-label="{langlabel}" data-i18n-attr="aria-label:lang.label">
+{langoptions}
+            </select>
+          </label>
+        </div>
       </div>
     </header>
 
@@ -476,6 +486,13 @@ def common(lang, slug, ui, table):
         moreh=esc(ui["more"]),
         tagline=esc(t(table, "footer.tagline", EN_TABLE)),
         langlinks=lang_links(lang, slug, table),
+        # The picker lists only the languages the guides exist in. The
+        # picker's own code maps /ko/guide/x.html to /ne/guide/x.html, so
+        # a language without a guide would be a link to a 404.
+        langlabel=esc(t(table, "lang.label", EN_TABLE)),
+        langoptions="\n".join('              <option value="%s"%s>%s</option>'
+                               % (l, ' selected' if l == lang else '', esc(NAMES[l]))
+                               for l in LANGS),
         langscript="" if lang == "en" else
                    '    <script src="/assets/i18n/%s.js"></script>\n' % lang,
         note="" if lang == "en" else
