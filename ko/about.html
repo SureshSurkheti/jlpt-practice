@@ -39,7 +39,7 @@
     <meta name="twitter:title" content="소개 — JLPT Practice" />
     <meta name="twitter:description" content="일본에 사는 사람들을 위한 무료 JLPT 학습 사이트." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ko/#website","url":"https://jlpt.sureshsurkheti.com/ko/","name":"JLPT Practice","inLanguage":"ko","description":"일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.","publisher":{"@type":"Person","name":"Suresh Surkheti"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ko/about.html#webpage","url":"https://jlpt.sureshsurkheti.com/ko/about.html","name":"소개 — JLPT Practice","description":"일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.","inLanguage":"ko","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ko/#website"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ko/#website","url":"https://jlpt.sureshsurkheti.com/ko/","name":"JLPT Practice","inLanguage":"ko","description":"일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ko/about.html#webpage","url":"https://jlpt.sureshsurkheti.com/ko/about.html","name":"소개 — JLPT Practice","description":"일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.","inLanguage":"ko","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ko/#website"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
@@ -93,53 +93,67 @@
         <p data-i18n="about.body">일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.</p>
       </section>
 
-      <!-- Prose on the left, the attribution and rights material beside it
-           on a wide screen. As one centred column it left half a desktop
-           empty and set five paragraphs of centred body text, which has no
-           left edge to return to. -->
-      <div class="about-layout">
-      <section class="about-plain">
+      <!-- Two paragraphs, because two is what the page is for: what a paper
+           does here, and what happens to your answers. What used to be p3 -
+           which services the audio and the diagrams come from - is a caveat
+           about how the site is put together, so it sits with the notices
+           below rather than in the middle of the prose. p4 was a count of the
+           words, kanji and languages, which the study page already draws as a
+           table and draws better.
+
+           The prose used to run down the left with the notices in a column
+           beside it, which was right when there were five paragraphs of it.
+           At two the left column was mostly empty and the page came out
+           taller than before the cut. So the prose leads at full width, and
+           the notices sit underneath it in two columns of fine print: an
+           About page a reader can finish, with nothing removed from it. -->
+      <section class="about-plain about-lede">
         <p data-i18n="about.p1">여기 있는 시험지는 JLPT와 같은 형식으로 풀 수 있습니다 — 시간 측정, 자동 채점, 해설과 청해 스크립트 제공.</p>
         <p data-i18n="about.p2">계정도 가입도 없습니다. 답안과 점수, 진행 상황은 이 브라우저에만 저장되며 어디에도 전송되지 않습니다.</p>
-        <p data-i18n="about.p3">청해 음성은 Google 드라이브에서, 시험 도판은 Internet Archive에서 불러옵니다. 이 두 부분은 인터넷 연결이 필요하며, 다른 임베드 파일과 마찬가지로 해당 서비스에 요청이 남습니다.</p>
-        <!-- The same jlpt.jp link used to sit here as well as at the foot of
-             the rights notice below. One of them is a bare link with nothing
-             leading into it; the other is the point of a sentence offering a
-             rights holder a clean alternative. The second one is the one
-             worth keeping. -->
-        <p data-i18n="about.p4">시험지 외에도 레벨별 학습 목록이 있습니다. 읽기·로마자·영어 뜻이 붙은 단어 9,639개, 획순 애니메이션이 있는 한자 2,211자, 예문이 딸린 핵심 문법 패턴입니다. 인터페이스는 12개 언어를 지원하며, N5·N4 단어에는 네팔어 뜻도 있습니다.</p>
       </section>
 
-      <aside class="about-aside">
-      <section class="about-plain about-credits">
-        <h2 data-i18n="about.creditsTitle">크레딧</h2>
-        <p data-i18n="about.creditsCode">제작: Suresh Surkheti. 코드는 MIT 라이선스입니다.</p>
-        <p data-i18n-html="about.creditsWords">Word meanings and readings are derived from <a class="text-link" href="https://www.edrdg.org/jmdict/j_jmdict.html" target="_blank" rel="noopener">JMdict</a> © EDRDG, licensed <a class="text-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
-        <p data-i18n-html="about.creditsKanji">Kanji readings, meanings and JLPT levels come from <a class="text-link" href="https://www.edrdg.org/wiki/index.php/KANJIDIC_Project" target="_blank" rel="noopener">KANJIDIC2</a> © EDRDG, licensed <a class="text-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Stroke order is drawn from <a class="text-link" href="http://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> © Ulrich Apel, licensed <a class="text-link" href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>.</p>
-        <p data-i18n="about.creditsExams">시험 문제의 저작권은 JEES와 일본국제교류기금에 있습니다. 학습 목적으로만 게시합니다.</p>
-      </section>
+      <!-- Fine print, in two columns under the prose: how the site is put
+           together and what it is built from on the left, the rights notice
+           on the right. Nothing here is optional - the JMdict and KANJIDIC
+           attributions are a condition of CC BY-SA, and the takedown notice
+           is the site's own undertaking - so the work was to make them read
+           as notices rather than as the body of the page. -->
+      <div class="about-notices">
+        <div class="about-notes-col">
+          <section class="about-plain about-hosting">
+            <p data-i18n="about.p3">청해 음성은 Google 드라이브에서, 시험 도판은 Internet Archive에서 불러옵니다. 이 두 부분은 인터넷 연결이 필요하며, 다른 임베드 파일과 마찬가지로 해당 서비스에 요청이 남습니다.</p>
+          </section>
 
-      <!-- Stated plainly, in one place, in English so a rights holder can
-           read it: what is here, whose it is, that nothing is earned from
-           it, and exactly how to have it removed. A visible route to ask is
-           the difference between an email and an escalation. -->
-      <section class="about-plain about-rights" id="rights">
-        <h2 data-i18n="about.rightsTitle">Copyright and removal requests</h2>
-        <p data-i18n="about.rightsBody">The exam questions on this site are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation. They are not published with permission. This site is free, carries no advertising, sells nothing and earns nothing; the questions are here so that a learner can sit a paper under exam conditions, and for no other purpose.</p>
-        <p data-i18n-html="about.rightsRemove">If you hold rights in any material here and want it taken down, email <a class="text-link" href="mailto:surkhetisuresh123@gmail.com">surkhetisuresh123@gmail.com</a> and it will be removed - all of it if you ask - without argument and without requiring a formal notice. Please say which papers or files are involved. Anything reported this way is removed within 72 hours.</p>
-        <p data-i18n="about.rightsOfficial">If you are studying and want material that is unquestionably free to use, the JLPT organisers publish official sample questions themselves:</p>
-        <p>
-          <a class="text-link" href="https://www.jlpt.jp/e/samples/forlearners.html"
-             target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
-        </p>
-      </section>
-      </aside>
+          <section class="about-plain about-credits">
+            <h2 data-i18n="about.creditsTitle">크레딧</h2>
+            <p data-i18n="about.creditsCode">제작: Suresh Surkheti. 코드는 MIT 라이선스입니다.</p>
+            <p data-i18n-html="about.creditsWords">Word meanings and readings are derived from <a class="text-link" href="https://www.edrdg.org/jmdict/j_jmdict.html" target="_blank" rel="noopener">JMdict</a> © EDRDG, licensed <a class="text-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
+            <p data-i18n-html="about.creditsKanji">Kanji readings, meanings and JLPT levels come from <a class="text-link" href="https://www.edrdg.org/wiki/index.php/KANJIDIC_Project" target="_blank" rel="noopener">KANJIDIC2</a> © EDRDG, licensed <a class="text-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Stroke order is drawn from <a class="text-link" href="http://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> © Ulrich Apel, licensed <a class="text-link" href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>.</p>
+            <p data-i18n="about.creditsExams">시험 문제의 저작권은 JEES와 일본국제교류기금에 있습니다. 학습 목적으로만 게시합니다.</p>
+          </section>
+        </div>
+
+        <!-- Stated plainly, in one place, in English so a rights holder can
+             read it: what is here, whose it is, that nothing is earned from
+             it, and exactly how to have it removed. A visible route to ask is
+             the difference between an email and an escalation. -->
+        <section class="about-plain about-rights" id="rights">
+          <h2 data-i18n="about.rightsTitle">Copyright and removal requests</h2>
+          <p data-i18n="about.rightsBody">The exam questions on this site are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation. They are not published with permission. This site is free, carries no advertising, sells nothing and earns nothing; the questions are here so that a learner can sit a paper under exam conditions, and for no other purpose.</p>
+          <p data-i18n-html="about.rightsRemove">If you hold rights in any material here and want it taken down, email <a class="text-link" href="mailto:surkhetisuresh123@gmail.com">surkhetisuresh123@gmail.com</a> and it will be removed - all of it if you ask - without argument and without requiring a formal notice. Please say which papers or files are involved. Anything reported this way is removed within 72 hours.</p>
+          <p data-i18n="about.rightsOfficial">If you are studying and want material that is unquestionably free to use, the JLPT organisers publish official sample questions themselves:</p>
+          <p>
+            <a class="text-link" href="https://www.jlpt.jp/e/samples/forlearners.html"
+               target="_blank" rel="noopener">jlpt.jp — official sample questions</a>
+          </p>
+        </section>
       </div>
+
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>© 2026 Suresh Surkheti</div>
+        <div>© 2026 JLPT Practice</div>
         <div data-i18n="footer.tagline">더 똑똑하게 공부하고, 일본에서 더 잘 살기.</div>
       </div>
           <nav class="container lang-links" aria-label="언어">

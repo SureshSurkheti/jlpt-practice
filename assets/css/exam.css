@@ -447,6 +447,35 @@
   margin-bottom: 10px;
 }
 
+/* The question, on a tint.
+
+   The answers already sit in bordered boxes, so before this the stem was the
+   only unboxed thing in a question and the eye had nothing to catch on it
+   scanning down a 45-question paper. A band gives the question a shape of
+   its own and reads as an exam paper rather than a form.
+
+   The band is on the whole head row rather than on the stem alone, so it runs
+   from the booklet number to the flag instead of starting somewhere in the
+   middle of the row. No horizontal padding, so its edges land exactly on the
+   number and the flag - which are themselves on the same left and right edges
+   as the answer boxes underneath. The whole question keeps one left edge from
+   the number down to the last answer.
+
+   Kept very light - 1.12:1 against the card - deliberately. It has to be
+   quiet enough that .paper-question.is-target, the flash that marks the
+   question you jumped to, is still the loudest thing on the page: that one
+   tints the whole card, and this band sits inside it. Navy on the tint is
+   12.4:1, so nothing is lost in readability.
+
+   A listening stem is a label and a picture - "1ばん" and four drawings. A
+   band there is a wide grey field with three characters in the corner, so
+   those rows are marked has-media and left alone. */
+.pq-head:not(.has-media) {
+  padding: 7px 0;
+  background: #eef2f7;
+  border-radius: 12px;
+}
+
 /* The booklet's own number - 23, or 3番 in listening. A circle could not hold
    two characters plus 番, so it is a pill that grows with what is in it. */
 .pq-num {
@@ -469,32 +498,16 @@
 
 .pq-prompt {
   flex: 1;
-  font-size: 1.1rem;
-  line-height: 1.9;
+  /* 16.8px, not 17.6. A stem is unfurigana'd kanji that the reader has to
+     identify - that is the test - so this is as far down as it goes; 16px is
+     the usual floor for CJK body text and there is no margin below it. Most
+     of the height came out of the leading instead, which was set for prose
+     at 1.9 and only had to hold one or two lines. */
+  font-size: 1.05rem;
+  line-height: 1.78;
   color: var(--navy);
   font-weight: 600;
   min-width: 0;
-}
-/* The sentence being asked about, on a tint.
-
-   The answers already sit in bordered boxes, so before this the stem was the
-   only unboxed thing in a question and the eye had nothing to catch on it
-   scanning down a 45-question paper. A band gives the question a shape of
-   its own and reads as an exam paper rather than a form.
-
-   Kept very light - 1.12:1 against the card - deliberately. It has to be
-   quiet enough that .paper-question.is-target, the flash that marks the
-   question you jumped to, is still the loudest thing on the page: that one
-   tints the whole card, and this band sits inside it. Navy on the tint is
-   12.4:1, so nothing is lost in readability.
-
-   The negative left margin pulls the band out to sit under the text's own
-   left edge, so the tint does not visually indent the sentence. */
-.pq-prompt:not(.has-media) {
-  margin-left: -12px;
-  padding: 8px 12px;
-  background: #eef2f7;
-  border-radius: 8px;
 }
 .pq-prompt u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .pq-prompt img { margin: 14px 0; border-radius: 8px; }
@@ -564,8 +577,8 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin: 0 0 18px;
-  padding: 10px 16px;
+  margin: 0 0 16px;
+  padding: 7px 14px;
   background: #eef4fb;
   border: 1px solid rgba(45, 110, 180, 0.28);
   border-top: 0;
@@ -598,7 +611,7 @@
 /* Everything about the audio that is not a control: the note, and the way
    out when it will not play. Left in the section head so the pinned bar
    stays one line tall on a phone. */
-.q-audio-aside { margin-top: 14px; }
+.q-audio-aside { margin-top: 10px; }
 .q-audio-note { margin: 0; font-size: 0.76rem; color: var(--muted); }
 
 /* -- choices -- */
@@ -636,9 +649,12 @@
 .choice {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 13px;
   width: 100%;
-  padding: 13px 17px;
+  /* 11px, not 13. With a 28px number and a 28px line box this holds the row
+     at 50px, which is still above the 44px minimum touch target with the
+     border counted. */
+  padding: 11px 15px;
   text-align: left;
   background: var(--panel);
   border: 1.5px solid var(--line);
@@ -1371,7 +1387,7 @@
     padding: 8px 12px 10px;
   }
   .q-audio-label { margin-bottom: 4px; font-size: 0.78rem; }
-  .q-audio iframe { display: block; width: 100%; height: 68px; }
+  .q-audio iframe { display: block; width: 100%; height: 56px; }
 }
 
 /* ------------------------------------------------------------ responsive */

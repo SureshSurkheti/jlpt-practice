@@ -9,7 +9,6 @@ I18N.register("vi", {
  "about.p1": "Mỗi đề ở đây được làm đúng theo định dạng của JLPT — có bấm giờ, chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.",
  "about.p2": "Không cần tài khoản, không cần đăng ký. Câu trả lời, điểm số và tiến độ của bạn chỉ được lưu trong trình duyệt này và không bao giờ được tải lên.",
  "about.p3": "Âm thanh nghe hiểu phát từ Google Drive và hình minh hoạ trong đề tải từ Internet Archive, nên hai phần này cần kết nối mạng — và các dịch vụ đó thấy yêu cầu, như với bất kỳ tệp nhúng nào.",
- "about.p4": "Ngoài các đề thi còn có danh sách học cho từng cấp độ: 9.639 từ kèm cách đọc, romaji và nghĩa tiếng Anh, 2.211 kanji có hoạt hình thứ tự nét, và các mẫu ngữ pháp cốt lõi kèm câu ví dụ. Giao diện có 12 ngôn ngữ, và danh sách từ N5, N4 còn có nghĩa tiếng Nepal.",
  "about.title": "Giới thiệu",
  "cal.checkNote": "Ngày thi chung toàn cầu. Hạn đăng ký do từng nước quy định — hãy kiểm tra.",
  "cal.dayLeft": "Còn {days} ngày",

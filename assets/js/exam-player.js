@@ -1378,7 +1378,7 @@
           (section.tag ? "<i>" + esc(section.tag) + "</i>" : "") +
         "</span>" +
         '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
-          'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
+          'height="56" allow="autoplay" title="' + esc(t("exam.audio")) +
           '" loading="lazy"></iframe>'));
     }
 
@@ -1423,7 +1423,6 @@
     var picked = state.answers[item.key] || null;
 
     /* The paper's own number, and only that - see paperNumber(). */
-    var head = el("div", "pq-head");
     /* A listening stem is a label and a picture - "1ばん" and the four
        drawings. The tint the written stems carry turns that into a wide grey
        band with three characters in the corner of it, so those are marked and
@@ -1431,6 +1430,7 @@
        works in every browser and the failure mode of the selector is the
        exact band this avoids. */
     var media = /<img/i.test(q.prompt || "");
+    var head = el("div", "pq-head" + (media ? " has-media" : ""));
     head.innerHTML =
       '<span class="pq-num">' + esc(item.number) + "</span>" +
       '<div class="pq-prompt' + (q.prompt ? "" : " is-bare") +

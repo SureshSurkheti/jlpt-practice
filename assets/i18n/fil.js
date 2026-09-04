@@ -9,7 +9,6 @@ I18N.register("fil", {
  "about.p1": "Ang bawat papel dito ay sinasagutan sa mismong pormat ng JLPT — may timer, automatic na pagmamarka, at may paliwanag ng sagot at transcript ng pakikinig.",
  "about.p2": "Walang account at walang sign-up. Ang mga sagot, iskor at progreso mo ay nakatago lang sa browser na ito at hindi kailanman ina-upload.",
  "about.p3": "Ang listening audio ay mula sa Google Drive at ang mga diagram ng pagsusulit ay mula sa Internet Archive, kaya kailangan ng koneksyon ang dalawang ito — at nakikita ng mga serbisyong iyon ang request, gaya ng sa anumang naka-embed na file.",
- "about.p4": "Bukod sa mga papel, may study list para sa bawat antas: 9,639 salita na may bigkas, romaji at kahulugan sa Ingles, 2,211 kanji na may animated na stroke order, at ang pangunahing mga pattern ng gramatika na may halimbawang pangungusap. Available ang interface sa 12 wika, at may kahulugan sa Nepali din ang mga salitang N5 at N4.",
  "about.title": "Tungkol",
  "cal.checkNote": "Ito ang petsa ng pagsusulit sa buong mundo. Ang panahon ng rehistrasyon ay itinatakda ng bawat bansa — tingnan ang sa inyo.",
  "cal.dayLeft": "{days} araw na lang",

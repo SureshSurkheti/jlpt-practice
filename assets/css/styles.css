@@ -1696,31 +1696,50 @@ body.is-leaving { opacity: 0; }
    length has no left edge to come back to, and one column left half of a
    desktop empty. */
 
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
-  gap: clamp(24px, 3vw, 48px);
-  align-items: start;
-  margin-top: 26px;
-}
-
 .about-intro { max-width: 64ch; }
 .about-plain { text-align: left; }
-.about-aside { display: grid; gap: 18px; }
 
-/* The credits sit in the sidebar now, so the rule that used to separate them
-   from the prose above would be a line across the top of the column. */
-.about-aside .about-credits {
+/* The page reads top to bottom now: two paragraphs of prose, then the fine
+   print in two columns. The prose keeps a reading measure; the notices below
+   it use the full width, which is what stops a short page from being a tall
+   one. */
+.about-lede { max-width: 64ch; margin-top: 22px; }
+
+.about-notices {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 2.4vw, 34px);
+  align-items: start;
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.about-notes-col { display: grid; gap: 18px; align-content: start; }
+
+/* The credits are a card in this column, so the rule that used to separate
+   them from prose above would be a line across the top of the card. */
+.about-notices .about-credits {
   border-top: 0;
   padding: 18px 20px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 12px;
 }
-.about-aside .about-rights { margin-top: 0; }
+.about-notices .about-rights { margin-top: 0; }
 
-@media (max-width: 960px) {
-  .about-layout { grid-template-columns: minmax(0, 1fr); }
+/* Where the audio and the diagrams come from. It reads as a caveat, not as
+   part of the description of the site, so it sits at the top of the notices
+   column in the same fine print as the credits below it. */
+.about-hosting {
+  padding: 0 20px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.about-hosting p { margin: 0; }
+
+@media (max-width: 860px) {
+  .about-notices { grid-template-columns: minmax(0, 1fr); }
 }
 
 .about-page .about-credits {
@@ -2116,6 +2135,48 @@ body.is-leaving { opacity: 0; }
   margin: 0 0 10px;
   font-size: 0.95rem;
   color: var(--navy);
+}
+
+/* The folded version on the hub. Styled to match the heading it replaces, so
+   closing the table does not turn its title into a different kind of object -
+   it is the same line with a marker on it. */
+.coverage-fold > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 0 10px;
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  list-style: none;
+}
+.coverage-fold > summary::-webkit-details-marker { display: none; }
+.coverage-fold > summary::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--blue);
+  border-bottom: 2px solid var(--blue);
+  transform: rotate(-45deg) translate(-1px, 1px);
+  transition: transform 0.18s ease;
+}
+.coverage-fold[open] > summary::before {
+  transform: rotate(45deg) translate(-2px, -2px);
+}
+.coverage-fold > summary:hover { border-color: var(--blue); }
+.coverage-fold > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverage-fold > summary::before { transition: none; }
 }
 
 .coverage-wrap {

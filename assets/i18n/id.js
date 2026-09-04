@@ -9,7 +9,6 @@ I18N.register("id", {
  "about.p1": "Setiap soal di sini dikerjakan dalam format JLPT itu sendiri — berwaktu, dinilai otomatis, dengan penjelasan jawaban dan transkrip menyimak.",
  "about.p2": "Tidak ada akun dan tidak perlu mendaftar. Jawaban, nilai, dan kemajuan Anda hanya tersimpan di peramban ini dan tidak pernah diunggah.",
  "about.p3": "Audio menyimak diputar dari Google Drive dan diagram soal dimuat dari Internet Archive, jadi kedua bagian itu perlu koneksi — dan layanan tersebut melihat permintaannya, seperti pada berkas tersemat mana pun.",
- "about.p4": "Selain soal, ada daftar belajar untuk setiap level: 9.639 kata dengan cara baca, romaji dan arti bahasa Inggris, 2.211 kanji dengan animasi urutan goresan, serta pola tata bahasa inti beserta contoh kalimat. Antarmuka tersedia dalam 12 bahasa, dan daftar kata N5 dan N4 juga memuat arti bahasa Nepal.",
  "about.title": "Tentang",
  "cal.checkNote": "Tanggal ujian serentak di seluruh dunia. Jadwal pendaftaran ditetapkan tiap negara — periksa milik Anda.",
  "cal.dayLeft": "{days} hari lagi",

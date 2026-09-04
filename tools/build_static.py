@@ -209,6 +209,12 @@ TITLE_KEY = {
 }
 
 SITE_NAME = "JLPT Practice"
+
+# The site's publisher, in the structured data on all 293 pages, is the site
+# rather than a person. Organization is the right schema type for a publisher
+# anyway, and it keeps a personal name out of the source of every page. The
+# three guide articles still carry a person as their author, which is what an
+# article byline is for; nothing else does.
 AUTHOR_NAME = "Suresh Surkheti"
 
 # Where takedown and rights requests go. Published on the about page, so it
@@ -241,7 +247,7 @@ def json_ld(lang, url, title, desc, url_of):
         "name": SITE_NAME,
         "inLanguage": lang,
         "description": desc,
-        "publisher": {"@type": "Person", "name": AUTHOR_NAME},
+        "publisher": {"@type": "Organization", "name": SITE_NAME},
     }
     page = {
         "@type": "WebPage",
@@ -451,16 +457,31 @@ def coverage_panel(table, en, here=None, prefix="study/", linked=True):
             '%s<td><span class="coverage-yes">&#10003;</span></td><td>%s</td></tr>'
             % (LEVEL_COLOR_CLASS[level], level.upper(), "".join(cells), ne))
 
-    return ('<section class="study-coverage%s">\n' % ("" if linked else " is-static") +
-            '        <h2 data-i18n="notice.title">%s</h2>\n'
-            '        <div class="coverage-wrap">\n'
+    body = ('        <div class="coverage-wrap">\n'
             '          <table class="coverage-table">\n'
             '            <thead><tr>%s</tr></thead>\n'
             '            <tbody>%s</tbody>\n'
             '          </table>\n'
-            '        </div>\n'
-            '      </section>'
-            % (esc(t(table, "notice.title", en)), head, "".join(rows)))
+            '        </div>\n' % (head, "".join(rows)))
+    title = esc(t(table, "notice.title", en))
+
+    # On the hub the table folds away. It answers two questions - "is my level
+    # here?" and "is it in my language?" - which a reader asks once and then
+    # never again, and it was sitting between the page's own heading and the
+    # controls that do the work, so every later visit scrolled past a screen
+    # of reference material to reach the word list. Closed, the tabs and the
+    # search box are the first thing under the heading.
+    #
+    # The fifteen list pages keep it open: there it is the only navigation
+    # between them, so folding it would hide the way out of the page.
+    if linked:
+        return ('<section class="study-coverage">\n'
+                '        <h2 data-i18n="notice.title">%s</h2>\n%s'
+                '      </section>' % (title, body))
+
+    return ('<details class="study-coverage is-static coverage-fold">\n'
+            '        <summary><span data-i18n="notice.title">%s</span></summary>\n%s'
+            '      </details>' % (title, body))
 
 
 FIELD = {"words": "words", "kanji": "kanji", "grammar": "patterns"}

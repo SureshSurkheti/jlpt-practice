@@ -54,7 +54,7 @@ HEAD = """<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
-  <body class="guide-page" data-back-to="../study.html">
+  <body class="guide-page">
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand-wrap" href="../index.html" id="brandLink">
@@ -100,7 +100,7 @@ HEAD = """<!DOCTYPE html>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>© 2026 Suresh Surkheti</div>
+        <div>© 2026 JLPT Practice</div>
         <div data-i18n="footer.tagline">Study smarter. Live better in Japan.</div>
       </div>
     </footer>
@@ -385,7 +385,7 @@ def ld_for(p):
         "mainEntityOfPage": {"@type": "WebPage",
                              "@id": "%s/guide/%s" % (SITE, p["slug"])},
         "author": {"@type": "Person", "name": "Suresh Surkheti"},
-        "publisher": {"@type": "Person", "name": "Suresh Surkheti"},
+        "publisher": {"@type": "Organization", "name": "JLPT Practice"},
     }, ensure_ascii=False, separators=(",", ":"))
 
 INDEX = """

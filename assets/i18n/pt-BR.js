@@ -9,7 +9,6 @@ I18N.register("pt-BR", {
  "about.p1": "Cada prova aqui é feita no formato do próprio JLPT — cronometrada, corrigida automaticamente, com explicações das respostas e transcrições da audição.",
  "about.p2": "Não há conta nem cadastro. Suas respostas, notas e progresso ficam salvos apenas neste navegador e nunca são enviados.",
  "about.p3": "O áudio de compreensão vem do Google Drive e os diagramas das provas vêm do Internet Archive, então essas duas partes precisam de conexão — e esses serviços veem a requisição, como aconteceria com qualquer arquivo incorporado.",
- "about.p4": "Além das provas, há listas de estudo para cada nível: 9.639 palavras com leitura, romaji e significado em inglês, 2.211 kanji com animação da ordem dos traços, e os padrões gramaticais essenciais com frases de exemplo. A interface está disponível em 12 idiomas, e as listas de N5 e N4 também trazem significados em nepalês.",
  "about.title": "Sobre",
  "cal.checkNote": "Data mundial da prova. Os prazos de inscrição são definidos por cada país — confira o seu.",
  "cal.dayLeft": "Falta {days} dia",
