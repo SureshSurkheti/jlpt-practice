@@ -46,7 +46,12 @@ CORE_PAGES = {
     "exams.html": True,
     "study.html": True,
     "about.html": True,
+    # Ten questions built from the lists: original material, one address per
+    # site, and the page a search for "JLPT N3 vocabulary quiz" should find.
+    "quiz.html": True,
     "stats.html": False,
+    # Personal: the reader's own wrong answers.
+    "review.html": False,
     "exam.html": False,
     # A viewer for one character, built in the browser from ?k=. The content
     # a crawler should have is the level list it opens from, which is already
@@ -407,7 +412,7 @@ def absolutise(html):
         html = re.sub(r'(%s=")(assets/|favicon|apple-touch|icon-|site\.web)'
                       % attr, r"\1/\2", html)
     # internal page links keep working from inside a language directory
-    html = re.sub(r'href="((?:index|levels|practice|exams|study|about|stats|exam)\.html[^"]*)"',
+    html = re.sub(r'href="((?:index|levels|practice|exams|study|about|stats|exam|quiz|review)\.html[^"]*)"',
                   r'href="./\1"', html)
     return html
 
@@ -440,6 +445,9 @@ EN_META = {
                       "Listening", "practice.body"),
     "about.html": ("About JLPT Practice — Free and Private JLPT Study",
                    "about.body"),
+    "quiz.html": ("JLPT Vocabulary, Kanji and Grammar Quiz — N5 to N1",
+                  "quiz.body"),
+    "review.html": ("Mistake Notebook — JLPT Practice", "review.body"),
     "stats.html": ("Your JLPT Progress — JLPT Practice", "stats.body"),
     "exam.html": ("JLPT Mock Exam — JLPT Practice", "exam.setupNote"),
     "kanji.html": ("Kanji Stroke Order and Readings — JLPT Practice",
@@ -451,6 +459,7 @@ TITLE_KEY = {
     "study.html": "study.title", "levels.html": "levels.title",
     "practice.html": "practice.title", "about.html": "about.title",
     "stats.html": "stats.title", "exam.html": "tag.exam",
+    "quiz.html": "quiz.title", "review.html": "review.title",
     "kanji.html": "study.kanji",
 }
 
@@ -1060,6 +1069,9 @@ def main():
                               'class="study-tab" data-level="N5"', html)
                 html = re.sub(r'class="study-tab" data-level="%s"' % lv,
                               'class="study-tab is-on" data-level="%s"' % lv, html)
+                html = html.replace(
+                    'href="quiz.html?level=N5&amp;kind=words"',
+                    'href="../quiz.html?level=%s&amp;kind=%s"' % (lv, kind))
                 if kind != "words":
                     html = html.replace('class="study-tab is-on" data-kind="words"',
                                         'class="study-tab" data-kind="words"')
@@ -1166,6 +1178,7 @@ def main():
         covered = ["assets/css/styles.css", "assets/css/exam.css",
                    "assets/js/i18n.js", "assets/js/site.js",
                    "assets/js/exam-player.js", "assets/js/study.js",
+                   "assets/js/quiz.js", "assets/js/review.js",
                    "offline.html"]
         h = hashlib.sha1()
         for rel in covered:

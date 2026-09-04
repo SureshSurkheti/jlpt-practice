@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>Caderno de erros — JLPT Practice</title>
+    <meta name="description" content="Toda questão que você errou, em qualquer prova, até acertá-la duas vezes." />
+    <meta name="robots" content="noindex, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Caderno de erros — JLPT Practice" />
+    <meta property="og:description" content="Toda questão que você errou, em qualquer prova, até acertá-la duas vezes." />
+    <meta property="og:url" content="https://jlpt.sureshsurkheti.com/pt-BR/review.html" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="JLPT Practice" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Caderno de erros — JLPT Practice" />
+    <meta name="twitter:description" content="Toda questão que você errou, em qualquer prova, até acertá-la duas vezes." />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website","url":"https://jlpt.sureshsurkheti.com/pt-BR/","name":"JLPT Practice","inLanguage":"pt-BR","description":"Toda questão que você errou, em qualquer prova, até acertá-la duas vezes.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/pt-BR/review.html#webpage","url":"https://jlpt.sureshsurkheti.com/pt-BR/review.html","name":"Caderno de erros — JLPT Practice","description":"Toda questão que você errou, em qualquer prova, até acertá-la duas vezes.","inLanguage":"pt-BR","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website"}}]}</script>
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=8ca56016" />
+      <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
+  </head>
+  <body class="review-page" data-back-to="stats.html">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="./index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag" data-i18n="review.title">Caderno de erros</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="./index.html" data-i18n="nav.home">Início</a>
+          <a href="./levels.html" data-i18n="nav.levels">Níveis</a>
+          <a href="./exams.html" data-i18n="nav.exams">Simulados</a>
+          <a href="./study.html" data-i18n="nav.study">Vocabulário</a>
+          <a href="./about.html" data-i18n="nav.about">Sobre</a>
+        </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">Idioma</span>
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="Idioma">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ne">नेपाली</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="fil">Filipino</option>
+              <option value="si">සිංහල</option>
+              <option value="hi">हिन्दी</option>
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-shell">
+      <section class="page-intro">
+        <h1 data-i18n="review.title">Caderno de erros</h1>
+        <p data-i18n="review.body">Toda questão que você errou, em qualquer prova, até acertá-la duas vezes.</p>
+        <p class="quiz-note" id="reviewCount"></p>
+      </section>
+
+      <div id="reviewRoot" class="quiz-root" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 JLPT Practice</div>
+        <div data-i18n="footer.tagline">Estude melhor. Viva melhor no Japão.</div>
+      </div>
+          <nav class="container lang-links" aria-label="Idioma">
+        <span>Idioma</span>
+        <ul><li><a href="https://jlpt.sureshsurkheti.com/review.html" hreflang="en" lang="en">English</a></li><li><a href="https://jlpt.sureshsurkheti.com/ja/review.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/review.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/review.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/zh/review.html" hreflang="zh" lang="zh">中文</a></li><li><a href="https://jlpt.sureshsurkheti.com/ko/review.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="https://jlpt.sureshsurkheti.com/id/review.html" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="https://jlpt.sureshsurkheti.com/fil/review.html" hreflang="fil" lang="fil">Filipino</a></li><li><a href="https://jlpt.sureshsurkheti.com/hi/review.html" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="https://jlpt.sureshsurkheti.com/bn/review.html" hreflang="bn" lang="bn">বাংলা</a></li><li><a href="https://jlpt.sureshsurkheti.com/si/review.html" hreflang="si" lang="si">සිංහල</a></li></ul>
+      </nav>
+    </footer>
+
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=068287a5"></script>
+    <script defer src="/assets/i18n/pt-BR.js?v=c4918af8"></script>
+    <script defer src="/assets/js/site.js?v=cd4ad3e4"></script>
+    <script defer src="/assets/js/review.js?v=4a1675c5"></script>
+  </body>
+</html>

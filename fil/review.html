@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fil">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>Kuwaderno ng mga mali — JLPT Practice</title>
+    <meta name="description" content="Bawat tanong na nasagot mo nang mali, mula sa anumang papel, hanggang masagot mo ito nang tama nang dalawang beses." />
+    <meta name="robots" content="noindex, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="fil_PH" />
+    <meta property="og:title" content="Kuwaderno ng mga mali — JLPT Practice" />
+    <meta property="og:description" content="Bawat tanong na nasagot mo nang mali, mula sa anumang papel, hanggang masagot mo ito nang tama nang dalawang beses." />
+    <meta property="og:url" content="https://jlpt.sureshsurkheti.com/fil/review.html" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="JLPT Practice" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kuwaderno ng mga mali — JLPT Practice" />
+    <meta name="twitter:description" content="Bawat tanong na nasagot mo nang mali, mula sa anumang papel, hanggang masagot mo ito nang tama nang dalawang beses." />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/fil/#website","url":"https://jlpt.sureshsurkheti.com/fil/","name":"JLPT Practice","inLanguage":"fil","description":"Bawat tanong na nasagot mo nang mali, mula sa anumang papel, hanggang masagot mo ito nang tama nang dalawang beses.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/fil/review.html#webpage","url":"https://jlpt.sureshsurkheti.com/fil/review.html","name":"Kuwaderno ng mga mali — JLPT Practice","description":"Bawat tanong na nasagot mo nang mali, mula sa anumang papel, hanggang masagot mo ito nang tama nang dalawang beses.","inLanguage":"fil","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/fil/#website"}}]}</script>
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=8ca56016" />
+      <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
+  </head>
+  <body class="review-page" data-back-to="stats.html">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="./index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag" data-i18n="review.title">Kuwaderno ng mga mali</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="./index.html" data-i18n="nav.home">Home</a>
+          <a href="./levels.html" data-i18n="nav.levels">Antas</a>
+          <a href="./exams.html" data-i18n="nav.exams">Pagsasanay</a>
+          <a href="./study.html" data-i18n="nav.study">Salita</a>
+          <a href="./about.html" data-i18n="nav.about">Tungkol</a>
+          <a class="nav-guides" href="/fil/guide/" data-i18n="nav.guides">Mga Gabay</a>
+        </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">Wika</span>
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="Wika">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ne">नेपाली</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="fil">Filipino</option>
+              <option value="si">සිංහල</option>
+              <option value="hi">हिन्दी</option>
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-shell">
+      <section class="page-intro">
+        <h1 data-i18n="review.title">Kuwaderno ng mga mali</h1>
+        <p data-i18n="review.body">Bawat tanong na nasagot mo nang mali, mula sa anumang papel, hanggang masagot mo ito nang tama nang dalawang beses.</p>
+        <p class="quiz-note" id="reviewCount"></p>
+      </section>
+
+      <div id="reviewRoot" class="quiz-root" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 JLPT Practice</div>
+        <div data-i18n="footer.tagline">Mag-aral nang mas matalino. Mamuhay nang mas maayos sa Japan.</div>
+      </div>
+          <nav class="container lang-links" aria-label="Wika">
+        <span>Wika</span>
+        <ul><li><a href="https://jlpt.sureshsurkheti.com/review.html" hreflang="en" lang="en">English</a></li><li><a href="https://jlpt.sureshsurkheti.com/ja/review.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/review.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/review.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/zh/review.html" hreflang="zh" lang="zh">中文</a></li><li><a href="https://jlpt.sureshsurkheti.com/ko/review.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="https://jlpt.sureshsurkheti.com/id/review.html" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="https://jlpt.sureshsurkheti.com/pt-BR/review.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="https://jlpt.sureshsurkheti.com/hi/review.html" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="https://jlpt.sureshsurkheti.com/bn/review.html" hreflang="bn" lang="bn">বাংলা</a></li><li><a href="https://jlpt.sureshsurkheti.com/si/review.html" hreflang="si" lang="si">සිංහල</a></li></ul>
+      </nav>
+    </footer>
+
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=068287a5"></script>
+    <script defer src="/assets/i18n/fil.js?v=5746d952"></script>
+    <script defer src="/assets/js/site.js?v=cd4ad3e4"></script>
+    <script defer src="/assets/js/review.js?v=4a1675c5"></script>
+  </body>
+</html>

@@ -61,6 +61,21 @@ function renderStatsPage() {
 
   renderLevelProgress(rows);
   renderSectionPerformance(rows);
+  renderMistakes();
+}
+
+/* The notebook the exam player keeps (jlpt.mistakes): how many wrong
+   answers are waiting, and the way to them. */
+function renderMistakes() {
+  let n = 0;
+  try {
+    const d = JSON.parse(localStorage.getItem('jlpt.mistakes') || 'null');
+    n = d && d.items ? Object.keys(d.items).length : 0;
+  } catch (e) { n = 0; }
+  const count = document.getElementById('mistakesCount');
+  const open = document.getElementById('mistakesOpen');
+  if (count) count.textContent = n ? tf('stats.mistakesCount', { n }) : t('stats.mistakesNone');
+  if (open) open.hidden = !n;
 }
 
 function renderLevelProgress(rows) {

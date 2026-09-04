@@ -405,7 +405,13 @@
     load();
   });
 
+  function syncQuizLink() {
+    var a = document.getElementById("quizLink");
+    if (a) a.setAttribute("href", "quiz.html?level=" + state.level + "&kind=" + state.kind);
+  }
+
   function syncTabs() {
+    syncQuizLink();
     document.querySelectorAll(".study-tab").forEach(function (tab) {
       var want = tab.dataset.level
         ? tab.dataset.level === state.level
@@ -424,6 +430,7 @@
       if (tab.dataset.level) state.level = tab.dataset.level;
       if (tab.dataset.kind) state.kind = tab.dataset.kind;
       syncUrl();
+      syncQuizLink();
       load();
     });
   });

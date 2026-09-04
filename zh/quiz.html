@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>自测一下 — JLPT Practice</title>
+    <meta name="description" content="从单词、汉字和语法表即时生成十道题。每次都是新的，边做边评分。" />
+    <link rel="canonical" href="https://jlpt.sureshsurkheti.com/zh/quiz.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="alternate" hreflang="en" href="https://jlpt.sureshsurkheti.com/quiz.html" />
+    <link rel="alternate" hreflang="ja" href="https://jlpt.sureshsurkheti.com/ja/quiz.html" />
+    <link rel="alternate" hreflang="vi" href="https://jlpt.sureshsurkheti.com/vi/quiz.html" />
+    <link rel="alternate" hreflang="ne" href="https://jlpt.sureshsurkheti.com/ne/quiz.html" />
+    <link rel="alternate" hreflang="zh" href="https://jlpt.sureshsurkheti.com/zh/quiz.html" />
+    <link rel="alternate" hreflang="ko" href="https://jlpt.sureshsurkheti.com/ko/quiz.html" />
+    <link rel="alternate" hreflang="id" href="https://jlpt.sureshsurkheti.com/id/quiz.html" />
+    <link rel="alternate" hreflang="fil" href="https://jlpt.sureshsurkheti.com/fil/quiz.html" />
+    <link rel="alternate" hreflang="pt-BR" href="https://jlpt.sureshsurkheti.com/pt-BR/quiz.html" />
+    <link rel="alternate" hreflang="hi" href="https://jlpt.sureshsurkheti.com/hi/quiz.html" />
+    <link rel="alternate" hreflang="bn" href="https://jlpt.sureshsurkheti.com/bn/quiz.html" />
+    <link rel="alternate" hreflang="si" href="https://jlpt.sureshsurkheti.com/si/quiz.html" />
+    <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/quiz.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="自测一下 — JLPT Practice" />
+    <meta property="og:description" content="从单词、汉字和语法表即时生成十道题。每次都是新的，边做边评分。" />
+    <meta property="og:url" content="https://jlpt.sureshsurkheti.com/zh/quiz.html" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="JLPT Practice" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="自测一下 — JLPT Practice" />
+    <meta name="twitter:description" content="从单词、汉字和语法表即时生成十道题。每次都是新的，边做边评分。" />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/zh/#website","url":"https://jlpt.sureshsurkheti.com/zh/","name":"JLPT Practice","inLanguage":"zh","description":"从单词、汉字和语法表即时生成十道题。每次都是新的，边做边评分。","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/zh/quiz.html#webpage","url":"https://jlpt.sureshsurkheti.com/zh/quiz.html","name":"自测一下 — JLPT Practice","description":"从单词、汉字和语法表即时生成十道题。每次都是新的，边做边评分。","inLanguage":"zh","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/zh/#website"}}]}</script>
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=8ca56016" />
+      <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
+  </head>
+  <body class="quiz-page" data-back-to="study.html">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="./index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag" data-i18n="quiz.title">自测一下</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="./index.html" data-i18n="nav.home">首页</a>
+          <a href="./levels.html" data-i18n="nav.levels">级别</a>
+          <a href="./exams.html" data-i18n="nav.exams">模拟题</a>
+          <a href="./study.html" data-i18n="nav.study">单词·语法</a>
+          <a href="./about.html" data-i18n="nav.about">关于</a>
+        </nav>
+
+        <div class="nav-tools">
+          <label class="language-select">
+            <span data-i18n="lang.label">语言</span>
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="语言">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ne">नेपाली</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="fil">Filipino</option>
+              <option value="si">සිංහල</option>
+              <option value="hi">हिन्दी</option>
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page-shell">
+      <section class="page-intro">
+        <h1 data-i18n="quiz.title">自测一下</h1>
+        <p data-i18n="quiz.body">从单词、汉字和语法表即时生成十道题。每次都是新的，边做边评分。</p>
+      </section>
+      <div class="study-controls quiz-controls">
+        <div class="study-tabs" role="tablist">
+          <button type="button" class="study-tab is-on" data-level="N5" role="tab">N5</button>
+          <button type="button" class="study-tab" data-level="N4" role="tab">N4</button>
+          <button type="button" class="study-tab" data-level="N3" role="tab">N3</button>
+          <button type="button" class="study-tab" data-level="N2" role="tab">N2</button>
+          <button type="button" class="study-tab" data-level="N1" role="tab">N1</button>
+        </div>
+        <div class="study-tabs study-kind" role="tablist">
+          <button type="button" class="study-tab is-on" data-kind="words" role="tab"
+                  data-i18n="study.words">单词</button>
+          <button type="button" class="study-tab" data-kind="kanji" role="tab"
+                  data-i18n="study.kanji">汉字</button>
+          <button type="button" class="study-tab" data-kind="grammar" role="tab"
+                  data-i18n="study.grammar">语法</button>
+        </div>
+      </div>
+
+      <div id="quizRoot" class="quiz-root" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 JLPT Practice</div>
+        <div data-i18n="footer.tagline">更聪明地学习，在日本生活得更好。</div>
+      </div>
+          <nav class="container lang-links" aria-label="语言">
+        <span>语言</span>
+        <ul><li><a href="https://jlpt.sureshsurkheti.com/quiz.html" hreflang="en" lang="en">English</a></li><li><a href="https://jlpt.sureshsurkheti.com/ja/quiz.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/quiz.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/quiz.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/ko/quiz.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="https://jlpt.sureshsurkheti.com/id/quiz.html" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="https://jlpt.sureshsurkheti.com/fil/quiz.html" hreflang="fil" lang="fil">Filipino</a></li><li><a href="https://jlpt.sureshsurkheti.com/pt-BR/quiz.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="https://jlpt.sureshsurkheti.com/hi/quiz.html" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="https://jlpt.sureshsurkheti.com/bn/quiz.html" hreflang="bn" lang="bn">বাংলা</a></li><li><a href="https://jlpt.sureshsurkheti.com/si/quiz.html" hreflang="si" lang="si">සිංහල</a></li></ul>
+      </nav>
+    </footer>
+
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=068287a5"></script>
+    <script defer src="/assets/i18n/zh.js?v=a8840b0b"></script>
+    <script defer src="/assets/js/site.js?v=cd4ad3e4"></script>
+    <script defer src="/assets/js/quiz.js?v=b4fad087"></script>
+  </body>
+</html>

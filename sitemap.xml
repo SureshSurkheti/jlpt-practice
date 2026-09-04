@@ -26,6 +26,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jlpt.sureshsurkheti.com/quiz.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jlpt.sureshsurkheti.com/ja/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>1.0</priority>
@@ -47,6 +52,11 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/ja/about.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ja/quiz.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.7</priority>
   </url>
@@ -76,6 +86,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jlpt.sureshsurkheti.com/vi/quiz.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jlpt.sureshsurkheti.com/ne/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>1.0</priority>
@@ -97,6 +112,11 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/ne/about.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ne/quiz.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.7</priority>
   </url>
@@ -126,6 +146,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jlpt.sureshsurkheti.com/zh/quiz.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jlpt.sureshsurkheti.com/ko/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>1.0</priority>
@@ -147,6 +172,11 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/ko/about.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/ko/quiz.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.7</priority>
   </url>
@@ -176,6 +206,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jlpt.sureshsurkheti.com/id/quiz.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jlpt.sureshsurkheti.com/fil/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>1.0</priority>
@@ -197,6 +232,11 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/fil/about.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/fil/quiz.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.7</priority>
   </url>
@@ -226,6 +266,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jlpt.sureshsurkheti.com/pt-BR/quiz.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jlpt.sureshsurkheti.com/hi/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>1.0</priority>
@@ -247,6 +292,11 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/hi/about.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/hi/quiz.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.7</priority>
   </url>
@@ -276,6 +326,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jlpt.sureshsurkheti.com/bn/quiz.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://jlpt.sureshsurkheti.com/si/</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>1.0</priority>
@@ -297,6 +352,11 @@
   </url>
   <url>
     <loc>https://jlpt.sureshsurkheti.com/si/about.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jlpt.sureshsurkheti.com/si/quiz.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.7</priority>
   </url>

@@ -399,6 +399,7 @@ function levelBlock(lv) {
           ${t('practice.mockTest')}
         </button>
         <a href="${listUrl}" class="btn btn-ghost">${t('practice.studyLists')}</a>
+        <a href="quiz.html?level=${lv}&amp;kind=words" class="btn btn-ghost">${t('quiz.button')}</a>
       </div>
       <p class="plevel-note">${examUrl
         ? `${t('practice.officialPaper')} · ${exam.label}`

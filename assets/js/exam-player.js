@@ -325,10 +325,15 @@
     exam.parts.forEach(function (part) {
       part.questions.forEach(function (q) {
         var id = q.category || "vocabulary";
-        if (!seen[id]) { seen[id] = { id: id, count: 0 }; order.push(seen[id]); }
+        if (!seen[id]) { seen[id] = { id: id, count: 0, audio: false }; order.push(seen[id]); }
         seen[id].count++;
+        if (q.audio) seen[id].audio = true;
       });
     });
+    /* A listening section whose recording was never archived. The card says
+       so, and "Select all" leaves it out: sitting 28 questions in silence is
+       not what anyone means by "all". */
+    order.forEach(function (c) { c.silent = c.id === "listening" && !c.audio; });
     return order;
   }
 
@@ -430,6 +435,42 @@
 
      Separate from the in-progress attempt (storeKey) on purpose: clearing an
      attempt to retake it must not clear the history of what you have done. */
+  /* The mistake notebook (review.html). Every wrong answer is filed by exam
+     id and question key; a right answer counts towards clearing it. Listening
+     is left out - without the recording there is nothing to re-ask. */
+  var MISTAKES_KEY = "jlpt.mistakes";
+  function readMistakes() {
+    try {
+      var d = JSON.parse(localStorage.getItem(MISTAKES_KEY) || "null");
+      return d && d.items ? d : { v: 1, items: {} };
+    } catch (e) { return { v: 1, items: {} }; }
+  }
+  function noteMistakes(items) {
+    var store = readMistakes(), changed = false;
+    items.forEach(function (item) {
+      var q = item.q;
+      if (!q.answer || item.category === "listening") return;
+      var picked = state.answers[item.key];
+      if (!picked) return;
+      var id = state.exam.id + "|" + item.key;
+      var rec = store.items[id];
+      if (picked !== q.answer) {
+        if (rec) { rec.wrong = (rec.wrong || 0) + 1; rec.right = 0; rec.at = Date.now(); }
+        else store.items[id] = { exam: state.exam.id, key: item.key, level: state.exam.level,
+                                 category: item.category, wrong: 1, right: 0, at: Date.now() };
+        changed = true;
+      } else if (rec) {
+        rec.right = (rec.right || 0) + 1;
+        if (rec.right >= 2) delete store.items[id];
+        changed = true;
+      }
+    });
+    if (changed) {
+      try { localStorage.setItem(MISTAKES_KEY, JSON.stringify(store)); } catch (e) {}
+    }
+  }
+  function mistakeCount() { return Object.keys(readMistakes().items).length; }
+
   var BEST_KEY = "jlpt.best";
 
   function readBests() {
@@ -654,14 +695,15 @@
     cats.forEach(function (c) {
       var meta = CATEGORY_META[c.id] || { key: null, sub: "" };
       var on = preset.indexOf(c.id) !== -1;
-      var lab = el("label", "part-card" + (on ? " is-on" : ""));
+      var lab = el("label", "part-card" + (on ? " is-on" : "") + (c.silent ? " is-silent" : ""));
       lab.innerHTML =
         '<input type="checkbox" name="part" value="' + esc(c.id) + '"' +
-          (on ? " checked" : "") + " />" +
+          (on ? " checked" : "") + (c.silent ? ' data-silent="1"' : "") + " />" +
         '<span class="part-text">' +
           '<span class="part-label">' + esc(metaLabel(CATEGORY_META, c.id)) + "</span>" +
           '<span class="part-sub">' + esc(meta.sub) + " · " +
-            c.count + " " + esc(t("exams.questionsShort")) + "</span>" +
+            c.count + " " + esc(t("exams.questionsShort")) +
+            (c.silent ? " · <em>" + esc(t("exam.noRecording")) + "</em>" : "") + "</span>" +
         "</span>" +
         '<span class="part-check" aria-hidden="true">✓</span>';
       grid.appendChild(lab);
@@ -828,8 +870,11 @@
         card.querySelectorAll('input[name="part"]'));
     }
 
+    function usable() {
+      return boxes().filter(function (i) { return !i.dataset.silent; });
+    }
     function allPicked() {
-      var all = boxes();
+      var all = usable();
       return all.length > 0 && all.every(function (i) { return i.checked; });
     }
 
@@ -850,8 +895,10 @@
       pickAll.addEventListener("click", function () {
         var want = !allPicked();
         boxes().forEach(function (i) {
-          i.checked = want;
-          i.closest(".part-card").classList.toggle("is-on", want);
+          /* Clearing clears everything; selecting skips the silent ones. */
+          var v = want ? !i.dataset.silent : false;
+          i.checked = v;
+          i.closest(".part-card").classList.toggle("is-on", v);
         });
         refreshHint();
       });
@@ -1904,6 +1951,12 @@
       again.type = "button";
       again.id = "retryBtn2";
       box.appendChild(again);
+      var n = mistakeCount();
+      if (n) {
+        var rev = el("a", "btn btn-ghost", t("exam.reviewMistakes") + " · " + n);
+        rev.setAttribute("href", "review.html");
+        box.appendChild(rev);
+      }
       return box;
     }
 
@@ -2213,6 +2266,7 @@
     }
 
     var ok = picked === q.answer;
+    noteMistakes([item]);
     host.className = "q-feedback " + (ok ? "is-right" : "is-wrong");
     host.innerHTML =
       "<strong>" +
@@ -2480,6 +2534,11 @@
   function submitSection(key) {
     if (!key) return;
     state.marked[key] = true;
+    if (state.mode !== "study") {
+      noteMistakes(state.questions.filter(function (item) {
+        return paperOfCategory(item.category) === key;
+      }));
+    }
     score();
     keepBest(key);
     if (allMarked()) {
@@ -2493,6 +2552,11 @@
 
   function submitExam(timeUp) {
     stopTicker();
+    if (state.mode !== "study") {
+      noteMistakes(state.questions.filter(function (item) {
+        return !state.marked[paperOfCategory(item.category)];
+      }));
+    }
     score(timeUp);
     state.papers.forEach(function (p) {
       if (!state.marked[p.key]) keepBest(p.key);

@@ -28,7 +28,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ne/#website","url":"https://jlpt.sureshsurkheti.com/ne/","name":"JLPT Practice","inLanguage":"ne","description":"तपाईंले पढेका हरेक स्तरको शुद्धता र गतिविधि।","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ne/stats.html#webpage","url":"https://jlpt.sureshsurkheti.com/ne/stats.html","name":"तपाईंको प्रगति — JLPT Practice","description":"तपाईंले पढेका हरेक स्तरको शुद्धता र गतिविधि।","inLanguage":"ne","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ne/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=44e3a647" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=8ca56016" />
     <style>
       /* Stats page only. Everything shared with the rest of the site lives in
          styles.css; these are the four blocks unique to this page. */
@@ -150,6 +150,18 @@
         </div>
       </div>
 
+      <!-- The notebook of wrong answers the exam player keeps. Counted here
+           because this is the page about what you have done; the review
+           itself has a page of its own. -->
+      <section class="stats-mistakes" id="statsMistakes">
+        <div>
+          <h2 data-i18n="stats.mistakesTitle">गल्ती नोटबुक</h2>
+          <p data-i18n="stats.mistakesBody">तपाईंले गल्ती गरेका प्रश्नहरू, हरेकलाई दुई पटक सही उत्तर नदिएसम्म राखिन्छन्।</p>
+          <p class="stats-mistakes-count" id="mistakesCount"></p>
+        </div>
+        <a class="btn btn-primary" href="./review.html" id="mistakesOpen" data-i18n="stats.mistakesOpen">अहिले दोहोर्‍याउनुहोस्</a>
+      </section>
+
       <section id="levelProgressSection" class="level-progress-grid"></section>
 
       <section class="section-performance">
@@ -192,9 +204,9 @@
     </footer>
 
     <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
-    <script defer src="/assets/i18n/en.js?v=cead0016"></script>
-    <script defer src="/assets/i18n/ne.js?v=ff707147"></script>
-    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
-    <script defer src="/assets/js/stats.js?v=76db8136"></script>
+    <script defer src="/assets/i18n/en.js?v=068287a5"></script>
+    <script defer src="/assets/i18n/ne.js?v=5db6e9d0"></script>
+    <script defer src="/assets/js/site.js?v=cd4ad3e4"></script>
+    <script defer src="/assets/js/stats.js?v=186b4093"></script>
   </body>
 </html>

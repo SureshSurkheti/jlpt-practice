@@ -3073,3 +3073,117 @@ body.is-leaving { opacity: 0; }
   .language-select { padding: 8px 10px; }
   .language-select select { width: 100%; max-width: 96px; text-overflow: ellipsis; }
 }
+
+/* ==========================================================================
+   Quiz and mistake notebook. One card at a time, four answers, a line of
+   feedback. The answer buttons follow the exam player's .choice - number in
+   a ring, text beside it - but live here because exam.css is not loaded on
+   these pages.
+   ========================================================================== */
+.quiz-controls { margin-bottom: 22px; }
+.study-quiz { margin-left: auto; white-space: nowrap; }
+@media (max-width: 820px) { .study-quiz { margin-left: 0; width: 100%; text-align: center; } }
+
+.quiz-root { max-width: 720px; }
+.quiz-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px 28px 24px;
+  box-shadow: 0 10px 30px rgba(17, 45, 78, 0.06);
+}
+.quiz-intro, .quiz-end { text-align: left; }
+.quiz-kicker {
+  margin: 0 0 12px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz-kicker .quiz-right { color: var(--success); letter-spacing: 0; }
+.quiz-kicker .quiz-from { text-transform: none; letter-spacing: 0; font-weight: 600; }
+.quiz-ask { margin: 0 0 10px; font-family: var(--font-sans); font-size: 1.02rem; font-weight: 600; color: var(--muted); }
+.quiz-shown {
+  margin: 0 0 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--navy);
+}
+.quiz-shown.is-ja { font-size: 2.1rem; }
+.quiz-shown small { display: block; margin-top: 4px; font-size: 0.95rem; font-weight: 500; color: var(--muted); }
+.quiz-note { margin: 0 0 16px; color: var(--muted); font-size: 0.95rem; }
+.quiz-score { margin: 0 0 10px; font-family: var(--font-display); font-size: 2rem; color: var(--navy); }
+.quiz-list-link {
+  display: inline-block; margin: 14px 0 0 2px;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; font-size: 0.92rem; font-weight: 600; color: var(--blue);
+}
+.quiz-list-link.is-danger { color: var(--danger, #c84a52); margin-left: 18px; }
+.quiz-intro .btn { margin-top: 6px; }
+
+.quiz-options { display: grid; gap: 10px; }
+@media (min-width: 640px) { .quiz-options { grid-template-columns: 1fr 1fr; } }
+.quiz-choice {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; padding: 12px 14px;
+  text-align: left; font: inherit; font-size: 1.02rem; color: var(--text);
+  background: var(--panel); border: 1.5px solid var(--line); border-radius: 14px;
+  cursor: pointer; transition: border-color .15s ease, background .15s ease, transform .1s ease;
+}
+.quiz-choice:hover:not(:disabled) { border-color: var(--blue); background: var(--panel-soft); }
+.quiz-choice:active:not(:disabled) { transform: scale(0.99); }
+.quiz-choice:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.quiz-choice:disabled { cursor: default; }
+.quiz-num {
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 0.82rem; font-weight: 800; color: var(--muted);
+  background: var(--panel-soft); border: 1.5px solid var(--line);
+}
+.quiz-choice.is-correct { border-color: var(--success); background: rgba(47, 125, 87, 0.1); }
+.quiz-choice.is-correct .quiz-num { background: var(--success); border-color: var(--success); color: #fff; }
+.quiz-choice.is-wrong { border-color: var(--danger, #c84a52); background: rgba(200, 74, 82, 0.09); }
+.quiz-choice.is-wrong .quiz-num { background: var(--danger, #c84a52); border-color: var(--danger, #c84a52); color: #fff; }
+
+.quiz-feedback:empty { display: none; }
+.quiz-feedback {
+  margin-top: 18px; padding: 14px 16px; border-radius: 14px;
+  font-size: 0.95rem; line-height: 1.55;
+}
+.quiz-feedback.is-ok { background: rgba(47, 125, 87, 0.08); border: 1px solid rgba(47, 125, 87, 0.25); }
+.quiz-feedback.is-bad { background: rgba(200, 74, 82, 0.07); border: 1px solid rgba(200, 74, 82, 0.25); }
+.quiz-feedback strong { display: block; margin-bottom: 4px; color: var(--navy); }
+.quiz-feedback p { margin: 4px 0 0; }
+.quiz-feedback .quiz-ex { color: var(--muted); font-size: 0.9rem; }
+.quiz-feedback .btn { margin-top: 12px; }
+
+.quiz-missed { margin: 18px 0 6px; }
+.quiz-missed h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--muted); font-weight: 700; }
+.quiz-missed ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.quiz-missed li { padding: 8px 12px; background: var(--panel-soft); border-radius: 10px; font-size: 0.95rem; }
+.quiz-missed li span { color: var(--muted); }
+.quiz-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+.review-instruction { margin: 0 0 10px; font-size: 0.88rem; color: var(--muted); }
+.review-passage { margin: 0 0 14px; }
+.review-passage summary { cursor: pointer; font-weight: 600; color: var(--blue); font-size: 0.92rem; }
+.review-passage > div { margin-top: 10px; padding: 14px 16px; background: var(--panel-soft); border-radius: 12px; line-height: 1.9; }
+.review-prompt { margin: 0 0 18px; font-size: 1.12rem; line-height: 1.85; color: var(--navy); }
+.review-prompt img { max-width: 100%; height: auto; }
+
+/* Stats page: the notebook card. */
+.stats-mistakes {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  margin: 0 0 26px; padding: 20px 24px;
+  background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 16px;
+}
+.stats-mistakes h2 { margin: 0 0 4px; font-size: 1.1rem; }
+.stats-mistakes p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.stats-mistakes-count { margin-top: 6px !important; font-weight: 700; color: var(--navy) !important; }
+.stats-mistakes .btn { flex: none; }
+@media (max-width: 640px) { .stats-mistakes { flex-direction: column; align-items: stretch; } }
+
+/* Exam setup: a listening section with no recording says so on its card. */
+.part-card.is-silent .part-sub em { color: var(--danger, #c84a52); font-style: normal; font-weight: 700; }
