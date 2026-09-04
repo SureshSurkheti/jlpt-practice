@@ -496,11 +496,17 @@
    4. Without it the pills were flush against the band's own edge, which read
    as the tint being cropped around them rather than containing them.
 
-   Kept very light - 1.12:1 against the card - deliberately. It has to be
-   quiet enough that .paper-question.is-target, the flash that marks the
-   question you jumped to, is still the loudest thing on the page: that one
-   tints the whole card, and this band sits inside it. Navy on the tint is
-   12.4:1, so nothing is lost in readability.
+   1.32:1 against the card. It began at 1.12, which measured out to almost
+   exactly the answer box's own border colour - and a fill the same value as
+   a hairline reads weaker than the hairline, because it is spread over a
+   hundred times the area. So the question had no surface, only a suggestion
+   of one, and a page of them looked flat.
+
+   Darkening it used to be blocked by .paper-question.is-target, the flash
+   marking the question you jumped to, which had to stay the loudest thing on
+   the page. That constraint is gone: the flash carries its signal in a ring
+   of the level colour now rather than in a wash whose luminance the band
+   could out-shout. Navy on the band is still 10.5:1.
 
    A listening stem is a label and a picture - "1ばん" and four drawings. A
    band there is a wide grey field with three characters in the corner, so
@@ -510,7 +516,7 @@
      lands the booklet number on precisely the same left edge as the numbered
      circles beneath it rather than a pixel off. */
   padding: 7px 16.5px;
-  background: #e4eaf2;
+  background: #d8e1ec;
   border-radius: 12px;
 }
 
