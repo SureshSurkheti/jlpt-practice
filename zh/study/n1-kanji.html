@@ -44,7 +44,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://jlpt.sureshsurkheti.com/zh/"},{"@type":"ListItem","position":2,"name":"单词·语法","item":"https://jlpt.sureshsurkheti.com/zh/study.html"},{"@type":"ListItem","position":3,"name":"N1 汉字","item":"https://jlpt.sureshsurkheti.com/zh/study/n1-kanji.html"}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=0d11fd0b" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=a243d1b0" />
   </head>
   <body class="study-page" data-back-to="../study.html">
     <header class="site-header">
@@ -134,10 +134,12 @@
           <button type="button" class="study-tab" data-kind="grammar" role="tab"
                   data-i18n="study.grammar">语法</button>
         </div>
-        <input type="search" class="study-search" id="studySearch"
-               data-i18n-attr="placeholder:study.search,aria-label:study.search" placeholder="搜索单词或释义" aria-label="搜索单词或释义" />
-        <a class="btn btn-primary study-quiz" id="quizLink" href="../quiz.html?level=N1&amp;kind=kanji"
-           data-i18n="quiz.button">测验</a>
+        <div class="study-find">
+          <input type="search" class="study-search" id="studySearch"
+                 data-i18n-attr="placeholder:study.search,aria-label:study.search" placeholder="搜索单词或释义" aria-label="搜索单词或释义" />
+          <a class="btn btn-primary study-quiz" id="quizLink" href="../quiz.html?level=N1&amp;kind=kanji"
+             data-i18n="quiz.button">测验</a>
+        </div>
       </div>
 
       <div id="studyContent" aria-live="polite">

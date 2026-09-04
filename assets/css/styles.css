@@ -2346,8 +2346,24 @@ body.is-leaving { opacity: 0; }
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #fff;
-  width: clamp(200px, 24vw, 320px);
+  /* Flexible, not fixed: at 24vw it pushed the Quiz button onto a line of
+     its own on a 1280px screen. It takes what the row has left, between
+     180px and 320px, and the button stays beside it. */
+  flex: 1 1 160px;
+  min-width: 160px;
+  max-width: 320px;
 }
+/* Search and the Quiz button are one group, so when the row runs out they
+   drop to the next line together rather than the button alone. */
+.study-find {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  flex: 1 1 320px;
+  max-width: 460px;
+}
+.study-find .study-search { margin-left: 0; }
 
 /* The row count. It used to be a bare grey line floating in the gap between
    the tabs and the list, belonging to neither: no container, no alignment to
@@ -2493,7 +2509,7 @@ body.is-leaving { opacity: 0; }
 }
 
 @media (max-width: 820px) {
-  .study-search { margin-left: 0; width: 100%; }
+  .study-search { margin-left: 0; width: auto; }
   .study-row,
   .study-row.is-grammar {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
@@ -3081,8 +3097,8 @@ body.is-leaving { opacity: 0; }
    these pages.
    ========================================================================== */
 .quiz-controls { margin-bottom: 22px; }
-.study-quiz { margin-left: auto; white-space: nowrap; }
-@media (max-width: 820px) { .study-quiz { margin-left: 0; width: 100%; text-align: center; } }
+.study-quiz { flex: none; white-space: nowrap; }
+@media (max-width: 820px) { .study-find { max-width: none; margin-left: 0; width: 100%; } .study-find .study-search { max-width: none; } }
 
 .quiz-root { max-width: 720px; }
 .quiz-card {

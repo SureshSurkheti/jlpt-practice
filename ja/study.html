@@ -42,7 +42,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ja/#website","url":"https://jlpt.sureshsurkheti.com/ja/","name":"JLPT Practice","inLanguage":"ja","description":"N5からN1までの全単語を読み方と意味付きで、各レベルの主要な文型も合わせて。日本語・ローマ字・英語で検索できます。","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ja/study.html#webpage","url":"https://jlpt.sureshsurkheti.com/ja/study.html","name":"単語・漢字・文法リスト — JLPT Practice","description":"N5からN1までの全単語を読み方と意味付きで、各レベルの主要な文型も合わせて。日本語・ローマ字・英語で検索できます。","inLanguage":"ja","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ja/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=0d11fd0b" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=a243d1b0" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="study-page">
@@ -132,10 +132,12 @@
           <button type="button" class="study-tab" data-kind="grammar" role="tab"
                   data-i18n="study.grammar">文法</button>
         </div>
-        <input type="search" class="study-search" id="studySearch"
-               data-i18n-attr="placeholder:study.search,aria-label:study.search" placeholder="単語や意味で検索" aria-label="単語や意味で検索" />
-        <a class="btn btn-primary study-quiz" id="quizLink" href="./quiz.html?level=N5&amp;kind=words"
-           data-i18n="quiz.button">クイズ</a>
+        <div class="study-find">
+          <input type="search" class="study-search" id="studySearch"
+                 data-i18n-attr="placeholder:study.search,aria-label:study.search" placeholder="単語や意味で検索" aria-label="単語や意味で検索" />
+          <a class="btn btn-primary study-quiz" id="quizLink" href="./quiz.html?level=N5&amp;kind=words"
+             data-i18n="quiz.button">クイズ</a>
+        </div>
       </div>
 
       <div id="studyContent" aria-live="polite">
