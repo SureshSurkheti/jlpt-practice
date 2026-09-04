@@ -210,6 +210,7 @@ I18N.register("en", {
  "nav.about": "About",
  "nav.back": "Back",
  "nav.exams": "Exams",
+ "nav.guides": "Guides",
  "nav.home": "Home",
  "nav.levels": "Levels",
  "nav.practice": "Practice",

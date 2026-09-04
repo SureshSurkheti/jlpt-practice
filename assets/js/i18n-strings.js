@@ -10,6 +10,7 @@
    ========================================================================== */
 
 I18N.register("en", {
+  "nav.guides": "Guides",
   "guides.lead": "New to the JLPT?",
   "guides.title": "Guides",
   "guides.body": "How the exam works, written out in full.",
@@ -338,6 +339,7 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
+  "nav.guides": "ガイド",
   "guides.lead": "JLPTが初めての方へ",
   "guides.title": "ガイド",
   "guides.body": "試験のしくみを詳しく解説。",
@@ -592,6 +594,7 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
+  "nav.guides": "Hướng dẫn",
   "guides.lead": "Mới thi JLPT?",
   "guides.title": "Hướng dẫn",
   "guides.body": "Cách kỳ thi hoạt động, giải thích đầy đủ.",
@@ -846,6 +849,7 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
+  "nav.guides": "गाइड",
   "guides.lead": "JLPT नयाँ हो?",
   "guides.title": "गाइड",
   "guides.body": "परीक्षा कसरी चल्छ, विस्तृत रूपमा।",
@@ -1100,6 +1104,7 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
+  "nav.guides": "指南",
   "guides.lead": "第一次考 JLPT？",
   "guides.title": "指南",
   "guides.body": "考试机制的完整说明。",
@@ -1353,6 +1358,7 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
+  "nav.guides": "가이드",
   "guides.lead": "JLPT가 처음이신가요?",
   "guides.title": "가이드",
   "guides.body": "시험 구조를 자세히 설명합니다.",
@@ -1606,6 +1612,7 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
+  "nav.guides": "Panduan",
   "guides.lead": "Baru mengenal JLPT?",
   "guides.title": "Panduan",
   "guides.body": "Cara kerja ujian, dijelaskan lengkap.",
@@ -1859,6 +1866,7 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
+  "nav.guides": "Mga Gabay",
   "guides.lead": "Bago sa JLPT?",
   "guides.title": "Mga gabay",
   "guides.body": "Kung paano gumagana ang pagsusulit, buong paliwanag.",
@@ -2112,6 +2120,7 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
+  "nav.guides": "Guias",
   "guides.lead": "Novo no JLPT?",
   "guides.title": "Guias",
   "guides.body": "Como o exame funciona, explicado por completo.",
@@ -2365,6 +2374,7 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
+  "nav.guides": "गाइड",
   "guides.lead": "JLPT में नए हैं?",
   "guides.title": "गाइड",
   "guides.body": "परीक्षा कैसे काम करती है, विस्तार से।",
@@ -2618,6 +2628,7 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
+  "nav.guides": "গাইড",
   "guides.lead": "JLPT-তে নতুন?",
   "guides.title": "গাইড",
   "guides.body": "পরীক্ষা কীভাবে কাজ করে, বিস্তারিত।",
@@ -2871,6 +2882,7 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
+  "nav.guides": "මාර්ගෝපදේශ",
   "guides.lead": "JLPT අලුත්ද?",
   "guides.title": "මාර්ගෝපදේශ",
   "guides.body": "විභාගය ක්‍රියා කරන ආකාරය, සම්පූර්ණයෙන්.",

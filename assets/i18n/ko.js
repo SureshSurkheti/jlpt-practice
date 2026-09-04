@@ -205,6 +205,7 @@ I18N.register("ko", {
  "nav.about": "소개",
  "nav.back": "뒤로",
  "nav.exams": "모의고사",
+ "nav.guides": "가이드",
  "nav.home": "홈",
  "nav.levels": "레벨",
  "nav.practice": "연습",

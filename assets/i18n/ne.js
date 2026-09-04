@@ -205,6 +205,7 @@ I18N.register("ne", {
  "nav.about": "हाम्रोबारे",
  "nav.back": "पछाडि",
  "nav.exams": "अभ्यास प्रश्नपत्र",
+ "nav.guides": "गाइड",
  "nav.home": "गृहपृष्ठ",
  "nav.levels": "स्तर",
  "nav.practice": "अभ्यास",

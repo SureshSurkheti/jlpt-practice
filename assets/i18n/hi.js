@@ -205,6 +205,7 @@ I18N.register("hi", {
  "nav.about": "परिचय",
  "nav.back": "वापस",
  "nav.exams": "अभ्यास प्रश्नपत्र",
+ "nav.guides": "गाइड",
  "nav.home": "होम",
  "nav.levels": "स्तर",
  "nav.practice": "अभ्यास",

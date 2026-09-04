@@ -205,6 +205,7 @@ I18N.register("pt-BR", {
  "nav.about": "Sobre",
  "nav.back": "Voltar",
  "nav.exams": "Simulados",
+ "nav.guides": "Guias",
  "nav.home": "Início",
  "nav.levels": "Níveis",
  "nav.practice": "Prática",

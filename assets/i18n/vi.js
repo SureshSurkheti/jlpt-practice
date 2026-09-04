@@ -205,6 +205,7 @@ I18N.register("vi", {
  "nav.about": "Giới thiệu",
  "nav.back": "Quay lại",
  "nav.exams": "Đề luyện tập",
+ "nav.guides": "Hướng dẫn",
  "nav.home": "Trang chủ",
  "nav.levels": "Cấp độ",
  "nav.practice": "Luyện tập",

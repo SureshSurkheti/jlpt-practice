@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#112d4e" />
+    <title>JLPTの採点の仕組み — 合格点と各セクションの基準点</title>
+    <meta name="description" content="どのレベルも180点満点ですが、多くの人を不合格にするのは合計点ではありません。尺度得点の仕組みと、合計では合格していた人を不合格にする基準点について。" />
+    <link rel="canonical" href="https://jlpt.sureshsurkheti.com/ja/guide/jlpt-scoring.html" />
+    <link rel="alternate" hreflang="en" href="https://jlpt.sureshsurkheti.com/guide/jlpt-scoring.html" />
+    <link rel="alternate" hreflang="ja" href="https://jlpt.sureshsurkheti.com/ja/guide/jlpt-scoring.html" />
+    <link rel="alternate" hreflang="ne" href="https://jlpt.sureshsurkheti.com/ne/guide/jlpt-scoring.html" />
+    <link rel="alternate" hreflang="vi" href="https://jlpt.sureshsurkheti.com/vi/guide/jlpt-scoring.html" />
+    <link rel="alternate" hreflang="zh" href="https://jlpt.sureshsurkheti.com/zh/guide/jlpt-scoring.html" />
+    <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/guide/jlpt-scoring.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="JLPTの採点の仕組み — 合格点と各セクションの基準点" />
+    <meta property="og:description" content="どのレベルも180点満点ですが、多くの人を不合格にするのは合計点ではありません。尺度得点の仕組みと、合計では合格していた人を不合格にする基準点について。" />
+    <meta property="og:url" content="https://jlpt.sureshsurkheti.com/ja/guide/jlpt-scoring.html" />
+    <meta property="og:image" content="https://jlpt.sureshsurkheti.com/icon-512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JLPTの採点の仕組み — 合格点と各セクションの基準点" />
+    <meta name="twitter:description" content="どのレベルも180点満点ですが、多くの人を不合格にするのは合計点ではありません。尺度得点の仕組みと、合計では合格していた人を不合格にする基準点について。" />
+    <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/icon-512.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JLPTの採点の仕組み","description":"どのレベルも180点満点ですが、多くの人を不合格にするのは合計点ではありません。尺度得点の仕組みと、合計では合格していた人を不合格にする基準点について。","inLanguage":"ja","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ja/guide/jlpt-scoring.html"},"author":{"@type":"Person","name":"Suresh Surkheti"},"publisher":{"@type":"Organization","name":"JLPT Practice"},"translationOfWork":{"@type":"Article","@id":"https://jlpt.sureshsurkheti.com/guide/jlpt-scoring.html"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jlpt.sureshsurkheti.com/ja/"},{"@type":"ListItem","position":2,"name":"JLPTガイド","item":"https://jlpt.sureshsurkheti.com/ja/guide/"},{"@type":"ListItem","position":3,"name":"JLPTの採点の仕組み","item":"https://jlpt.sureshsurkheti.com/ja/guide/jlpt-scoring.html"}]}</script>
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=44e3a647" />
+  </head>
+  <body class="guide-page" data-back-to="index.html">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand-wrap" href="../index.html" id="brandLink">
+          <span class="brand-mark">JL</span>
+          <span class="brand-text">
+            <span class="brand-name">JLPT Practice</span>
+            <span class="brand-tag">ガイド</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="../index.html" data-i18n="nav.home">ホーム</a>
+          <a href="../levels.html" data-i18n="nav.levels">レベル</a>
+          <a href="../exams.html" data-i18n="nav.exams">模擬試験</a>
+          <a href="../study.html" data-i18n="nav.study">単語・文法</a>
+          <a href="../about.html" data-i18n="nav.about">このサイト</a>
+          <a class="nav-guides active" href="/ja/guide/" data-i18n="nav.guides">ガイド</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page-shell">
+      <article class="guide">
+        <p class="guide-kicker">JLPTガイド</p>
+        <h1>JLPTの採点の仕組み</h1>
+        <p class="guide-standfirst">どのレベルも180点満点。そして、人を不合格にするルールは合計点ではありません。</p>
+        <p class="guide-note">英語の原文から機械翻訳したもので、まだ日本語話者の確認を受けていません。 <a href="https://jlpt.sureshsurkheti.com/guide/jlpt-scoring.html" hreflang="en" lang="en">英語版を読む</a></p>
+        <p>JLPTの成績通知書がわかりにくいと感じる原因は、ほとんど一つの事実に集まります。<strong>得点は正解した問題の割合ではない</strong>ということです。別の回の試験で同じ数の問題に正解した二人が、違う点数を受け取ることがあります。どちらの通知書も間違っていません。</p>
+
+        <h2>どのレベルも180点満点</h2>
+        <p>N5もN1も合計は180点です。変わるのはその180点の分け方で、その分け方こそが合否を決めます。</p>
+        <div class="guide-table-wrap">
+          <table class="guide-table">
+            <thead><tr><th>レベル</th><th>得点区分</th><th>合格点</th></tr></thead>
+            <tbody>
+              <tr><td>N5</td><td>言語知識・読解（0–120）・聴解（0–60）</td><td>80 / 180</td></tr>
+              <tr><td>N4</td><td>言語知識・読解（0–120）・聴解（0–60）</td><td>90 / 180</td></tr>
+              <tr><td>N3</td><td>言語知識（0–60）・読解（0–60）・聴解（0–60）</td><td>95 / 180</td></tr>
+              <tr><td>N2</td><td>言語知識（0–60）・読解（0–60）・聴解（0–60）</td><td>90 / 180</td></tr>
+              <tr><td>N1</td><td>言語知識（0–60）・読解（0–60）・聴解（0–60）</td><td>100 / 180</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>この表は二度読んでください。誤植だと思われがちなことが書いてあります。<strong>N3の合格点はN2より高い</strong>のです。95点と90点。N2のほうが明らかに難しい試験ですが、必要な点数は低い。尺度はレベルごとに設定されていて、二つの数字は同じものを測っていないからです。</p>
+
+        <h2>合格していたはずの人を不合格にするルール</h2>
+        <p>合計点を超えるだけでは足りません。得点区分にはそれぞれ基準点があり、どれか一つでも下回れば、合計がいくら高くても試験全体が不合格になります。</p>
+        <ul class="guide-list">
+          <li><strong>N1・N2・N3</strong> — 3つの区分それぞれで60点中19点以上。</li>
+          <li><strong>N4・N5</strong> — 言語知識・読解で120点中38点以上、聴解で60点中19点以上。</li>
+        </ul>
+        <p>つまり、55点・55点・18点をとったN2の受験者は、合格点90点に対して128点。余裕で上回っているのに、不合格です。聴解の18点がすべてを決めます。成績通知書を見て驚く原因として最も多いのがこれで、得意なセクションだけを練習するのが悪い戦略である理由もここにあります。見切りをつけた一つの区分が、ほかでは楽に合格できる試験を沈めてしまうのです。</p>
+        <p>だから役に立つ問いは「合計は何点か」ではなく、いつも「いちばん弱い区分はどこか」です。このサイトの問題がすべて区分ごとに採点されるのは、まさにそのためです。</p>
+
+        <h2>なぜ得点が換算されるのか</h2>
+        <p>JLPTは<em>尺度得点</em>を使います。素点は項目応答理論によって共通の尺度に変換されるので、問題冊子にほかに何が入っていても、一つの点数が同じ意味を持ちます。</p>
+        <p>理由は、回ごとの公平さです。二つの試験が完全に同じ難しさになることはなく、試験は年に2回、世界中で行われます。結果が素点の割合なら、易しかった12月は難しかった7月より多くの人を合格させることになり、それは受験者と何の関係もない理由です。換算はそれをなくします。</p>
+        <p>実際に知っておく価値のある結果は次の通りです。</p>
+        <ul class="guide-list">
+          <li>正解数から自分の点数を計算することはできず、あと何問必要だったかを正確に言える人もいません。</li>
+          <li>最終的な尺度上で、すべての問題が同じ重さではありません。その重み付けは公表されていません。</li>
+          <li>正確なJLPTの点数を約束するサイトは、このサイトを含めて、すべて推定です。練習の結果は弱い区分がどこかを教えてくれます。本物の通知書に何が書かれるかは教えてくれません。</li>
+        </ul>
+
+        <h2>各レベルの試験時間</h2>
+        <div class="guide-table-wrap">
+          <table class="guide-table">
+            <thead><tr><th>レベル</th><th>試験時間の合計</th><th>漢字</th><th>語彙</th></tr></thead>
+            <tbody>
+              <tr><td>N5</td><td>90分</td><td>約100</td><td>約800</td></tr>
+              <tr><td>N4</td><td>115分</td><td>約300</td><td>約1,500</td></tr>
+              <tr><td>N3</td><td>140分</td><td>約600</td><td>約3,500</td></tr>
+              <tr><td>N2</td><td>155分</td><td>約1,000</td><td>約6,000</td></tr>
+              <tr><td>N1</td><td>165分</td><td>約2,000</td><td>約10,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>漢字と語彙の数は、一般によく使われる目安です。JLPTは2010年以降、公式の語彙リストを公表していないので、シラバスではなく規模の感覚として受け取ってください。</p>
+
+        <h2>結果発表の日に確認すること</h2>
+        <p>合計より先に区分別の点数を見てください。不合格なら、基準点を下回った区分が、これからの半年を何に使うべきかを教えてくれます。合格していても、いちばん低い区分はやはり取り組むべきところです。次のレベルはそれができている前提で作られています。</p>
+
+        <aside class="guide-cta">
+          <h2>実際の問題で確かめる</h2>
+          <p>このサイトの練習問題はすべてセクションごとに採点されるので、上のルールが自分の答案にどう当てはまるかがそのまま見えます。</p>
+          <div class="guide-cta-actions">
+            <a class="btn btn-primary" href="../exams.html">練習問題を見る</a>
+            <a class="btn btn-ghost" href="../levels.html">レベルを比べる</a>
+          </div>
+        </aside>
+        <nav class="guide-more" aria-label="ほかのガイド">
+          <h2>ほかのガイド</h2>
+          <ul><li><a href="n4-to-n3.html">N4からN3へ：JLPTで最大の跳躍</a></li><li><a href="which-jlpt-level.html">どのレベルのJLPTを受けるべきか</a></li></ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 JLPT Practice</div>
+        <div data-i18n="footer.tagline">賢く学び、日本での生活をより良く。</div>
+      </div>
+      <nav class="container lang-links" aria-label="言語">
+        <span>言語</span>
+        <ul><li><a href="https://jlpt.sureshsurkheti.com/guide/jlpt-scoring.html" hreflang="en" lang="en">English</a></li><li><a href="https://jlpt.sureshsurkheti.com/ne/guide/jlpt-scoring.html" hreflang="ne" lang="ne">नेपाली</a></li><li><a href="https://jlpt.sureshsurkheti.com/vi/guide/jlpt-scoring.html" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="https://jlpt.sureshsurkheti.com/zh/guide/jlpt-scoring.html" hreflang="zh" lang="zh">中文</a></li></ul>
+      </nav>
+    </footer>
+
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=cead0016"></script>
+    <script defer src="/assets/i18n/ja.js?v=a81a9de9"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
+  </body>
+</html>

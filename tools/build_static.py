@@ -379,6 +379,28 @@ def exams_stats(table, en):
     return '<div class="exams-stats" id="examsStats">%s</div>' % out
 
 
+def guide_langs():
+    """The languages the guides exist in: English plus one per file in
+    _src/guides/. Read from the folder so this and build_guides.py agree."""
+    d = os.path.join(ROOT, "_src", "guides")
+    langs = [DEFAULT_LANG]
+    if os.path.isdir(d):
+        langs += sorted(f[:-5] for f in os.listdir(d) if f.endswith(".json"))
+    return langs
+
+
+def localise_guides(html, lang):
+    """On a translated page: if the guides exist in this language, point
+    every guide link at that version and drop the "English only" note;
+    otherwise remove the nav item, since a link out of the reader's
+    language with nothing to warn them is worse than no link."""
+    if lang in guide_langs():
+        html = html.replace('href="/guide/', 'href="/%s/guide/' % lang)
+        html = re.sub(r'\s*<em data-i18n="guides.english"[^>]*>[^<]*</em>', "", html)
+        return html
+    return re.sub(r'\s*<a class="nav-guides"[^>]*>[^<]*</a>', "", html)
+
+
 def absolutise(html):
     """Root-relative asset paths, so /ne/index.html loads the same files."""
     for attr in ("href", "src"):
@@ -903,7 +925,7 @@ def main():
             # items they had; the study page still carries the link, with
             # the note that says which language it is in.
             if lang != DEFAULT_LANG:
-                html = re.sub(r'\s*<a class="nav-guides"[^>]*>[^<]*</a>', "", html)
+                html = localise_guides(html, lang)
             html = rewrite_head(html, lang, page, langs, indexable, table, en)
             # After rewrite_head, not before: that is what writes the meta
             # description and the og/twitter copy out of the same translation
@@ -1051,6 +1073,8 @@ def main():
                 # has none: the hub is an item in the main navigation, these
                 # fifteen pages are not. You arrive from a tab or a level
                 # card and nothing in the header leads back.
+                if lang != DEFAULT_LANG:
+                    html = localise_guides(html, lang)
                 html = html.replace('<body class="study-page"',
                                     '<body class="study-page" '
                                     'data-back-to="../study.html"')
@@ -1079,11 +1103,15 @@ def main():
     # The guides, written by tools/build_guides.py. English only and outside
     # the twelve-language pass, so they are added here by reading the folder
     # rather than by being listed twice - a list in two files drifts.
-    guide_dir = os.path.join(ROOT, "guide")
-    if os.path.isdir(guide_dir):
-        for fn in sorted(os.listdir(guide_dir)):
-            if fn.endswith(".html"):
-                written.append((SITE + "/guide/" + fn, DEFAULT_LANG, "guide"))
+    for glang in guide_langs():
+        prefix = "" if glang == DEFAULT_LANG else "/" + glang
+        guide_dir = os.path.join(ROOT, glang, "guide") if prefix else os.path.join(ROOT, "guide")
+        if os.path.isdir(guide_dir):
+            for fn in sorted(os.listdir(guide_dir)):
+                if fn.endswith(".html"):
+                    # the index is addressed as the folder, which is its canonical
+                    written.append((SITE + prefix + "/guide/" + ("" if fn == "index.html" else fn),
+                                    glang, "guide"))
 
     rows = []
     for url, lang, page in written:

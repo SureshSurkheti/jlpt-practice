@@ -205,6 +205,7 @@ I18N.register("fil", {
  "nav.about": "Tungkol",
  "nav.back": "Bumalik",
  "nav.exams": "Pagsasanay",
+ "nav.guides": "Mga Gabay",
  "nav.home": "Home",
  "nav.levels": "Antas",
  "nav.practice": "Pagsasanay",

@@ -205,6 +205,7 @@ I18N.register("si", {
  "nav.about": "පිළිබඳව",
  "nav.back": "ආපසු",
  "nav.exams": "පුහුණු ප්‍රශ්න පත්‍ර",
+ "nav.guides": "මාර්ගෝපදේශ",
  "nav.home": "මුල් පිටුව",
  "nav.levels": "මට්ටම්",
  "nav.practice": "පුහුණුව",

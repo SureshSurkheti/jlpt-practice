@@ -205,6 +205,7 @@ I18N.register("ja", {
  "nav.about": "このサイト",
  "nav.back": "戻る",
  "nav.exams": "模擬試験",
+ "nav.guides": "ガイド",
  "nav.home": "ホーム",
  "nav.levels": "レベル",
  "nav.practice": "練習",

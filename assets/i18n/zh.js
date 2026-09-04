@@ -205,6 +205,7 @@ I18N.register("zh", {
  "nav.about": "关于",
  "nav.back": "返回",
  "nav.exams": "模拟题",
+ "nav.guides": "指南",
  "nav.home": "首页",
  "nav.levels": "级别",
  "nav.practice": "练习",

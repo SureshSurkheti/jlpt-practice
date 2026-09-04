@@ -5,27 +5,29 @@ Straight to the output directory, not through _src: _src holds the templates
 that build_static.py runs the twelve-language pass over, and these pages do
 not take that pass.
 
-English only. The papers themselves are disallowed in robots.txt because the
-questions are not ours to republish, which leaves the site with almost nothing
-a search engine may read. These are written to be the indexable half: real
-answers to questions people actually type, using facts the site already holds
-so the two can never disagree.
+Written in English, then in every language that has a file in _src/guides/.
+The papers themselves are disallowed in robots.txt because the questions are
+not ours to republish, which leaves the site with almost nothing a search
+engine may read. These are written to be the indexable half: real answers to
+questions people actually type, using facts the site already holds so the two
+can never disagree.
 
-No language picker in the header. Every other page has one because every other
-page exists in twelve languages; these do not, and a picker here would send a
-reader to /ja/guide/... and a 404. A machine translation of two thousand words
-of exam advice is worse than no translation, so the honest thing is one
-language, said once.
+The translations are machine-made and say so on the page, with the English
+original one click away, until a native speaker has read them. They exist
+because the site's stated readers are learners in Japan from Nepal, Vietnam
+and China, and an English-only guide reaches none of them in search.
 """
 import io, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_static import finish_html, breadcrumbs
+from build_static import finish_html, breadcrumbs, load_translations, t, esc, OG_LOCALE, clip_desc
+import re
+import glob
 
 SITE = "https://jlpt.sureshsurkheti.com"
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "guide")
 
 HEAD = """<!DOCTYPE html>
-<html lang="en">
+<html lang="{lang}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,11 +39,11 @@ HEAD = """<!DOCTYPE html>
     <title>{title}</title>
     <meta name="description" content="{desc}" />
     <link rel="canonical" href="{url}" />
-    <link rel="alternate" hreflang="en" href="{url}" />
-    <link rel="alternate" hreflang="x-default" href="{url}" />
+{hreflang}
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="JLPT Practice" />
+    <meta property="og:locale" content="{oglocale}" />
     <meta property="og:title" content="{title}" />
     <meta property="og:description" content="{desc}" />
     <meta property="og:url" content="{url}" />
@@ -63,38 +65,37 @@ HEAD = """<!DOCTYPE html>
           <span class="brand-mark">JL</span>
           <span class="brand-text">
             <span class="brand-name">JLPT Practice</span>
-            <span class="brand-tag">Guides</span>
+            <span class="brand-tag">{brandtag}</span>
           </span>
         </a>
 
         <nav class="main-nav" aria-label="Main navigation">
-          <a href="../index.html" data-i18n="nav.home">Home</a>
-          <a href="../levels.html" data-i18n="nav.levels">Levels</a>
-          <a href="../exams.html" data-i18n="nav.exams">Exams</a>
-          <a href="../study.html" data-i18n="nav.study">Study</a>
-          <a href="../about.html" data-i18n="nav.about">About</a>
-          <a class="nav-guides active" href="/guide/">Guides</a>
+          <a href="../index.html" data-i18n="nav.home">{navhome}</a>
+          <a href="../levels.html" data-i18n="nav.levels">{navlevels}</a>
+          <a href="../exams.html" data-i18n="nav.exams">{navexams}</a>
+          <a href="../study.html" data-i18n="nav.study">{navstudy}</a>
+          <a href="../about.html" data-i18n="nav.about">{navabout}</a>
+          <a class="nav-guides active" href="{guideshref}" data-i18n="nav.guides">{navguides}</a>
         </nav>
       </div>
     </header>
 
     <main class="container page-shell">
       <article class="guide">
-        <p class="guide-kicker">JLPT guide</p>
+        <p class="guide-kicker">{kicker}</p>
         <h1>{h1}</h1>
         <p class="guide-standfirst">{standfirst}</p>
-{body}
+{note}{body}
         <aside class="guide-cta">
-          <h2>Try it on a real paper</h2>
-          <p>Every practice paper on this site is marked section by section,
-             so you can see the rule above applied to your own answers.</p>
+          <h2>{ctatitle}</h2>
+          <p>{ctabody}</p>
           <div class="guide-cta-actions">
-            <a class="btn btn-primary" href="../exams.html">Browse practice papers</a>
-            <a class="btn btn-ghost" href="../levels.html">Compare the levels</a>
+            <a class="btn btn-primary" href="../exams.html">{ctabrowse}</a>
+            <a class="btn btn-ghost" href="../levels.html">{ctalevels}</a>
           </div>
         </aside>
-        <nav class="guide-more" aria-label="More guides">
-          <h2>More guides</h2>
+        <nav class="guide-more" aria-label="{moreh}">
+          <h2>{moreh}</h2>
           <ul>{more}</ul>
         </nav>
       </article>
@@ -103,13 +104,13 @@ HEAD = """<!DOCTYPE html>
     <footer class="site-footer">
       <div class="container footer-inner">
         <div>© 2026 JLPT Practice</div>
-        <div data-i18n="footer.tagline">Study smarter. Live better in Japan.</div>
+        <div data-i18n="footer.tagline">{tagline}</div>
       </div>
-    </footer>
+{langlinks}    </footer>
 
     <script src="/assets/js/i18n.js"></script>
     <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/js/site.js"></script>
+{langscript}    <script src="/assets/js/site.js"></script>
   </body>
 </html>
 """
@@ -397,47 +398,160 @@ INDEX = """
 {cards}
 """
 
-def write_index():
+
+# --------------------------------------------------------------------------
+# Languages. English is the master copy, written from the constants above.
+# Each file in _src/guides/<lang>.json is the same three articles and the
+# handful of interface strings in another language, machine-translated and
+# marked as such on the page until a native speaker has read it. They are
+# written to /<lang>/guide/ with hreflang links between every version, so a
+# search engine treats them as one article in five languages rather than
+# five competitors, and a Nepali or Vietnamese reader finds the guide in the
+# language they chose for the rest of the site.
+# --------------------------------------------------------------------------
+
+EN_UI = dict(
+    kicker="JLPT guide", brandTag="Guides",
+    ctaTitle="Try it on a real paper",
+    ctaBody="Every practice paper on this site is marked section by section, "
+            "so you can see the rule above applied to your own answers.",
+    ctaBrowse="Browse practice papers", ctaLevels="Compare the levels",
+    more="More guides", note="", noteLink="",
+    indexTitle="JLPT Guides — How the Exam Works", indexH1="JLPT guides",
+    indexStandfirst="How the exam works, written out in full.",
+    indexIntro="Three pages on how the exam itself works - the scoring, the step "
+               "people find hardest, and how to choose a level. Everything here is "
+               "about the JLPT as an exam rather than about Japanese.")
+
+SRC = os.path.join(os.path.dirname(OUT), "_src", "guides")
+TRANSLATED = {}
+for _f in sorted(glob.glob(os.path.join(SRC, "*.json"))):
+    TRANSLATED[os.path.basename(_f)[:-5]] = json.load(io.open(_f, encoding="utf-8"))
+LANGS = ["en"] + sorted(TRANSLATED)
+NAMES = {"en": "English", "ja": "日本語", "ne": "नेपाली", "vi": "Tiếng Việt",
+         "zh": "中文", "ko": "한국어", "id": "Bahasa Indonesia", "fil": "Filipino",
+         "pt-BR": "Português (Brasil)", "hi": "हिन्दी", "bn": "বাংলা", "si": "සිංහල"}
+TABLES = load_translations()
+EN_TABLE = TABLES["en"]
+
+
+def guide_url(lang, slug):
+    return "%s%s/guide/%s" % (SITE, "" if lang == "en" else "/" + lang, slug)
+
+
+def out_dir(lang):
+    return OUT if lang == "en" else os.path.join(os.path.dirname(OUT), lang, "guide")
+
+
+def hreflang(slug):
+    rows = ['    <link rel="alternate" hreflang="%s" href="%s" />' % (l, guide_url(l, slug))
+            for l in LANGS]
+    rows.append('    <link rel="alternate" hreflang="x-default" href="%s" />' % guide_url("en", slug))
+    return "\n".join(rows)
+
+
+def lang_links(lang, slug, table):
+    label = esc(t(table, "lang.label", EN_TABLE))
+    items = "".join('<li><a href="%s" hreflang="%s" lang="%s">%s</a></li>'
+                    % (guide_url(l, slug), l, l, esc(NAMES[l])) for l in LANGS if l != lang)
+    return ('      <nav class="container lang-links" aria-label="%s">\n'
+            '        <span>%s</span>\n        <ul>%s</ul>\n      </nav>\n' % (label, label, items))
+
+
+def common(lang, slug, ui, table):
+    """The template fields that are the same on every page of a language."""
+    return dict(
+        lang=lang, site=SITE, hreflang=hreflang(slug),
+        oglocale=OG_LOCALE.get(lang, lang),
+        brandtag=esc(ui["brandTag"]), kicker=esc(ui["kicker"]),
+        navhome=esc(t(table, "nav.home", EN_TABLE)),
+        navlevels=esc(t(table, "nav.levels", EN_TABLE)),
+        navexams=esc(t(table, "nav.exams", EN_TABLE)),
+        navstudy=esc(t(table, "nav.study", EN_TABLE)),
+        navabout=esc(t(table, "nav.about", EN_TABLE)),
+        navguides=esc(t(table, "nav.guides", EN_TABLE)),
+        guideshref="/guide/" if lang == "en" else "/%s/guide/" % lang,
+        ctatitle=esc(ui["ctaTitle"]), ctabody=esc(ui["ctaBody"]),
+        ctabrowse=esc(ui["ctaBrowse"]), ctalevels=esc(ui["ctaLevels"]),
+        moreh=esc(ui["more"]),
+        tagline=esc(t(table, "footer.tagline", EN_TABLE)),
+        langlinks=lang_links(lang, slug, table),
+        langscript="" if lang == "en" else
+                   '    <script src="/assets/i18n/%s.js"></script>\n' % lang,
+        note="" if lang == "en" else
+             '        <p class="guide-note">%s <a href="%s" hreflang="en" lang="en">%s</a></p>\n'
+             % (esc(ui["note"]), guide_url("en", slug), esc(ui["noteLink"])))
+
+
+def ld_for_lang(p, lang, slug):
+    d = json.loads(ld_for(dict(p, slug=slug)))
+    d["inLanguage"] = lang
+    d["mainEntityOfPage"]["@id"] = guide_url(lang, slug)
+    if lang != "en":
+        d["translationOfWork"] = {"@type": "Article", "@id": guide_url("en", slug)}
+    return json.dumps(d, ensure_ascii=False, separators=(",", ":"))
+
+
+def write_language(lang):
+    ui = EN_UI if lang == "en" else TRANSLATED[lang]["ui"]
+    table = TABLES.get(lang, EN_TABLE)
+    pages = []
+    for p in PAGES:
+        if lang == "en":
+            pages.append(dict(p))
+        else:
+            tr = TRANSLATED[lang]["pages"][p["slug"]]
+            pages.append(dict(slug=p["slug"], h1=tr["h1"], title=tr["title"],
+                              desc=clip_desc(tr["desc"]), standfirst=tr["standfirst"],
+                              body=tr["body"]))
+    home = t(table, "nav.home", EN_TABLE)
+    d = out_dir(lang)
+    os.makedirs(d, exist_ok=True)
+
+    # index
     cards = '<ul class="guide-index">' + "".join(
-        '<li><a href="%s"><b>%s</b><span>%s</span></a></li>' % (p["slug"], p["h1"], p["standfirst"])
-        for p in PAGES) + "</ul>"
+        '<li><a href="%s"><b>%s</b><span>%s</span></a></li>' % (p["slug"], esc(p["h1"]), esc(p["standfirst"]))
+        for p in pages) + "</ul>"
+    fields = common(lang, "", ui, table)
+    fields["note"] = ""
     html = HEAD.format(
-        title="JLPT Guides — How the Exam Works",
-        desc="How the JLPT is scored, why N4 to N3 is the hardest step, and which level to take.",
-        url="%s/guide/" % SITE, site=SITE,
-        h1="JLPT guides",
-        standfirst="How the exam works, written out in full.",
+        title=esc(ui["indexTitle"]), desc=esc(clip_desc(ui["indexIntro"])),
+        url=guide_url(lang, ""), h1=esc(ui["indexH1"]), standfirst=esc(ui["indexStandfirst"]),
         body=INDEX.format(cards=cards), back="",
-        more="".join('<li><a href="%s">%s</a></li>' % (q["slug"], q["h1"]) for q in PAGES),
-        crumbs=breadcrumbs([("Home", SITE + "/"), ("Guides", "%s/guide/" % SITE)]),
-        ld=json.dumps({"@context":"https://schema.org","@type":"CollectionPage",
-                       "name":"JLPT Guides","inLanguage":"en",
-                       "url":"%s/guide/" % SITE}, ensure_ascii=False, separators=(",",":")))
+        more="".join('<li><a href="%s">%s</a></li>' % (q["slug"], esc(q["h1"])) for q in pages),
+        crumbs=breadcrumbs([(home, SITE + ("/" if lang == "en" else "/%s/" % lang)),
+                            (ui["indexH1"], guide_url(lang, ""))]),
+        ld=json.dumps({"@context": "https://schema.org", "@type": "CollectionPage",
+                       "name": ui["indexH1"], "inLanguage": lang,
+                       "url": guide_url(lang, "")}, ensure_ascii=False, separators=(",", ":")),
+        **fields)
     # the index does not need a "more guides" list under a list of the same
     # three, nor a call to action it already is
-    html = html.replace('<nav class="guide-more" aria-label="More guides">', '<nav hidden>')
-    io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(finish_html(html))
-    print("%-24s  index" % "index.html")
+    html = re.sub(r'<nav class="guide-more" aria-label="[^"]*">', '<nav hidden>', html)
+    io.open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(finish_html(html))
+    print("%-6s %-24s  index" % (lang, "index.html"))
 
-os.makedirs(OUT, exist_ok=True)
-write_index()
-for p in PAGES:
-    others = [q for q in PAGES if q["slug"] != p["slug"]]
-    more = "".join('<li><a href="%s">%s</a></li>' % (q["slug"], q["h1"]) for q in others)
-    html = HEAD.format(
-        title=p["title"], desc=p["desc"], url="%s/guide/%s" % (SITE, p["slug"]),
-        site=SITE, h1=p["h1"], standfirst=p["standfirst"], body=p["body"],
-        more=more, ld=ld_for(p),
-        crumbs=breadcrumbs([("Home", SITE + "/"), ("Guides", "%s/guide/" % SITE),
-                            (p["h1"], "%s/guide/%s" % (SITE, p["slug"]))]),
-        # An article's parent is the index, and the only route to it was the
-        # "Guides" item in the nav - which on an article is marked active, so
-        # it reads as "you are here" rather than as a way up. The "More
-        # guides" list at the foot is real, but it is 2,751px down a 2,982px
-        # page and lists the other two rather than the way back. So the chip
-        # returns here, and here only: on the index itself the parent is the
-        # study page and the nav does say so.
-        back=' data-back-to="index.html"')
-    io.open(os.path.join(OUT, p["slug"]), "w", encoding="utf-8").write(finish_html(html))
-    words = len(" ".join(p["body"].split()).split())
-    print("%-24s %4d words" % (p["slug"], words))
+    for p in pages:
+        others = [q for q in pages if q["slug"] != p["slug"]]
+        more = "".join('<li><a href="%s">%s</a></li>' % (q["slug"], esc(q["h1"])) for q in others)
+        html = HEAD.format(
+            title=esc(p["title"]), desc=esc(p["desc"]), url=guide_url(lang, p["slug"]),
+            h1=esc(p["h1"]), standfirst=esc(p["standfirst"]), body=p["body"],
+            more=more, ld=ld_for_lang(p, lang, p["slug"]),
+            crumbs=breadcrumbs([(home, SITE + ("/" if lang == "en" else "/%s/" % lang)),
+                                (ui["indexH1"], guide_url(lang, "")),
+                                (p["h1"], guide_url(lang, p["slug"]))]),
+            # An article's parent is the index, and the only route to it was
+            # the "Guides" item in the nav - which on an article is marked
+            # active, so it reads as "you are here" rather than as a way up.
+            # So the chip returns here, and here only.
+            back=' data-back-to="index.html"',
+            **common(lang, p["slug"], ui, table))
+        io.open(os.path.join(d, p["slug"]), "w", encoding="utf-8").write(finish_html(html))
+        words = len(" ".join(re.sub(r"<[^>]+>", " ", p["body"]).split()).split())
+        print("%-6s %-24s %5d words" % (lang, p["slug"], words))
+
+
+import re
+for _lang in LANGS:
+    write_language(_lang)

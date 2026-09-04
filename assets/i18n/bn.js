@@ -205,6 +205,7 @@ I18N.register("bn", {
  "nav.about": "পরিচিতি",
  "nav.back": "ফিরুন",
  "nav.exams": "অভ্যাস প্রশ্ন",
+ "nav.guides": "গাইড",
  "nav.home": "হোম",
  "nav.levels": "স্তর",
  "nav.practice": "অভ্যাস",

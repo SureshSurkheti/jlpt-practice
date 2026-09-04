@@ -205,6 +205,7 @@ I18N.register("id", {
  "nav.about": "Tentang",
  "nav.back": "Kembali",
  "nav.exams": "Soal Latihan",
+ "nav.guides": "Panduan",
  "nav.home": "Beranda",
  "nav.levels": "Level",
  "nav.practice": "Latihan",
