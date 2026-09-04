@@ -54,7 +54,7 @@ HEAD = """<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
-  <body class="guide-page">
+  <body class="guide-page"{back}>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand-wrap" href="../index.html" id="brandLink">
@@ -405,7 +405,7 @@ def write_index():
         url="%s/guide/" % SITE, site=SITE,
         h1="JLPT guides",
         standfirst="How the exam works, written out in full.",
-        body=INDEX.format(cards=cards),
+        body=INDEX.format(cards=cards), back="",
         more="".join('<li><a href="%s">%s</a></li>' % (q["slug"], q["h1"]) for q in PAGES),
         ld=json.dumps({"@context":"https://schema.org","@type":"CollectionPage",
                        "name":"JLPT Guides","inLanguage":"en",
@@ -424,7 +424,15 @@ for p in PAGES:
     html = HEAD.format(
         title=p["title"], desc=p["desc"], url="%s/guide/%s" % (SITE, p["slug"]),
         site=SITE, h1=p["h1"], standfirst=p["standfirst"], body=p["body"],
-        more=more, ld=ld_for(p))
+        more=more, ld=ld_for(p),
+        # An article's parent is the index, and the only route to it was the
+        # "Guides" item in the nav - which on an article is marked active, so
+        # it reads as "you are here" rather than as a way up. The "More
+        # guides" list at the foot is real, but it is 2,751px down a 2,982px
+        # page and lists the other two rather than the way back. So the chip
+        # returns here, and here only: on the index itself the parent is the
+        # study page and the nav does say so.
+        back=' data-back-to="index.html"')
     io.open(os.path.join(OUT, p["slug"]), "w", encoding="utf-8").write(html)
     words = len(" ".join(p["body"].split()).split())
     print("%-24s %4d words" % (p["slug"], words))

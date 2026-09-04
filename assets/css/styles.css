@@ -2343,7 +2343,17 @@ body.is-leaving { opacity: 0; }
 
 .study-row {
   display: grid;
-  grid-template-columns: 190px 190px minmax(0, 1fr);
+  /* A fourth, empty track. The meaning column used to be the 1fr, so on a
+     desktop it took every pixel the other two did not: 670px of column for a
+     median meaning that wants 62px and a longest that wants 309. The label
+     sat 630px from the word it belongs to and the three columns read as
+     three separate lists. Capped, the meanings sit beside their readings and
+     the leftover becomes card, not column.
+
+     Words only. The kanji rows below override this - their meanings really
+     do run to 683px at the median - and so do the grammar rows, whose third
+     column holds example sentences. */
+  grid-template-columns: 190px 190px minmax(0, 24rem) minmax(0, 1fr);
   gap: 16px;
   padding: 12px 18px;
   border-top: 1px solid var(--line);
