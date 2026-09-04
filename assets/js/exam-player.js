@@ -1377,9 +1377,22 @@
           "<b>" + esc(t("exam.audio")) + "</b>" +
           (section.tag ? "<i>" + esc(section.tag) + "</i>" : "") +
         "</span>" +
-        '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
-          'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
-          '" loading="lazy"></iframe>'));
+        /* The iframe is 76px because that is the height Drive's preview page
+           lays its player out for - below about 68 it clips its own controls.
+           But it only draws in the top 48 of that: measured on three
+           different recordings at 348, 560 and 700px wide, the play button,
+           scrubber and volume sit at 24-36px from the top every time, so the
+           bottom quarter of the frame is empty field. That is why the
+           controls looked to be riding high in the black box.
+
+           The wrapper crops the dead part away. Drive still gets its 76px
+           and lays out exactly as it wants; the 60px window is centred on
+           what it actually draws. */
+        '<div class="q-audio-frame">' +
+          '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
+            'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
+            '" loading="lazy"></iframe>' +
+        "</div>"));
     }
 
     section.blocks.forEach(function (block) {

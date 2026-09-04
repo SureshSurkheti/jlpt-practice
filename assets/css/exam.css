@@ -638,12 +638,23 @@
   color: var(--muted);
   font-variant-numeric: lining-nums tabular-nums;
 }
-.q-audio iframe {
+/* The window onto Drive's player. See buildSection() in exam-player.js: the
+   iframe is 76px because that is what Drive lays out for, and it draws only
+   in the top 48 of it, so this crops the empty quarter off the bottom and
+   leaves the controls centred in what you see. */
+.q-audio-frame {
   flex: 1;
   min-width: 0;
-  border: 0;
+  height: 60px;
+  overflow: hidden;
   border-radius: 10px;
   background: #fff;
+}
+.q-audio-frame iframe {
+  display: block;
+  width: 100%;
+  height: 76px;
+  border: 0;
 }
 
 /* Everything about the audio that is not a control: the note, and the way
@@ -1425,7 +1436,7 @@
     padding: 8px 12px 10px;
   }
   .q-audio-label { margin-bottom: 4px; font-size: 0.78rem; }
-  .q-audio iframe { display: block; width: 100%; height: 68px; }
+  .q-audio-frame { display: block; width: 100%; }
 }
 
 /* ------------------------------------------------------------ responsive */
