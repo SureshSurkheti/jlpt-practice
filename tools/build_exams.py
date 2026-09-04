@@ -463,6 +463,30 @@ def validate_manual(exam, path):
     return errs
 
 
+def audio_coverage(questions):
+    """How many of a part's 問題 sections actually have a recording.
+
+    The unit that matters is the section, not the question: one recording
+    covers a whole 問題 - six questions in sequence - so counting questions
+    made a paper with a single surviving file look almost complete. Sections
+    are grouped exactly as buildSections() in exam-player.js groups them, on
+    a change of instruction or category, so the two cannot disagree about
+    what a section is.
+    """
+    sections = []
+    last_key = object()
+    for q in questions:
+        key = (q.get("instruction") or None, q.get("category"))
+        if key != last_key:
+            sections.append([])
+            last_key = key
+        sections[-1].append(q)
+    listening = [sec for sec in sections
+                 if sec and sec[0].get("category") == "listening"]
+    return (len(listening),
+            sum(1 for sec in listening if any(q.get("audio") for q in sec)))
+
+
 def load_manual():
     """Read data/exams-manual/*.json. Returns (exams, warnings)."""
     exams, warnings = [], []
@@ -626,10 +650,11 @@ def main():
             # (n4-practice-2) carried 28 listening questions and not one
             # sound file, and the site advertised it as having listening
             # because the booklet existed.
-            "parts": [{"id": p["id"], "label": p["label"],
-                       "count": len(p["questions"]),
-                       "audio": sum(1 for q in p["questions"]
-                                    if q.get("audio"))} for p in parts],
+            "parts": [dict(zip(
+                ("id", "label", "count", "audio", "sections", "audioSections"),
+                (p["id"], p["label"], len(p["questions"]),
+                 sum(1 for q in p["questions"] if q.get("audio")))
+                + audio_coverage(p["questions"]))) for p in parts],
             "sortKey": sort_key,
         })
 
@@ -663,10 +688,11 @@ def main():
             # (n4-practice-2) carried 28 listening questions and not one
             # sound file, and the site advertised it as having listening
             # because the booklet existed.
-            "parts": [{"id": p["id"], "label": p["label"],
-                       "count": len(p["questions"]),
-                       "audio": sum(1 for q in p["questions"]
-                                    if q.get("audio"))} for p in exam["parts"]],
+            "parts": [dict(zip(
+                ("id", "label", "count", "audio", "sections", "audioSections"),
+                (p["id"], p["label"], len(p["questions"]),
+                 sum(1 for q in p["questions"] if q.get("audio")))
+                + audio_coverage(p["questions"]))) for p in exam["parts"]],
             "sortKey": exam["period"],
         })
 

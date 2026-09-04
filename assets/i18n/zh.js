@@ -124,6 +124,7 @@ I18N.register("zh", {
  "exam.wordsShowAll": "显示词语释义",
  "exam.yourBest": "本套试题的最佳成绩",
  "exams.allLevels": "所有级别",
+ "exams.audioPartial": "音频 {have}/{all}",
  "exams.body": "这里的试题按JLPT本身的格式作答，计时并自动评分。可以做完整一套，也可以只练一个部分。",
  "exams.hasWords": "词语释义",
  "exams.loading": "加载中…",

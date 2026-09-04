@@ -130,6 +130,7 @@ I18N.register("en", {
  "exam.wordsShowAll": "Show word meanings",
  "exam.yourBest": "Your best on this paper",
  "exams.allLevels": "All levels",
+ "exams.audioPartial": "Audio {have}/{all}",
  "exams.body": "Each paper here is played in the JLPT's own format, timed and marked automatically. Sit a whole paper or drill one section.",
  "exams.hasWords": "Word meanings",
  "exams.loading": "Loading exams…",

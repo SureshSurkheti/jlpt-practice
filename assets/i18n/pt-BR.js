@@ -124,6 +124,7 @@ I18N.register("pt-BR", {
  "exam.wordsShowAll": "Mostrar significados",
  "exam.yourBest": "Sua melhor nota nesta prova",
  "exams.allLevels": "Todos os níveis",
+ "exams.audioPartial": "Áudio {have}/{all}",
  "exams.body": "Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.",
  "exams.hasWords": "Significado das palavras",
  "exams.loading": "Carregando…",

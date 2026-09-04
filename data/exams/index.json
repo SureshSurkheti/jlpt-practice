@@ -18,13 +18,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 24,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "n5-practice-2"
@@ -46,13 +50,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 2,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 1,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "n5-practice-1"
@@ -76,19 +84,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 0
+     "audio": 0,
+     "sections": 4,
+     "audioSections": 0
     }
    ],
    "sortKey": "practice-2"
@@ -110,13 +124,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 36,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "practice-1"
@@ -139,13 +157,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2024-12"
@@ -169,19 +191,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2024-07"
@@ -205,19 +233,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2023-12"
@@ -241,19 +275,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2023-07"
@@ -277,19 +317,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2022-12"
@@ -313,19 +359,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 34,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2022-07"
@@ -349,19 +401,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2021-12"
@@ -385,19 +443,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2021-07"
@@ -421,19 +485,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 38,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2020-12"
@@ -457,19 +527,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2019-12"
@@ -493,19 +569,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2019-07"
@@ -529,19 +611,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2018-12"
@@ -565,19 +653,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 25
+     "audio": 25,
+     "sections": 5,
+     "audioSections": 4
     }
    ],
    "sortKey": "2018-07"
@@ -601,19 +695,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2017-12"
@@ -637,19 +737,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2017-07"
@@ -673,19 +779,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2016-12"
@@ -709,19 +821,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 25
+     "audio": 25,
+     "sections": 5,
+     "audioSections": 4
     }
    ],
    "sortKey": "2016-07"
@@ -745,19 +863,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 25
+     "audio": 25,
+     "sections": 5,
+     "audioSections": 4
     }
    ],
    "sortKey": "2015-12"
@@ -780,13 +904,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2015-07"
@@ -810,19 +938,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2014-12"
@@ -846,19 +980,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 28
+     "audio": 28,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2014-07"
@@ -882,19 +1022,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2013-12"
@@ -918,19 +1064,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2013-07"
@@ -954,19 +1106,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2012-12"
@@ -990,19 +1148,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2012-07"
@@ -1026,19 +1190,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 27,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2011-12"
@@ -1062,19 +1232,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 27,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2011-07"
@@ -1097,13 +1273,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 35,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 39,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2010-07"
@@ -1125,7 +1305,9 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2024-07"
@@ -1149,19 +1331,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 20,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2023-12"
@@ -1185,19 +1373,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 20,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2023-07"
@@ -1220,13 +1414,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2022-12"
@@ -1250,19 +1448,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 20,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2022-07"
@@ -1286,19 +1490,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 20,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2021-12"
@@ -1322,19 +1532,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2021-07"
@@ -1356,13 +1572,17 @@
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 28
+     "audio": 28,
+     "sections": 6,
+     "audioSections": 5
     }
    ],
    "sortKey": "2020-12"
@@ -1386,19 +1606,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 52,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 20,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2019-12"
@@ -1422,19 +1648,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 52,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2019-07"
@@ -1458,19 +1690,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 52,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 28
+     "audio": 28,
+     "sections": 6,
+     "audioSections": 5
     }
    ],
    "sortKey": "2018-12"
@@ -1493,13 +1731,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2018-07"
@@ -1523,19 +1765,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 32
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2017-12"
@@ -1559,19 +1807,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 32
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2016-07"
@@ -1594,13 +1848,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 32
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2015-12"
@@ -1623,13 +1881,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 32
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2015-07"
@@ -1653,19 +1915,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2014-12"
@@ -1688,13 +1956,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2014-07"
@@ -1718,19 +1990,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2013-12"
@@ -1754,19 +2032,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2013-07"
@@ -1790,19 +2074,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2012-12"
@@ -1826,19 +2116,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2012-07"
@@ -1861,13 +2157,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2011-12"
@@ -1891,19 +2191,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5
+     "audio": 5,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2011-07"
@@ -1926,13 +2232,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2010-12"
@@ -1956,19 +2266,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 21,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 32
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2010-07"
@@ -1990,7 +2306,9 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2025-07"
@@ -2013,13 +2331,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 22,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2024-12"
@@ -2043,19 +2365,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 22,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2024-07"
@@ -2079,19 +2407,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 22,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2023-12"
@@ -2115,19 +2449,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 22,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 30
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2023-07"
@@ -2151,19 +2491,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 22,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 31
+     "audio": 31,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2022-12"
@@ -2187,19 +2533,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 24,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 35
+     "audio": 35,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2022-07"
@@ -2223,19 +2575,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 35
+     "audio": 35,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2021-12"
@@ -2259,19 +2617,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 35
+     "audio": 35,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2021-07"
@@ -2294,13 +2658,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 24,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2020-12"
@@ -2324,19 +2692,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 24,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 35
+     "audio": 35,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2019-12"
@@ -2360,19 +2734,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 24,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2019-07"
@@ -2396,19 +2776,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6
+     "audio": 6,
+     "sections": 4,
+     "audioSections": 1
     }
    ],
    "sortKey": "2018-12"
@@ -2432,19 +2818,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2018-07"
@@ -2468,19 +2860,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2017-12"
@@ -2504,19 +2902,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2017-07"
@@ -2540,19 +2944,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2016-12"
@@ -2576,19 +2986,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 6
+     "audio": 6,
+     "sections": 6,
+     "audioSections": 1
     }
    ],
    "sortKey": "2016-07"
@@ -2612,19 +3028,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2015-12"
@@ -2648,19 +3070,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2015-07"
@@ -2684,19 +3112,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2014-12"
@@ -2720,19 +3154,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2014-07"
@@ -2756,19 +3196,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 6
+     "audio": 6,
+     "sections": 6,
+     "audioSections": 1
     }
    ],
    "sortKey": "2013-12"
@@ -2792,19 +3238,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 6
+     "audio": 6,
+     "sections": 5,
+     "audioSections": 1
     }
    ],
    "sortKey": "2013-07"
@@ -2828,19 +3280,25 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 36
+     "audio": 36,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2012-12"
@@ -2863,13 +3321,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2012-07"
@@ -2892,13 +3354,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2011-12"
@@ -2921,13 +3387,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 25,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2011-07"
@@ -2950,13 +3420,17 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 45,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
      "count": 26,
-     "audio": 0
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
     }
    ],
    "sortKey": "2010-12"

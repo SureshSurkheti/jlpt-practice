@@ -314,9 +314,22 @@
       }
       var cell = "<span>" + esc(t(SKILL_KEY[c])) +
         " <b>" + counts[c] + "</b></span>";
-      if (c === "listening" && have.listening && !have.listening.audio) {
-        cell += '<span class="exam-row-missing">' +
-          esc(t("exams.noAudio")) + "</span>";
+      /* One recording covers a whole 問題, so the honest unit is the section.
+         Counting questions said "has listening audio" for a paper holding one
+         file out of five - 33 of the 71 listening papers are in that state,
+         and you only found out when you reached a silent section 40 minutes
+         into a mock. Say which it is up front. */
+      if (c === "listening" && have.listening) {
+        var secs = have.listening.sections || 0;
+        var withAudio = have.listening.audioSections || 0;
+        if (!withAudio) {
+          cell += '<span class="exam-row-missing">' +
+            esc(t("exams.noAudio")) + "</span>";
+        } else if (secs && withAudio < secs) {
+          cell += '<span class="exam-row-missing">' +
+            esc(tf("exams.audioPartial", { have: withAudio, all: secs })) +
+            "</span>";
+        }
       }
       return cell;
     }).join("");

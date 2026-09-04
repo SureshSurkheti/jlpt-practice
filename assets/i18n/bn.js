@@ -124,6 +124,7 @@ I18N.register("bn", {
  "exam.wordsShowAll": "শব্দের অর্থ দেখান",
  "exam.yourBest": "এই পেপারে আপনার সেরা স্কোর",
  "exams.allLevels": "সব স্তর",
+ "exams.audioPartial": "অডিও {have}/{all}",
  "exams.body": "এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায়, সময় গণনা ও স্বয়ংক্রিয় নম্বরসহ। পূর্ণ প্রশ্নপত্র দিন বা একটি অংশ অভ্যাস করুন।",
  "exams.hasWords": "শব্দের অর্থ",
  "exams.loading": "লোড হচ্ছে…",

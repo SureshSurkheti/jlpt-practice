@@ -124,6 +124,7 @@ I18N.register("ne", {
  "exam.wordsShowAll": "शब्दार्थ देखाउनुहोस्",
  "exam.yourBest": "यो पेपरमा तपाईंको उत्कृष्ट अङ्क",
  "exams.allLevels": "सबै स्तर",
+ "exams.audioPartial": "अडियो {have}/{all}",
  "exams.body": "यहाँका प्रश्नपत्र JLPT कै ढाँचामा दिइन्छन्, समय गणना र स्वतः अङ्कसहित। पूरा परीक्षा दिनुहोस् वा एउटै भाग अभ्यास गर्नुहोस्।",
  "exams.hasWords": "शब्दार्थ",
  "exams.loading": "लोड हुँदै…",

@@ -124,6 +124,7 @@ I18N.register("hi", {
  "exam.wordsShowAll": "शब्दों के अर्थ दिखाएँ",
  "exam.yourBest": "इस पेपर में आपका सर्वश्रेष्ठ स्कोर",
  "exams.allLevels": "सभी स्तर",
+ "exams.audioPartial": "ऑडियो {have}/{all}",
  "exams.body": "यहाँ के प्रश्नपत्र JLPT के अपने प्रारूप में ही हल किए जाते हैं, समयबद्ध और स्वतः जाँच वाले। पूरा प्रश्नपत्र दें या एक भाग का अभ्यास करें।",
  "exams.hasWords": "शब्दों के अर्थ",
  "exams.loading": "लोड हो रहा है…",

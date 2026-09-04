@@ -487,10 +487,14 @@
 
    The band is on the whole head row rather than on the stem alone, so it runs
    from the booklet number to the flag instead of starting somewhere in the
-   middle of the row. No horizontal padding, so its edges land exactly on the
-   number and the flag - which are themselves on the same left and right edges
-   as the answer boxes underneath. The whole question keeps one left edge from
-   the number down to the last answer.
+   middle of the row.
+
+   15px of horizontal padding, which is the same padding an answer box gives
+   its own number. So the band's outer edges sit on the answer boxes' outer
+   edges, and the booklet number inside it lands on exactly the same left edge
+   as the numbered circles underneath: one line from 24 down through 1, 2, 3,
+   4. Without it the pills were flush against the band's own edge, which read
+   as the tint being cropped around them rather than containing them.
 
    Kept very light - 1.12:1 against the card - deliberately. It has to be
    quiet enough that .paper-question.is-target, the flash that marks the
@@ -502,7 +506,10 @@
    band there is a wide grey field with three characters in the corner, so
    those rows are marked has-media and left alone. */
 .pq-head:not(.has-media) {
-  padding: 7px 0;
+  /* 15px is the answer box's own padding and 1.5px is its border, so this
+     lands the booklet number on precisely the same left edge as the numbered
+     circles beneath it rather than a pixel off. */
+  padding: 7px 16.5px;
   background: #e4eaf2;
   border-radius: 12px;
 }
@@ -608,30 +615,20 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  /* In flow, at the head of its own section: a control that belongs to that
-     section. Closed on all four sides, rounded, and standing clear of the
-     instruction block above it. A square top edge here hung from nothing and
-     a flush one looked stuck to the paragraph above. */
-  margin: 16px 0;
+  /* No space above it, on purpose. The shape is a drawer: square along the
+     top, no top border, rounded below. Docked under the command bar - which
+     is where it spends nearly all of a listening section - that reads as one
+     continuous edge with the bar. At the head of its section it reads as
+     hanging off the section head's own bottom border. Given clear air above
+     it instead, the flat top hangs from nothing, which is what a gap here
+     kept looking like. */
+  margin: 0 0 16px;
   padding: 7px 14px;
   background: #eef4fb;
   border: 1px solid rgba(45, 110, 180, 0.28);
-  border-radius: 14px;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
   box-shadow: 0 10px 22px -12px rgba(17, 45, 78, 0.4);
-}
-
-/* Docked under the command bar - which is where it spends nearly all of a
-   listening section, because you scroll to the questions straight away. Here
-   it should read as hanging from the bar: square along the top and flush
-   against it, one continuous edge rather than a rounded card with a strip of
-   moving page showing through its top corners. The margin is deliberately
-   left alone; it is holding flow space above the pinned element, and
-   changing it would shift the questions underneath. Set by updateAudioDock()
-   in exam-player.js. */
-.q-audio.is-docked {
-  border-top-color: transparent;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 .q-audio-label {
   flex: none;

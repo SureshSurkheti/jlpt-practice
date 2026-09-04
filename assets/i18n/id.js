@@ -124,6 +124,7 @@ I18N.register("id", {
  "exam.wordsShowAll": "Tampilkan arti kata",
  "exam.yourBest": "Nilai terbaik Anda di soal ini",
  "exams.allLevels": "Semua level",
+ "exams.audioPartial": "Audio {have}/{all}",
  "exams.body": "Setiap soal di sini dikerjakan dalam format JLPT itu sendiri, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.",
  "exams.hasWords": "Arti kata",
  "exams.loading": "Memuat…",

@@ -495,6 +495,43 @@ detected from the page. Every working listening section therefore carries a
 collapsed **"Not playing?"** line offering an alternative, rather than waiting
 for a failure the page will never be told about.
 
+### What is missing, and why it cannot be fixed from here
+
+Availability of the *files* is not the same as coverage of the *paper*. Of
+**357 listening sections** across the 71 papers that have a listening booklet,
+only **235 have a recording at all**:
+
+| Papers with a listening booklet | 71 |
+|---|---|
+| every section has a recording | 37 |
+| some sections do, some do not | 33 |
+| no section does | 1 |
+
+The 122 silent sections are not broken links. Their recordings were never in
+what was archived: the cached source page for `n1-2013-12`, for example,
+contains exactly **one** `drive.google.com/file/d/…` iframe for **six**
+listening sections, and the same holds for all 33 partial papers. Re-running
+the extractor cannot recover them, because there is nothing in the input to
+extract. Checked with:
+
+```
+grep -o 'drive\.google\.com/file/d/[A-Za-z0-9_-]*' \
+  .cache/source-pages/jlpt_n1_pages/n1-2013-12-listening.html | sort -u | wc -l
+```
+
+The only route to the missing audio is re-fetching the listening pages from
+the original site rather than from the Wayback snapshot, on the chance that
+the live pages carry embeds the snapshot did not. That is a request to a third
+party whose material this is, so it is not something to do without deciding to
+do it.
+
+Until then the library says which is which, per paper, rather than letting
+someone find out forty minutes into a mock: `audio_coverage()` in
+`tools/build_exams.py` counts sections the way `buildSections()` in the player
+groups them, writes `sections` and `audioSections` into each part of
+`index.json`, and `exams-browser.js` prints **"Audio 1/5"** on a partial paper
+and **"No listening audio"** on an empty one.
+
 ## The home page notice
 
 `renderNotice()` in `assets/js/site.js` builds the panel from

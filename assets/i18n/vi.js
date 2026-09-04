@@ -124,6 +124,7 @@ I18N.register("vi", {
  "exam.wordsShowAll": "Hiện nghĩa của từ",
  "exam.yourBest": "Điểm cao nhất của bạn ở đề này",
  "exams.allLevels": "Tất cả cấp độ",
+ "exams.audioPartial": "Âm thanh {have}/{all}",
  "exams.body": "Mỗi đề ở đây được làm đúng theo định dạng của JLPT, có bấm giờ và chấm điểm tự động. Làm cả đề hoặc luyện riêng từng phần.",
  "exams.hasWords": "Nghĩa của từ",
  "exams.loading": "Đang tải đề thi…",

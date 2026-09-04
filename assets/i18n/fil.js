@@ -124,6 +124,7 @@ I18N.register("fil", {
  "exam.wordsShowAll": "Ipakita ang kahulugan",
  "exam.yourBest": "Pinakamataas mong iskor sa papel na ito",
  "exams.allLevels": "Lahat ng antas",
+ "exams.audioPartial": "Audio {have}/{all}",
  "exams.body": "Ang bawat papel dito ay sinasagutan sa mismong pormat ng JLPT, may timer at automatic na pagmamarka. Sagutan ang buong set o isang bahagi lamang.",
  "exams.hasWords": "Kahulugan ng salita",
  "exams.loading": "Naglo-load…",

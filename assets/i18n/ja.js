@@ -124,6 +124,7 @@ I18N.register("ja", {
  "exam.wordsShowAll": "語句の意味を表示",
  "exam.yourBest": "この回のベストスコア",
  "exams.allLevels": "レベル一覧",
+ "exams.audioPartial": "音声 {have}/{all}",
  "exams.body": "ここにある問題はJLPTと同じ形式で、時間を計って自動採点されます。全科目を通して解くことも、1科目だけ演習することもできます。",
  "exams.hasWords": "語句の意味",
  "exams.loading": "読み込み中…",
