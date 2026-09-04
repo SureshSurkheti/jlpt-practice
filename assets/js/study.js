@@ -407,7 +407,12 @@
 
   function syncQuizLink() {
     var a = document.getElementById("quizLink");
-    if (a) a.setAttribute("href", "quiz.html?level=" + state.level + "&kind=" + state.kind);
+    if (!a) return;
+    /* Keep the path the build wrote - "quiz.html" on the hub, "../quiz.html"
+       on the list pages under /study/ - and replace only the query. Writing
+       "quiz.html" here sent the list pages to /study/quiz.html, a 404. */
+    var base = (a.getAttribute("href") || "quiz.html").split("?")[0];
+    a.setAttribute("href", base + "?level=" + state.level + "&kind=" + state.kind);
   }
 
   function syncTabs() {
