@@ -71,6 +71,7 @@ HEAD = """<!DOCTYPE html>
           <a href="../exams.html" data-i18n="nav.exams">Exams</a>
           <a href="../study.html" data-i18n="nav.study">Study</a>
           <a href="../about.html" data-i18n="nav.about">About</a>
+          <a class="nav-guides active" href="/guide/">Guides</a>
         </nav>
       </div>
     </header>

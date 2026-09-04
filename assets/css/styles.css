@@ -161,6 +161,20 @@ body > main { flex: 1 0 auto; }
   flex-wrap: wrap;
 }
 
+/* The bar's height is a constant, not a consequence of which controls a page
+   happens to carry. Everywhere else the language picker is the tallest thing
+   in the header and sets that height; the guide pages have no picker - they
+   exist in one language only - so the bar came out 8px shorter there and the
+   whole page stepped up when you moved between Study and Guides. The floor
+   matches the picker's own height, which drops to 44px at 1180px, and is
+   lifted entirely below 760px where the header stops being one row. */
+@media (min-width: 761px) {
+  .main-nav { min-height: 48px; }
+}
+@media (min-width: 761px) and (max-width: 1180px) {
+  .main-nav { min-height: 44px; }
+}
+
 .main-nav a {
   color: var(--muted);
   font-weight: 600;
@@ -904,6 +918,15 @@ body > main { flex: 1 0 auto; }
   .to-top { width: 44px; height: 44px; right: 14px; bottom: 14px; }
 }
 
+/* Below 560px there is not room for the tagline beside the language picker,
+   and a truncated "Word and grammar li..." reads as a bug rather than as a
+   caption. The header is sticky, so the row it would otherwise need is the
+   most expensive space on the page, and the highlighted nav link already
+   says which section you are in. */
+@media (max-width: 560px) {
+  .brand-tag { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .to-top { transition: none; }
 }
@@ -1062,7 +1085,18 @@ body > main { flex: 1 0 auto; }
     row-gap: 8px;
   }
 
-  .brand-wrap { flex: 1 1 auto; min-width: 0; }
+  /* flex-basis 0, not auto. Flexbox breaks lines on an item's content width
+     before it ever shrinks it, so the brand's natural width decided whether
+     it shared row one with the picker - and that width is set by the tagline,
+     which runs from "About" to "Word and grammar lists" and longer again in
+     the other eleven languages. Study wrapped to a third row and stood 48px
+     taller than About on the same phone. From a basis of 0 the brand always
+     fits beside the picker, then grows into what is left, and the tagline
+     truncates instead of moving the layout. */
+  .brand-wrap { flex: 1 1 0; min-width: 0; }
+  .brand-text { min-width: 0; }
+  .brand-name { white-space: nowrap; }
+  .brand-tag { overflow: hidden; text-overflow: ellipsis; }
   .nav-tools { flex: 0 0 auto; }
 
   .main-nav {
@@ -1399,12 +1433,14 @@ body.is-leaving { opacity: 0; }
    right of the text it belongs to. rem is root-relative, so both agree.
    43rem is the same 688px the ch value was producing. */
 .guide-page { --measure: 43rem; }
-.guide { max-width: var(--measure); margin-inline: auto; }
-/* The chip is a child of <main>, so without this it sits at the container's
-   left edge - 217px from the prose, reading as part of another page. max()
-   clamps to 0 once the viewport is narrower than the measure, rather than
-   going negative and hanging off the screen. */
-.guide-page #pageBack { margin-left: max(0px, calc((100% - var(--measure)) / 2)); }
+/* Left, not centred. The measure was already right; the centring was not.
+   Every other page on the site starts its text at the container's left edge,
+   so a centred article column put the body 216px right of where the same
+   reader had just been reading, while the logo and nav above it stayed put -
+   at 1512px the page appeared to slide sideways on the way in from Study.
+   The gutter it leaves on the right is the same gutter Study and About
+   already leave beside their own intros. */
+.guide { max-width: var(--measure); }
 
 .guide-kicker {
   margin: 0 0 8px;
