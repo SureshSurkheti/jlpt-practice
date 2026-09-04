@@ -2121,7 +2121,12 @@ body.is-leaving { opacity: 0; }
   gap: 7px;
   margin-top: 0;
 }
-.page-back + .page-intro { padding-top: 14px; }
+/* The guide article is the odd one out: this rule was written for a
+   .page-intro, and on a guide the chip's next sibling is the <article>, so
+   nothing applied and the kicker sat 4px under the button against the 17-19px
+   every other page with a chip gives it. */
+.page-back + .page-intro,
+.page-back + .guide { padding-top: 14px; }
 
 .study-page .page-intro p { max-width: 68ch; }
 
