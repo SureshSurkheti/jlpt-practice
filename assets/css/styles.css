@@ -714,6 +714,10 @@ body > main { flex: 1 0 auto; }
 /* The level cards arrive after a fetch; until then the footer would sit in
    the first screen and drop when they render. */
 .levels-page .page-shell { min-height: 100vh; }
+/* The kanji viewer is drawn entirely by its script after a fetch; until then
+   the footer sat in the first screen and dropped 900px when the character
+   rendered (a shift of 0.58). The view is always taller than a screen. */
+#kanjiView { min-height: 100vh; }
 
 .feature-grid,
 .insight-grid {
