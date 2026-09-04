@@ -615,21 +615,8 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  /* No space above it, on purpose. The shape is a drawer: square along the
-     top, no top border, rounded below. Docked under the command bar - which
-     is where it spends nearly all of a listening section - that reads as one
-     continuous edge with the bar. At the head of its section it reads as
-     hanging off the section head's own bottom border. Given clear air above
-     it instead, the flat top hangs from nothing, which is what a gap here
-     kept looking like. */
-  margin: 0 0 16px;
-  /* No padding on top. The tray was already flush against the section head's
-     bottom border, but its own 7px was showing above the player as a pale
-     strip, so the black box read as floating below the line rather than
-     hanging off it. At zero the player's own top edge is the join. The
-     bottom keeps its 7px, which is what the tray's rounded bottom corners
-     need in order to be corners. */
-  padding: 0 14px 7px;
+  margin: 0 0 18px;
+  padding: 10px 16px;
   background: #eef4fb;
   border: 1px solid rgba(45, 110, 180, 0.28);
   border-top: 0;
@@ -655,24 +642,14 @@
   flex: 1;
   min-width: 0;
   border: 0;
-  /* Square along the top, because the top is now a join. With the tray's top
-     padding gone the player's own edge meets the section head's border, and
-     rounded corners there left two notches of tray showing through the
-     join. */
-  border-radius: 0 0 10px 10px;
-  /* 76px is not a spare number. Drive's preview page draws a fixed-size
-     player pill inside a dark field, and the pill is clipped below about
-     68px: at 56 its top was cut off entirely, which is why the black box
-     looked sliced and the play button looked to be sitting above centre.
-     Rendered at 56, 64, 70, 72, 76 and 90 to find where it stops being cut.
-     76 is Drive's own height and leaves margin for other files. */
+  border-radius: 10px;
   background: #fff;
 }
 
 /* Everything about the audio that is not a control: the note, and the way
    out when it will not play. Left in the section head so the pinned bar
    stays one line tall on a phone. */
-.q-audio-aside { margin-top: 10px; }
+.q-audio-aside { margin-top: 14px; }
 .q-audio-note { margin: 0; font-size: 0.76rem; color: var(--muted); }
 
 /* -- choices -- */
@@ -1448,7 +1425,7 @@
     padding: 8px 12px 10px;
   }
   .q-audio-label { margin-bottom: 4px; font-size: 0.78rem; }
-  .q-audio iframe { display: block; width: 100%; height: 76px; }
+  .q-audio iframe { display: block; width: 100%; height: 68px; }
 }
 
 /* ------------------------------------------------------------ responsive */
