@@ -566,8 +566,19 @@
 .flag-btn {
   flex: none;
   margin-left: auto;
-  width: 34px;
-  height: 34px;
+  /* 30, matching .pq-num, because the flag was the tallest thing in the row
+     and so decided the band's height. A one-line question is a 29.9px line
+     box next to a 30px number pill, and the flag's extra 4px could only go
+     somewhere: with align-items:flex-start it all fell below the text, so the
+     band had 13.1px above the words and 17.2px below. At 30 the row is the
+     height of its own contents again and the text sits centred in it.
+     Multi-line questions were never affected - the text was already the
+     tallest thing there.
+
+     The hit area does not change. .flag-btn::after below is a 44px square
+     centred on the button, independent of the button's own size. */
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: #fff;
