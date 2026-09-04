@@ -608,17 +608,30 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  /* The space above is back. It only applies in flow - when the player is
-     pinned, `top` governs and it still docks flush against the command bar,
-     which is the point of the square top edge. Sitting at the start of its
-     own section it wants separating from the instruction block above it. */
+  /* In flow, at the head of its own section: a control that belongs to that
+     section. Closed on all four sides, rounded, and standing clear of the
+     instruction block above it. A square top edge here hung from nothing and
+     a flush one looked stuck to the paragraph above. */
   margin: 16px 0;
   padding: 7px 14px;
   background: #eef4fb;
   border: 1px solid rgba(45, 110, 180, 0.28);
-  border-top: 0;
-  border-radius: 0 0 14px 14px;
+  border-radius: 14px;
   box-shadow: 0 10px 22px -12px rgba(17, 45, 78, 0.4);
+}
+
+/* Docked under the command bar - which is where it spends nearly all of a
+   listening section, because you scroll to the questions straight away. Here
+   it should read as hanging from the bar: square along the top and flush
+   against it, one continuous edge rather than a rounded card with a strip of
+   moving page showing through its top corners. The margin is deliberately
+   left alone; it is holding flow space above the pinned element, and
+   changing it would shift the questions underneath. Set by updateAudioDock()
+   in exam-player.js. */
+.q-audio.is-docked {
+  border-top-color: transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .q-audio-label {
   flex: none;

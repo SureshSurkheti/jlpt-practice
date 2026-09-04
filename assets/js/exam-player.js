@@ -2004,8 +2004,32 @@
      requestAnimationFrame so it also runs in headless browsers. */
   var spyTimer = null;
 
+  /* The listening player has two jobs and needs two shapes for them.
+
+     Docked under the command bar - which is where it spends almost all of a
+     listening section, because you scroll to the questions immediately - it
+     should read as hanging from that bar: square along the top, flush, one
+     continuous edge. Sitting in flow at the head of its own section it is
+     just a control belonging to that section, and there a square top edge
+     hangs from nothing and a flush one looks stuck to the instruction block
+     above it.
+
+     So the shape follows the state. `top` on a sticky element resolves to the
+     pixel offset it docks at, so comparing the element's own rect against it
+     is the whole test. There are at most a handful of players on a paper and
+     this runs on the spy's existing 80ms throttle. */
+  function updateAudioDock() {
+    var players = document.querySelectorAll(".q-audio");
+    Array.prototype.forEach.call(players, function (el) {
+      var dockAt = parseFloat(getComputedStyle(el).top) || 0;
+      el.classList.toggle("is-docked",
+        el.getBoundingClientRect().top <= dockAt + 1);
+    });
+  }
+
   function updateSpy() {
     spyTimer = null;
+    updateAudioDock();
     if (!state.questions.length) return;
 
     var bar = document.querySelector(".exam-bar");
