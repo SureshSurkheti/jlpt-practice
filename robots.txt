@@ -1,10 +1,13 @@
 User-agent: *
 Allow: /
 
-# One paper per ?id=, all served from the same shell.
-Disallow: /exam.html
-Disallow: /kanji.html
-Disallow: /stats.html
+# exam.html, kanji.html, stats.html and practice.html are each one
+# shell serving every ?id= / ?k= / level, so each carries
+# <meta name="robots" content="noindex, follow">. They are
+# deliberately not disallowed here: a crawler blocked by robots.txt
+# never fetches the page, so it never sees the noindex, and the URL
+# can still surface in results with no snippet. Allowing the fetch
+# is what makes the noindex work.
 Disallow: /_src/
 
 # The exam papers themselves. The questions are the copyright of
@@ -14,5 +17,10 @@ Disallow: /_src/
 Disallow: /data/exams/
 Disallow: /data/glossary/
 Disallow: /data/exams-manual/
+
+# Dictionary build inputs - 57MB of JMdict and KANJIDIC that the
+# wordlist and kanji builders read. No page fetches them; nothing
+# linked to them either, but nothing stopped a crawler walking in.
+Disallow: /data/dict/
 
 Sitemap: https://jlpt.sureshsurkheti.com/sitemap.xml

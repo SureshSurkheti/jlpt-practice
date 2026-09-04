@@ -47,6 +47,24 @@
       "</p>";
   }
 
+  /* Not the same thing as a failed fetch, and it used to be treated as one.
+     Arriving with no ?k= at all - a bookmark, a truncated link - or with a
+     character that is not in this level's list printed "These lists could not
+     be loaded", which is untrue: they loaded, the character just is not in
+     them. It also left the page with no heading and not one link on it, so
+     there was nothing to do but go back. */
+  function notFound() {
+    var lv = level.toUpperCase();
+    host.innerHTML =
+      '<div class="kanji-topbar">' +
+        '<a class="chip-back" href="study/' + level + '-kanji.html">' +
+          '<span aria-hidden="true">\u2190</span> ' + esc(lv) + " " +
+          esc(t("study.kanji")) + "</a>" +
+      "</div>" +
+      '<h1 class="kanji-missing">' + esc(t("study.kanjiMissing")) + "</h1>" +
+      '<p class="stats-empty">' + esc(t("study.kanjiMissingBody")) + "</p>";
+  }
+
   function draw(box, paths) {
     box.innerHTML =
       '<svg viewBox="0 0 109 109" class="kanji-svg" aria-hidden="true">' +
@@ -104,7 +122,7 @@
     for (var i = 0; i < rows.length; i++) {
       if (rows[i].k === char) { index = i; break; }
     }
-    if (index === -1) { fail(); return; }
+    if (index === -1) { notFound(); return; }
 
     var row = rows[index];
     var lv = level.toUpperCase();

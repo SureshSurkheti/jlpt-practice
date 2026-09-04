@@ -280,6 +280,12 @@ BLOCK_RE = re.compile(
 )
 
 
+# The booklet prints a worked example at the head of some 問題 - "(例)" with
+# the answer already filled in - to show how the question type works. It is a
+# demonstration, not a question.
+EXAMPLE_ITEM = re.compile(r"^\s*[（(]\s*例\s*[)）]")
+
+
 def parse_source(path):
     """Return (questions, note). questions is [] for placeholder pages."""
     raw = open(path, encoding="utf-8", errors="replace").read()
@@ -380,6 +386,27 @@ def parse_source(path):
         choices = q.get("choices") or {}
         if len(choices) < 2 or not q.get("prompt"):
             continue
+
+        # Worked examples are not questions. Six were being served as though
+        # they were - all in n4-practice-1 - which inflated that paper's total
+        # by six and put three items in it with no answer key at all, so they
+        # could never be right however you answered them.
+        if EXAMPLE_ITEM.match(text_of(q["prompt"])):
+            continue
+
+        category = TYPE_NAMES.get(q.get("type"), "vocabulary")
+
+        # Outside listening, every JLPT item has exactly four options. Three
+        # questions in 8,172 came out of the parser with two, three or six,
+        # and in each case the options had been mis-split: two of them had
+        # several options merged into one string, which moves every option
+        # after the merge and leaves the answer index pointing at the wrong
+        # text; the third was unusable fragments. A question that marks a
+        # right answer wrong is worse than a question that is not there.
+        # Listening is exempt - 問題4 and 問題5 really do have three.
+        if category != "listening" and len(choices) != 4:
+            continue
+
         answer = q.get("answer")
         if not answer or answer not in choices:
             answer = None
@@ -394,7 +421,7 @@ def parse_source(path):
             "choices": [choices.get(i, "") for i in sorted(choices)],
             "answer": answer,
             "points": q.get("points") or 1,
-            "category": TYPE_NAMES.get(q.get("type"), "vocabulary"),
+            "category": category,
             "explanation": q.get("explanation") or None,
         })
 

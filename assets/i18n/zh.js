@@ -285,6 +285,8 @@ I18N.register("zh", {
  "study.grammarNote": "这些是出题频率最高的句型，并非完整列表。JLPT不公布官方语法表，完整参考书收录的数量约为三倍。",
  "study.kanji": "汉字",
  "study.kanjiCount": "个汉字",
+ "study.kanjiMissing": "该汉字不在此列表中",
+ "study.kanjiMissingBody": "请从列表中选择一个字，或尝试其他级别。",
  "study.patternsCount": "个核心句型",
  "study.replay": "重播",
  "study.search": "搜索单词或释义",

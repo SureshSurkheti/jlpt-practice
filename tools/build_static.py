@@ -794,10 +794,13 @@ def main():
 
     io.open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(
         "User-agent: *\nAllow: /\n\n"
-        "# One paper per ?id=, all served from the same shell.\n"
-        "Disallow: /exam.html\n"
-        "Disallow: /kanji.html\n"
-        "Disallow: /stats.html\n"
+        "# exam.html, kanji.html, stats.html and practice.html are each one\n"
+        "# shell serving every ?id= / ?k= / level, so each carries\n"
+        "# <meta name=\"robots\" content=\"noindex, follow\">. They are\n"
+        "# deliberately not disallowed here: a crawler blocked by robots.txt\n"
+        "# never fetches the page, so it never sees the noindex, and the URL\n"
+        "# can still surface in results with no snippet. Allowing the fetch\n"
+        "# is what makes the noindex work.\n"
         "Disallow: /_src/\n\n"
         "# The exam papers themselves. The questions are the copyright of\n"
         "# JEES and the Japan Foundation; this site holds them so a learner\n"
@@ -806,6 +809,10 @@ def main():
         "Disallow: /data/exams/\n"
         "Disallow: /data/glossary/\n"
         "Disallow: /data/exams-manual/\n\n"
+        "# Dictionary build inputs - 57MB of JMdict and KANJIDIC that the\n"
+        "# wordlist and kanji builders read. No page fetches them; nothing\n"
+        "# linked to them either, but nothing stopped a crawler walking in.\n"
+        "Disallow: /data/dict/\n\n"
         "Sitemap: %s/sitemap.xml\n" % SITE)
     print("robots.txt written")
 

@@ -285,6 +285,8 @@ I18N.register("ja", {
  "study.grammarNote": "出題頻度の高い文型で、網羅的なリストではありません。JLPTは公式の文法リストを公開しておらず、詳しい参考書はこの3倍ほどを扱っています。",
  "study.kanji": "漢字",
  "study.kanjiCount": "字",
+ "study.kanjiMissing": "この漢字はこのリストにありません",
+ "study.kanjiMissingBody": "一覧から文字を選ぶか、別のレベルをお試しください。",
  "study.patternsCount": "重要文型",
  "study.replay": "もう一度",
  "study.search": "単語や意味で検索",

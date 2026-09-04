@@ -285,6 +285,8 @@ I18N.register("pt-BR", {
  "study.grammarNote": "Os padrões mais cobrados, não uma lista completa. O JLPT não publica lista oficial de gramática; referências completas trazem cerca de três vezes mais.",
  "study.kanji": "Kanji",
  "study.kanjiCount": "kanji",
+ "study.kanjiMissing": "Este kanji não está nesta lista",
+ "study.kanjiMissingBody": "Escolha um caractere da lista ou tente outro nível.",
  "study.patternsCount": "padrões essenciais",
  "study.replay": "Repetir",
  "study.search": "Buscar palavra ou significado",

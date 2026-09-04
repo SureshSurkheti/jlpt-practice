@@ -292,6 +292,8 @@ I18N.register("en", {
  "study.grammarNote": "The patterns tested most often, not a complete list. The JLPT publishes no official grammar list, and fuller references carry roughly three times as many.",
  "study.kanji": "Kanji",
  "study.kanjiCount": "kanji",
+ "study.kanjiMissing": "That kanji is not in this list",
+ "study.kanjiMissingBody": "Pick a character from the list, or try another level.",
  "study.patternsCount": "core patterns",
  "study.replay": "Replay",
  "study.search": "Search a word or meaning",

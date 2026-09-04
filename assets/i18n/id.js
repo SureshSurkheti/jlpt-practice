@@ -285,6 +285,8 @@ I18N.register("id", {
  "study.grammarNote": "Pola yang paling sering diujikan, bukan daftar lengkap. JLPT tidak menerbitkan daftar tata bahasa resmi; referensi lengkap memuat sekitar tiga kali lipat.",
  "study.kanji": "Kanji",
  "study.kanjiCount": "kanji",
+ "study.kanjiMissing": "Kanji ini tidak ada dalam daftar ini",
+ "study.kanjiMissingBody": "Pilih karakter dari daftar, atau coba level lain.",
  "study.patternsCount": "pola inti",
  "study.replay": "Putar ulang",
  "study.search": "Cari kata atau arti",

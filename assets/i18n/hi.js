@@ -285,6 +285,8 @@ I18N.register("hi", {
  "study.grammarNote": "सबसे अधिक पूछे जाने वाले पैटर्न, पूरी सूची नहीं। JLPT कोई आधिकारिक व्याकरण सूची प्रकाशित नहीं करता; विस्तृत संदर्भों में लगभग तीन गुना होते हैं।",
  "study.kanji": "कांजी",
  "study.kanjiCount": "कांजी",
+ "study.kanjiMissing": "यह कांजी इस सूची में नहीं है",
+ "study.kanjiMissingBody": "सूची से कोई अक्षर चुनें, या दूसरा स्तर आज़माएँ।",
  "study.patternsCount": "मुख्य पैटर्न",
  "study.replay": "फिर से",
  "study.search": "शब्द या अर्थ खोजें",

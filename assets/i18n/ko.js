@@ -285,6 +285,8 @@ I18N.register("ko", {
  "study.grammarNote": "출제 빈도가 높은 문형이며 전체 목록은 아닙니다. JLPT는 공식 문법 목록을 공개하지 않으며, 상세 교재는 약 세 배를 다룹니다.",
  "study.kanji": "한자",
  "study.kanjiCount": "자",
+ "study.kanjiMissing": "이 한자는 이 목록에 없습니다",
+ "study.kanjiMissingBody": "목록에서 글자를 고르거나 다른 레벨을 확인해 보세요.",
  "study.patternsCount": "핵심 문형",
  "study.replay": "다시 보기",
  "study.search": "단어나 뜻 검색",

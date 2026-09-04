@@ -114,16 +114,16 @@
    "title": "JLPT N4 — Practice Test 1",
    "period": "practice-1",
    "periodLabel": "Practice Test 1",
-   "totalQuestions": 75,
+   "totalQuestions": 69,
    "categoryCounts": {
-    "vocabulary": 39,
-    "grammar": 36
+    "vocabulary": 34,
+    "grammar": 35
    },
    "parts": [
     {
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
-     "count": 39,
+     "count": 34,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -131,7 +131,7 @@
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
-     "count": 36,
+     "count": 35,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -767,11 +767,11 @@
    "title": "JLPT N3 — December 2016",
    "period": "2016-12",
    "periodLabel": "December 2016",
-   "totalQuestions": 102,
+   "totalQuestions": 101,
    "categoryCounts": {
     "vocabulary": 35,
     "grammar": 23,
-    "reading": 16,
+    "reading": 15,
     "listening": 28
    },
    "parts": [
@@ -786,7 +786,7 @@
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
-     "count": 39,
+     "count": 38,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -2764,11 +2764,11 @@
    "title": "JLPT N1 — December 2018",
    "period": "2018-12",
    "periodLabel": "December 2018",
-   "totalQuestions": 105,
+   "totalQuestions": 104,
    "categoryCounts": {
     "vocabulary": 25,
     "grammar": 20,
-    "reading": 25,
+    "reading": 24,
     "listening": 35
    },
    "parts": [
@@ -2783,7 +2783,7 @@
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
-     "count": 25,
+     "count": 24,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -2974,11 +2974,11 @@
    "title": "JLPT N1 — July 2016",
    "period": "2016-07",
    "periodLabel": "July 2016",
-   "totalQuestions": 106,
+   "totalQuestions": 105,
    "categoryCounts": {
     "vocabulary": 25,
     "grammar": 20,
-    "reading": 25,
+    "reading": 24,
     "listening": 36
    },
    "parts": [
@@ -2993,7 +2993,7 @@
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
-     "count": 25,
+     "count": 24,
      "audio": 0,
      "sections": 0,
      "audioSections": 0

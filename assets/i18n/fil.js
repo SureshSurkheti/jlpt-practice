@@ -285,6 +285,8 @@ I18N.register("fil", {
  "study.grammarNote": "Ang mga pattern na pinakamadalas lumabas, hindi kumpletong listahan. Walang opisyal na listahan ng gramatika ang JLPT; ang mas kumpletong sanggunian ay may tatlong beses nito.",
  "study.kanji": "Kanji",
  "study.kanjiCount": "kanji",
+ "study.kanjiMissing": "Wala sa listahang ito ang kanji na ito",
+ "study.kanjiMissingBody": "Pumili ng karakter mula sa listahan, o subukan ang ibang antas.",
  "study.patternsCount": "pangunahing pattern",
  "study.replay": "Ulitin",
  "study.search": "Maghanap ng salita o kahulugan",

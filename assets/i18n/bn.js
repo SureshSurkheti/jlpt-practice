@@ -285,6 +285,8 @@ I18N.register("bn", {
  "study.grammarNote": "সবচেয়ে বেশি আসা প্যাটার্নগুলো, সম্পূর্ণ তালিকা নয়। JLPT কোনো সরকারি ব্যাকরণ তালিকা প্রকাশ করে না; বিস্তৃত রেফারেন্সে প্রায় তিন গুণ থাকে।",
  "study.kanji": "কাঞ্জি",
  "study.kanjiCount": "কাঞ্জি",
+ "study.kanjiMissing": "এই কাঞ্জি এই তালিকায় নেই",
+ "study.kanjiMissingBody": "তালিকা থেকে একটি অক্ষর বেছে নিন, বা অন্য স্তর দেখুন।",
  "study.patternsCount": "মূল প্যাটার্ন",
  "study.replay": "আবার দেখুন",
  "study.search": "শব্দ বা অর্থ খুঁজুন",

@@ -285,6 +285,8 @@ I18N.register("vi", {
  "study.grammarNote": "Các mẫu câu ra thi nhiều nhất, không phải danh sách đầy đủ. JLPT không công bố danh sách ngữ pháp chính thức; tài liệu đầy đủ có khoảng gấp ba lần.",
  "study.kanji": "Hán tự",
  "study.kanjiCount": "Hán tự",
+ "study.kanjiMissing": "Kanji này không có trong danh sách này",
+ "study.kanjiMissingBody": "Hãy chọn một chữ từ danh sách, hoặc thử cấp độ khác.",
  "study.patternsCount": "mẫu câu cốt lõi",
  "study.replay": "Xem lại",
  "study.search": "Tìm từ hoặc nghĩa",

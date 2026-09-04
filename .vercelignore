@@ -1,0 +1,8 @@
+# Build inputs, not site content. data/dict alone is 57MB of JMdict and
+# KANJIDIC source that tools/build_wordlists.py and tools/build_kanji.py read
+# to produce data/words and data/kanji; no page ever fetches it. .cache holds
+# the archived source pages tools/build_exams.py parses.
+data/dict/
+.cache/
+_src/
+tools/
