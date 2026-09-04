@@ -3181,7 +3181,10 @@ body.is-leaving { opacity: 0; }
 }
 .stats-mistakes h2 { margin: 0 0 4px; font-size: 1.1rem; }
 .stats-mistakes p { margin: 0; color: var(--muted); font-size: 0.92rem; }
-.stats-mistakes-count { margin-top: 6px !important; font-weight: 700; color: var(--navy) !important; }
+/* One line reserved: the count arrives from the script, and an empty
+   paragraph that grows to a line moved the whole card (a shift of 0.48 on
+   a phone, where the button stacks below and started visible too). */
+.stats-mistakes-count { margin-top: 6px !important; min-height: 1.45em; font-weight: 700; color: var(--navy) !important; }
 .stats-mistakes .btn { flex: none; }
 @media (max-width: 640px) { .stats-mistakes { flex-direction: column; align-items: stretch; } }
 
