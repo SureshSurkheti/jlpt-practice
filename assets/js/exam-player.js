@@ -2061,6 +2061,11 @@
   }
 
   window.addEventListener("scroll", scheduleSpy, { passive: true });
+  /* A resize can change where the player docks without any scrolling - the
+     command bar rewraps and --bar-h moves with it - so the dock state has to
+     be rechecked then too, or a pinned player keeps the shape it had at the
+     old offset. Same throttle. */
+  window.addEventListener("resize", scheduleSpy, { passive: true });
 
   /* ------------------------------------------------------------- wiring */
 
