@@ -3114,7 +3114,10 @@ body.is-leaving { opacity: 0; }
 .study-quiz { flex: none; white-space: nowrap; }
 @media (max-width: 820px) { .study-find { max-width: none; margin-left: 0; width: 100%; } .study-find .study-search { max-width: none; } }
 
-.quiz-root { max-width: 720px; }
+/* The card is drawn after the list has been fetched; until then the space
+   is held, so the footer does not move when it appears (a shift of 0.08
+   measured live without this). */
+.quiz-root { max-width: 720px; min-height: 240px; }
 .quiz-card {
   background: var(--panel);
   border: 1px solid var(--line);
