@@ -804,16 +804,14 @@ def coverage_panel(table, en, here=None, prefix="study/", linked=True):
     # of reference material to reach the word list. Closed, the tabs and the
     # search box are the first thing under the heading.
     #
-    # The fifteen list pages keep it open: there it is the only navigation
-    # between them, so folding it would hide the way out of the page.
-    if linked:
-        return ('<section class="study-coverage">\n'
-                '        <h2 data-i18n="notice.title">%s</h2>\n%s'
-                '      </section>' % (title, body))
-
-    return ('<details class="study-coverage is-static coverage-fold">\n'
+    # The list pages fold it the same way. They used to keep it open on the
+    # grounds that it was the only navigation between them, but the level and
+    # list tabs under it do that job; what the open table did was sit as a
+    # screen of reference between the heading and the words, with a title
+    # that looked like the hub's button and did nothing when pressed.
+    return ('<details class="study-coverage%s coverage-fold">\n'
             '        <summary><span data-i18n="notice.title">%s</span></summary>\n%s'
-            '      </details>' % (title, body))
+            '      </details>' % ("" if linked else " is-static", title, body))
 
 
 FIELD = {"words": "words", "kanji": "kanji", "grammar": "patterns"}
