@@ -1378,7 +1378,7 @@
           (section.tag ? "<i>" + esc(section.tag) + "</i>" : "") +
         "</span>" +
         '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
-          'height="56" allow="autoplay" title="' + esc(t("exam.audio")) +
+          'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
           '" loading="lazy"></iframe>'));
     }
 

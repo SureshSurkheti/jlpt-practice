@@ -660,6 +660,12 @@
      rounded corners there left two notches of tray showing through the
      join. */
   border-radius: 0 0 10px 10px;
+  /* 76px is not a spare number. Drive's preview page draws a fixed-size
+     player pill inside a dark field, and the pill is clipped below about
+     68px: at 56 its top was cut off entirely, which is why the black box
+     looked sliced and the play button looked to be sitting above centre.
+     Rendered at 56, 64, 70, 72, 76 and 90 to find where it stops being cut.
+     76 is Drive's own height and leaves margin for other files. */
   background: #fff;
 }
 
@@ -1442,7 +1448,7 @@
     padding: 8px 12px 10px;
   }
   .q-audio-label { margin-bottom: 4px; font-size: 0.78rem; }
-  .q-audio iframe { display: block; width: 100%; height: 56px; }
+  .q-audio iframe { display: block; width: 100%; height: 76px; }
 }
 
 /* ------------------------------------------------------------ responsive */
