@@ -257,6 +257,55 @@ function levelBest(level) {
   };
 }
 
+/* ==========================================================================
+   Know / don't know.
+
+   The word lists let you mark each word ✓ (I know it) or ✗ (still learning).
+   One record per marked word, keyed by level and the word itself - words
+   are unique within a level's list - and nothing for an unmarked word, so
+   the store only ever holds what you have touched. Read by the study lists,
+   the quiz (which can drill the ✗ words alone) and the progress page. This
+   browser only, like every other record on the site.
+   ========================================================================== */
+
+const KNOW_KEY = 'jlpt.know';
+
+function readKnow() {
+  try {
+    const d = JSON.parse(localStorage.getItem(KNOW_KEY) || 'null');
+    return (d && d.items && typeof d.items === 'object') ? d : { v: 1, items: {} };
+  } catch (e) {
+    return { v: 1, items: {} };
+  }
+}
+
+/* 'k' known, 'd' still learning, '' unmarked. */
+function knowState(level, word) {
+  const rec = readKnow().items[level + '|' + word];
+  return rec ? rec.s : '';
+}
+
+function setKnow(level, word, s) {
+  const d = readKnow();
+  const id = level + '|' + word;
+  if (s === 'k' || s === 'd') d.items[id] = { s, at: Date.now() };
+  else delete d.items[id];
+  try { localStorage.setItem(KNOW_KEY, JSON.stringify(d)); } catch (e) { /* full or blocked */ }
+  return d;
+}
+
+/* { k: n, d: n } for one level, or for every level when none is named. */
+function knowCounts(level) {
+  const out = { k: 0, d: 0 };
+  const items = readKnow().items;
+  Object.keys(items).forEach((id) => {
+    if (level && id.slice(0, id.indexOf('|')) !== level) return;
+    const s = items[id].s;
+    if (s === 'k' || s === 'd') out[s] += 1;
+  });
+  return out;
+}
+
 function levelDesc(key) {
   return t('level.' + key);
 }

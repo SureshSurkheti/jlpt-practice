@@ -2538,6 +2538,136 @@ body.is-leaving { opacity: 0; }
   .study-row.is-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
 }
 
+/* ------------------------------------------------------------------------
+   Know / don't know - the marks on each word row and the filters above them.
+
+   Desktop word rows already have a fourth, empty track (see .study-row); the
+   two buttons sit in it, so a row is the same height with them as without.
+   On a phone the row gains a narrow third column, reserved in the CSS
+   whether or not the script has drawn the buttons yet, and the two stack
+   vertically inside it - 56px, shorter than the word-and-reading column
+   beside them. Either way the first script render moves nothing.
+   ------------------------------------------------------------------------ */
+.study-mark {
+  display: inline-flex;
+  gap: 6px;
+  align-self: center;
+  justify-self: start;
+}
+.study-mark button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font: 700 0.9rem/1 var(--font-sans);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.study-mark button:hover { border-color: var(--navy); color: var(--navy); }
+.study-mark button:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.study-mark button[data-m="k"][aria-pressed="true"] {
+  background: #1f7a4d; border-color: #1f7a4d; color: #fff;
+}
+.study-mark button[data-m="d"][aria-pressed="true"] {
+  background: var(--danger, #c84a52); border-color: var(--danger, #c84a52); color: #fff;
+}
+/* A marked row shows its state along the left edge: a known word steps
+   back, a word still being learnt stays as bold as the rest. */
+.study-row.is-known { box-shadow: inset 3px 0 0 #1f7a4d; }
+.study-row.is-known .study-jp { color: var(--muted); }
+.study-row.is-learning { box-shadow: inset 3px 0 0 var(--danger, #c84a52); }
+
+.study-marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 18px;
+  padding: 0 18px 12px;
+  background: var(--panel);
+  border-inline: 1px solid var(--line);
+}
+.study-count + .study-marks { border-top: 0; }
+.study-marks + .study-list {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.study-marks + .study-list .study-row.is-head { border-radius: 0; }
+.study-marks-legend {
+  margin: 0;
+  flex: 1 1 260px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.study-marks-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.study-filter {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font: 600 0.76rem/1.2 var(--font-sans);
+  cursor: pointer;
+}
+.study-filter:hover { color: var(--navy); border-color: var(--navy); }
+.study-filter.is-on { background: var(--navy); border-color: var(--navy); color: #fff; }
+.study-filter b { margin-left: 5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.study-marks-quiz {
+  margin-left: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.study-marks-quiz:hover { text-decoration: underline; }
+.study-marks + .stats-empty {
+  margin: 0;
+  padding: 26px 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 17px 17px;
+}
+
+@media (max-width: 820px) {
+  .study-row:not(.is-grammar):not(.is-kanji) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) 28px;
+  }
+  .study-row .study-mark {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    align-self: start;
+    justify-self: end;
+  }
+  .study-marks { padding-bottom: 14px; }
+}
+
+/* Progress page: one line per level with marks. */
+.stats-know-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.stats-know-list li b { color: var(--navy); margin-right: 6px; }
+.stats-know-list a { color: var(--navy); text-decoration: none; font-weight: 600; }
+.stats-know-list a:hover { text-decoration: underline; }
+
 /* ==========================================================================
    Levels comparison table
 
@@ -3192,6 +3322,12 @@ body.is-leaving { opacity: 0; }
 .quiz-feedback .quiz-ex { color: var(--muted); font-size: 0.9rem; }
 .quiz-feedback .btn { margin-top: 12px; }
 
+.quiz-only {
+  display: flex; align-items: flex-start; gap: 10px; margin: 0 0 16px;
+  font-size: 0.92rem; line-height: 1.5; color: var(--text); text-align: left; cursor: pointer;
+}
+.quiz-only input { margin: 4px 0 0; width: 18px; height: 18px; flex: none; accent-color: var(--navy); }
+.quiz-mark-missed { margin-top: 12px; }
 .quiz-missed { margin: 18px 0 6px; }
 .quiz-missed h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--muted); font-weight: 700; }
 .quiz-missed ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }

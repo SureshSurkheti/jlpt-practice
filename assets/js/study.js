@@ -30,13 +30,44 @@
   var qLevel = (qs.get("lv") || "").toUpperCase();
   var qKind = (qs.get("kind") || "").toLowerCase();
 
+  /* ?show= narrows a word list to your own marks: k (known), d (still
+     learning) or new (unmarked). The progress page links here with it. */
+  var qShow = (qs.get("show") || "").toLowerCase();
+
   var state = {
     level: /^N[1-5]$/.test(qLevel) ? qLevel : tabOn("level", "N5"),
     kind: ["words", "kanji", "grammar"].indexOf(qKind) !== -1
       ? qKind : tabOn("kind", "words"),
-    query: ""
+    query: "",
+    show: ["k", "d", "new"].indexOf(qShow) !== -1 ? qShow : ""
   };
   var cache = {};          // "words:N5" -> rows
+
+  /* ------------------------------------------------- know / don't know --
+     word -> "k" | "d" for the level on screen, read once per render rather
+     than once per row: N1 alone is 3,759 rows and localStorage is not free.
+     The store itself lives in site.js (readKnow / setKnow / knowCounts) so
+     the quiz and the progress page read the same record.
+     -------------------------------------------------------------------- */
+  var marks = {};
+
+  function loadMarks() {
+    marks = {};
+    if (typeof readKnow !== "function") return;
+    var items = readKnow().items;
+    var pre = state.level + "|";
+    Object.keys(items).forEach(function (id) {
+      if (id.indexOf(pre) === 0) marks[id.slice(pre.length)] = items[id].s;
+    });
+  }
+
+  function markCounts() {
+    var out = { k: 0, d: 0 };
+    Object.keys(marks).forEach(function (w) {
+      if (marks[w] === "k" || marks[w] === "d") out[marks[w]] += 1;
+    });
+    return out;
+  }
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -77,6 +108,10 @@
   }
 
   function matches(row) {
+    if (state.kind === "words" && state.show) {
+      var s = marks[row.w] || "";
+      if (state.show === "new" ? s !== "" : s !== state.show) return false;
+    }
     if (!state.query) return true;
     var hay;
     if (state.kind === "words") {
@@ -90,11 +125,57 @@
     return hay.join(" ").toLowerCase().indexOf(state.query) !== -1;
   }
 
+  /* The legend and the four filters, written the same way the build writes
+     them into the words pages so the first script-drawn render moves
+     nothing. Counts are added to the chips only once there is something to
+     count, for the same reason: a fresh browser sees exactly the markup it
+     was sent. */
+  function marksBar() {
+    var n = markCounts();
+    var total = (cache[key()] || []).length;
+    var fresh = total - n.k - n.d;
+    function chip(show, label, count) {
+      return '<button type="button" class="study-filter' +
+        (state.show === show ? " is-on" : "") + '" data-show="' + show +
+        '" aria-pressed="' + (state.show === show ? "true" : "false") + '">' +
+        esc(t(label)) + (count ? "<b>" + count + "</b>" : "") + "</button>";
+    }
+    var quiz = "";
+    if (n.d >= 4) {
+      var a = document.getElementById("quizLink");
+      var base = a ? (a.getAttribute("href") || "quiz.html").split("?")[0]
+                   : "quiz.html";
+      quiz = '<a class="study-marks-quiz" href="' + base + "?level=" +
+        state.level + '&amp;kind=words&amp;only=learning">' +
+        esc(t("study.quizThese")) + ' <span aria-hidden="true">\u2192</span></a>';
+    }
+    return '<div class="study-marks">' +
+      '<p class="study-marks-legend">' + esc(t("study.markLegend")) + "</p>" +
+      '<div class="study-marks-filters" role="group" aria-label="' +
+        esc(t("study.filterLabel")) + '">' +
+        chip("", "study.filterAll", 0) +
+        chip("d", "study.filterLearning", n.d) +
+        chip("k", "study.filterKnown", n.k) +
+        chip("new", "study.filterUnmarked", (n.k || n.d) ? fresh : 0) +
+        quiz +
+      "</div>" +
+    "</div>";
+  }
+
   function render() {
+    if (state.kind === "words") loadMarks();
     var rows = (cache[key()] || []).filter(matches);
+    var bar = state.kind === "words" ? marksBar() : "";
 
     if (!rows.length) {
-      host.innerHTML = '<p class="stats-empty">' + esc(t("exams.noMatch")) + "</p>";
+      /* Keep the filters on screen: with them gone there would be no way
+         back from an empty "Known" list to the words. */
+      var why = state.show && !state.query ? "study.markEmpty" : "exams.noMatch";
+      var noun = { words: "study.wordsCount", grammar: "study.patternsCount",
+                   kanji: "study.kanjiCount" }[state.kind];
+      host.innerHTML =
+        '<p class="study-count">0 ' + esc(t(noun)) + "</p>" + bar +
+        '<p class="stats-empty">' + esc(t(why)) + "</p>";
       return;
     }
 
@@ -125,8 +206,42 @@
     host.innerHTML =
       '<p class="study-count">' + rows.length + " " +
         esc(t(COUNT[state.kind])) +
-      "</p>" + note +
+      "</p>" + note + bar +
       '<div class="study-list">' + head + body + "</div>";
+  }
+
+  var STATE_CLASS = { k: " is-known", d: " is-learning" };
+
+  function markButtons(w) {
+    var s = marks[w] || "";
+    function b(kind, glyph, label) {
+      return '<button type="button" data-m="' + kind + '" aria-pressed="' +
+        (s === kind ? "true" : "false") + '" aria-label="' + esc(t(label)) +
+        '" title="' + esc(t(label)) + '">' + glyph + "</button>";
+    }
+    return '<span class="study-mark">' +
+      b("k", "\u2713", "study.know") + b("d", "\u2717", "study.dontKnow") +
+    "</span>";
+  }
+
+  /* One click marks, a second click on the same mark clears it. The row is
+     restyled in place rather than re-rendered: re-rendering would drop a
+     word you just marked out of a filtered list before you had read it. */
+  function toggleMark(btn) {
+    var row = btn.closest(".study-row");
+    var w = row && row.getAttribute("data-w");
+    if (!w || typeof setKnow !== "function") return;
+    var want = btn.getAttribute("data-m");
+    var next = marks[w] === want ? "" : want;
+    setKnow(state.level, w, next);
+    if (next) marks[w] = next; else delete marks[w];
+    row.classList.remove("is-known", "is-learning");
+    if (next) row.classList.add(STATE_CLASS[next].trim());
+    row.querySelectorAll(".study-mark button").forEach(function (x) {
+      x.setAttribute("aria-pressed", x.getAttribute("data-m") === next ? "true" : "false");
+    });
+    var old = host.querySelector(".study-marks");
+    if (old) old.outerHTML = marksBar();
   }
 
   function wordRow(row) {
@@ -137,11 +252,13 @@
       ? '<em class="study-ne">' + esc(row.ne) + "</em>" : "";
     var affix = row.affix
       ? '<b class="study-affix">' + esc(t("study.affix")) + "</b>" : "";
-    return '<div class="study-row">' +
+    return '<div class="study-row' + (STATE_CLASS[marks[row.w]] || "") +
+      '" data-w="' + esc(row.w) + '">' +
       '<span class="study-jp">' + esc(row.w) + affix + "</span>" +
       '<span class="study-reading">' + esc(row.r || "") +
         (row.romaji ? '<em>' + esc(row.romaji) + "</em>" : "") + "</span>" +
       '<span class="study-en">' + esc(row.en) + ne + "</span>" +
+      markButtons(row.w) +
     "</div>";
   }
 
@@ -325,6 +442,16 @@
 
   host.addEventListener("click", function (ev) {
     if (ev.target.closest(".kanji-open-close")) { closeKanji(); return; }
+
+    var mark = ev.target.closest(".study-mark button");
+    if (mark) { toggleMark(mark); return; }
+
+    var filter = ev.target.closest(".study-filter");
+    if (filter) {
+      state.show = filter.getAttribute("data-show") || "";
+      render();
+      return;
+    }
 
     var link = ev.target.closest(".kanji-char");
     if (!link) return;

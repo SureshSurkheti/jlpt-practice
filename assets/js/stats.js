@@ -62,6 +62,31 @@ function renderStatsPage() {
   renderLevelProgress(rows);
   renderSectionPerformance(rows);
   renderMistakes();
+  renderKnow();
+}
+
+/* The ✓ / ✗ marks from the word lists (jlpt.know, see site.js): a total
+   line, then one line per level that has any, each half linking to that
+   filtered list. */
+function renderKnow() {
+  const summary = document.getElementById('knowSummary');
+  const list = document.getElementById('knowList');
+  if (!summary || !list) return;
+  const all = knowCounts();
+  if (!all.k && !all.d) {
+    summary.textContent = t('stats.knowNone');
+    list.hidden = true;
+    return;
+  }
+  summary.textContent = tf('stats.knowLine', all);
+  list.innerHTML = LEVEL_ORDER.map((lv) => {
+    const n = knowCounts(lv);
+    if (!n.k && !n.d) return '';
+    const base = `study/${lv.toLowerCase()}-words.html?show=`;
+    return `<li><b>${lv}</b>` +
+      `<a href="${base}k">${n.k} ✓</a> · <a href="${base}d">${n.d} ✗</a></li>`;
+  }).join('');
+  list.hidden = false;
 }
 
 /* The notebook the exam player keeps (jlpt.mistakes): how many wrong

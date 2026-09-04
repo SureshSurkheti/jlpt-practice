@@ -817,6 +817,27 @@ def coverage_panel(table, en, here=None, prefix="study/", linked=True):
 FIELD = {"words": "words", "kanji": "kanji", "grammar": "patterns"}
 
 
+def marks_bar(table, en):
+    """The know / don't-know legend and filters over a word list, written
+    into the page so the script's first render (which draws the identical
+    bar) does not move the list. No counts: a fresh browser has none."""
+    def chip(show, key, on):
+        return ('<button type="button" class="study-filter%s" data-show="%s" '
+                'aria-pressed="%s">%s</button>'
+                % (" is-on" if on else "", show, "true" if on else "false",
+                   esc(t(table, key, en))))
+    return ('<div class="study-marks">'
+            '<p class="study-marks-legend">%s</p>'
+            '<div class="study-marks-filters" role="group" aria-label="%s">'
+            '%s%s%s%s</div></div>'
+            % (esc(t(table, "study.markLegend", en)),
+               esc(t(table, "study.filterLabel", en)),
+               chip("", "study.filterAll", True),
+               chip("d", "study.filterLearning", False),
+               chip("k", "study.filterKnown", False),
+               chip("new", "study.filterUnmarked", False)))
+
+
 def study_rows(level, kind, table, en, up=""):
     """`up` is the hop back to the language root: the hub page at
     /study.html links to kanji.html beside it, the level pages at
@@ -997,8 +1018,10 @@ def main():
                     '<div id="studyContent" aria-live="polite"></div>',
                     '<div id="studyContent" aria-live="polite">\n'
                     '      <p class="study-count">%d %s</p>\n'
+                    '      %s\n'
                     '      <div class="study-list">\n      %s\n      </div>\n'
-                    '    </div>' % (n, esc(t(table, "study.wordsCount", en)), body))
+                    '    </div>' % (n, esc(t(table, "study.wordsCount", en)),
+                                    marks_bar(table, en), body))
 
             html = html.replace(
                 "</footer>",
@@ -1079,6 +1102,10 @@ def main():
                         '<p class="study-note">%s</p>\n      '
                         '<div class="study-list">'
                         % esc(t(table, "study.grammarNote", en)), 1)
+                if kind == "words":
+                    html = html.replace(
+                        '<div class="study-list">',
+                        marks_bar(table, en) + '\n      <div class="study-list">', 1)
                 # mark the level and list this page opens on
                 html = html.replace('data-level="N5" role="tab">N5',
                                     'data-level="N5" role="tab" %s>N5'

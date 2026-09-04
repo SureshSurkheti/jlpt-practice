@@ -28,7 +28,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ne/#website","url":"https://jlpt.sureshsurkheti.com/ne/","name":"JLPT Practice","inLanguage":"ne","description":"तपाईंले पढेका हरेक स्तरको शुद्धता र गतिविधि।","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ne/stats.html#webpage","url":"https://jlpt.sureshsurkheti.com/ne/stats.html","name":"तपाईंको प्रगति — JLPT Practice","description":"तपाईंले पढेका हरेक स्तरको शुद्धता र गतिविधि।","inLanguage":"ne","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ne/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=311ab050" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=fc88c2c0" />
     <style>
       /* Stats page only. Everything shared with the rest of the site lives in
          styles.css; these are the four blocks unique to this page. */
@@ -163,6 +163,18 @@
         <a class="btn btn-primary" href="./review.html" id="mistakesOpen" data-i18n="stats.mistakesOpen" hidden>अहिले दोहोर्‍याउनुहोस्</a>
       </section>
 
+      <!-- The ✓ / ✗ marks from the word lists (jlpt.know), one line per
+           level that has any. -->
+      <section class="stats-mistakes stats-know" id="statsKnow">
+        <div>
+          <h2 data-i18n="stats.knowTitle">तपाईंलाई थाहा भएका शब्द</h2>
+          <p data-i18n="stats.knowBody">शब्द सूचीमा लगाएका ✓ र ✗ चिनोहरू, स्तर अनुसार।</p>
+          <p class="stats-mistakes-count" id="knowSummary"></p>
+          <ul class="stats-know-list" id="knowList" hidden></ul>
+        </div>
+        <a class="btn btn-ghost" href="./study.html" data-i18n="stats.knowOpen">शब्द सूची खोल्ने</a>
+      </section>
+
       <section id="levelProgressSection" class="level-progress-grid"></section>
 
       <section class="section-performance">
@@ -210,9 +222,9 @@
     </footer>
 
     <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
-    <script defer src="/assets/i18n/en.js?v=068287a5"></script>
-    <script defer src="/assets/i18n/ne.js?v=5db6e9d0"></script>
-    <script defer src="/assets/js/site.js?v=55f381aa"></script>
-    <script defer src="/assets/js/stats.js?v=186b4093"></script>
+    <script defer src="/assets/i18n/en.js?v=d15ef54d"></script>
+    <script defer src="/assets/i18n/ne.js?v=2399a6c6"></script>
+    <script defer src="/assets/js/site.js?v=9a5ca4ba"></script>
+    <script defer src="/assets/js/stats.js?v=c48acb52"></script>
   </body>
 </html>

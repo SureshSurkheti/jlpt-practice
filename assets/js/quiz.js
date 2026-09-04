@@ -20,8 +20,12 @@
   var LEVELS = ["N5", "N4", "N3", "N2", "N1"];
   var KINDS = ["words", "kanji", "grammar"];
 
+  /* only: "d" restricts a words round to the words you marked ✗ (still
+     learning) on the study lists; ?only=learning arrives from those lists
+     and from the progress page. Distractors still come from the whole
+     list, so they stay the right level. */
   var state = { level: "N5", kind: "words", items: null, round: null, i: 0,
-                right: 0, missed: [], answered: false };
+                right: 0, missed: [], answered: false, only: "" };
 
   function qs(name) {
     var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(location.search);
@@ -59,6 +63,24 @@
   if (LEVELS.indexOf(lv) !== -1) state.level = lv;
   var kd = (qs("kind") || "").toLowerCase();
   if (KINDS.indexOf(kd) !== -1) state.kind = kd;
+  if (qs("only") === "learning") state.only = "d";
+
+  function learningWords() {
+    if (state.kind !== "words" || typeof readKnow !== "function") return [];
+    var items = readKnow().items, pre = state.level + "|";
+    return (state.items || []).filter(function (it) {
+      var rec = items[pre + it.w];
+      return rec && rec.s === "d";
+    });
+  }
+  function pool() {
+    if (state.only === "d") {
+      var few = learningWords();
+      if (few.length >= 4) return few;
+      state.only = "";
+    }
+    return state.items;
+  }
 
   function bests() {
     try { return JSON.parse(localStorage.getItem(BEST_KEY) || "{}"); }
@@ -160,7 +182,7 @@
   }
 
   function buildRound() {
-    var picked = shuffle(state.items.slice()).slice(0, TOTAL * 2);
+    var picked = shuffle(pool().slice()).slice(0, TOTAL * 2);
     var round = [];
     for (var i = 0; i < picked.length && round.length < TOTAL; i++) {
       var q = makeQuestion(picked[i]);
@@ -180,6 +202,19 @@
     if (message) card.appendChild(el("p", "quiz-note", esc(message)));
     if (best) card.appendChild(el("p", "quiz-note",
       esc(tf("quiz.best", { n: best, total: TOTAL }))));
+    var few = learningWords();
+    if (few.length >= 4) {
+      var lab = el("label", "quiz-only");
+      var box = document.createElement("input");
+      box.type = "checkbox";
+      box.checked = state.only === "d";
+      box.addEventListener("change", function () { state.only = box.checked ? "d" : ""; });
+      lab.appendChild(box);
+      lab.appendChild(document.createTextNode(" " + tf("quiz.onlyLearning", { n: few.length })));
+      card.appendChild(lab);
+    } else {
+      state.only = "";
+    }
     var btn = el("button", "btn btn-primary btn-lg", esc(t("quiz.start")));
     btn.type = "button";
     btn.disabled = !!message;
@@ -288,6 +323,16 @@
           (sub ? "<span>" + esc(sub) + "</span> " : "") + "· " + esc(meaningOf(it))));
       });
       box.appendChild(ul);
+      /* The missed words can go straight onto the study list's ✗ pile. */
+      if (state.kind === "words" && typeof setKnow === "function") {
+        var mark = el("button", "btn btn-ghost quiz-mark-missed", esc(t("quiz.markMissed")));
+        mark.type = "button";
+        mark.addEventListener("click", function () {
+          state.missed.forEach(function (it) { setKnow(state.level, it.w, "d"); });
+          mark.replaceWith(el("p", "quiz-note", esc(t("quiz.markedMissed"))));
+        });
+        box.appendChild(mark);
+      }
       card.appendChild(box);
     }
     var actions = el("div", "quiz-actions");
