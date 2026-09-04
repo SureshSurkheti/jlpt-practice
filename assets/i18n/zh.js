@@ -28,6 +28,7 @@ I18N.register("zh", {
  "exam.audioFailed": "无法加载听力音频。",
  "exam.audioHelp": "请改用此应用练习听力：",
  "exam.audioNote": "一段录音涵盖整个部分，需要联网播放。",
+ "exam.audioOfficial": "官方练习题与听力音频",
  "exam.audioTrouble": "无法播放？",
  "exam.backToExams": "返回题库",
  "exam.backToPractice": "返回练习",

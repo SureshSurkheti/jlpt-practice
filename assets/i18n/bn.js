@@ -28,6 +28,7 @@ I18N.register("bn", {
  "exam.audioFailed": "শ্রবণ অডিও লোড করা যায়নি।",
  "exam.audioHelp": "বদলে এই অ্যাপে শ্রবণ অভ্যাস করুন:",
  "exam.audioNote": "একটি রেকর্ডিং পুরো অংশ জুড়ে চলে, তাই ইন্টারনেট সংযোগ দরকার।",
+ "exam.audioOfficial": "সরকারি অনুশীলন প্রশ্ন ও শ্রবণ অডিও",
  "exam.audioTrouble": "বাজছে না?",
  "exam.backToExams": "প্রশ্নপত্রে ফিরুন",
  "exam.backToPractice": "অভ্যাসে ফিরুন",

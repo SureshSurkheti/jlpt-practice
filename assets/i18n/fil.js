@@ -28,6 +28,7 @@ I18N.register("fil", {
  "exam.audioFailed": "Hindi ma-load ang audio sa pakikinig.",
  "exam.audioHelp": "Magsanay sa pakikinig sa app na ito:",
  "exam.audioNote": "Isang recording ang sumasaklaw sa buong bahagi, kaya kailangan ng internet.",
+ "exam.audioOfficial": "Opisyal na practice papers na may listening audio",
  "exam.audioTrouble": "Hindi tumutugtog?",
  "exam.backToExams": "Bumalik sa listahan",
  "exam.backToPractice": "Bumalik sa pagsasanay",

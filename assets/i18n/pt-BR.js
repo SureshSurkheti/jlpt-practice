@@ -28,6 +28,7 @@ I18N.register("pt-BR", {
  "exam.audioFailed": "Não foi possível carregar o áudio de audição.",
  "exam.audioHelp": "Pratique audição com este aplicativo:",
  "exam.audioNote": "Uma gravação cobre a seção inteira, por isso precisa de conexão.",
+ "exam.audioOfficial": "Exercícios oficiais com áudio de compreensão auditiva",
  "exam.audioTrouble": "Não está tocando?",
  "exam.backToExams": "Voltar às provas",
  "exam.backToPractice": "Voltar à prática",

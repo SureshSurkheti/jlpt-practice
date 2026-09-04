@@ -28,6 +28,7 @@ I18N.register("ne", {
  "exam.audioFailed": "सुनाइ अडियो लोड हुन सकेन।",
  "exam.audioHelp": "बरु यो एपबाट सुनाइ अभ्यास गर्नुहोस्:",
  "exam.audioNote": "एउटै रेकर्डिङले पूरा भाग समेट्छ, त्यसैले इन्टरनेट जडान चाहिन्छ।",
+ "exam.audioOfficial": "आधिकारिक अभ्यास प्रश्न र सुनाइ अडियो",
  "exam.audioTrouble": "बजेको छैन?",
  "exam.backToExams": "प्रश्नपत्रहरूमा फर्कनुहोस्",
  "exam.backToPractice": "अभ्यासमा फर्कनुहोस्",

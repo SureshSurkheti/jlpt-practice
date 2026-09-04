@@ -28,6 +28,19 @@
   var DATA_DIR = (window.SITE_ROOT || "") + "data/exams/";
   var GLOSSARY_DIR = (window.SITE_ROOT || "") + "data/glossary/";
 
+  /* The organisers publish complete practice workbooks - questions, answers,
+     transcripts and listening audio for every level from N5 to N1 - on the
+     official site. 46 recordings, all of them reachable.
+
+     A link, and only a link. jlpt.jp welcomes links without prior contact,
+     and asks in the same breath that the site not be embedded in another
+     one. Its sample page also states that every listening recording for N1
+     through N5 contains third-party works whose reproduction is prohibited
+     without permission, so rehosting or hotlinking them here would be no
+     better than what is already missing. Sending people to the source is
+     the whole of what can honestly be done. */
+  var OFFICIAL_SAMPLES = "https://www.jlpt.jp/e/samples/sampleindex.html";
+
   /* Where to send people when a paper's listening audio will not play.
      Change these three lines to point somewhere else. */
   var LISTENING_APP = {
@@ -262,6 +275,12 @@
      is named rather than left as a silent dead player. */
   var DEAD_AUDIO_IDS = ["11By1tRFPR2xu3sAqdCC6gCG-uMWmRtzx"];
 
+  function officialLinkHTML() {
+    return '<a class="text-link" href="' + OFFICIAL_SAMPLES + '" ' +
+      'target="_blank" rel="noopener noreferrer">' +
+      esc(t("exam.audioOfficial")) + "</a>";
+  }
+
   function appLinksHTML() {
     return '<a href="' + esc(LISTENING_APP.android) + '" target="_blank" ' +
       'rel="noopener noreferrer">' + esc(LISTENING_APP.name) + " (Android)</a>" +
@@ -270,13 +289,17 @@
       'rel="noopener noreferrer">iOS</a>';
   }
 
+  /* The official workbook first, the app second: one is the exam's own
+     material and the other is somebody else's practice. */
   function deadAudioHTML() {
     return "<strong>" + esc(t("exam.audioFailed")) + "</strong> " +
+      officialLinkHTML() + " \u00b7 " +
       esc(t("exam.audioHelp")) + " " + appLinksHTML();
   }
 
   function audioHelpHTML() {
-    return esc(t("exam.audioHelp")) + " " + appLinksHTML();
+    return officialLinkHTML() + " \u00b7 " +
+      esc(t("exam.audioHelp")) + " " + appLinksHTML();
   }
 
   function sectionOf(question, level) {
@@ -1366,7 +1389,7 @@
     if (!section.audio && section.category === "listening") {
       head.appendChild(el("div", "q-audio-aside is-failed",
         "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
-        "</strong> " + audioHelpHTML() + "</p>"));
+        "</strong> \u00b7 " + audioHelpHTML() + "</p>"));
     }
 
     node.appendChild(head);

@@ -525,6 +525,40 @@ the live pages carry embeds the snapshot did not. That is a request to a third
 party whose material this is, so it is not something to do without deciding to
 do it.
 
+### The official samples cannot supply it either
+
+The organisers publish complete practice workbooks - questions, answers,
+transcripts and 46 listening recordings covering N5 to N1 - at
+`https://www.jlpt.jp/e/samples/sampleindex.html`, as plain PDFs and MP3s. They
+look like the obvious answer. They are not, and the reason is on the page
+itself:
+
+> Among sample questions under Grammar and Reading for N1 and N2 of the Test
+> Items, questions from specified sources and **all of the Listening audio
+> files for N1 through N5 contain works by third-party authors and copyright
+> holders**, so please be aware that, except for those cases for which
+> "1. Copyright" (1)~(3) of the Site Policy apply, reprint and reproduction of
+> the questions and works are prohibited without permission.
+
+The (1)-(3) exceptions are personal study, quotation, and classroom teaching.
+Publishing on a public website is none of them. Clause (4) of the site policy
+*does* grant reproduction in advance for free Japanese-language education
+where no fee is charged for the materials, on condition the source is stated
+in a prescribed form - but that grant is what the paragraph above carves the
+listening audio out of. So the audio may not be rehosted, and hotlinking the
+MP3s would be the same reproduction by another route.
+
+What the policy does allow without asking is linking: "Links to this site are
+welcomed. Advance contact is unnecessary", with the request that the site not
+be embedded in another. So every section with no recording links to the
+official workbooks - see `officialLinkHTML()` in `assets/js/exam-player.js`.
+
+The non-listening sample questions are a different matter: clause (4) covers
+them, excluding the N1 and N2 items the page lists (N1 Q7, Q8(1)(3)(4),
+Q9(1)-(3), Q10, Q11, Q12; N2 Q10(1)(3)(5), Q11(1)-(3), Q13). Reproducing those
+would mean extracting from the PDFs and carrying the prescribed source line.
+Not done yet.
+
 Until then the library says which is which, per paper, rather than letting
 someone find out forty minutes into a mock: `audio_coverage()` in
 `tools/build_exams.py` counts sections the way `buildSections()` in the player

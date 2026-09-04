@@ -33,6 +33,7 @@ I18N.register("en", {
  "exam.audioFailed": "Listening audio could not be loaded.",
  "exam.audioHelp": "Practise listening with this app instead:",
  "exam.audioNote": "One recording covers the whole section, so it needs an internet connection.",
+ "exam.audioOfficial": "Official JLPT practice papers with listening audio",
  "exam.audioTrouble": "Not playing?",
  "exam.backToExams": "Back to exams",
  "exam.backToPractice": "Back to practice",

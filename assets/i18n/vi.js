@@ -28,6 +28,7 @@ I18N.register("vi", {
  "exam.audioFailed": "Không tải được âm thanh phần nghe.",
  "exam.audioHelp": "Hãy luyện nghe bằng ứng dụng này:",
  "exam.audioNote": "Một file ghi âm cho cả phần thi, nên cần kết nối internet.",
+ "exam.audioOfficial": "Đề luyện tập chính thức kèm âm thanh nghe",
  "exam.audioTrouble": "Không phát được?",
  "exam.backToExams": "Về danh sách đề",
  "exam.backToPractice": "Về luyện tập",

@@ -28,6 +28,7 @@ I18N.register("id", {
  "exam.audioFailed": "Audio menyimak tidak dapat dimuat.",
  "exam.audioHelp": "Berlatih menyimak dengan aplikasi ini saja:",
  "exam.audioNote": "Satu rekaman mencakup seluruh bagian, jadi perlu koneksi internet.",
+ "exam.audioOfficial": "Soal latihan resmi dengan audio menyimak",
  "exam.audioTrouble": "Tidak diputar?",
  "exam.backToExams": "Kembali ke daftar ujian",
  "exam.backToPractice": "Kembali ke latihan",

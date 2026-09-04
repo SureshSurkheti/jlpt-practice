@@ -28,6 +28,7 @@ I18N.register("ko", {
  "exam.audioFailed": "청해 음성을 불러올 수 없습니다.",
  "exam.audioHelp": "대신 이 앱으로 청해를 연습하세요:",
  "exam.audioNote": "녹음 하나가 과목 전체를 담고 있어 인터넷 연결이 필요합니다.",
+ "exam.audioOfficial": "공식 연습 문제와 청해 음성",
  "exam.audioTrouble": "재생되지 않나요?",
  "exam.backToExams": "문제 목록으로",
  "exam.backToPractice": "연습으로 돌아가기",

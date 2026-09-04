@@ -28,6 +28,7 @@ I18N.register("ja", {
  "exam.audioFailed": "聴解音声を読み込めませんでした。",
  "exam.audioHelp": "代わりにこのアプリで聴解を練習してください：",
  "exam.audioNote": "1つの録音が科目全体をカバーします。再生にはインターネット接続が必要です。",
+ "exam.audioOfficial": "公式の練習問題と聴解音声",
  "exam.audioTrouble": "再生できませんか？",
  "exam.backToExams": "問題一覧に戻る",
  "exam.backToPractice": "練習に戻る",

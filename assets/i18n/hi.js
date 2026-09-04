@@ -28,6 +28,7 @@ I18N.register("hi", {
  "exam.audioFailed": "श्रवण ऑडियो लोड नहीं हो सका।",
  "exam.audioHelp": "इसके बजाय इस ऐप से श्रवण अभ्यास करें:",
  "exam.audioNote": "एक ही रिकॉर्डिंग पूरे भाग को कवर करती है, इसलिए इंटरनेट कनेक्शन चाहिए।",
+ "exam.audioOfficial": "आधिकारिक अभ्यास प्रश्न और श्रवण ऑडियो",
  "exam.audioTrouble": "नहीं चल रहा?",
  "exam.backToExams": "प्रश्नपत्रों पर लौटें",
  "exam.backToPractice": "अभ्यास पर लौटें",
