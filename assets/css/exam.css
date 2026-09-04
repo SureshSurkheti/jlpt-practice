@@ -623,7 +623,13 @@
      it instead, the flat top hangs from nothing, which is what a gap here
      kept looking like. */
   margin: 0 0 16px;
-  padding: 7px 14px;
+  /* No padding on top. The tray was already flush against the section head's
+     bottom border, but its own 7px was showing above the player as a pale
+     strip, so the black box read as floating below the line rather than
+     hanging off it. At zero the player's own top edge is the join. The
+     bottom keeps its 7px, which is what the tray's rounded bottom corners
+     need in order to be corners. */
+  padding: 0 14px 7px;
   background: #eef4fb;
   border: 1px solid rgba(45, 110, 180, 0.28);
   border-top: 0;
@@ -649,7 +655,11 @@
   flex: 1;
   min-width: 0;
   border: 0;
-  border-radius: 10px;
+  /* Square along the top, because the top is now a join. With the tray's top
+     padding gone the player's own edge meets the section head's border, and
+     rounded corners there left two notches of tray showing through the
+     join. */
+  border-radius: 0 0 10px 10px;
   background: #fff;
 }
 
