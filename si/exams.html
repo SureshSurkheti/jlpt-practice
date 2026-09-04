@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/si/#website","url":"https://jlpt.sureshsurkheti.com/si/","name":"JLPT Practice","inLanguage":"si","description":"මෙහි ඇති සෑම ප්‍රශ්න පත්‍රයක්ම JLPT හි ම ආකෘතියෙන් කරයි, කාලය ගණන් කර ස්වයංක්‍රීයව ලකුණු දෙයි. සම්පූර්ණ පත්‍රය කරන්න හෝ එක් කොටසක් පුහුණු වන්න.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/si/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/si/exams.html","name":"පුහුණු ප්‍රශ්න පත්‍ර එකතුව — JLPT Practice","description":"මෙහි ඇති සෑම ප්‍රශ්න පත්‍රයක්ම JLPT හි ම ආකෘතියෙන් කරයි, කාලය ගණන් කර ස්වයංක්‍රීයව ලකුණු දෙයි. සම්පූර්ණ පත්‍රය කරන්න හෝ එක් කොටසක් පුහුණු වන්න.","inLanguage":"si","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/si/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">පුහුණු ප්‍රශ්න පත්‍ර එකතුව</h1>
             <p data-i18n="exams.body">මෙහි ඇති සෑම ප්‍රශ්න පත්‍රයක්ම JLPT හි ම ආකෘතියෙන් කරයි, කාලය ගණන් කර ස්වයංක්‍රීයව ලකුණු දෙයි. සම්පූර්ණ පත්‍රය කරන්න හෝ එක් කොටසක් පුහුණු වන්න.</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>පුහුණු ප්‍රශ්න පත්‍ර</span></div><div class="exams-stat"><strong>8,163</strong><span>ප්‍රශ්න</span></div><div class="exams-stat"><strong>5</strong><span>මට්ටම්</span></div><div class="exams-stat"><strong>86</strong><span>වචන අර්ථ සහිත</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="වර්ෂය අනුව සොයන්න, උදා. 2024" aria-label="වර්ෂය අනුව සොයන්න, උදා. 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">පූරණය වෙමින්…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">මූලික ආචාර කිරීම් සහ දෛනික ප්‍රකාශන.</span><span class="lvcard-facts"><span><b>2</b> ප්‍රශ්න පත්‍ර</span><span><b>48</b> ප්‍රශ්න</span></span><span class="lvcard-go">ප්‍රශ්න බලන්න<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">දෛනික සංවාද සහ සරල පෙළ.</span><span class="lvcard-facts"><span><b>2</b> ප්‍රශ්න පත්‍ර</span><span><b>167</b> ප්‍රශ්න</span></span><span class="lvcard-go">ප්‍රශ්න බලන්න<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">ප්‍රවෘත්ති ශෛලියේ කියවීම සහ ස්වාභාවික කථනය.</span><span class="lvcard-facts"><span><b>28</b> ප්‍රශ්න පත්‍ර</span><span><b>2,759</b> ප්‍රශ්න</span></span><span class="lvcard-go">ප්‍රශ්න බලන්න<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">පුවත්පත්, ව්‍යාපාරික ජපන්, වියුක්ත තර්කනය.</span><span class="lvcard-facts"><span><b>26</b> ප්‍රශ්න පත්‍ර</span><span><b>2,449</b> ප්‍රශ්න</span></span><span class="lvcard-go">ප්‍රශ්න බලන්න<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">ස්වාභාවික වේගයෙන් ශාස්ත්‍රීය හා සාහිත්‍යමය ජපන්.</span><span class="lvcard-facts"><span><b>29</b> ප්‍රශ්න පත්‍ර</span><span><b>2,740</b> ප්‍රශ්න</span></span><span class="lvcard-go">ප්‍රශ්න බලන්න<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

@@ -291,14 +291,18 @@
 
   /* The official workbook first, the app second: one is the exam's own
      material and the other is somebody else's practice. */
+  /* One item per line. Run together with dots the note read as a single
+     sentence - "No listening audio · Official JLPT practice papers with
+     listening audio · Practise listening with this app instead: ..." - and
+     nobody could tell which words were the link and what the app was for. */
   function deadAudioHTML() {
-    return "<strong>" + esc(t("exam.audioFailed")) + "</strong> " +
-      officialLinkHTML() + " \u00b7 " +
+    return "<strong>" + esc(t("exam.audioFailed")) + "</strong><br>" +
+      officialLinkHTML() + "<br>" +
       esc(t("exam.audioHelp")) + " " + appLinksHTML();
   }
 
   function audioHelpHTML() {
-    return officialLinkHTML() + " \u00b7 " +
+    return officialLinkHTML() + "<br>" +
       esc(t("exam.audioHelp")) + " " + appLinksHTML();
   }
 
@@ -1389,7 +1393,7 @@
     if (!section.audio && section.category === "listening") {
       head.appendChild(el("div", "q-audio-aside is-failed",
         "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
-        "</strong> \u00b7 " + audioHelpHTML() + "</p>"));
+        "</strong><br>" + audioHelpHTML() + "</p>"));
     }
 
     node.appendChild(head);

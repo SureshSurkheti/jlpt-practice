@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/id/#website","url":"https://jlpt.sureshsurkheti.com/id/","name":"JLPT Practice","inLanguage":"id","description":"Setiap soal di sini dikerjakan dalam format JLPT itu sendiri, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/id/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/id/exams.html","name":"Perpustakaan soal latihan — JLPT Practice","description":"Setiap soal di sini dikerjakan dalam format JLPT itu sendiri, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.","inLanguage":"id","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/id/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">Perpustakaan soal latihan</h1>
             <p data-i18n="exams.body">Setiap soal di sini dikerjakan dalam format JLPT itu sendiri, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>Soal latihan</span></div><div class="exams-stat"><strong>8,163</strong><span>Pertanyaan</span></div><div class="exams-stat"><strong>5</strong><span>Level</span></div><div class="exams-stat"><strong>86</strong><span>Dengan arti kata</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="Cari berdasarkan tahun, mis. 2024" aria-label="Cari berdasarkan tahun, mis. 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">Memuat…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">Sapaan dasar dan ungkapan sehari-hari.</span><span class="lvcard-facts"><span><b>2</b> soal</span><span><b>48</b> pertanyaan</span></span><span class="lvcard-go">Lihat soal<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">Percakapan sehari-hari dan teks sederhana.</span><span class="lvcard-facts"><span><b>2</b> soal</span><span><b>167</b> pertanyaan</span></span><span class="lvcard-go">Lihat soal<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">Bacaan gaya berita dan ucapan alami.</span><span class="lvcard-facts"><span><b>28</b> soal</span><span><b>2,759</b> pertanyaan</span></span><span class="lvcard-go">Lihat soal<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">Surat kabar, bahasa Jepang bisnis, argumen abstrak.</span><span class="lvcard-facts"><span><b>26</b> soal</span><span><b>2,449</b> pertanyaan</span></span><span class="lvcard-go">Lihat soal<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">Bahasa Jepang akademik dan sastra pada kecepatan alami.</span><span class="lvcard-facts"><span><b>29</b> soal</span><span><b>2,740</b> pertanyaan</span></span><span class="lvcard-go">Lihat soal<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

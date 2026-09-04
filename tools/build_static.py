@@ -321,6 +321,64 @@ def notice_table(table, en):
     return '<table class="notice-table" id="noticeTable">%s</table>' % html, words
 
 
+def level_picker(table, en):
+    """The library page's first screen - one card per level - in the shape
+    renderLevels() in exams-browser.js draws it. Written here so the page
+    arrives with its content instead of a spinner and the footer under it
+    never moves; the script redraws it in place from the same index."""
+    exams = json.load(io.open(os.path.join(ROOT, "data", "exams", "index.json"),
+                              encoding="utf-8"))["exams"]
+    colour = {"N1": "#976b0b", "N2": "#2d6eb4", "N3": "#2f7d57",
+              "N4": "#7c3ac8", "N5": "#5c697a"}
+    by = {}
+    for e in exams:
+        g = by.setdefault(e["level"], {"papers": 0, "questions": 0})
+        g["papers"] += 1
+        g["questions"] += e.get("totalQuestions", 0)
+    html = '<div class="level-picker">'
+    for lv in ("N5", "N4", "N3", "N2", "N1"):
+        g = by.get(lv)
+        if not g:
+            continue
+        html += ('<button type="button" class="lvcard" data-level="%s" '
+                 'style="--level-color:%s">'
+                 '<span class="lvcard-code">%s</span>'
+                 '<span class="lvcard-desc">%s</span>'
+                 '<span class="lvcard-facts">'
+                 '<span><b>%d</b> %s</span>'
+                 '<span><b>%s</b> %s</span>'
+                 '</span>'
+                 '<span class="lvcard-go">%s<i aria-hidden="true">&rarr;</i></span>'
+                 '</button>'
+                 % (lv, colour[lv], lv, esc(t(table, "level." + lv, en)),
+                    g["papers"],
+                    esc(t(table, "exams.paper" if g["papers"] == 1 else "exams.papers", en)),
+                    format(g["questions"], ","), esc(t(table, "exams.questionsShort", en)),
+                    esc(t(table, "exams.seePapers", en))))
+    return html + "</div>"
+
+
+def exams_stats(table, en):
+    """The four figures in the library page's hero, as renderStats() in
+    exams-browser.js draws them."""
+    exams = json.load(io.open(os.path.join(ROOT, "data", "exams", "index.json"),
+                              encoding="utf-8"))["exams"]
+    gpath = os.path.join(ROOT, "data", "glossary", "index.json")
+    glossed_ids = set(e["id"] for e in (json.load(io.open(gpath, encoding="utf-8"))["exams"]
+                                        if os.path.exists(gpath) else []) if e.get("words"))
+    questions = sum(e.get("totalQuestions", 0) for e in exams)
+    levels = len(set(e["level"] for e in exams))
+    glossed = sum(1 for e in exams if e["id"] in glossed_ids)
+    def stat(value, key):
+        return ('<div class="exams-stat"><strong>%s</strong><span>%s</span></div>'
+                % (value, esc(t(table, key, en))))
+    out = (stat(len(exams), "exams.statPapers")
+           + stat(format(questions, ","), "exams.statQuestions")
+           + stat(levels, "exams.statLevels")
+           + (stat(glossed, "exams.statWordMeanings") if glossed else ""))
+    return '<div class="exams-stats" id="examsStats">%s</div>' % out
+
+
 def absolutise(html):
     """Root-relative asset paths, so /ne/index.html loads the same files."""
     for attr in ("href", "src"):
@@ -821,6 +879,12 @@ def main():
             src = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
             html = apply_i18n(src, table, en)
             html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
+            if page == "exams.html":
+                html = html.replace('<div class="exams-stats" id="examsStats"></div>',
+                                    exams_stats(table, en))
+                html = re.sub(r'<div id="examsList">\s*<div class="exam-loading">.*?</div>\s*</div>',
+                              '<div id="examsList">%s</div>' % level_picker(table, en),
+                              html, count=1, flags=re.S)
             if page == "index.html":
                 html = html.replace(
                     "</head>",

@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ko/#website","url":"https://jlpt.sureshsurkheti.com/ko/","name":"JLPT Practice","inLanguage":"ko","description":"여기 있는 시험지는 JLPT와 같은 형식으로, 시간 측정과 자동 채점이 됩니다. 전체를 풀거나 한 과목만 연습할 수 있습니다.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ko/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/ko/exams.html","name":"모의고사 모음 — JLPT Practice","description":"여기 있는 시험지는 JLPT와 같은 형식으로, 시간 측정과 자동 채점이 됩니다. 전체를 풀거나 한 과목만 연습할 수 있습니다.","inLanguage":"ko","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ko/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">모의고사 모음</h1>
             <p data-i18n="exams.body">여기 있는 시험지는 JLPT와 같은 형식으로, 시간 측정과 자동 채점이 됩니다. 전체를 풀거나 한 과목만 연습할 수 있습니다.</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>모의고사 회차</span></div><div class="exams-stat"><strong>8,163</strong><span>문제</span></div><div class="exams-stat"><strong>5</strong><span>레벨</span></div><div class="exams-stat"><strong>86</strong><span>단어 뜻 포함</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="연도로 검색, 예: 2024" aria-label="연도로 검색, 예: 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">불러오는 중…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">기본 인사와 일상 표현.</span><span class="lvcard-facts"><span><b>2</b> 회</span><span><b>48</b> 문제</span></span><span class="lvcard-go">문제 보기<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">일상 회화와 쉬운 글.</span><span class="lvcard-facts"><span><b>2</b> 회</span><span><b>167</b> 문제</span></span><span class="lvcard-go">문제 보기<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">뉴스체 독해와 자연스러운 말.</span><span class="lvcard-facts"><span><b>28</b> 회</span><span><b>2,759</b> 문제</span></span><span class="lvcard-go">문제 보기<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">신문, 비즈니스 일본어, 추상적 논의.</span><span class="lvcard-facts"><span><b>26</b> 회</span><span><b>2,449</b> 문제</span></span><span class="lvcard-go">문제 보기<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">학술·문학 일본어를 자연스러운 속도로.</span><span class="lvcard-facts"><span><b>29</b> 회</span><span><b>2,740</b> 문제</span></span><span class="lvcard-go">문제 보기<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

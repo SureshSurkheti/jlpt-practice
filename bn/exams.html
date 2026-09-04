@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/bn/#website","url":"https://jlpt.sureshsurkheti.com/bn/","name":"JLPT Practice","inLanguage":"bn","description":"এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায়, সময় গণনা ও স্বয়ংক্রিয় নম্বরসহ। পূর্ণ প্রশ্নপত্র দিন বা একটি অংশ অভ্যাস করুন।","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/bn/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/bn/exams.html","name":"অভ্যাস প্রশ্নপত্র সংগ্রহ — JLPT Practice","description":"এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায়, সময় গণনা ও স্বয়ংক্রিয় নম্বরসহ। পূর্ণ প্রশ্নপত্র দিন বা একটি অংশ অভ্যাস করুন।","inLanguage":"bn","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/bn/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">অভ্যাস প্রশ্নপত্র সংগ্রহ</h1>
             <p data-i18n="exams.body">এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায়, সময় গণনা ও স্বয়ংক্রিয় নম্বরসহ। পূর্ণ প্রশ্নপত্র দিন বা একটি অংশ অভ্যাস করুন।</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>অভ্যাস প্রশ্নপত্র</span></div><div class="exams-stat"><strong>8,163</strong><span>প্রশ্ন</span></div><div class="exams-stat"><strong>5</strong><span>স্তর</span></div><div class="exams-stat"><strong>86</strong><span>শব্দার্থসহ</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="বছর দিয়ে খুঁজুন, যেমন 2024" aria-label="বছর দিয়ে খুঁজুন, যেমন 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">লোড হচ্ছে…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">মৌলিক শুভেচ্ছা ও দৈনন্দিন প্রকাশ।</span><span class="lvcard-facts"><span><b>2</b> প্রশ্নপত্র</span><span><b>48</b> প্রশ্ন</span></span><span class="lvcard-go">প্রশ্ন দেখুন<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">দৈনন্দিন কথাবার্তা ও সহজ লেখা।</span><span class="lvcard-facts"><span><b>2</b> প্রশ্নপত্র</span><span><b>167</b> প্রশ্ন</span></span><span class="lvcard-go">প্রশ্ন দেখুন<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">সংবাদধর্মী পঠন ও স্বাভাবিক কথা।</span><span class="lvcard-facts"><span><b>28</b> প্রশ্নপত্র</span><span><b>2,759</b> প্রশ্ন</span></span><span class="lvcard-go">প্রশ্ন দেখুন<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">সংবাদপত্র, ব্যবসায়িক জাপানি, বিমূর্ত যুক্তি।</span><span class="lvcard-facts"><span><b>26</b> প্রশ্নপত্র</span><span><b>2,449</b> প্রশ্ন</span></span><span class="lvcard-go">প্রশ্ন দেখুন<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">স্বাভাবিক গতিতে শিক্ষায়তনিক ও সাহিত্যিক জাপানি।</span><span class="lvcard-facts"><span><b>29</b> প্রশ্নপত্র</span><span><b>2,740</b> প্রশ্ন</span></span><span class="lvcard-go">প্রশ্ন দেখুন<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/zh/#website","url":"https://jlpt.sureshsurkheti.com/zh/","name":"JLPT Practice","inLanguage":"zh","description":"这里的试题按JLPT本身的格式作答，计时并自动评分。可以做完整一套，也可以只练一个部分。","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/zh/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/zh/exams.html","name":"模拟题库 — JLPT Practice","description":"这里的试题按JLPT本身的格式作答，计时并自动评分。可以做完整一套，也可以只练一个部分。","inLanguage":"zh","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/zh/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">模拟题库</h1>
             <p data-i18n="exams.body">这里的试题按JLPT本身的格式作答，计时并自动评分。可以做完整一套，也可以只练一个部分。</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>模拟题套数</span></div><div class="exams-stat"><strong>8,163</strong><span>题目</span></div><div class="exams-stat"><strong>5</strong><span>级别</span></div><div class="exams-stat"><strong>86</strong><span>含词义的试题</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="按年份搜索，例如 2024" aria-label="按年份搜索，例如 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">加载中…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">基本问候和日常表达。</span><span class="lvcard-facts"><span><b>2</b> 套</span><span><b>48</b> 题</span></span><span class="lvcard-go">查看试卷<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">日常会话和简单文章。</span><span class="lvcard-facts"><span><b>2</b> 套</span><span><b>167</b> 题</span></span><span class="lvcard-go">查看试卷<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">新闻体阅读和自然口语。</span><span class="lvcard-facts"><span><b>28</b> 套</span><span><b>2,759</b> 题</span></span><span class="lvcard-go">查看试卷<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">报纸、商务日语、抽象论述。</span><span class="lvcard-facts"><span><b>26</b> 套</span><span><b>2,449</b> 题</span></span><span class="lvcard-go">查看试卷<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">以自然速度理解学术与文学日语。</span><span class="lvcard-facts"><span><b>29</b> 套</span><span><b>2,740</b> 题</span></span><span class="lvcard-go">查看试卷<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

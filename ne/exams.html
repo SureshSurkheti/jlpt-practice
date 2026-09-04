@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ne/#website","url":"https://jlpt.sureshsurkheti.com/ne/","name":"JLPT Practice","inLanguage":"ne","description":"यहाँका प्रश्नपत्र JLPT कै ढाँचामा दिइन्छन्, समय गणना र स्वतः अङ्कसहित। पूरा परीक्षा दिनुहोस् वा एउटै भाग अभ्यास गर्नुहोस्।","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ne/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/ne/exams.html","name":"अभ्यास प्रश्नपत्र सङ्ग्रह — JLPT Practice","description":"यहाँका प्रश्नपत्र JLPT कै ढाँचामा दिइन्छन्, समय गणना र स्वतः अङ्कसहित। पूरा परीक्षा दिनुहोस् वा एउटै भाग अभ्यास गर्नुहोस्।","inLanguage":"ne","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ne/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">अभ्यास प्रश्नपत्र सङ्ग्रह</h1>
             <p data-i18n="exams.body">यहाँका प्रश्नपत्र JLPT कै ढाँचामा दिइन्छन्, समय गणना र स्वतः अङ्कसहित। पूरा परीक्षा दिनुहोस् वा एउटै भाग अभ्यास गर्नुहोस्।</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>अभ्यास प्रश्नपत्र</span></div><div class="exams-stat"><strong>8,163</strong><span>प्रश्न</span></div><div class="exams-stat"><strong>5</strong><span>स्तर</span></div><div class="exams-stat"><strong>86</strong><span>शब्दार्थसहित</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="वर्षबाट खोज्नुहोस्, जस्तै 2024" aria-label="वर्षबाट खोज्नुहोस्, जस्तै 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">लोड हुँदै…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">आधारभूत अभिवादन र दैनिक अभिव्यक्ति।</span><span class="lvcard-facts"><span><b>2</b> प्रश्नपत्र</span><span><b>48</b> प्रश्न</span></span><span class="lvcard-go">प्रश्नपत्र हेर्नुहोस्<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">दैनिक कुराकानी र सरल पाठ।</span><span class="lvcard-facts"><span><b>2</b> प्रश्नपत्र</span><span><b>167</b> प्रश्न</span></span><span class="lvcard-go">प्रश्नपत्र हेर्नुहोस्<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">समाचारशैलीको पठन र स्वाभाविक बोली।</span><span class="lvcard-facts"><span><b>28</b> प्रश्नपत्र</span><span><b>2,759</b> प्रश्न</span></span><span class="lvcard-go">प्रश्नपत्र हेर्नुहोस्<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">पत्रिका, व्यावसायिक जापानी, अमूर्त तर्क।</span><span class="lvcard-facts"><span><b>26</b> प्रश्नपत्र</span><span><b>2,449</b> प्रश्न</span></span><span class="lvcard-go">प्रश्नपत्र हेर्नुहोस्<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">शैक्षिक र साहित्यिक जापानी स्वाभाविक गतिमा।</span><span class="lvcard-facts"><span><b>29</b> प्रश्नपत्र</span><span><b>2,740</b> प्रश्न</span></span><span class="lvcard-go">प्रश्नपत्र हेर्नुहोस्<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

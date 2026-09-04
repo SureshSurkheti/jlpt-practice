@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ja/#website","url":"https://jlpt.sureshsurkheti.com/ja/","name":"JLPT Practice","inLanguage":"ja","description":"ここにある問題はJLPTと同じ形式で、時間を計って自動採点されます。全科目を通して解くことも、1科目だけ演習することもできます。","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ja/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/ja/exams.html","name":"模擬試験ライブラリ — JLPT Practice","description":"ここにある問題はJLPTと同じ形式で、時間を計って自動採点されます。全科目を通して解くことも、1科目だけ演習することもできます。","inLanguage":"ja","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ja/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">模擬試験ライブラリ</h1>
             <p data-i18n="exams.body">ここにある問題はJLPTと同じ形式で、時間を計って自動採点されます。全科目を通して解くことも、1科目だけ演習することもできます。</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>模擬試験</span></div><div class="exams-stat"><strong>8,163</strong><span>問題数</span></div><div class="exams-stat"><strong>5</strong><span>レベル</span></div><div class="exams-stat"><strong>86</strong><span>語彙訳つき</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="年で検索（例：2024）" aria-label="年で検索（例：2024）"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">読み込み中…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">基本的なあいさつと日常表現。</span><span class="lvcard-facts"><span><b>2</b> 回</span><span><b>48</b> 問</span></span><span class="lvcard-go">問題を見る<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">日常会話とやさしい文章。</span><span class="lvcard-facts"><span><b>2</b> 回</span><span><b>167</b> 問</span></span><span class="lvcard-go">問題を見る<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">ニュース調の読解と自然な話し方。</span><span class="lvcard-facts"><span><b>28</b> 回</span><span><b>2,759</b> 問</span></span><span class="lvcard-go">問題を見る<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">新聞、ビジネス日本語、抽象的な議論。</span><span class="lvcard-facts"><span><b>26</b> 回</span><span><b>2,449</b> 問</span></span><span class="lvcard-go">問題を見る<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">学術的・文学的な日本語を自然な速さで。</span><span class="lvcard-facts"><span><b>29</b> 回</span><span><b>2,740</b> 問</span></span><span class="lvcard-go">問題を見る<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/vi/#website","url":"https://jlpt.sureshsurkheti.com/vi/","name":"JLPT Practice","inLanguage":"vi","description":"Mỗi đề ở đây được làm đúng theo định dạng của JLPT, có bấm giờ và chấm điểm tự động. Làm cả đề hoặc luyện riêng từng phần.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/vi/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/vi/exams.html","name":"Thư viện đề luyện tập — JLPT Practice","description":"Mỗi đề ở đây được làm đúng theo định dạng của JLPT, có bấm giờ và chấm điểm tự động. Làm cả đề hoặc luyện riêng từng phần.","inLanguage":"vi","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/vi/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">Thư viện đề luyện tập</h1>
             <p data-i18n="exams.body">Mỗi đề ở đây được làm đúng theo định dạng của JLPT, có bấm giờ và chấm điểm tự động. Làm cả đề hoặc luyện riêng từng phần.</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>Đề luyện tập</span></div><div class="exams-stat"><strong>8,163</strong><span>Câu hỏi</span></div><div class="exams-stat"><strong>5</strong><span>Cấp độ</span></div><div class="exams-stat"><strong>86</strong><span>Có nghĩa từ vựng</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="Tìm theo năm, ví dụ 2024" aria-label="Tìm theo năm, ví dụ 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">Đang tải đề thi…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">Chào hỏi cơ bản và cách nói hằng ngày.</span><span class="lvcard-facts"><span><b>2</b> đề</span><span><b>48</b> câu</span></span><span class="lvcard-go">Xem đề<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">Hội thoại hằng ngày và văn bản đơn giản.</span><span class="lvcard-facts"><span><b>2</b> đề</span><span><b>167</b> câu</span></span><span class="lvcard-go">Xem đề<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">Đọc kiểu tin tức và lời nói tự nhiên.</span><span class="lvcard-facts"><span><b>28</b> đề</span><span><b>2,759</b> câu</span></span><span class="lvcard-go">Xem đề<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">Báo chí, tiếng Nhật thương mại, lập luận trừu tượng.</span><span class="lvcard-facts"><span><b>26</b> đề</span><span><b>2,449</b> câu</span></span><span class="lvcard-go">Xem đề<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">Tiếng Nhật học thuật và văn học ở tốc độ tự nhiên.</span><span class="lvcard-facts"><span><b>29</b> đề</span><span><b>2,740</b> câu</span></span><span class="lvcard-go">Xem đề<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 

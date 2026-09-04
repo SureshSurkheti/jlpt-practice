@@ -1135,7 +1135,7 @@ body > main { flex: 1 0 auto; }
      truncates instead of moving the layout. */
   .brand-wrap { flex: 1 1 0; min-width: 0; }
   .brand-text { min-width: 0; }
-  .brand-name { white-space: nowrap; }
+  .brand-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .brand-tag { overflow: hidden; text-overflow: ellipsis; }
   .nav-tools { flex: 0 0 auto; }
 
@@ -3047,4 +3047,14 @@ body.is-leaving { opacity: 0; }
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--success);
+}
+
+/* A 360px phone (Galaxy S20 and most Androids) has 324px of header. The
+   select sizes itself to its widest option - "Português (Brasil)", 140px -
+   and with the brand mark and name that is 336px, so the picker sat on top
+   of the name. Capped, the closed select shows its own value ("English",
+   "日本語") in full and the brand keeps its 150px. */
+@media (max-width: 400px) {
+  .language-select { padding: 8px 10px; }
+  .language-select select { width: 100%; max-width: 96px; text-overflow: ellipsis; }
 }

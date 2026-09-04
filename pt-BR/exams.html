@@ -42,8 +42,8 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website","url":"https://jlpt.sureshsurkheti.com/pt-BR/","name":"JLPT Practice","inLanguage":"pt-BR","description":"Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/pt-BR/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/pt-BR/exams.html","name":"Acervo de simulados — JLPT Practice","description":"Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.","inLanguage":"pt-BR","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
-    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=da34b2cb" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=99699569" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -98,7 +98,7 @@
             <h1 data-i18n="exams.title">Acervo de simulados</h1>
             <p data-i18n="exams.body">Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.</p>
           </div>
-          <div class="exams-stats" id="examsStats"></div>
+          <div class="exams-stats" id="examsStats"><div class="exams-stat"><strong>87</strong><span>Simulados</span></div><div class="exams-stat"><strong>8,163</strong><span>Questões</span></div><div class="exams-stat"><strong>5</strong><span>Níveis</span></div><div class="exams-stat"><strong>86</strong><span>Com significados</span></div></div>
         </section>
 
         <!-- Levels first. The filter row only appears once a level is
@@ -130,15 +130,11 @@
             id="examsSearch"
             data-i18n-attr="placeholder:exams.search,aria-label:exams.search" placeholder="Buscar por ano, ex. 2024" aria-label="Buscar por ano, ex. 2024"
             aria-label="Search exams"
+            hidden
           />
         </div>
 
-        <div id="examsList">
-          <div class="exam-loading">
-            <div class="spinner" aria-hidden="true"></div>
-            <p data-i18n="exams.loading">Carregando…</p>
-          </div>
-        </div>
+        <div id="examsList"><div class="level-picker"><button type="button" class="lvcard" data-level="N5" style="--level-color:#5c697a"><span class="lvcard-code">N5</span><span class="lvcard-desc">Cumprimentos básicos e expressões do dia a dia.</span><span class="lvcard-facts"><span><b>2</b> provas</span><span><b>48</b> questões</span></span><span class="lvcard-go">Ver provas<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N4" style="--level-color:#7c3ac8"><span class="lvcard-code">N4</span><span class="lvcard-desc">Conversas do dia a dia e textos simples.</span><span class="lvcard-facts"><span><b>2</b> provas</span><span><b>167</b> questões</span></span><span class="lvcard-go">Ver provas<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N3" style="--level-color:#2f7d57"><span class="lvcard-code">N3</span><span class="lvcard-desc">Leitura em estilo jornalístico e fala natural.</span><span class="lvcard-facts"><span><b>28</b> provas</span><span><b>2,759</b> questões</span></span><span class="lvcard-go">Ver provas<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N2" style="--level-color:#2d6eb4"><span class="lvcard-code">N2</span><span class="lvcard-desc">Jornais, japonês de negócios, argumentação abstrata.</span><span class="lvcard-facts"><span><b>26</b> provas</span><span><b>2,449</b> questões</span></span><span class="lvcard-go">Ver provas<i aria-hidden="true">&rarr;</i></span></button><button type="button" class="lvcard" data-level="N1" style="--level-color:#976b0b"><span class="lvcard-code">N1</span><span class="lvcard-desc">Japonês acadêmico e literário em velocidade natural.</span><span class="lvcard-facts"><span><b>29</b> provas</span><span><b>2,740</b> questões</span></span><span class="lvcard-go">Ver provas<i aria-hidden="true">&rarr;</i></span></button></div></div>
       </div>
     </main>
 
