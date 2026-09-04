@@ -7,6 +7,11 @@
 .exams-root {
   --level-color: var(--blue);
   padding: 0 0 72px;
+  /* The main starts as a spinner and the footer sits in the first screen;
+     when the setup card or the paper list renders the footer drops 900px,
+     a layout shift of 0.32. Tall from the start, the footer begins below
+     the fold and the render moves nothing that was visible. */
+  min-height: 100vh;
 }
 
 /* Content gets its own breathing room so the sticky exam bar can sit flush

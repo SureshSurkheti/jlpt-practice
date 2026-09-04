@@ -56,7 +56,7 @@
      language knowledge and reading into one 120-point section needing 38,
      which buildSkillTable() applies where the cap is 120. */
   var LEVELS = {
-    N1: { color: "#d9a63a", name: "N1 Professional", pass: 100, sectionMin: 19, minutes: 165 },
+    N1: { color: "#976b0b", name: "N1 Professional", pass: 100, sectionMin: 19, minutes: 165 },
     N2: { color: "#2d6eb4", name: "N2 Upper-Intermediate", pass: 90, sectionMin: 19, minutes: 155 },
     N3: { color: "#2f7d57", name: "N3 Intermediate", pass: 95, sectionMin: 19, minutes: 140 },
     N4: { color: "#7c3ac8", name: "N4 Lower-Intermediate", pass: 90, sectionMin: 19, minutes: 115 },
@@ -79,7 +79,7 @@
   /* Same four colours the practice page uses for its skill buttons. */
   var CATEGORY_COLOR = {
     vocabulary: "#2d6eb4",
-    grammar: "#d9a63a",
+    grammar: "#976b0b",
     reading: "#2f7d57",
     listening: "#c84a52"
   };

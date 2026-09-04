@@ -14,7 +14,7 @@
   var LEVELS_EASIEST_FIRST = ["N5", "N4", "N3", "N2", "N1"];
 
   var LEVEL_COLOR = {
-    N1: "#d9a63a", N2: "#2d6eb4", N3: "#2f7d57", N4: "#7c3ac8", N5: "#5c697a"
+    N1: "#976b0b", N2: "#2d6eb4", N3: "#2f7d57", N4: "#7c3ac8", N5: "#5c697a"
   };
   /* The four skills a JLPT paper tests, in the order the paper presents
      them: 文字・語彙, 文法, 読解, 聴解.

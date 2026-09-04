@@ -27,7 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
-    <meta property="og:locale" content="ko" />
+    <meta property="og:locale" content="ko_KR" />
     <meta property="og:title" content="실전 형식 모의고사로 일본어를 연습하세요." />
     <meta property="og:description" content="N5부터 N1까지 모의고사 87회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함." />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/ko/" />
@@ -40,10 +40,9 @@
     <meta name="twitter:description" content="N5부터 N1까지 모의고사 87회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ko/#website","url":"https://jlpt.sureshsurkheti.com/ko/","name":"JLPT Practice","inLanguage":"ko","description":"N5부터 N1까지 모의고사 87회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ko/#webpage","url":"https://jlpt.sureshsurkheti.com/ko/","name":"실전 형식 모의고사로 일본어를 연습하세요.","description":"N5부터 N1까지 모의고사 87회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.","inLanguage":"ko","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ko/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">언어</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="언어">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -102,7 +101,16 @@
             <p data-i18n="home.body">N5부터 N1까지 모의고사 87회분. 시간 측정과 자동 채점, 해설과 청해 스크립트 포함.</p>
             <!-- Computed from the first-Sunday rule in site.js, not from a
                  table, so it cannot go stale. -->
-            <div class="hero-countdown" id="examCountdown"></div>
+            <div class="hero-countdown" id="examCountdown">
+    <p class="cal-head">다음 JLPT</p>
+    <p class="cal-date">
+      <time datetime="2026-12-06">2026-12-06</time>
+    </p>
+    <p class="cal-count"><b>93일 남음</b></p>
+    <p class="cal-note">전 세계 공통 시험일입니다. 접수 기간은 국가별로 다르니 확인하세요.
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
+         target="_blank" rel="noopener">공식 정보</a></p>
+  </div>
 
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">기출문제 보기</a>
@@ -146,7 +154,38 @@
           <h2 data-i18n="home.featuresTitle">이 사이트의 모든 것</h2>
           <p data-i18n="home.featuresBody">무료, 12개 언어, 가입 불필요.</p>
         </div>
-        <div class="feature-stat-grid" id="featureGrid"></div>
+        <div class="feature-stat-grid" id="featureGrid">
+    <div class="feature-stat" style="--accent:#2d6eb4">
+      <strong>9,639</strong>
+      <span class="feature-stat-label">단어</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#7c3ac8">
+      <strong>2,211</strong>
+      <span class="feature-stat-label">한자</span>
+      <span class="feature-stat-sub">획순</span>
+    </div>
+    <div class="feature-stat" style="--accent:#2f7d57">
+      <strong>280</strong>
+      <span class="feature-stat-label">문법</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#976b0b">
+      <strong>87</strong>
+      <span class="feature-stat-label">모의고사 회차</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#c84a52">
+      <strong>1,753</strong>
+      <span class="feature-stat-label">नेपाली</span>
+      <span class="feature-stat-sub">네팔어 뜻</span>
+    </div>
+    <div class="feature-stat" style="--accent:#5c697a">
+      <strong>12</strong>
+      <span class="feature-stat-label">지원 언어</span>
+      <span class="feature-stat-sub">화면과 학습 목록</span>
+    </div>
+  </div>
       </section>
 
       <section class="container notice-section">
@@ -156,9 +195,9 @@
             <p data-i18n="notice.intro">레벨별 시험지, 청해 음성, 단어 뜻.</p>
           </div>
           <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
+            <table class="notice-table" id="noticeTable"><thead><tr><th>레벨</th><th>시험지</th><th>청해</th><th>단어 뜻</th></tr></thead><tbody><tr><th>N5</th><td>2회분</td><td><span class="notice-bad">없음</span></td><td>있음</td></tr><tr><th>N4</th><td>2회분</td><td><span class="notice-bad">없음</span></td><td>있음</td></tr><tr><th>N3</th><td>28회분</td><td><span class="notice-part">28회 중 25회</span></td><td>있음</td></tr><tr><th>N2</th><td>26회분</td><td><span class="notice-part">26회 중 23회</span></td><td>있음</td></tr><tr><th>N1</th><td>29회분</td><td><span class="notice-part">29회 중 22회</span></td><td>있음</td></tr></tbody></table>
           </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
+          <p class="notice-words" id="noticeWords"><strong>95,805</strong> 단어 뜻 &middot; N1·N2·N3 시험지에는 어려운 단어의 영어 뜻과 한자 후리가나가 있습니다. 각 문제, 독해 본문, 청해 스크립트 아래 버튼에서 볼 수 있습니다.</p>
 
           <details class="notice-more">
             <summary data-i18n="notice.moreLabel">청해 음성, 단어 뜻, 도움말</summary>
@@ -212,9 +251,9 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/ko.js"></script>
-    <script src="/assets/js/site.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/ko.js?v=f4620a96"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
   </body>
 </html>

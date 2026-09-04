@@ -27,7 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
-    <meta property="og:locale" content="id" />
+    <meta property="og:locale" content="id_ID" />
     <meta property="og:title" content="Latih bahasa Jepang dalam format asli JLPT." />
     <meta property="og:description" content="87 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak." />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/id/" />
@@ -40,10 +40,9 @@
     <meta name="twitter:description" content="87 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/id/#website","url":"https://jlpt.sureshsurkheti.com/id/","name":"JLPT Practice","inLanguage":"id","description":"87 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/id/#webpage","url":"https://jlpt.sureshsurkheti.com/id/","name":"Latih bahasa Jepang dalam format asli JLPT.","description":"87 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.","inLanguage":"id","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/id/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">Bahasa</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="Bahasa">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -102,7 +101,16 @@
             <p data-i18n="home.body">87 soal latihan dari N5 sampai N1, dengan pewaktu dan penilaian otomatis, plus penjelasan jawaban dan transkrip menyimak.</p>
             <!-- Computed from the first-Sunday rule in site.js, not from a
                  table, so it cannot go stale. -->
-            <div class="hero-countdown" id="examCountdown"></div>
+            <div class="hero-countdown" id="examCountdown">
+    <p class="cal-head">JLPT berikutnya</p>
+    <p class="cal-date">
+      <time datetime="2026-12-06">2026-12-06</time>
+    </p>
+    <p class="cal-count"><b>93 hari lagi</b></p>
+    <p class="cal-note">Tanggal ujian serentak di seluruh dunia. Jadwal pendaftaran ditetapkan tiap negara — periksa milik Anda.
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
+         target="_blank" rel="noopener">Informasi resmi</a></p>
+  </div>
 
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">Lihat soal ujian</a>
@@ -146,7 +154,38 @@
           <h2 data-i18n="home.featuresTitle">Semua yang ada di sini</h2>
           <p data-i18n="home.featuresBody">Gratis, dalam 12 bahasa, tanpa perlu mendaftar.</p>
         </div>
-        <div class="feature-stat-grid" id="featureGrid"></div>
+        <div class="feature-stat-grid" id="featureGrid">
+    <div class="feature-stat" style="--accent:#2d6eb4">
+      <strong>9,639</strong>
+      <span class="feature-stat-label">Kosakata</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#7c3ac8">
+      <strong>2,211</strong>
+      <span class="feature-stat-label">Kanji</span>
+      <span class="feature-stat-sub">Urutan coretan</span>
+    </div>
+    <div class="feature-stat" style="--accent:#2f7d57">
+      <strong>280</strong>
+      <span class="feature-stat-label">Tata bahasa</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#976b0b">
+      <strong>87</strong>
+      <span class="feature-stat-label">Soal latihan</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#c84a52">
+      <strong>1,753</strong>
+      <span class="feature-stat-label">नेपाली</span>
+      <span class="feature-stat-sub">Arti dalam bahasa Nepal</span>
+    </div>
+    <div class="feature-stat" style="--accent:#5c697a">
+      <strong>12</strong>
+      <span class="feature-stat-label">Bahasa</span>
+      <span class="feature-stat-sub">Antarmuka dan daftar</span>
+    </div>
+  </div>
       </section>
 
       <section class="container notice-section">
@@ -156,9 +195,9 @@
             <p data-i18n="notice.intro">Naskah ujian, audio menyimak, dan arti kata per tingkat.</p>
           </div>
           <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
+            <table class="notice-table" id="noticeTable"><thead><tr><th>Tingkat</th><th>Naskah</th><th>Menyimak</th><th>Arti kata</th></tr></thead><tbody><tr><th>N5</th><td>2 naskah</td><td><span class="notice-bad">Tidak tersedia</span></td><td>Ada</td></tr><tr><th>N4</th><td>2 naskah</td><td><span class="notice-bad">Tidak tersedia</span></td><td>Ada</td></tr><tr><th>N3</th><td>28 naskah</td><td><span class="notice-part">25 dari 28</span></td><td>Ada</td></tr><tr><th>N2</th><td>26 naskah</td><td><span class="notice-part">23 dari 26</span></td><td>Ada</td></tr><tr><th>N1</th><td>29 naskah</td><td><span class="notice-part">22 dari 29</span></td><td>Ada</td></tr></tbody></table>
           </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
+          <p class="notice-words" id="noticeWords"><strong>95,805</strong> arti kata &middot; Naskah N1, N2, dan N3 memuat arti bahasa Inggris untuk kata-kata yang lebih sulit, dengan furigana di atas kanji, pada tombol di bawah setiap soal, teks bacaan, dan transkrip menyimak.</p>
 
           <details class="notice-more">
             <summary data-i18n="notice.moreLabel">Audio menyimak, arti kata, dan bantuan</summary>
@@ -212,9 +251,9 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/id.js"></script>
-    <script src="/assets/js/site.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/id.js?v=716dc398"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
   </body>
 </html>

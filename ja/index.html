@@ -27,7 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
-    <meta property="og:locale" content="ja" />
+    <meta property="og:locale" content="ja_JP" />
     <meta property="og:title" content="本格的な模擬試験で日本語を練習。" />
     <meta property="og:description" content="N5からN1までの模擬試験87回分。時間を計って自動採点、解説と聴解スクリプト付き。" />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/ja/" />
@@ -40,10 +40,9 @@
     <meta name="twitter:description" content="N5からN1までの模擬試験87回分。時間を計って自動採点、解説と聴解スクリプト付き。" />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/ja/#website","url":"https://jlpt.sureshsurkheti.com/ja/","name":"JLPT Practice","inLanguage":"ja","description":"N5からN1までの模擬試験87回分。時間を計って自動採点、解説と聴解スクリプト付き。","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/ja/#webpage","url":"https://jlpt.sureshsurkheti.com/ja/","name":"本格的な模擬試験で日本語を練習。","description":"N5からN1までの模擬試験87回分。時間を計って自動採点、解説と聴解スクリプト付き。","inLanguage":"ja","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/ja/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">言語</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="言語">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -102,7 +101,16 @@
             <p data-i18n="home.body">N5からN1までの模擬試験87回分。時間を計って自動採点、解説と聴解スクリプト付き。</p>
             <!-- Computed from the first-Sunday rule in site.js, not from a
                  table, so it cannot go stale. -->
-            <div class="hero-countdown" id="examCountdown"></div>
+            <div class="hero-countdown" id="examCountdown">
+    <p class="cal-head">次回の日本語能力試験</p>
+    <p class="cal-date">
+      <time datetime="2026-12-06">2026-12-06</time>
+    </p>
+    <p class="cal-count"><b>あと93日</b></p>
+    <p class="cal-note">世界共通の試験日です。申し込み期間は国・地域ごとに異なります。
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
+         target="_blank" rel="noopener">公式情報</a></p>
+  </div>
 
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">過去問を見る</a>
@@ -146,7 +154,38 @@
           <h2 data-i18n="home.featuresTitle">このサイトにあるもの</h2>
           <p data-i18n="home.featuresBody">無料、12言語対応、登録不要。</p>
         </div>
-        <div class="feature-stat-grid" id="featureGrid"></div>
+        <div class="feature-stat-grid" id="featureGrid">
+    <div class="feature-stat" style="--accent:#2d6eb4">
+      <strong>9,639</strong>
+      <span class="feature-stat-label">単語</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#7c3ac8">
+      <strong>2,211</strong>
+      <span class="feature-stat-label">漢字</span>
+      <span class="feature-stat-sub">書き順</span>
+    </div>
+    <div class="feature-stat" style="--accent:#2f7d57">
+      <strong>280</strong>
+      <span class="feature-stat-label">文法</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#976b0b">
+      <strong>87</strong>
+      <span class="feature-stat-label">模擬試験</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#c84a52">
+      <strong>1,753</strong>
+      <span class="feature-stat-label">नेपाली</span>
+      <span class="feature-stat-sub">ネパール語の意味</span>
+    </div>
+    <div class="feature-stat" style="--accent:#5c697a">
+      <strong>12</strong>
+      <span class="feature-stat-label">対応言語</span>
+      <span class="feature-stat-sub">画面と学習リスト</span>
+    </div>
+  </div>
       </section>
 
       <section class="container notice-section">
@@ -156,9 +195,9 @@
             <p data-i18n="notice.intro">レベルごとの問題数・音声・語句の意味。</p>
           </div>
           <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
+            <table class="notice-table" id="noticeTable"><thead><tr><th>レベル</th><th>問題数</th><th>聴解</th><th>語句の意味</th></tr></thead><tbody><tr><th>N5</th><td>2回分</td><td><span class="notice-bad">なし</span></td><td>あり</td></tr><tr><th>N4</th><td>2回分</td><td><span class="notice-bad">なし</span></td><td>あり</td></tr><tr><th>N3</th><td>28回分</td><td><span class="notice-part">28回中25回</span></td><td>あり</td></tr><tr><th>N2</th><td>26回分</td><td><span class="notice-part">26回中23回</span></td><td>あり</td></tr><tr><th>N1</th><td>29回分</td><td><span class="notice-part">29回中22回</span></td><td>あり</td></tr></tbody></table>
           </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
+          <p class="notice-words" id="noticeWords"><strong>95,805</strong> 語句の意味 &middot; N1・N2・N3の問題には、難しい語句の英語の意味と漢字のふりがなが付いています。各問題・本文・聴解スクリプトの下のボタンから見られます。</p>
 
           <details class="notice-more">
             <summary data-i18n="notice.moreLabel">聴解音声・語句の意味・困ったとき</summary>
@@ -212,9 +251,9 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/ja.js"></script>
-    <script src="/assets/js/site.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/ja.js?v=582e2e38"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
   </body>
 </html>

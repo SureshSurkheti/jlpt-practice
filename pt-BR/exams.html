@@ -40,11 +40,10 @@
     <meta name="twitter:description" content="Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website","url":"https://jlpt.sureshsurkheti.com/pt-BR/","name":"JLPT Practice","inLanguage":"pt-BR","description":"Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/pt-BR/exams.html#webpage","url":"https://jlpt.sureshsurkheti.com/pt-BR/exams.html","name":"Acervo de simulados — JLPT Practice","description":"Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.","inLanguage":"pt-BR","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link rel="stylesheet" href="/assets/css/exam.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
+    <link rel="stylesheet" href="/assets/css/exam.css?v=11c09902" />
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
   <body class="exams-page">
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">Idioma</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="Idioma">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -154,10 +153,10 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/pt-BR.js"></script>
-    <script src="/assets/js/site.js"></script>
-    <script src="/assets/js/exams-browser.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/pt-BR.js?v=3102b167"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
+    <script defer src="/assets/js/exams-browser.js?v=52cff9ae"></script>
   </body>
 </html>

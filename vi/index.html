@@ -27,7 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
-    <meta property="og:locale" content="vi" />
+    <meta property="og:locale" content="vi_VN" />
     <meta property="og:title" content="Luyện tiếng Nhật đúng theo định dạng JLPT." />
     <meta property="og:description" content="87 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe." />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/vi/" />
@@ -40,10 +40,9 @@
     <meta name="twitter:description" content="87 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe." />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/vi/#website","url":"https://jlpt.sureshsurkheti.com/vi/","name":"JLPT Practice","inLanguage":"vi","description":"87 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/vi/#webpage","url":"https://jlpt.sureshsurkheti.com/vi/","name":"Luyện tiếng Nhật đúng theo định dạng JLPT.","description":"87 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.","inLanguage":"vi","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/vi/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">Ngôn ngữ</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="Ngôn ngữ">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -102,7 +101,16 @@
             <p data-i18n="home.body">87 đề luyện tập từ N5 đến N1, bấm giờ và chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.</p>
             <!-- Computed from the first-Sunday rule in site.js, not from a
                  table, so it cannot go stale. -->
-            <div class="hero-countdown" id="examCountdown"></div>
+            <div class="hero-countdown" id="examCountdown">
+    <p class="cal-head">Kỳ thi JLPT tiếp theo</p>
+    <p class="cal-date">
+      <time datetime="2026-12-06">2026-12-06</time>
+    </p>
+    <p class="cal-count"><b>Còn 93 ngày</b></p>
+    <p class="cal-note">Ngày thi chung toàn cầu. Hạn đăng ký do từng nước quy định — hãy kiểm tra.
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
+         target="_blank" rel="noopener">Thông tin chính thức</a></p>
+  </div>
 
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">Xem đề thi</a>
@@ -146,7 +154,38 @@
           <h2 data-i18n="home.featuresTitle">Tất cả trên trang này</h2>
           <p data-i18n="home.featuresBody">Miễn phí, 12 ngôn ngữ, không cần đăng ký.</p>
         </div>
-        <div class="feature-stat-grid" id="featureGrid"></div>
+        <div class="feature-stat-grid" id="featureGrid">
+    <div class="feature-stat" style="--accent:#2d6eb4">
+      <strong>9,639</strong>
+      <span class="feature-stat-label">Từ vựng</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#7c3ac8">
+      <strong>2,211</strong>
+      <span class="feature-stat-label">Hán tự</span>
+      <span class="feature-stat-sub">Thứ tự nét</span>
+    </div>
+    <div class="feature-stat" style="--accent:#2f7d57">
+      <strong>280</strong>
+      <span class="feature-stat-label">Ngữ pháp</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#976b0b">
+      <strong>87</strong>
+      <span class="feature-stat-label">Đề luyện tập</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#c84a52">
+      <strong>1,753</strong>
+      <span class="feature-stat-label">नेपाली</span>
+      <span class="feature-stat-sub">Nghĩa tiếng Nepal</span>
+    </div>
+    <div class="feature-stat" style="--accent:#5c697a">
+      <strong>12</strong>
+      <span class="feature-stat-label">Ngôn ngữ</span>
+      <span class="feature-stat-sub">Giao diện và danh sách</span>
+    </div>
+  </div>
       </section>
 
       <section class="container notice-section">
@@ -156,9 +195,9 @@
             <p data-i18n="notice.intro">Đề thi, âm thanh nghe và nghĩa của từ theo từng cấp độ.</p>
           </div>
           <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
+            <table class="notice-table" id="noticeTable"><thead><tr><th>Cấp độ</th><th>Đề thi</th><th>Nghe</th><th>Nghĩa của từ</th></tr></thead><tbody><tr><th>N5</th><td>2 đề</td><td><span class="notice-bad">Không có</span></td><td>Có</td></tr><tr><th>N4</th><td>2 đề</td><td><span class="notice-bad">Không có</span></td><td>Có</td></tr><tr><th>N3</th><td>28 đề</td><td><span class="notice-part">25 trong 28</span></td><td>Có</td></tr><tr><th>N2</th><td>26 đề</td><td><span class="notice-part">23 trong 26</span></td><td>Có</td></tr><tr><th>N1</th><td>29 đề</td><td><span class="notice-part">22 trong 29</span></td><td>Có</td></tr></tbody></table>
           </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
+          <p class="notice-words" id="noticeWords"><strong>95,805</strong> nghĩa của từ &middot; Đề N1, N2 và N3 có nghĩa tiếng Anh của những từ khó, kèm furigana trên chữ kanji, ở nút bên dưới mỗi câu hỏi, bài đọc và bản ghi nghe.</p>
 
           <details class="notice-more">
             <summary data-i18n="notice.moreLabel">Âm thanh nghe, nghĩa từ và trợ giúp</summary>
@@ -212,9 +251,9 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/vi.js"></script>
-    <script src="/assets/js/site.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/vi.js?v=69e8788f"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
   </body>
 </html>

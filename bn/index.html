@@ -27,7 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
-    <meta property="og:locale" content="bn" />
+    <meta property="og:locale" content="bn_BD" />
     <meta property="og:title" content="JLPT-র আসল ধাঁচেই জাপানি অভ্যাস করুন।" />
     <meta property="og:description" content="N5 থেকে N1 পর্যন্ত 87টি অভ্যাস প্রশ্নপত্র — সময় গণনা ও স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।" />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/bn/" />
@@ -40,10 +40,9 @@
     <meta name="twitter:description" content="N5 থেকে N1 পর্যন্ত 87টি অভ্যাস প্রশ্নপত্র — সময় গণনা ও স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।" />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/bn/#website","url":"https://jlpt.sureshsurkheti.com/bn/","name":"JLPT Practice","inLanguage":"bn","description":"N5 থেকে N1 পর্যন্ত 87টি অভ্যাস প্রশ্নপত্র — সময় গণনা ও স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/bn/#webpage","url":"https://jlpt.sureshsurkheti.com/bn/","name":"JLPT-র আসল ধাঁচেই জাপানি অভ্যাস করুন।","description":"N5 থেকে N1 পর্যন্ত 87টি অভ্যাস প্রশ্নপত্র — সময় গণনা ও স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।","inLanguage":"bn","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/bn/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">ভাষা</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="ভাষা">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -102,7 +101,16 @@
             <p data-i18n="home.body">N5 থেকে N1 পর্যন্ত 87টি অভ্যাস প্রশ্নপত্র — সময় গণনা ও স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।</p>
             <!-- Computed from the first-Sunday rule in site.js, not from a
                  table, so it cannot go stale. -->
-            <div class="hero-countdown" id="examCountdown"></div>
+            <div class="hero-countdown" id="examCountdown">
+    <p class="cal-head">পরবর্তী JLPT</p>
+    <p class="cal-date">
+      <time datetime="2026-12-06">2026-12-06</time>
+    </p>
+    <p class="cal-count"><b>আর 93 দিন</b></p>
+    <p class="cal-note">এটি বিশ্বজুড়ে পরীক্ষার তারিখ। আবেদনের সময় প্রতিটি দেশ নিজে ঠিক করে — নিজেরটি দেখে নিন।
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
+         target="_blank" rel="noopener">সরকারি তথ্য</a></p>
+  </div>
 
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">প্রশ্নপত্র দেখুন</a>
@@ -146,7 +154,38 @@
           <h2 data-i18n="home.featuresTitle">এই সাইটে যা আছে</h2>
           <p data-i18n="home.featuresBody">বিনামূল্যে, ১২টি ভাষায়, নিবন্ধন ছাড়াই।</p>
         </div>
-        <div class="feature-stat-grid" id="featureGrid"></div>
+        <div class="feature-stat-grid" id="featureGrid">
+    <div class="feature-stat" style="--accent:#2d6eb4">
+      <strong>9,639</strong>
+      <span class="feature-stat-label">শব্দভাণ্ডার</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#7c3ac8">
+      <strong>2,211</strong>
+      <span class="feature-stat-label">কাঞ্জি</span>
+      <span class="feature-stat-sub">লেখার ক্রম</span>
+    </div>
+    <div class="feature-stat" style="--accent:#2f7d57">
+      <strong>280</strong>
+      <span class="feature-stat-label">ব্যাকরণ</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#976b0b">
+      <strong>87</strong>
+      <span class="feature-stat-label">অভ্যাস প্রশ্নপত্র</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#c84a52">
+      <strong>1,753</strong>
+      <span class="feature-stat-label">नेपाली</span>
+      <span class="feature-stat-sub">নেপালিতে অর্থ</span>
+    </div>
+    <div class="feature-stat" style="--accent:#5c697a">
+      <strong>12</strong>
+      <span class="feature-stat-label">ভাষা</span>
+      <span class="feature-stat-sub">ইন্টারফেস ও তালিকা</span>
+    </div>
+  </div>
       </section>
 
       <section class="container notice-section">
@@ -156,9 +195,9 @@
             <p data-i18n="notice.intro">স্তর অনুযায়ী প্রশ্নপত্র, শ্রবণ অডিও ও শব্দের অর্থ।</p>
           </div>
           <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
+            <table class="notice-table" id="noticeTable"><thead><tr><th>স্তর</th><th>প্রশ্নপত্র</th><th>শ্রবণ</th><th>শব্দের অর্থ</th></tr></thead><tbody><tr><th>N5</th><td>2টি প্রশ্নপত্র</td><td><span class="notice-bad">নেই</span></td><td>আছে</td></tr><tr><th>N4</th><td>2টি প্রশ্নপত্র</td><td><span class="notice-bad">নেই</span></td><td>আছে</td></tr><tr><th>N3</th><td>28টি প্রশ্নপত্র</td><td><span class="notice-part">28টির মধ্যে 25টি</span></td><td>আছে</td></tr><tr><th>N2</th><td>26টি প্রশ্নপত্র</td><td><span class="notice-part">26টির মধ্যে 23টি</span></td><td>আছে</td></tr><tr><th>N1</th><td>29টি প্রশ্নপত্র</td><td><span class="notice-part">29টির মধ্যে 22টি</span></td><td>আছে</td></tr></tbody></table>
           </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
+          <p class="notice-words" id="noticeWords"><strong>95,805</strong> শব্দের অর্থ &middot; N1, N2 ও N3 প্রশ্নপত্রে কঠিন শব্দের ইংরেজি অর্থ ও কাঞ্জির উপর ফুরিগানা আছে, প্রতিটি প্রশ্ন, পঠন অংশ ও শ্রবণ লিপির নিচের বোতামে।</p>
 
           <details class="notice-more">
             <summary data-i18n="notice.moreLabel">শ্রবণ অডিও, শব্দার্থ ও সহায়তা</summary>
@@ -212,9 +251,9 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/bn.js"></script>
-    <script src="/assets/js/site.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/bn.js?v=15060068"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
   </body>
 </html>

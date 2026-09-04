@@ -43,7 +43,7 @@ function mockExamUrl(level, section) {
 /* Colour distinguishes the sections; decorative icons added noise. */
 const SECTIONS = {
   vocabulary: { key: 'section.vocabulary', color: '#2d6eb4' },
-  grammar:    { key: 'section.grammar',    color: '#d9a63a' },
+  grammar:    { key: 'section.grammar',    color: '#976b0b' },
   reading:    { key: 'section.reading',    color: '#2f7d57' },
   listening:  { key: 'section.listening',  color: '#c84a52' }
 };
@@ -482,7 +482,7 @@ function renderFeatures() {
     /* The sub-line under this one used to read "Automatically" - the value
        of a stat that was deleted from the exams page, left behind under a
        count of papers where it means nothing. */
-    card(nf(counts.papers), t('exams.statPapers'), levels, '#d9a63a') +
+    card(nf(counts.papers), t('exams.statPapers'), levels, '#976b0b') +
     /* The Nepali card names itself in Nepali whatever language the page is
        in - somebody looking for it is looking for that word. */
     card(nf(counts.nepali), '\u0928\u0947\u092a\u093e\u0932\u0940',

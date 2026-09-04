@@ -26,17 +26,17 @@
    and the listening player from Google Drive, and neither is ours to store.
    Opaque responses also cost far more quota than their size suggests. */
 
-var VERSION = "4360aa26db38";
+var VERSION = "b46cb506ae0b";
 var SHELL = "shell-" + VERSION;
 var DATA = "data-" + VERSION;
 var OFFLINE = "/offline.html";
 
 var PRECACHE = [
   OFFLINE,
-  "/assets/css/styles.css",
-  "/assets/css/exam.css",
-  "/assets/js/i18n.js",
-  "/assets/js/site.js"
+  "/assets/css/styles.css?v=f01a473a",
+  "/assets/css/exam.css?v=11c09902",
+  "/assets/js/i18n.js?v=b87e0299",
+  "/assets/js/site.js?v=9a8dc43c"
 ];
 
 self.addEventListener("install", function (event) {

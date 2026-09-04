@@ -156,6 +156,171 @@ def apply_i18n(html, table, en):
     return re.sub(r'data-i18n-attr="([^"]+)"', attr_sub, html)
 
 
+_ASSET_VERSIONS = {}
+
+
+def asset_version(rel):
+    """Eight hex digits of the file's own hash, so a changed file gets a new
+    address and an unchanged one keeps its cached copy."""
+    if rel not in _ASSET_VERSIONS:
+        with open(os.path.join(ROOT, rel), "rb") as fh:
+            _ASSET_VERSIONS[rel] = hashlib.sha1(fh.read()).hexdigest()[:8]
+    return _ASSET_VERSIONS[rel]
+
+
+# href="assets/…", src="/assets/…", href="../assets/…" - but not the fonts,
+# which carry their version in the file name because styles.css refers to
+# them by url() and a query string here would make two addresses for one file.
+ASSET_REF = re.compile(r'((?:href|src)=")((?:\.\./|/)?)(assets/(?!fonts/)[^"?#]+)"')
+
+
+def finish_html(html):
+    """The last pass over every page before it is written.
+
+    Two things, both about the network. Every asset reference gets ?v=<hash>
+    so vercel.json can tell browsers to keep CSS and JS for a year: the
+    address changes when the file does, so nobody is ever served a stale
+    copy and nobody re-downloads an unchanged one. And every external script
+    is deferred - they all sit at the end of the body and touch nothing
+    before DOMContentLoaded, but the parser still stopped for each of them,
+    and deferred they run in the same order after the document is parsed
+    and the first paint no longer waits."""
+    html = ASSET_REF.sub(
+        lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), m.group(3),
+                                    asset_version(m.group(3))), html)
+    return html.replace('<script src="', '<script defer src="')
+
+# --------------------------------------------------------------------------
+# the two home-page blocks that site.js used to draw from nothing
+# --------------------------------------------------------------------------
+# With the scripts deferred the page paints before they run, and a block that
+# appears afterwards pushes everything under it: a layout shift of 0.28 on a
+# phone, from the countdown alone. So both are written into the markup here,
+# in the same shape site.js draws, and the script then redraws them in place
+# - the countdown with today's figure, the cards with the browser's own number
+# formatting - and nothing moves. A crawler gets the figures too.
+
+def first_sunday(year, month):
+    from datetime import timedelta
+    d = date(year, month, 1)
+    return d + timedelta(days=(6 - d.weekday()) % 7)
+
+
+def next_sitting(today):
+    y = today.year
+    for d in (first_sunday(y, 7), first_sunday(y, 12),
+              first_sunday(y + 1, 7), first_sunday(y + 1, 12)):
+        if d >= today:
+            return d
+
+
+def countdown_block(lang, table, en):
+    today = date.today()
+    sitting = next_sitting(today)
+    days = (sitting - today).days
+    if days == 0:
+        count = t(table, "cal.today", en)
+    else:
+        count = t(table, "cal.dayLeft" if days == 1 else "cal.daysLeft",
+                  en).replace("{days}", str(days))
+    # The long form in English; the script localises the others on load,
+    # and the ISO date underneath is one line in every language, so the
+    # block is the same height before and after.
+    shown = (sitting.strftime("%A, %B %-d, %Y") if lang == DEFAULT_LANG
+             else sitting.isoformat())
+    note = t(table, "cal.julyNote" if sitting.month == 7 else "cal.checkNote", en)
+    return ('<div class="hero-countdown" id="examCountdown">\n'
+            '    <p class="cal-head">%s</p>\n'
+            '    <p class="cal-date">\n'
+            '      <time datetime="%s">%s</time>\n'
+            '    </p>\n'
+            '    <p class="cal-count"><b>%s</b></p>\n'
+            '    <p class="cal-note">%s\n'
+            '      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"\n'
+            '         target="_blank" rel="noopener">%s</a></p>\n'
+            '  </div>'
+            % (esc(t(table, "cal.next", en)), sitting.isoformat(), esc(shown),
+               esc(count), esc(note), esc(t(table, "cal.official", en))))
+
+
+def feature_grid(table, en, counts):
+    def card(n, label, sub, accent):
+        return ('\n    <div class="feature-stat" style="--accent:%s">\n'
+                '      <strong>%s</strong>\n'
+                '      <span class="feature-stat-label">%s</span>\n'
+                '      <span class="feature-stat-sub">%s</span>\n'
+                '    </div>' % (accent, n, esc(label), sub))
+    nf = lambda v: format(v, ",")
+    levels = "N5 &rarr; N1"
+    cards = (card(nf(counts["words"]), t(table, "study.words", en), levels, "#2d6eb4")
+             + card(nf(counts["kanji"]), t(table, "study.kanji", en),
+                    esc(t(table, "study.strokeOrder", en)), "#7c3ac8")
+             + card(nf(counts["grammar"]), t(table, "study.grammar", en), levels, "#2f7d57")
+             + card(nf(counts["papers"]), t(table, "exams.statPapers", en), levels, "#976b0b")
+             + card(nf(counts["nepali"]), "\u0928\u0947\u092a\u093e\u0932\u0940",
+                    esc(t(table, "home.inNepali", en)), "#c84a52")
+             + card("12", t(table, "home.featLanguages", en),
+                    esc(t(table, "home.featLanguagesSub", en)), "#5c697a"))
+    return '<div class="feature-stat-grid" id="featureGrid">%s\n  </div>' % cards
+
+
+def notice_table(table, en):
+    """The availability table on the home page, in the shape renderNotice()
+    in site.js draws it, so the script's redraw after its fetch changes
+    nothing on screen. Same rule for listening: a paper counts when a
+    recording is behind it, not when the booklet is."""
+    def tf(key, **kw):
+        out = t(table, key, en)
+        for k, v in kw.items():
+            out = out.replace("{%s}" % k, str(v))
+        return out
+    exams = json.load(io.open(os.path.join(ROOT, "data", "exams", "index.json"),
+                              encoding="utf-8"))["exams"]
+    gpath = os.path.join(ROOT, "data", "glossary", "index.json")
+    glossary = (json.load(io.open(gpath, encoding="utf-8"))["exams"]
+                if os.path.exists(gpath) else [])
+    with_words = set(e["id"] for e in glossary)
+    stats = dict((lv, {"papers": 0, "listening": 0, "words": 0})
+                 for lv in ("N5", "N4", "N3", "N2", "N1"))
+    for e in exams:
+        st = stats.get(e.get("level"))
+        if not st:
+            continue
+        st["papers"] += 1
+        if any(p.get("id") == "listening" and p.get("audio") for p in e.get("parts", [])):
+            st["listening"] += 1
+        if e["id"] in with_words:
+            st["words"] += 1
+    html = ("<thead><tr><th>%s</th><th>%s</th><th>%s</th><th>%s</th></tr></thead><tbody>"
+            % tuple(esc(t(table, k, en)) for k in
+                    ("notice.colLevel", "notice.colPapers", "notice.colListening", "notice.colWords")))
+    for lv in ("N5", "N4", "N3", "N2", "N1"):
+        st = stats[lv]
+        if not st["papers"]:
+            html += ('<tr class="is-empty"><th>%s</th><td colspan="3">%s</td></tr>'
+                     % (lv, esc(t(table, "notice.none", en))))
+            continue
+        if not st["listening"]:
+            listening = '<span class="notice-bad">%s</span>' % esc(t(table, "notice.listeningNone", en))
+        elif st["listening"] == st["papers"]:
+            listening = esc(tf("notice.listeningAll", n=st["papers"]))
+        else:
+            listening = ('<span class="notice-part">%s</span>'
+                         % esc(tf("notice.listeningSome", n=st["listening"], m=st["papers"])))
+        papers = (t(table, "notice.paperOne", en) if st["papers"] == 1
+                  else tf("notice.papers", n=st["papers"]))
+        html += ('<tr><th>%s</th><td>%s</td><td>%s</td><td>%s</td></tr>'
+                 % (lv, esc(papers), listening,
+                    esc(t(table, "notice.yes", en)) if st["words"]
+                    else '<span class="notice-dim">\u2014</span>'))
+    html += "</tbody>"
+    glossed = sum(e.get("words", 0) for e in glossary)
+    words = ('<p class="notice-words" id="noticeWords"><strong>%s</strong> %s &middot; %s</p>'
+             % (format(glossed, ","), esc(t(table, "notice.colWords", en).lower()),
+                esc(t(table, "notice.wordsBody", en))))
+    return '<table class="notice-table" id="noticeTable">%s</table>' % html, words
+
+
 def absolutise(html):
     """Root-relative asset paths, so /ne/index.html loads the same files."""
     for attr in ("href", "src"):
@@ -210,6 +375,10 @@ TITLE_KEY = {
 }
 
 SITE_NAME = "JLPT Practice"
+# og:locale wants language_TERRITORY; a bare "en" or "ja" is not one.
+OG_LOCALE = {"en": "en_US", "ja": "ja_JP", "vi": "vi_VN", "ne": "ne_NP",
+             "zh": "zh_CN", "ko": "ko_KR", "id": "id_ID", "fil": "fil_PH",
+             "pt-BR": "pt_BR", "hi": "hi_IN", "bn": "bn_BD", "si": "si_LK"}
 
 # The site's publisher, in the structured data on all 293 pages, is the site
 # rather than a person. Organization is the right schema type for a publisher
@@ -307,6 +476,18 @@ def json_ld(lang, url, title, desc, url_of):
                          ensure_ascii=False, separators=(",", ":")))
 
 
+def breadcrumbs(trail):
+    """BreadcrumbList for a page below the top level: (name, url) pairs from
+    the home page down to this one. It is what puts 'Home > Study > N3 words'
+    under a result instead of the bare address."""
+    items = [{"@type": "ListItem", "position": i + 1, "name": name, "item": url}
+             for i, (name, url) in enumerate(trail)]
+    return ('    <script type="application/ld+json">%s</script>'
+            % json.dumps({"@context": "https://schema.org",
+                          "@type": "BreadcrumbList", "itemListElement": items},
+                         ensure_ascii=False, separators=(",", ":")))
+
+
 def hreflang_block(langs, url_of):
     rows = ['    <link rel="alternate" hreflang="%s" href="%s" />' % (l, url_of(l))
             for l in langs]
@@ -328,7 +509,7 @@ def seo_head(lang, url, title, desc, langs, url_of, indexable, extra=""):
     out += [
         '    <meta property="og:type" content="website" />',
         '    <meta property="og:site_name" content="%s" />' % SITE_NAME,
-        '    <meta property="og:locale" content="%s" />' % lang.replace("-", "_"),
+        '    <meta property="og:locale" content="%s" />' % OG_LOCALE.get(lang, lang.replace("-", "_")),
         '    <meta property="og:title" content="%s" />' % esc(title),
         '    <meta property="og:description" content="%s" />' % esc(desc),
         '    <meta property="og:url" content="%s" />' % url,
@@ -362,7 +543,7 @@ def rewrite_head(html, lang, page, langs, indexable, table, en, extra=""):
                     lambda l: page_url(l, page), indexable, extra)
     # replace everything the previous generator left between <title> and the fonts
     start = html.index("<title>")
-    end = html.index('<link rel="preconnect"')
+    end = html.index('<link rel="preload"')
     return html[:start] + head.lstrip() + "    " + html[end:]
 
 
@@ -645,6 +826,13 @@ def main():
                     "</head>",
                     '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
                     % json.dumps(COUNTS, separators=(",", ":")))
+                html = html.replace('<div class="hero-countdown" id="examCountdown"></div>',
+                                    countdown_block(lang, table, en))
+                html = html.replace('<div class="feature-stat-grid" id="featureGrid"></div>',
+                                    feature_grid(table, en, COUNTS))
+                ntable, nwords = notice_table(table, en)
+                html = html.replace('<table class="notice-table" id="noticeTable"></table>', ntable)
+                html = html.replace('<p class="notice-words" id="noticeWords" hidden></p>', nwords)
             # The guides are written once, in English. A nav item on the
             # Nepali or Vietnamese pages would be a link out of the reader's
             # language with nothing to warn them, so those keep the five
@@ -703,7 +891,7 @@ def main():
                 "</footer>",
                 language_links(langs, page, lang, names, table, en) + "</footer>")
 
-            io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(html)
+            io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(finish_html(html))
             if indexable:
                 written.append((page_url(lang, page), lang, page))
 
@@ -737,6 +925,10 @@ def main():
                       '"numberOfItems":%d}</script>'
                       % (json.dumps(title), json.dumps(url),
                          json.dumps(SITE + "/study.html"), n))
+                ld += "\n" + breadcrumbs([
+                    (t(table, "nav.home", en), page_url(lang, "index.html")),
+                    (t(table, "nav.study", en), page_url(lang, "study.html")),
+                    ("%s %s" % (lv, noun), url)])
 
                 html = apply_i18n(tpl, table, en)
                 html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang,
@@ -744,7 +936,7 @@ def main():
                 head = seo_head(lang, url, title, desc, langs,
                                 lambda l, lv=level, k=kind: study_url(l, lv, k),
                                 True, ld)
-                a, b = html.index("<title>"), html.index('<link rel="preconnect"')
+                a, b = html.index("<title>"), html.index('<link rel="preload"')
                 html = html[:a] + head.lstrip() + "    " + html[b:]
 
                 # The heading must name this page, not the section it lives
@@ -803,12 +995,19 @@ def main():
                                     else 'href="../')
 
                 io.open(os.path.join(base, "study", "%s-%s.html" % (level, kind)),
-                        "w", encoding="utf-8").write(html)
+                        "w", encoding="utf-8").write(finish_html(html))
                 written.append((url, lang, "study"))
                 study_pages += 1
 
     print("wrote %d core pages and %d study pages across %d languages"
           % (len(CORE_PAGES) * len(langs), study_pages, len(langs)))
+
+    # The two pages that are neither localised nor listed: the 404 and the
+    # offline fallback. Copied through the same last pass as everything else
+    # so their asset addresses match the ones the worker precaches.
+    for page in ("404.html", "offline.html"):
+        html = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
+        io.open(os.path.join(ROOT, page), "w", encoding="utf-8").write(finish_html(html))
 
     # -------------------------------------------------------------- sitemap
     today = date.today().isoformat()
@@ -878,6 +1077,11 @@ def main():
         sw = io.open(sw_path, encoding="utf-8").read()
         sw = re.sub(r'var VERSION = "[^"]*";',
                     'var VERSION = "%s";' % stamp, sw, count=1)
+        # The precache list must name the same addresses the pages do, or
+        # the worker would store one copy and the page would fetch another.
+        sw = re.sub(r'"(/assets/[^"?]+)(\?v=[0-9a-f]+)?"',
+                    lambda m: '"%s?v=%s"' % (m.group(1), asset_version(m.group(1)[1:])),
+                    sw)
         io.open(sw_path, "w", encoding="utf-8").write(sw)
         print("sw.js version %s" % stamp)
 

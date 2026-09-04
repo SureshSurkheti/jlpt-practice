@@ -17,7 +17,9 @@ reader to /ja/guide/... and a 404. A machine translation of two thousand words
 of exam advice is worse than no translation, so the honest thing is one
 language, said once.
 """
-import io, os
+import io, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_static import finish_html, breadcrumbs
 
 SITE = "https://jlpt.sureshsurkheti.com"
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "guide")
@@ -49,9 +51,9 @@ HEAD = """<!DOCTYPE html>
     <meta name="twitter:description" content="{desc}" />
     <meta name="twitter:image" content="{site}/icon-512.png" />
     <script type="application/ld+json">{ld}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+{crumbs}
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body class="guide-page"{back}>
@@ -407,13 +409,14 @@ def write_index():
         standfirst="How the exam works, written out in full.",
         body=INDEX.format(cards=cards), back="",
         more="".join('<li><a href="%s">%s</a></li>' % (q["slug"], q["h1"]) for q in PAGES),
+        crumbs=breadcrumbs([("Home", SITE + "/"), ("Guides", "%s/guide/" % SITE)]),
         ld=json.dumps({"@context":"https://schema.org","@type":"CollectionPage",
                        "name":"JLPT Guides","inLanguage":"en",
                        "url":"%s/guide/" % SITE}, ensure_ascii=False, separators=(",",":")))
     # the index does not need a "more guides" list under a list of the same
     # three, nor a call to action it already is
     html = html.replace('<nav class="guide-more" aria-label="More guides">', '<nav hidden>')
-    io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(html)
+    io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(finish_html(html))
     print("%-24s  index" % "index.html")
 
 os.makedirs(OUT, exist_ok=True)
@@ -425,6 +428,8 @@ for p in PAGES:
         title=p["title"], desc=p["desc"], url="%s/guide/%s" % (SITE, p["slug"]),
         site=SITE, h1=p["h1"], standfirst=p["standfirst"], body=p["body"],
         more=more, ld=ld_for(p),
+        crumbs=breadcrumbs([("Home", SITE + "/"), ("Guides", "%s/guide/" % SITE),
+                            (p["h1"], "%s/guide/%s" % (SITE, p["slug"]))]),
         # An article's parent is the index, and the only route to it was the
         # "Guides" item in the nav - which on an article is marked active, so
         # it reads as "you are here" rather than as a way up. The "More
@@ -433,6 +438,6 @@ for p in PAGES:
         # returns here, and here only: on the index itself the parent is the
         # study page and the nav does say so.
         back=' data-back-to="index.html"')
-    io.open(os.path.join(OUT, p["slug"]), "w", encoding="utf-8").write(html)
+    io.open(os.path.join(OUT, p["slug"]), "w", encoding="utf-8").write(finish_html(html))
     words = len(" ".join(p["body"].split()).split())
     print("%-24s %4d words" % (p["slug"], words))

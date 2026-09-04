@@ -27,7 +27,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jlpt.sureshsurkheti.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JLPT Practice" />
-    <meta property="og:locale" content="hi" />
+    <meta property="og:locale" content="hi_IN" />
     <meta property="og:title" content="JLPT के असली प्रारूप में जापानी का अभ्यास करें।" />
     <meta property="og:description" content="N5 से N1 तक 87 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।" />
     <meta property="og:url" content="https://jlpt.sureshsurkheti.com/hi/" />
@@ -40,10 +40,9 @@
     <meta name="twitter:description" content="N5 से N1 तक 87 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।" />
     <meta name="twitter:image" content="https://jlpt.sureshsurkheti.com/og-card.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/hi/#website","url":"https://jlpt.sureshsurkheti.com/hi/","name":"JLPT Practice","inLanguage":"hi","description":"N5 से N1 तक 87 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/hi/#webpage","url":"https://jlpt.sureshsurkheti.com/hi/","name":"JLPT के असली प्रारूप में जापानी का अभ्यास करें।","description":"N5 से N1 तक 87 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।","inLanguage":"hi","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/hi/#website"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=f01a473a" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -69,7 +68,7 @@
         <div class="nav-tools">
           <label class="language-select">
             <span data-i18n="lang.label">भाषा</span>
-            <select id="languageSelect">
+            <select id="languageSelect" aria-label="Language" data-i18n-attr="aria-label:lang.label" aria-label="भाषा">
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ne">नेपाली</option>
@@ -102,7 +101,16 @@
             <p data-i18n="home.body">N5 से N1 तक 87 अभ्यास प्रश्नपत्र — समय सहित और स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।</p>
             <!-- Computed from the first-Sunday rule in site.js, not from a
                  table, so it cannot go stale. -->
-            <div class="hero-countdown" id="examCountdown"></div>
+            <div class="hero-countdown" id="examCountdown">
+    <p class="cal-head">अगली JLPT</p>
+    <p class="cal-date">
+      <time datetime="2026-12-06">2026-12-06</time>
+    </p>
+    <p class="cal-count"><b>93 दिन बाकी</b></p>
+    <p class="cal-note">यह विश्वभर की परीक्षा तिथि है। आवेदन की तिथियाँ हर देश अलग तय करता है — अपनी जाँचें।
+      <a class="cal-link" href="https://www.jlpt.jp/e/index.html"
+         target="_blank" rel="noopener">आधिकारिक जानकारी</a></p>
+  </div>
 
             <div class="hero-actions">
               <a href="./exams.html" class="btn btn-primary" data-i18n="home.browseExams">प्रश्नपत्र देखें</a>
@@ -146,7 +154,38 @@
           <h2 data-i18n="home.featuresTitle">इस साइट पर सब कुछ</h2>
           <p data-i18n="home.featuresBody">निःशुल्क, 12 भाषाओं में, बिना पंजीकरण।</p>
         </div>
-        <div class="feature-stat-grid" id="featureGrid"></div>
+        <div class="feature-stat-grid" id="featureGrid">
+    <div class="feature-stat" style="--accent:#2d6eb4">
+      <strong>9,639</strong>
+      <span class="feature-stat-label">शब्दावली</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#7c3ac8">
+      <strong>2,211</strong>
+      <span class="feature-stat-label">कांजी</span>
+      <span class="feature-stat-sub">लिखने का क्रम</span>
+    </div>
+    <div class="feature-stat" style="--accent:#2f7d57">
+      <strong>280</strong>
+      <span class="feature-stat-label">व्याकरण</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#976b0b">
+      <strong>87</strong>
+      <span class="feature-stat-label">अभ्यास प्रश्नपत्र</span>
+      <span class="feature-stat-sub">N5 &rarr; N1</span>
+    </div>
+    <div class="feature-stat" style="--accent:#c84a52">
+      <strong>1,753</strong>
+      <span class="feature-stat-label">नेपाली</span>
+      <span class="feature-stat-sub">नेपाली में अर्थ</span>
+    </div>
+    <div class="feature-stat" style="--accent:#5c697a">
+      <strong>12</strong>
+      <span class="feature-stat-label">भाषाएँ</span>
+      <span class="feature-stat-sub">इंटरफ़ेस और सूचियाँ</span>
+    </div>
+  </div>
       </section>
 
       <section class="container notice-section">
@@ -156,9 +195,9 @@
             <p data-i18n="notice.intro">स्तर के अनुसार प्रश्नपत्र, श्रवण ऑडियो और शब्दों के अर्थ।</p>
           </div>
           <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
+            <table class="notice-table" id="noticeTable"><thead><tr><th>स्तर</th><th>प्रश्नपत्र</th><th>श्रवण</th><th>शब्दों के अर्थ</th></tr></thead><tbody><tr><th>N5</th><td>2 प्रश्नपत्र</td><td><span class="notice-bad">उपलब्ध नहीं</span></td><td>हाँ</td></tr><tr><th>N4</th><td>2 प्रश्नपत्र</td><td><span class="notice-bad">उपलब्ध नहीं</span></td><td>हाँ</td></tr><tr><th>N3</th><td>28 प्रश्नपत्र</td><td><span class="notice-part">28 में से 25</span></td><td>हाँ</td></tr><tr><th>N2</th><td>26 प्रश्नपत्र</td><td><span class="notice-part">26 में से 23</span></td><td>हाँ</td></tr><tr><th>N1</th><td>29 प्रश्नपत्र</td><td><span class="notice-part">29 में से 22</span></td><td>हाँ</td></tr></tbody></table>
           </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
+          <p class="notice-words" id="noticeWords"><strong>95,805</strong> शब्दों के अर्थ &middot; N1, N2 और N3 के प्रश्नपत्रों में कठिन शब्दों के अंग्रेज़ी अर्थ और कांजी पर फुरिगाना हैं, हर प्रश्न, पठन अंश और श्रवण लिपि के नीचे बटन पर।</p>
 
           <details class="notice-more">
             <summary data-i18n="notice.moreLabel">श्रवण ऑडियो, शब्दार्थ और सहायता</summary>
@@ -212,9 +251,9 @@
       </nav>
     </footer>
 
-    <script src="/assets/js/i18n.js"></script>
-    <script src="/assets/i18n/en.js"></script>
-    <script src="/assets/i18n/hi.js"></script>
-    <script src="/assets/js/site.js"></script>
+    <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
+    <script defer src="/assets/i18n/en.js?v=76074aa4"></script>
+    <script defer src="/assets/i18n/hi.js?v=85cd2c8e"></script>
+    <script defer src="/assets/js/site.js?v=9a8dc43c"></script>
   </body>
 </html>
