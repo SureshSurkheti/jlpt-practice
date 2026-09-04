@@ -1075,6 +1075,14 @@ def main():
                 # card and nothing in the header leads back.
                 if lang != DEFAULT_LANG:
                     html = localise_guides(html, lang)
+                    # The language table, as on the core pages. Without it
+                    # the page arrived translated and the script, reading
+                    # <html lang="ja"> and finding no Japanese table, wrote
+                    # the English fallback back over every label on load.
+                    html = html.replace(
+                        '<script src="assets/i18n/en.js"></script>',
+                        '<script src="assets/i18n/en.js"></script>\n'
+                        '    <script src="assets/i18n/%s.js"></script>' % lang)
                 html = html.replace('<body class="study-page"',
                                     '<body class="study-page" '
                                     'data-back-to="../study.html"')
