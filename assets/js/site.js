@@ -693,10 +693,12 @@ function wireBrand() {
       setTimeout(done, 620);
       return;
     }
-    /* Leaving: fade the page out, then navigate. The timeout is the backstop
-       for a browser that never fires transitionend. */
+    /* Leaving: fade the page out, then navigate - to wherever the link
+       itself points. It used to hard-code 'index.html', which from a page
+       under /guide/ opened the guides index instead of the home page. */
+    const home = brand.getAttribute('href') || 'index.html';
     document.body.classList.add('is-leaving');
-    setTimeout(() => { window.location.href = 'index.html'; }, 260);
+    setTimeout(() => { window.location.href = home; }, 260);
   });
 }
 
