@@ -427,7 +427,7 @@
       var paths = all[char];
       if (!paths) {
         box.innerHTML = '<p class="stats-empty">' +
-          esc(t("study.unavailable")) + "</p>";
+          esc(t("study.strokesMissing")) + "</p>";
         return;
       }
       draw(box, paths);
@@ -436,7 +436,7 @@
         function () { draw(box, paths); });
     }).catch(function () {
       box.innerHTML = '<p class="stats-empty">' +
-        esc(t("study.unavailable")) + "</p>";
+        esc(t("study.strokesMissing")) + "</p>";
     });
   }
 

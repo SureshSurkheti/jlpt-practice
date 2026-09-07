@@ -6,3 +6,8 @@ data/dict/
 .cache/
 _src/
 tools/
+
+# The i18n source table. build_static.py splits it into assets/i18n/<lang>.js,
+# which is what the pages actually load; this file is referenced by no page,
+# so shipping it published 322KB that nothing ever fetched.
+assets/js/i18n-strings.js

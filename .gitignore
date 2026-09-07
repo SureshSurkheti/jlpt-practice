@@ -6,3 +6,12 @@ __pycache__/
 
 # Scratch page used when rasterising icons; must never ship.
 _raster.html
+
+# macOS Finder droppings. One was tracked, so it changed every time a folder
+# was opened.
+.DS_Store
+
+# Reference PDFs kept beside the project, not part of the site. They are
+# other people's material: a `git add -A` must never sweep them into a
+# public deploy.
+docs/

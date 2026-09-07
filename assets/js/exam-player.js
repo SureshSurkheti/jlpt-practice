@@ -406,8 +406,19 @@
     return longest;
   }
 
+  /* True only when the options really are nothing to look at - 問題3 and 問題4
+     of a listening section, where the paper says 問題用紙に何も印刷されていません
+     and the choices are read aloud instead.
+
+     A picture counts as something to look at. This used to strip the tags and
+     ask whether any text was left, which is empty for an option that is a
+     drawing and nothing else - so the sixteen picture questions in the corpus
+     were declared spoken-only, their images dropped on the floor, and the
+     reader got four numbered blanks and a note saying to listen for options
+     that were sitting right there in the data. */
   function isBlankChoices(q) {
     return q.choices.every(function (c) {
+      if (/<img/i.test(c)) return false;
       return !c.replace(/<[^>]*>/g, "").trim();
     });
   }
@@ -1394,6 +1405,7 @@
       (section.instruction
         ? '<div class="section-instruction">' + section.instruction + "</div>"
         : "");
+    wireFigures(head);
 
     /* One recording per 問題, not per question: the sitting plays a single
        track that runs through all six items in turn, and there is no way to
@@ -1467,6 +1479,101 @@
     return node;
   }
 
+  /* ------------------------------------------------------------- figures */
+
+  /* The pictures in a paper - the drawings a listening question asks you to
+     choose between, the diagram a reading passage refers to - are not stored
+     here. They are other people's material, so the pages link them from the
+     Internet Archive rather than keeping a copy, and the archive is slow: ten
+     to twenty seconds is normal, and a fair share of requests never finish at
+     all. An <img> that never finishes fires no error, so what the reader got
+     was an empty space that stayed empty, with nothing to say whether to keep
+     waiting.
+
+     So each figure gets a watcher. If it errors, or if it has still not
+     arrived a good while after the browser actually began fetching it, the
+     gap says so and offers the direct link. If it turns up later than that,
+     the message goes away again.
+
+     The clock starts on intersection, not on insert: these are loading="lazy",
+     so an image far down the page has not been requested yet and must not be
+     accused of being late. */
+  var FIGURE_WAIT = 20000;
+  var figWatch = [];
+  var figTicker = null;
+
+  /* One clock for every figure on the page rather than a timer each, and a
+     plain rectangle test rather than an IntersectionObserver: the observer
+     reports nothing for a target of zero area, and a figure that has not
+     loaded and whose size is unknown is exactly that, so the notice never
+     appeared for the figures that needed it most. This asks a simpler
+     question every second and a half - is it on screen, and how long has it
+     been on screen without arriving. */
+  function figTick() {
+    var now = Date.now();
+    var keep = [];
+    figWatch.forEach(function (f) {
+      if (f.landed()) { f.ok(); return; }
+      var r = f.wrap.getBoundingClientRect();
+      var near = r.bottom > -300 && r.top < (window.innerHeight || 0) + 300;
+      if (near && !f.seen) f.seen = now;
+      if (f.seen && now - f.seen >= FIGURE_WAIT) { f.late(); return; }
+      keep.push(f);
+    });
+    figWatch = keep;
+    if (!figWatch.length) { clearInterval(figTicker); figTicker = null; }
+  }
+
+  function wireFigures(root) {
+    if (!root || !root.querySelectorAll) return;
+    var imgs = root.querySelectorAll("img:not([data-fig])");
+    Array.prototype.forEach.call(imgs, function (img) {
+      img.setAttribute("data-fig", "1");
+
+      var wrap = document.createElement("span");
+      /* is-pending gives the wrapper a floor to stand on, so a figure whose
+         size could not be measured still holds some space open. */
+      wrap.className = "fig is-pending";
+      img.parentNode.insertBefore(wrap, img);
+      wrap.appendChild(img);
+      var note = document.createElement("span");
+      note.className = "fig-note";
+      wrap.appendChild(note);
+
+      var f = {
+        wrap: wrap,
+        seen: 0,
+        landed: function () { return img.complete && img.naturalHeight > 0; },
+        ok: function () {
+          wrap.classList.remove("is-failed", "is-pending");
+          note.innerHTML = "";
+        },
+        late: function () {
+          if (f.landed()) { f.ok(); return; }
+          wrap.classList.add("is-failed");
+          /* An answer option is a <button>, and a link inside a button is
+             both invalid and dead to the mouse - so there the message stands
+             on its own. The four options of a picture question are no use
+             without their pictures anyway; the prompt above carries the link
+             that reaches them. */
+          var inButton = !!wrap.closest("button");
+          note.innerHTML = esc(t("exam.figureMissing")) +
+            (inButton ? "" : ' <a class="text-link" href="' +
+              esc(img.currentSrc || img.src) + '" target="_blank" ' +
+              'rel="noopener">' + esc(t("exam.figureOpen")) + "</a>");
+        }
+      };
+
+      if (f.landed()) { f.ok(); return; }
+      /* If it arrives after being written off, take the notice back down. */
+      img.addEventListener("load", f.ok);
+      img.addEventListener("error", f.late);
+
+      figWatch.push(f);
+      if (!figTicker) figTicker = setInterval(figTick, 1500);
+    });
+  }
+
   function buildBlock(block) {
     var node = el("div", "paper-block" + (block.passage ? " has-passage" : ""));
 
@@ -1481,6 +1588,7 @@
          come into reach. */
       var pwords = buildWords(block.questions[0].key, "passage");
       if (pwords) pnode.insertBefore(pwords, pnode.querySelector(".q-passage-body"));
+      wireFigures(pnode);
       node.appendChild(pnode);
     }
 
@@ -1527,6 +1635,7 @@
       flag.setAttribute("aria-pressed", state.flags[item.key] ? "true" : "false");
       head.appendChild(flag);
     }
+    wireFigures(head);
     node.appendChild(head);
 
     var width = blank ? " is-numeric"
@@ -1558,6 +1667,8 @@
           ? '<span class="choice-mark">' + esc(t("exam.legendIncorrect")) + '</span>' : "");
       choices.appendChild(b);
     });
+    /* A listening question's four options are often four drawings. */
+    wireFigures(choices);
     node.appendChild(choices);
 
     if (blank) {

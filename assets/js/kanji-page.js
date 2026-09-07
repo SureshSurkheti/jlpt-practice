@@ -24,7 +24,7 @@
   if (!/^n[1-5]$/.test(level)) level = "n5";
 
   var rows = null;
-  var strokes = null;
+  var strokes = {};        /* {} until the stroke file lands, or if it never does */
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -184,7 +184,13 @@
 
     var box = document.getElementById("kanjiDraw");
     var paths = strokes[char];
-    if (!paths) { box.innerHTML = ""; return; }
+    if (!paths) {
+      /* Either the stroke file has not arrived, or it has no drawing for this
+         character. Say so rather than leaving a hole under the heading. */
+      box.innerHTML = '<p class="stats-empty">' +
+        esc(t("study.strokesMissing")) + "</p>";
+      return;
+    }
 
     draw(box, paths);
     document.getElementById("kanjiSteps").innerHTML = steps(paths);
@@ -194,16 +200,39 @@
 
   host.innerHTML = '<div class="exam-loading"><div class="spinner"></div></div>';
 
-  Promise.all([
-    fetch(SITE_ROOT + "data/kanji/" + level + ".json", { cache: "no-cache" })
-      .then(function (r) { return r.json(); }),
-    fetch(SITE_ROOT + "data/kanji/strokes/" + level + ".json",
-          { cache: "no-cache" }).then(function (r) { return r.json(); })
-  ]).then(function (both) {
-    rows = both[0].kanji;
-    strokes = both[1];
-    render();
-  }).catch(fail);
+  /* The list and the stroke order are fetched separately, and only the list
+     is allowed to fail the page.
+
+     They used to be one Promise.all, which meant the stroke-order file - a
+     drawing, the smallest thing on the page - could take the whole character
+     down with it: a 404 or a dropped connection on it and the reader lost
+     the meanings, the readings and the examples too. The list is what the
+     page is for, so it alone decides whether there is a page; strokes arrive
+     when they arrive, and their absence costs a line of text. This is how
+     the same two files are already treated on the study lists. */
+  fetch(SITE_ROOT + "data/kanji/" + level + ".json", { cache: "no-cache" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function (d) {
+      rows = d.kanji;
+      render();
+    })
+    .catch(fail);
+
+  fetch(SITE_ROOT + "data/kanji/strokes/" + level + ".json",
+        { cache: "no-cache" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .catch(function () { return {}; })
+    .then(function (d) {
+      strokes = d;
+      /* The list may already be on screen; redraw so the animation appears. */
+      if (rows) render();
+    });
 
   /* Column labels and the Nepali gloss both follow the picker. */
   document.addEventListener("languagechange", function () {

@@ -346,6 +346,22 @@ function srsDayStart(ms) {
   return d.getTime();
 }
 
+/* The start of the day n days from today.
+
+   Not today plus n * 86400000: a day is not always 86,400,000 milliseconds
+   long. Where the clocks change, adding a fixed number of milliseconds to a
+   local midnight lands at 01:00 or at 23:00 the evening before, so a word
+   due "in three days" arrived an hour into the wrong day. setDate counts in
+   calendar days and the Date object works out what that is worth in
+   milliseconds. Japan has no summer time, but most of the other eleven
+   languages here are read somewhere that does. */
+function srsDayPlus(n, from) {
+  const d = new Date(from == null ? Date.now() : from);
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + n);
+  return d.getTime();
+}
+
 function readSrs() {
   let d;
   try { d = JSON.parse(localStorage.getItem(SRS_KEY) || 'null'); } catch (e) { d = null; }
@@ -447,7 +463,7 @@ function srsGrade(id, right) {
     return { done: true, days: 0 };
   }
   rec.box = box + 1;
-  rec.due = srsDayStart() + SRS_STEPS[box] * SRS_DAY;
+  rec.due = srsDayPlus(SRS_STEPS[box]);
   writeSrs(d);
   return { done: false, days: SRS_STEPS[box] };
 }
@@ -1259,3 +1275,26 @@ window.addEventListener('load', wireServiceWorker);
 
 /* Switching language re-renders the JS-built pages so nothing stays behind. */
 document.addEventListener('languagechange', renderAll);
+
+/* Two tabs, one set of records.
+
+   Everything here is kept in localStorage, which the study page, the review
+   page and a paper all write to. Nothing was telling the other tabs, so a
+   word marked known in one tab left the home page's review count in another
+   tab saying something that had stopped being true - and the next thing that
+   tab drew, it drew from the stale number it was holding.
+
+   The storage event fires in every OTHER tab of the origin, never the one
+   that made the change, which is exactly what is wanted: re-read and redraw
+   wherever the news is new. Each mutation reads the store immediately before
+   writing it, so the records themselves stay correct; this is about what the
+   other tabs are showing. Pages that draw their own view of the queue - the
+   review page, the progress page - listen for the same event. */
+const SHARED_KEYS = [BEST_KEY, KNOW_KEY, SRS_KEY];
+
+window.addEventListener('storage', (ev) => {
+  /* key is null when another tab called localStorage.clear(). */
+  if (ev.key !== null && SHARED_KEYS.indexOf(ev.key) === -1) return;
+  renderAll();
+  document.dispatchEvent(new CustomEvent('jlpt:storechange', { detail: ev.key }));
+});

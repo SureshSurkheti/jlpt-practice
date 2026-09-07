@@ -315,3 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
   wireStatsData();
 });
 document.addEventListener('languagechange', renderStatsPage);
+/* Scores, marks and the queue can all be changed in another tab; this page is
+   a view of them and nothing else, so it can always be redrawn. */
+document.addEventListener('jlpt:storechange', renderStatsPage);

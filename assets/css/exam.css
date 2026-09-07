@@ -2369,3 +2369,71 @@
   /* Full-width stacked buttons supply their own separation. */
   .paper-finish > .btn { margin: 12px 0 0; }
 }
+
+/* ==========================================================================
+   Exam figures
+
+   The drawings a listening question offers you, and the diagrams a reading
+   passage refers to, are not stored here - they are other people's material,
+   so the pages link them from the Internet Archive instead of keeping a copy.
+   The archive takes ten to twenty seconds to answer and sometimes never
+   answers at all, which makes these the slowest thing on any page.
+
+   Two things follow. The <img> carries width and height, measured once by
+   tools/fetch_figure_sizes.py, so the browser holds the right shape open from
+   the first paint and the question does not jump when the picture lands. And
+   a figure that errors, or that is still missing long after the browser began
+   fetching it, says so in the space it was given rather than leaving a gap
+   the reader cannot interpret.
+   ========================================================================== */
+
+.fig { display: block; position: relative; }
+.fig .fig-note { display: none; }
+
+/* A floor under a figure whose size is not known. Every figure in the corpus
+   has been measured, so the <img> normally reserves its own exact box and
+   this never applies; it is here for a figure added later, and to give the
+   wrapper an area so the watcher in exam-player.js can tell whether it is on
+   screen. */
+.fig.is-pending { min-height: 120px; }
+.choice .fig.is-pending { min-height: 64px; }
+
+/* A figure that never arrived keeps the space it was promised: the picture is
+   hidden rather than removed, so the hole stays exactly the size the picture
+   would have been and nothing on the page moves when we give up on it. The
+   message sits inside that hole. */
+.fig.is-failed {
+  min-height: 92px;
+  margin: 12px 0;
+  border: 1px dashed rgba(17, 45, 78, 0.28);
+  border-radius: 10px;
+  background: rgba(17, 45, 78, 0.02);
+}
+
+.fig.is-failed img { visibility: hidden; }
+
+.fig.is-failed .fig-note {
+  /* Column flex, not grid: place-items on a grid made the sentence and the
+     link two rows and pushed them to opposite ends of a tall box. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: absolute;
+  inset: 0;
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Inside an answer button the note is all there is, and the button is
+   already small: no second border around it. */
+.choice .fig.is-failed {
+  min-height: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+}

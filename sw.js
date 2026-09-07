@@ -26,17 +26,17 @@
    and the listening player from Google Drive, and neither is ours to store.
    Opaque responses also cost far more quota than their size suggests. */
 
-var VERSION = "9490de412e33";
+var VERSION = "ca0258d43f6c";
 var SHELL = "shell-" + VERSION;
 var DATA = "data-" + VERSION;
 var OFFLINE = "/offline.html";
 
 var PRECACHE = [
   OFFLINE,
-  "/assets/css/styles.css?v=1f4278ba",
-  "/assets/css/exam.css?v=99699569",
+  "/assets/css/styles.css?v=5597ec30",
+  "/assets/css/exam.css?v=12f54a5e",
   "/assets/js/i18n.js?v=b87e0299",
-  "/assets/js/site.js?v=9abce3c7"
+  "/assets/js/site.js?v=313ea7fb"
 ];
 
 self.addEventListener("install", function (event) {
@@ -66,7 +66,48 @@ self.addEventListener("message", function (event) {
   if (event.data === "skip-waiting") self.skipWaiting();
 });
 
-function networkFirst(request, cacheName, fallback) {
+/* A cache write outlives the response it came from, so the event that asked
+   for it has to be told to wait: without this the worker may be shut down
+   with the write half done. */
+function keep(event, promise) {
+  if (event && event.waitUntil) event.waitUntil(promise);
+  return promise;
+}
+
+/* Every cache write here is a promise nobody was waiting on, and a write can
+   fail for a reason that has nothing to do with the response: the origin's
+   quota is full. Unhandled, that surfaced as an unhandled rejection in the
+   worker and, worse, the put could still be in flight when the worker was
+   killed. Both are fixed by handing the write back to the caller, which
+   passes it to event.waitUntil. */
+function put(cacheName, request, response) {
+  return caches.open(cacheName)
+    .then(function (c) { return c.put(request, response); })
+    .then(function () { return trim(cacheName); })
+    .catch(function () { /* quota, or the cache went away mid-write */ });
+}
+
+/* The data cache had no ceiling. Every paper opened added its questions and
+   its glossary and nothing ever left, and the glossary alone is 19MB across
+   the corpus - enough, on a phone that is already short of space, for the
+   browser to start evicting the whole origin rather than the oldest paper.
+   Cache.keys() returns oldest first, so the oldest papers go. Only the data
+   cache is capped: the shell is five small files and is meant to be whole. */
+var DATA_MAX = 60;
+
+function trim(cacheName) {
+  if (cacheName !== DATA) return Promise.resolve();
+  return caches.open(cacheName).then(function (c) {
+    return c.keys().then(function (keys) {
+      if (keys.length <= DATA_MAX) return;
+      return Promise.all(keys.slice(0, keys.length - DATA_MAX).map(function (k) {
+        return c.delete(k);
+      }));
+    });
+  });
+}
+
+function networkFirst(request, cacheName, fallback, event) {
   /* A plain fetch, deliberately, rather than forcing {cache:"no-cache"}.
 
      A worker's own fetch does go through the HTTP cache, so "network first"
@@ -78,10 +119,7 @@ function networkFirst(request, cacheName, fallback) {
      edit lands. Forcing no-cache was tried and changed nothing, so it is not
      carried. If the host's caching ever changes, this is the line to revisit. */
   return fetch(request).then(function (res) {
-    if (res && res.ok) {
-      var copy = res.clone();
-      caches.open(cacheName).then(function (c) { c.put(request, copy); });
-    }
+    if (res && res.ok) keep(event, put(cacheName, request, res.clone()));
     return res;
   }).catch(function () {
     return caches.match(request).then(function (hit) {
@@ -90,13 +128,10 @@ function networkFirst(request, cacheName, fallback) {
   });
 }
 
-function staleWhileRevalidate(request, cacheName) {
+function staleWhileRevalidate(request, cacheName, event) {
   return caches.match(request).then(function (hit) {
     var live = fetch(request).then(function (res) {
-      if (res && res.ok) {
-        var copy = res.clone();
-        caches.open(cacheName).then(function (c) { c.put(request, copy); });
-      }
+      if (res && res.ok) keep(event, put(cacheName, request, res.clone()));
       return res;
     }).catch(function () { return hit; });
     return hit || live;
@@ -115,16 +150,16 @@ self.addEventListener("fetch", function (event) {
   if (req.headers.has("range")) return;
 
   if (req.mode === "navigate" || (req.headers.get("accept") || "").indexOf("text/html") !== -1) {
-    event.respondWith(networkFirst(req, SHELL, OFFLINE));
+    event.respondWith(networkFirst(req, SHELL, OFFLINE, event));
     return;
   }
 
   if (url.pathname.indexOf("/data/") === 0) {
-    event.respondWith(networkFirst(req, DATA));
+    event.respondWith(networkFirst(req, DATA, null, event));
     return;
   }
 
   if (/\.(css|js|woff2?|png|svg|ico|webmanifest)$/.test(url.pathname)) {
-    event.respondWith(staleWhileRevalidate(req, SHELL));
+    event.respondWith(staleWhileRevalidate(req, SHELL, event));
   }
 });

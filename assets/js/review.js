@@ -356,5 +356,13 @@
     if (!queue.length) renderIntro();
   });
 
+  /* Another tab changed the queue - a word marked known on a study page, a
+     paper marked in a second window. Redraw the counts, but only between
+     sessions: pulling the card out from under someone halfway through a
+     review would lose the answer they were in the middle of giving. */
+  document.addEventListener("jlpt:storechange", function () {
+    if (!queue.length) renderIntro();
+  });
+
   renderIntro();
 })();
