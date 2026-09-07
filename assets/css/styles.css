@@ -432,6 +432,17 @@ body > main { flex: 1 0 auto; }
               transform 0.12s ease;
 }
 
+/* A select sizes itself to its longest option. The guide pages list only the
+   five languages the guides exist in, longest "Tiếng Việt", so their picker
+   came out 52px narrower than the twelve-language picker on every other
+   page, longest "Português (Brasil)" - and because the menu is centred
+   between the brand and the picker, it slid 26px on the way into Guides.
+   One width, the twelve-language one, on the single-row header. The stacked
+   phone header keeps its own narrower rule below. */
+@media (min-width: 761px) {
+  .language-select select { min-width: 10.2em; }
+}
+
 /* Every one of them acknowledges the press. */
 .chip:active,
 .chip-back:active,
