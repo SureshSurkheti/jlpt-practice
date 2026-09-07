@@ -446,19 +446,31 @@ class Glosser(object):
             level = self.jlpt_reading.get(reading)
         return level
 
-    def words_in(self, text, seen, strict=False):
+    def words_in(self, text, seen, strict=False, options=False):
         """Ordered list of (key, entry) worth glossing, skipping `seen` keys.
 
-        `strict` is for the options of a reading or kanji-spelling question.
-        Those options are deliberately near-misses of one word, so in strict
-        mode the option has to be a single word to be read at all - see
-        is_one_word().
+        `options` is for the four answer choices. A question asks you to tell
+        them apart, so there the level filter is off: an N5 word among an N1
+        paper's options is still the thing being chosen between, and a reader
+        who half-knows it wants it named. Prompts and reading passages keep
+        the level rule - glossing every easy word in a page of prose would
+        bury the hard ones.
+
+        Options used to be read under is_one_word() when the instruction was
+        "read this" or "write this in kanji", which skipped the whole option
+        unless it parsed as a single word: 施されて / 催されて / 設けられて
+        were dropped entire, exactly the four words the question is about.
+        The guard it provided - kana debris like さいしゅう yielding いしゅう -
+        is kept in a narrower form below: after the first content word, an
+        option word has to carry kanji.
         """
         out = []
         for chunk in JA_RUN_RE.findall(strip_html(text)):
             tokens = list(self.tok.tokenize(chunk))
-            if strict and not is_one_word(tokens):
+            if strict and not options and not is_one_word(tokens):
                 continue
+            first_content = next((i for i, tk in enumerate(tokens)
+                                  if is_candidate(tk)), -1)
             for pos_i, token in enumerate(tokens):
                 if not is_candidate(token):
                     continue
@@ -468,6 +480,12 @@ class Glosser(object):
                 if len(key) < 2 and not has_kanji(key):
                     continue
                 if key in STOP or key in seen:
+                    continue
+                # Debris guard for options: a second content word inside one
+                # option is usually the tokenizer splitting a wrong answer
+                # that was never a word. A kanji one is real; a kana one is
+                # wreckage.
+                if options and pos_i != first_content and not has_kanji(key):
                     continue
 
                 hint = to_hiragana(token.reading or "")
@@ -481,7 +499,7 @@ class Glosser(object):
 
                 reading = entry["r"]
                 level = self.level_of(key, reading)
-                if not keep_word(level, entry, key):
+                if not options and not keep_word(level, entry, key):
                     seen.add(key)
                     continue
 
@@ -536,13 +554,40 @@ class Glosser(object):
 # build
 # ---------------------------------------------------------------------------
 
+# 問題2 asks which kanji spells the underlined word, so its four options are
+# four single characters: 猛 強 頑 厳. A lone character is rarely a dictionary
+# headword - and where it is, the entry is usually some archaic noun sense
+# ("the Monkey, ninth sign of the zodiac" for 申) that would mislead rather
+# than help. The site's own kanji lists carry the meaning that belongs there,
+# so single-character options are read from those instead.
+_KANJI_MEANINGS = {}
+
+
+def load_kanji_meanings():
+    if _KANJI_MEANINGS:
+        return _KANJI_MEANINGS
+    for level in LEVELS:
+        path = os.path.join(ROOT, "data", "kanji", "%s.json" % level.lower())
+        if not os.path.exists(path):
+            continue
+        data = json.load(open(path, encoding="utf-8"))
+        for row in data.get("kanji", []):
+            _KANJI_MEANINGS.setdefault(row["k"], {
+                "w": row["k"],
+                "g": [", ".join(m.lower() for m in row.get("en", [])[:3])],
+                "p": "kanji",
+                "lv": level,
+            })
+    return _KANJI_MEANINGS
+
+
 def build_exam(exam, glosser):
     words = OrderedDict()
     per_question = {}
     per_passage = {}
 
-    def collect(text, seen, sink, strict=False):
-        for key, item in glosser.words_in(text, seen, strict):
+    def collect(text, seen, sink, strict=False, options=False):
+        for key, item in glosser.words_in(text, seen, strict, options):
             words.setdefault(key, item)
             sink.append(key)
 
@@ -571,8 +616,18 @@ def build_exam(exam, glosser):
             # one word rather than vocabulary of their own, so they are read
             # under the stricter rule instead of being skipped.
             variants = options_are_variants(q)
+            kanji_meanings = load_kanji_meanings()
             for choice in q.get("choices") or []:
-                collect(choice, seen, keys, strict=variants)
+                collect(choice, seen, keys, strict=variants, options=True)
+                # A single-character option: the dictionary has nothing
+                # useful to say about it, the kanji lists do.
+                lone = strip_html(choice).strip()
+                if len(lone) == 1 and KANJI_RE.match(lone) and lone not in seen:
+                    entry = kanji_meanings.get(lone)
+                    if entry and entry["g"][0]:
+                        words.setdefault(lone, entry)
+                        keys.append(lone)
+                        seen.add(lone)
             # The explanation field holds the Japanese listening transcript,
             # and for the other sections the Japanese quoted inside a
             # Vietnamese note. japanese_only() keeps just the Japanese.
