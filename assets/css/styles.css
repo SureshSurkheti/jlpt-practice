@@ -1491,14 +1491,16 @@ body.is-leaving { opacity: 0; }
    right of the text it belongs to. rem is root-relative, so both agree.
    43rem is the same 688px the ch value was producing. */
 .guide-page { --measure: 43rem; }
-/* Left, not centred. The measure was already right; the centring was not.
-   Every other page on the site starts its text at the container's left edge,
-   so a centred article column put the body 216px right of where the same
-   reader had just been reading, while the logo and nav above it stayed put -
-   at 1512px the page appeared to slide sideways on the way in from Study.
-   The gutter it leaves on the right is the same gutter Study and About
-   already leave beside their own intros. */
-.guide { max-width: var(--measure); }
+/* Centred in the container. Every other page fills the centred container,
+   so it reads as centred; a reading column narrower than the container has
+   to be centred itself or it sits in the left half with the right half
+   empty - at 1512px that was 690px of text and 430px of nothing beside it.
+   The back chip above it keeps to the same left edge as the column. */
+.guide { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.guide-page .page-back {
+  position: relative;
+  left: max(0px, calc((100% - var(--measure)) / 2));
+}
 
 .guide-kicker {
   margin: 0 0 8px;
