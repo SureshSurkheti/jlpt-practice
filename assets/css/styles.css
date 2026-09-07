@@ -2774,10 +2774,18 @@ body.is-leaving { opacity: 0; }
           mask-image: linear-gradient(to right, transparent, #000 24px);
 }
 
-/* Buy back some of the overflow before relying on the fade at all. */
+/* Buy back some of the overflow before relying on the fade at all. Six
+   English links measure 360px of words at this size; the padding is what
+   decided whether they fit. At 7px they fit a 390px phone and at 5px a
+   360px one, so English never scrolls and "Home" is never half cut. The
+   longer languages (Vietnamese, Filipino) still scroll, with the fade. */
 @media (max-width: 430px) {
-  .main-nav a { padding: 8px 9px; font-size: 0.86rem; }
+  .main-nav a { padding: 8px 7px; font-size: 0.86rem; }
   .main-nav { gap: 2px; }
+}
+@media (max-width: 380px) {
+  .main-nav a { padding: 8px 5px; }
+  .main-nav { gap: 0; }
 }
 
 /* ==========================================================================
