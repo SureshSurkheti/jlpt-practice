@@ -579,8 +579,8 @@
   }
 
   /* Word meanings live in a separate file per paper, built by
-     tools/build_glossary.py for the N2 and N3 levels. A paper without one is
-     the normal case, not an error: the word buttons simply do not appear. */
+     tools/build_glossary.py for every level. A paper without one is not an
+     error: the word buttons simply do not appear. */
   function loadGlossary(id) {
     return fetch(GLOSSARY_DIR + id + ".json", { cache: "no-cache" })
       .then(function (r) { return r.ok ? r.json() : null; })

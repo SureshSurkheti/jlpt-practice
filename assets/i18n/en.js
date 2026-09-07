@@ -242,7 +242,7 @@ I18N.register("en", {
  "notice.paperOne": "1 paper",
  "notice.papers": "{n} papers",
  "notice.title": "What is available",
- "notice.wordsBody": "N1, N2 and N3 papers include English meanings for the harder words, with furigana over the kanji, on a button under every question, reading passage and listening transcript.",
+ "notice.wordsBody": "Papers at every level carry English meanings with furigana over the kanji, on a button under each question: every word of the question and its four answers, plus the harder words of reading passages and listening transcripts.",
  "notice.yes": "Yes",
  "practice.answeredCorrectly": "questions answered correctly",
  "practice.body": "Every level is here. Drill one skill, or sit the whole paper.",

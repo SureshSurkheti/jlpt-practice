@@ -3,15 +3,23 @@
 Build per-exam English word glossaries for the JLPT papers.
 
 For every question the paper shows in Japanese - prompt, reading passage,
-answer choices and (for listening) the Japanese transcript - this finds the
-words a learner at that level would not yet know, and writes the reading
-(as furigana) plus a short English meaning.
+answer choices and (for listening) the Japanese transcript - this writes the
+reading (as furigana) plus a short English meaning.
 
-Easy words are deliberately left out. "Easy" is not a guess: every word is
-looked up in a JLPT level list, and a word is kept only when it is at the
-paper's own level or harder. On an N3 paper that means N3/N2/N1 words are
-glossed and N4/N5 words are skipped. Words in no list at all are kept, on the
-grounds that an unlisted word is far more often rare than trivial.
+Two rules, because the two kinds of text are read differently.
+
+The question itself - its prompt and its four options - is explained in full.
+Every word, whatever its level: これ and する are on the screen next to the
+word that actually stopped someone, and "everyone knows it by N3" is a claim
+about the average candidate rather than about this reader. A kana spelling
+also names its homophones, since on a "what is the reading" question the four
+options are kana precisely because the kanji is the answer.
+
+Reading passages and listening transcripts keep a level filter: they run to
+hundreds of words, and a list with every は and する in it buries the one word
+that stopped you. A word is kept there when it is at the paper's level or
+harder, or written with kanji, or in no JLPT list at all - an unlisted word
+is far more often rare than trivial.
 
 Data sources (both downloaded once into data/dict/):
   jmdict-eng   readings, English glosses, part of speech, common flag

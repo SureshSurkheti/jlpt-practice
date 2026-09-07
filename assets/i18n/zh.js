@@ -237,7 +237,7 @@ I18N.register("zh", {
  "notice.paperOne": "1 套",
  "notice.papers": "{n} 套",
  "notice.title": "目前可用内容",
- "notice.wordsBody": "N1、N2 和 N3 试卷提供较难词语的英文释义，汉字上标有振假名，可通过每道题、阅读文章和听力文本下方的按钮查看。",
+ "notice.wordsBody": "各级别试卷均附英文释义，汉字上方标有假名。每道题下方的按钮会解释题目和四个选项中的每个词，以及阅读文章和听力原文中的难词。",
  "notice.yes": "有",
  "practice.answeredCorrectly": "题答对",
  "practice.body": "所有级别都在这里。可以只练一个部分，也可以做完整一套。",

@@ -237,7 +237,7 @@ I18N.register("fil", {
  "notice.paperOne": "1 papel",
  "notice.papers": "{n} papel",
  "notice.title": "Ano ang available ngayon",
- "notice.wordsBody": "Ang mga papel na N1, N2, at N3 ay may kahulugan sa Ingles para sa mas mahihirap na salita, may furigana sa ibabaw ng kanji, sa button sa ilalim ng bawat tanong, teksto sa pagbasa, at transcript ng pakikinig.",
+ "notice.wordsBody": "May kahulugan sa Ingles ang mga papel sa lahat ng antas, na may furigana sa ibabaw ng kanji. Ipinapaliwanag ng butones sa ilalim ng bawat tanong ang bawat salita sa tanong at sa apat na sagot, at ang mahihirap na salita sa mga babasahin at transcript ng pakikinig.",
  "notice.yes": "Meron",
  "practice.answeredCorrectly": "tanong na tama",
  "practice.body": "Nandito ang lahat ng antas. Magsanay ng isang bahagi, o sagutan ang buong set.",

@@ -237,7 +237,7 @@ I18N.register("vi", {
  "notice.paperOne": "1 đề",
  "notice.papers": "{n} đề",
  "notice.title": "Hiện có những gì",
- "notice.wordsBody": "Đề N1, N2 và N3 có nghĩa tiếng Anh của những từ khó, kèm furigana trên chữ kanji, ở nút bên dưới mỗi câu hỏi, bài đọc và bản ghi nghe.",
+ "notice.wordsBody": "Đề thi ở mọi cấp độ đều có nghĩa tiếng Anh kèm furigana trên chữ kanji. Nút dưới mỗi câu hỏi giải thích mọi từ trong câu hỏi và bốn lựa chọn, cùng những từ khó trong bài đọc và lời thoại nghe.",
  "notice.yes": "Có",
  "practice.answeredCorrectly": "câu trả lời đúng",
  "practice.body": "Tất cả các cấp độ đều ở đây. Luyện riêng một phần, hoặc làm cả đề.",

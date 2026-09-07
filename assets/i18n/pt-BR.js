@@ -237,7 +237,7 @@ I18N.register("pt-BR", {
  "notice.paperOne": "1 prova",
  "notice.papers": "{n} provas",
  "notice.title": "O que está disponível",
- "notice.wordsBody": "As provas N1, N2 e N3 incluem significados em inglês das palavras mais difíceis, com furigana sobre os kanji, em um botão abaixo de cada questão, texto de leitura e transcrição de audição.",
+ "notice.wordsBody": "As provas de todos os níveis trazem significados em inglês com furigana sobre os kanji. O botão sob cada questão explica cada palavra da questão e das quatro alternativas, além das palavras difíceis dos textos de leitura e das transcrições de audição.",
  "notice.yes": "Sim",
  "practice.answeredCorrectly": "questões corretas",
  "practice.body": "Todos os níveis estão aqui. Treine uma seção ou faça a prova inteira.",

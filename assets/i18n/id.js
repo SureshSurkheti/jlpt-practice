@@ -237,7 +237,7 @@ I18N.register("id", {
  "notice.paperOne": "1 naskah",
  "notice.papers": "{n} naskah",
  "notice.title": "Yang tersedia saat ini",
- "notice.wordsBody": "Naskah N1, N2, dan N3 memuat arti bahasa Inggris untuk kata-kata yang lebih sulit, dengan furigana di atas kanji, pada tombol di bawah setiap soal, teks bacaan, dan transkrip menyimak.",
+ "notice.wordsBody": "Soal di semua level dilengkapi arti bahasa Inggris dengan furigana di atas kanji. Tombol di bawah setiap soal menjelaskan setiap kata pada soal dan empat pilihannya, serta kata-kata sulit pada teks bacaan dan transkrip menyimak.",
  "notice.yes": "Ada",
  "practice.answeredCorrectly": "soal dijawab benar",
  "practice.body": "Semua level ada di sini. Latih satu bagian, atau kerjakan satu set penuh.",

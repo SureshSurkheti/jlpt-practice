@@ -237,7 +237,7 @@ I18N.register("ja", {
  "notice.paperOne": "1回分",
  "notice.papers": "{n}回分",
  "notice.title": "現在利用できるもの",
- "notice.wordsBody": "N1・N2・N3の問題には、難しい語句の英語の意味と漢字のふりがなが付いています。各問題・本文・聴解スクリプトの下のボタンから見られます。",
+ "notice.wordsBody": "全レベルの問題に、漢字のふりがな付きで英語の意味が付いています。各問題の下のボタンから、設問と4つの選択肢のすべての語句、および本文・聴解スクリプトの難しい語句を見られます。",
  "notice.yes": "あり",
  "practice.answeredCorrectly": "問正解",
  "practice.body": "全レベルをこのページに。1科目だけ解くことも、1回分を通して解くこともできます。",
