@@ -118,7 +118,11 @@
 
     var ask, shown, sub = "", field, answer;
     if (kind === "meaning") {
-      ask = "quiz.pickMeaning"; shown = row.w; sub = row.r || "";
+      /* The reading only where it tells you something. A katakana word is
+         its own reading, and printing ボールペン under ボールペン reads as a
+         mistake. */
+      ask = "quiz.pickMeaning"; shown = row.w;
+      sub = (row.r && row.r !== row.w) ? row.r : "";
       field = "meaning"; answer = meaningOf(row);
     } else if (kind === "word") {
       ask = "quiz.pickWord"; shown = meaningOf(row);
@@ -136,7 +140,7 @@
       from: esc(rec.lv) + " · " + esc(t("study.words")),
       prompt: '<p class="quiz-ask">' + esc(t(ask)) + "</p>" +
               '<p class="quiz-shown' + (kind === "word" ? "" : " is-ja") + '">' +
-                esc(shown) + (sub ? "<em>" + esc(sub) + "</em>" : "") + "</p>",
+                esc(shown) + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</p>",
       choices: options.map(esc),
       answer: options.indexOf(answer) + 1,
       detail: "<p><b>" + esc(row.w) + "</b> " + esc(row.r || "") + " · " +

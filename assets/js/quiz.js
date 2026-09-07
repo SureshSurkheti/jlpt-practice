@@ -160,7 +160,10 @@
     var type, promptKey, shown, sub = "", field;
     if (state.kind === "words") {
       type = ["meaning", "word", "reading"][Math.floor(Math.random() * 3)];
-      if (type === "meaning") { promptKey = "quiz.pickMeaning"; shown = it.w; sub = it.r; field = "meaning"; }
+      /* The reading is a hint under the word, so it is only worth printing
+         when it differs from the word: a katakana entry is its own reading. */
+      if (type === "meaning") { promptKey = "quiz.pickMeaning"; shown = it.w;
+                                sub = (it.r && it.r !== it.w) ? it.r : ""; field = "meaning"; }
       else if (type === "word") { promptKey = "quiz.pickWord"; shown = meaningOf(it); field = "word"; }
       else { promptKey = "quiz.pickReading"; shown = it.w; field = "reading"; }
     } else if (state.kind === "kanji") {

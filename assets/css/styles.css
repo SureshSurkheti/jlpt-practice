@@ -3373,7 +3373,20 @@ body.is-leaving { opacity: 0; }
   color: var(--navy);
 }
 .quiz-shown.is-ja { font-size: 2.1rem; }
-.quiz-shown small { display: block; margin-top: 4px; font-size: 0.95rem; font-weight: 500; color: var(--muted); }
+/* The reading sits under its word, smaller and dimmed, the way the study
+   lists set it - not run on to the end of the kanji at the same size, where
+   台所 and だいどころ read as one seven-character word. Both tags, so a
+   caller reaching for either gets the same result. */
+.quiz-shown small,
+.quiz-shown em {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.4;
+  color: var(--muted);
+}
 .quiz-note { margin: 0 0 16px; color: var(--muted); font-size: 0.95rem; }
 .quiz-score { margin: 0 0 10px; font-family: var(--font-display); font-size: 2rem; color: var(--navy); }
 .quiz-list-link {
