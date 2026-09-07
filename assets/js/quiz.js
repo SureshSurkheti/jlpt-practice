@@ -215,14 +215,18 @@
     } else {
       state.only = "";
     }
+    /* Button and link share one row with a real gap between them; appended
+       loose they sat 2px apart and read as one control. */
+    var actions = el("div", "quiz-actions quiz-intro-actions");
     var btn = el("button", "btn btn-primary btn-lg", esc(t("quiz.start")));
     btn.type = "button";
     btn.disabled = !!message;
     btn.addEventListener("click", startRound);
-    card.appendChild(btn);
+    actions.appendChild(btn);
     var link = el("a", "quiz-list-link", esc(t("quiz.openList")) + " →");
     link.href = listUrl();
-    card.appendChild(link);
+    actions.appendChild(link);
+    card.appendChild(actions);
     root.appendChild(card);
   }
 

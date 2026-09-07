@@ -3334,6 +3334,9 @@ body.is-leaving { opacity: 0; }
 .quiz-missed li { padding: 8px 12px; background: var(--panel-soft); border-radius: 10px; font-size: 0.95rem; }
 .quiz-missed li span { color: var(--muted); }
 .quiz-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.quiz-intro-actions { align-items: center; gap: 10px 22px; margin-top: 6px; }
+.quiz-intro-actions .btn { margin-top: 0; }
+.quiz-intro-actions .quiz-list-link { margin: 0; }
 
 .review-instruction { margin: 0 0 10px; font-size: 0.88rem; color: var(--muted); }
 .review-passage { margin: 0 0 14px; }
