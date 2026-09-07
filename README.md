@@ -213,3 +213,4 @@ Nepali version
 👉 https://jlpt.sureshsurkheti.com
 
 there is the yoututbe channel japan freelance bring all the listening from that page..
+also when after pressing submit button the number and correct and incorrect word distance inside the button is too much
