@@ -407,9 +407,7 @@ def ld_for(p):
     }, ensure_ascii=False, separators=(",", ":"))
 
 INDEX = """
-        <p>Three pages on how the exam itself works - the scoring, the step
-           people find hardest, and how to choose a level. Everything here is
-           about the JLPT as an exam rather than about Japanese.</p>
+        <p>{intro}</p>
 {cards}
 """
 
@@ -542,7 +540,7 @@ def write_language(lang):
     html = HEAD.format(
         title=esc(ui["indexTitle"]), desc=esc(clip_desc(ui["indexIntro"])),
         url=guide_url(lang, ""), h1=esc(ui["indexH1"]), standfirst=esc(ui["indexStandfirst"]),
-        body=INDEX.format(cards=cards), back="",
+        body=INDEX.format(intro=esc(ui["indexIntro"]), cards=cards), back="",
         more="".join('<li><a href="%s">%s</a></li>' % (q["slug"], esc(q["h1"])) for q in pages),
         crumbs=breadcrumbs([(home, SITE + ("/" if lang == "en" else "/%s/" % lang)),
                             (ui["indexH1"], guide_url(lang, ""))]),
@@ -553,6 +551,9 @@ def write_language(lang):
     # the index does not need a "more guides" list under a list of the same
     # three, nor a call to action it already is
     html = re.sub(r'<nav class="guide-more" aria-label="[^"]*">', '<nav hidden>', html)
+    # The index is a list of three cards, not prose, so it fills the container
+    # like Study and Levels do; only the articles keep the reading measure.
+    html = html.replace('<article class="guide">', '<article class="guide guide-hub">', 1)
     io.open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(finish_html(html, table, EN_TABLE))
     print("%-6s %-24s  index" % (lang, "index.html"))
 

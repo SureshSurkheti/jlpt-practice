@@ -1584,6 +1584,30 @@ body.is-leaving { opacity: 0; }
 .guide-cta p { margin: 0 0 16px; font-size: 0.95rem; }
 .guide-cta-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
+/* The guide index is a hub page, not an article: three cards and a call to
+   action. It fills the container the way Study and Levels do, with only its
+   running text held to a readable width; the three articles keep the
+   reading measure above. */
+.guide-hub { max-width: none; }
+.guide-hub > p:not(.guide-standfirst) { max-width: 68ch; }
+.guide-hub .guide-index { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.guide-hub .guide-index a { height: 100%; box-sizing: border-box; padding: 20px 22px; }
+.guide-hub .guide-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "h a" "p a";
+  align-items: center;
+  column-gap: 32px;
+}
+.guide-hub .guide-cta h2 { grid-area: h; }
+.guide-hub .guide-cta p { grid-area: p; margin: 0; }
+.guide-hub .guide-cta-actions { grid-area: a; }
+@media (max-width: 900px) {
+  .guide-hub .guide-index { grid-template-columns: 1fr; }
+  .guide-hub .guide-cta { grid-template-columns: 1fr; grid-template-areas: "h" "p" "a"; row-gap: 0; }
+  .guide-hub .guide-cta p { margin: 0 0 16px; }
+}
+
 /* The guide index: three rows, each its own target. */
 .guide-index { margin: 26px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
 .guide-index li {
