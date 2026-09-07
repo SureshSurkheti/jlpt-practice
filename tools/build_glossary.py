@@ -225,6 +225,10 @@ def load_jmdict(path):
             if gl and gl[0] not in glosses:
                 glosses.append(gl[0])
         base = {"g": glosses, "p": pos}
+        # The kanji this word is written with, kept so a kana spelling can
+        # say which word it is: おる is 織る, 折る or 居る, and on a "what is
+        # the reading" question that is the whole difference.
+        head = word["kanji"][0]["text"] if word["kanji"] else ""
 
         readings = [to_hiragana(k["text"]) for k in word["kana"]] or [""]
         for kanji in word["kanji"]:
@@ -232,7 +236,7 @@ def load_jmdict(path):
             offer(kanji["text"], entry, 0 if kanji.get("common") else 2)
         for kana in word["kana"]:
             entry = dict(base, r=to_hiragana(kana["text"]),
-                         c=bool(kana.get("common")))
+                         c=bool(kana.get("common")), k=head)
             offer(kana["text"], entry, 1 if kana.get("common") else 3)
 
     out = {}
@@ -291,14 +295,20 @@ DROP_POS2 = {"非自立", "接尾", "代名詞", "数", "固有名詞", "特殊"
              "接続助詞", "助詞類接続"}
 KEEP_POS1 = {"名詞", "動詞", "形容詞", "副詞", "連体詞", "接続詞"}
 
+# Wider, for the words of the question itself. すみません is an interjection
+# and これ a pronoun: both are dropped from running prose as glue, and both
+# are words a reader can be stopped by in the one sentence being asked about.
+KEEP_POS1_WIDE = KEEP_POS1 | {"感動詞"}
+DROP_POS2_WIDE = DROP_POS2 - {"代名詞"}
 
-def is_candidate(token):
+
+def is_candidate(token, wide=False):
     parts = token.part_of_speech.split(",")
     pos1 = parts[0]
     pos2 = parts[1] if len(parts) > 1 else ""
-    if pos1 not in KEEP_POS1:
+    if pos1 not in (KEEP_POS1_WIDE if wide else KEEP_POS1):
         return False
-    if pos2 in DROP_POS2:
+    if pos2 in (DROP_POS2_WIDE if wide else DROP_POS2):
         return False
     if pos1 == "動詞" and pos2 != "自立":
         return False
@@ -440,21 +450,55 @@ class Glosser(object):
                     return entry
         return cands[0]
 
+    def homophones(self, surface):
+        """Every word a kana spelling could be, best first.
+
+        さわる is 触る "to touch" and 障る "to be harmful to". Picking one and
+        printing it alone is a coin toss, and on a reading question the four
+        options are kana precisely because the kanji is the answer. So the
+        alternatives are listed together, each named by its kanji:
+
+            to touch (触る); to be harmful to, to hinder (障る)
+
+        Capped at three: past that it is a dictionary page, not a hint.
+        """
+        cands = self.jmdict.get(surface) or []
+        out, seen_g = [], set()
+        for entry in cands:
+            if entry.get("r") and entry["r"] != surface:
+                continue
+            glosses = ", ".join(entry["g"][:2])
+            if not glosses or glosses in seen_g:
+                continue
+            seen_g.add(glosses)
+            head = entry.get("k")
+            out.append("%s (%s)" % (glosses, head) if head else glosses)
+            if len(out) == 3:
+                break
+        return out
+
     def level_of(self, word, reading):
         level = self.jlpt_word.get(word)
         if level is None and reading:
             level = self.jlpt_reading.get(reading)
         return level
 
-    def words_in(self, text, seen, strict=False, options=False):
+    def words_in(self, text, seen, strict=False, options=False, question=False):
         """Ordered list of (key, entry) worth glossing, skipping `seen` keys.
 
-        `options` is for the four answer choices. A question asks you to tell
-        them apart, so there the level filter is off: an N5 word among an N1
-        paper's options is still the thing being chosen between, and a reader
-        who half-knows it wants it named. Prompts and reading passages keep
-        the level rule - glossing every easy word in a page of prose would
-        bury the hard ones.
+        `question` is the sentence being asked about and its four options -
+        the words on the screen when someone is stuck. There every filter
+        comes off: no level cut, no stop list, and pronouns and
+        interjections included. These are the words a reader can be stopped
+        by, and "everyone knows it by N3" is a statement about the average
+        candidate, not about the person reading this question.
+
+        Reading passages and listening transcripts keep the level rule.
+        They run to hundreds of words, and a list with every は and する in
+        it buries the one word that actually stopped you.
+
+        `options` narrows that further to one answer choice, which brings its
+        own debris rule below.
 
         Options used to be read under is_one_word() when the instruction was
         "read this" or "write this in kanji", which skipped the whole option
@@ -469,23 +513,42 @@ class Glosser(object):
             tokens = list(self.tok.tokenize(chunk))
             if strict and not options and not is_one_word(tokens):
                 continue
-            first_content = next((i for i, tk in enumerate(tokens)
-                                  if is_candidate(tk)), -1)
+            # On a "read this" or "write this in kanji" question the option
+            # is one word or it is not a word at all, so its content word has
+            # to be the whole of it and start at the beginning:
+            #
+            #   けって    -> けっ(verb) + て(particle)      one word -> ける
+            #   施されて  -> 施さ(verb) + れ + て            one word -> 施す
+            #   さいしょ  -> さい(noun) + しょ(noun)         not a word
+            #   さいしゅう -> さ + いしゅう(noun)             not a word
+            #
+            # いしゅう ("a different religion or sect") and さい ("disparity")
+            # are real entries that are not on the paper: they are wreckage
+            # from splitting a wrong answer that was never a word. What this
+            # no longer asks - and what used to throw 施されて away with them -
+            # is that everything after the content word be an ending: れ is
+            # tagged a suffix verb, not an auxiliary.
+            content = [i for i, tk in enumerate(tokens)
+                       if is_candidate(tk, question)]
+            if options and strict and content[:1] != [0]:
+                continue
+            if options and strict and len(content) != 1:
+                continue
             for pos_i, token in enumerate(tokens):
-                if not is_candidate(token):
+                if not is_candidate(token, question):
                     continue
                 if fragment_of_compound(tokens, pos_i):
                     continue
                 key = normalise(token)
                 if len(key) < 2 and not has_kanji(key):
                     continue
-                if key in STOP or key in seen:
+                if key in seen:
                     continue
-                # Debris guard for options: a second content word inside one
-                # option is usually the tokenizer splitting a wrong answer
-                # that was never a word. A kanji one is real; a kana one is
-                # wreckage.
-                if options and pos_i != first_content and not has_kanji(key):
+                # する, こと, これ and the rest are glue in a passage and
+                # worth naming in the sentence being asked about - おる is
+                # one of the four answers on the question this was written
+                # for, and the stop list had been swallowing it.
+                if not question and key in STOP:
                     continue
 
                 hint = to_hiragana(token.reading or "")
@@ -499,7 +562,7 @@ class Glosser(object):
 
                 reading = entry["r"]
                 level = self.level_of(key, reading)
-                if not options and not keep_word(level, entry, key):
+                if not question and not keep_word(level, entry, key):
                     seen.add(key)
                     continue
 
@@ -535,7 +598,12 @@ class Glosser(object):
                 self.hits += 1
                 seen.add(key)
                 ruby = ruby_segments(key, reading) if has_kanji(key) else None
-                item = {"w": key, "g": entry["g"]}
+                glosses = entry["g"]
+                if question and not has_kanji(key):
+                    merged = self.homophones(key)
+                    if len(merged) > 1:
+                        glosses = merged
+                item = {"w": key, "g": glosses}
                 # Furigana only means anything over kanji; a katakana or
                 # hiragana word is already its own reading.
                 if has_kanji(key):
@@ -586,8 +654,8 @@ def build_exam(exam, glosser):
     per_question = {}
     per_passage = {}
 
-    def collect(text, seen, sink, strict=False, options=False):
-        for key, item in glosser.words_in(text, seen, strict, options):
+    def collect(text, seen, sink, strict=False, options=False, question=False):
+        for key, item in glosser.words_in(text, seen, strict, options, question):
             words.setdefault(key, item)
             sink.append(key)
 
@@ -610,7 +678,7 @@ def build_exam(exam, glosser):
 
             seen = set()
             keys = []
-            collect(q.get("prompt") or "", seen, keys)
+            collect(q.get("prompt") or "", seen, keys, question=True)
             # Both halves of the question: the prompt and the options. On a
             # reading or kanji-spelling question the options are variants of
             # one word rather than vocabulary of their own, so they are read
@@ -618,7 +686,8 @@ def build_exam(exam, glosser):
             variants = options_are_variants(q)
             kanji_meanings = load_kanji_meanings()
             for choice in q.get("choices") or []:
-                collect(choice, seen, keys, strict=variants, options=True)
+                collect(choice, seen, keys, strict=variants, options=True,
+                        question=True)
                 # A single-character option: the dictionary has nothing
                 # useful to say about it, the kanji lists do.
                 lone = strip_html(choice).strip()
