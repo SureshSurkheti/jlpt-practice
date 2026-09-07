@@ -1172,6 +1172,20 @@ body > main { flex: 1 0 auto; }
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
+  /* Line the row up with the header above it. Each link carries its own
+     padding, so "Home" began 11px right of the logo's edge while the picker
+     above sat flush right; the row is pulled left by that padding so the
+     first word aligns with the logo, and stretched to the container's right
+     edge with the links spread so the last pill aligns with the picker.
+     When a language overflows there is no free space to spread, and the row
+     simply scrolls as before. */
+  .main-nav {
+    --nav-pad: 11px;
+    margin-left: calc(-1 * var(--nav-pad));
+    width: calc(100% + var(--nav-pad));
+    flex-basis: calc(100% + var(--nav-pad));
+    justify-content: space-between;
+  }
 
   .main-nav::-webkit-scrollbar { display: none; }
 
@@ -2781,11 +2795,11 @@ body.is-leaving { opacity: 0; }
    longer languages (Vietnamese, Filipino) still scroll, with the fade. */
 @media (max-width: 430px) {
   .main-nav a { padding: 8px 7px; font-size: 0.86rem; }
-  .main-nav { gap: 2px; }
+  .main-nav { gap: 2px; --nav-pad: 7px; }
 }
 @media (max-width: 380px) {
   .main-nav a { padding: 8px 5px; }
-  .main-nav { gap: 0; }
+  .main-nav { gap: 0; --nav-pad: 5px; }
 }
 
 /* ==========================================================================
