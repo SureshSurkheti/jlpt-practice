@@ -158,6 +158,42 @@ body > main { flex: 1 0 auto; }
   gap: clamp(12px, 1.6vw, 24px);
 }
 
+/* The tagline under the logo names the page, so its length changes from page
+   to page - "About" to "Word and grammar lists", and longer again in the
+   other eleven languages. With the three parts merely spread apart, the
+   brand's width decided where the menu began, so the menu slid sideways
+   every time you moved between tabs: 416px on About, 424px on Study, and up
+   to 40px in Vietnamese. Three columns instead, the outer two equal, put
+   the menu on the container's centre line and hold it there.
+
+   For that to hold, the brand has to measure the same on every page, so the
+   tagline is taken out of the measurement - width:0, then stretched back
+   over the column it was given by min-width - and what sets the floor is
+   the logo and "JLPT Practice", which never change. The tagline still gets
+   the full width of the column to draw in, and only truncates if a
+   translation outgrows it. Reserving a fixed slot for it instead would have
+   been simpler, but it steals that width from the menu, which wraps to two
+   rows above 1100px rather than scrolling: it put the English header onto
+   two rows at 1200px. The stacked phone header below 760px keeps its own
+   flex rules. */
+@media (min-width: 761px) {
+  .nav-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .nav-tools { justify-self: end; }
+
+  .brand-text { flex: 1 1 auto; min-width: min-content; }
+
+  .brand-tag {
+    width: 0;
+    min-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .brand-wrap {
   display: flex;
   align-items: center;

@@ -26,14 +26,14 @@
    and the listening player from Google Drive, and neither is ours to store.
    Opaque responses also cost far more quota than their size suggests. */
 
-var VERSION = "4c924b3479ad";
+var VERSION = "9490de412e33";
 var SHELL = "shell-" + VERSION;
 var DATA = "data-" + VERSION;
 var OFFLINE = "/offline.html";
 
 var PRECACHE = [
   OFFLINE,
-  "/assets/css/styles.css?v=6c75a341",
+  "/assets/css/styles.css?v=1f4278ba",
   "/assets/css/exam.css?v=99699569",
   "/assets/js/i18n.js?v=b87e0299",
   "/assets/js/site.js?v=9abce3c7"
