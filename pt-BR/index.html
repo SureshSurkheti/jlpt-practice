@@ -42,7 +42,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website","url":"https://jlpt.sureshsurkheti.com/pt-BR/","name":"JLPT Practice","inLanguage":"pt-BR","description":"87 provas de treino de N5 a N1, cronometradas e corrigidas automaticamente, com explicações das respostas e transcrições da audição.","publisher":{"@type":"Organization","name":"JLPT Practice"}},{"@type":"WebPage","@id":"https://jlpt.sureshsurkheti.com/pt-BR/#webpage","url":"https://jlpt.sureshsurkheti.com/pt-BR/","name":"Pratique japonês no formato real do JLPT.","description":"87 provas de treino de N5 a N1, cronometradas e corrigidas automaticamente, com explicações das respostas e transcrições da audição.","inLanguage":"pt-BR","isPartOf":{"@id":"https://jlpt.sureshsurkheti.com/pt-BR/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=e771a709" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=dbee0739" />
       <script>window.SITE_COUNTS={"words":9639,"kanji":2211,"grammar":280,"nepali":1753,"papers":87};</script>
       <script>window.SITE_CONTACT="surkhetisuresh123@gmail.com";</script>
   </head>
@@ -147,6 +147,22 @@
         </div>
       </section>
 
+      <!-- What the queue in site.js (jlpt.srs) has for you today. The
+           newcomer's wording is written here rather than drawn by the
+           script, so the strip is the same height before and after
+           renderReviewStrip() runs - it changes one sentence, nothing
+           else - and so the page still says what this is with no
+           JavaScript at all. -->
+      <section class="container review-strip-wrap">
+        <div class="review-strip">
+          <div class="review-strip-text">
+            <h2 data-i18n="home.reviewTitle">Revisão diária</h2>
+            <p id="reviewStripBody" data-i18n="home.reviewNew">Marque as palavras com ✓ ou ✗ enquanto estuda. O que você errar volta aqui no dia certo.</p>
+          </div>
+          <a class="btn btn-primary" href="./review.html" data-i18n="home.reviewOpen">Abrir a revisão</a>
+        </div>
+      </section>
+
       <!-- Filled by renderFeatures() from SITE_COUNTS, which the generator
            writes from the data files. -->
       <section class="container features-section">
@@ -248,7 +264,7 @@
       <nav class="container footer-links" aria-label="Your study">
         <a href="./quiz.html" data-i18n="quiz.title">Teste-se</a>
         <a href="./stats.html" data-i18n="stats.title">Seu progresso</a>
-        <a href="./review.html" data-i18n="review.title">Caderno de erros</a>
+        <a href="./review.html" data-i18n="review.title">Revisão diária</a>
       </nav>
           <nav class="container lang-links" aria-label="Idioma">
         <span>Idioma</span>
@@ -257,8 +273,8 @@
     </footer>
 
     <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
-    <script defer src="/assets/i18n/en.js?v=d15ef54d"></script>
-    <script defer src="/assets/i18n/pt-BR.js?v=9393913a"></script>
-    <script defer src="/assets/js/site.js?v=0560e0c6"></script>
+    <script defer src="/assets/i18n/en.js?v=90828220"></script>
+    <script defer src="/assets/i18n/pt-BR.js?v=cc67f56e"></script>
+    <script defer src="/assets/js/site.js?v=9abce3c7"></script>
   </body>
 </html>

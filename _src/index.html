@@ -133,6 +133,22 @@
         </div>
       </section>
 
+      <!-- What the queue in site.js (jlpt.srs) has for you today. The
+           newcomer's wording is written here rather than drawn by the
+           script, so the strip is the same height before and after
+           renderReviewStrip() runs - it changes one sentence, nothing
+           else - and so the page still says what this is with no
+           JavaScript at all. -->
+      <section class="container review-strip-wrap">
+        <div class="review-strip">
+          <div class="review-strip-text">
+            <h2 data-i18n="home.reviewTitle"></h2>
+            <p id="reviewStripBody" data-i18n="home.reviewNew"></p>
+          </div>
+          <a class="btn btn-primary" href="review.html" data-i18n="home.reviewOpen"></a>
+        </div>
+      </section>
+
       <!-- Filled by renderFeatures() from SITE_COUNTS, which the generator
            writes from the data files. -->
       <section class="container features-section">

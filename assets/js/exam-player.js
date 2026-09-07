@@ -438,38 +438,30 @@
   /* The mistake notebook (review.html). Every wrong answer is filed by exam
      id and question key; a right answer counts towards clearing it. Listening
      is left out - without the recording there is nothing to re-ask. */
-  var MISTAKES_KEY = "jlpt.mistakes";
-  function readMistakes() {
-    try {
-      var d = JSON.parse(localStorage.getItem(MISTAKES_KEY) || "null");
-      return d && d.items ? d : { v: 1, items: {} };
-    } catch (e) { return { v: 1, items: {} }; }
-  }
+  /* Wrong answers go into the review queue (jlpt.srs, see site.js), which
+     decides the day each one comes back rather than keeping a flat pile.
+     Answering one of them right here moves it along the same as answering
+     it right on the review page would. Listening is never filed: with no
+     recording there is nothing to ask again. */
   function noteMistakes(items) {
-    var store = readMistakes(), changed = false;
+    if (typeof srsEnrol !== "function") return;
     items.forEach(function (item) {
       var q = item.q;
       if (!q.answer || item.category === "listening") return;
       var picked = state.answers[item.key];
       if (!picked) return;
-      var id = state.exam.id + "|" + item.key;
-      var rec = store.items[id];
+      var id = "q|" + state.exam.id + "|" + item.key;
       if (picked !== q.answer) {
-        if (rec) { rec.wrong = (rec.wrong || 0) + 1; rec.right = 0; rec.at = Date.now(); }
-        else store.items[id] = { exam: state.exam.id, key: item.key, level: state.exam.level,
-                                 category: item.category, wrong: 1, right: 0, at: Date.now() };
-        changed = true;
-      } else if (rec) {
-        rec.right = (rec.right || 0) + 1;
-        if (rec.right >= 2) delete store.items[id];
-        changed = true;
+        srsEnrol(id, { t: "q", lv: state.exam.level, ex: state.exam.id,
+                       k: item.key, cat: item.category });
+      } else {
+        srsGrade(id, true);
       }
     });
-    if (changed) {
-      try { localStorage.setItem(MISTAKES_KEY, JSON.stringify(store)); } catch (e) {}
-    }
   }
-  function mistakeCount() { return Object.keys(readMistakes().items).length; }
+  function mistakeCount() {
+    return typeof srsCounts === "function" ? srsCounts().due : 0;
+  }
 
   var BEST_KEY = "jlpt.best";
 

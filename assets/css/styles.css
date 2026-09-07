@@ -2693,6 +2693,51 @@ body.is-leaving { opacity: 0; }
   .study-marks { padding-bottom: 14px; }
 }
 
+/* ------------------------------------------------------------------------
+   The home page's review strip.
+
+   One row: what the queue has for you today and the way into it. Its height
+   is fixed rather than left to the sentence inside it, because that sentence
+   is the one thing the script changes after the page has painted - a strip
+   that grew by a line when the count arrived would push the whole page down.
+   ------------------------------------------------------------------------ */
+.review-strip-wrap { padding-top: clamp(20px, 2.4vw, 32px); }
+.review-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  min-height: 92px;
+  padding: 18px 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 16px;
+}
+.review-strip-text { min-width: 0; }
+.review-strip h2 { margin: 0 0 4px; font-size: 1.1rem; color: var(--navy); }
+.review-strip p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  /* Exactly two lines, never one and never three: this sentence is the one
+     thing the script rewrites after the page has painted, and "5 due today"
+     is a line shorter than the line it replaces. Clamped at the top so a
+     long translation cannot spill, floored at the bottom so a short count
+     cannot shrink the strip and lift the whole page under it. */
+  min-height: 3.1em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.review-strip .btn { flex: none; }
+@media (max-width: 620px) {
+  .review-strip { flex-direction: column; align-items: stretch; }
+  .review-strip .btn { justify-content: center; }
+}
+
 /* Progress page: one line per level with marks. */
 .stats-know-list {
   list-style: none;
@@ -3296,6 +3341,11 @@ body.is-leaving { opacity: 0; }
    is held, so the footer does not move when it appears (a shift of 0.08
    measured live without this). */
 .quiz-root { max-width: 720px; min-height: 240px; }
+/* The review card carries more than the quiz's: a breakdown line, the count,
+   the sentence about the intervals, the button and the way to empty the
+   queue. Reserve what it actually needs, or the footer sits inside the first
+   screen and drops when the card arrives. */
+.review-page .quiz-root { min-height: 340px; }
 .quiz-card {
   background: var(--panel);
   border: 1px solid var(--line);

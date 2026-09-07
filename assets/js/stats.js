@@ -89,18 +89,18 @@ function renderKnow() {
   list.hidden = false;
 }
 
-/* The notebook the exam player keeps (jlpt.mistakes): how many wrong
-   answers are waiting, and the way to them. */
+/* The review queue (jlpt.srs, see site.js): how much is due today, how much
+   is waiting behind it, and the way to it. */
 function renderMistakes() {
-  let n = 0;
-  try {
-    const d = JSON.parse(localStorage.getItem('jlpt.mistakes') || 'null');
-    n = d && d.items ? Object.keys(d.items).length : 0;
-  } catch (e) { n = 0; }
+  const c = srsCounts();
   const count = document.getElementById('mistakesCount');
   const open = document.getElementById('mistakesOpen');
-  if (count) count.textContent = n ? tf('stats.mistakesCount', { n }) : t('stats.mistakesNone');
-  if (open) open.hidden = !n;
+  if (count) {
+    count.textContent = c.total
+      ? tf('stats.mistakesCount', { n: c.due, t: c.total })
+      : t('stats.mistakesNone');
+  }
+  if (open) open.hidden = !c.total;
 }
 
 function renderLevelProgress(rows) {

@@ -291,6 +291,12 @@ function setKnow(level, word, s) {
   if (s === 'k' || s === 'd') d.items[id] = { s, at: Date.now() };
   else delete d.items[id];
   try { localStorage.setItem(KNOW_KEY, JSON.stringify(d)); } catch (e) { /* full or blocked */ }
+  /* A word you are still learning joins the review queue; one you know, or
+     one whose mark you cleared, leaves it. Done here rather than at each
+     call site so the list, the quiz and the queue can never disagree. */
+  const qid = 'w|' + level + '|' + word;
+  if (s === 'd') srsEnrol(qid, { t: 'w', lv: level, w: word });
+  else srsDrop(qid);
   return d;
 }
 
@@ -304,6 +310,187 @@ function knowCounts(level) {
     if (s === 'k' || s === 'd') out[s] += 1;
   });
   return out;
+}
+
+/* ==========================================================================
+   The review queue: what to study today, and when to see it again.
+
+   Marking a word ✗ or getting a question wrong used to leave a flat pile
+   that only grew. A pile is not a plan: a learner with 300 items in it has
+   no way to know which of them today is the day for, so they review the
+   first twenty every time and never meet the other 280 again.
+
+   So each item carries a box and a date. A right answer moves it up a box
+   and out of sight for that box's interval - one day, then three, a week, a
+   fortnight, a month - and the sixth right answer retires it. A wrong
+   answer sends it back to box 0, due today. These are the intervals every
+   spaced-repetition scheme settles near, and they are what turns an endless
+   pile into a handful a day.
+
+   One queue for both kinds of item. A word from a study list and a question
+   from a paper are both "something I got wrong", and splitting them would
+   mean two habits instead of one.
+
+   In this browser only, like every other record here.
+   ========================================================================== */
+
+const SRS_KEY = 'jlpt.srs';
+const SRS_STEPS = [1, 3, 7, 14, 30];   // days bought by each right answer
+const SRS_DAY = 86400000;
+
+/* Dates, not moments: an item answered right at 23:50 should not come back
+   ten minutes later. Everything is due at the start of its day. */
+function srsDayStart(ms) {
+  const d = new Date(ms == null ? Date.now() : ms);
+  d.setHours(0, 0, 0, 0);
+  return d.getTime();
+}
+
+function readSrs() {
+  let d;
+  try { d = JSON.parse(localStorage.getItem(SRS_KEY) || 'null'); } catch (e) { d = null; }
+  if (!d || !d.items || typeof d.items !== 'object') d = { v: 1, m: 0, items: {} };
+  return d.m ? d : srsMigrate(d);
+}
+
+function writeSrs(d) {
+  try { localStorage.setItem(SRS_KEY, JSON.stringify(d)); } catch (e) { /* full or blocked */ }
+  return d;
+}
+
+/* Whatever was marked before the queue existed joins it, due today: the
+   mistake notebook's questions and every word marked ✗. Nobody loses the
+   work they had already done. Runs once. */
+function srsMigrate(d) {
+  d.m = 1;
+  const now = Date.now();
+  try {
+    const old = JSON.parse(localStorage.getItem('jlpt.mistakes') || 'null');
+    if (old && old.items) {
+      Object.keys(old.items).forEach((id) => {
+        const r = old.items[id];
+        if (!r || !r.exam || !r.key) return;
+        const key = 'q|' + r.exam + '|' + r.key;
+        if (d.items[key]) return;
+        d.items[key] = { t: 'q', lv: r.level || '', ex: r.exam, k: r.key,
+                         cat: r.category || '', box: 0, due: srsDayStart(now),
+                         at: r.at || now, seen: 0, right: 0, wrong: r.wrong || 1 };
+      });
+    }
+  } catch (e) { /* nothing to carry over */ }
+  try {
+    const know = JSON.parse(localStorage.getItem(KNOW_KEY) || 'null');
+    if (know && know.items) {
+      Object.keys(know.items).forEach((id) => {
+        const rec = know.items[id];
+        if (!rec || rec.s !== 'd') return;
+        const bar = id.indexOf('|');
+        if (bar < 1) return;
+        const key = 'w|' + id;
+        if (d.items[key]) return;
+        d.items[key] = { t: 'w', lv: id.slice(0, bar), w: id.slice(bar + 1),
+                         box: 0, due: srsDayStart(now), at: rec.at || now,
+                         seen: 0, right: 0, wrong: 1 };
+      });
+    }
+  } catch (e) { /* nothing to carry over */ }
+  return writeSrs(d);
+}
+
+/* Into the queue, due today. An item already there is knocked back to the
+   start rather than added twice. */
+function srsEnrol(id, meta) {
+  const d = readSrs();
+  const rec = d.items[id];
+  if (rec) {
+    rec.box = 0;
+    rec.due = srsDayStart();
+    rec.wrong = (rec.wrong || 0) + 1;
+  } else {
+    d.items[id] = Object.assign({ box: 0, due: srsDayStart(), at: Date.now(),
+                                  seen: 0, right: 0, wrong: 1 }, meta);
+  }
+  return writeSrs(d);
+}
+
+function srsDrop(id) {
+  const d = readSrs();
+  if (d.items[id]) { delete d.items[id]; writeSrs(d); }
+  return d;
+}
+
+/* Mark one answer. Returns what happened, so the page can say when the item
+   will be back: {days} for the next sighting, or {done:true} when the item
+   has been answered right often enough to leave the queue for good. */
+function srsGrade(id, right) {
+  const d = readSrs();
+  const rec = d.items[id];
+  if (!rec) return null;
+  rec.seen = (rec.seen || 0) + 1;
+
+  if (!right) {
+    rec.box = 0;
+    rec.due = srsDayStart();
+    rec.wrong = (rec.wrong || 0) + 1;
+    writeSrs(d);
+    return { done: false, days: 0 };
+  }
+
+  rec.right = (rec.right || 0) + 1;
+  const box = rec.box || 0;
+  if (box >= SRS_STEPS.length) {
+    delete d.items[id];
+    writeSrs(d);
+    /* Written before setKnow, which reads the queue back to drop the same
+       item: it must find it already gone. */
+    if (rec.t === 'w' && rec.lv && rec.w) setKnow(rec.lv, rec.w, 'k');
+    return { done: true, days: 0 };
+  }
+  rec.box = box + 1;
+  rec.due = srsDayStart() + SRS_STEPS[box] * SRS_DAY;
+  writeSrs(d);
+  return { done: false, days: SRS_STEPS[box] };
+}
+
+/* Everything due now, soonest first. */
+function srsDue(at) {
+  const now = at == null ? Date.now() : at;
+  const items = readSrs().items;
+  return Object.keys(items)
+    .filter((id) => (items[id].due || 0) <= now)
+    .map((id) => Object.assign({ id }, items[id]))
+    .sort((a, b) => (a.due - b.due) || (a.at - b.at));
+}
+
+/* The next few items whether or not they are due, for a learner who has
+   cleared today's queue and wants to keep going. */
+function srsAhead(n) {
+  const items = readSrs().items;
+  return Object.keys(items)
+    .map((id) => Object.assign({ id }, items[id]))
+    .sort((a, b) => (a.due - b.due) || (a.at - b.at))
+    .slice(0, n || 20);
+}
+
+function srsCounts() {
+  const items = readSrs().items;
+  const now = Date.now();
+  const out = { due: 0, total: 0, words: 0, questions: 0, next: 0 };
+  Object.keys(items).forEach((id) => {
+    const rec = items[id];
+    out.total += 1;
+    if (rec.t === 'w') out.words += 1; else out.questions += 1;
+    if ((rec.due || 0) <= now) out.due += 1;
+    else if (!out.next || rec.due < out.next) out.next = rec.due;
+  });
+  return out;
+}
+
+/* "tomorrow" or "in n days", counted in whole days from today. */
+function srsWhen(due) {
+  const days = Math.round((srsDayStart(due) - srsDayStart()) / SRS_DAY);
+  return days <= 1 ? { key: 'review.nextTomorrow', days: 1 }
+                   : { key: 'review.nextIn', days };
 }
 
 function levelDesc(key) {
@@ -991,11 +1178,25 @@ function renderExamCountdown() {
   `;
 }
 
+/* The home page's one line about the review queue.
+
+   The strip is in the markup with the newcomer's wording already in it, so
+   it is the same height before and after this runs and says something
+   sensible with no JavaScript at all. Only the sentence changes here. */
+function renderReviewStrip() {
+  const body = document.getElementById('reviewStripBody');
+  if (!body) return;
+  const c = srsCounts();
+  if (c.due) body.textContent = tf('home.reviewDue', { n: c.due });
+  else if (c.total) body.textContent = tf('home.reviewClear', { n: c.total });
+}
+
 function renderAll() {
   renderFeatures();
   renderLevels();
   renderNotice();
   renderExamCountdown();
+  renderReviewStrip();
 }
 
 /* Offline support.
