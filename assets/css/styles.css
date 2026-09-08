@@ -2412,9 +2412,6 @@ body.is-leaving { opacity: 0; }
    clear. */
 .study-page { --controls-h: var(--controls-raw, 0px); }
 
-/* A wrapper around the two pill groups that is nothing at all until a phone
-   needs it to be a sideways-scrolling line. */
-.study-switch { display: contents; }
 
 /* Where a change of list lands (see returnToListTop in study.js): under the
    pinned pair, not behind them, so the new count and the column heading are
@@ -2774,36 +2771,29 @@ body.is-leaving { opacity: 0; }
      that scrolling past should cost you the navigation for. */
   .study-page:not(.kanji-page) .site-header { position: static; }
 
-  /* The bar travels here too, but it has to be smaller first.
+  /* The bar travels here too, and everything on it stays in sight.
 
-     Laid out as it is on a desktop it is three rows on a 390px screen - the
-     five levels, the three kinds, then the search - and 190px of an 844px
-     phone is too much to hold against a list permanently. So the two pill
-     groups become one line that scrolls sideways: everything is still
-     reachable, in about a third of the height. That leaves a line of pills
-     and a search box, and the column heading pins under them.
+     The first try put the two pill groups on one line that scrolled
+     sideways, which made the pinned bar 126px instead of 190px. It also hid
+     three of the five levels off the left edge, and a control you have to go
+     looking for sideways is worse than a control that costs a few pixels:
+     on a phone there is no hover, no scrollbar and no second chance to
+     notice it is there.
 
-     The site header has already stood down at this width, so this is all
-     that is held: the top of the screen belongs to the list and the two
-     controls you use while reading it. */
-  .study-page .study-switch {
-    display: flex;
-    gap: 8px;
-    max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    /* Room for the pills' own shadow, which a scroll container clips. */
-    padding-bottom: 3px;
-  }
-  .study-page .study-switch::-webkit-scrollbar { display: none; }
-  /* The line scrolls now, so the two groups inside it must not: nested
-     scrollers on a phone means a sideways flick that does nothing. */
-  .study-page .study-switch .study-tabs { overflow: visible; flex: none; }
-
+     So all three rows stay - levels, kinds, search - and the height comes
+     out of the rows themselves instead. Tighter pills, a tighter field and
+     tighter gaps bring 190px down to about 165, which with the column
+     heading under it is a quarter of an 844px screen. The site header has
+     already stood down at this width, so that is everything being held. */
   .study-page .study-controls {
-    gap: 10px 14px;
+    gap: 8px 12px;
+    padding-top: 8px;
     padding-bottom: 12px;
   }
+  .study-page .study-tab { padding: 7px 12px; }
+  .study-page .study-tabs { padding: 3px; }
+  .study-page .study-search { padding: 9px 15px; }
+  .study-page .study-quiz { padding: 9px 18px; }
   .study-page .study-find { width: 100%; max-width: none; margin-left: 0; }
 
   .study-page.has-bar .study-controls {
