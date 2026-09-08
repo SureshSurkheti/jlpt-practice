@@ -1141,8 +1141,13 @@ def main():
                 html = re.sub(r'<div id="examsList">\s*<div class="exam-loading">.*?</div>\s*</div>',
                               '<div id="examsList">%s</div>' % level_picker(table, en),
                               html, count=1, flags=re.S)
+                # Inside a container of its own: <main class="exams-root">
+                # holds one, and appending before </main> put the index
+                # outside it, hard against both edges of the window.
                 html = html.replace(
-                    "</main>", "  %s\n    </main>" % paper_index(exams, table, en), 1)
+                    "</main>",
+                    '  <div class="container">%s</div>\n    </main>'
+                    % paper_index(exams, table, en), 1)
             if page == "levels.html":
                 html = html.replace(
                     '<div id="levelsContent"></div>',

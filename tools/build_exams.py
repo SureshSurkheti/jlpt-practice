@@ -295,18 +295,6 @@ BLOCK_RE = re.compile(
 EXAMPLE_ITEM = re.compile(r"^\s*[（(]\s*例\s*[)）]")
 
 
-def question_has_content(prompt, passage, choices):
-    """Is there anything here for a reader to work from?
-
-    Text in the prompt, in the passage or in any option; or a picture in any
-    of them, which is what a listening question whose four options are
-    drawings has instead of text.
-    """
-    parts = [prompt or "", passage or ""] + [c or "" for c in choices.values()]
-    if any(text_of(part) for part in parts):
-        return True
-    return any("<img" in part.lower() for part in parts)
-
 
 def parse_source(path):
     """Return (questions, note). questions is [] for placeholder pages."""
@@ -434,24 +422,21 @@ def parse_source(path):
             answer = None
         number, prompt = split_prompt_number(q["prompt"])
 
-        # A question with nothing to read is not a question.
+        # No "has anything to read" test here, deliberately.
         #
-        # The guards above ask for a prompt and for two or more options, and
-        # both can be satisfied by nothing: a prompt that is only the booklet
-        # number, which split_prompt_number then takes away, and options that
-        # are present as four empty strings. 1,288 items of 8,960 came
-        # through that way - 14% of the library, in 79 of the 91 papers, and
-        # almost all of them listening, where the source page carried the
-        # answer key but never the words. They arrived on screen as four
-        # blank radio buttons under a number, they were counted in the
-        # paper's total and in the site's, and there was no way to answer one
-        # except by guessing.
+        # One was added and removed again. 1,288 questions of 8,960 carry no
+        # prompt and no option text, and that looks like broken data until
+        # you know the format: in 問題3 and 問題4 of a listening section the
+        # paper itself says 問題用紙に何も印刷されていません - nothing is
+        # printed on the question paper - and the options are read aloud. 853
+        # of the 1,288 have three options, which is 問題4 exactly. They are
+        # not damaged records; they are what those pages look like, and
+        # 1,280 of them sit in sections the reader can hear. The player has
+        # handled them since it was written - see isBlankChoices() in
+        # exam-player.js, which tells the reader to listen for the options.
         #
-        # An image counts as content: some listening options really are four
-        # pictures, and the prompt for those is properly empty.
-        if not question_has_content(prompt, q.get("passage"), choices):
-            continue
-
+        # Dropping them cost the library 14% of its questions and every
+        # 問題4 in it.
         out.append({
             "n": qn,
             "number": number,
