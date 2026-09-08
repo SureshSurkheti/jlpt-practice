@@ -330,6 +330,15 @@
             esc(tf("exams.audioPartial", { have: withAudio, all: secs })) +
             "</span>";
         }
+        /* Some of those papers can still be listened to end to end, on
+           somebody else's upload that the paper links out to. Worth saying
+           here: otherwise the row reads as a dead end when it is not. Said
+           quietly and in the muted colour, because it is not our recording
+           and it is not part of the paper. */
+        if (e.listeningFull && withAudio < secs) {
+          cell += '<span class="exam-row-linked">' +
+            esc(t("exams.audioLinked")) + "</span>";
+        }
       }
       return cell;
     }).join("");

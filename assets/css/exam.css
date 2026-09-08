@@ -1439,6 +1439,15 @@
   white-space: nowrap;
 }
 
+/* Follows the red "Audio 1/5" to say the paper links out to a full recording
+   anyway. Deliberately quiet: it is a way through, not a feature of the
+   paper, and the recording is not ours. */
+.exam-row-linked {
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .exam-row-best {
   display: flex;
   align-items: baseline;
@@ -2463,4 +2472,16 @@
   margin: 0;
   border: 0;
   background: none;
+}
+
+/* The link to a recording that is not ours. Set apart from the help links
+   below it, and followed by a line saying whose it is - a reader handed
+   somebody else's upload should be told so before they click, not after. */
+.q-audio-full { font-weight: 700; }
+
+.q-audio-whose {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 0.82rem;
+  color: var(--muted);
 }

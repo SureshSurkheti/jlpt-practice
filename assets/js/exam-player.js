@@ -1440,11 +1440,28 @@
 
     /* A listening section whose recording was never archived. Without this
        the questions simply appeared with no player and no explanation, and
-       the only way to find out was to sit twenty-eight of them in silence. */
+       the only way to find out was to sit twenty-eight of them in silence.
+
+       For some of those papers the whole section - every 問題, not just this
+       one - can be heard on somebody else's upload. The link is offered here
+       rather than embedded: it is not our recording, and a link is the one
+       use of it that takes nothing from whoever put it up. It opens in a new
+       tab so the paper is not lost, and it is marked as leaving the site,
+       because the reader should know whose material they are about to be
+       handed. */
     if (!section.audio && section.category === "listening") {
+      var full = state.exam && state.exam.listeningFull;
       head.appendChild(el("div", "q-audio-aside is-failed",
         "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
-        "</strong><br>" + audioHelpHTML() + "</p>"));
+        "</strong><br>" +
+        (full && full.url
+          ? '<a class="text-link q-audio-full" href="' + esc(full.url) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            esc(t("exam.audioFullLink")) + "</a><br>" +
+            '<span class="q-audio-whose">' + esc(t("exam.audioFullWhose")) +
+            "</span><br>"
+          : "") +
+        audioHelpHTML() + "</p>"));
     }
 
     node.appendChild(head);
