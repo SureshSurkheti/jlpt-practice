@@ -967,8 +967,12 @@ body > main { flex: 1 0 auto; }
    make room.
    ========================================================================== */
 .site-footer {
-  margin-top: 56px;
-  padding: 44px 0 0;
+  /* Measured and trimmed: 56/44/36/18-20 was 391px of footer on a desktop
+     and 958px on a phone - on a phone, more than a screenful of navigation
+     under every page. None of it was doing anything the smaller numbers do
+     not. */
+  margin-top: 40px;
+  padding: 34px 0 0;
   background: var(--navy);
   color: #cdd8e6;
 }
@@ -981,13 +985,23 @@ body > main { flex: 1 0 auto; }
    the page off the side. Every track here is minmax(0, ...), which can. */
 .footer-grid {
   display: grid;
-  gap: 30px 40px;
+  gap: 26px 40px;
   grid-template-columns: minmax(0, 1fr);
-  padding-bottom: 36px;
+  padding-bottom: 26px;
+}
+
+/* Two columns as soon as two will fit, which on a phone is the single
+   biggest saving here: one column stacked brand, Practice, Study and This
+   site into 710px of grid, and side by side the two short columns cost one
+   row instead of two. Below 380px it goes back to one - "Copyright and
+   removal requests" in a 145px column is four lines of ragged text. */
+@media (min-width: 380px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-brand { grid-column: 1 / -1; }
 }
 
 @media (min-width: 620px) {
-  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-brand { grid-column: auto; }
 }
 
 @media (min-width: 900px) {
@@ -1116,8 +1130,13 @@ body > main { flex: 1 0 auto; }
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
+  /* Centred. It is one short line in a full-width strip, and hung on the
+     left edge it read as the start of a column that never arrived. In the
+     middle it reads as the end of the page, which is what it is. */
+  justify-content: center;
+  text-align: center;
   gap: 8px 20px;
-  padding: 15px 0;
+  padding: 13px 0;
   font-size: 0.85rem;
   color: #8fa2ba;
 }
@@ -1132,7 +1151,7 @@ body > main { flex: 1 0 auto; }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 6px 14px;
-  padding: 18px 0 20px;
+  padding: 14px 0 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 0.82rem;
   color: #8fa2ba;
@@ -2795,6 +2814,31 @@ body.is-leaving { opacity: 0; }
   .study-page .study-search { padding: 9px 15px; }
   .study-page .study-quiz { padding: 9px 18px; }
   .study-page .study-find { width: 100%; max-width: none; margin-left: 0; }
+
+  /* Edge to edge.
+
+     The list is the page at this width, and it was a card floating in an
+     18px gutter: a tenth of a 390px screen spent on nothing, and the column
+     that paid for it was the meaning - "to brush teeth, to polish" wrapping
+     to two lines with 36px of empty gutter beside it. The rows keep their
+     own padding, so no text touches the glass; only the card does. The bar
+     pads itself back in, so the pills stay where they were and it is just
+     its white that reaches the edges - the same width as the header above
+     it. */
+  .study-page .study-controls {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+  .study-page .study-count,
+  .study-page .study-note,
+  .study-page .study-marks,
+  .study-page .study-list {
+    margin-inline: calc(var(--gutter) * -1);
+    border-inline: 0;
+    border-radius: 0;
+  }
+  .study-page .study-row.is-head,
+  .study-page .study-row:last-child { border-radius: 0; }
 
   .study-page.has-bar .study-controls {
     position: sticky;
