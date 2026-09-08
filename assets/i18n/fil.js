@@ -376,6 +376,8 @@ I18N.register("fil", {
  "study.colReading": "Basa",
  "study.colStrokes": "Guhit",
  "study.colWord": "Salita",
+ "study.cover": "Takpan ang sagot",
+ "study.coverHint": "Itago ang bigkas at kahulugan; i-tap ang hilera para ipakita",
  "study.dontKnow": "Hindi ko alam",
  "study.filterAll": "Lahat",
  "study.filterKnown": "Alam ko",

@@ -376,6 +376,8 @@ I18N.register("vi", {
  "study.colReading": "Cách đọc",
  "study.colStrokes": "Số nét",
  "study.colWord": "Từ",
+ "study.cover": "Che đáp án",
+ "study.coverHint": "Ẩn cách đọc và nghĩa; chạm vào một dòng để hiện",
  "study.dontKnow": "Chưa biết",
  "study.filterAll": "Tất cả",
  "study.filterKnown": "Đã biết",

@@ -376,6 +376,8 @@ I18N.register("ja", {
  "study.colReading": "読み方",
  "study.colStrokes": "画数",
  "study.colWord": "単語",
+ "study.cover": "答えを隠す",
+ "study.coverHint": "読みと意味を隠します。行をタップすると表示されます",
  "study.dontKnow": "知らない",
  "study.filterAll": "すべて",
  "study.filterKnown": "知っている",

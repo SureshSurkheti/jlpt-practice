@@ -376,6 +376,8 @@ I18N.register("id", {
  "study.colReading": "Cara baca",
  "study.colStrokes": "Coretan",
  "study.colWord": "Kata",
+ "study.cover": "Tutup jawaban",
+ "study.coverHint": "Sembunyikan cara baca dan arti; ketuk baris untuk menampilkan",
  "study.dontKnow": "Belum tahu",
  "study.filterAll": "Semua",
  "study.filterKnown": "Tahu",

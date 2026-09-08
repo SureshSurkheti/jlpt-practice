@@ -376,6 +376,8 @@ I18N.register("en", {
  "study.colReading": "Reading",
  "study.colStrokes": "Strokes",
  "study.colWord": "Word",
+ "study.cover": "Cover answers",
+ "study.coverHint": "Hide the reading and meaning; tap a row to show it",
  "study.dontKnow": "Don't know",
  "study.filterAll": "All",
  "study.filterKnown": "Known",

@@ -376,6 +376,8 @@ I18N.register("pt-BR", {
  "study.colReading": "Leitura",
  "study.colStrokes": "Traços",
  "study.colWord": "Palavra",
+ "study.cover": "Cobrir respostas",
+ "study.coverHint": "Oculta a leitura e o significado; toque em uma linha para mostrar",
  "study.dontKnow": "Não sei",
  "study.filterAll": "Todas",
  "study.filterKnown": "Sei",

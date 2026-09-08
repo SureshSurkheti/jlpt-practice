@@ -376,6 +376,8 @@ I18N.register("ko", {
  "study.colReading": "읽기",
  "study.colStrokes": "획수",
  "study.colWord": "단어",
+ "study.cover": "정답 가리기",
+ "study.coverHint": "읽기와 뜻을 가립니다. 행을 누르면 보입니다",
  "study.dontKnow": "몰라요",
  "study.filterAll": "전체",
  "study.filterKnown": "알아요",

@@ -376,6 +376,8 @@ I18N.register("hi", {
  "study.colReading": "उच्चारण",
  "study.colStrokes": "स्ट्रोक",
  "study.colWord": "शब्द",
+ "study.cover": "उत्तर छिपाएँ",
+ "study.coverHint": "पढ़ने का तरीका और अर्थ छिपाएँ; दिखाने के लिए पंक्ति पर टैप करें",
  "study.dontKnow": "नहीं जानता",
  "study.filterAll": "सभी",
  "study.filterKnown": "जानता हूँ",

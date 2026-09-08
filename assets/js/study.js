@@ -34,12 +34,35 @@
      learning) or new (unmarked). The progress page links here with it. */
   var qShow = (qs.get("show") || "").toLowerCase();
 
+  /* Cover answers - the list read as a test rather than as a reference.
+
+     A word list is the page here, so it is not hidden behind a button: what
+     is worth hiding is the half of each row you are trying to remember. With
+     this on, everything after the first column is masked and a tap on the
+     mask shows that one row - the paper-over-the-column method every
+     vocabulary book expects you to improvise, built in.
+
+     Kept in this browser like the know/don't-know marks, because someone who
+     studies this way wants it on every time, not once. */
+  var COVER_KEY = "jlpt.study.cover";
+
+  function readCover() {
+    try { return localStorage.getItem(COVER_KEY) === "1"; }
+    catch (e) { return false; }   /* a private window still gets the toggle */
+  }
+
+  function saveCover() {
+    try { localStorage.setItem(COVER_KEY, state.cover ? "1" : "0"); }
+    catch (e) { /* nothing to do: it simply will not be remembered */ }
+  }
+
   var state = {
     level: /^N[1-5]$/.test(qLevel) ? qLevel : tabOn("level", "N5"),
     kind: ["words", "kanji", "grammar"].indexOf(qKind) !== -1
       ? qKind : tabOn("kind", "words"),
     query: "",
-    show: ["k", "d", "new"].indexOf(qShow) !== -1 ? qShow : ""
+    show: ["k", "d", "new"].indexOf(qShow) !== -1 ? qShow : "",
+    cover: readCover()
   };
   var cache = {};          // "words:N5" -> rows
 
@@ -162,6 +185,44 @@
     "</div>";
   }
 
+  /* The caption for the list, and the cover switch beside it.
+
+     It lives on this line rather than in the marks bar because the marks bar
+     is a word-list feature; kanji and grammar have a caption and nothing
+     else, and the right two thirds of it were empty on every screen wider
+     than a phone. */
+  function countLine(n, noun, withCover) {
+    var toggle = "";
+    if (withCover) {
+      toggle = '<button type="button" class="study-cover' +
+        (state.cover ? " is-on" : "") + '" aria-pressed="' +
+        (state.cover ? "true" : "false") + '" title="' +
+        esc(t("study.coverHint")) + '">' + esc(t("study.cover")) + "</button>";
+    }
+    return '<div class="study-count"><span>' + n + " " + esc(t(noun)) +
+      "</span>" + toggle + "</div>";
+  }
+
+  /* Turning it on and off moves nothing on the page: the class goes on the
+     list that is already there, rather than through render(), which would
+     rebuild two thousand rows and lose your place in them. */
+  function applyCover() {
+    var list = host.querySelector(".study-list");
+    if (list) {
+      list.classList.toggle("is-covered", state.cover);
+      if (state.cover) {
+        list.querySelectorAll(".study-row.is-shown").forEach(function (r) {
+          r.classList.remove("is-shown");
+        });
+      }
+    }
+    var btn = host.querySelector(".study-cover");
+    if (btn) {
+      btn.classList.toggle("is-on", state.cover);
+      btn.setAttribute("aria-pressed", state.cover ? "true" : "false");
+    }
+  }
+
   function render() {
     if (state.kind === "words") loadMarks();
     var rows = (cache[key()] || []).filter(matches);
@@ -173,8 +234,7 @@
       var why = state.show && !state.query ? "study.markEmpty" : "exams.noMatch";
       var noun = { words: "study.wordsCount", grammar: "study.patternsCount",
                    kanji: "study.kanjiCount" }[state.kind];
-      host.innerHTML =
-        '<p class="study-count">0 ' + esc(t(noun)) + "</p>" + bar +
+      host.innerHTML = countLine(0, noun, false) + bar +
         '<p class="stats-empty">' + esc(t(why)) + "</p>";
       return;
     }
@@ -204,10 +264,10 @@
       ? '<p class="study-note">' + esc(t("study.grammarNote")) + "</p>" : "";
 
     host.innerHTML =
-      '<p class="study-count">' + rows.length + " " +
-        esc(t(COUNT[state.kind])) +
-      "</p>" + note + bar +
-      '<div class="study-list">' + head + body + "</div>";
+      countLine(rows.length, COUNT[state.kind], true) + note + bar +
+      '<div class="study-list' + (state.cover ? " is-covered" : "") + '">' +
+        head + body +
+      "</div>";
   }
 
   var STATE_CLASS = { k: " is-known", d: " is-learning" };
@@ -445,6 +505,26 @@
 
     var mark = ev.target.closest(".study-mark button");
     if (mark) { toggleMark(mark); return; }
+
+    var cover = ev.target.closest(".study-cover");
+    if (cover) {
+      state.cover = !state.cover;
+      saveCover();
+      applyCover();
+      return;
+    }
+
+    /* A tap on a mask uncovers that one row. Only while covering, so the
+       reading and the meaning stay ordinary text the rest of the time. */
+    if (state.cover) {
+      var cell = ev.target.closest(
+        ".study-reading, .study-en, .study-example, .kanji-readings");
+      var row = cell && cell.closest(".study-row");
+      if (row && !row.classList.contains("is-head")) {
+        row.classList.toggle("is-shown");
+        return;
+      }
+    }
 
     var filter = ev.target.closest(".study-filter");
     if (filter) {

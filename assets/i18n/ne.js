@@ -376,6 +376,8 @@ I18N.register("ne", {
  "study.colReading": "उच्चारण",
  "study.colStrokes": "रेखा",
  "study.colWord": "शब्द",
+ "study.cover": "उत्तर लुकाउनुहोस्",
+ "study.coverHint": "उच्चारण र अर्थ लुकाउँछ; देखाउन पङ्क्तिमा थिच्नुहोस्",
  "study.dontKnow": "थाहा छैन",
  "study.filterAll": "सबै",
  "study.filterKnown": "थाहा छ",

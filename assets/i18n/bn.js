@@ -376,6 +376,8 @@ I18N.register("bn", {
  "study.colReading": "উচ্চারণ",
  "study.colStrokes": "স্ট্রোক",
  "study.colWord": "শব্দ",
+ "study.cover": "উত্তর ঢাকুন",
+ "study.coverHint": "উচ্চারণ ও অর্থ লুকায়; দেখাতে সারিতে ট্যাপ করুন",
  "study.dontKnow": "জানি না",
  "study.filterAll": "সব",
  "study.filterKnown": "জানি",

@@ -376,6 +376,8 @@ I18N.register("si", {
  "study.colReading": "කියවීම",
  "study.colStrokes": "ඉරි",
  "study.colWord": "වචනය",
+ "study.cover": "පිළිතුරු සඟවන්න",
+ "study.coverHint": "කියවීම සහ අර්ථය සඟවයි; පෙන්වීමට පේළියක් තට්ටු කරන්න",
  "study.dontKnow": "දන්නේ නැහැ",
  "study.filterAll": "සියල්ල",
  "study.filterKnown": "දන්නවා",

@@ -376,6 +376,8 @@ I18N.register("zh", {
  "study.colReading": "读音",
  "study.colStrokes": "笔画",
  "study.colWord": "单词",
+ "study.cover": "隐藏答案",
+ "study.coverHint": "隐藏读音和词义；点按某一行即可显示",
  "study.dontKnow": "不认识",
  "study.filterAll": "全部",
  "study.filterKnown": "认识",
