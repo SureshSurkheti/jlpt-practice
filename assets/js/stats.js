@@ -212,7 +212,11 @@ function exportScores() {
     return;
   }
   const payload = {
-    site: 'jlpt.sureshsurkheti.com',
+    /* Where the file came from, read from the address bar rather than
+       written in: this is the fifth place the site's own name was spelled
+       out, and the previous four had already gone stale once. Only `kind`
+       is checked on import (see below), so this is provenance, not a key. */
+    site: (typeof location !== 'undefined' && location.hostname) || '',
     kind: 'jlpt-scores',
     version: 1,
     savedAt: new Date().toISOString(),

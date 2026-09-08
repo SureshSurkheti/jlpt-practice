@@ -24,7 +24,7 @@ from build_static import finish_html, breadcrumbs, load_translations, t, esc, OG
 import re
 import glob
 
-SITE = "https://jlpt.sureshsurkheti.com"
+from site_config import SITE  # noqa: E402  (the address lives in one file)
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "guide")
 
 HEAD = """<!DOCTYPE html>

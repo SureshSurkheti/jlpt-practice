@@ -23,4 +23,4 @@ Disallow: /data/exams-manual/
 # linked to them either, but nothing stopped a crawler walking in.
 Disallow: /data/dict/
 
-Sitemap: https://jlpt.sureshsurkheti.com/sitemap.xml
+Sitemap: https://nihongomock.com/sitemap.xml

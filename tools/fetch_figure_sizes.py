@@ -25,7 +25,9 @@ from urllib.request import Request, urlopen
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXAMS = os.path.join(ROOT, "data", "exams")
 OUT = os.path.join(ROOT, "data", "figures.json")
-UA = "jlpt-practice figure-size probe (+https://jlpt.sureshsurkheti.com)"
+from site_config import SITE  # noqa: E402
+
+UA = "jlpt-practice figure-size probe (+%s)" % SITE
 
 
 def urls():

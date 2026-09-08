@@ -199,23 +199,23 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 📱 Phone or computer. Installs like an app and works offline
 🔒 Your scores stay on your own device. Nothing is uploaded
 
-👉 https://jlpt.sureshsurkheti.com
+👉 https://nihongomock.com
 
 Shorter version — for a comment or reply
 
 Free JLPT practice site — 91 full mock papers N5–N1, timed and auto-marked, 80 of them with listening. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
-https://jlpt.sureshsurkheti.com
+https://nihongomock.com
 
 One line — for X, Threads, a chat group
 
 91 free JLPT mock papers, N5 to N1. Timed, auto-marked, and every word of every question glossed with its reading. No sign-up, no ads.
-https://jlpt.sureshsurkheti.com
+https://nihongomock.com
 
 If you are posting again to a group that has seen it before, lead with what
 changed rather than the same list — a repost with no news reads as spam:
 
 New on the free JLPT practice site: every word of every question now shows its reading and meaning — 114,966 across 91 papers. Plus a cover-the-answers mode on the vocabulary, kanji and grammar lists, so you can test yourself instead of just reading.
-https://jlpt.sureshsurkheti.com
+https://nihongomock.com
 
 Nepali version
 
@@ -232,5 +232,5 @@ Nepali version
 📱 मोबाइल र कम्प्युटर दुवैमा; इन्टरनेट बिना पनि चल्छ
 🔒 तपाईंको अङ्क तपाईंकै यन्त्रमा रहन्छ
 
-👉 https://jlpt.sureshsurkheti.com
+👉 https://nihongomock.com
 

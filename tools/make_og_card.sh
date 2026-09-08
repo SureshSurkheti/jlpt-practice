@@ -22,7 +22,7 @@ magick -size 1200x630 -define gradient:angle=115 gradient:'#0f2a49-#2d6eb4' \
   -font "$SANS" -pointsize 30 -fill '#ffffff' \
   -annotate +176+122 'JLPT Practice' \
   -font "$SANS_R" -pointsize 22 -fill '#a9c6e6' \
-  -annotate +176+152 'jlpt.sureshsurkheti.com' \
+  -annotate +176+152 "$(python3 -c "import sys; sys.path.insert(0, 'tools'); import site_config; print(site_config.HOST)")" \
   -font "$SERIF" -pointsize 78 -fill '#ffffff' \
   -annotate +80+300 'Practise Japanese with' \
   -annotate +80+388 'full-length mock exams.' \

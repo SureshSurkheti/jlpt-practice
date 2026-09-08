@@ -34,7 +34,7 @@ from urllib.parse import quote
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "https://jlpt.sureshsurkheti.com"
+from site_config import SITE  # noqa: E402  (the address lives in one file)
 DEFAULT_LANG = "en"
 
 # Page -> whether search engines should index it.
