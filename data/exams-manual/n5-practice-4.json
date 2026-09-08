@@ -1,0 +1,286 @@
+{
+ "id": "n5-practice-4",
+ "level": "N5",
+ "periodLabel": "Practice Test 4",
+ "parts": [
+  {
+   "id": "vocabulary",
+   "label": "Vocabulary (文字・語彙)",
+   "questions": [
+    {
+     "prompt": "ぎゅうにゅうは <u>冷蔵庫</u> の なかに あります。",
+     "choices": [
+      "れいそうこ",
+      "れいずうこ",
+      "れいぞうこ",
+      "れいぞうご"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "冷蔵庫 is れいぞうこ. 蔵 voices, 庫 does not.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "この みせは <u>肉</u> が やすいです。",
+     "choices": [
+      "ぎゅう",
+      "にく",
+      "しし",
+      "じく"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "肉 is にく — meat.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "なつやすみに やまに <u>登り</u> ます。",
+     "choices": [
+      "あがり",
+      "とり",
+      "のり",
+      "のぼり"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "登る is のぼる. 上がる あがる is a different kanji.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "こうえんで <u>子供</u> と あそびました。",
+     "choices": [
+      "ことも",
+      "しきょう",
+      "こども",
+      "こどうも"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "子供 is こども — child.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "<u>料理</u> を ならって います。",
+     "choices": [
+      "りょり",
+      "れいり",
+      "りょうり",
+      "りようり"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "料理 is りょうり — cooking.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "<u>公園</u> で 三十ぷん あるきました。",
+     "choices": [
+      "こうえん",
+      "こえん",
+      "こうえ",
+      "くうえん"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "公園 is こうえん — park.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "<u>今日</u> の テストは むずかしかったです。",
+     "choices": [
+      "きょう",
+      "きんじつ",
+      "こんにち",
+      "いまひ"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "今日 is きょう here — today.",
+     "instruction": "問題1　＿＿＿の ことばは どう よみますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "<u>ふゆ</u> が いちばん すきです。",
+     "choices": [
+      "冬",
+      "春",
+      "秋",
+      "夏"
+     ],
+     "answer": 1,
+     "category": "vocabulary",
+     "explanation": "ふゆ is 冬. 夏 なつ, 春 はる, 秋 あき are the other seasons.",
+     "instruction": "問題2　＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "<u>おんな</u> の ひとが おおいです。",
+     "choices": [
+      "安",
+      "母",
+      "女",
+      "好"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "おんな is 女. 安 やす contains it.",
+     "instruction": "問題2　＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "つくえの <u>みぎ</u> に いすが あります。",
+     "choices": [
+      "名",
+      "左",
+      "右",
+      "石"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "みぎ is 右. 石 いし is a stone, 左 ひだり the other side.",
+     "instruction": "問題2　＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "この <u>ほん</u> は 千えんです。",
+     "choices": [
+      "木",
+      "休",
+      "本",
+      "体"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "ほん is 本. 木 き is a tree.",
+     "instruction": "問題2　＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "<u>ちち</u> の しごとは たいへんです。",
+     "choices": [
+      "文",
+      "父さ",
+      "父",
+      "交"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "ちち is 父. 交 こう and 文 ぶん are similar in shape.",
+     "instruction": "問題2　＿＿＿の ことばは どう かきますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "この みずは （　　）ですから、のまないで ください。",
+     "choices": [
+      "きれい",
+      "きたない",
+      "おおい",
+      "つめたい"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "Do not drink it because it is dirty.",
+     "instruction": "問題3　（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "この ほんは （　　）ですから、よく わかりません。",
+     "choices": [
+      "やさしい",
+      "むずかしい",
+      "おいしい",
+      "うるさい"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "You do not understand it because it is difficult.",
+     "instruction": "問題3　（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "あしたは しけんですから、こんばん （　　）します。",
+     "choices": [
+      "りょうり",
+      "そうじ",
+      "べんきょう",
+      "せんたく"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "There is a test tomorrow, so you study.",
+     "instruction": "問題3　（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "ともだちに てがみを （　　）ました。",
+     "choices": [
+      "おき",
+      "だし",
+      "つけ",
+      "のり"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "てがみを だす — to post a letter.",
+     "instruction": "問題3　（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "この セーターは （　　）ですから、ふゆに いいです。",
+     "choices": [
+      "すずしい",
+      "あたたかい",
+      "つめたい",
+      "あかるい"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "Warm, so good for winter.",
+     "instruction": "問題3　（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "バスに （　　）て、うみへ いきました。",
+     "choices": [
+      "おり",
+      "あるい",
+      "のっ",
+      "はしっ"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "バスに のる — to get on a bus.",
+     "instruction": "問題3　（　　）に なにを いれますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "きのうは がっこうを やすみました。",
+     "choices": [
+      "きのうは がっこうで あそびました。",
+      "きのうは がっこうで べんきょうしました。",
+      "きのうは がっこうへ いきませんでした。",
+      "きのうは がっこうまで あるきました。"
+     ],
+     "answer": 3,
+     "category": "vocabulary",
+     "explanation": "がっこうを やすむ — not to go that day.",
+     "instruction": "問題4　＿＿＿の ぶんと だいたい おなじ いみの ぶんが あります。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "この へやは せまいです。",
+     "choices": [
+      "この へやは きれいです。",
+      "この へやは おおきく ないです。",
+      "この へやは あかるいです。",
+      "この へやは あたらしいです。"
+     ],
+     "answer": 2,
+     "category": "vocabulary",
+     "explanation": "せまい — narrow, so not big.",
+     "instruction": "問題4　＿＿＿の ぶんと だいたい おなじ いみの ぶんが あります。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    },
+    {
+     "prompt": "しゅくだいは もう おわりました。",
+     "choices": [
+      "しゅくだいは あしたまでです。",
+      "しゅくだいは まだ して いません。",
+      "しゅくだいは むずかしいです。",
+      "しゅくだいは ぜんぶ しました。"
+     ],
+     "answer": 4,
+     "category": "vocabulary",
+     "explanation": "もう おわった — all done.",
+     "instruction": "問題4　＿＿＿の ぶんと だいたい おなじ いみの ぶんが あります。1・2・3・4から いちばん いい ものを 一つ えらんで ください。"
+    }
+   ]
+  }
+ ]
+}

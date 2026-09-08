@@ -8,9 +8,29 @@
  ],
  "exams": [
   {
+   "id": "n5-practice-7",
+   "level": "N5",
+   "words": 113
+  },
+  {
+   "id": "n5-practice-6",
+   "level": "N5",
+   "words": 105
+  },
+  {
+   "id": "n5-practice-5",
+   "level": "N5",
+   "words": 108
+  },
+  {
+   "id": "n5-practice-4",
+   "level": "N5",
+   "words": 109
+  },
+  {
    "id": "n5-practice-3",
    "level": "N5",
-   "words": 124
+   "words": 120
   },
   {
    "id": "n5-practice-2",
