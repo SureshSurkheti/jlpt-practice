@@ -2538,15 +2538,31 @@ body.is-leaving { opacity: 0; }
 
 .study-row:not(.is-head)::before {
   content: counter(study-row);
+  /* Centred against the first cell's line box rather than hung from the top
+     of the row. Sharing a `top` was not the same as sharing a baseline: the
+     digits are 0.78rem and the word is 1.05rem, so from the same top edge the
+     number sat about five pixels high and read as a superscript. Worse, when
+     a row slid under the pinned heading the number was sliced through the
+     middle while the word beside it was still whole, which looked like a
+     rendering fault rather than a row passing behind something.
+
+     13px and 25px are measured, not guessed, and they are the same on all
+     three row types: words, kanji and grammar all set their first cell 13px
+     down, and the two text ones give it a 25px line box. The kanji tile is
+     taller, so there the number aligns with the top of the character - which
+     is where the eye starts on that row anyway. */
   position: absolute;
   left: 0;
   top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   width: 44px;
+  height: 25px;
   padding-right: 12px;
   color: #94a3b5;
   font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
-  text-align: right;
 }
 
 .study-row { position: relative; }
@@ -2577,6 +2593,12 @@ body.is-leaving { opacity: 0; }
   top: var(--header-h, 74px);
   z-index: 2;
   background: var(--panel-soft);
+  /* Rows pass behind this, and without an edge the topmost one just ended in
+     mid-air: same flat colour above and below the cut, so it read as content
+     being clipped rather than travelling underneath. The shadow is what makes
+     it a surface. Small enough that it is not a band in its own right when
+     the list is at the top of the page and nothing is under it yet. */
+  box-shadow: 0 6px 12px -9px rgba(17, 45, 78, 0.5);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
