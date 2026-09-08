@@ -1,6 +1,29 @@
 {
  "exams": [
   {
+   "id": "n5-practice-3",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 3",
+   "period": "n5-practice-3",
+   "periodLabel": "Practice Test 3",
+   "totalQuestions": 21,
+   "categoryCounts": {
+    "vocabulary": 21
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    }
+   ],
+   "sortKey": "n5-practice-3"
+  },
+  {
    "id": "n5-practice-2",
    "origin": "practice",
    "level": "N5",

@@ -8,6 +8,11 @@
  ],
  "exams": [
   {
+   "id": "n5-practice-3",
+   "level": "N5",
+   "words": 124
+  },
+  {
    "id": "n5-practice-2",
    "level": "N5",
    "words": 195
