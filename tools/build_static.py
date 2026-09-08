@@ -445,6 +445,26 @@ def page_url(lang, page):
     return SITE + prefix + "/" + page
 
 
+LEVELS_UPPER = ["N5", "N4", "N3", "N2", "N1"]
+
+SKILL_KEY = {
+    "vocabulary": "section.vocabulary",
+    "grammar": "section.grammar",
+    "reading": "section.reading",
+    "listening": "section.listening",
+}
+
+
+def load_exam_index():
+    path = os.path.join(ROOT, "data", "exams", "index.json")
+    return json.load(io.open(path, encoding="utf-8"))["exams"]
+
+
+def paper_url(lang, exam_id):
+    prefix = "" if lang == DEFAULT_LANG else "/" + lang
+    return "%s%s/exam/%s.html" % (SITE, prefix, exam_id)
+
+
 def study_url(lang, level, kind):
     prefix = "" if lang == DEFAULT_LANG else "/" + lang
     return "%s%s/study/%s-%s.html" % (SITE, prefix, level, kind)
@@ -456,7 +476,9 @@ def study_url(lang, level, kind):
 EN_META = {
     "index.html": ("JLPT Practice — Free Mock Exams for N1, N2, N3, N4 and N5",
                    "home.body"),
-    "exams.html": ("JLPT Mock Exam Library — 84 Full-Length Practice Papers",
+    # %%PAPERS%%, not a number typed here: this said 84 for as long as the
+    # library had 91, in the one string a search result shows first.
+    "exams.html": ("JLPT Mock Exam Library — %%PAPERS%% Full-Length Practice Papers",
                    "exams.body"),
     "study.html": ("JLPT Kanji, Vocabulary and Grammar Lists — N5 to N1",
                    "study.body"),
@@ -927,8 +949,131 @@ def study_rows(level, kind, table, en, up=""):
     return "\n      ".join(out), len(rows)
 
 
+def paper_index(exams, table, en):
+    """Every paper, as a plain list of links, at the foot of the library.
+
+    The library table above it is drawn by a script from a JSON file, which
+    is right for something you filter and sort - and invisible to a crawler,
+    which is how 91 pages ended up with no route into them but the sitemap.
+    Links in the markup are the route. It is also the fastest way for a
+    reader to reach a specific sitting, which is why it is a list and not a
+    hidden block of anchors.
+    """
+    by_level = {}
+    for e in exams:
+        by_level.setdefault(e["level"], []).append(e)
+
+    blocks = []
+    for lv in LEVELS_UPPER:
+        rows = by_level.get(lv) or []
+        if not rows:
+            continue
+        rows = sorted(rows, key=lambda e: e.get("sortKey") or e["id"],
+                      reverse=True)
+        links = "".join(
+            '<a href="exam/%s.html">%s</a>' % (esc(e["id"]), esc(e["periodLabel"]))
+            for e in rows)
+        blocks.append(
+            '<div class="paper-index-level"><h3>%s</h3><div>%s</div></div>'
+            % (esc(lv), links))
+
+    return ('<nav class="paper-index" aria-label="%s">\n        %s\n      </nav>'
+            % (esc(t(table, "exams.title", en)), "\n        ".join(blocks)))
+
+
+def paper_body(exam, table, en, prev_ex, next_ex):
+    """The page for one paper.
+
+    Its facts and its shape, and the paper itself one click away - not its
+    questions. This page exists so that a search for "JLPT N3 July 2019
+    practice paper" has something to land on, and what earns that is being a
+    distinct, substantive answer to the phrase: which sections the sitting
+    has, how many questions in each, how long it runs, whether the listening
+    can be heard, what it connects to. Copying a hundred questions under it
+    would add weight and no answer, and the questions belong in the player,
+    where they can be answered and marked.
+
+    Until now all 91 papers shared one address - exam.html?id= - which is
+    noindex by necessity, because a single shell cannot describe 91 different
+    things to a crawler. So the largest thing on the site was the one thing
+    it could not be found for.
+    """
+    lv = exam["level"]
+    counts = exam.get("categoryCounts") or {}
+    order = [k for k in ("vocabulary", "grammar", "reading", "listening")
+             if counts.get(k)]
+    total = exam.get("totalQuestions") or 0
+
+    rows = "".join(
+        "<tr><td>%s</td><td>%d</td></tr>"
+        % (esc(t(table, SKILL_KEY[k], en)), counts[k]) for k in order)
+
+    notes = ["<li>%s</li>" % esc(t(table, "exams.hasWords", en))]
+
+    # The same test the library table makes, and for the same reason: one
+    # recording covers a whole 問題, so the honest unit is the section, and
+    # "has a listening booklet" is not "has the recordings". Said once, here,
+    # rather than restated in a way that could drift from the row a reader
+    # saw a moment ago on the exams page.
+    listening = None
+    for part in exam.get("parts") or []:
+        if part.get("id") == "listening":
+            listening = part
+    if not counts.get("listening"):
+        notes.append("<li>%s</li>" % esc(t(table, "exams.noListening", en)))
+    elif listening:
+        secs = listening.get("sections") or 0
+        with_audio = listening.get("audioSections") or 0
+        if exam.get("listeningFull") and with_audio < secs:
+            notes.append("<li>%s</li>" % esc(t(table, "exams.audioLinked", en)))
+        elif not with_audio:
+            notes.append("<li>%s</li>" % esc(t(table, "exams.noAudio", en)))
+        elif secs and with_audio < secs:
+            notes.append("<li>%s</li>" % esc(
+                t(table, "exams.audioPartial", en)
+                .replace("{have}", str(with_audio)).replace("{all}", str(secs))))
+        # Complete: nothing to say. A note is for what is missing.
+
+    near = []
+    for other, arrow in ((prev_ex, "\u2190"), (next_ex, "\u2192")):
+        if other:
+            near.append('<a href="./exam/%s.html">%s %s</a>'
+                        % (other["id"], arrow, esc(other["title"])))
+    near.append('<a href="./exams.html">%s</a>'
+                % esc(t(table, "exams.title", en)))
+
+    return (
+        '<main class="container page-shell paper-page">\n'
+        '      <p class="paper-kicker"><a href="./exams.html">%s</a>'
+        ' <span aria-hidden="true">/</span> %s</p>\n'
+        '      <h1>%s</h1>\n'
+        '      <p class="paper-lead">%d %s</p>\n'
+        '      <p class="paper-actions">'
+        '<a class="btn btn-primary" href="./exam.html?id=%s">%s</a>'
+        '<a class="btn btn-quiet" href="./study/%s-words.html">%s %s</a></p>\n'
+        '      <table class="paper-parts">\n'
+        '        <thead><tr><th>%s</th><th>%s</th></tr></thead>\n'
+        '        <tbody>%s</tbody>\n'
+        '        <tfoot><tr><td>%s</td><td>%d</td></tr></tfoot>\n'
+        '      </table>\n'
+        '      <ul class="paper-notes">%s</ul>\n'
+        '      <nav class="paper-near">%s</nav>\n'
+        '    </main>'
+        % (esc(t(table, "nav.exams", en)), esc(lv),
+           esc(exam["title"]),
+           total, esc(t(table, "exams.questionsShort", en)),
+           esc(exam["id"]), esc(t(table, "exams.start", en)),
+           lv.lower(), esc(t(table, "exams.study", en)), esc(lv),
+           esc(t(table, "exam.sectionsWord", en)),
+           esc(t(table, "exams.statQuestions", en)),
+           rows,
+           esc(t(table, "exams.statQuestions", en)), total,
+           "".join(notes), "".join(near)))
+
+
 def main():
     tr = load_translations()
+    exams = load_exam_index()
     write_language_files(tr)
     global COUNTS
     COUNTS = site_counts()
@@ -955,6 +1100,8 @@ def main():
                 html = re.sub(r'<div id="examsList">\s*<div class="exam-loading">.*?</div>\s*</div>',
                               '<div id="examsList">%s</div>' % level_picker(table, en),
                               html, count=1, flags=re.S)
+                html = html.replace(
+                    "</main>", "  %s\n    </main>" % paper_index(exams, table, en), 1)
             if page == "index.html":
                 html = html.replace(
                     "</head>",
@@ -1152,8 +1299,86 @@ def main():
                 written.append((url, lang, "study"))
                 study_pages += 1
 
-    print("wrote %d core pages and %d study pages across %d languages"
-          % (len(CORE_PAGES) * len(langs), study_pages, len(langs)))
+    # --------------------------------------------------------------- papers
+    # One address per paper. See paper_body for why these exist and why the
+    # questions are not on them.
+    by_level = {}
+    for e in exams:
+        by_level.setdefault(e["level"], []).append(e)
+    for lst in by_level.values():
+        lst.sort(key=lambda e: e.get("sortKey") or e["id"])
+    near = {}
+    for lst in by_level.values():
+        for i, e in enumerate(lst):
+            near[e["id"]] = (lst[i - 1] if i else None,
+                             lst[i + 1] if i + 1 < len(lst) else None)
+
+    tpl_paper = io.open(os.path.join(ROOT, "_src", "exams.html"),
+                        encoding="utf-8").read()
+    paper_pages = 0
+    for lang in langs:
+        table = tr[lang]
+        base = ROOT if lang == DEFAULT_LANG else os.path.join(ROOT, lang)
+        os.makedirs(os.path.join(base, "exam"), exist_ok=True)
+
+        for e in exams:
+            url = paper_url(lang, e["id"])
+            total = e.get("totalQuestions") or 0
+            qword = t(table, "exams.questionsShort", en)
+            if lang == DEFAULT_LANG:
+                shape = ("JLPT %s %s — %d Questions" if e.get("origin") == "practice"
+                         else "JLPT %s %s — Practice Paper, %d Questions")
+                title = shape % (e["level"], e["periodLabel"], total)
+            else:
+                title = "%s — %s" % (e["title"], SITE_NAME)
+            desc = clip_desc("%s. %d %s. %s" % (
+                e["title"], total, qword, t(table, "exams.body", en)))
+
+            ld = ('    <script type="application/ld+json">'
+                  '{"@context":"https://schema.org","@type":"LearningResource",'
+                  '"name":%s,"url":%s,"educationalLevel":%s,"inLanguage":%s,'
+                  '"learningResourceType":"practice exam",'
+                  '"isAccessibleForFree":true,"isFamilyFriendly":true,'
+                  '"publisher":{"@type":"Organization","name":%s}}</script>'
+                  % (json.dumps(title, ensure_ascii=False), json.dumps(url),
+                     json.dumps(e["level"]), json.dumps(lang),
+                     json.dumps(SITE_NAME)))
+            ld += "\n" + breadcrumbs([
+                (t(table, "nav.home", en), page_url(lang, "index.html")),
+                (t(table, "nav.exams", en), page_url(lang, "exams.html")),
+                (e["title"], url)])
+
+            html = apply_i18n(tpl_paper, table, en)
+            html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang,
+                          html, count=1)
+            head = seo_head(lang, url, title, desc, langs,
+                            lambda l, eid=e["id"]: paper_url(l, eid), True, ld)
+            a, b = html.index("<title>"), html.index('<link rel="preload"')
+            html = html[:a] + head.lstrip() + "    " + html[b:]
+
+            prev_e, next_e = near[e["id"]]
+            html = re.sub(r"<main\b.*?</main>", lambda m: paper_body(
+                e, table, en, prev_e, next_e), html, count=1, flags=re.S)
+
+            if lang != DEFAULT_LANG:
+                html = localise_guides(html, lang)
+                html = html.replace(
+                    '<script src="assets/i18n/en.js"></script>',
+                    '<script src="assets/i18n/en.js"></script>\n'
+                    '    <script src="assets/i18n/%s.js"></script>' % lang)
+            html = html.replace("<!--LANGS-->", language_links(
+                langs, "exam/%s.html" % e["id"], lang, names, table, en))
+            html = absolutise(html)
+            html = html.replace('href="./', 'href="../')
+
+            io.open(os.path.join(base, "exam", "%s.html" % e["id"]),
+                    "w", encoding="utf-8").write(finish_html(html, table, en))
+            written.append((url, lang, "paper"))
+            paper_pages += 1
+
+    print("wrote %d core pages, %d study pages and %d paper pages "
+          "across %d languages"
+          % (len(CORE_PAGES) * len(langs), study_pages, paper_pages, len(langs)))
 
     # The two pages that are neither localised nor listed: the 404 and the
     # offline fallback. Copied through the same last pass as everything else
@@ -1181,7 +1406,8 @@ def main():
     rows = []
     for url, lang, page in written:
         pri = "1.0" if page == "index.html" else (
-            "0.9" if page in ("study", "exams.html", "guide") else "0.7")
+            "0.9" if page in ("study", "exams.html", "guide") else
+            "0.8" if page == "paper" else "0.7")
         rows.append("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
                     "    <priority>%s</priority>\n  </url>" % (url, today, pri))
     io.open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(

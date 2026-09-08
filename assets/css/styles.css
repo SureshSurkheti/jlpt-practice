@@ -3798,3 +3798,96 @@ body.is-leaving { opacity: 0; }
 
 /* Exam setup: a listening section with no recording says so on its card. */
 .part-card.is-silent .part-sub em { color: var(--danger, #c84a52); font-style: normal; font-weight: 700; }
+
+/* ==========================================================================
+   One page per paper - /exam/n3-2019-07.html and its 1,091 siblings.
+
+   These are landing pages, not the papers: what a sitting is, how it is
+   made up, what can be heard, and the way into it. See paper_body in
+   tools/build_static.py for why the questions are not on them.
+   ========================================================================== */
+.paper-page { max-width: 760px; }
+.paper-kicker {
+  margin: 0 0 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.paper-kicker a { color: var(--navy); text-decoration: none; }
+.paper-kicker a:hover { text-decoration: underline; }
+.paper-kicker span { margin: 0 6px; }
+.paper-page h1 { margin: 0 0 6px; }
+.paper-lead {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.paper-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 26px; }
+
+.paper-parts {
+  width: 100%;
+  margin: 0 0 20px;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.paper-parts th,
+.paper-parts td {
+  padding: 11px 16px;
+  text-align: left;
+  border-top: 1px solid var(--line);
+}
+.paper-parts thead th {
+  border-top: 0;
+  background: var(--panel-soft);
+  /* Upper-cased by the stylesheet rather than in the string, so the twelve
+     translations stay the words their own languages use - and so the ones
+     written in scripts that have no case are simply left alone. */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.paper-parts td:last-child,
+.paper-parts th:last-child {
+  text-align: right;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.paper-parts tfoot td { font-weight: 700; color: var(--navy); }
+
+.paper-notes { margin: 0 0 26px; padding-left: 20px; color: var(--muted); }
+.paper-notes li { margin: 4px 0; }
+
+.paper-near { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.9rem; }
+.paper-near a { color: var(--navy); text-decoration: none; font-weight: 600; }
+.paper-near a:hover { text-decoration: underline; }
+
+/* The plain index of every paper, under the library table. See paper_index
+   in tools/build_static.py: the table above it is drawn by a script and so
+   is invisible to a crawler, and these links are the route into the 91
+   paper pages. Quiet, because it is a directory rather than the feature. */
+.paper-index {
+  margin-top: 44px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.paper-index-level { margin-bottom: 18px; }
+.paper-index-level h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.paper-index-level div { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.paper-index-level a {
+  color: var(--navy);
+  font-size: 0.88rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.paper-index-level a:hover { text-decoration: underline; }

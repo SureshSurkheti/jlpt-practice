@@ -295,6 +295,19 @@ BLOCK_RE = re.compile(
 EXAMPLE_ITEM = re.compile(r"^\s*[（(]\s*例\s*[)）]")
 
 
+def question_has_content(prompt, passage, choices):
+    """Is there anything here for a reader to work from?
+
+    Text in the prompt, in the passage or in any option; or a picture in any
+    of them, which is what a listening question whose four options are
+    drawings has instead of text.
+    """
+    parts = [prompt or "", passage or ""] + [c or "" for c in choices.values()]
+    if any(text_of(part) for part in parts):
+        return True
+    return any("<img" in part.lower() for part in parts)
+
+
 def parse_source(path):
     """Return (questions, note). questions is [] for placeholder pages."""
     raw = open(path, encoding="utf-8", errors="replace").read()
@@ -420,6 +433,25 @@ def parse_source(path):
         if not answer or answer not in choices:
             answer = None
         number, prompt = split_prompt_number(q["prompt"])
+
+        # A question with nothing to read is not a question.
+        #
+        # The guards above ask for a prompt and for two or more options, and
+        # both can be satisfied by nothing: a prompt that is only the booklet
+        # number, which split_prompt_number then takes away, and options that
+        # are present as four empty strings. 1,288 items of 8,960 came
+        # through that way - 14% of the library, in 79 of the 91 papers, and
+        # almost all of them listening, where the source page carried the
+        # answer key but never the words. They arrived on screen as four
+        # blank radio buttons under a number, they were counted in the
+        # paper's total and in the site's, and there was no way to answer one
+        # except by guessing.
+        #
+        # An image counts as content: some listening options really are four
+        # pictures, and the prompt for those is properly empty.
+        if not question_has_content(prompt, q.get("passage"), choices):
+            continue
+
         out.append({
             "n": qn,
             "number": number,
