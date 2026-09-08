@@ -2376,7 +2376,90 @@ body.is-leaving { opacity: 0; }
   align-items: center;
   gap: 12px 22px;
   flex-wrap: wrap;
-  margin: clamp(18px, 2vw, 28px) 0 18px;
+  /* The 10px above the pills and the 18px below them used to be margin. They
+     are padding now, because the bar is pinned below and a margin sits
+     outside the background box: rows travelling through a transparent 18px
+     gap between the pinned bar and the pinned column heading read as a
+     rendering fault rather than as one surface. The top margin gives the
+     10px back, so nothing on the page moves. */
+  margin: calc(clamp(18px, 2vw, 28px) - 10px) 0 0;
+  padding: 10px 0 18px;
+}
+
+/* The bar travels with the list.
+
+   These lists run from 280 rows to 2,211, and the level, the kind and the
+   search box were nailed to the top of the document: at row 400 of N4
+   vocabulary the only way to N4 kanji was to scroll the whole way back up.
+   So the bar stays on screen and the column heading pins directly under it -
+   two lines, one stack, reading as a single surface with the list passing
+   behind it.
+
+   What deliberately does not travel: the row count, the marking legend and
+   the four filter chips. The count is a fact you read once, the legend is an
+   instruction you read once, and the chips are a choice you make before you
+   start reading rather than while you are reading. Pinning all of it would
+   cost 258px of an 800px laptop window - a third of the screen held
+   permanently against the thing you came here to read - and the two lines
+   that are worth keeping would be buried in it.
+
+   Phones are excluded, further down: there the bar wraps to three rows, and
+   that width has already decided (see the site-header rule) that the list
+   gets the top of the screen. */
+.study-page { --controls-h: 0px; }
+
+/* Where a change of list lands (see returnToListTop in study.js): under the
+   pinned pair, not behind them, so the new count and the column heading are
+   the first things you see. Kept here rather than added up in the script,
+   because it has to agree with the two sticky rules above and below it. */
+.study-page #studyContent {
+  /* Two pixels beyond the pinned pair rather than two short of it. Short of
+     it, the landing left a two-pixel transparent seam between the header and
+     the bar with the page showing through; beyond it, the bar is flush and
+     the two pixels are hidden behind it, at the blank top edge of a card. */
+  scroll-margin-top: calc(var(--header-h, 74px) + var(--controls-h, 0px) - 2px);
+}
+
+@media (min-width: 861px) {
+  .study-page { --controls-h: var(--controls-raw, 0px); }
+
+  .study-page .study-controls {
+    position: sticky;
+    top: var(--header-h, 74px);
+    z-index: 3; /* over the column heading, which is 2 */
+  }
+
+  /* Transparent at the top of the page, where it sits on the page's own
+     ground and has nothing underneath it; a surface only once something is
+     passing behind. Paint alone changes - no border, no padding - so the
+     list does not jump by the height of an edge at the moment it sticks.
+
+     Opaque, and not the frosted glass of the header above it, which was the
+     first try: at 90% white with a 12px blur a word passing under the bar
+     was still legible through it as a grey smear, which is the fault this
+     was meant to fix. The header gets away with it over a page of cards and
+     white space; a bar with two hundred rows sliding under it does not. */
+  .study-page .study-controls.is-stuck {
+    background: #fff;
+    border-radius: 14px 14px 0 0;
+  }
+
+  /* One line, down to the width where the bar stops being one.
+
+     The pills come in a little below 1220px, which is where the search
+     box and the Quiz button drop to a second line at full size - measured:
+     the two pill groups want 644px, and the search box's 160px floor plus
+     the button makes the pair beside them 359px. Tightened, one line holds
+     down to about 1000px; below that it wraps however the pills are sized,
+     so the search stops being capped and takes the second line whole, with
+     the button on its end. A bar whose lower half is empty white reads as a
+     mistake; a full-width search field reads as a search field. */
+  @media (max-width: 1219px) {
+    .study-page .study-controls { gap: 10px 14px; }
+    .study-page .study-tab { padding: 9px 13px; }
+    .study-page .study-find { flex: 1 1 200px; gap: 10px; max-width: none; }
+    .study-page .study-search { min-width: 120px; max-width: none; }
+  }
 }
 
 /* The five level pills and the three kind pills are fixed-width groups. On a
@@ -2590,7 +2673,11 @@ body.is-leaving { opacity: 0; }
 /* Sticky so the columns stay named while you scroll a few hundred rows. */
 .study-row.is-head {
   position: sticky;
-  top: var(--header-h, 74px);
+  /* Under the site header and under the pinned bar of tabs. The bar's height
+     is measured by the script, not assumed: the search box drops to a second
+     line around 900px, and the three kind labels are long enough in
+     Vietnamese and Nepali to wrap it well before that. */
+  top: calc(var(--header-h, 74px) + var(--controls-h, 0px));
   z-index: 2;
   background: var(--panel-soft);
   /* Rows pass behind this, and without an edge the topmost one just ended in
@@ -2677,6 +2764,8 @@ body.is-leaving { opacity: 0; }
      that scrolling past should cost you the navigation for. */
   .study-page:not(.kanji-page) .site-header { position: static; }
   .study-page .study-row.is-head { top: 0; }
+  /* Nothing is pinned but the column heading, so nothing to clear. */
+  .study-page #studyContent { scroll-margin-top: 0; }
 }
 
 /* ------------------------------------------------------------------------
@@ -3425,7 +3514,10 @@ body.is-leaving { opacity: 0; }
    a ring, text beside it - but live here because exam.css is not loaded on
    these pages.
    ========================================================================== */
-.quiz-controls { margin-bottom: 22px; }
+/* The bar's 18px below the pills is padding rather than margin, so that the
+   study page can paint it while it is pinned; here there is nothing to paint
+   and a 22px margin of its own, so it takes the padding back off. */
+.quiz-controls { margin-bottom: 22px; padding-bottom: 0; }
 .study-quiz { flex: none; white-space: nowrap; }
 @media (max-width: 820px) { .study-find { max-width: none; margin-left: 0; width: 100%; } .study-find .study-search { max-width: none; } }
 

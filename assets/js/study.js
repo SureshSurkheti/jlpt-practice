@@ -492,6 +492,67 @@
   window.addEventListener("resize", syncHeaderOffset);
   document.addEventListener("languagechange", syncHeaderOffset);
 
+  /* The bar of tabs is pinned under that header on anything wider than a
+     phone, so the list's heading has to stop below the pair of them. Its
+     height is not a constant - the search box drops to a second line on a
+     narrow laptop, and the kind labels wrap it earlier in some languages -
+     so it is measured, and re-measured whenever it changes shape. */
+  var controls = document.querySelector(".study-controls");
+
+  function syncControlsOffset() {
+    if (!controls) return;
+    document.body.style.setProperty(
+      "--controls-raw",
+      Math.round(controls.getBoundingClientRect().height) + "px");
+  }
+  syncControlsOffset();
+  window.addEventListener("resize", syncControlsOffset);
+  document.addEventListener("languagechange", syncControlsOffset);
+  if (typeof ResizeObserver === "function" && controls) {
+    new ResizeObserver(syncControlsOffset).observe(controls);
+  }
+
+  /* And it paints itself only once it is carrying something - the same
+     sentinel the site header uses, so nothing runs while you scroll.
+
+     The marker sits in the flow where the bar begins, and the root margin
+     discounts both the header the bar parks under and the gap between the
+     marker and the bar itself. That gap is the bar's own top margin, which
+     is a clamp() and so worth measuring rather than repeating here; without
+     it the bar would turn white a couple of dozen pixels before it stuck. */
+  function wireStickyControls() {
+    if (!controls || !window.IntersectionObserver) return;
+    var mark = document.createElement("div");
+    mark.setAttribute("aria-hidden", "true");
+    mark.style.cssText = "height:0;";
+    controls.parentNode.insertBefore(mark, controls);
+
+    var io = null;
+    var gap = 0;
+
+    function wire() {
+      if (io) io.disconnect();
+      var header = document.querySelector(".site-header");
+      var top = header ? header.getBoundingClientRect().height : 0;
+      /* Only while the bar is still in the flow: once it is stuck the
+         distance between the two is the distance you have scrolled, not the
+         margin. Between those moments the last honest reading stands. */
+      if (!controls.classList.contains("is-stuck")) {
+        gap = controls.getBoundingClientRect().top -
+              mark.getBoundingClientRect().bottom;
+      }
+      io = new IntersectionObserver(function (entries) {
+        controls.classList.toggle("is-stuck", !entries[0].isIntersecting);
+      }, { rootMargin: -Math.round(top + Math.max(gap, 0)) + "px 0px 0px 0px" });
+      io.observe(mark);
+    }
+
+    wire();
+    window.addEventListener("resize", wire);
+    document.addEventListener("languagechange", wire);
+  }
+  wireStickyControls();
+
   /* Put the chosen list in the address bar.
 
      The tabs used to change the page without changing the URL, so Back went
@@ -552,10 +613,30 @@
     });
   }
 
+  /* Where a change of list lands.
+
+     The tabs and the search box used to be reachable only from the top of the
+     page, so a change of list always started at the top of a list. Now that
+     the bar travels, you can switch at row 400 - and land at row 400 of a
+     list you have never seen, or, if the new one is shorter, wherever the
+     browser clamps the scroll, which on a search that matches one word is
+     the footer.
+
+     So: bring the top of the list area back to just under whatever is
+     pinned. The offset lives in the stylesheet with the two sticky rules it
+     has to agree with, as scroll-margin, rather than being added up a second
+     time here. Only when the list has actually gone above the fold - from
+     the top of the page there is nothing to correct. */
+  function returnToListTop() {
+    if (!host || host.getBoundingClientRect().top >= 0) return;
+    host.scrollIntoView();
+  }
+
   document.querySelectorAll(".study-tab").forEach(function (tab) {
     tab.addEventListener("click", function () {
       var group = tab.parentNode;
       if (tab.classList.contains("is-on")) return;
+      returnToListTop();
       group.querySelectorAll(".study-tab").forEach(function (t2) {
         t2.classList.toggle("is-on", t2 === tab);
       });
@@ -571,6 +652,7 @@
   if (search) {
     search.addEventListener("input", function () {
       state.query = search.value.trim().toLowerCase();
+      returnToListTop();
       render();
     });
   }
