@@ -1286,8 +1286,17 @@
     /* One paper at a time, the way the real sitting works. */
     if (state.papers.length > 1) main.appendChild(buildPaperTabs());
 
+    /* The whole-test recording goes in once, immediately above the first
+       listening 問題 that is actually on screen. */
+    var fullBar = fullAudioBar();
+    var fullPlaced = false;
+
     state.sections.forEach(function (section) {
       if (state.paper && paperOfCategory(section.category) !== state.paper) return;
+      if (fullBar && !fullPlaced && section.category === "listening") {
+        main.appendChild(fullBar);
+        fullPlaced = true;
+      }
       main.appendChild(buildSection(section));
     });
 
@@ -1298,6 +1307,8 @@
     wirePaper();
     syncStickyOffsets();
     watchSticky();
+    if (fullPlaced) watchFullBar(fullBar);
+    else main.style.removeProperty("--full-h");
     refreshProgress();
     updateSpy();
   }
@@ -1438,39 +1449,20 @@
           audioHelpHTML() + "</p></details>"));
     }
 
-    /* A listening section whose recording was never archived. Without this
-       the questions simply appeared with no player and no explanation, and
-       the only way to find out was to sit twenty-eight of them in silence.
+    /* A listening section whose own recording was never archived. Without
+       this the questions simply appeared with no player and no explanation,
+       and the only way to find out was to sit twenty-eight of them in
+       silence.
 
-       For some of those papers the whole section - every 問題, not just this
-       one - can be heard on somebody else's upload. The link is offered here
-       rather than embedded: it is not our recording, and a link is the one
-       use of it that takes nothing from whoever put it up. It opens in a new
-       tab so the paper is not lost, and it is marked as leaving the site,
-       because the reader should know whose material they are about to be
-       handed. */
+       Only the note lives here. Where the whole test can be heard on one
+       upload, that plays from a single bar above 問題1 - see fullAudioBar()
+       - because the recording starts at 問題1 and offering it four times
+       over, once inside each silent 問題, both repeated itself and put the
+       beginning of it out of reach. */
     if (!section.audio && section.category === "listening") {
-      var full = state.exam && state.exam.listeningFull;
-      var aside = el("div", "q-audio-aside is-failed",
+      head.appendChild(el("div", "q-audio-aside is-failed",
         "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
-        "</strong><br>" + audioHelpHTML() + "</p>");
-
-      /* Where the whole section can be heard, it plays here rather than
-         sending the reader off to another site mid-paper.
-
-         Nothing of YouTube is loaded until the button is pressed. An <iframe>
-         written at render time would fetch their player and set their cookies
-         on every silent 問題 of every paper, for a recording most readers
-         never start - so what is drawn is a still panel with a play button,
-         and the frame is created on the click that asks for it. That also
-         keeps the third-party player off the critical path of a page whose
-         own audio is already slow. youtube-nocookie is their own domain for
-         exactly this, and the line underneath says whose recording it is. */
-      if (full && full.url) {
-        var vid = videoId(full.url);
-        if (vid) aside.appendChild(fullAudioPanel(vid, full.url));
-      }
-      head.appendChild(aside);
+        "</strong><br>" + audioHelpHTML() + "</p>"));
     }
 
     node.appendChild(head);
@@ -1609,28 +1601,71 @@
     return m ? m[1] : null;
   }
 
-  function fullAudioPanel(vid, url) {
-    /* The picture and the line naming its owner are separate children in
-       normal flow. Pinning that line beneath an aspect-ratio box with
-       position:absolute laid it over the first question instead. */
-    var box = el("div", "q-audio-full-box");
-    box.innerHTML =
-      '<div class="q-audio-full-media">' +
+  /* The whole listening test on one recording, dressed and pinned like the
+     paper's own player.
+
+     It sits above 問題1, not above the first silent 問題. The upload runs
+     from the start of the test through to the end, so a reader handed it at
+     問題2 has to hunt back through several minutes of it to find where they
+     are - and the same forty minutes was being offered four times over, once
+     inside every section that had no recording of its own. One paper, one
+     bar, at the top of the listening.
+
+     Sticky, for the reason the Drive player is sticky: a recording you cannot
+     see is a recording you cannot pause, and a listening 問題 is taller than
+     the screen. It pins under the command bar and travels the rest of the
+     paper, and the paper's own players pin underneath it - .q-audio adds
+     --full-h to its offset, which is this bar's measured height, so the two
+     dock rather than overlap.
+
+     Nothing of YouTube is loaded until the button is pressed. An <iframe>
+     written at render time would fetch their player and set their cookies on
+     every listening paper, for a recording most readers never start - so what
+     is drawn is a button, and the frame is created by the click that asks for
+     it. youtube-nocookie is their own domain for exactly this, the line
+     underneath says whose recording it is, and Stop takes the frame back out
+     again rather than leaving it playing behind a collapsed box. */
+  function fullAudioBar() {
+    var full = state.exam && state.exam.listeningFull;
+    var vid = full && full.url ? videoId(full.url) : null;
+    if (!vid) return null;
+
+    var bar = el("div", "q-audio q-audio-full-bar");
+    bar.innerHTML =
+      '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
+        "<b>" + esc(t("exam.audioFullLabel")) + "</b>" +
+        "<i>" + esc(t("exam.audioFullTag")) + "</i></span>" +
+      '<div class="q-audio-full-media"></div>' +
+      '<div class="q-audio-full-side">' +
+        '<p class="q-audio-whose">' + esc(t("exam.audioFullWhose")) + " " +
+          '<a class="text-link" href="' + esc(full.url) + '" target="_blank" ' +
+          'rel="noopener noreferrer">' + esc(t("exam.audioFullLink")) +
+          "</a></p>" +
+        '<button type="button" class="q-audio-stop" hidden>' +
+          '<span aria-hidden="true">\u2715</span> ' +
+          esc(t("exam.audioFullStop")) + "</button>" +
+      "</div>";
+
+    var media = bar.querySelector(".q-audio-full-media");
+    var stop = bar.querySelector(".q-audio-stop");
+
+    function idle() {
+      media.innerHTML =
         '<button type="button" class="q-audio-play">' +
           '<span class="q-audio-play-icon" aria-hidden="true">\u25b6</span>' +
           '<span class="q-audio-play-text">' + esc(t("exam.audioFullPlay")) +
-          "</span></button>" +
-      "</div>" +
-      '<p class="q-audio-whose">' + esc(t("exam.audioFullWhose")) + " " +
-        '<a class="text-link" href="' + esc(url) + '" target="_blank" ' +
-        'rel="noopener noreferrer">' + esc(t("exam.audioFullLink")) +
-        "</a></p>";
+        "</span></button>";
+      media.querySelector(".q-audio-play").addEventListener("click", play);
+      bar.classList.remove("is-playing");
+      paperNode(bar).classList.remove("is-full-playing");
+      stop.hidden = true;
+      measureFullBar(bar);
+    }
 
-    var media = box.querySelector(".q-audio-full-media");
-    media.querySelector(".q-audio-play").addEventListener("click", function () {
+    function play() {
       var frame = document.createElement("iframe");
-      /* Not q-audio-frame: that class already dresses the Drive player
-         above, at a fixed 60px with the bottom cropped off. */
+      /* Not q-audio-frame: that class already dresses the Drive player, at a
+         fixed 60px with the bottom cropped off. */
       frame.className = "q-audio-yt";
       frame.src = "https://www.youtube-nocookie.com/embed/" +
         encodeURIComponent(vid) + "?autoplay=1&rel=0";
@@ -1638,9 +1673,42 @@
       frame.allow = "autoplay; encrypted-media; picture-in-picture";
       frame.setAttribute("allowfullscreen", "");
       frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-      media.replaceChild(frame, media.firstChild);
-    });
-    return box;
+      media.innerHTML = "";
+      media.appendChild(frame);
+      bar.classList.add("is-playing");
+      paperNode(bar).classList.add("is-full-playing");
+      stop.hidden = false;
+      measureFullBar(bar);
+    }
+
+    stop.addEventListener("click", idle);
+    idle();
+    return bar;
+  }
+
+  /* The paper's own players pin below this bar, so its height has to be a
+     number the stylesheet can read. It changes twice - when the frame
+     replaces the button, and when the viewport reflows the bar onto another
+     row - so it is measured on both rather than guessed. */
+  var fullBarRO = null;
+
+  function paperNode(bar) {
+    return bar.closest(".exam-paper") || document.createElement("div");
+  }
+
+  function measureFullBar(bar) {
+    var paper = document.getElementById("examPaper");
+    if (!paper || !bar || !bar.parentNode) return;
+    paper.style.setProperty("--full-h",
+      Math.round(bar.getBoundingClientRect().height) + "px");
+  }
+
+  function watchFullBar(bar) {
+    measureFullBar(bar);
+    if (typeof ResizeObserver !== "function") return;
+    if (fullBarRO) fullBarRO.disconnect();
+    fullBarRO = new ResizeObserver(function () { measureFullBar(bar); });
+    fullBarRO.observe(bar);
   }
 
   function buildBlock(block) {

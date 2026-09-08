@@ -636,7 +636,7 @@
      page showed between the bar and the pinned player. Docked to the bar it
      is one continuous edge, which is also what a docked control should look
      like - square on top, rounded below. */
-  top: calc(var(--header-h, 74px) + var(--bar-h, 62px));
+  top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + var(--full-h, 0px));
   z-index: 4;
   display: flex;
   align-items: center;
@@ -1518,7 +1518,7 @@
   .exam-page .paper-question { scroll-margin-top: calc(var(--bar-h, 62px) + 14px); }
   /* The site header scrolls away here, so the pinned player must not leave a
      header's worth of gap above itself. */
-  .exam-page .q-audio { top: var(--bar-h, 62px); }
+  .exam-page .q-audio { top: calc(var(--bar-h, 62px) + var(--full-h, 0px)); }
   .exam-page .q-passage {
     top: calc(var(--bar-h, 62px) + 12px);
     max-height: 42vh;
@@ -1744,6 +1744,7 @@
    Reading blocks are exempt: the passage and its questions need the width. */
 .paper-section:not(.has-passage) .section-head > *,
 .paper-section:not(.has-passage) > .q-audio,
+.exam-paper > .q-audio-full-bar,
 .paper-block:not(.has-passage) .block-questions {
   max-width: 78ch;
   margin-inline: auto;
@@ -2474,11 +2475,8 @@
   background: none;
 }
 
-/* The link to a recording that is not ours. Set apart from the help links
-   below it, and followed by a line saying whose it is - a reader handed
-   somebody else's upload should be told so before they click, not after. */
-.q-audio-full { font-weight: 700; }
-
+/* A line saying whose the recording is - a reader handed somebody else's
+   upload should be told so before they press play, not after. */
 .q-audio-whose {
   display: inline-block;
   margin-top: 2px;
@@ -2486,42 +2484,49 @@
   color: var(--muted);
 }
 
-/* The full-section recording: a still panel until it is asked for.
+/* The whole-test recording: the paper's own audio bar, wearing the paper's
+   own chrome, so a reader does not have to work out that this row is a
+   player too. Same blue, same dock under the command bar, same pin.
 
-   The box holds a 16:9 shape from the first paint, so pressing play swaps a
-   button for a frame of the same size and nothing on the page moves. */
-.q-audio-full-box { margin-top: 10px; }
-
-.q-audio-full-media {
-  aspect-ratio: 16 / 9;
-  max-width: 460px;
+   It never offsets itself: --full-h is this bar's height, set on #examPaper
+   so the paper's own players pin below it, and zeroed here so the bar does
+   not push itself down by its own height. */
+.q-audio-full-bar {
+  --full-h: 0px;
+  flex-wrap: wrap;
+  row-gap: 4px;
 }
 
-.q-audio-full-box .q-audio-play {
-  width: 100%;
-  height: 100%;
-  /* Column flex, not grid: place-items on a grid made the arrow and the
-     words two rows and pushed them to opposite ends of the panel. */
-  display: flex;
-  flex-direction: column;
+/* Idle it is a button and nothing more - a 16:9 hole pinned to the top of
+   every listening paper for a recording most readers never start is a lot of
+   screen to reserve. It takes the shape of a player on the click that makes
+   one. */
+.q-audio-full-media { flex: none; }
+
+.q-audio-full-bar.is-playing .q-audio-full-media {
+  width: min(320px, 100%);
+  aspect-ratio: 16 / 9;
+}
+
+.q-audio-play {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  padding: 12px;
+  padding: 9px 16px;
   border: 1.5px solid var(--line);
-  border-radius: 12px;
-  background: var(--panel-soft);
+  border-radius: 10px;
+  background: #fff;
   color: var(--navy);
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   cursor: pointer;
   transition: 0.16s ease;
 }
 
-.q-audio-full-box .q-audio-play:hover { border-color: var(--blue); }
+.q-audio-play:hover { border-color: var(--blue); }
 
 .q-audio-play-icon {
-  font-size: 1.5rem;
+  font-size: 1.05rem;
   line-height: 1;
   color: var(--blue);
 }
@@ -2530,8 +2535,49 @@
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 12px;
+  border-radius: 10px;
   display: block;
 }
 
-.q-audio-full-box .q-audio-whose { margin: 6px 0 0; max-width: 460px; }
+/* Whose it is, and the way out of it. */
+.q-audio-full-side {
+  flex: 1 1 160px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.q-audio-full-side .q-audio-whose { display: block; margin: 0; }
+
+.q-audio-stop {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.q-audio-stop:hover { border-color: var(--blue); color: var(--navy); }
+
+/* Two pinned players is one too many. While the whole-test recording is
+   running, the paper's own player for this 問題 is both redundant and in the
+   way - between the header, the command bar, a 180px frame and a 60px player
+   there was more chrome than paper. It goes back to the flow until Stop. */
+.exam-paper.is-full-playing .paper-section .q-audio { position: static; }
+
+@media (max-width: 620px) {
+  /* .q-audio goes display:block on a phone, so the row rules above stop
+     applying; give the pieces their own stacking instead. */
+  .q-audio-full-bar .q-audio-play { width: 100%; justify-content: center; }
+  /* Not full width: a pinned 16:9 frame across a phone is a third of the
+     screen, and what is on screen is a title card - the questions are on the
+     page, not in the picture. Wide enough to keep YouTube's own controls
+     usable, no wider. */
+  .q-audio-full-bar.is-playing .q-audio-full-media { width: min(240px, 100%); }
+  .q-audio-full-side { margin-top: 6px; }
+}
