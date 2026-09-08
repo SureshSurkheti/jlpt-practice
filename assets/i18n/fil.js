@@ -33,6 +33,7 @@ I18N.register("fil", {
  "exam.audio": "Audio para sa bahaging ito",
  "exam.audioFailed": "Hindi ma-load ang audio sa pakikinig.",
  "exam.audioFullLink": "Pakinggan ang buong bahagi ng pakikinig sa YouTube",
+ "exam.audioFullPlay": "I-play ang buong bahagi ng pakikinig",
  "exam.audioFullWhose": "Pag-upload ng ibang tao sa YouTube — hindi naka-host dito.",
  "exam.audioHelp": "Magsanay sa pakikinig sa app na ito:",
  "exam.audioNote": "Isang recording ang sumasaklaw sa buong bahagi, kaya kailangan ng internet.",

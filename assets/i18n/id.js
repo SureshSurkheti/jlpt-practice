@@ -33,6 +33,7 @@ I18N.register("id", {
  "exam.audio": "Audio untuk bagian ini",
  "exam.audioFailed": "Audio menyimak tidak dapat dimuat.",
  "exam.audioFullLink": "Dengarkan seluruh bagian menyimak di YouTube",
+ "exam.audioFullPlay": "Putar seluruh bagian menyimak",
  "exam.audioFullWhose": "Unggahan orang lain di YouTube — bukan disimpan di sini.",
  "exam.audioHelp": "Berlatih menyimak dengan aplikasi ini saja:",
  "exam.audioNote": "Satu rekaman mencakup seluruh bagian, jadi perlu koneksi internet.",

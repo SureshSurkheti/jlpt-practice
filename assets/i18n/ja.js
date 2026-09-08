@@ -33,6 +33,7 @@ I18N.register("ja", {
  "exam.audio": "この科目の音声",
  "exam.audioFailed": "聴解音声を読み込めませんでした。",
  "exam.audioFullLink": "この聴解セクション全体をYouTubeで聞く",
+ "exam.audioFullPlay": "聴解セクション全体を再生",
  "exam.audioFullWhose": "第三者がYouTubeに投稿したものです。当サイトの音源ではありません。",
  "exam.audioHelp": "代わりにこのアプリで聴解を練習してください：",
  "exam.audioNote": "1つの録音が科目全体をカバーします。再生にはインターネット接続が必要です。",

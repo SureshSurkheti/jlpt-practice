@@ -33,6 +33,7 @@ I18N.register("hi", {
  "exam.audio": "इस भाग का ऑडियो",
  "exam.audioFailed": "श्रवण ऑडियो लोड नहीं हो सका।",
  "exam.audioFullLink": "पूरा श्रवण खंड YouTube पर सुनें",
+ "exam.audioFullPlay": "पूरा श्रवण खंड चलाएँ",
  "exam.audioFullWhose": "किसी और द्वारा YouTube पर अपलोड किया गया — यहाँ संग्रहीत नहीं है।",
  "exam.audioHelp": "इसके बजाय इस ऐप से श्रवण अभ्यास करें:",
  "exam.audioNote": "एक ही रिकॉर्डिंग पूरे भाग को कवर करती है, इसलिए इंटरनेट कनेक्शन चाहिए।",

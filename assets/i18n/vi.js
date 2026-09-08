@@ -33,6 +33,7 @@ I18N.register("vi", {
  "exam.audio": "Âm thanh cho phần này",
  "exam.audioFailed": "Không tải được âm thanh phần nghe.",
  "exam.audioFullLink": "Nghe toàn bộ phần thi nghe trên YouTube",
+ "exam.audioFullPlay": "Phát toàn bộ phần thi nghe",
  "exam.audioFullWhose": "Bản tải lên của người khác trên YouTube — không lưu trữ tại đây.",
  "exam.audioHelp": "Hãy luyện nghe bằng ứng dụng này:",
  "exam.audioNote": "Một file ghi âm cho cả phần thi, nên cần kết nối internet.",

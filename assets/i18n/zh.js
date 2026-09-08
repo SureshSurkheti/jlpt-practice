@@ -33,6 +33,7 @@ I18N.register("zh", {
  "exam.audio": "本部分的音频",
  "exam.audioFailed": "无法加载听力音频。",
  "exam.audioFullLink": "在 YouTube 上收听整个听力部分",
+ "exam.audioFullPlay": "播放整个听力部分",
  "exam.audioFullWhose": "他人上传于 YouTube，非本站托管。",
  "exam.audioHelp": "请改用此应用练习听力：",
  "exam.audioNote": "一段录音涵盖整个部分，需要联网播放。",

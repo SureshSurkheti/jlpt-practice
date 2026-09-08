@@ -33,6 +33,7 @@ I18N.register("en", {
  "exam.audio": "Audio for this section",
  "exam.audioFailed": "Listening audio could not be loaded.",
  "exam.audioFullLink": "Listen to the whole section on YouTube",
+ "exam.audioFullPlay": "Play the full listening section",
  "exam.audioFullWhose": "Someone else's upload, on YouTube — not hosted here.",
  "exam.audioHelp": "Practise listening with this app instead:",
  "exam.audioNote": "One recording covers the whole section, so it needs an internet connection.",

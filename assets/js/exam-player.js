@@ -1451,17 +1451,26 @@
        handed. */
     if (!section.audio && section.category === "listening") {
       var full = state.exam && state.exam.listeningFull;
-      head.appendChild(el("div", "q-audio-aside is-failed",
+      var aside = el("div", "q-audio-aside is-failed",
         "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
-        "</strong><br>" +
-        (full && full.url
-          ? '<a class="text-link q-audio-full" href="' + esc(full.url) +
-            '" target="_blank" rel="noopener noreferrer">' +
-            esc(t("exam.audioFullLink")) + "</a><br>" +
-            '<span class="q-audio-whose">' + esc(t("exam.audioFullWhose")) +
-            "</span><br>"
-          : "") +
-        audioHelpHTML() + "</p>"));
+        "</strong><br>" + audioHelpHTML() + "</p>");
+
+      /* Where the whole section can be heard, it plays here rather than
+         sending the reader off to another site mid-paper.
+
+         Nothing of YouTube is loaded until the button is pressed. An <iframe>
+         written at render time would fetch their player and set their cookies
+         on every silent 問題 of every paper, for a recording most readers
+         never start - so what is drawn is a still panel with a play button,
+         and the frame is created on the click that asks for it. That also
+         keeps the third-party player off the critical path of a page whose
+         own audio is already slow. youtube-nocookie is their own domain for
+         exactly this, and the line underneath says whose recording it is. */
+      if (full && full.url) {
+        var vid = videoId(full.url);
+        if (vid) aside.appendChild(fullAudioPanel(vid, full.url));
+      }
+      head.appendChild(aside);
     }
 
     node.appendChild(head);
@@ -1589,6 +1598,49 @@
       figWatch.push(f);
       if (!figTicker) figTicker = setInterval(figTick, 1500);
     });
+  }
+
+
+  /* ------------------------------------------- the full-section recording */
+
+  function videoId(url) {
+    var m = /[?&]v=([\w-]{11})/.exec(url || "") ||
+            /youtu\.be\/([\w-]{11})/.exec(url || "");
+    return m ? m[1] : null;
+  }
+
+  function fullAudioPanel(vid, url) {
+    /* The picture and the line naming its owner are separate children in
+       normal flow. Pinning that line beneath an aspect-ratio box with
+       position:absolute laid it over the first question instead. */
+    var box = el("div", "q-audio-full-box");
+    box.innerHTML =
+      '<div class="q-audio-full-media">' +
+        '<button type="button" class="q-audio-play">' +
+          '<span class="q-audio-play-icon" aria-hidden="true">\u25b6</span>' +
+          '<span class="q-audio-play-text">' + esc(t("exam.audioFullPlay")) +
+          "</span></button>" +
+      "</div>" +
+      '<p class="q-audio-whose">' + esc(t("exam.audioFullWhose")) + " " +
+        '<a class="text-link" href="' + esc(url) + '" target="_blank" ' +
+        'rel="noopener noreferrer">' + esc(t("exam.audioFullLink")) +
+        "</a></p>";
+
+    var media = box.querySelector(".q-audio-full-media");
+    media.querySelector(".q-audio-play").addEventListener("click", function () {
+      var frame = document.createElement("iframe");
+      /* Not q-audio-frame: that class already dresses the Drive player
+         above, at a fixed 60px with the bottom cropped off. */
+      frame.className = "q-audio-yt";
+      frame.src = "https://www.youtube-nocookie.com/embed/" +
+        encodeURIComponent(vid) + "?autoplay=1&rel=0";
+      frame.title = t("exam.audioFullPlay");
+      frame.allow = "autoplay; encrypted-media; picture-in-picture";
+      frame.setAttribute("allowfullscreen", "");
+      frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      media.replaceChild(frame, media.firstChild);
+    });
+    return box;
   }
 
   function buildBlock(block) {

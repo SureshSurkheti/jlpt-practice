@@ -33,6 +33,7 @@ I18N.register("pt-BR", {
  "exam.audio": "Áudio desta seção",
  "exam.audioFailed": "Não foi possível carregar o áudio de audição.",
  "exam.audioFullLink": "Ouvir a seção de compreensão auditiva inteira no YouTube",
+ "exam.audioFullPlay": "Reproduzir a seção de compreensão auditiva inteira",
  "exam.audioFullWhose": "Envio de outra pessoa no YouTube — não hospedado aqui.",
  "exam.audioHelp": "Pratique audição com este aplicativo:",
  "exam.audioNote": "Uma gravação cobre a seção inteira, por isso precisa de conexão.",
