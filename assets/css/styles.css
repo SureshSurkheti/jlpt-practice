@@ -3921,3 +3921,55 @@ body.is-leaving { opacity: 0; }
 .levels-facts th:first-child,
 .levels-facts thead th:first-child { text-align: left; }
 .levels-facts tbody th a { color: var(--navy); font-weight: 800; }
+
+/* The two blocks that make a paper page its own rather than a template with
+   the numbers changed: which 問題 the sitting holds and how many questions
+   are in each, and the vocabulary it draws on. See paper_facts in
+   tools/build_static.py. */
+.paper-h2 {
+  margin: 26px 0 10px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.paper-mondai { margin: 0; padding: 0; list-style: none; }
+.paper-mondai li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+}
+.paper-mondai li:first-child { border-top: 0; }
+.paper-mondai em {
+  flex: 0 0 auto;
+  min-width: 150px;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--navy);
+}
+.paper-mondai div { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.paper-mondai span {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.paper-mondai span b { font-weight: 600; color: var(--text); }
+
+.paper-vocab { margin: 0 0 8px; font-variant-numeric: lining-nums tabular-nums; }
+.paper-vocab strong { font-size: 1.15rem; color: var(--navy); }
+.paper-lvs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.paper-lv {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.paper-lv b { font-weight: 800; color: var(--navy); }

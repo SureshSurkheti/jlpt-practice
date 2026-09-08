@@ -28,6 +28,7 @@ import io
 import json
 import os
 import re
+from collections import OrderedDict
 import shutil
 from urllib.parse import quote
 from datetime import date
@@ -1029,6 +1030,71 @@ def paper_index(exams, table, en):
             % (esc(t(table, "exams.title", en)), "\n        ".join(blocks)))
 
 
+_PAPER_FACTS = {}
+
+MONDAI_RE = re.compile(r"\u554f\u984c\s*([0-9\uff10-\uff19]+)")
+
+
+def paper_facts(exam_id):
+    """What is actually particular about one paper.
+
+    The first version of these pages carried a level, a date and four
+    numbers - 230 characters of text, of which the only distinctive tokens
+    were the numbers themselves. Ninety-one pages like that, in twelve
+    languages, is the shape of a doorway page: a template with the variables
+    changed. It would have been fair for a search engine to treat them as
+    one page and discount the lot.
+
+    This is what makes each one its own: the 問題 a sitting actually contains
+    and how many questions are in each - which differ paper to paper even
+    within a level - and the vocabulary profile of the paper, counted from
+    the glossary that was built for it. Both are computed from data the site
+    already holds, and neither is the exam text.
+
+    Read once per paper and kept, because the paper pages are written twelve
+    times over and the glossary files are 17MB together.
+    """
+    if exam_id in _PAPER_FACTS:
+        return _PAPER_FACTS[exam_id]
+
+    parts = []
+    path = os.path.join(ROOT, "data", "exams", exam_id + ".json")
+    exam = json.load(io.open(path, encoding="utf-8"))
+    for part in exam.get("parts") or []:
+        seen = OrderedDict()
+        for q in part.get("questions") or []:
+            ins = re.sub(r"<[^>]+>", " ", q.get("instruction") or "")
+            m = MONDAI_RE.search(ins)
+            if not m:
+                continue
+            tag = "\u554f\u984c" + m.group(1)
+            seen[tag] = seen.get(tag, 0) + 1
+        if seen:
+            parts.append((part["id"], list(seen.items())))
+
+    levels = OrderedDict((lv, 0) for lv in LEVELS_UPPER)
+    total = 0
+    gpath = os.path.join(ROOT, "data", "glossary", exam_id + ".json")
+    if os.path.exists(gpath):
+        words = json.load(io.open(gpath, encoding="utf-8")).get("words") or {}
+        total = len(words)
+        for w in words.values():
+            lv = w.get("lv")
+            if lv in levels:
+                levels[lv] += 1
+
+    _PAPER_FACTS[exam_id] = (parts, total, levels)
+    return _PAPER_FACTS[exam_id]
+
+
+def part_name(part_id, table, en):
+    if part_id == "grammar-reading":
+        return "%s & %s" % (t(table, "section.grammar", en),
+                            t(table, "section.reading", en))
+    key = SKILL_KEY.get(part_id)
+    return t(table, key, en) if key else part_id
+
+
 def paper_body(exam, table, en, prev_ex, next_ex):
     """The page for one paper.
 
@@ -1090,6 +1156,40 @@ def paper_body(exam, table, en, prev_ex, next_ex):
     near.append('<a href="./exams.html">%s</a>'
                 % esc(t(table, "exams.title", en)))
 
+    # What this sitting actually contains, and what vocabulary it draws on.
+    # See paper_facts: without these the page is a template with the numbers
+    # changed, ninety-one times over.
+    parts_mondai, vocab_total, vocab_levels = paper_facts(exam["id"])
+
+    mondai = ""
+    if parts_mondai:
+        items = []
+        for part_id, tags in parts_mondai:
+            chips = "".join("<span><b>%s</b> %d</span>" % (esc(tag), n)
+                            for tag, n in tags)
+            items.append("<li><em>%s</em><div>%s</div></li>"
+                         % (esc(part_name(part_id, table, en)), chips))
+        # Its own string rather than "sections" again - the table above it is
+        # already headed that, and two identical headings over two different
+        # tables leaves the reader working out which is which. exam.breakdown
+        # was the other candidate and is wrong here: in Japanese it reads
+        # 科目別の結果, "results by subject", because that is the results
+        # screen it was written for.
+        mondai = ('<h2 class="paper-h2">%s</h2>\n'
+                  '      <ul class="paper-mondai">%s</ul>\n      '
+                  % (esc(t(table, "paper.mondai", en)), "".join(items)))
+
+    vocab = ""
+    if vocab_total:
+        pills = "".join('<span class="paper-lv level-%s"><b>%s</b> %d</span>'
+                        % (lv.lower(), lv, n)
+                        for lv, n in vocab_levels.items() if n)
+        vocab = ('<h2 class="paper-h2">%s</h2>\n'
+                 '      <p class="paper-vocab"><strong>%d</strong> %s</p>\n'
+                 '      <p class="paper-lvs">%s</p>\n      '
+                 % (esc(t(table, "study.words", en)), vocab_total,
+                    esc(t(table, "study.wordsCount", en)), pills))
+
     return (
         '<main class="container page-shell paper-page">\n'
         '      <p class="paper-kicker"><a href="./exams.html">%s</a>'
@@ -1104,7 +1204,7 @@ def paper_body(exam, table, en, prev_ex, next_ex):
         '        <tbody>%s</tbody>\n'
         '        <tfoot><tr><td>%s</td><td>%d</td></tr></tfoot>\n'
         '      </table>\n'
-        '      <ul class="paper-notes">%s</ul>\n'
+        '      %s%s<ul class="paper-notes">%s</ul>\n'
         '      <nav class="paper-near">%s</nav>\n'
         '    </main>'
         % (esc(t(table, "nav.exams", en)), esc(lv),
@@ -1116,7 +1216,7 @@ def paper_body(exam, table, en, prev_ex, next_ex):
            esc(t(table, "exams.statQuestions", en)),
            rows,
            esc(t(table, "exams.statQuestions", en)), total,
-           "".join(notes), "".join(near)))
+           mondai, vocab, "".join(notes), "".join(near)))
 
 
 def main():

@@ -261,6 +261,7 @@ I18N.register("en", {
  "notice.title": "What is available",
  "notice.wordsBody": "Papers at every level carry English meanings with furigana over the kanji, on a button under each question: every word of the question and its four answers, plus the harder words of reading passages and listening transcripts.",
  "notice.yes": "Yes",
+ "paper.mondai": "Question groups",
  "practice.answeredCorrectly": "questions answered correctly",
  "practice.body": "Every level is here. Drill one skill, or sit the whole paper.",
  "practice.levels": "levels",
