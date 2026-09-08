@@ -443,6 +443,158 @@ def parse_source(path):
 
 
 # --------------------------------------------------------------------------
+# the pages the site used to serve
+# --------------------------------------------------------------------------
+
+# Two 読解 pages exist in the archive only as snapshots from 2018 and 2019,
+# taken before the site was rebuilt. Everything since is the placeholder that
+# says the year is being updated, so these are the only copies there are.
+#
+# The old page is a plain <table>: a bold row for each 問題 heading, a row per
+# question whose <td> carries the printed number and the question, a hidden
+# diemso/AS/type div beside it, and the four options as <label id="QS<n><c>">.
+# The wrappers the modern parser looks for - big_item, question_list, answers
+# - do not exist, which is why parse_source calls it a placeholder.
+#
+# Two things it does not have: explanations, and a usable type marker (every
+# question on the page is tagged 2, grammar, whatever it actually is). So the
+# 問題 heading decides, and the caller drops the groups the paper already has
+# from another page.
+
+LEGACY_ROW = re.compile(
+    r'style="font-weight:bold[^"]*"[^>]*>(?P<head>.*?)</td>'
+    # Not every full-width cell is prose: when the four options are set one
+    # per row they are full-width too, and a plain .*? here swallowed 148 of
+    # the 172 <label>s on the page. A cell holding an <input> is a choice row,
+    # and belongs to the QS branch below.
+    r'|<td colspan="2">(?P<cell>(?:(?!</td>|<input)[\s\S])*?)</td>'
+    r'|id="diemso(?P<dq>\d+)"[^>]*>\s*(?P<pts>\d+)'
+    r'|id="QS(?P<qn>\d+)(?P<cn>\d)"[^>]*>(?P<choice>.*?)</label>'
+    r'|id="AS(?P<aq>\d+)"[^>]*>\s*(?P<ans>\d+)',
+    re.I | re.S,
+)
+
+# A cell is the question itself when a hidden points div follows it inside the
+# same row; anything else that long is the passage the questions hang off.
+def parse_legacy(path):
+    """Parse a pre-2020 page. Returns (questions, note) like parse_source."""
+    raw = open(path, encoding="utf-8", errors="replace").read()
+    start = raw.find('<form name="dttn"')
+    if start == -1:
+        return [], "no exam form found"
+    body = raw[start:]
+
+    instruction = None
+    passage = None
+    last_cell = None
+    questions = {}
+
+    for m in LEGACY_ROW.finditer(body):
+        if m.group("head") is not None:
+            head = clean_html(m.group("head"), japanese=True)
+            if re.match(r"\s*問題", text_of(head)):
+                instruction = head
+                passage = None
+                last_cell = None
+            continue
+
+        if m.group("cell") is not None:
+            # Cells arrive in booklet order: the passage, then the question
+            # that hangs off it. So a cell still unclaimed when the next one
+            # turns up was the passage - the question rows claim theirs at
+            # the hidden points div a moment later.
+            cell = clean_html(m.group("cell"), japanese=True)
+            if last_cell is not None:
+                passage = last_cell
+            last_cell = cell
+            continue
+
+        if m.group("dq"):
+            # the cell just before it was this question, not a passage
+            qn = int(m.group("dq"))
+            q = questions.setdefault(qn, {})
+            q["points"] = int(m.group("pts"))
+            q["prompt"] = last_cell
+            q["instruction"] = instruction
+            q["passage"] = passage
+            last_cell = None
+            continue
+
+        if m.group("qn"):
+            qn, cn = int(m.group("qn")), int(m.group("cn"))
+            q = questions.setdefault(qn, {})
+            q.setdefault("choices", {})[cn] = strip_choice_number(
+                clean_html(m.group("choice"), japanese=True))
+            if last_cell is not None:
+                passage = last_cell
+                last_cell = None
+            continue
+
+        if m.group("aq"):
+            questions.setdefault(int(m.group("aq")), {})["answer"] = \
+                int(m.group("ans"))
+
+    out = []
+    for qn in sorted(questions):
+        q = questions[qn]
+        choices = q.get("choices") or {}
+        if len(choices) != 4 or not q.get("prompt"):
+            continue
+        if EXAMPLE_ITEM.match(text_of(q["prompt"])):
+            continue
+        answer = q.get("answer")
+        if not answer or answer not in choices:
+            answer = None
+        number, prompt = split_prompt_number(q["prompt"])
+        out.append({
+            "n": qn,
+            "number": number,
+            "prompt": prompt,
+            "passage": q.get("passage") or None,
+            "instruction": q.get("instruction") or None,
+            "audio": None,
+            "choices": [choices[i] for i in sorted(choices)],
+            "answer": answer,
+            "points": q.get("points") or 1,
+            "category": "reading",
+            "explanation": None,
+        })
+
+    # The old page prints the booklet number with no punctuation after it
+    # ("55 冷水で顔を洗う...") about as often as with it ("57. 大手..."), and a
+    # bare number followed by a space is not something split_prompt_number
+    # will take on trust: a sentence may legitimately open with a numeral.
+    # Here it can be checked rather than guessed. The printed numbers run
+    # consecutively down the page, so one is only taken when it is the next
+    # in that run - otherwise the number stayed in the prompt and read like a
+    # first option beside the badge.
+    expect = None
+    for q in out:
+        if q["number"] is None:
+            m = re.match(r"\s*(?:<br\s*/?>\s*)*(\d{1,2})\s+(?=\S)", q["prompt"] or "")
+            if m and (expect is None or int(m.group(1)) == expect):
+                q["number"] = m.group(1)
+                q["prompt"] = q["prompt"][m.end():].strip()
+        if q["number"] and str(q["number"]).isdigit():
+            expect = int(q["number"]) + 1
+
+    if not out:
+        return [], "legacy layout: nothing parsed"
+    return out, "legacy layout: %d questions, and it carries no explanations" % len(out)
+
+
+def is_legacy_page(path):
+    """True for a snapshot taken before the source site was rebuilt."""
+    raw = open(path, encoding="utf-8", errors="replace").read()
+    return 'id="diemso' in raw and 'class="question_list"' not in raw
+
+
+def group_tag(instruction):
+    m = re.match(r"\s*(問題\s*[0-9０-９]+)", text_of(instruction or ""))
+    return re.sub(r"\s+", "", m.group(1)) if m else None
+
+
+# --------------------------------------------------------------------------
 # hand-authored exams
 # --------------------------------------------------------------------------
 
@@ -621,15 +773,44 @@ def main():
         parts = []
         counts = defaultdict(int)
 
+        seen_groups = set()
+
         for kind in sorted(files, key=lambda k: PART_ORDER.get(k, 9)):
             questions, note = parse_source(files[kind])
             rel = os.path.relpath(files[kind], ROOT)
+
+            # The modern page for this part may be the "being updated"
+            # placeholder while an old snapshot of it still has the questions.
+            # Only 読解 is ever recovered this way, and only what the paper is
+            # actually missing: the old page runs 問題7 to 問題14, and 問題7-9
+            # have already arrived on the vocabulary page, so the 問題 headings
+            # this paper has seen are dropped rather than duplicated.
+            if not questions and is_legacy_page(files[kind]):
+                questions, note = parse_legacy(files[kind])
+                kept = []
+                for q in questions:
+                    if group_tag(q["instruction"]) in seen_groups:
+                        continue
+                    # 問題14 sets its questions against a page of listings that
+                    # the old layout does not carry. Four options and nothing
+                    # to read them against is not a question.
+                    if not q.get("passage"):
+                        continue
+                    kept.append(q)
+                dropped = len(questions) - len(kept)
+                questions = kept
+                if note:
+                    note += f", kept {len(kept)}, dropped {dropped}"
+
             if note:
                 warnings.append(f"{rel}: {note}")
             if not questions:
                 continue
             for q in questions:
                 counts[q["category"]] += 1
+                tag = group_tag(q["instruction"])
+                if tag:
+                    seen_groups.add(tag)
             parts.append({
                 "id": kind,
                 "label": PART_LABEL[kind],
