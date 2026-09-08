@@ -44,7 +44,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://jlpt.sureshsurkheti.com/zh/"},{"@type":"ListItem","position":2,"name":"单词·语法","item":"https://jlpt.sureshsurkheti.com/zh/study.html"},{"@type":"ListItem","position":3,"name":"N1 单词","item":"https://jlpt.sureshsurkheti.com/zh/study/n1-words.html"}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=73aca31a" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=524012d2" />
   </head>
   <body class="study-page" data-back-to="../study.html">
     <header class="site-header">
@@ -119,20 +119,27 @@
 
 
       <div class="study-controls">
-        <div class="study-tabs" role="tablist">
-          <button type="button" class="study-tab" data-level="N5" role="tab" >N5</button>
-          <button type="button" class="study-tab" data-level="N4" role="tab">N4</button>
-          <button type="button" class="study-tab" data-level="N3" role="tab">N3</button>
-          <button type="button" class="study-tab" data-level="N2" role="tab">N2</button>
-          <button type="button" class="study-tab is-on" data-level="N1" role="tab">N1</button>
-        </div>
-        <div class="study-tabs study-kind" role="tablist">
-          <button type="button" class="study-tab is-on" data-kind="words" role="tab"
-                  data-i18n="study.words">单词</button>
-          <button type="button" class="study-tab" data-kind="kanji" role="tab"
-                  data-i18n="study.kanji">汉字</button>
-          <button type="button" class="study-tab" data-kind="grammar" role="tab"
-                  data-i18n="study.grammar">语法</button>
+        <!-- The two pill groups are one line on a phone, scrolling sideways
+             inside this wrapper, so that the pinned bar there is a line and a
+             search box rather than three rows. On anything wider the wrapper
+             is display:contents and the groups sit in the bar's own flex row,
+             exactly as before. -->
+        <div class="study-switch">
+          <div class="study-tabs" role="tablist">
+            <button type="button" class="study-tab" data-level="N5" role="tab" >N5</button>
+            <button type="button" class="study-tab" data-level="N4" role="tab">N4</button>
+            <button type="button" class="study-tab" data-level="N3" role="tab">N3</button>
+            <button type="button" class="study-tab" data-level="N2" role="tab">N2</button>
+            <button type="button" class="study-tab is-on" data-level="N1" role="tab">N1</button>
+          </div>
+          <div class="study-tabs study-kind" role="tablist">
+            <button type="button" class="study-tab is-on" data-kind="words" role="tab"
+                    data-i18n="study.words">单词</button>
+            <button type="button" class="study-tab" data-kind="kanji" role="tab"
+                    data-i18n="study.kanji">汉字</button>
+            <button type="button" class="study-tab" data-kind="grammar" role="tab"
+                    data-i18n="study.grammar">语法</button>
+          </div>
         </div>
         <div class="study-find">
           <input type="search" class="study-search" id="studySearch"
@@ -3965,6 +3972,6 @@
     <script defer src="/assets/i18n/en.js?v=dbdf1617"></script>
     <script defer src="/assets/i18n/zh.js?v=e38bfe35"></script>
     <script defer src="/assets/js/site.js?v=313ea7fb"></script>
-    <script defer src="/assets/js/study.js?v=856a237b"></script>
+    <script defer src="/assets/js/study.js?v=109c1053"></script>
   </body>
 </html>

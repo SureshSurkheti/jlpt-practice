@@ -506,6 +506,10 @@
       Math.round(controls.getBoundingClientRect().height) + "px");
   }
   syncControlsOffset();
+  /* Only now is the bar worth pinning: the stylesheet holds the sticky rules
+     behind this class, so a page whose script never arrives keeps a list it
+     can read rather than a row of dead buttons over the column heading. */
+  if (controls) document.body.classList.add("has-bar");
   window.addEventListener("resize", syncControlsOffset);
   document.addEventListener("languagechange", syncControlsOffset);
   if (typeof ResizeObserver === "function" && controls) {
@@ -590,6 +594,7 @@
     state.level = st.lv;
     state.kind = st.kind;
     syncTabs();
+    showActivePill();
     load();
   });
 
@@ -612,6 +617,25 @@
       tab.classList.toggle("is-on", want);
     });
   }
+
+  /* On a phone the two pill groups are one line that scrolls sideways, and
+     the pill that is on can start beyond its right edge: arriving on the
+     grammar list, the line showed five levels and no sign of which kind you
+     were reading. Bring it into view - the line's own scroll, never the
+     page's, so nothing moves vertically. */
+  function showActivePill() {
+    var sw = document.querySelector(".study-switch");
+    if (!sw || sw.scrollWidth <= sw.clientWidth) return;
+    var pill = sw.querySelector(".study-kind .study-tab.is-on") ||
+               sw.querySelector(".study-tab.is-on");
+    if (!pill) return;
+    var p = pill.getBoundingClientRect();
+    var box = sw.getBoundingClientRect();
+    if (p.right > box.right) sw.scrollLeft += p.right - box.right + 8;
+    else if (p.left < box.left) sw.scrollLeft -= box.left - p.left + 8;
+  }
+  window.addEventListener("resize", showActivePill);
+  document.addEventListener("languagechange", showActivePill);
 
   /* Where a change of list lands.
 
@@ -642,6 +666,7 @@
       });
       if (tab.dataset.level) state.level = tab.dataset.level;
       if (tab.dataset.kind) state.kind = tab.dataset.kind;
+      showActivePill();
       syncUrl();
       syncQuizLink();
       load();
@@ -663,5 +688,8 @@
   });
 
   syncTabs();
+  /* After syncTabs, not before: until it has run, the pill marked as on is
+     whichever one the build wrote, not the list the address asked for. */
+  showActivePill();
   load();
 })();
