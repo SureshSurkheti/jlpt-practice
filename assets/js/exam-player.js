@@ -1458,11 +1458,19 @@
        upload, that plays from a single bar above 問題1 - see fullAudioBar()
        - because the recording starts at 問題1 and offering it four times
        over, once inside each silent 問題, both repeated itself and put the
-       beginning of it out of reach. */
+       beginning of it out of reach.
+
+       Which changes what this note should say. "No listening audio", printed
+       under a bar that is playing the listening audio, is simply untrue: what
+       is missing is this 問題's own recording, and the note's job is now to
+       point at the one above rather than to apologise. The help links go with
+       it - they are about audio that will not play, and here it plays. */
     if (!section.audio && section.category === "listening") {
       head.appendChild(el("div", "q-audio-aside is-failed",
-        "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
-        "</strong><br>" + audioHelpHTML() + "</p>"));
+        hasFullAudio()
+          ? '<p class="q-audio-note">' + esc(t("exam.audioInFull")) + "</p>"
+          : "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
+            "</strong><br>" + audioHelpHTML() + "</p>"));
     }
 
     node.appendChild(head);
@@ -1625,10 +1633,15 @@
      it. youtube-nocookie is their own domain for exactly this, the line
      underneath says whose recording it is, and Stop takes the frame back out
      again rather than leaving it playing behind a collapsed box. */
+  function hasFullAudio() {
+    var full = state.exam && state.exam.listeningFull;
+    return !!(full && full.url && videoId(full.url));
+  }
+
   function fullAudioBar() {
     var full = state.exam && state.exam.listeningFull;
-    var vid = full && full.url ? videoId(full.url) : null;
-    if (!vid) return null;
+    if (!hasFullAudio()) return null;
+    var vid = videoId(full.url);
 
     var bar = el("div", "q-audio q-audio-full-bar");
     bar.innerHTML =

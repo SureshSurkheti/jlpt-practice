@@ -1,13 +1,131 @@
 {
- "_note": "Full listening recordings for papers whose own audio was never published in full. Not ours and not copied here: the site links out to the video on YouTube, where the uploader keeps the views and can see the referring domain. Checked live on 2026-09-08. Source channel: Japan Freelance, youtube.com/channel/UCUGb1mZJnd3JUMwF0C7DQNQ",
+ "_note": "Full recordings for papers whose own section audio was never published in full. Nothing is copied here: the page loads the uploader's own YouTube player, on youtube-nocookie, and only once the reader presses play - the uploader keeps the view and can see the referring domain, so they can object if they want to. Checked live on 2026-09-08. Sources: Japan Freelance (youtube.com/channel/UCUGb1mZJnd3JUMwF0C7DQNQ) for N2 and N3; jlpt for you (youtube.com/channel/UC9OBx96WEfl6K8JD83mDhfQ) for N1 and the remaining N3. Every jlpt-for-you match was confirmed against the uploader's own chronological playlists (N1 PLQp1nmSq6UV9UxLWo_266-pCTdfLfupyi, N3 PLQp1nmSq6UV8VS4hPd6KoI4XBbMLNou9b), and every video was checked public, embeddable and full length.",
  "papers": {
+  "n1-2013-07": {
+   "host": "youtube",
+   "id": "4ZjZ4dAZ2Gs",
+   "url": "https://www.youtube.com/watch?v=4ZjZ4dAZ2Gs",
+   "title": "Đề Thi N1 Tháng 7 Năm 2013  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2013-12": {
+   "host": "youtube",
+   "id": "e79BG-n6wsA",
+   "url": "https://www.youtube.com/watch?v=e79BG-n6wsA",
+   "title": "Đề Thi N1 Tháng 12 Năm 2013  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 6
+  },
+  "n1-2014-07": {
+   "host": "youtube",
+   "id": "hc4oPXY8u3k",
+   "url": "https://www.youtube.com/watch?v=hc4oPXY8u3k",
+   "title": "Đề Thi N1 Tháng 7 Năm 2014  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2014-12": {
+   "host": "youtube",
+   "id": "Q919DxVWksU",
+   "url": "https://www.youtube.com/watch?v=Q919DxVWksU",
+   "title": "Đề Thi N1 Tháng 12 Năm 2014  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2015-07": {
+   "host": "youtube",
+   "id": "QDeFmAO-J5Y",
+   "url": "https://www.youtube.com/watch?v=QDeFmAO-J5Y",
+   "title": "Đề Thi N1 Tháng 7 Năm 2015  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2015-12": {
+   "host": "youtube",
+   "id": "51G4AGL6FN4",
+   "url": "https://www.youtube.com/watch?v=51G4AGL6FN4",
+   "title": "Đề Thi N1 Tháng 12 Năm 2015  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2016-07": {
+   "host": "youtube",
+   "id": "TTTuC4Slfuo",
+   "url": "https://www.youtube.com/watch?v=TTTuC4Slfuo",
+   "title": "Đề Thi N1 Tháng 7 Năm 2016  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 6
+  },
+  "n1-2016-12": {
+   "host": "youtube",
+   "id": "CpUH6H-C1oU",
+   "url": "https://www.youtube.com/watch?v=CpUH6H-C1oU",
+   "title": "Đề Thi N1 Tháng 12 Năm 2016  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2017-07": {
+   "host": "youtube",
+   "id": "2nBQ4jf_5sk",
+   "url": "https://www.youtube.com/watch?v=2nBQ4jf_5sk",
+   "title": "Đề Thi N1 Tháng 7 Năm 2017  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2017-12": {
+   "host": "youtube",
+   "id": "T4Y9hFXHH1A",
+   "url": "https://www.youtube.com/watch?v=T4Y9hFXHH1A",
+   "title": "JLPT N1 December 2017 Exam [ JLPT N1 Listening ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2018-07": {
+   "host": "youtube",
+   "id": "ZmQRFBnfTYo",
+   "url": "https://www.youtube.com/watch?v=ZmQRFBnfTYo",
+   "title": "JLPT N1 Listening Test - July 2018",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n1-2018-12": {
+   "host": "youtube",
+   "id": "PWlH-7q2vu4",
+   "url": "https://www.youtube.com/watch?v=PWlH-7q2vu4",
+   "title": "December 2018 JLPT N1 Listening Test [ JLPT N1 Listening ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 4
+  },
+  "n1-2019-07": {
+   "host": "youtube",
+   "id": "tJly6bhQQpw",
+   "url": "https://www.youtube.com/watch?v=tJly6bhQQpw",
+   "title": "Đề Thi N1 Tháng 7 Năm 2019  [ 日本語能力試験 聴解 N1  ]",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
   "n2-2011-07": {
    "host": "youtube",
    "id": "5Cyt6YhJByA",
    "url": "https://www.youtube.com/watch?v=5Cyt6YhJByA",
    "title": "LISTENING JLPT 2011 年 7 月 40 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2011-12": {
    "host": "youtube",
@@ -15,7 +133,8 @@
    "url": "https://www.youtube.com/watch?v=qYUaJ4jEvVE",
    "title": "LISTENING JLPT 2011 年 12 月 48 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2012-07": {
    "host": "youtube",
@@ -23,7 +142,8 @@
    "url": "https://www.youtube.com/watch?v=XwCI_ixR6H4",
    "title": "LISTENING JLPT 2012 年 7 月 36 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2012-12": {
    "host": "youtube",
@@ -31,7 +151,8 @@
    "url": "https://www.youtube.com/watch?v=G_OJFDrTvmI",
    "title": "LISTENING JLPT 2012 年 12 月 36 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2013-07": {
    "host": "youtube",
@@ -39,7 +160,8 @@
    "url": "https://www.youtube.com/watch?v=c4eu1Kv-JKY",
    "title": "LISTENING JLPT 2013 年 7 月 37 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2013-12": {
    "host": "youtube",
@@ -47,7 +169,8 @@
    "url": "https://www.youtube.com/watch?v=aSqa6Cd1vxk",
    "title": "LISTENING JLPT 2013 年 12 月 39 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2014-07": {
    "host": "youtube",
@@ -55,7 +178,8 @@
    "url": "https://www.youtube.com/watch?v=T1M2hU5NUQE",
    "title": "LISTENING JLPT 2014 年 7 月 41 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2014-12": {
    "host": "youtube",
@@ -63,7 +187,8 @@
    "url": "https://www.youtube.com/watch?v=T4jn59flFRc",
    "title": "LISTENING JLPT 2014 年 12 月 41 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n2-2018-12": {
    "host": "youtube",
@@ -71,7 +196,8 @@
    "url": "https://www.youtube.com/watch?v=rPp-A67s_1M",
    "title": "LISTENING JLPT N2 2018 年 12 月 51 分",
    "siteHas": 5,
-   "siteNeeds": 6
+   "siteNeeds": 6,
+   "channel": "Japan Freelance"
   },
   "n2-2020-12": {
    "host": "youtube",
@@ -79,7 +205,8 @@
    "url": "https://www.youtube.com/watch?v=CXb4Q4uf64E",
    "title": "LISTENING JLPT N2 2020 年 12 月 41 分",
    "siteHas": 5,
-   "siteNeeds": 6
+   "siteNeeds": 6,
+   "channel": "Japan Freelance"
   },
   "n3-2011-07": {
    "host": "youtube",
@@ -87,7 +214,8 @@
    "url": "https://www.youtube.com/watch?v=FdQcmoCL658",
    "title": "LISTENING JLPT N3 2011年 7月 38 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n3-2011-12": {
    "host": "youtube",
@@ -95,7 +223,8 @@
    "url": "https://www.youtube.com/watch?v=cmv5mSDUF8s",
    "title": "LISTENING JLPT N3 2011年 12月 37 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n3-2012-07": {
    "host": "youtube",
@@ -103,7 +232,8 @@
    "url": "https://www.youtube.com/watch?v=Z0_aC3CkSto",
    "title": "LISTENING JLPT N3 2012年 7月 36 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n3-2012-12": {
    "host": "youtube",
@@ -111,7 +241,8 @@
    "url": "https://www.youtube.com/watch?v=tyxvubDkddg",
    "title": "LISTENING JLPT N3 2012年 12月 44 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n3-2013-07": {
    "host": "youtube",
@@ -119,7 +250,8 @@
    "url": "https://www.youtube.com/watch?v=7gSqP417ZqA",
    "title": "LISTENING JLPT N3 2013年 7月 44 分",
    "siteHas": 1,
-   "siteNeeds": 5
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
   },
   "n3-2013-12": {
    "host": "youtube",
@@ -127,6 +259,43 @@
    "url": "https://www.youtube.com/watch?v=VuZmN-iRS0I",
    "title": "LISTENING JLPT N3 2013年 12月 45 分",
    "siteHas": 1,
+   "siteNeeds": 5,
+   "channel": "Japan Freelance"
+  },
+  "n3-2014-12": {
+   "host": "youtube",
+   "id": "6goU6fPu-H8",
+   "url": "https://www.youtube.com/watch?v=6goU6fPu-H8",
+   "title": "Japanese Language Proficiency Test N3 (Listening Exam) - December 12, 2014",
+   "channel": "jlpt for you",
+   "siteHas": 1,
+   "siteNeeds": 5
+  },
+  "n3-2015-12": {
+   "host": "youtube",
+   "id": "3RpzqMB6PXQ",
+   "url": "https://www.youtube.com/watch?v=3RpzqMB6PXQ",
+   "title": "Japanese Language Proficiency Test (JLPT) N3 Listening Comprehension, January 12, 2015",
+   "channel": "jlpt for you",
+   "siteHas": 4,
+   "siteNeeds": 5
+  },
+  "n3-2016-07": {
+   "host": "youtube",
+   "id": "VpkW6lrW0dE",
+   "url": "https://www.youtube.com/watch?v=VpkW6lrW0dE",
+   "title": "Đề Thi N3 Tháng 7 Năm 2016 [ 日本語能力試験 聴解 N3  ]",
+   "channel": "jlpt for you",
+   "siteHas": 4,
+   "siteNeeds": 5
+  },
+  "n3-2018-07": {
+   "host": "youtube",
+   "id": "rdQDvL3Rkc8",
+   "url": "https://www.youtube.com/watch?v=rdQDvL3Rkc8",
+   "title": "Đề Thi N3 Tháng 7 Năm 2018 [ 日本語能力試験 聴解 N3  ]",
+   "channel": "jlpt for you",
+   "siteHas": 4,
    "siteNeeds": 5
   }
  }
