@@ -715,11 +715,25 @@
 .q-choices.is-medium {
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 }
-/* A marked paper adds "Correct" / "Incorrect" to the row it belongs to, which
-   a narrow column cannot hold beside the answer. Let it drop underneath. */
+/* A marked paper adds "Correct" / "Incorrect" to the row it belongs to. In
+   the four-across column that may not fit beside a short answer, so the row
+   is allowed to wrap and the label drops underneath.
+
+   It used to be pushed 38px in as well, to sit under the answer rather than
+   under the number - but a margin counts towards the line, so the indent was
+   itself what made the line too long. The label wrapped on every screen,
+   including a desktop with room to spare, and the button stood half again as
+   tall as the three beside it. Without it the label goes where it fits:
+   alongside on a wide screen, underneath on a narrow one. */
 .is-reviewed .q-choices.is-short .choice,
 .q-choices.is-short .choice:disabled { flex-wrap: wrap; }
-.q-choices.is-short .choice-mark { margin-left: 38px; }
+
+/* That column is 184px wide and has to hold a number, a Japanese word and an
+   English one. The label is a small-caps marker rather than prose, so it can
+   afford to be tighter here than elsewhere, and every pixel it gives back is
+   an answer that keeps it on the same line instead of below. */
+.q-choices.is-short .choice { gap: 9px; }
+.q-choices.is-short .choice-mark { font-size: 0.6rem; letter-spacing: 0.02em; }
 
 .choice {
   display: flex;
@@ -761,9 +775,15 @@
   color: var(--muted);
   transition: 0.16s ease;
 }
-.choice-text { flex: 1; }
+/* Only as wide as the words. It used to be flex: 1, which stretched the text
+   box across the whole button and left "CORRECT" stranded at the far edge -
+   325px from the end of the sentence on a full-width answer, and on the
+   narrow four-across answers it pushed the label onto a second line and made
+   the button half again as tall. It still shrinks when a long answer needs to
+   wrap; it just no longer claims room it is not using. */
+.choice-text { flex: 0 1 auto; }
+/* Beside the answer it belongs to, not against the far wall. */
 .choice-mark {
-  margin-left: auto;
   flex: none;
   font-size: 0.66rem;
   font-weight: 800;
@@ -771,6 +791,10 @@
   text-transform: uppercase;
   color: var(--muted);
   align-self: center;
+  /* Its own line-height, or it inherits the 1.75 meant for answer text and
+     sits in a 28px line box - which is most of the gap you see on the narrow
+     answers, where the label does still wrap onto a second line. */
+  line-height: 1.4;
 }
 
 /* The answer you picked, and there must be no doubt which one it is. A 1.5px
