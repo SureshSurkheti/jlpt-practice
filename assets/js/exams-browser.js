@@ -322,22 +322,26 @@
       if (c === "listening" && have.listening) {
         var secs = have.listening.sections || 0;
         var withAudio = have.listening.audioSections || 0;
-        if (!withAudio) {
+
+        /* Where a full recording covers what the paper's own audio does not,
+           the sitting can be heard end to end, and that is the only thing
+           this row is being asked. It used to say so twice and contradict
+           itself doing it: a red "Audio 1/5" - the colour this table uses for
+           what you cannot do - with the way through whispered underneath in
+           grey. The count is a fact about the source files, not about whether
+           you can sit the paper, and the paper itself still shows it 問題 by
+           問題. Here it is one calm line. */
+        if (e.listeningFull && withAudio < secs) {
+          cell += '<span class="exam-row-full">' +
+            '<span aria-hidden="true">\u266a</span> ' +
+            esc(t("exams.audioLinked")) + "</span>";
+        } else if (!withAudio) {
           cell += '<span class="exam-row-missing">' +
             esc(t("exams.noAudio")) + "</span>";
         } else if (secs && withAudio < secs) {
           cell += '<span class="exam-row-missing">' +
             esc(tf("exams.audioPartial", { have: withAudio, all: secs })) +
             "</span>";
-        }
-        /* Some of those papers can still be listened to end to end, on
-           somebody else's upload that the paper links out to. Worth saying
-           here: otherwise the row reads as a dead end when it is not. Said
-           quietly and in the muted colour, because it is not our recording
-           and it is not part of the paper. */
-        if (e.listeningFull && withAudio < secs) {
-          cell += '<span class="exam-row-linked">' +
-            esc(t("exams.audioLinked")) + "</span>";
         }
       }
       return cell;

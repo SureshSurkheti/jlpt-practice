@@ -11,6 +11,7 @@
 
 I18N.register("en", {
   "exam.noRecording": "No recording",
+  "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
   "exam.reviewMistakes": "Review my mistakes",
   "stats.mistakesTitle": "Daily review",
   "stats.mistakesBody": "Words and questions you got wrong, brought back on a schedule.",
@@ -433,6 +434,7 @@ I18N.register("en", {
 
 I18N.register("ja", {
   "exam.noRecording": "音声なし",
+  "exam.missingParts": "この回に含まれていない科目: {parts}。これらの問題は出典元で公開されなかったため、この回にはありません。",
   "exam.reviewMistakes": "間違えた問題を復習",
   "stats.mistakesTitle": "毎日の復習",
   "stats.mistakesBody": "間違えた単語と問題を、適切な日に出題します。",
@@ -786,6 +788,7 @@ I18N.register("ja", {
 
 I18N.register("vi", {
   "exam.noRecording": "Không có bản ghi",
+  "exam.missingParts": "Không có trong kỳ thi này: {parts}. Những câu hỏi đó chưa từng được đăng ở nguồn của các đề này, nên đề thiếu phần đó.",
   "exam.reviewMistakes": "Ôn lại câu sai",
   "stats.mistakesTitle": "Ôn tập hằng ngày",
   "stats.mistakesBody": "Từ và câu hỏi bạn làm sai, quay lại theo lịch.",
@@ -1139,6 +1142,7 @@ I18N.register("vi", {
 
 I18N.register("ne", {
   "exam.noRecording": "रेकर्डिङ छैन",
+  "exam.missingParts": "यस परीक्षामा छैन: {parts}। ती प्रश्नहरू यी पेपरहरूको स्रोतमा कहिल्यै प्रकाशित भएनन्, त्यसैले यो खण्ड छुटेको छ।",
   "exam.reviewMistakes": "मेरा गल्तीहरू दोहोर्‍याउनुहोस्",
   "stats.mistakesTitle": "दैनिक दोहोर्‍याइ",
   "stats.mistakesBody": "गलत भएका शब्द र प्रश्नहरू, तालिका अनुसार फर्किन्छन्।",
@@ -1492,6 +1496,7 @@ I18N.register("ne", {
 
 I18N.register("zh", {
   "exam.noRecording": "无录音",
+  "exam.missingParts": "本次考试缺少：{parts}。这些题目在本站资料来源处从未公开，因此该部分不在此卷中。",
   "exam.reviewMistakes": "复习我的错题",
   "stats.mistakesTitle": "每日复习",
   "stats.mistakesBody": "做错的单词和题目，按计划回来。",
@@ -1844,6 +1849,7 @@ I18N.register("zh", {
 
 I18N.register("ko", {
   "exam.noRecording": "음성 없음",
+  "exam.missingParts": "이 회차에 없는 과목: {parts}. 해당 문제는 출처에 공개된 적이 없어 이 시험지에는 없습니다.",
   "exam.reviewMistakes": "틀린 문제 복습",
   "stats.mistakesTitle": "매일 복습",
   "stats.mistakesBody": "틀린 단어와 문제를 일정에 맞춰 다시 보여 줍니다.",
@@ -2196,6 +2202,7 @@ I18N.register("ko", {
 
 I18N.register("id", {
   "exam.noRecording": "Tidak ada rekaman",
+  "exam.missingParts": "Tidak ada di sesi ini: {parts}. Soal-soal itu tidak pernah diterbitkan di sumber naskah ini, jadi bagian tersebut tidak ada.",
   "exam.reviewMistakes": "Ulas kesalahan saya",
   "stats.mistakesTitle": "Ulasan harian",
   "stats.mistakesBody": "Kata dan soal yang Anda jawab salah, kembali sesuai jadwal.",
@@ -2548,6 +2555,7 @@ I18N.register("id", {
 
 I18N.register("fil", {
   "exam.noRecording": "Walang recording",
+  "exam.missingParts": "Wala sa pagsusulit na ito: {parts}. Hindi kailanman nailathala ang mga tanong na iyon sa pinagmulan ng mga papel na ito, kaya kulang ang bahaging iyon.",
   "exam.reviewMistakes": "Balikan ang mga mali ko",
   "stats.mistakesTitle": "Araw-araw na balik-aral",
   "stats.mistakesBody": "Ang mga salita at tanong na namali ka, babalik ayon sa iskedyul.",
@@ -2900,6 +2908,7 @@ I18N.register("fil", {
 
 I18N.register("pt-BR", {
   "exam.noRecording": "Sem gravação",
+  "exam.missingParts": "Não está nesta aplicação: {parts}. Essas questões nunca foram publicadas na origem destas provas, então a prova está sem essa seção.",
   "exam.reviewMistakes": "Revisar meus erros",
   "stats.mistakesTitle": "Revisão diária",
   "stats.mistakesBody": "Palavras e questões que você errou, de volta na hora certa.",
@@ -3252,6 +3261,7 @@ I18N.register("pt-BR", {
 
 I18N.register("hi", {
   "exam.noRecording": "रिकॉर्डिंग नहीं",
+  "exam.missingParts": "इस सत्र में नहीं है: {parts}। ये प्रश्न इन पेपरों के स्रोत पर कभी प्रकाशित नहीं हुए, इसलिए यह खंड यहाँ नहीं है।",
   "exam.reviewMistakes": "मेरी गलतियाँ दोहराएँ",
   "stats.mistakesTitle": "रोज़ का दोहराव",
   "stats.mistakesBody": "गलत हुए शब्द और प्रश्न, तय समय पर लौटते हैं।",
@@ -3604,6 +3614,7 @@ I18N.register("hi", {
 
 I18N.register("bn", {
   "exam.noRecording": "রেকর্ডিং নেই",
+  "exam.missingParts": "এই পরীক্ষায় নেই: {parts}। এই প্রশ্নগুলি এই পেপারগুলির উৎসে কখনও প্রকাশিত হয়নি, তাই অংশটি এখানে নেই।",
   "exam.reviewMistakes": "আমার ভুলগুলো পুনরালোচনা",
   "stats.mistakesTitle": "প্রতিদিনের পুনরাবৃত্তি",
   "stats.mistakesBody": "ভুল হওয়া শব্দ ও প্রশ্ন, নির্দিষ্ট সময়ে ফিরে আসে।",
@@ -3956,6 +3967,7 @@ I18N.register("bn", {
 
 I18N.register("si", {
   "exam.noRecording": "පටිගත කිරීමක් නැත",
+  "exam.missingParts": "මෙම වාරයේ නොමැත: {parts}. එම ප්‍රශ්න මෙම ප්‍රශ්න පත්‍රවල මූලාශ්‍රයේ කිසිදා පළ නොවූ නිසා එම කොටස මෙහි නැත.",
   "exam.reviewMistakes": "මගේ වැරදි නැවත බලන්න",
   "stats.mistakesTitle": "දෛනික සමාලෝචනය",
   "stats.mistakesBody": "වැරදුණු වචන සහ ප්‍රශ්න, කාලසටහනට අනුව ආපසු එයි.",

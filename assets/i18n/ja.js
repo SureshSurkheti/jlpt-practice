@@ -92,6 +92,7 @@ I18N.register("ja", {
  "exam.minMarker": "各バーの目印は科目別基準点です",
  "exam.minWarn": "基準点に達していない科目があります。総合点が合格点以上でも不合格になります。",
  "exam.minutes": "分",
+ "exam.missingParts": "この回に含まれていない科目: {parts}。これらの問題は出典元で公開されなかったため、この回にはありません。",
  "exam.newBest": "自己ベスト更新:",
  "exam.noRecording": "音声なし",
  "exam.notYet": "不合格",

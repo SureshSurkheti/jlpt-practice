@@ -129,6 +129,18 @@
 }
 .setup-hint { color: var(--muted); font-size: 0.87rem; margin: 0 0 16px; }
 
+/* Names the section this sitting does not have. Under the cards, because it
+   is about what is not among them, and quiet, because it is a fact about the
+   paper rather than something to act on. */
+.setup-absent {
+  margin: 14px 0 0;
+  padding: 9px 12px;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
 .part-grid,
 .mode-grid {
   display: grid;
@@ -1439,11 +1451,11 @@
   white-space: nowrap;
 }
 
-/* Follows the red "Audio 1/5" to say the paper links out to a full recording
-   anyway. Deliberately quiet: it is a way through, not a feature of the
-   paper, and the recording is not ours. */
-.exam-row-linked {
-  color: var(--muted);
+/* Replaces the red "Audio 1/5" on a paper whose listening can be heard end
+   to end after all. Green, not red and not grey: this row is answering "can
+   I sit this?", and the answer is yes. */
+.exam-row-full {
+  color: var(--success);
   font-weight: 600;
   white-space: nowrap;
 }

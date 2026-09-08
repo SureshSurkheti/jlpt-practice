@@ -92,6 +92,7 @@ I18N.register("en", {
  "exam.minMarker": "The marker on each bar is the minimum sectional score",
  "exam.minWarn": "One or more sections fell below the minimum sectional score, which is a fail even when the total is high enough.",
  "exam.minutes": "Minutes",
+ "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
  "exam.newBest": "New best:",
  "exam.noRecording": "No recording",
  "exam.notYet": "NOT YET",

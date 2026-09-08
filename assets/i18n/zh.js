@@ -92,6 +92,7 @@ I18N.register("zh", {
  "exam.minMarker": "每条上的标记是该部分的最低分",
  "exam.minWarn": "有部分未达到单项最低分，即使总分够高也算不合格。",
  "exam.minutes": "分钟",
+ "exam.missingParts": "本次考试缺少：{parts}。这些题目在本站资料来源处从未公开，因此该部分不在此卷中。",
  "exam.newBest": "新的最佳成绩：",
  "exam.noRecording": "无录音",
  "exam.notYet": "未合格",

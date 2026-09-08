@@ -92,6 +92,7 @@ I18N.register("ko", {
  "exam.minMarker": "각 막대의 표시는 과목별 최저점입니다",
  "exam.minWarn": "과목별 최저점에 미달한 과목이 있습니다. 총점이 충분해도 불합격입니다.",
  "exam.minutes": "분",
+ "exam.missingParts": "이 회차에 없는 과목: {parts}. 해당 문제는 출처에 공개된 적이 없어 이 시험지에는 없습니다.",
  "exam.newBest": "최고 점수 경신:",
  "exam.noRecording": "음성 없음",
  "exam.notYet": "불합격",

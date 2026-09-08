@@ -92,6 +92,7 @@ I18N.register("pt-BR", {
  "exam.minMarker": "A marca em cada barra é a nota mínima da seção",
  "exam.minWarn": "Uma ou mais seções ficaram abaixo da nota mínima, o que reprova mesmo com total suficiente.",
  "exam.minutes": "Minutos",
+ "exam.missingParts": "Não está nesta aplicação: {parts}. Essas questões nunca foram publicadas na origem destas provas, então a prova está sem essa seção.",
  "exam.newBest": "Novo recorde:",
  "exam.noRecording": "Sem gravação",
  "exam.notYet": "AINDA NÃO",

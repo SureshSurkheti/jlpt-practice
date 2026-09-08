@@ -92,6 +92,7 @@ I18N.register("id", {
  "exam.minMarker": "Penanda pada setiap batang adalah nilai minimum bagian",
  "exam.minWarn": "Ada bagian yang di bawah nilai minimum, sehingga tidak lulus meski totalnya cukup.",
  "exam.minutes": "Menit",
+ "exam.missingParts": "Tidak ada di sesi ini: {parts}. Soal-soal itu tidak pernah diterbitkan di sumber naskah ini, jadi bagian tersebut tidak ada.",
  "exam.newBest": "Rekor baru:",
  "exam.noRecording": "Tidak ada rekaman",
  "exam.notYet": "BELUM",

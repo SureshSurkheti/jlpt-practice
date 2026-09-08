@@ -76,6 +76,11 @@
     listening: { key: "section.listening", sub: "聴解" }
   };
 
+  /* The four skills a complete sitting has, in booklet order. Used to work
+     out what a paper is missing, which is only answerable against a list of
+     what it should have had. */
+  var SKILLS = ["vocabulary", "grammar", "reading", "listening"];
+
   /* Same four colours the practice page uses for its skill buttons. */
   var CATEGORY_COLOR = {
     vocabulary: "#2d6eb4",
@@ -333,7 +338,10 @@
     /* A listening section whose recording was never archived. The card says
        so, and "Select all" leaves it out: sitting 28 questions in silence is
        not what anyone means by "all". */
-    order.forEach(function (c) { c.silent = c.id === "listening" && !c.audio; });
+    var covered = !!(exam.listeningFull && exam.listeningFull.url);
+    order.forEach(function (c) {
+      c.silent = c.id === "listening" && !c.audio && !covered;
+    });
     return order;
   }
 
@@ -712,6 +720,27 @@
       grid.appendChild(lab);
     });
     partsBox.appendChild(grid);
+
+    /* What is not on the card.
+     
+       A sitting whose listening was never published simply showed three
+       boxes, and three boxes look like a paper with three sections. Nothing
+       said the fourth was missing, so the only way to find out was to
+       remember that JLPT papers have four. Naming it, and saying whose gap
+       it is, is the difference between a paper that is short and a site that
+       looks broken. */
+    var absent = SKILLS.filter(function (id) {
+      return !cats.some(function (c) { return c.id === id; });
+    });
+    if (absent.length) {
+      partsBox.appendChild(el("p", "setup-absent",
+        esc(tf("exam.missingParts", {
+          parts: absent.map(function (id) {
+            return metaLabel(CATEGORY_META, id);
+          }).join(", ")
+        }))));
+    }
+
     /* How much you have chosen, under the thing you choose it with. This
        used to sit in the timer row three steps down, where it read as a
        remark about the clock. */

@@ -92,6 +92,7 @@ I18N.register("fil", {
  "exam.minMarker": "Ang marka sa bawat bar ay ang pinakamababang marka ng bahagi",
  "exam.minWarn": "May bahaging mas mababa sa pinakamababang marka, kaya bagsak kahit sapat ang kabuuan.",
  "exam.minutes": "Minuto",
+ "exam.missingParts": "Wala sa pagsusulit na ito: {parts}. Hindi kailanman nailathala ang mga tanong na iyon sa pinagmulan ng mga papel na ito, kaya kulang ang bahaging iyon.",
  "exam.newBest": "Bagong pinakamataas:",
  "exam.noRecording": "Walang recording",
  "exam.notYet": "HINDI PA",

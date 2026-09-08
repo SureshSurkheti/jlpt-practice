@@ -92,6 +92,7 @@ I18N.register("vi", {
  "exam.minMarker": "Vạch trên mỗi thanh là điểm tối thiểu của phần đó",
  "exam.minWarn": "Có phần chưa đạt điểm tối thiểu, nghĩa là không đạt dù tổng điểm đủ cao.",
  "exam.minutes": "Phút",
+ "exam.missingParts": "Không có trong kỳ thi này: {parts}. Những câu hỏi đó chưa từng được đăng ở nguồn của các đề này, nên đề thiếu phần đó.",
  "exam.newBest": "Kỷ lục mới:",
  "exam.noRecording": "Không có bản ghi",
  "exam.notYet": "CHƯA ĐẠT",
