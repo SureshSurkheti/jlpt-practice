@@ -179,6 +179,13 @@ def asset_version(rel):
 ASSET_REF = re.compile(r'((?:href|src)=")((?:\.\./|/)?)(assets/(?!fonts/)[^"?#]+)"')
 
 
+# The same reference, but matching one that already carries a stamp, so a
+# page can be re-stamped rather than only stamped once. See the guide pass in
+# main().
+STAMPED_REF = re.compile(
+    r'((?:href|src)=")((?:\.\./|/)?)(assets/(?!fonts/)[^"?#]+)(?:\?v=[a-f0-9]+)?"')
+
+
 BACK_ATTR = re.compile(r'<body[^>]*\sdata-back-to="([^"]+)"')
 
 
@@ -1437,6 +1444,39 @@ def main():
     for page in ("404.html", "offline.html"):
         html = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
         io.open(os.path.join(ROOT, page), "w", encoding="utf-8").write(finish_html(html))
+
+    # ---------------------------------------------------------- the guides
+    # Re-stamp their asset addresses with the hashes computed in this run.
+    #
+    # The guides are written by tools/build_guides.py, which stamps them when
+    # it runs - and it does not run every time the CSS changes. So they kept
+    # pointing at styles.css?v=9502bb7e while every other page had moved to
+    # ?v=fa3d84e2. Same file on disk, but a browser caches per address, so
+    # anyone who had visited before was served the old stylesheet on the
+    # guides and the new one everywhere else. That is cache-busting working
+    # exactly backwards, and it is invisible: the pages look right to whoever
+    # just rebuilt them.
+    #
+    # Re-stamping here, from the folder rather than from a list, means the
+    # two can no longer drift whatever order the builds are run in.
+    stale = 0
+    for glang in guide_langs():
+        gdir = (os.path.join(ROOT, "guide") if glang == DEFAULT_LANG
+                else os.path.join(ROOT, glang, "guide"))
+        if not os.path.isdir(gdir):
+            continue
+        for fn in sorted(os.listdir(gdir)):
+            if not fn.endswith(".html"):
+                continue
+            path = os.path.join(gdir, fn)
+            html = io.open(path, encoding="utf-8").read()
+            fresh = STAMPED_REF.sub(
+                lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), m.group(3),
+                                            asset_version(m.group(3))), html)
+            if fresh != html:
+                io.open(path, "w", encoding="utf-8").write(fresh)
+                stale += 1
+    print("guide pages re-stamped: %d" % stale)
 
     # -------------------------------------------------------------- sitemap
     today = date.today().isoformat()

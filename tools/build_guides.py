@@ -48,11 +48,11 @@ HEAD = """<!DOCTYPE html>
     <meta property="og:title" content="{title}" />
     <meta property="og:description" content="{desc}" />
     <meta property="og:url" content="{url}" />
-    <meta property="og:image" content="{site}/icon-512.png" />
+    <meta property="og:image" content="{site}/og-card.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{title}" />
     <meta name="twitter:description" content="{desc}" />
-    <meta name="twitter:image" content="{site}/icon-512.png" />
+    <meta name="twitter:image" content="{site}/og-card.jpg" />
     <script type="application/ld+json">{ld}</script>
 {crumbs}
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
