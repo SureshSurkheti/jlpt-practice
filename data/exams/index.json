@@ -1317,16 +1317,18 @@
    "sortKey": "2010-07"
   },
   {
-   "id": "n2-2024-07",
+   "id": "n2-2024-12",
    "origin": "archive",
    "level": "N2",
-   "title": "JLPT N2 — July 2024",
-   "period": "2024-07",
-   "periodLabel": "July 2024",
-   "totalQuestions": 51,
+   "title": "JLPT N2 — December 2024",
+   "period": "2024-12",
+   "periodLabel": "December 2024",
+   "totalQuestions": 101,
    "categoryCounts": {
     "vocabulary": 30,
-    "grammar": 21
+    "grammar": 21,
+    "reading": 20,
+    "listening": 30
    },
    "parts": [
     {
@@ -1336,6 +1338,64 @@
      "audio": 0,
      "sections": 0,
      "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
+    }
+   ],
+   "sortKey": "2024-12"
+  },
+  {
+   "id": "n2-2024-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2024",
+   "period": "2024-07",
+   "periodLabel": "July 2024",
+   "totalQuestions": 101,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
+    "reading": 20,
+    "listening": 30
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 30,
+     "audio": 30,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2024-07"
@@ -1431,10 +1491,11 @@
    "title": "JLPT N2 — December 2022",
    "period": "2022-12",
    "periodLabel": "December 2022",
-   "totalQuestions": 81,
+   "totalQuestions": 101,
    "categoryCounts": {
     "vocabulary": 30,
     "grammar": 21,
+    "reading": 20,
     "listening": 30
    },
    "parts": [
@@ -1442,6 +1503,14 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 51,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 20,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -1590,12 +1659,22 @@
    "title": "JLPT N2 — December 2020",
    "period": "2020-12",
    "periodLabel": "December 2020",
-   "totalQuestions": 51,
+   "totalQuestions": 102,
    "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 21,
     "reading": 21,
     "listening": 30
    },
    "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 51,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
@@ -1750,11 +1829,12 @@
    "title": "JLPT N2 — July 2018",
    "period": "2018-07",
    "periodLabel": "July 2018",
-   "totalQuestions": 75,
+   "totalQuestions": 107,
    "categoryCounts": {
     "vocabulary": 30,
     "grammar": 24,
-    "reading": 21
+    "reading": 21,
+    "listening": 32
    },
    "parts": [
     {
@@ -1772,6 +1852,14 @@
      "audio": 0,
      "sections": 0,
      "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
     }
    ],
    "sortKey": "2018-07"
@@ -1817,6 +1905,90 @@
     }
    ],
    "sortKey": "2017-12"
+  },
+  {
+   "id": "n2-2017-07",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — July 2017",
+   "period": "2017-07",
+   "periodLabel": "July 2017",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 24,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
+    }
+   ],
+   "sortKey": "2017-07"
+  },
+  {
+   "id": "n2-2016-12",
+   "origin": "archive",
+   "level": "N2",
+   "title": "JLPT N2 — December 2016",
+   "period": "2016-12",
+   "periodLabel": "December 2016",
+   "totalQuestions": 107,
+   "categoryCounts": {
+    "vocabulary": 32,
+    "grammar": 22,
+    "reading": 21,
+    "listening": 32
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 54,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 32,
+     "audio": 32,
+     "sections": 5,
+     "audioSections": 5
+    }
+   ],
+   "sortKey": "2016-12"
   },
   {
    "id": "n2-2016-07",
@@ -1867,11 +2039,11 @@
    "title": "JLPT N2 — December 2015",
    "period": "2015-12",
    "periodLabel": "December 2015",
-   "totalQuestions": 105,
+   "totalQuestions": 107,
    "categoryCounts": {
     "vocabulary": 32,
     "grammar": 22,
-    "reading": 19,
+    "reading": 21,
     "listening": 32
    },
    "parts": [
@@ -1886,7 +2058,7 @@
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
-     "count": 19,
+     "count": 21,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -1909,10 +2081,11 @@
    "title": "JLPT N2 — July 2015",
    "period": "2015-07",
    "periodLabel": "July 2015",
-   "totalQuestions": 86,
+   "totalQuestions": 107,
    "categoryCounts": {
     "vocabulary": 30,
     "grammar": 24,
+    "reading": 21,
     "listening": 32
    },
    "parts": [
@@ -1920,6 +2093,14 @@
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 54,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -2370,16 +2551,25 @@
    "title": "JLPT N1 — July 2025",
    "period": "2025-07",
    "periodLabel": "July 2025",
-   "totalQuestions": 44,
+   "totalQuestions": 65,
    "categoryCounts": {
     "vocabulary": 25,
-    "grammar": 19
+    "grammar": 19,
+    "reading": 21
    },
    "parts": [
     {
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
      "count": 44,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 21,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -3539,6 +3729,39 @@
     }
    ],
    "sortKey": "2010-12"
+  },
+  {
+   "id": "n1-2010-07",
+   "origin": "archive",
+   "level": "N1",
+   "title": "JLPT N1 — July 2010",
+   "period": "2010-07",
+   "periodLabel": "July 2010",
+   "totalQuestions": 71,
+   "categoryCounts": {
+    "vocabulary": 25,
+    "grammar": 20,
+    "reading": 26
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 45,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 26,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    }
+   ],
+   "sortKey": "2010-07"
   }
  ]
 }
