@@ -949,6 +949,47 @@ def study_rows(level, kind, table, en, up=""):
     return "\n      ".join(out), len(rows)
 
 
+def levels_table(exams, table, en):
+    """What each level holds, in the markup.
+
+    The five level cards are drawn by site.js from a fetch, so <main> on this
+    page carried 72 characters of text - on the page that answers "what is
+    JLPT N3" and "how many kanji for N2". The script replaces this on load,
+    as it does the first list on the study page; until then, and for anything
+    that does not run scripts, these are the facts.
+
+    Counted here from the same data files the lists and the library are built
+    from, so the table cannot drift from them.
+    """
+    cov = coverage_counts()
+    papers, questions = {}, {}
+    for e in exams:
+        papers[e["level"]] = papers.get(e["level"], 0) + 1
+        questions[e["level"]] = (questions.get(e["level"], 0)
+                                 + (e.get("totalQuestions") or 0))
+
+    head = "".join("<th>%s</th>" % esc(t(table, k, en)) for k in (
+        "nav.levels", "exams.statPapers", "exams.statQuestions",
+        "study.words", "study.kanji", "study.grammar"))
+
+    rows = []
+    for level in LEVELS:
+        lv = level.upper()
+        row = cov.get(level) or {}
+        cells = [papers.get(lv, 0), questions.get(lv, 0),
+                 (row.get("words") or (0, 0))[0],
+                 (row.get("kanji") or (0, 0))[0],
+                 (row.get("grammar") or (0, 0))[0]]
+        rows.append(
+            '<tr><th scope="row"><a href="study/%s-words.html">%s</a></th>%s</tr>'
+            % (level, esc(lv), "".join("<td>%d</td>" % c for c in cells)))
+
+    return ('<table class="levels-facts">\n'
+            '        <thead><tr>%s</tr></thead>\n'
+            '        <tbody>%s</tbody>\n'
+            '      </table>' % (head, "".join(rows)))
+
+
 def paper_index(exams, table, en):
     """Every paper, as a plain list of links, at the foot of the library.
 
@@ -1102,6 +1143,11 @@ def main():
                               html, count=1, flags=re.S)
                 html = html.replace(
                     "</main>", "  %s\n    </main>" % paper_index(exams, table, en), 1)
+            if page == "levels.html":
+                html = html.replace(
+                    '<div id="levelsContent"></div>',
+                    '<div id="levelsContent">%s</div>'
+                    % levels_table(exams, table, en))
             if page == "index.html":
                 html = html.replace(
                     "</head>",

@@ -3891,3 +3891,33 @@ body.is-leaving { opacity: 0; }
   white-space: nowrap;
 }
 .paper-index-level a:hover { text-decoration: underline; }
+
+/* The facts table on the levels page. site.js replaces it with the five
+   interactive cards on load; this is what is in the markup until then, and
+   what a reader without scripts gets. See levels_table in build_static.py. */
+.levels-facts {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.levels-facts th,
+.levels-facts td {
+  padding: 11px 14px;
+  border-top: 1px solid var(--line);
+  text-align: right;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.levels-facts thead th {
+  border-top: 0;
+  background: var(--panel-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.levels-facts th:first-child,
+.levels-facts thead th:first-child { text-align: left; }
+.levels-facts tbody th a { color: var(--navy); font-weight: 800; }
