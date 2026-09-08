@@ -180,37 +180,57 @@ nihongomock.com — least clever, clearest: says "mock tests" immediately, which
 
 
 Rewrite — for a Facebook or community group
-Free JLPT practice — full mock exams, N5 to N1
 
-No sign-up. No ads. Nothing to pay. Just open it and start.
+Figures below are current as of the last build. Rebuild and re-check before
+posting: tools/build_static.py prints the paper and question counts.
 
-📝 87 practice papers, 8,172 questions — N5 through N1, in the real JLPT format
+Free JLPT practice — full mock papers, N5 to N1
+
+No sign-up. No ads. Nothing to pay. Open it and start.
+
+📝 91 practice papers, 8,960 questions — N5 through N1, in the real JLPT format
+🔤 Every word of every question, with its reading and meaning — 114,966 of them
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
-🎧 Listening audio on 71 papers, with answer explanations
+🎧 80 papers you can listen to end to end
 🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
-🇳🇵 N5 and N4 word meanings in Nepali — 1,473 words
+🇳🇵 N5 and N4 word meanings in Nepali — 1,753 words
 📚 9,639 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
-📱 Works on phone and computer. You can install it like an app.
-🔒 Your scores stay on your own device. Nothing is uploaded.
+🙈 Cover the answers on any list and test yourself, tap a row to check
+📱 Phone or computer. Installs like an app and works offline
+🔒 Your scores stay on your own device. Nothing is uploaded
 
 👉 https://jlpt.sureshsurkheti.com
 
 Shorter version — for a comment or reply
-Free JLPT practice site — 87 full mock papers N5–N1, timed and auto-marked, listening audio, answer explanations. In 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+
+Free JLPT practice site — 91 full mock papers N5–N1, timed and auto-marked, 80 of them with listening. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+https://jlpt.sureshsurkheti.com
+
+One line — for X, Threads, a chat group
+
+91 free JLPT mock papers, N5 to N1. Timed, auto-marked, and every word of every question glossed with its reading. No sign-up, no ads.
+https://jlpt.sureshsurkheti.com
+
+If you are posting again to a group that has seen it before, lead with what
+changed rather than the same list — a repost with no news reads as spam:
+
+New on the free JLPT practice site: every word of every question now shows its reading and meaning — 114,966 across 91 papers. Plus a cover-the-answers mode on the vocabulary, kanji and grammar lists, so you can test yourself instead of just reading.
 https://jlpt.sureshsurkheti.com
 
 Nepali version
+
 नि:शुल्क JLPT अभ्यास — N5 देखि N1 सम्म
 
 दर्ता गर्नु पर्दैन। विज्ञापन छैन। पैसा तिर्नु पर्दैन।
 
-📝 ८७ अभ्यास प्रश्नपत्र, ८,१७२ प्रश्न — वास्तविक JLPT ढाँचामा
+📝 ९१ अभ्यास प्रश्नपत्र, ८,९६० प्रश्न — वास्तविक JLPT ढाँचामा
+🔤 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ
 ⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
-🎧 सुनाइको अडियो र उत्तरको व्याख्या
-🇳🇵 N5 र N4 का शब्दहरूको अर्थ नेपालीमा
-📱 मोबाइल र कम्प्युटर दुवैमा चल्छ
+🎧 ८० प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने
+🇳🇵 N5 र N4 का १,७५३ शब्दको अर्थ नेपालीमा
+📚 ९,६३९ शब्द, २,२११ कान्जी (लेख्ने क्रम सहित), २८० व्याकरण
+📱 मोबाइल र कम्प्युटर दुवैमा; इन्टरनेट बिना पनि चल्छ
+🔒 तपाईंको अङ्क तपाईंकै यन्त्रमा रहन्छ
 
 👉 https://jlpt.sureshsurkheti.com
 
-there is the yoututbe channel japan freelance bring all the listening from that page..
-also when after pressing submit button the number and correct and incorrect word distance inside the button is too much
