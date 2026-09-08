@@ -1029,6 +1029,51 @@ body > main { flex: 1 0 auto; }
   color: #9fb0c6;
 }
 
+/* The five levels, in the brand block.
+
+   That block held a mark, a name and one line of tagline - 75px of content in
+   a 197px cell, so the left third of the footer was two-thirds empty navy
+   while the Practice column beside it ran full height. This is what fills it,
+   and it earns the space: picking a level is the first thing anyone does
+   here, and until now the footer could only offer the generic Levels page.
+
+   The site's level colours are chosen against white and several of them -
+   N5's slate especially - disappear on navy, so the pill is a translucent
+   tile and the colour is carried by the text, lightened for a dark ground. */
+.footer-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.footer-level {
+  min-width: 44px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent, #cdd8e6);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.16s ease;
+}
+
+.footer-level:hover,
+.footer-level:focus-visible {
+  border-color: var(--accent, #fff);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-level.level-n5 { --accent: #b9c6d8; }
+.footer-level.level-n4 { --accent: #c49bf0; }
+.footer-level.level-n3 { --accent: #74cfa2; }
+.footer-level.level-n2 { --accent: #85b8ec; }
+.footer-level.level-n1 { --accent: #e5bd63; }
+
 .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
 
 .footer-head {

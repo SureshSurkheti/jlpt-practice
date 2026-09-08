@@ -119,6 +119,13 @@ HEAD = """<!DOCTYPE html>
             <span class="footer-name">JLPT Practice</span>
           </a>
           <p class="footer-tagline" data-i18n="footer.tagline">{tagline}</p>
+          <nav class="footer-levels" aria-label="{navlevels}" data-i18n-attr="aria-label:nav.levels">
+            <a class="footer-level level-n5" href="../levels.html?lv=N5">N5</a>
+            <a class="footer-level level-n4" href="../levels.html?lv=N4">N4</a>
+            <a class="footer-level level-n3" href="../levels.html?lv=N3">N3</a>
+            <a class="footer-level level-n2" href="../levels.html?lv=N2">N2</a>
+            <a class="footer-level level-n1" href="../levels.html?lv=N1">N1</a>
+          </nav>
         </div>
         <nav class="footer-col" aria-label="{ftcolpractice}">
           <h2 class="footer-head" data-i18n="footer.colPractice">{ftcolpractice}</h2>
