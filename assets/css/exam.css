@@ -715,25 +715,17 @@
 .q-choices.is-medium {
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 }
-/* A marked paper adds "Correct" / "Incorrect" to the row it belongs to. In
-   the four-across column that may not fit beside a short answer, so the row
-   is allowed to wrap and the label drops underneath.
+/* A marked paper adds a tick or a cross to the answer it belongs to. The row
+   used to be allowed to wrap so that label could drop underneath, and was
+   indented 38px so it would land under the answer rather than the number -
+   but a margin counts towards the line, so that indent was itself what made
+   the line too long. It wrapped on every screen, desktop included, and the
+   marked box stood half again as tall as the three beside it.
 
-   It used to be pushed 38px in as well, to sit under the answer rather than
-   under the number - but a margin counts towards the line, so the indent was
-   itself what made the line too long. The label wrapped on every screen,
-   including a desktop with room to spare, and the button stood half again as
-   tall as the three beside it. Without it the label goes where it fits:
-   alongside on a wide screen, underneath on a narrow one. */
-.is-reviewed .q-choices.is-short .choice,
-.q-choices.is-short .choice:disabled { flex-wrap: wrap; }
+   A glyph is a dozen pixels wide and needs none of that. When an answer is
+   long enough to fill the column it now wraps within itself and the mark
+   stays beside it, which keeps every box in the row the same height. */
 
-/* That column is 184px wide and has to hold a number, a Japanese word and an
-   English one. The label is a small-caps marker rather than prose, so it can
-   afford to be tighter here than elsewhere, and every pixel it gives back is
-   an answer that keeps it on the same line instead of below. */
-.q-choices.is-short .choice { gap: 9px; }
-.q-choices.is-short .choice-mark { font-size: 0.6rem; letter-spacing: 0.02em; }
 
 .choice {
   display: flex;
@@ -782,19 +774,30 @@
    the button half again as tall. It still shrinks when a long answer needs to
    wrap; it just no longer claims room it is not using. */
 .choice-text { flex: 0 1 auto; }
-/* Beside the answer it belongs to, not against the far wall. */
+/* Beside the answer it belongs to, not against the far wall. A tick or a
+   cross now, so it takes a dozen pixels instead of seventy and fits on the
+   line whatever the answer says - see the mark in exam-player.js for why it
+   is a glyph and not the word. */
 .choice-mark {
   flex: none;
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
   align-self: center;
-  /* Its own line-height, or it inherits the 1.75 meant for answer text and
-     sits in a 28px line box - which is most of the gap you see on the narrow
-     answers, where the label does still wrap onto a second line. */
-  line-height: 1.4;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* Read aloud, never drawn. */
+.vis-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* The answer you picked, and there must be no doubt which one it is. A 1.5px

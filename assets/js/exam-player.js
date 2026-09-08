@@ -1661,10 +1661,30 @@
       b.innerHTML =
         '<span class="choice-num">' + value + "</span>" +
         (blank ? "" : '<span class="choice-text">' + text + "</span>") +
+        /* A tick or a cross, not the word.
+
+           The panel under the question already says "Correct" or "Incorrect -
+           the answer is 3" in full, so spelling it out again on the box was
+           the same sentence twice within an inch of itself - and the word was
+           long enough to push itself onto a second line in the four-across
+           column, leaving the marked box standing taller than the three
+           beside it.
+
+           The mark cannot go altogether, though. Without it the only thing
+           separating the right answer from the wrong one is red against
+           green, which is the one pair a colour-blind reader is most likely
+           to be unable to tell apart. A glyph carries the same meaning
+           without relying on the colour, and the word stays in the markup,
+           unseen, for anyone listening to the page rather than looking at
+           it. */
         (currentMarked() && q.answer === value
-          ? '<span class="choice-mark">' + esc(t("exam.legendCorrect")) + '</span>' : "") +
+          ? '<span class="choice-mark"><span aria-hidden="true">\u2713</span>' +
+            '<span class="vis-hidden">' + esc(t("exam.legendCorrect")) +
+            "</span></span>" : "") +
         (currentMarked() && picked === value && q.answer !== value
-          ? '<span class="choice-mark">' + esc(t("exam.legendIncorrect")) + '</span>' : "");
+          ? '<span class="choice-mark"><span aria-hidden="true">\u2717</span>' +
+            '<span class="vis-hidden">' + esc(t("exam.legendIncorrect")) +
+            "</span></span>" : "");
       choices.appendChild(b);
     });
     /* A listening question's four options are often four drawings. */
