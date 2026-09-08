@@ -112,16 +112,39 @@ HEAD = """<!DOCTYPE html>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <div>© 2026 JLPT Practice</div>
-        <div data-i18n="footer.tagline">{tagline}</div>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="footer-mark-wrap" href="../index.html">
+            <span class="footer-mark">JL</span>
+            <span class="footer-name">JLPT Practice</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">{tagline}</p>
+        </div>
+        <nav class="footer-col" aria-label="{ftcolpractice}">
+          <h2 class="footer-head" data-i18n="footer.colPractice">{ftcolpractice}</h2>
+          <a href="../exams.html" data-i18n="nav.exams">{navexams}</a>
+          <a href="../levels.html" data-i18n="nav.levels">{navlevels}</a>
+          <a href="../quiz.html" data-i18n="quiz.title">{ftquiz}</a>
+          <a href="../review.html" data-i18n="review.title">{ftreview}</a>
+          <a href="../stats.html" data-i18n="stats.title">{ftstats}</a>
+        </nav>
+        <nav class="footer-col" aria-label="{ftcolstudy}">
+          <h2 class="footer-head" data-i18n="footer.colStudy">{ftcolstudy}</h2>
+          <a href="../study.html" data-i18n="footer.studyHub">{ftstudyhub}</a>
+          <a href="../kanji.html" data-i18n="study.kanji">{ftkanji}</a>
+          <a href="/guide/" data-i18n="nav.guides">{navguides}</a>
+        </nav>
+        <nav class="footer-col" aria-label="{ftcolabout}">
+          <h2 class="footer-head" data-i18n="footer.colAbout">{ftcolabout}</h2>
+          <a href="../about.html" data-i18n="nav.about">{navabout}</a>
+          <a href="../about.html#rights" data-i18n="about.rightsTitle">{ftrights}</a>
+          <a href="mailto:%%CONTACT%%" data-i18n="footer.contact">{ftcontact}</a>
+        </nav>
       </div>
-      <nav class="container footer-links" aria-label="Your study">
-        <a href="../quiz.html" data-i18n="quiz.title">{ftquiz}</a>
-        <a href="../stats.html" data-i18n="stats.title">{ftstats}</a>
-        <a href="../review.html" data-i18n="review.title">{ftreview}</a>
-      </nav>
-{langlinks}    </footer>
+{langlinks}      <div class="container footer-bottom">
+        <div>© 2026 JLPT Practice</div>
+      </div>
+    </footer>
 
     <script src="/assets/js/i18n.js"></script>
     <script src="/assets/i18n/en.js"></script>
@@ -491,6 +514,13 @@ def common(lang, slug, ui, table):
         ftquiz=esc(t(table, "quiz.title", EN_TABLE)),
         ftstats=esc(t(table, "stats.title", EN_TABLE)),
         ftreview=esc(t(table, "review.title", EN_TABLE)),
+        ftcolpractice=esc(t(table, "footer.colPractice", EN_TABLE)),
+        ftcolstudy=esc(t(table, "footer.colStudy", EN_TABLE)),
+        ftcolabout=esc(t(table, "footer.colAbout", EN_TABLE)),
+        ftstudyhub=esc(t(table, "footer.studyHub", EN_TABLE)),
+        ftkanji=esc(t(table, "study.kanji", EN_TABLE)),
+        ftrights=esc(t(table, "about.rightsTitle", EN_TABLE)),
+        ftcontact=esc(t(table, "footer.contact", EN_TABLE)),
         langlinks=lang_links(lang, slug, table),
         # The picker lists only the languages the guides exist in. The
         # picker's own code maps /ko/guide/x.html to /ne/guide/x.html, so

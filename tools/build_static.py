@@ -210,6 +210,7 @@ def finish_html(html, table=None, en=None):
     before DOMContentLoaded, but the parser still stopped for each of them,
     and deferred they run in the same order after the document is parsed
     and the first paint no longer waits."""
+    html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
     html = ASSET_REF.sub(
         lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), m.group(3),
                                     asset_version(m.group(3))), html)
@@ -432,7 +433,7 @@ def absolutise(html):
         html = re.sub(r'(%s=")(assets/|favicon|apple-touch|icon-|site\.web)'
                       % attr, r"\1/\2", html)
     # internal page links keep working from inside a language directory
-    html = re.sub(r'href="((?:index|levels|practice|exams|study|about|stats|exam|quiz|review)\.html[^"]*)"',
+    html = re.sub(r'href="((?:index|levels|practice|exams|study|about|stats|exam|quiz|review|kanji)\.html[^"]*)"',
                   r'href="./\1"', html)
     return html
 
@@ -948,7 +949,6 @@ def main():
         for page, indexable in CORE_PAGES.items():
             src = io.open(os.path.join(ROOT, "_src", page), encoding="utf-8").read()
             html = apply_i18n(src, table, en)
-            html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
             if page == "exams.html":
                 html = html.replace('<div class="exams-stats" id="examsStats"></div>',
                                     exams_stats(table, en))
@@ -1024,8 +1024,8 @@ def main():
                                     marks_bar(table, en), body))
 
             html = html.replace(
-                "</footer>",
-                language_links(langs, page, lang, names, table, en) + "</footer>")
+                "<!--LANGS-->",
+                language_links(langs, page, lang, names, table, en))
 
             io.open(os.path.join(outdir, page), "w", encoding="utf-8").write(finish_html(html, table, en))
             if indexable:
@@ -1123,9 +1123,9 @@ def main():
                     html = html.replace(
                         'class="study-tab" data-kind="%s"' % kind,
                         'class="study-tab is-on" data-kind="%s"' % kind)
-                html = html.replace("</footer>", language_links(
+                html = html.replace("<!--LANGS-->", language_links(
                     langs, "study/%s-%s.html" % (level, kind), lang, names,
-                    table, en) + "</footer>")
+                    table, en))
                 # A back link belongs here even though the study hub itself
                 # has none: the hub is an item in the main navigation, these
                 # fifteen pages are not. You arrive from a tab or a level

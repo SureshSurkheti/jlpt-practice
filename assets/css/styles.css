@@ -953,32 +953,124 @@ body > main { flex: 1 0 auto; }
   .to-top { transition: none; }
 }
 
+/* ==========================================================================
+   Footer
+
+   It used to be a rule, a copyright line and three links. Every page on the
+   site ended by simply stopping, and fifteen destinations - the levels, the
+   kanji browser, the guides, the copyright and takedown notice - were
+   reachable only from the navigation or from inside another page.
+
+   Dark, because the page needs an end. The site is white panels on pale blue
+   from the header down; a navy band under it closes the document the way the
+   navy hero opens the exam library, and nothing above it has to change to
+   make room.
+   ========================================================================== */
 .site-footer {
-  padding: 20px 0 32px;
+  margin-top: 56px;
+  padding: 44px 0 0;
+  background: var(--navy);
+  color: #cdd8e6;
 }
 
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
+/* Brand block first and widest, then three link columns.
+
+   Written out per breakpoint rather than left to auto-fit. auto-fit with a
+   minmax(220px, ...) first track cannot shrink that track below 220px, so on
+   a 390px phone it laid out 220px + 150px + a 40px gap and pushed 20px of
+   the page off the side. Every track here is minmax(0, ...), which can. */
+.footer-grid {
+  display: grid;
+  gap: 30px 40px;
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: 36px;
 }
-/* The reader's own pages - quiz, progress, notebook - on every page. They
-   are not in the main navigation, and the progress page was reachable from
-   nowhere at all: nobody would have found the notebook without finishing a
-   paper first. */
-.footer-links {
+
+@media (min-width: 620px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 900px) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  }
+}
+
+.footer-mark-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* The header's mark is a blue tile on white. On navy that disappears, so it
+   is inverted rather than reused. */
+.footer-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-name { font-weight: 700; font-size: 1.05rem; }
+
+.footer-tagline {
+  margin: 14px 0 0;
+  max-width: 34ch;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #9fb0c6;
+}
+
+.footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+
+.footer-head {
+  margin: 0 0 14px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Padding, not margin, so each link carries its own tap target: these are
+   0.9rem text in a column, and the gap between two of them was the only
+   thing separating one destination from the next. */
+.footer-col a {
+  padding: 6px 0;
+  color: #cdd8e6;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.footer-col a:hover,
+.footer-col a:focus-visible { color: #fff; text-decoration: underline; }
+
+/* The copyright line, under a divider that is lighter than the band rather
+   than darker, so it reads as a seam and not a crack.
+
+   The language row draws the same rule, and on the eleven localised pages the
+   two landed forty pixels apart as a double line. Where the row is there, it
+   is the divider and this one stands down. */
+.lang-links + .footer-bottom { border-top: 0; padding-top: 12px; }
+
+.footer-bottom {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 22px;
-  margin-top: 12px;
-  font-size: 0.92rem;
-  font-weight: 600;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding: 16px 0 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.85rem;
+  color: #8fa2ba;
 }
-.footer-links a { color: var(--blue); text-decoration: none; }
-.footer-links a:hover { text-decoration: underline; }
 
 /* The generator writes one real link per translation into every page. The
    picker in the header is a <select>, which nothing but a person with a
@@ -990,11 +1082,12 @@ body > main { flex: 1 0 auto; }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 6px 14px;
-  padding-top: 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 0.82rem;
-  color: var(--muted);
+  color: #8fa2ba;
 }
-.lang-links > span { font-weight: 600; color: var(--navy); }
+.lang-links > span { font-weight: 600; color: #fff; }
 .lang-links ul {
   display: flex;
   flex-wrap: wrap;
@@ -1008,8 +1101,9 @@ body > main { flex: 1 0 auto; }
 .lang-links a {
   display: inline-block;
   padding: 4px 2px;
-  color: var(--muted);
+  color: #9fb0c6;
 }
+.lang-links a:hover { color: #fff; }
 .lang-links a:hover,
 .lang-links a:focus-visible { color: var(--blue); text-decoration: underline; }
 
@@ -1083,8 +1177,7 @@ body > main { flex: 1 0 auto; }
 }
 
 @media (max-width: 760px) {
-  .level-header-row,
-  .footer-inner {
+  .level-header-row {
     flex-direction: column;
     align-items: flex-start;
   }
