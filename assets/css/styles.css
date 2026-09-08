@@ -2508,10 +2508,48 @@ body.is-leaving { opacity: 0; }
      column holds example sentences. */
   grid-template-columns: 190px 190px minmax(0, 24rem) minmax(0, 1fr);
   gap: 16px;
-  padding: 12px 18px;
+  padding: 12px 18px 12px 56px;
   border-top: 1px solid var(--line);
   align-items: baseline;
 }
+
+/* The row's place in the list.
+
+   These lists run from 280 rows to 2,211, and a reader working through one
+   has no way of telling whether they are a tenth or two thirds of the way
+   down: every row looks like every other row. The count at the top says how
+   many there are; this says which one you are looking at.
+
+   A CSS counter rather than a number written into each row, for two reasons.
+   The rows are built twice - once here at build time and again by study.js
+   whenever a filter changes - so a written number would have to be produced
+   and renumbered in both places, and it would be wrong in the filtered view
+   the moment it was not. And 2,211 numbers in the markup is weight on a page
+   that already carries eleven thousand elements.
+
+   It sits in the row's own left padding rather than in a grid track, because
+   there are three different row layouts here - words, kanji and grammar,
+   each with its own columns and its own phone override - and this way none
+   of them has to know about it. Tabular figures so 1, 10 and 100 line up on
+   their right edge instead of drifting. */
+.study-list { counter-reset: study-row; }
+
+.study-row:not(.is-head) { counter-increment: study-row; }
+
+.study-row:not(.is-head)::before {
+  content: counter(study-row);
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 44px;
+  padding-right: 12px;
+  color: #94a3b5;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.study-row { position: relative; }
 .study-row:first-child { border-top: 0; }
 /* A word list is two to three thousand rows, eleven thousand elements, and
    the browser laid every one of them out before it painted the heading:
@@ -2587,6 +2625,10 @@ body.is-leaving { opacity: 0; }
 
 @media (max-width: 820px) {
   .study-search { margin-left: 0; width: auto; }
+  /* Narrower gutter for the number: 56px of a 390px screen is a seventh of
+     the row given to four characters. */
+  .study-row { padding-left: 42px; }
+  .study-row:not(.is-head)::before { width: 32px; padding-right: 8px; font-size: 0.72rem; }
   .study-row,
   .study-row.is-grammar {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
@@ -2599,6 +2641,20 @@ body.is-leaving { opacity: 0; }
   .study-row.is-head .study-reading,
   .study-row.is-head span:nth-child(2) { display: none; }
   .study-row.is-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+}
+
+/* On a phone the site header is two rows tall, and with the list's own
+   heading pinned under it that is 149px of an 844px screen held permanently
+   against a list of several hundred rows. The exam page already makes this
+   trade at this width and for this reason: the header scrolls away and the
+   thing you actually need while scanning - the column names - keeps the top
+   of the screen to itself. The way back up is the button in the corner. */
+@media (max-width: 860px) {
+  /* Not the kanji browser, which shares the body class but has no list: it
+     is a single character with its stroke order, and there is nothing there
+     that scrolling past should cost you the navigation for. */
+  .study-page:not(.kanji-page) .site-header { position: static; }
+  .study-page .study-row.is-head { top: 0; }
 }
 
 /* ------------------------------------------------------------------------
