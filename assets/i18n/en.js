@@ -402,6 +402,7 @@ I18N.register("en", {
  "study.strokesMissing": "The stroke-order drawing could not be loaded.",
  "study.title": "Vocabulary, kanji and grammar",
  "study.unavailable": "These lists could not be loaded.",
+ "study.uncover": "Show answers",
  "study.words": "Vocabulary",
  "study.wordsCount": "words",
  "tag.about": "About",

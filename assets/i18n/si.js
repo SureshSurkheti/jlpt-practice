@@ -402,6 +402,7 @@ I18N.register("si", {
  "study.strokesMissing": "ඉරි අඳින අනුපිළිවෙලේ රූපය පූරණය කළ නොහැකි විය.",
  "study.title": "වචන, කන්ජි සහ ව්‍යාකරණ",
  "study.unavailable": "ලැයිස්තු පූරණය කළ නොහැකි විය.",
+ "study.uncover": "පිළිතුරු පෙන්වන්න",
  "study.words": "වචන මාලාව",
  "study.wordsCount": "වචන",
  "tag.about": "පිළිබඳව",

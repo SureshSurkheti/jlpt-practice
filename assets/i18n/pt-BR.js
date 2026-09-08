@@ -402,6 +402,7 @@ I18N.register("pt-BR", {
  "study.strokesMissing": "Não foi possível carregar o desenho da ordem dos traços.",
  "study.title": "Vocabulário, kanji e gramática",
  "study.unavailable": "Não foi possível carregar as listas.",
+ "study.uncover": "Mostrar respostas",
  "study.words": "Vocabulário",
  "study.wordsCount": "palavras",
  "tag.about": "Sobre",

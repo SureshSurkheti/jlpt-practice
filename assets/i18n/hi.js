@@ -402,6 +402,7 @@ I18N.register("hi", {
  "study.strokesMissing": "स्ट्रोक क्रम का चित्र लोड नहीं हो सका।",
  "study.title": "शब्दावली, कांजी और व्याकरण",
  "study.unavailable": "सूची लोड नहीं हो सकी।",
+ "study.uncover": "उत्तर दिखाएँ",
  "study.words": "शब्दावली",
  "study.wordsCount": "शब्द",
  "tag.about": "परिचय",

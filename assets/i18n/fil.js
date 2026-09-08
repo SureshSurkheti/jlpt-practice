@@ -402,6 +402,7 @@ I18N.register("fil", {
  "study.strokesMissing": "Hindi na-load ang guhit ng pagkakasunod-sunod ng mga hagod.",
  "study.title": "Bokabularyo, kanji at gramatika",
  "study.unavailable": "Hindi ma-load ang listahan.",
+ "study.uncover": "Ipakita ang sagot",
  "study.words": "Bokabularyo",
  "study.wordsCount": "salita",
  "tag.about": "Tungkol",

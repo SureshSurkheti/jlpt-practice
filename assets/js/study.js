@@ -194,13 +194,32 @@
   function countLine(n, noun, withCover) {
     var toggle = "";
     if (withCover) {
-      toggle = '<button type="button" class="study-cover' +
-        (state.cover ? " is-on" : "") + '" aria-pressed="' +
-        (state.cover ? "true" : "false") + '" title="' +
-        esc(t("study.coverHint")) + '">' + esc(t("study.cover")) + "</button>";
+      toggle = '<button type="button" class="study-cover"' + coverAttrs() +
+        ">" + esc(coverLabel()) + "</button>";
     }
     return '<div class="study-count"><span>' + n + " " + esc(t(noun)) +
       "</span>" + toggle + "</div>";
+  }
+
+  /* The button says what it will do, not what it is: "Cover answers" while
+     they are showing, "Show answers" while they are covered.
+
+     A fixed label with a pressed state - the pattern the filter chips beside
+     it use - is right for a group where one of four is chosen, and wrong
+     here: a filled chip reading "Cover answers" over a list that is already
+     covered says both "this is what I do" and "this is what I am", and the
+     reader has to work out which. With the label naming the action there is
+     nothing to work out, and no aria-pressed either: a button whose name is
+     the action must not also claim a pressed state, or a screen reader
+     announces "Show answers, pressed". The state is not lost - the list
+     behind it is either tiled or it is not, which is as plain as it gets. */
+  function coverLabel() {
+    return t(state.cover ? "study.uncover" : "study.cover");
+  }
+
+  function coverAttrs() {
+    /* The hint explains covering. Uncovering needs no explanation. */
+    return state.cover ? "" : ' title="' + esc(t("study.coverHint")) + '"';
   }
 
   /* Turning it on and off moves nothing on the page: the class goes on the
@@ -218,8 +237,9 @@
     }
     var btn = host.querySelector(".study-cover");
     if (btn) {
-      btn.classList.toggle("is-on", state.cover);
-      btn.setAttribute("aria-pressed", state.cover ? "true" : "false");
+      btn.textContent = coverLabel();
+      if (state.cover) btn.removeAttribute("title");
+      else btn.setAttribute("title", t("study.coverHint"));
     }
   }
 
@@ -315,7 +335,13 @@
     return '<div class="study-row' + (STATE_CLASS[marks[row.w]] || "") +
       '" data-w="' + esc(row.w) + '">' +
       '<span class="study-jp">' + esc(row.w) + affix + "</span>" +
-      '<span class="study-reading">' + esc(row.r || "") +
+      /* A kana word is its own reading - サンドイッチ is written サンドイッチ,
+         すく is written すく - and 1,318 of the 9,639 words are like that,
+         a quarter of N5. Covering that column would mask a repeat of the
+         word beside it: a tile hiding nothing, and one more thing to tap
+         before the row is readable. Marked here so the cover leaves it. */
+      '<span class="study-reading' +
+        (!row.r || row.r === row.w ? " is-echo" : "") + '">' + esc(row.r || "") +
         (row.romaji ? '<em>' + esc(row.romaji) + "</em>" : "") + "</span>" +
       '<span class="study-en">' + esc(row.en) + ne + "</span>" +
       markButtons(row.w) +

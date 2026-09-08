@@ -402,6 +402,7 @@ I18N.register("id", {
  "study.strokesMissing": "Gambar urutan goresan gagal dimuat.",
  "study.title": "Kosakata, kanji dan tata bahasa",
  "study.unavailable": "Daftar tidak dapat dimuat.",
+ "study.uncover": "Tampilkan jawaban",
  "study.words": "Kosakata",
  "study.wordsCount": "kata",
  "tag.about": "Tentang",

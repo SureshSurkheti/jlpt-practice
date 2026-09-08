@@ -402,6 +402,7 @@ I18N.register("bn", {
  "study.strokesMissing": "স্ট্রোকের ক্রমের ছবিটি লোড করা যায়নি।",
  "study.title": "শব্দভাণ্ডার, কাঞ্জি ও ব্যাকরণ",
  "study.unavailable": "তালিকা লোড করা যায়নি।",
+ "study.uncover": "উত্তর দেখান",
  "study.words": "শব্দভাণ্ডার",
  "study.wordsCount": "শব্দ",
  "tag.about": "পরিচিতি",

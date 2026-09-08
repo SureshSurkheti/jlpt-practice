@@ -2956,11 +2956,6 @@ body.is-leaving { opacity: 0; }
   cursor: pointer;
 }
 .study-cover:hover { color: var(--navy); border-color: var(--navy); }
-.study-cover.is-on {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff;
-}
 
 /* The mask.
 
@@ -2970,16 +2965,17 @@ body.is-leaving { opacity: 0; }
    moves nothing - the row is the same height covered as uncovered, and a
    list you are halfway down does not jump under you.
 
-   The word itself is never covered. It is the question. */
+   The word itself is never covered. It is the question. Nor is a reading
+   that only repeats it: see is-echo in study.js. */
 .study-list.is-covered .study-row:not(.is-head):not(.is-shown)
-  :is(.study-reading, .kanji-readings, .study-en, .study-example),
+  :is(.study-reading:not(.is-echo), .kanji-readings, .study-en, .study-example),
 .study-list.is-covered .study-row:not(.is-head):not(.is-shown)
-  :is(.study-reading, .kanji-readings, .study-en, .study-example) * {
+  :is(.study-reading:not(.is-echo), .kanji-readings, .study-en, .study-example) * {
   color: transparent;
 }
 
 .study-list.is-covered .study-row:not(.is-head):not(.is-shown)
-  :is(.study-reading, .kanji-readings, .study-en, .study-example) {
+  :is(.study-reading:not(.is-echo), .kanji-readings, .study-en, .study-example) {
   background: var(--panel-soft);
   border-radius: 8px;
   box-shadow: inset 0 0 0 1px var(--line);
@@ -2990,7 +2986,7 @@ body.is-leaving { opacity: 0; }
 }
 
 .study-list.is-covered .study-row:not(.is-head):not(.is-shown)
-  :is(.study-reading, .kanji-readings, .study-en, .study-example):hover {
+  :is(.study-reading:not(.is-echo), .kanji-readings, .study-en, .study-example):hover {
   background: #e2ebf6;
 }
 

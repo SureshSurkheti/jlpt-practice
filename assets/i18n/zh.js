@@ -402,6 +402,7 @@ I18N.register("zh", {
  "study.strokesMissing": "无法加载笔顺图。",
  "study.title": "词汇、汉字与语法",
  "study.unavailable": "无法加载列表。",
+ "study.uncover": "显示答案",
  "study.words": "单词",
  "study.wordsCount": "个单词",
  "tag.about": "关于",

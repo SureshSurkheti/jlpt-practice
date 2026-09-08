@@ -402,6 +402,7 @@ I18N.register("vi", {
  "study.strokesMissing": "Không tải được hình thứ tự nét.",
  "study.title": "Từ vựng, Hán tự và ngữ pháp",
  "study.unavailable": "Không tải được danh sách.",
+ "study.uncover": "Hiện đáp án",
  "study.words": "Từ vựng",
  "study.wordsCount": "từ",
  "tag.about": "Giới thiệu",

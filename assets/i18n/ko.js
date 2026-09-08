@@ -402,6 +402,7 @@ I18N.register("ko", {
  "study.strokesMissing": "획순 그림을 불러오지 못했습니다.",
  "study.title": "어휘, 한자, 문법",
  "study.unavailable": "목록을 불러오지 못했습니다.",
+ "study.uncover": "정답 보이기",
  "study.words": "단어",
  "study.wordsCount": "단어",
  "tag.about": "소개",

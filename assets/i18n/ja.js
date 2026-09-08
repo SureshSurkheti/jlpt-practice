@@ -402,6 +402,7 @@ I18N.register("ja", {
  "study.strokesMissing": "筆順の図を読み込めませんでした。",
  "study.title": "単語・漢字・文法リスト",
  "study.unavailable": "リストを読み込めませんでした。",
+ "study.uncover": "答えを表示",
  "study.words": "単語",
  "study.wordsCount": "語",
  "tag.about": "このサイト",

@@ -402,6 +402,7 @@ I18N.register("ne", {
  "study.strokesMissing": "स्ट्रोक क्रमको चित्र लोड हुन सकेन।",
  "study.title": "शब्दावली, कान्जी र व्याकरण",
  "study.unavailable": "सूची लोड गर्न सकिएन।",
+ "study.uncover": "उत्तर देखाउनुहोस्",
  "study.words": "शब्दावली",
  "study.wordsCount": "शब्द",
  "tag.about": "हाम्रोबारे",
