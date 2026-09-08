@@ -148,8 +148,10 @@ HEAD = """<!DOCTYPE html>
           <a href="mailto:%%CONTACT%%" data-i18n="footer.contact">{ftcontact}</a>
         </nav>
       </div>
-{langlinks}      <div class="container footer-bottom">
-        <div>© 2026 JLPT Practice</div>
+{langlinks}      <div class="footer-legal">
+        <div class="container footer-bottom">
+          <div>© 2026 JLPT Practice</div>
+        </div>
       </div>
     </footer>
 

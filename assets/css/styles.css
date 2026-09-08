@@ -1098,21 +1098,26 @@ body > main { flex: 1 0 auto; }
 .footer-col a:hover,
 .footer-col a:focus-visible { color: #fff; text-decoration: underline; }
 
-/* The copyright line, under a divider that is lighter than the band rather
-   than darker, so it reads as a seam and not a crack.
+/* The copyright line gets its own strip, a shade deeper than the band.
 
-   The language row draws the same rule, and on the eleven localised pages the
-   two landed forty pixels apart as a double line. Where the row is there, it
-   is the divider and this one stands down. */
-.lang-links + .footer-bottom { border-top: 0; padding-top: 12px; }
+   White was the obvious alternative - it is what the reference design does -
+   and it was tried and rendered before being rejected. The page above the
+   footer is #f4f7fb, so a white bar under a navy band leaves the band as a
+   stripe between two light areas: the document stops and then starts again
+   instead of ending. Going deeper separates the legal line from the
+   navigation without reopening anything, and it reads as the floor of the
+   page rather than a new section.
+
+   The strip is full width, which is why .footer-bottom is wrapped rather than
+   coloured directly - .footer-bottom is the .container, so a background on it
+   stops at the text column and floats as a box inside the navy. */
+.footer-legal { background: #0c2038; }
 
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 8px 20px;
-  padding: 16px 0 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 15px 0;
   font-size: 0.85rem;
   color: #8fa2ba;
 }
@@ -1127,7 +1132,7 @@ body > main { flex: 1 0 auto; }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 6px 14px;
-  padding-top: 18px;
+  padding: 18px 0 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 0.82rem;
   color: #8fa2ba;
