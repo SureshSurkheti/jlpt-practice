@@ -130,6 +130,7 @@ I18N.register("vi", {
  "exam.speakNone": "Thiết bị này chưa cài giọng tiếng Nhật, nên phần lời thoại được hiển thị thay thế.",
  "exam.speakNote": "Đọc bằng giọng của thiết bị — không phải bản ghi âm của kỳ thi thật.",
  "exam.speakPlay": "Phát",
+ "exam.speakRead": "Đã chấm xong, nên phần này có thể đọc bằng giọng thiết bị.",
  "exam.speakSlow": "Chậm hơn",
  "exam.speakStop": "Dừng",
  "exam.speakThisOne": "Chỉ câu này, đọc bằng giọng thiết bị — không video, dùng được ngoại tuyến.",

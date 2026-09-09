@@ -130,6 +130,7 @@ I18N.register("ko", {
  "exam.speakNone": "이 기기에 일본어 음성이 없어 스크립트를 표시합니다.",
  "exam.speakNote": "기기의 음성으로 읽어 줍니다. 실제 시험 녹음이 아닙니다.",
  "exam.speakPlay": "재생",
+ "exam.speakRead": "채점이 끝났으므로 이 부분을 기기 음성으로 읽어 줍니다.",
  "exam.speakSlow": "느리게",
  "exam.speakStop": "정지",
  "exam.speakThisOne": "이 문제만 기기 음성으로 읽어 줍니다. 영상 없이 오프라인에서도 됩니다.",

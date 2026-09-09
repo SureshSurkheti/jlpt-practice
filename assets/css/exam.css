@@ -2734,3 +2734,19 @@
   padding: 5px 12px;
   font-size: 0.8rem;
 }
+
+/* The read-aloud bar on a marked 語彙, 文法 or 読解 question. It sits among
+   the marked answer and the word list rather than above an unanswered
+   question, so it is quieter still than the compact 聴解 bar: no ground of
+   its own, and a note that fades rather than competes. */
+.q-script.is-read {
+  margin: 4px 0 8px;
+}
+
+.q-script.is-read .q-script-note {
+  opacity: 0.75;
+}
+
+.q-passage .q-script.is-read {
+  margin: 0 0 10px;
+}

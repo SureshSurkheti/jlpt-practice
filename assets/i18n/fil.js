@@ -130,6 +130,7 @@ I18N.register("fil", {
  "exam.speakNone": "Walang naka-install na boses na Hapon sa device na ito, kaya ipinapakita ang script.",
  "exam.speakNote": "Binabasa ng boses ng iyong device — hindi ito recording ng totoong eksam.",
  "exam.speakPlay": "I-play",
+ "exam.speakRead": "Nascore na, kaya mababasa ito nang malakas ng device.",
  "exam.speakSlow": "Bagalan",
  "exam.speakStop": "Itigil",
  "exam.speakThisOne": "Ang tanong na ito lang, binabasa ng device — walang video, gumagana offline.",

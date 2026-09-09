@@ -130,6 +130,7 @@ I18N.register("en", {
  "exam.speakNone": "No Japanese voice is installed on this device, so the script is shown instead.",
  "exam.speakNote": "Spoken by your device's own voice - not a recording of the real exam.",
  "exam.speakPlay": "Play",
+ "exam.speakRead": "Read aloud by your device, now that this section is marked.",
  "exam.speakSlow": "Slower",
  "exam.speakStop": "Stop",
  "exam.speakThisOne": "Just this question, spoken by your device — no video, works offline.",

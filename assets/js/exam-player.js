@@ -446,8 +446,11 @@
   }
 
   function playScript(q, node, rate) {
+    playLines(speechLines(q), node, rate);
+  }
+
+  function playLines(lines, node, rate) {
     stopSpeaking();
-    var lines = speechLines(q);
     if (!lines.length) return;
 
     var order = {};
@@ -501,6 +504,76 @@
       return '<p class="q-line">' + who + esc(row[1] || "") + "</p>";
     }).join("");
     return rows;
+  }
+
+  /* ------------------------------------------- reading the rest aloud
+
+     The 聴解 booklet is spoken because it has to be: a listening question
+     with nothing to listen to is not a question. The other three booklets
+     are printed, and they stay printed - but once a section is marked,
+     there is no longer anything to protect, and hearing the sentence you
+     just got wrong is worth more than reading it again.
+
+     After marking, and only after, every question and every passage gets
+     the same play button the 聴解 has. Before marking it is absent, which
+     is not squeamishness: 問題1 at every level asks how a word is read,
+     and a device that reads the sentence aloud answers it out loud.
+
+     A passage built as a table is left alone. A fare table read as a
+     sentence is a list of numbers with the columns removed, which is
+     worse than not offering it. */
+
+  var SPEAK_BLANK = /[\u3010\u3016]\s*\d+\s*[\u3011\u3017]|\uff3f*\u2605\uff3f*|[\uff3f_]{2,}|[\uff08(][\s\u3000]*[\uff09)]/g;
+
+  function readableText(html) {
+    return stripTags(html)
+      .replace(SPEAK_BLANK, "\u3001")
+      .replace(/[\u3001\s]{2,}/g, "\u3001")
+      .replace(/^\u3001|\u3001$/g, "")
+      .trim();
+  }
+
+  /* One line per paragraph, so the pause between them is the pause the
+     paragraph break already is, and so Stop lands between two of them
+     rather than having to cut a whole passage off mid-word. */
+  function passageLines(html) {
+    if (!html || /<table/i.test(html)) return [];
+    return String(html)
+      .split(/<br\s*\/?>|<\/p>|<\/div>/i)
+      .map(function (part) { return readableText(part); })
+      .filter(function (text) { return text.length > 1; })
+      .map(function (text) { return { who: "", text: text }; });
+  }
+
+  /* The stem, then the options read out numbered - the same shape 問題3 and
+     問題4 of the 聴解 already use, so a learner who has sat one of those
+     knows what is coming. */
+  function questionLines(q) {
+    var out = [];
+    var stem = readableText(q.prompt || "");
+    if (stem) out.push({ who: "", text: stem });
+    (q.choices || []).forEach(function (c, i) {
+      var text = readableText(c);
+      if (text) out.push({ who: String(i + 1), text: (i + 1) + "\u3001" + text });
+    });
+    return out;
+  }
+
+  function buildReadAloud(lines) {
+    if (!canSpeak() || !lines.length) return null;
+    var node = el("div", "q-script is-compact is-read");
+    var bar = el("div", "q-script-bar");
+    var play = el("button", "q-play", "\u25b6 " + esc(t("exam.speakPlay")));
+    play.type = "button";
+    var stop = el("button", "q-play is-stop", "\u25a0 " + esc(t("exam.speakStop")));
+    stop.type = "button";
+    play.addEventListener("click", function () { playLines(lines, node, 0.95); });
+    stop.addEventListener("click", stopSpeaking);
+    bar.appendChild(play);
+    bar.appendChild(stop);
+    bar.appendChild(el("span", "q-script-note", esc(t("exam.speakRead"))));
+    node.appendChild(bar);
+    return node;
   }
 
   function buildScript(q, compact) {
@@ -2124,6 +2197,10 @@
          come into reach. */
       var pwords = buildWords(block.questions[0].key, "passage");
       if (pwords) pnode.insertBefore(pwords, pnode.querySelector(".q-passage-body"));
+      if (currentMarked()) {
+        var pread = buildReadAloud(passageLines(block.passage));
+        if (pread) pnode.insertBefore(pread, pnode.querySelector(".q-passage-body"));
+      }
       wireFigures(pnode);
       node.appendChild(pnode);
     }
@@ -2177,6 +2254,10 @@
     var script = (item.needsSpeech || item.compactSpeech)
       ? buildScript(q, item.compactSpeech) : null;
     if (script) node.appendChild(script);
+    if (!script && currentMarked()) {
+      var read = buildReadAloud(questionLines(q));
+      if (read) node.appendChild(read);
+    }
 
     var width = blank ? " is-numeric"
       : longestChoice(q) <= 8 ? " is-short"

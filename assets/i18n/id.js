@@ -130,6 +130,7 @@ I18N.register("id", {
  "exam.speakNone": "Perangkat ini tidak punya suara bahasa Jepang, jadi naskahnya ditampilkan.",
  "exam.speakNote": "Dibacakan oleh suara perangkat Anda — bukan rekaman ujian asli.",
  "exam.speakPlay": "Putar",
+ "exam.speakRead": "Sudah dinilai, jadi bagian ini bisa dibacakan perangkat.",
  "exam.speakSlow": "Lebih lambat",
  "exam.speakStop": "Berhenti",
  "exam.speakThisOne": "Hanya soal ini, dibacakan perangkat — tanpa video, bisa offline.",

@@ -130,6 +130,7 @@ I18N.register("ja", {
  "exam.speakNone": "この端末には日本語の音声がないため、スクリプトを表示しています。",
  "exam.speakNote": "お使いの端末の音声で読み上げます。実際の試験の録音ではありません。",
  "exam.speakPlay": "再生",
+ "exam.speakRead": "採点後なので、この問題を端末の音声で読み上げられます。",
  "exam.speakSlow": "ゆっくり",
  "exam.speakStop": "停止",
  "exam.speakThisOne": "この問題だけを端末の音声で読み上げます。動画なし、オフライン可。",

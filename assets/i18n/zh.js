@@ -130,6 +130,7 @@ I18N.register("zh", {
  "exam.speakNone": "本设备未安装日语语音，因此改为显示脚本。",
  "exam.speakNote": "由您设备的语音朗读，并非真实考试的录音。",
  "exam.speakPlay": "播放",
+ "exam.speakRead": "本节已评分，可用设备语音朗读。",
  "exam.speakSlow": "放慢",
  "exam.speakStop": "停止",
  "exam.speakThisOne": "仅朗读本题，使用设备语音——无视频，可离线。",

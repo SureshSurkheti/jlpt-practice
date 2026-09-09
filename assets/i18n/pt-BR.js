@@ -130,6 +130,7 @@ I18N.register("pt-BR", {
  "exam.speakNone": "Este aparelho não tem voz em japonês instalada, então o roteiro é exibido.",
  "exam.speakNote": "Lido pela voz do seu aparelho — não é a gravação do exame real.",
  "exam.speakPlay": "Tocar",
+ "exam.speakRead": "Já corrigido, então isto pode ser lido em voz alta pelo aparelho.",
  "exam.speakSlow": "Mais devagar",
  "exam.speakStop": "Parar",
  "exam.speakThisOne": "Só esta questão, lida pelo aparelho — sem vídeo, funciona offline.",
