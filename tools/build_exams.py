@@ -394,14 +394,26 @@ def parse_source(path):
     for qn in sorted(questions):
         q = questions[qn]
         choices = q.get("choices") or {}
-        if len(choices) < 2 or not q.get("prompt"):
+        if len(choices) < 2:
+            continue
+
+        # An empty prompt is a defect everywhere except listening, where it
+        # is the format: 問題用紙には何も印刷されていません, and in the 統合理解
+        # pair the second question is spoken and nothing is printed beside
+        # its four options. The archive stores those with an empty
+        # question_list, and requiring a prompt threw them away - N2 December
+        # 2010 lost 問題5's 3番 that way, so the paper showed its instruction,
+        # then jumped from 2番 to 4番 with the question in between simply
+        # missing. The recording still asked it.
+        listening = TYPE_NAMES.get(q.get("type")) == "listening"
+        if not q.get("prompt") and not listening:
             continue
 
         # Worked examples are not questions. Six were being served as though
         # they were - all in n4-practice-1 - which inflated that paper's total
         # by six and put three items in it with no answer key at all, so they
         # could never be right however you answered them.
-        if EXAMPLE_ITEM.match(text_of(q["prompt"])):
+        if q.get("prompt") and EXAMPLE_ITEM.match(text_of(q["prompt"])):
             continue
 
         category = TYPE_NAMES.get(q.get("type"), "vocabulary")
@@ -420,7 +432,7 @@ def parse_source(path):
         answer = q.get("answer")
         if not answer or answer not in choices:
             answer = None
-        number, prompt = split_prompt_number(q["prompt"])
+        number, prompt = split_prompt_number(q.get("prompt") or "")
 
         # No "has anything to read" test here, deliberately.
         #

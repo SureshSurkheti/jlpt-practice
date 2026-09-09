@@ -2515,10 +2515,43 @@
    one. */
 .q-audio-full-media { flex: none; }
 
+/* Small by default. This bar is pinned under the command bar, so its height
+   is paid for the whole paper, and 320px of 16:9 is 180px of screen held for
+   a picture that is usually a title card. 176px is 99 - enough for YouTube's
+   own controls to stay usable, and it takes the pinned bar from about 200px
+   down to 120.
+
+   Bigger is one click away and is remembered, because on these papers the
+   picture is sometimes the option sheet: every one of them has questions
+   whose four choices were printed as pictures and so are not on the page. */
 .q-audio-full-bar.is-playing .q-audio-full-media {
-  width: min(320px, 100%);
+  width: min(176px, 100%);
   aspect-ratio: 16 / 9;
+  transition: width 0.16s ease;
 }
+
+.q-audio-full-bar.is-playing.is-big .q-audio-full-media {
+  width: min(460px, 100%);
+}
+
+.q-audio-full-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.q-audio-size {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.q-audio-size:hover { border-color: var(--blue); color: var(--navy); }
 
 .q-audio-play {
   display: inline-flex;
@@ -2590,7 +2623,8 @@
      screen, and what is on screen is a title card - the questions are on the
      page, not in the picture. Wide enough to keep YouTube's own controls
      usable, no wider. */
-  .q-audio-full-bar.is-playing .q-audio-full-media { width: min(240px, 100%); }
+  .q-audio-full-bar.is-playing .q-audio-full-media { width: min(148px, 100%); }
+  .q-audio-full-bar.is-playing.is-big .q-audio-full-media { width: min(280px, 100%); }
   .q-audio-full-side { margin-top: 6px; }
 }
 
@@ -2673,4 +2707,12 @@
 
 @media (max-width: 560px) {
   .q-script-note { flex-basis: 100%; }
+}
+
+/* The way out of a paper that is short a booklet: the same booklet, at the
+   same level, in a sitting that has it. Set apart from the sentence above it
+   so it reads as a control rather than as more explanation. */
+.setup-absent-go {
+  margin-top: 6px;
+  font-weight: 600;
 }

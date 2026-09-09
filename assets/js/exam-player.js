@@ -844,6 +844,9 @@
 
     fetchJSON(DATA_DIR + "index.json").then(function (idx) {
       var exams = idx.exams || [];
+      /* Kept rather than thrown away: a paper that is missing a booklet can
+         then say which other sitting has one - see elsewhereFor(). */
+      state.index = exams;
       if (!id) {
         var pool = level
           ? exams.filter(function (e) { return e.level === level; })
@@ -864,6 +867,23 @@
         String(err && err.message ? err.message : err)
       );
     });
+  }
+
+  /* Another sitting at this level whose missing booklet is actually there -
+     and, for listening, one that can be heard rather than one that is silent
+     in the same way. The index is newest first, so the first match is the
+     most recent. */
+  function elsewhereFor(level, skill) {
+    var mine = state.exam && state.exam.id;
+    var pool = (state.index || []).filter(function (e) {
+      if (e.level !== level || e.id === mine) return false;
+      if (!((e.categoryCounts || {})[skill])) return false;
+      if (skill !== "listening") return true;
+      return (e.parts || []).some(function (p) {
+        return p.id === "listening" && p.audio;
+      });
+    });
+    return pool.length ? pool[0] : null;
   }
 
   /* --------------------------------------------------------- setup screen */
@@ -970,6 +990,24 @@
             return metaLabel(CATEGORY_META, id);
           }).join(", ")
         }))));
+
+      /* Saying what is missing is half of it. Seven N1 and N3 sittings and
+         one N4 practice set reached us without their 聴解 booklet, and no
+         amount of re-parsing brings it back - the source pages carry no
+         questions and no answer key at all. What can be done is not leave
+         the reader at a dead end: the same booklet, at the same level, is
+         one click away in another sitting. */
+      absent.forEach(function (id) {
+        var other = elsewhereFor(exam.level, id);
+        if (!other) return;
+        partsBox.appendChild(el("p", "setup-absent setup-absent-go",
+          '<a class="text-link" href="exam.html?id=' + esc(other.id) +
+            "&cat=" + esc(id) + '">' +
+            esc(tf("exam.missingPartsGo", {
+              part: metaLabel(CATEGORY_META, id),
+              paper: other.periodLabel || other.id
+            })) + " \u2192</a>"));
+      });
     }
 
     /* How much you have chosen, under the thing you choose it with. This
@@ -1921,6 +1959,22 @@
      it. youtube-nocookie is their own domain for exactly this, the line
      underneath says whose recording it is, and Stop takes the frame back out
      again rather than leaving it playing behind a collapsed box. */
+  var FULL_SIZE_KEY = "jlpt.exam.fullBig";
+
+  function readFullSize() {
+    try {
+      return localStorage.getItem(FULL_SIZE_KEY) === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function saveFullSize(big) {
+    try {
+      localStorage.setItem(FULL_SIZE_KEY, big ? "1" : "0");
+    } catch (e) { /* a browser that refuses storage still gets the toggle */ }
+  }
+
   function hasFullAudio() {
     var full = state.exam && state.exam.listeningFull;
     return !!(full && full.url && videoId(full.url));
@@ -1942,13 +1996,41 @@
           '<a class="text-link" href="' + esc(full.url) + '" target="_blank" ' +
           'rel="noopener noreferrer">' + esc(t("exam.audioFullLink")) +
           "</a></p>" +
-        '<button type="button" class="q-audio-stop" hidden>' +
-          '<span aria-hidden="true">\u2715</span> ' +
-          esc(t("exam.audioFullStop")) + "</button>" +
+        '<div class="q-audio-full-btns">' +
+          '<button type="button" class="q-audio-size" hidden></button>' +
+          '<button type="button" class="q-audio-stop" hidden>' +
+            '<span aria-hidden="true">\u2715</span> ' +
+            esc(t("exam.audioFullStop")) + "</button>" +
+        "</div>" +
       "</div>";
 
     var media = bar.querySelector(".q-audio-full-media");
     var stop = bar.querySelector(".q-audio-stop");
+    var size = bar.querySelector(".q-audio-size");
+
+    /* This bar is pinned under the command bar, so whatever height it takes
+       it keeps for the whole paper. A 16:9 frame 320px wide is 180px of that,
+       permanently, for a recording whose picture is usually a title card -
+       which is why it starts small.
+
+       Usually, but not always: on all 33 papers that have a whole-test
+       recording there are questions whose four options are never printed on
+       the page, because the original paper printed pictures. For those the
+       slide in the video is the option sheet, and a thumbnail is no use. So
+       the size is the reader's to choose, and the choice is remembered. */
+    function applySize() {
+      var big = readFullSize();
+      bar.classList.toggle("is-big", big);
+      size.textContent = t(big ? "exam.audioFullSmaller"
+                               : "exam.audioFullBigger");
+      size.setAttribute("aria-pressed", big ? "true" : "false");
+      measureFullBar(bar);
+    }
+
+    size.addEventListener("click", function () {
+      saveFullSize(!readFullSize());
+      applySize();
+    });
 
     function idle() {
       media.innerHTML =
@@ -1960,6 +2042,7 @@
       bar.classList.remove("is-playing");
       paperNode(bar).classList.remove("is-full-playing");
       stop.hidden = true;
+      size.hidden = true;
       measureFullBar(bar);
     }
 
@@ -1979,7 +2062,8 @@
       bar.classList.add("is-playing");
       paperNode(bar).classList.add("is-full-playing");
       stop.hidden = false;
-      measureFullBar(bar);
+      size.hidden = false;
+      applySize();
     }
 
     stop.addEventListener("click", idle);

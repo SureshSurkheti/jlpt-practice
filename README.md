@@ -1,7 +1,7 @@
 # JLPT Practice
 
 A JLPT study site for learners in Japan, built around **123 papers
-(11,608 questions)** from N1–N5 that are played as timed, auto-scored exams:
+(11,609 questions)** from N1–N5 that are played as timed, auto-scored exams:
 89 archived sittings, and 34 written for this site in the same format.
 
 ## Run it
@@ -116,6 +116,16 @@ Nine papers have a gap that will not be filled:
 | 6 N1 sittings, 1 N3 | no 聴解 booklet | The booklet was never archived. Writing one would put invented questions inside a paper labelled as a real sitting, which is the one thing this must not do. |
 | n1-2018-12 | 3 of 4 聴解 sections silent | Archived with neither a recording nor a transcript, so there is nothing to play and nothing to speak. |
 | n4-practice-1 | no 読解, no 聴解 | Scraped from someone else's practice set. Adding questions to it would make a hybrid that is honest about neither half. |
+
+Checked rather than assumed: the six N1 and one N3 source pages carry no
+questions and no answer key at all — 0 bytes of either — and n1-2025-07 has no
+source page. The other six questions the parser reports losing are five
+worked examples, which are not questions, and three whose options the source
+mis-split or lost, where the answer index would point at the wrong text.
+One of those has no answer, no options and no transcript.
+
+Each of those papers now says which sitting at the same level has the booklet
+it is missing, and links straight into it.
 
 The library says so on each of them rather than leaving a reader to find out
 by sitting a section in silence.
@@ -265,7 +275,7 @@ Free JLPT practice — full mock papers, N5 to N1
 
 No sign-up. No ads. Nothing to pay. Open it and start.
 
-📝 123 practice papers, 11,608 questions — N5 through N1, in the real JLPT format
+📝 123 practice papers, 11,609 questions — N5 through N1, in the real JLPT format
 🆕 N5 and N4 now have 18 papers each — vocabulary, grammar, reading and listening, all three booklets
 🔤 Every word of every question, with its reading and meaning — 125,767 of them
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
@@ -293,7 +303,7 @@ https://nihongomock.com
 
 A repost with no news reads as spam, so lead with what changed:
 
-New on the free JLPT practice site: N5 and N4 now have 18 full papers each, up from 2. Every one has all three booklets — 文字・語彙, 文法・読解 and 聴解 — and the listening is spoken aloud in the page, so you can actually sit it. 11,608 questions across 123 papers now.
+New on the free JLPT practice site: N5 and N4 now have 18 full papers each, up from 2. Every one has all three booklets — 文字・語彙, 文法・読解 and 聴解 — and the listening is spoken aloud in the page, so you can actually sit it. 11,609 questions across 123 papers now.
 https://nihongomock.com
 
 ### Nepali
@@ -302,7 +312,7 @@ https://nihongomock.com
 
 दर्ता गर्नु पर्दैन। विज्ञापन छैन। पैसा तिर्नु पर्दैन।
 
-📝 १२३ अभ्यास प्रश्नपत्र, ११,६०८ प्रश्न — वास्तविक JLPT ढाँचामा
+📝 १२३ अभ्यास प्रश्नपत्र, ११,६०९ प्रश्न — वास्तविक JLPT ढाँचामा
 🆕 N5 र N4 मा अब १८-१८ वटा प्रश्नपत्र — शब्द, व्याकरण, पठन र श्रवण सबै
 🔤 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ
 ⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
