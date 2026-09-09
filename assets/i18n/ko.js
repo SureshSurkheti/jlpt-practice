@@ -40,6 +40,7 @@ I18N.register("ko", {
  "exam.audioFullWhose": "제3자가 YouTube에 올린 영상이며, 이 사이트의 음원이 아닙니다.",
  "exam.audioHelp": "대신 이 앱으로 청해를 연습하세요:",
  "exam.audioInFull": "이 문제에는 개별 음성이 없습니다. 청해 섹션 맨 위의 전체 음성에 포함되어 있습니다.",
+ "exam.audioLostSpoken": "이 파트의 녹음이 남아 있지 않아 스크립트를 읽어 줍니다.",
  "exam.audioNote": "녹음 하나가 과목 전체를 담고 있어 인터넷 연결이 필요합니다.",
  "exam.audioOfficial": "공식 연습 문제와 청해 음성",
  "exam.audioTrouble": "재생되지 않나요?",

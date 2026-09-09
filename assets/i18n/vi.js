@@ -40,6 +40,7 @@ I18N.register("vi", {
  "exam.audioFullWhose": "Bản tải lên của người khác trên YouTube — không lưu trữ tại đây.",
  "exam.audioHelp": "Hãy luyện nghe bằng ứng dụng này:",
  "exam.audioInFull": "問題 này không có bản ghi riêng. Nội dung nằm trong bản ghi đầy đủ ở đầu phần thi nghe.",
+ "exam.audioLostSpoken": "Không có bản ghi âm cho phần này, nên lời thoại được đọc to thay thế.",
  "exam.audioNote": "Một file ghi âm cho cả phần thi, nên cần kết nối internet.",
  "exam.audioOfficial": "Đề luyện tập chính thức kèm âm thanh nghe",
  "exam.audioTrouble": "Không phát được?",

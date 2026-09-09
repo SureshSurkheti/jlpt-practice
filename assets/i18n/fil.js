@@ -40,6 +40,7 @@ I18N.register("fil", {
  "exam.audioFullWhose": "Pag-upload ng ibang tao sa YouTube — hindi naka-host dito.",
  "exam.audioHelp": "Magsanay sa pakikinig sa app na ito:",
  "exam.audioInFull": "Walang sariling recording ang 問題 na ito. Nasa buong recording ito sa itaas ng bahagi ng pakikinig.",
+ "exam.audioLostSpoken": "Walang recording para sa bahaging ito, kaya binabasa nang malakas ang script.",
  "exam.audioNote": "Isang recording ang sumasaklaw sa buong bahagi, kaya kailangan ng internet.",
  "exam.audioOfficial": "Opisyal na practice papers na may listening audio",
  "exam.audioTrouble": "Hindi tumutugtog?",

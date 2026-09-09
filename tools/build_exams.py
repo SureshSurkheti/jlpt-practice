@@ -527,13 +527,18 @@ def validate_manual(exam, path):
 def listenable(q):
     """Can this question be heard rather than read?
 
-    Either a recording, or - for the papers written for this site, which
-    have no recording anyone is entitled to host - a script the page speaks
-    with the device's own voice. The library reads this to decide whether a
-    paper offers listening at all, so counting only `audio` would have hidden
-    a complete 聴解 section behind "no listening audio".
+    Three ways. A recording; a script, for the papers written for this site,
+    which have no recording anyone is entitled to host; or the transcript the
+    paper was archived with, which the page can speak in the reader's own
+    browser where the recording will not play. The library reads this to
+    decide whether a paper offers listening at all, so counting only `audio`
+    hid a complete 聴解 section behind "no listening audio" - and hid the 799
+    archived questions whose sound file was never archived or has since died.
     """
-    return bool(q.get("audio") or q.get("script"))
+    if q.get("audio") or q.get("script"):
+        return True
+    return bool(q.get("category") == "listening"
+                and (q.get("explanation") or "").strip())
 
 
 def audio_coverage(questions):

@@ -40,6 +40,7 @@ I18N.register("id", {
  "exam.audioFullWhose": "Unggahan orang lain di YouTube — bukan disimpan di sini.",
  "exam.audioHelp": "Berlatih menyimak dengan aplikasi ini saja:",
  "exam.audioInFull": "問題 ini tidak punya rekaman sendiri. Isinya ada di rekaman lengkap di awal bagian menyimak.",
+ "exam.audioLostSpoken": "Tidak ada rekaman untuk bagian ini, jadi naskahnya dibacakan.",
  "exam.audioNote": "Satu rekaman mencakup seluruh bagian, jadi perlu koneksi internet.",
  "exam.audioOfficial": "Soal latihan resmi dengan audio menyimak",
  "exam.audioTrouble": "Tidak diputar?",

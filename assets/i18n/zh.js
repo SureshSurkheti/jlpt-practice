@@ -40,6 +40,7 @@ I18N.register("zh", {
  "exam.audioFullWhose": "他人上传于 YouTube，非本站托管。",
  "exam.audioHelp": "请改用此应用练习听力：",
  "exam.audioInFull": "本题没有单独的音频，内容包含在听力部分开头的完整录音中。",
+ "exam.audioLostSpoken": "本部分没有录音，改为朗读脚本。",
  "exam.audioNote": "一段录音涵盖整个部分，需要联网播放。",
  "exam.audioOfficial": "官方练习题与听力音频",
  "exam.audioTrouble": "无法播放？",

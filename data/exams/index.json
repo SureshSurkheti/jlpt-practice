@@ -772,9 +772,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 0,
+     "audio": 28,
      "sections": 4,
-     "audioSections": 0
+     "audioSections": 4
     }
    ],
    "sortKey": "practice-2"
@@ -2022,9 +2022,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 25,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 4
+     "audioSections": 5
     }
    ],
    "sortKey": "2018-07",
@@ -2191,9 +2191,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 25,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 4
+     "audioSections": 5
     }
    ],
    "sortKey": "2016-07",
@@ -2234,9 +2234,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 25,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 4
+     "audioSections": 5
     }
    ],
    "sortKey": "2015-12",
@@ -2310,9 +2310,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2014-12",
@@ -2395,9 +2395,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2013-12",
@@ -2438,9 +2438,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2013-07",
@@ -2481,9 +2481,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2012-12",
@@ -2524,9 +2524,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 28,
-     "audio": 6,
+     "audio": 28,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2012-07",
@@ -2567,9 +2567,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 27,
-     "audio": 6,
+     "audio": 27,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2011-12",
@@ -2610,9 +2610,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 27,
-     "audio": 6,
+     "audio": 27,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2011-07",
@@ -3031,9 +3031,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 28,
+     "audio": 30,
      "sections": 6,
-     "audioSections": 5
+     "audioSections": 6
     }
    ],
    "sortKey": "2020-12",
@@ -3158,9 +3158,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 30,
-     "audio": 28,
+     "audio": 29,
      "sections": 6,
-     "audioSections": 5
+     "audioSections": 6
     }
    ],
    "sortKey": "2018-12",
@@ -3495,9 +3495,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 5,
+     "audio": 32,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2014-12",
@@ -3538,9 +3538,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 5,
+     "audio": 32,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2014-07",
@@ -3581,9 +3581,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 32,
-     "audio": 5,
+     "audio": 32,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2013-12",
@@ -3624,9 +3624,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5,
+     "audio": 31,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2013-07",
@@ -3667,9 +3667,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5,
+     "audio": 31,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2012-12",
@@ -3710,9 +3710,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5,
+     "audio": 31,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2012-07",
@@ -3753,9 +3753,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5,
+     "audio": 31,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2011-12",
@@ -3796,9 +3796,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 31,
-     "audio": 5,
+     "audio": 31,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2011-07",
@@ -4367,9 +4367,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6,
+     "audio": 34,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2019-07",
@@ -4453,9 +4453,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6,
+     "audio": 34,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2018-07",
@@ -4496,9 +4496,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6,
+     "audio": 34,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2017-12",
@@ -4539,9 +4539,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 35,
-     "audio": 6,
+     "audio": 35,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2017-07",
@@ -4582,9 +4582,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6,
+     "audio": 37,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2016-12",
@@ -4625,9 +4625,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 6,
+     "audio": 36,
      "sections": 6,
-     "audioSections": 1
+     "audioSections": 6
     }
    ],
    "sortKey": "2016-07",
@@ -4668,9 +4668,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6,
+     "audio": 37,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2015-12",
@@ -4711,9 +4711,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6,
+     "audio": 37,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2015-07",
@@ -4754,9 +4754,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6,
+     "audio": 37,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2014-12",
@@ -4797,9 +4797,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 37,
-     "audio": 6,
+     "audio": 37,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2014-07",
@@ -4840,9 +4840,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 6,
+     "audio": 36,
      "sections": 6,
-     "audioSections": 1
+     "audioSections": 6
     }
    ],
    "sortKey": "2013-12",
@@ -4883,9 +4883,9 @@
      "id": "listening",
      "label": "Listening (聴解)",
      "count": 36,
-     "audio": 6,
+     "audio": 36,
      "sections": 5,
-     "audioSections": 1
+     "audioSections": 5
     }
    ],
    "sortKey": "2013-07",

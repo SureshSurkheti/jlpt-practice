@@ -40,6 +40,7 @@ I18N.register("pt-BR", {
  "exam.audioFullWhose": "Envio de outra pessoa no YouTube — não hospedado aqui.",
  "exam.audioHelp": "Pratique audição com este aplicativo:",
  "exam.audioInFull": "Este 問題 não tem gravação própria. Ele está na gravação completa no topo da seção de compreensão auditiva.",
+ "exam.audioLostSpoken": "Não há gravação para esta seção, então o roteiro é lido em voz alta.",
  "exam.audioNote": "Uma gravação cobre a seção inteira, por isso precisa de conexão.",
  "exam.audioOfficial": "Exercícios oficiais com áudio de compreensão auditiva",
  "exam.audioTrouble": "Não está tocando?",

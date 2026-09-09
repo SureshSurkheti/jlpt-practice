@@ -373,12 +373,68 @@
     try { SPEECH.cancel(); } catch (e) { /* nothing to do */ }
   }
 
+  /* ------------------------------------------- transcripts as scripts
+
+     The archived papers carry a transcript for almost every listening
+     question - 2,444 of them - and the site already prints it. Where the
+     recording will not play, that text is the only thing standing between a
+     reader and a section they cannot sit at all: 799 questions across 34
+     papers, either never archived with a sound file or archived with one
+     that has since died.
+
+     Reading aloud text that is already on the page, in the reader's own
+     browser, with the reader's own voice, is what a screen reader does. No
+     copy is made and nothing is hosted. So the same play button the papers
+     written here use is offered on those questions too.
+
+     The stored transcripts need cleaning first. Every one opens with
+     "Tham khảo:" - Vietnamese for "reference", the source site's own label,
+     not part of the script - and the N4 practice papers lost their ruby
+     upstream, leaving furigana-shaped gaps wedged between the kanji
+     (絵 本 を包 みます). Speaking that verbatim would read the gaps as
+     pauses; closing them gets the sentence back. */
+
+  var JP = "\u3005\u3006\u3007\u4e00-\u9fff\u3041-\u309f\u30a0-\u30ff" +
+           "\uff66-\uff9f\u3001\u3002\uff01\uff1f\uff0c\uff0e";
+  var SPACE_IN_JP = new RegExp("([" + JP + "])[ \t\u3000]+(?=[" + JP + "])", "g");
+  var SPEAKER = new RegExp(
+    "^([0-9A-Za-z\uff21-\uff3a\uff41-\uff5a\uff10-\uff19" +
+    "\u3041-\u309f\u30a0-\u30ff\u4e00-\u9fff]{1,6})[ \t\u3000]*[:\uff1a][ \t\u3000]*(.+)$");
+  var LEAD = /^\s*(?:tham\s*kh[\u1ea3a]o|\u53c2\u8003|\u30b9\u30af\u30ea\u30d7\u30c8)\s*[:\uff1a]\s*/i;
+
+  function parseTranscript(htmlText) {
+    if (!htmlText) return [];
+    var d = document.createElement("div");
+    d.innerHTML = String(htmlText)
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<[^>]+>/g, "\n");
+    var text = (d.textContent || "").replace(LEAD, "");
+    var out = [];
+    text.split("\n").forEach(function (line) {
+      var t = line.replace(/\t/g, " ").trim().replace(/[ \u3000]{2,}/g, " ");
+      t = t.replace(SPACE_IN_JP, "$1");
+      if (!t) return;
+      var m = SPEAKER.exec(t);
+      if (m) out.push([m[1], m[2]]);
+      else out.push(["", t]);
+    });
+    return out;
+  }
+
+  /* Either the script the paper was written with, or the transcript it was
+     archived with. */
+  function speechFor(q) {
+    if (q.script && q.script.length) return q.script;
+    if (q.category === "listening") return parseTranscript(q.explanation);
+    return [];
+  }
+
   /* The script is spoken exactly as it is written, and nothing is added
      here. Where the examiner asks the question, then plays the conversation,
      then asks it again, all three are lines of the script - the paper is
      what decides how its own listening section runs, not the player. */
   function speechLines(q) {
-    return (q.script || []).map(function (row) {
+    return speechFor(q).map(function (row) {
       return { who: row[0] || "", text: stripTags(row[1] || "") };
     });
   }
@@ -440,7 +496,7 @@
   }
 
   function transcriptHTML(q) {
-    var rows = (q.script || []).map(function (row) {
+    var rows = speechFor(q).map(function (row) {
       var who = row[0] ? '<b>' + esc(row[0]) + '</b>' : "";
       return '<p class="q-line">' + who + esc(row[1] || "") + "</p>";
     }).join("");
@@ -448,7 +504,7 @@
   }
 
   function buildScript(q) {
-    if (!q.script || !q.script.length) return null;
+    if (!speechFor(q).length) return null;
     var node = el("div", "q-script");
 
     if (canSpeak()) {
@@ -1321,6 +1377,13 @@
 
       item.number = paperNumber(item, last.seen);
       last.seen++;
+      /* Whether this question needs the spoken fallback at all. A section
+         with a recording that plays does not: the recording is the real
+         thing, and a play button under every question below it would be
+         clutter on top of the bar that already covers them. A section with
+         no recording, or with the one that returns 404, does. */
+      item.needsSpeech = item.category === "listening" &&
+        (!last.audio || DEAD_AUDIO_IDS.indexOf(driveId(last.audio)) !== -1);
 
       var block = last.blocks[last.blocks.length - 1];
       if (!block || block.passage !== (q.passage || null)) {
@@ -1641,7 +1704,19 @@
     var deadAudio = section.audio &&
       DEAD_AUDIO_IDS.indexOf(driveId(section.audio)) !== -1;
 
-    if (section.audio && deadAudio) {
+    /* Whether this 問題 can be heard at all, one way or another. */
+    var spoken = section.blocks.some(function (b) {
+      return b.questions.some(function (i) { return speechFor(i.q).length > 0; });
+    });
+
+    if (section.audio && deadAudio && spoken) {
+      /* The recording is gone, but the script is not, and the play buttons
+         under each question below are working. Sending the reader to
+         somebody else's website from directly above a control that does the
+         job would be worse than saying nothing. */
+      head.appendChild(el("div", "q-audio-aside",
+        '<p class="q-audio-note">' + esc(t("exam.audioLostSpoken")) + "</p>"));
+    } else if (section.audio && deadAudio) {
       head.appendChild(el("div", "q-audio-aside is-failed",
         '<p class="q-audio-note">' + deadAudioHTML() + "</p>"));
     } else if (section.audio) {
@@ -1671,15 +1746,19 @@
        is missing is this 問題's own recording, and the note's job is now to
        point at the one above rather than to apologise. The help links go with
        it - they are about audio that will not play, and here it plays. */
-    var spoken = section.blocks.some(function (b) {
-      return b.questions.some(function (i) { return !!(i.q.script || []).length; });
-    });
     if (!section.audio && !spoken && section.category === "listening") {
       head.appendChild(el("div", "q-audio-aside is-failed",
         hasFullAudio()
           ? '<p class="q-audio-note">' + esc(t("exam.audioInFull")) + "</p>"
           : "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
             "</strong><br>" + audioHelpHTML() + "</p>"));
+    } else if (!section.audio && spoken && section.category === "listening" &&
+               !hasFullAudio()) {
+      /* No recording was ever archived for this 問題, and the transcript is
+         standing in for it. Said once, above the questions, rather than
+         repeated under every play button. */
+      head.appendChild(el("div", "q-audio-aside",
+        '<p class="q-audio-note">' + esc(t("exam.audioLostSpoken")) + "</p>"));
     }
 
     node.appendChild(head);
@@ -1997,7 +2076,7 @@
     wireFigures(head);
     node.appendChild(head);
 
-    var script = buildScript(q);
+    var script = item.needsSpeech ? buildScript(q) : null;
     if (script) node.appendChild(script);
 
     var width = blank ? " is-numeric"

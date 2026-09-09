@@ -40,6 +40,7 @@ I18N.register("ja", {
  "exam.audioFullWhose": "第三者がYouTubeに投稿したものです。当サイトの音源ではありません。",
  "exam.audioHelp": "代わりにこのアプリで聴解を練習してください：",
  "exam.audioInFull": "この問題には個別の音声がありません。聴解セクション冒頭の全体音声に含まれています。",
+ "exam.audioLostSpoken": "この問題の録音は残っていないため、スクリプトを読み上げます。",
  "exam.audioNote": "1つの録音が科目全体をカバーします。再生にはインターネット接続が必要です。",
  "exam.audioOfficial": "公式の練習問題と聴解音声",
  "exam.audioTrouble": "再生できませんか？",

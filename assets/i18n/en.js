@@ -40,6 +40,7 @@ I18N.register("en", {
  "exam.audioFullWhose": "Someone else's upload, on YouTube — not hosted here.",
  "exam.audioHelp": "Practise listening with this app instead:",
  "exam.audioInFull": "This 問題 has no recording of its own. It is in the full recording at the top of the listening section.",
+ "exam.audioLostSpoken": "No recording was archived for this section, so the script is read aloud instead.",
  "exam.audioNote": "One recording covers the whole section, so it needs an internet connection.",
  "exam.audioOfficial": "Official JLPT practice papers with listening audio",
  "exam.audioTrouble": "Not playing?",

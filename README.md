@@ -154,16 +154,22 @@ sittings cannot simply be downloaded.
 
 ## Listening
 
-**112 of the 123 papers can be listened to end to end**, by two different
-routes.
+**113 of the 123 papers can be listened to end to end**, and 532 of the 535
+listening sections in them, by two different routes.
 
-The 80 archived sittings that kept their recordings embed them from Google
-Drive, which needs a connection. The 32 papers written for this site have no
-recording and never will — the recordings that exist belong to the people who
-made them — so their scripts are spoken instead, by the voice already
-installed on the device reading the page. Nothing is downloaded and nothing is
-hosted; it works with the tab offline. Two speakers get two different voices
-where the device has them.
+The archived sittings that kept their recordings embed them from Google
+Drive, which needs a connection. Everything else is spoken by the voice
+already installed on the device reading the page — the 32 papers written for
+this site, which have no recording and never will, and the 799 archived
+questions across 34 papers whose sound file was never archived or has since
+died. Those carry a transcript, the site already prints it, and reading text
+that is already on the page aloud in the reader's own browser is what a
+screen reader does: no copy is made and nothing is hosted.
+
+Nothing is downloaded and it works with the tab offline. Two speakers get two
+different voices where the device has them. A section whose own recording
+plays gets no play button — the recording is the real thing and a control
+under every question below it would be clutter.
 
 It is a synthetic voice and the page says so under every play button: this is
 not a recording of the real exam. Where the device has no Japanese voice at
@@ -187,7 +193,8 @@ fails outright. The iframe is Google's supported way to embed a Drive file.
 
 Of the 235 distinct recordings, 234 still serve audio. The one exception is
 **N2 December 2013**, whose file now returns 404; that is the paper's whole
-listening section, so the player is replaced with a note. A cross-origin
+listening section, and its 32 questions are now spoken from their transcripts
+instead. A cross-origin
 iframe fires no error event, so every other listening section carries a
 "Not playing?" link instead of waiting for a failure it cannot detect.
 
@@ -233,7 +240,7 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 🆕 N5 and N4 now have 18 papers each — vocabulary, grammar, reading and listening, all three booklets
 🔤 Every word of every question, with its reading and meaning — 125,403 of them
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
-🎧 112 papers you can listen to end to end
+🎧 113 papers you can listen to end to end
 🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
 🇳🇵 N5 and N4 word meanings in Nepali — 1,753 words
 📚 9,639 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
@@ -245,7 +252,7 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 
 ### Shorter — for a comment or reply
 
-Free JLPT practice site — 123 full mock papers N5–N1, timed and auto-marked, 112 of them with listening. N5 and N4 have 18 papers each, all three booklets. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+Free JLPT practice site — 123 full mock papers N5–N1, timed and auto-marked, 113 of them with listening. N5 and N4 have 18 papers each, all three booklets. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
 https://nihongomock.com
 
 ### One line — for X, Threads, a chat group
