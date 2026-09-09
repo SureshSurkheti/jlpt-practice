@@ -497,7 +497,15 @@ def validate_manual(exam, path):
             continue
         for qi, q in enumerate(questions):
             qtag = f"{tag} q[{qi}]"
+            # 即時応答 prints nothing at all - 問題用紙には何も印刷されていま
+            # せん is what the paper itself says. The line you are answering
+            # exists only in the recording, so an empty prompt is the format
+            # rather than a gap in it, and a question carrying a script is
+            # allowed one. Everything else still has to have a prompt.
+            spoken = bool(q.get("script"))
             for field in REQUIRED_Q:
+                if field == "prompt" and spoken:
+                    continue
                 if q.get(field) in (None, "", []):
                     errs.append(f"{qtag}: missing '{field}'")
             choices = q.get("choices")
@@ -514,6 +522,18 @@ def validate_manual(exam, path):
                 errs.append(f"{qtag}: category must be one of "
                             f"{sorted(set(TYPE_NAMES.values()))}")
     return errs
+
+
+def listenable(q):
+    """Can this question be heard rather than read?
+
+    Either a recording, or - for the papers written for this site, which
+    have no recording anyone is entitled to host - a script the page speaks
+    with the device's own voice. The library reads this to decide whether a
+    paper offers listening at all, so counting only `audio` would have hidden
+    a complete 聴解 section behind "no listening audio".
+    """
+    return bool(q.get("audio") or q.get("script"))
 
 
 def audio_coverage(questions):
@@ -536,8 +556,13 @@ def audio_coverage(questions):
         sections[-1].append(q)
     listening = [sec for sec in sections
                  if sec and sec[0].get("category") == "listening"]
+    # A section is covered if it can be listened to, which is either a
+    # recording or - for the papers written here, which have no recording to
+    # host - a script the page speaks itself. Counting only `audio` reported
+    # a full listening section as having none.
     return (len(listening),
-            sum(1 for sec in listening if any(q.get("audio") for q in sec)))
+            sum(1 for sec in listening
+                if any(listenable(q) for q in sec)))
 
 
 def load_manual():
@@ -706,7 +731,7 @@ def main():
             "parts": [dict(zip(
                 ("id", "label", "count", "audio", "sections", "audioSections"),
                 (p["id"], p["label"], len(p["questions"]),
-                 sum(1 for q in p["questions"] if q.get("audio")))
+                 sum(1 for q in p["questions"] if listenable(q)))
                 + audio_coverage(p["questions"]))) for p in parts],
             "sortKey": sort_key,
         })
@@ -744,7 +769,7 @@ def main():
             "parts": [dict(zip(
                 ("id", "label", "count", "audio", "sections", "audioSections"),
                 (p["id"], p["label"], len(p["questions"]),
-                 sum(1 for q in p["questions"] if q.get("audio")))
+                 sum(1 for q in p["questions"] if listenable(q)))
                 + audio_coverage(p["questions"]))) for p in exam["parts"]],
             "sortKey": exam["period"],
         })

@@ -2593,3 +2593,84 @@
   .q-audio-full-bar.is-playing .q-audio-full-media { width: min(240px, 100%); }
   .q-audio-full-side { margin-top: 6px; }
 }
+
+/* ------------------------------------------------- spoken listening scripts
+
+   The papers written for this site carry their own listening scripts, spoken
+   by the device rather than streamed from anywhere (see exam-player.js). The
+   controls sit between the question and its choices, where the audio bar sits
+   in the archived papers, so the two kinds of listening question read the
+   same way down the page. */
+
+.q-script {
+  margin: 10px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel-soft);
+  overflow: hidden;
+}
+
+.q-script-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.q-play {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.q-play:hover { border-color: var(--blue); color: var(--blue); }
+.q-play.is-slow { font-size: 0.85rem; }
+
+/* Stop is only worth reaching for while something is playing, and a row of
+   three equal buttons hid which one was the ordinary action. */
+.q-play.is-stop { opacity: 0.45; }
+.q-script.is-playing .q-play.is-stop { opacity: 1; border-color: var(--red, #c84a52); }
+.q-script.is-playing .q-play:not(.is-stop) { opacity: 0.5; }
+
+.q-script-note {
+  flex: 1 1 220px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.q-transcript { border-top: 1px solid var(--line); }
+
+.q-transcript > summary {
+  padding: 9px 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.q-transcript > summary:hover { color: var(--blue); }
+.q-transcript-body { padding: 2px 14px 12px; }
+
+.q-line {
+  margin: 0 0 6px;
+  line-height: 1.9;
+}
+
+/* The speaker label, held out to the left so the turns are scannable. */
+.q-line b {
+  display: inline-block;
+  min-width: 3.6em;
+  margin-right: 6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .q-script-note { flex-basis: 100%; }
+}

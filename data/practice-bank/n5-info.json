@@ -1,0 +1,242 @@
+[
+ {
+  "passage": "<b>にほんごきょうしつ　あんない</b><br><table border=\"1\"><tr><th>クラス</th><th>よう日</th><th>じかん</th><th>おかね</th></tr><tr><td>はじめて</td><td>月・水</td><td>19:00〜20:30</td><td>5,000円</td></tr><tr><td>すこし　できる</td><td>火・木</td><td>19:00〜20:30</td><td>6,000円</td></tr><tr><td>かいわだけ</td><td>土</td><td>10:00〜12:00</td><td>4,000円</td></tr><tr><td>こども</td><td>土</td><td>13:00〜14:30</td><td>3,000円</td></tr></table><br>※　しごとが　ある　人は　土よう日の　クラスが　べんりです。",
+  "qs": [
+   {
+    "s": "リーさんは　かいしゃで　はたらいて　いて、へいじつの　よるは　じかんが　ありません。にほんごを　はなす　れんしゅうが　したいです。リーさんは　どの　クラスに　入りますか。",
+    "ch": [
+     "かいわだけ",
+     "はじめて",
+     "すこし　できる",
+     "こども"
+    ],
+    "n": "Weekday evenings are out, and they want speaking practice: the Saturday conversation class."
+   }
+  ]
+ },
+ {
+  "passage": "<b>カフェ　べんきょうルーム</b><br><table border=\"1\"><tr><th>コース</th><th>じかん</th><th>ねだん</th><th>のみもの</th></tr><tr><td>A</td><td>60ぷん</td><td>1,200円</td><td>つきません</td></tr><tr><td>B</td><td>60ぷん</td><td>1,500円</td><td>つきます</td></tr><tr><td>C</td><td>90ぷん</td><td>1,800円</td><td>つきません</td></tr><tr><td>D</td><td>90ぷん</td><td>2,100円</td><td>つきます</td></tr></table><br>※　学生は　どの　コースも　200円　やすく　なります。",
+  "qs": [
+   {
+    "s": "学生の　キムさんは　90ぷん　つかいたいです。のみものも　ほしいです。いくら　はらいますか。",
+    "ch": [
+     "1,900円",
+     "2,100円",
+     "1,600円",
+     "1,800円"
+    ],
+    "n": "Course D is 2,100 yen, less 200 for a student."
+   }
+  ]
+ },
+ {
+  "passage": "<b>みどりクリニック　しんさつじかん</b><br><table border=\"1\"><tr><th>び</th><th>ごぜん</th><th>ごご</th></tr><tr><td>月よう日</td><td>休み</td><td>休み</td></tr><tr><td>火〜金よう日</td><td>9:00〜12:00</td><td>14:00〜18:00</td></tr><tr><td>土よう日</td><td>9:00〜13:00</td><td>休み</td></tr><tr><td>日よう日</td><td>休み</td><td>休み</td></tr></table><br>※　はじめての　人は　おわる　30ぷん　まえまでに　きて　ください。",
+  "qs": [
+   {
+    "s": "はじめて　いく　人が　土よう日に　みて　もらいたい　とき、いちばん　おそくて　なんじまでに　いきますか。",
+    "ch": [
+     "12:30",
+     "13:00",
+     "12:00",
+     "11:30"
+    ],
+    "n": "Saturday ends at 13:00, and first visits close thirty minutes before."
+   }
+  ]
+ },
+ {
+  "passage": "<b>じてんしゃ　かします</b><br><table border=\"1\"><tr><th>しゅるい</th><th>一日</th><th>三日</th><th>一しゅうかん</th></tr><tr><td>じてんしゃ</td><td>500円</td><td>1,200円</td><td>2,000円</td></tr><tr><td>でんどうじてんしゃ</td><td>800円</td><td>2,000円</td><td>3,500円</td></tr><tr><td>こどもよう</td><td>300円</td><td>700円</td><td>1,200円</td></tr></table><br>※　二だい　いじょう　かりると　ぜんぶで　100円　やすく　なります。",
+  "qs": [
+   {
+    "s": "おとな　一人と　こども　一人が　三日　かります。ふつうの　じてんしゃと　こどもようです。いくらですか。",
+    "ch": [
+     "1,800円",
+     "1,900円",
+     "2,000円",
+     "1,700円"
+    ],
+    "n": "1,200 + 700 = 1,900, less 100 for hiring two."
+   }
+  ]
+ },
+ {
+  "passage": "<b>アパート　あんない</b><br><table border=\"1\"><tr><th>へや</th><th>ひろさ</th><th>かい</th><th>やちん</th></tr><tr><td>101</td><td>6じょう</td><td>1かい</td><td>45,000円</td></tr><tr><td>203</td><td>8じょう</td><td>2かい</td><td>55,000円</td></tr><tr><td>305</td><td>6じょう</td><td>3かい</td><td>50,000円</td></tr><tr><td>402</td><td>8じょう</td><td>4かい</td><td>60,000円</td></tr></table><br>※　エレベーターは　ありません。",
+  "qs": [
+   {
+    "s": "やまださんは　8じょうの　へやが　いいです。エレベーターが　ないので、2かいまでが　いいです。どの　へやに　しますか。",
+    "ch": [
+     "203",
+     "402",
+     "101",
+     "305"
+    ],
+    "n": "Eight mats and no higher than the second floor."
+   }
+  ]
+ },
+ {
+  "passage": "<b>だいがく　けんがくかい　スケジュール</b><br><table border=\"1\"><tr><th>じかん</th><th>ないよう</th><th>ばしょ</th></tr><tr><td>10:00〜10:30</td><td>うけつけ</td><td>入口</td></tr><tr><td>10:30〜11:30</td><td>こうえん</td><td>大ホール</td></tr><tr><td>11:30〜12:30</td><td>ひるやすみ</td><td>しょくどう</td></tr><tr><td>12:30〜14:00</td><td>たいけん</td><td>2かい</td></tr><tr><td>14:00〜14:30</td><td>しつもん</td><td>大ホール</td></tr></table><br>※　たいけんだけ　さんかする　人は　12:20までに　2かいへ　きて　ください。",
+  "qs": [
+   {
+    "s": "たいけんだけ　さんかしたい　人は　なんじに　どこへ　いきますか。",
+    "ch": [
+     "12:20までに　2かい",
+     "10:00に　入口",
+     "12:30に　大ホール",
+     "14:00に　2かい"
+    ],
+    "n": "The note gives the answer directly."
+   }
+  ]
+ },
+ {
+  "passage": "<b>はしろう会　あんない</b><br><table border=\"1\"><tr><th>コース</th><th>きょり</th><th>じかん</th><th>さんかひ</th></tr><tr><td>こども</td><td>2km</td><td>30ぷん</td><td>むりょう</td></tr><tr><td>しょきゅう</td><td>5km</td><td>60ぷん</td><td>1,000円</td></tr><tr><td>ちゅうきゅう</td><td>10km</td><td>90ぷん</td><td>1,500円</td></tr><tr><td>じょうきゅう</td><td>20km</td><td>150ぷん</td><td>2,000円</td></tr></table><br>※　中学生いかは　どの　コースも　はんがくです。こどもコースは　むりょうです。",
+  "qs": [
+   {
+    "s": "中学生の　人が　5kmを　はしりたいです。いくら　はらいますか。",
+    "ch": [
+     "500円",
+     "1,000円",
+     "むりょう",
+     "750円"
+    ],
+    "n": "5km is the 1,000-yen course, and a junior-high student pays half."
+   }
+  ]
+ },
+ {
+  "passage": "<b>ラーメン　やまだ</b><br><table border=\"1\"><tr><th>メニュー</th><th>ひる（11:00〜14:00）</th><th>よる（17:00〜21:00）</th></tr><tr><td>ラーメン</td><td>700円</td><td>800円</td></tr><tr><td>ぎょうざ</td><td>400円</td><td>400円</td></tr><tr><td>セット（ラーメン＋ぎょうざ）</td><td>950円</td><td>1,100円</td></tr><tr><td>ごはん</td><td>150円</td><td>150円</td></tr></table><br>※　ひるは　ごはんが　むりょうに　なります。",
+  "qs": [
+   {
+    "s": "12じに　ラーメンと　ぎょうざと　ごはんを　たべます。いちばん　やすい　はらいかたは　いくらですか。",
+    "ch": [
+     "950円",
+     "1,100円",
+     "1,250円",
+     "1,000円"
+    ],
+    "n": "The lunch set is 950 and rice is free at lunch."
+   }
+  ]
+ },
+ {
+  "passage": "<b>しゅうかん　よてい</b><br><table border=\"1\"><tr><th>やること</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th></tr><tr><td>そうじ</td><td>○</td><td></td><td>○</td><td></td><td>○</td></tr><tr><td>ごみ出し</td><td></td><td>○</td><td></td><td>○</td><td></td></tr><tr><td>かいもの</td><td></td><td></td><td>○</td><td></td><td>○</td></tr><tr><td>せんたく</td><td>○</td><td></td><td></td><td>○</td><td></td></tr></table><br>※　○が　ついて　いる　日に　します。",
+  "qs": [
+   {
+    "s": "そうじと　かいものを　どちらも　する　日は　なんよう日ですか。",
+    "ch": [
+     "水よう日と　金よう日",
+     "月よう日と　水よう日",
+     "火よう日と　木よう日",
+     "水よう日だけ"
+    ],
+    "n": "Cleaning is Mon/Wed/Fri, shopping Wed/Fri; both fall on Wednesday and Friday."
+   }
+  ]
+ },
+ {
+  "passage": "<b>バス　フリーきっぷ</b><br><table border=\"1\"><tr><th>きっぷ</th><th>おとな</th><th>こども</th><th>つかえる　日</th></tr><tr><td>一日けん</td><td>1,500円</td><td>750円</td><td>まい日</td></tr><tr><td>ごぜんけん</td><td>900円</td><td>450円</td><td>まい日</td></tr><tr><td>しゅうまつけん</td><td>1,200円</td><td>600円</td><td>土・日だけ</td></tr><tr><td>よるけん</td><td>800円</td><td>400円</td><td>まい日（17時から）</td></tr></table><br>※　こどもは　小学生までです。",
+  "qs": [
+   {
+    "s": "日よう日に　おとな　二人と　小学生　一人が　一日　のります。いちばん　やすい　のは　いくらですか。",
+    "ch": [
+     "3,000円",
+     "3,750円",
+     "2,700円",
+     "2,400円"
+    ],
+    "n": "The weekend ticket: 1,200 x 2 + 600 = 3,000."
+   }
+  ]
+ },
+ {
+  "passage": "<b>まちの　まつり　カレンダー</b><br><table border=\"1\"><tr><th>きかん</th><th>ないよう</th><th>ばしょ</th></tr><tr><td>4月1日〜4月10日</td><td>さくらまつり</td><td>川の　こうえん</td></tr><tr><td>7月20日〜7月25日</td><td>なつまつり</td><td>じんじゃ</td></tr><tr><td>10月5日〜10月7日</td><td>もみじまつり</td><td>やまの　こうえん</td></tr><tr><td>12月24日〜12月25日</td><td>ふゆの　あかり</td><td>えきまえ</td></tr></table><br>※　なつまつりは　よる　18時からです。ほかは　ひるまです。",
+  "qs": [
+   {
+    "s": "よるに　ある　まつりは　どれと　どれですか。",
+    "ch": [
+     "なつまつりと　ふゆの　あかり",
+     "さくらまつりと　なつまつり",
+     "もみじまつりだけ",
+     "なつまつりだけ"
+    ],
+    "n": "The summer festival starts at 18:00 and the winter lights are lights."
+   }
+  ]
+ },
+ {
+  "passage": "<b>スポーツセンター</b><br><table border=\"1\"><tr><th>クラス</th><th>たいしょう</th><th>よう日</th><th>じかん</th></tr><tr><td>ヨガ</td><td>おとな</td><td>火・金</td><td>10:00〜11:00</td></tr><tr><td>すいえい</td><td>こども</td><td>水・土</td><td>16:00〜17:00</td></tr><tr><td>たっきゅう</td><td>だれでも</td><td>木</td><td>19:00〜21:00</td></tr><tr><td>ダンス</td><td>中学生いじょう</td><td>土</td><td>14:00〜15:30</td></tr></table><br>※　こどもだけの　さんかは　できません。おとなが　いっしょに　きて　ください。",
+  "qs": [
+   {
+    "s": "小学生の　子と　その　おかあさんが　いっしょに　できる　クラスは　どれですか。",
+    "ch": [
+     "たっきゅう",
+     "すいえい",
+     "ヨガ",
+     "ダンス"
+    ],
+    "n": "Table tennis is open to anyone, so both can join; swimming is children only, and a child cannot attend alone."
+   }
+  ]
+ },
+ {
+  "passage": "<b>シャツ</b><br><table border=\"1\"><tr><th>サイズ</th><th>むね</th><th>たけ</th><th>ねだん</th></tr><tr><td>S</td><td>88cm</td><td>64cm</td><td>2,900円</td></tr><tr><td>M</td><td>94cm</td><td>67cm</td><td>2,900円</td></tr><tr><td>L</td><td>100cm</td><td>70cm</td><td>3,400円</td></tr><tr><td>LL</td><td>106cm</td><td>73cm</td><td>3,900円</td></tr></table><br>※　3,000円　いじょう　かうと　そうりょうは　むりょうです。",
+  "qs": [
+   {
+    "s": "むねが　98cmの　人が　一まい　かいます。そうりょうは　どう　なりますか。",
+    "ch": [
+     "むりょうに　なります。",
+     "500円　かかります。",
+     "かえません。",
+     "はんがくに　なります。"
+    ],
+    "n": "98cm needs the L at 3,400 yen, which clears the free-postage line."
+   }
+  ]
+ },
+ {
+  "passage": "<b>ラジオ　ばんぐみ</b><br><table border=\"1\"><tr><th>ばんぐみ</th><th>よう日</th><th>じかん</th></tr><tr><td>ニュース</td><td>まい日</td><td>7:00〜7:30</td></tr><tr><td>にほんごこうざ</td><td>月・水・金</td><td>20:00〜20:30</td></tr><tr><td>えいが</td><td>土</td><td>21:00〜23:00</td></tr><tr><td>おんがく</td><td>日</td><td>19:00〜20:00</td></tr></table><br>※　にほんごこうざは　つぎの　日の　あさ　6:00にも　もう　いちど　あります。",
+  "qs": [
+   {
+    "s": "水よう日の　よるに　しごとが　ある　人は、にほんごこうざを　いつ　きけますか。",
+    "ch": [
+     "木よう日の　あさ　6:00",
+     "水よう日の　あさ　6:00",
+     "金よう日の　よる　20:00",
+     "きけません"
+    ],
+    "n": "It repeats the following morning."
+   }
+  ]
+ },
+ {
+  "passage": "<b>ぶんぼうぐや</b><br><table border=\"1\"><tr><th>しなもの</th><th>ねだん</th><th>ざいこ</th></tr><tr><td>ノート</td><td>150円</td><td>あり</td></tr><tr><td>ペン</td><td>100円</td><td>あり</td></tr><tr><td>けしゴム</td><td>80円</td><td>なし</td></tr><tr><td>ものさし</td><td>200円</td><td>あり</td></tr><tr><td>はさみ</td><td>350円</td><td>なし</td></tr></table><br>※　「なし」の　しなものは　ちゅうもんできます。一しゅうかんで　とどきます。",
+  "qs": [
+   {
+    "s": "きょう　すぐに　かえる　ものは　どれですか。",
+    "ch": [
+     "ノート・ペン・ものさし",
+     "けしゴム・はさみ",
+     "ぜんぶ",
+     "ノートだけ"
+    ],
+    "n": "Only the three marked あり."
+   }
+  ]
+ },
+ {
+  "passage": "<b>けいたいでんわ　プラン</b><br><table border=\"1\"><tr><th>プラン</th><th>つうわ</th><th>データ</th><th>つきの　ねだん</th></tr><tr><td>ミニ</td><td>なし</td><td>3GB</td><td>1,000円</td></tr><tr><td>ふつう</td><td>5ふんまで</td><td>10GB</td><td>2,000円</td></tr><tr><td>おおい</td><td>5ふんまで</td><td>30GB</td><td>3,000円</td></tr><tr><td>むせいげん</td><td>じゆう</td><td>むせいげん</td><td>5,000円</td></tr></table><br>※　学生は　つきの　ねだんが　500円　やすく　なります（むせいげんは　のぞく）。",
+  "qs": [
+   {
+    "s": "学生の　人が　データを　30GB　つかいたいです。つきに　いくら　はらいますか。",
+    "ch": [
+     "2,500円",
+     "3,000円",
+     "4,500円",
+     "3,500円"
+    ],
+    "n": "The 30GB plan is 3,000 yen with a 500-yen student discount."
+   }
+  ]
+ }
+]

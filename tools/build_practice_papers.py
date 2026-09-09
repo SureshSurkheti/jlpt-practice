@@ -165,17 +165,41 @@ def load(level, kind):
 
 
 _READINGS = {}
+_GLOSS = {}
+
+
+def _load_words():
+    if _READINGS:
+        return
+    for lv in ("n5", "n4", "n3", "n2", "n1"):
+        path = os.path.join(WORDS, "%s.json" % lv)
+        if not os.path.exists(path):
+            continue
+        for w in json.load(io.open(path, encoding="utf-8"))["words"]:
+            _READINGS.setdefault(w["w"], []).append(w["r"])
+            if w.get("en"):
+                _GLOSS.setdefault(w["w"], w["en"])
 
 
 def word_reading(level, word):
-    if not _READINGS:
-        for lv in ("n5", "n4", "n3", "n2", "n1"):
-            path = os.path.join(WORDS, "%s.json" % lv)
-            if os.path.exists(path):
-                for w in json.load(io.open(path, encoding="utf-8"))["words"]:
-                    _READINGS.setdefault(w["w"], []).append(w["r"])
+    _load_words()
     got = _READINGS.get(word) or []
     return got[0] if got else None
+
+
+def gloss_note(word, reading):
+    """The answer, and what the word means, for the review that follows.
+
+    Written out here rather than in every bank entry. "毎朝 (まいあさ)" alone
+    tells somebody who got it wrong only that they got it wrong; the gloss
+    is the part that stops it happening again, and it is already recorded in
+    data/words, so asking for it by hand 300 times would be asking for the
+    same sentence to be typed twice.
+    """
+    _load_words()
+    en = _GLOSS.get(word)
+    base = "%s = %s" % (word, reading)
+    return "%s - %s" % (base, en) if en else base
 
 
 def _mcq(prompt, choices, note, passage=None):
@@ -201,7 +225,7 @@ def expand(level, kind, item, rng):
             raise ValueError("no distractors for %s (%s)" % (item["w"], right))
         prompt = item["s"].format("<u>%s</u>" % item["w"])
         return [_mcq(prompt, [right] + list(wrong),
-                     item.get("n") or "%s = %s" % (item["w"], right))]
+                     item.get("n") or gloss_note(item["w"], right))]
 
     if kind == "orthography":
         right = item["w"]
@@ -211,7 +235,7 @@ def expand(level, kind, item, rng):
             raise ValueError("no written distractors for %s" % right)
         prompt = item["s"].format("<u>%s</u>" % read)
         return [_mcq(prompt, [right] + list(wrong),
-                     item.get("n") or "%s = %s" % (read, right))]
+                     item.get("n") or gloss_note(right, read))]
 
     if kind in ("context", "paraphrase", "grammar"):
         return [_mcq(item["s"], item["ch"], item.get("n"))]
@@ -228,10 +252,15 @@ def expand(level, kind, item, rng):
         blanks = []
         for i in range(len(parts)):
             blanks.append("＿★＿" if i == star else "＿＿＿")
-        prompt = "%s　%s　%s" % (item.get("pre", ""), "　".join(blanks),
-                                item.get("post", ""))
-        note = item.get("n") or ("ただしい じゅんばん： %s"
-                                 % "".join(parts))
+        pre, post = item.get("pre", ""), item.get("post", "")
+        # No space in front of the full stop: the blanks are a run of boxes
+        # in the printed paper and the punctuation sits against the last one.
+        joiner = "" if post[:1] in "。、？！" else "　"
+        prompt = "%s　%s%s%s" % (pre, "　".join(blanks), joiner, post)
+        # The answer to a 組み立て question is a fragment, which on its own
+        # says nothing. The sentence it belongs to is the explanation.
+        note = item.get("n") or ("ただしい じゅんばん： %s%s%s"
+                                 % (pre, "".join(parts), post))
         return [_mcq(prompt.strip(), [parts[star]] +
                      [p for p in shown if p != parts[star]], note)]
 
@@ -246,14 +275,32 @@ def expand(level, kind, item, rng):
         return [_mcq(q["s"], q["ch"], q.get("n"), passage=item["passage"])
                 for q in item["qs"]]
 
-    if kind.startswith("listen"):
-        out = []
-        for q in ([item] if "ch" in item else item["qs"]):
-            node = _mcq(q.get("q", ""), q["ch"], q.get("n"))
-            node["script"] = q.get("script") or item.get("script")
-            node["scene"] = q.get("scene") or item.get("scene")
-            out.append(node)
-        return out
+    if kind in ("listen1", "listen2"):
+        # 課題理解 and ポイント理解: the question is asked, the conversation
+        # plays, the question is asked again. All three are script lines, so
+        # the player has nothing to assemble - see speechLines().
+        q = item["q"]
+        script = [["", q]] + [list(r) for r in item["script"]] + [["", q]]
+        node = _mcq(q, item["ch"], item.get("n"))
+        node["script"] = script
+        return [node]
+
+    if kind == "listen3":
+        # 発話表現. The real paper shows a picture and an arrow at the person
+        # who has to speak; there are no pictures here, so the situation is
+        # written out instead and the three things they might say are spoken.
+        node = _mcq(item["scene"], item["ch"], item.get("n"))
+        node["_spoken_choices"] = item["scene"]
+        return [node]
+
+    if kind == "listen4":
+        # 即時応答. Nothing is printed in the real paper and nothing is
+        # printed here either: the prompt is empty, and the line you are
+        # answering exists only in the audio and in the transcript. That is
+        # the question. Printing it would answer it.
+        node = _mcq("", item["ch"], item.get("n"))
+        node["_spoken_choices"] = item["say"]
+        return [node]
 
     raise ValueError("unknown kind %s" % kind)
 
@@ -293,6 +340,14 @@ def build(level):
                         right = q.pop("_correct")
                         rng.shuffle(q["choices"])
                         q["answer"] = q["choices"].index(right) + 1
+                        # 問題3 and 問題4 read the choices aloud, numbered.
+                        # The numbers have to match the order they are
+                        # printed in, so this waits for the shuffle.
+                        opener = q.pop("_spoken_choices", None)
+                        if opener is not None:
+                            q["script"] = [["", opener]] + [
+                                [str(i + 1), c]
+                                for i, c in enumerate(q["choices"])]
                         q["category"] = CATEGORY[kind]
                         q["instruction"] = instruction
                         questions.append(q)

@@ -99,9 +99,12 @@
    "title": "JLPT N5 — Practice Test 3",
    "period": "n5-practice-3",
    "periodLabel": "Practice Test 3",
-   "totalQuestions": 21,
+   "totalQuestions": 67,
    "categoryCounts": {
-    "vocabulary": 21
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
    },
    "parts": [
     {
@@ -111,6 +114,22 @@
      "audio": 0,
      "sections": 0,
      "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
     }
    ],
    "sortKey": "n5-practice-3"

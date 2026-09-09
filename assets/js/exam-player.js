@@ -311,6 +311,176 @@
       esc(t("exam.audioHelp")) + " " + appLinksHTML();
   }
 
+
+  /* ------------------------------------------------- spoken listening
+
+     The original papers are listened to, not read, and their recordings
+     belong to the people who made them - there is no version of hosting
+     those that is not taking somebody else's audio. The papers written for
+     this site have their own scripts, so they can be spoken here instead,
+     by the voice already installed on the device reading this page. Nothing
+     is downloaded, nothing is hosted, and it works with the tab offline.
+
+     It is a synthetic voice and it says so. It is not a recording of the
+     real exam and it does not pretend to be one. What it does give is the
+     thing that actually matters for practice: a question you have to hear
+     to answer, at a speed you can slow down, with the script kept out of
+     sight until you decide to look.
+
+     The script stays available either way. If the device has no Japanese
+     voice - which happens, particularly on Android with no TTS data
+     installed - the play button is not drawn at all and the transcript is
+     opened by default, so the question is still answerable by reading. */
+
+  var SPEECH = window.speechSynthesis || null;
+  var jaVoices = [];
+  var speaking = null;
+
+  function loadVoices() {
+    if (!SPEECH) return;
+    var all = [];
+    try { all = SPEECH.getVoices() || []; } catch (e) { all = []; }
+    jaVoices = all.filter(function (v) { return /^ja(-|_|$)/i.test(v.lang || ""); });
+  }
+
+  if (SPEECH) {
+    loadVoices();
+    /* Chrome fills the list asynchronously and reports nothing on the first
+       call, so a page that asked once and believed the answer decided the
+       device had no Japanese voice and hid every play button. */
+    if (typeof SPEECH.addEventListener === "function") {
+      SPEECH.addEventListener("voiceschanged", loadVoices);
+    }
+  }
+
+  function canSpeak() {
+    return !!(SPEECH && jaVoices.length);
+  }
+
+  /* One voice per speaker, so 男の人 and 女の人 are told apart by ear rather
+     than by reading the label - which is the whole point of the exercise.
+     Where the device has only one Japanese voice they share it, and the
+     pitch is nudged instead. */
+  function voiceFor(speaker, order) {
+    if (!jaVoices.length) return null;
+    return jaVoices[order % jaVoices.length];
+  }
+
+  function stopSpeaking() {
+    if (!SPEECH) return;
+    if (speaking && speaking.node) speaking.node.classList.remove("is-playing");
+    speaking = null;
+    try { SPEECH.cancel(); } catch (e) { /* nothing to do */ }
+  }
+
+  /* The script is spoken exactly as it is written, and nothing is added
+     here. Where the examiner asks the question, then plays the conversation,
+     then asks it again, all three are lines of the script - the paper is
+     what decides how its own listening section runs, not the player. */
+  function speechLines(q) {
+    return (q.script || []).map(function (row) {
+      return { who: row[0] || "", text: stripTags(row[1] || "") };
+    });
+  }
+
+  function stripTags(html) {
+    var d = document.createElement("div");
+    d.innerHTML = html || "";
+    return (d.textContent || "").replace(/\s+/g, " ").trim();
+  }
+
+  function playScript(q, node, rate) {
+    stopSpeaking();
+    var lines = speechLines(q);
+    if (!lines.length) return;
+
+    var order = {};
+    var next = 0;
+    var token = {};
+    speaking = { node: node, token: token };
+    node.classList.add("is-playing");
+
+    function say(i) {
+      /* Stop sets `speaking` to null, and each line is chained from the one
+         before through a setTimeout, so a run that has been cancelled still
+         has one callback in flight. Testing only for a different token let
+         that callback through - cancel() silenced the line that was playing
+         and the next one started straight after it, which is why Stop did
+         not stop. */
+      if (!speaking || speaking.token !== token) return;
+      if (i >= lines.length) {
+        node.classList.remove("is-playing");
+        speaking = null;
+        return;
+      }
+      var line = lines[i];
+      var u = new SpeechSynthesisUtterance(line.text);
+      if (!(line.who in order)) order[line.who] = next++;
+      var v = voiceFor(line.who, order[line.who]);
+      if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "ja-JP"; }
+      u.rate = rate;
+      /* Only when the device has a single Japanese voice: two speakers in
+         the same voice at the same pitch is one person talking to himself. */
+      if (jaVoices.length < 2 && line.who) {
+        u.pitch = order[line.who] % 2 ? 0.85 : 1.15;
+      }
+      u.onend = function () {
+        /* A beat between turns. Without it the two speakers run together
+           into one sentence and the exchange stops sounding like one. */
+        setTimeout(function () { say(i + 1); }, line.who ? 420 : 700);
+      };
+      u.onerror = function () { say(i + 1); };
+      try {
+        SPEECH.speak(u);
+      } catch (e) {
+        say(i + 1);
+      }
+    }
+    say(0);
+  }
+
+  function transcriptHTML(q) {
+    var rows = (q.script || []).map(function (row) {
+      var who = row[0] ? '<b>' + esc(row[0]) + '</b>' : "";
+      return '<p class="q-line">' + who + esc(row[1] || "") + "</p>";
+    }).join("");
+    return rows;
+  }
+
+  function buildScript(q) {
+    if (!q.script || !q.script.length) return null;
+    var node = el("div", "q-script");
+
+    if (canSpeak()) {
+      var bar = el("div", "q-script-bar");
+      var play = el("button", "q-play", "\u25b6 " + esc(t("exam.speakPlay")));
+      play.type = "button";
+      var slow = el("button", "q-play is-slow", esc(t("exam.speakSlow")));
+      slow.type = "button";
+      var stop = el("button", "q-play is-stop", "\u25a0 " + esc(t("exam.speakStop")));
+      stop.type = "button";
+      play.addEventListener("click", function () { playScript(q, node, 0.95); });
+      slow.addEventListener("click", function () { playScript(q, node, 0.7); });
+      stop.addEventListener("click", stopSpeaking);
+      bar.appendChild(play);
+      bar.appendChild(slow);
+      bar.appendChild(stop);
+      bar.appendChild(el("span", "q-script-note", esc(t("exam.speakNote"))));
+      node.appendChild(bar);
+    }
+
+    var det = el("details", "q-transcript");
+    if (!canSpeak()) det.open = true;
+    det.innerHTML = "<summary>" + esc(t("exam.transcript")) + "</summary>" +
+      '<div class="q-transcript-body">' +
+        (canSpeak() ? "" : '<p class="q-script-note">' +
+          esc(t("exam.speakNone")) + "</p>") +
+        transcriptHTML(q) +
+      "</div>";
+    node.appendChild(det);
+    return node;
+  }
+
   function sectionOf(question, level) {
     var cat = question.category;
     var combined = level === "N4" || level === "N5";
@@ -332,7 +502,12 @@
         var id = q.category || "vocabulary";
         if (!seen[id]) { seen[id] = { id: id, count: 0, audio: false }; order.push(seen[id]); }
         seen[id].count++;
-        if (q.audio) seen[id].audio = true;
+        /* A script the page can speak counts as much as a recording it
+           can stream: either way the question can be heard rather than
+           read, which is what "Select all" is deciding about. Reading only
+           q.audio left a full 聴解 section marked "no recording" and
+           dropped it from the paper. */
+        if (q.audio || (q.script && q.script.length)) seen[id].audio = true;
       });
     });
     /* A listening section whose recording was never archived. The card says
@@ -1120,6 +1295,8 @@
   /* Group the flat question list the way the booklet lays it out:
      section (one 問題 instruction, one audio track) -> block (one reading
      passage) -> questions. */
+  window.addEventListener("pagehide", stopSpeaking);
+
   function buildSections(items) {
     var sections = [];
 
@@ -1494,7 +1671,10 @@
        is missing is this 問題's own recording, and the note's job is now to
        point at the one above rather than to apologise. The help links go with
        it - they are about audio that will not play, and here it plays. */
-    if (!section.audio && section.category === "listening") {
+    var spoken = section.blocks.some(function (b) {
+      return b.questions.some(function (i) { return !!(i.q.script || []).length; });
+    });
+    if (!section.audio && !spoken && section.category === "listening") {
       head.appendChild(el("div", "q-audio-aside is-failed",
         hasFullAudio()
           ? '<p class="q-audio-note">' + esc(t("exam.audioInFull")) + "</p>"
@@ -1816,6 +1996,9 @@
     }
     wireFigures(head);
     node.appendChild(head);
+
+    var script = buildScript(q);
+    if (script) node.appendChild(script);
 
     var width = blank ? " is-numeric"
       : longestChoice(q) <= 8 ? " is-short"
