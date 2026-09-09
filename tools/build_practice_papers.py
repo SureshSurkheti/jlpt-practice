@@ -627,11 +627,37 @@ def renumber(instruction, was, now):
     return instruction
 
 
-def make_questions(level, kind, items, rng):
+def presentation_rng(level, kind, item):
+    """The randomness that decides how one item is laid out on the page.
+
+    Seeded from the item itself and nothing else, which is the whole point.
+
+    deal.json already pins which item lands in which paper, so adding to a
+    bank cannot move a question to a different test. It did not pin how the
+    question is printed: the shuffle that orders the four choices drew from
+    a single generator running the length of the level, and ordered() spends
+    that generator shuffling whatever is new. So appending to any one bank
+    advanced the state for every question dealt after it, and the choices of
+    questions in papers written months earlier came out in a different
+    order - same question, same four options, answer now at 2 instead of 1.
+
+    Measured on the N3 banks: six papers, 1,976 lines of churn, and not one
+    question actually different. An answer somebody had written down was
+    simply wrong.
+
+    Deriving the order from the item's own key makes it depend on the item
+    and not on the library around it. A paper's questions are now laid out
+    the same way whatever else is written afterwards.
+    """
+    return random.Random("%s|%s|%s" % (level, kind, item_key(kind, item)))
+
+
+def make_questions(level, kind, items, _rng=None):
     """Bank items as finished questions of one 問題."""
     _mondai, instruction = MONDAI[level][kind]
     out = []
     for item in items:
+        rng = presentation_rng(level, kind, item)
         for q in expand(level, kind, item, rng):
             right = q.pop("_correct")
             rng.shuffle(q["choices"])
@@ -711,7 +737,7 @@ def top_up(level, banks, used, rng):
                 if short > 0:
                     take = banks[kind][used[kind]:used[kind] + short]
                     used[kind] += short
-                    got = make_questions(level, kind, take, rng)
+                    got = make_questions(level, kind, take)
                     if offset and not mine:
                         num = MONDAI[level][kind][0]
                         for q in got:
@@ -799,7 +825,7 @@ def build(level):
             questions = []
             for kind, n in kinds:
                 questions.extend(make_questions(
-                    level, kind, banks[kind][i * n:(i + 1) * n], rng))
+                    level, kind, banks[kind][i * n:(i + 1) * n]))
             parts.append({"id": part_id, "questions": questions})
 
         paper = {
