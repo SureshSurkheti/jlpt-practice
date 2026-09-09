@@ -3069,6 +3069,23 @@ body.is-leaving { opacity: 0; }
   .review-strip .btn { justify-content: center; }
 }
 
+/* The same strip on the blue ground of the hero. The gold edge stays -
+   it is what marks this as the one row on the page that is about you
+   rather than about the site - but the white card behind it would be a
+   slab in the middle of the gradient, so it becomes the translucent
+   panel the level list beside it already uses. The button needs no rule
+   of its own: .hero-section .btn-primary already turns it white. */
+.hero-section .review-strip-wrap { padding-top: clamp(22px, 2.6vw, 34px); }
+.hero-section .review-strip {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 4px solid var(--gold);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-section .review-strip h2 { color: #fff; }
+.hero-section .review-strip p { color: rgba(255, 255, 255, 0.78); }
+
 /* Progress page: one line per level with marks. */
 .stats-know-list {
   list-style: none;

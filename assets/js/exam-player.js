@@ -370,7 +370,28 @@
     if (!SPEECH) return;
     if (speaking && speaking.node) speaking.node.classList.remove("is-playing");
     speaking = null;
+    stopPump();
     try { SPEECH.cancel(); } catch (e) { /* nothing to do */ }
+  }
+
+  /* Chrome stops speaking part-way through a long run. It is not an error
+     and nothing fires: the engine simply goes quiet, and the page is left
+     believing it is still talking. The remedy every implementation ends up
+     with is to nudge it - resume() is a no-op when nothing is paused, so
+     calling it on a timer costs nothing and keeps a long passage running
+     to the end. It stops with the speech. */
+  var pump = null;
+
+  function startPump() {
+    stopPump();
+    pump = setInterval(function () {
+      if (!speaking) { stopPump(); return; }
+      try { SPEECH.resume(); } catch (e) { /* nothing to do */ }
+    }, 5000);
+  }
+
+  function stopPump() {
+    if (pump) { clearInterval(pump); pump = null; }
   }
 
   /* ------------------------------------------- transcripts as scripts
@@ -449,8 +470,71 @@
     playLines(speechLines(q), node, rate);
   }
 
-  function playLines(lines, node, rate) {
+  /* ---------------------------------------------- one voice, not many
+
+     Every line used to be its own utterance with a dead pause behind it -
+     420ms after a speaker, 700ms after narration. In a two-line exchange
+     that is a beat. In an N1 passage of eight paragraphs it is seven
+     silences in a row, and the whole thing came out as stop, play, stop,
+     play rather than as somebody reading.
+
+     Two changes. Consecutive lines by the same speaker become one
+     utterance, so a passage is spoken as a passage. And the pause is now
+     only where the speaker actually changes, which is the only place it
+     was ever doing any work.
+
+     The chunk cap is not about pacing. Chrome truncates a long utterance,
+     so a paragraph handed over whole can simply stop in the middle. Cut at
+     the end of a sentence and never inside one: a break at a full stop is
+     inaudible, a break mid-clause is the very fault being fixed. */
+
+  var SPEAK_MAX = 180;
+  var SENTENCE_END = "\u3002\uff01\uff1f!?";
+
+  function sentenceChunks(text, max) {
+    var out = [];
+    var buf = "";
+    var start = 0;
+    function add(piece) {
+      if (buf && buf.length + piece.length > max) { out.push(buf); buf = piece; }
+      else buf += piece;
+    }
+    for (var i = 0; i < text.length; i++) {
+      if (SENTENCE_END.indexOf(text.charAt(i)) === -1) continue;
+      add(text.slice(start, i + 1));
+      start = i + 1;
+    }
+    if (start < text.length) add(text.slice(start));
+    if (buf) out.push(buf);
+    return out.length ? out : [text];
+  }
+
+  function speakChunks(lines) {
+    var merged = [];
+    lines.forEach(function (line) {
+      if (!line.text) return;
+      var last = merged[merged.length - 1];
+      if (last && last.who === line.who) {
+        var joiner = SENTENCE_END.indexOf(last.text.slice(-1)) === -1
+          ? "\u3002" : "";
+        last.text += joiner + line.text;
+      } else {
+        merged.push({ who: line.who, text: line.text });
+      }
+    });
+
+    var out = [];
+    merged.forEach(function (line) {
+      sentenceChunks(line.text, SPEAK_MAX).forEach(function (text, i) {
+        out.push({ who: line.who, text: text, cont: i > 0 });
+      });
+    });
+    return out;
+  }
+
+  function playLines(rawLines, node, rate) {
     stopSpeaking();
+    var lines = speakChunks(rawLines);
     if (!lines.length) return;
 
     var order = {};
@@ -458,6 +542,7 @@
     var token = {};
     speaking = { node: node, token: token };
     node.classList.add("is-playing");
+    startPump();
 
     function say(i) {
       /* Stop sets `speaking` to null, and each line is chained from the one
@@ -470,6 +555,7 @@
       if (i >= lines.length) {
         node.classList.remove("is-playing");
         speaking = null;
+        stopPump();
         return;
       }
       var line = lines[i];
@@ -484,9 +570,14 @@
         u.pitch = order[line.who] % 2 ? 0.85 : 1.15;
       }
       u.onend = function () {
-        /* A beat between turns. Without it the two speakers run together
-           into one sentence and the exchange stops sounding like one. */
-        setTimeout(function () { say(i + 1); }, line.who ? 420 : 700);
+        /* A beat only where the speaker changes: without one the two sides
+           of an exchange run together into a single sentence. Between two
+           halves of the same person's turn there is nothing to mark, so
+           there is no pause - that silence was the stutter. */
+        var nextLine = lines[i + 1];
+        var gap = (nextLine && nextLine.cont) ? 0 : 320;
+        if (gap) setTimeout(function () { say(i + 1); }, gap);
+        else say(i + 1);
       };
       u.onerror = function () { say(i + 1); };
       try {

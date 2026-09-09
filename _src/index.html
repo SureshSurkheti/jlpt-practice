@@ -131,21 +131,28 @@
               <i aria-hidden="true">&rarr;</i></a>
           </nav>
         </div>
-      </section>
 
-      <!-- What the queue in site.js (jlpt.srs) has for you today. The
-           newcomer's wording is written here rather than drawn by the
-           script, so the strip is the same height before and after
-           renderReviewStrip() runs - it changes one sentence, nothing
-           else - and so the page still says what this is with no
-           JavaScript at all. -->
-      <section class="container review-strip-wrap">
-        <div class="review-strip">
-          <div class="review-strip-text">
-            <h2 data-i18n="home.reviewTitle"></h2>
-            <p id="reviewStripBody" data-i18n="home.reviewNew"></p>
+        <!-- What the queue in site.js (jlpt.srs) has for you today.
+
+             It sat on the white page below the hero, which put the one
+             thing a returning visitor comes back for underneath a pitch
+             written for a first-time one. Inside the hero it is the last
+             thing in the blue rather than the first thing after it, so
+             the fold ends on what you owe yourself today.
+
+             The newcomer's wording is written here rather than drawn by
+             the script, so the strip is the same height before and after
+             renderReviewStrip() runs - it changes one sentence, nothing
+             else - and the page still says what this is with no
+             JavaScript at all. -->
+        <div class="container review-strip-wrap">
+          <div class="review-strip">
+            <div class="review-strip-text">
+              <h2 data-i18n="home.reviewTitle">Daily review</h2>
+              <p id="reviewStripBody" data-i18n="home.reviewNew">Mark words ✓ or ✗ as you study. Anything you get wrong comes back here on the day you need it.</p>
+            </div>
+            <a class="btn btn-primary" href="review.html" data-i18n="home.reviewOpen">Open review</a>
           </div>
-          <a class="btn btn-primary" href="review.html" data-i18n="home.reviewOpen"></a>
         </div>
       </section>
 
