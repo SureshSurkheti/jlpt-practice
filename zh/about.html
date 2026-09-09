@@ -109,6 +109,19 @@
       <section class="about-plain about-lede">
         <p data-i18n="about.p1">这里的试题按JLPT本身的格式作答 — 计时、自动评分，并附答案解析和听力原文。</p>
         <p data-i18n="about.p2">无需账号，无需注册。你的作答、成绩和进度只保存在本浏览器中，绝不会上传。</p>
+        <!-- Who made it and how to write to them. Body copy, not fine print:
+             the name was buried in the credits and the address appeared only
+             inside the takedown paragraph, so the two things a reader most
+             often wants from an About page were the two hardest to find on
+             it. Given its own heading below it was worse - it became the
+             loudest thing on the page and said the name twice.
+
+             The address is surkhetisuresh123@gmail.com inside the translated string and is
+             filled in at run time from window.SITE_CONTACT, links and all -
+             see contactify() in i18n.js - so it is written down once, in
+             build_static.py, and a reader with JavaScript off is shown the
+             sentence without a dead address in it. -->
+        <p data-i18n-html="about.whoBody">JLPT Practice 由 Suresh Surkheti 开发并维护。如有错误、遗漏或需要撤下的内容，请写信至 <a class="text-link" href="mailto:surkhetisuresh123@gmail.com">surkhetisuresh123@gmail.com</a>。</p>
       </section>
 
       <!-- Fine print, in two columns under the prose: how the site is put
@@ -119,25 +132,13 @@
            as notices rather than as the body of the page. -->
       <div class="about-notices">
         <div class="about-notes-col">
-          <!-- Who to write to, on its own and above the fine print. The name
-               was buried in the credits and the address only appeared inside
-               the takedown paragraph, so the two things a reader most often
-               wants from an About page were the two hardest to find on it.
-               The address is written as surkhetisuresh123@gmail.com and substituted at build
-               time - see finish_html() - so it lives in exactly one place. -->
-          <section class="about-plain about-who">
-            <h2 data-i18n="about.whoTitle">本站由谁运营</h2>
-            <p data-i18n="about.whoBody">JLPT Practice 由 Suresh Surkheti 开发并维护。</p>
-            <p><a class="text-link" href="mailto:surkhetisuresh123@gmail.com">surkhetisuresh123@gmail.com</a></p>
-          </section>
-
           <section class="about-plain about-hosting">
             <p data-i18n="about.p3">听力音频来自 Google 云端硬盘，试题插图来自 Internet Archive，因此这两部分需要联网 — 与任何嵌入文件一样，这些服务会看到该请求。</p>
           </section>
 
           <section class="about-plain about-credits">
             <h2 data-i18n="about.creditsTitle">致谢</h2>
-            <p data-i18n="about.creditsCode">由 Suresh Surkheti 制作。代码采用 MIT 许可。</p>
+            <p data-i18n="about.creditsCode">代码采用 MIT 许可。</p>
             <p data-i18n-html="about.creditsWords">词义与读音来自 <a class="text-link" href="https://www.edrdg.org/jmdict/j_jmdict.html" target="_blank" rel="noopener">JMdict</a> © EDRDG，依 <a class="text-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> 授权。</p>
             <p data-i18n-html="about.creditsKanji">汉字的读音、释义与 JLPT 等级来自 <a class="text-link" href="https://www.edrdg.org/wiki/index.php/KANJIDIC_Project" target="_blank" rel="noopener">KANJIDIC2</a> © EDRDG，依 <a class="text-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> 授权。笔顺来自 <a class="text-link" href="http://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> © Ulrich Apel，依 <a class="text-link" href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a> 授权。</p>
             <p data-i18n="about.creditsExams">试题版权归 JEES 与日本国际交流基金会所有，此处仅供学习使用。</p>
@@ -214,8 +215,8 @@
     </footer>
 
     <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
-    <script defer src="/assets/i18n/en.js?v=808292cf"></script>
-    <script defer src="/assets/i18n/zh.js?v=efb65925"></script>
+    <script defer src="/assets/i18n/en.js?v=0b663251"></script>
+    <script defer src="/assets/i18n/zh.js?v=6c1d39f0"></script>
     <script defer src="/assets/js/site.js?v=313ea7fb"></script>
   </body>
 </html>

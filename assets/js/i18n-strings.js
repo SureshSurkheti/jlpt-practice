@@ -10,8 +10,7 @@
    ========================================================================== */
 
 I18N.register("en", {
-  "about.whoTitle": "Who runs this site",
-  "about.whoBody": "JLPT Practice is built and maintained by Suresh Surkheti.",
+  "about.whoBody": "JLPT Practice is built and maintained by Suresh Surkheti. If anything here is wrong, missing or ought to come down, write to <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "exam.noRecording": "No recording",
   "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
   "exam.missingPartsGo": "Sit the {part} booklet from {paper} instead",
@@ -103,7 +102,7 @@ I18N.register("en", {
   "about.rightsOfficial": "If you are studying and want material that is unquestionably free to use, the JLPT organisers publish official sample questions themselves:",
   "about.rightsOfficialLink": "jlpt.jp — official sample questions",
   "about.creditsTitle": "Credits",
-  "about.creditsCode": "Built by Suresh Surkheti. The code is MIT licensed.",
+  "about.creditsCode": "The code is MIT licensed.",
   "about.creditsKanji": "Kanji readings, meanings and JLPT levels come from <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> \u00a9 EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Stroke order is drawn from <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> \u00a9 Ulrich Apel, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.creditsExams": "Exam questions are the copyright of JEES and the Japan Foundation. See the notice below.",
@@ -453,8 +452,7 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
-  "about.whoTitle": "このサイトの運営者",
-  "about.whoBody": "JLPT Practice は Suresh Surkheti が制作・運営しています。",
+  "about.whoBody": "JLPT Practice は Suresh Surkheti が制作・運営しています。間違いや不足、削除のご依頼など、何でも <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> までご連絡ください。",
   "footer.rights": "無断転載を禁じます。",
   "exam.noRecording": "音声なし",
   "exam.missingParts": "この回に含まれていない科目: {parts}。これらの問題は出典元で公開されなかったため、この回にはありません。",
@@ -542,7 +540,7 @@ I18N.register("ja", {
   "cal.julyNote": "世界共通の試験日です。7月試験を実施しない国もあり、申し込み期間も地域ごとに異なります。",
   "cal.official": "公式情報",
   "about.creditsTitle": "クレジット",
-  "about.creditsCode": "制作：Suresh Surkheti。コードはMITライセンスです。",
+  "about.creditsCode": "コードはMITライセンスです。",
   "about.creditsKanji": "漢字の読み・意味・JLPTレベルは <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）によります。筆順は <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> ライセンス）によります。",
   "about.creditsWords": "語の意味と読みは <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）に基づいています。",
   "about.rightsTitle": "著作権と削除のご依頼",
@@ -828,8 +826,7 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
-  "about.whoTitle": "Ai điều hành trang này",
-  "about.whoBody": "JLPT Practice do Suresh Surkheti xây dựng và duy trì.",
+  "about.whoBody": "JLPT Practice do Suresh Surkheti xây dựng và duy trì. Nếu có gì sai, thiếu hoặc cần gỡ xuống, hãy viết thư tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Bảo lưu mọi quyền.",
   "exam.noRecording": "Không có bản ghi",
   "exam.missingParts": "Không có trong kỳ thi này: {parts}. Những câu hỏi đó chưa từng được đăng ở nguồn của các đề này, nên đề thiếu phần đó.",
@@ -917,7 +914,7 @@ I18N.register("vi", {
   "cal.julyNote": "Ngày thi chung toàn cầu. Kỳ tháng 7 không tổ chức ở mọi nước, và hạn đăng ký do địa phương quy định — hãy kiểm tra.",
   "cal.official": "Thông tin chính thức",
   "about.creditsTitle": "Ghi công",
-  "about.creditsCode": "Thực hiện bởi Suresh Surkheti. Mã nguồn theo giấy phép MIT.",
+  "about.creditsCode": "Mã nguồn theo giấy phép MIT.",
   "about.creditsKanji": "Cách đọc, nghĩa và cấp độ JLPT của kanji lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Thứ tự nét lấy từ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Nghĩa và cách đọc của từ được lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Bản quyền và yêu cầu gỡ bỏ",
@@ -1203,8 +1200,7 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
-  "about.whoTitle": "यो साइट कसले चलाउँछ",
-  "about.whoBody": "JLPT Practice सुरेश सुर्खेतीले बनाएका र सञ्चालन गर्ने गरेका हुन्।",
+  "about.whoBody": "JLPT Practice सुरेश सुर्खेतीले बनाएका र सञ्चालन गर्ने गरेका हुन्। केही गलत, छुटेको वा हटाउनुपर्ने भए <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> मा लेख्नुहोस्।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रेकर्डिङ छैन",
   "exam.missingParts": "यस परीक्षामा छैन: {parts}। ती प्रश्नहरू यी पेपरहरूको स्रोतमा कहिल्यै प्रकाशित भएनन्, त्यसैले यो खण्ड छुटेको छ।",
@@ -1292,7 +1288,7 @@ I18N.register("ne", {
   "cal.julyNote": "यो विश्वभरको परीक्षा मिति हो। जुलाईको परीक्षा सबै देशमा हुँदैन, र आवेदन मिति पनि स्थानीय रूपमा तोकिन्छ — आफ्नो जाँच्नुहोस्।",
   "cal.official": "आधिकारिक जानकारी",
   "about.creditsTitle": "श्रेय",
-  "about.creditsCode": "निर्माता: Suresh Surkheti। कोड MIT लाइसेन्समा छ।",
+  "about.creditsCode": "कोड MIT लाइसेन्समा छ।",
   "about.creditsKanji": "कान्जीका उच्चारण, अर्थ र JLPT स्तर <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG बाट लिइएका हुन्, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> अन्तर्गत अनुमतिप्राप्त। स्ट्रोक क्रम <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel बाट लिइएको हो, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> अन्तर्गत अनुमतिप्राप्त।",
   "about.creditsWords": "शब्दका अर्थ र उच्चारण <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG बाट लिइएका हुन्, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> अन्तर्गत अनुमतिप्राप्त।",
   "about.rightsTitle": "प्रतिलिपि अधिकार र हटाउने अनुरोध",
@@ -1578,8 +1574,7 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
-  "about.whoTitle": "本站由谁运营",
-  "about.whoBody": "JLPT Practice 由 Suresh Surkheti 开发并维护。",
+  "about.whoBody": "JLPT Practice 由 Suresh Surkheti 开发并维护。如有错误、遗漏或需要撤下的内容，请写信至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>。",
   "footer.rights": "版权所有。",
   "exam.noRecording": "无录音",
   "exam.missingParts": "本次考试缺少：{parts}。这些题目在本站资料来源处从未公开，因此该部分不在此卷中。",
@@ -1667,7 +1662,7 @@ I18N.register("zh", {
   "cal.julyNote": "全球统一考试日。并非所有国家都举行 7 月考试，报名时间也由当地规定，请自行查证。",
   "cal.official": "官方信息",
   "about.creditsTitle": "致谢",
-  "about.creditsCode": "由 Suresh Surkheti 制作。代码采用 MIT 许可。",
+  "about.creditsCode": "代码采用 MIT 许可。",
   "about.creditsKanji": "汉字的读音、释义与 JLPT 等级来自 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。笔顺来自 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 授权。",
   "about.creditsWords": "词义与读音来自 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。",
   "about.rightsTitle": "版权与删除请求",
@@ -1952,8 +1947,7 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
-  "about.whoTitle": "이 사이트 운영자",
-  "about.whoBody": "JLPT Practice는 Suresh Surkheti가 만들고 운영합니다.",
+  "about.whoBody": "JLPT Practice는 Suresh Surkheti가 만들고 운영합니다. 잘못되었거나 빠졌거나 내려야 할 것이 있으면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> 으로 연락해 주세요.",
   "footer.rights": "모든 권리 보유.",
   "exam.noRecording": "음성 없음",
   "exam.missingParts": "이 회차에 없는 과목: {parts}. 해당 문제는 출처에 공개된 적이 없어 이 시험지에는 없습니다.",
@@ -2041,7 +2035,7 @@ I18N.register("ko", {
   "cal.julyNote": "전 세계 공통 시험일입니다. 7월 시험은 모든 국가에서 실시되지 않으며, 접수 기간도 현지별로 다릅니다.",
   "cal.official": "공식 정보",
   "about.creditsTitle": "크레딧",
-  "about.creditsCode": "제작: Suresh Surkheti. 코드는 MIT 라이선스입니다.",
+  "about.creditsCode": "코드는 MIT 라이선스입니다.",
   "about.creditsKanji": "한자의 읽기, 뜻, JLPT 등급은 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다. 획순은 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 라이선스를 따릅니다.",
   "about.creditsWords": "단어의 뜻과 읽기는 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다.",
   "about.rightsTitle": "저작권 및 삭제 요청",
@@ -2326,8 +2320,7 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
-  "about.whoTitle": "Siapa yang mengelola situs ini",
-  "about.whoBody": "JLPT Practice dibuat dan dikelola oleh Suresh Surkheti.",
+  "about.whoBody": "JLPT Practice dibuat dan dikelola oleh Suresh Surkheti. Jika ada yang keliru, kurang, atau perlu diturunkan, kirim surel ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Hak cipta dilindungi undang-undang.",
   "exam.noRecording": "Tidak ada rekaman",
   "exam.missingParts": "Tidak ada di sesi ini: {parts}. Soal-soal itu tidak pernah diterbitkan di sumber naskah ini, jadi bagian tersebut tidak ada.",
@@ -2415,7 +2408,7 @@ I18N.register("id", {
   "cal.julyNote": "Tanggal ujian serentak di seluruh dunia. Sesi Juli tidak diadakan di semua negara, dan jadwal pendaftaran ditetapkan secara lokal — periksa milik Anda.",
   "cal.official": "Informasi resmi",
   "about.creditsTitle": "Kredit",
-  "about.creditsCode": "Dibuat oleh Suresh Surkheti. Kode berlisensi MIT.",
+  "about.creditsCode": "Kode berlisensi MIT.",
   "about.creditsKanji": "Cara baca, arti, dan tingkat JLPT kanji berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Urutan goresan diambil dari <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Arti dan cara baca kata berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Hak cipta dan permintaan penghapusan",
@@ -2700,8 +2693,7 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
-  "about.whoTitle": "Sino ang nagpapatakbo ng site na ito",
-  "about.whoBody": "Ang JLPT Practice ay ginawa at pinapanatili ni Suresh Surkheti.",
+  "about.whoBody": "Ang JLPT Practice ay ginawa at pinapanatili ni Suresh Surkheti. Kung may mali, kulang, o dapat tanggalin, sumulat sa <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Nakalaan ang lahat ng karapatan.",
   "exam.noRecording": "Walang recording",
   "exam.missingParts": "Wala sa pagsusulit na ito: {parts}. Hindi kailanman nailathala ang mga tanong na iyon sa pinagmulan ng mga papel na ito, kaya kulang ang bahaging iyon.",
@@ -2789,7 +2781,7 @@ I18N.register("fil", {
   "cal.julyNote": "Ito ang petsa ng pagsusulit sa buong mundo. Hindi lahat ng bansa ay may pagsusulit sa Hulyo, at lokal na itinatakda ang rehistrasyon — tingnan ang sa inyo.",
   "cal.official": "Opisyal na impormasyon",
   "about.creditsTitle": "Mga kredito",
-  "about.creditsCode": "Ginawa ni Suresh Surkheti. Ang code ay lisensyadong MIT.",
+  "about.creditsCode": "Ang code ay lisensyadong MIT.",
   "about.creditsKanji": "Ang mga bigkas, kahulugan at antas ng JLPT ng kanji ay mula sa <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Ang pagkakasunod-sunod ng guhit ay mula sa <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Ang kahulugan at bigkas ng mga salita ay hango sa <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Karapatang-sipi at kahilingang tanggalin",
@@ -3074,8 +3066,7 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
-  "about.whoTitle": "Quem mantém este site",
-  "about.whoBody": "O JLPT Practice é criado e mantido por Suresh Surkheti.",
+  "about.whoBody": "O JLPT Practice é criado e mantido por Suresh Surkheti. Se algo aqui estiver errado, faltando ou precisar ser removido, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Todos os direitos reservados.",
   "exam.noRecording": "Sem gravação",
   "exam.missingParts": "Não está nesta aplicação: {parts}. Essas questões nunca foram publicadas na origem destas provas, então a prova está sem essa seção.",
@@ -3163,7 +3154,7 @@ I18N.register("pt-BR", {
   "cal.julyNote": "Data mundial da prova. A aplicação de julho não ocorre em todos os países, e os prazos de inscrição são locais — confira o seu.",
   "cal.official": "Informações oficiais",
   "about.creditsTitle": "Créditos",
-  "about.creditsCode": "Feito por Suresh Surkheti. O código é licenciado sob MIT.",
+  "about.creditsCode": "O código é licenciado sob MIT.",
   "about.creditsKanji": "As leituras, os significados e os níveis JLPT dos kanji vêm do <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. A ordem dos traços vem do <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Os significados e as leituras das palavras derivam do <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Direitos autorais e pedidos de remoção",
@@ -3448,8 +3439,7 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
-  "about.whoTitle": "यह साइट कौन चलाता है",
-  "about.whoBody": "JLPT Practice को सुरेश सुर्खेती बनाते और चलाते हैं।",
+  "about.whoBody": "JLPT Practice को सुरेश सुर्खेती बनाते और चलाते हैं। यहाँ कुछ ग़लत हो, छूट गया हो या हटाया जाना चाहिए, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर लिखें।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रिकॉर्डिंग नहीं",
   "exam.missingParts": "इस सत्र में नहीं है: {parts}। ये प्रश्न इन पेपरों के स्रोत पर कभी प्रकाशित नहीं हुए, इसलिए यह खंड यहाँ नहीं है।",
@@ -3537,7 +3527,7 @@ I18N.register("hi", {
   "cal.julyNote": "यह विश्वभर की परीक्षा तिथि है। जुलाई की परीक्षा हर देश में नहीं होती, और आवेदन तिथियाँ स्थानीय होती हैं — अपनी जाँचें।",
   "cal.official": "आधिकारिक जानकारी",
   "about.creditsTitle": "आभार",
-  "about.creditsCode": "निर्माता: Suresh Surkheti। कोड MIT लाइसेंस के अंतर्गत है।",
+  "about.creditsCode": "कोड MIT लाइसेंस के अंतर्गत है।",
   "about.creditsKanji": "कांजी के उच्चारण, अर्थ और JLPT स्तर <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है। स्ट्रोक क्रम <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel से लिया गया है, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
   "about.creditsWords": "शब्दों के अर्थ और उच्चारण <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
   "about.rightsTitle": "कॉपीराइट और सामग्री हटाने के अनुरोध",
@@ -3822,8 +3812,7 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
-  "about.whoTitle": "এই সাইট কে চালায়",
-  "about.whoBody": "JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি।",
+  "about.whoBody": "JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি। এখানে কিছু ভুল, অনুপস্থিত বা সরানো দরকার হলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> ঠিকানায় লিখুন।",
   "footer.rights": "সর্বস্বত্ব সংরক্ষিত।",
   "exam.noRecording": "রেকর্ডিং নেই",
   "exam.missingParts": "এই পরীক্ষায় নেই: {parts}। এই প্রশ্নগুলি এই পেপারগুলির উৎসে কখনও প্রকাশিত হয়নি, তাই অংশটি এখানে নেই।",
@@ -3911,7 +3900,7 @@ I18N.register("bn", {
   "cal.julyNote": "এটি বিশ্বজুড়ে পরীক্ষার তারিখ। সব দেশে জুলাইয়ের পরীক্ষা হয় না, এবং আবেদনের সময়ও স্থানীয়ভাবে ঠিক হয় — নিজেরটি দেখে নিন।",
   "cal.official": "সরকারি তথ্য",
   "about.creditsTitle": "কৃতজ্ঞতা",
-  "about.creditsCode": "নির্মাতা: Suresh Surkheti। কোড MIT লাইসেন্সের অধীনে।",
+  "about.creditsCode": "কোড MIT লাইসেন্সের অধীনে।",
   "about.creditsKanji": "কাঞ্জির উচ্চারণ, অর্থ ও JLPT স্তর নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে। স্ট্রোকের ক্রম নেওয়া হয়েছে <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> লাইসেন্সের অধীনে।",
   "about.creditsWords": "শব্দের অর্থ ও উচ্চারণ নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে।",
   "about.rightsTitle": "কপিরাইট ও অপসারণের অনুরোধ",
@@ -4196,8 +4185,7 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
-  "about.whoTitle": "මෙම අඩවිය කවුරුන් විසින්ද",
-  "about.whoBody": "JLPT Practice ගොඩනඟා පවත්වාගෙන යනු ලබන්නේ Suresh Surkheti විසිනි.",
+  "about.whoBody": "JLPT Practice ගොඩනඟා පවත්වාගෙන යනු ලබන්නේ Suresh Surkheti විසිනි. යමක් වැරදි නම්, නැති නම්, හෝ ඉවත් කළ යුතු නම් <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ලියන්න.",
   "footer.rights": "සියලුම හිමිකම් ඇවිරිණි.",
   "exam.noRecording": "පටිගත කිරීමක් නැත",
   "exam.missingParts": "මෙම වාරයේ නොමැත: {parts}. එම ප්‍රශ්න මෙම ප්‍රශ්න පත්‍රවල මූලාශ්‍රයේ කිසිදා පළ නොවූ නිසා එම කොටස මෙහි නැත.",
@@ -4285,7 +4273,7 @@ I18N.register("si", {
   "cal.julyNote": "මෙය ලෝක විභාග දිනයයි. ජූලි විභාගය සියලුම රටවල පවත්වනුයේ නොවේ — ඔබේ රටේ දින පරීක්ෂා කරන්න.",
   "cal.official": "රාජ්‍ය තොරතුරු",
   "about.creditsTitle": "ස්තුතිය",
-  "about.creditsCode": "නිර්මාණය: Suresh Surkheti. කේතය MIT බලපත්‍රය යටතේ ය.",
+  "about.creditsCode": "කේතය MIT බලපත්‍රය යටතේ ය.",
   "about.creditsKanji": "කන්ජි අකුරුවල කියවීම්, අර්ථ සහ JLPT මට්ටම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත. ඉරි අඳින අනුපිළිවෙල ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
   "about.creditsWords": "වචනවල අර්ථ සහ කියවීම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
   "about.rightsTitle": "ප්‍රකාශන හිමිකම සහ ඉවත් කිරීමේ ඉල්ලීම්",
