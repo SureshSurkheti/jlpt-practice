@@ -9,28 +9,28 @@
     {
      "prompt": "彼は<u>愚痴</u>をこぼさない人だった。",
      "choices": [
-      "ぐっち",
       "ぐて",
-      "くち",
-      "ぐち"
+      "ぐち",
+      "ぐっち",
+      "くち"
      ],
      "explanation": "愚痴 = ぐち - idle complaint; grumble",
      "passage": null,
-     "answer": 4,
+     "answer": 2,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。"
     },
     {
      "prompt": "その習慣は次第に<u>廃れて</u>いった。",
      "choices": [
-      "すたれで",
-      "すだれて",
       "ずたれて",
-      "すたれて"
+      "すたれで",
+      "すたれて",
+      "すだれて"
      ],
      "explanation": "廃れて = すたれて",
      "passage": null,
-     "answer": 4,
+     "answer": 3,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。"
     },
@@ -38,9 +38,9 @@
      "prompt": "議長が発言を<u>促した</u>。",
      "choices": [
       "うながした",
+      "うなかした",
       "うながしだ",
-      "うながじた",
-      "うなかした"
+      "うながじた"
      ],
      "explanation": "促した = うながした",
      "passage": null,
@@ -52,41 +52,41 @@
      "prompt": "統計は現状を<u>如実</u>に示している。",
      "choices": [
       "にょじっつ",
-      "にょしつ",
       "にょじつ",
+      "にょしつ",
       "にょじと"
      ],
      "explanation": "如実 = にょじつ",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。"
-    },
-    {
-     "prompt": "彼は初志を<u>貫いた</u>。",
-     "choices": [
-      "つらぬいった",
-      "つらぬいた",
-      "つらぬいだ",
-      "つらぬえた"
-     ],
-     "explanation": "貫いた = つらぬいた",
      "passage": null,
      "answer": 2,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。"
     },
     {
+     "prompt": "彼は初志を<u>貫いた</u>。",
+     "choices": [
+      "つらぬいた",
+      "つらぬえた",
+      "つらぬいだ",
+      "つらぬいった"
+     ],
+     "explanation": "貫いた = つらぬいた",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。"
+    },
+    {
      "prompt": "副作用が<u>懸念</u>されている。",
      "choices": [
-      "けねん",
+      "けにん",
       "きねん",
       "げねん",
-      "けにん"
+      "けねん"
      ],
      "explanation": "懸念 = けねん",
      "passage": null,
-     "answer": 1,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。"
     },
@@ -94,9 +94,9 @@
      "prompt": "この制度は（　　）として機能していない。",
      "choices": [
       "依然",
+      "俄然",
       "断然",
-      "平然",
-      "俄然"
+      "平然"
      ],
      "explanation": "依然として — still, as before.",
      "passage": null,

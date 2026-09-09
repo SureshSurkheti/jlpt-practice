@@ -8,46 +8,6 @@
  ],
  "exams": [
   {
-   "id": "n5-practice-9",
-   "level": "N5",
-   "words": 268
-  },
-  {
-   "id": "n5-practice-8",
-   "level": "N5",
-   "words": 264
-  },
-  {
-   "id": "n5-practice-7",
-   "level": "N5",
-   "words": 247
-  },
-  {
-   "id": "n5-practice-6",
-   "level": "N5",
-   "words": 259
-  },
-  {
-   "id": "n5-practice-5",
-   "level": "N5",
-   "words": 257
-  },
-  {
-   "id": "n5-practice-4",
-   "level": "N5",
-   "words": 257
-  },
-  {
-   "id": "n5-practice-3",
-   "level": "N5",
-   "words": 232
-  },
-  {
-   "id": "n5-practice-2",
-   "level": "N5",
-   "words": 275
-  },
-  {
    "id": "n5-practice-18",
    "level": "N5",
    "words": 251
@@ -93,54 +53,84 @@
    "words": 251
   },
   {
+   "id": "n5-practice-9",
+   "level": "N5",
+   "words": 268
+  },
+  {
+   "id": "n5-practice-8",
+   "level": "N5",
+   "words": 264
+  },
+  {
+   "id": "n5-practice-7",
+   "level": "N5",
+   "words": 247
+  },
+  {
+   "id": "n5-practice-6",
+   "level": "N5",
+   "words": 259
+  },
+  {
+   "id": "n5-practice-5",
+   "level": "N5",
+   "words": 257
+  },
+  {
+   "id": "n5-practice-4",
+   "level": "N5",
+   "words": 257
+  },
+  {
+   "id": "n5-practice-3",
+   "level": "N5",
+   "words": 232
+  },
+  {
+   "id": "n5-practice-2",
+   "level": "N5",
+   "words": 275
+  },
+  {
    "id": "n5-practice-1",
    "level": "N5",
    "words": 255
   },
   {
-   "id": "n4-practice-2",
+   "id": "n4-practice-25",
    "level": "N4",
-   "words": 665
+   "words": 438
   },
   {
-   "id": "n4-practice-1",
+   "id": "n4-practice-24",
    "level": "N4",
-   "words": 455
+   "words": 464
   },
   {
-   "id": "n4-practice-9",
+   "id": "n4-practice-23",
    "level": "N4",
-   "words": 390
+   "words": 461
   },
   {
-   "id": "n4-practice-8",
+   "id": "n4-practice-22",
    "level": "N4",
-   "words": 415
+   "words": 457
   },
   {
-   "id": "n4-practice-7",
+   "id": "n4-practice-21",
    "level": "N4",
-   "words": 394
+   "words": 414
   },
   {
-   "id": "n4-practice-6",
+   "id": "n4-practice-20",
    "level": "N4",
-   "words": 398
+   "words": 442
   },
   {
-   "id": "n4-practice-5",
+   "id": "n4-practice-19",
    "level": "N4",
-   "words": 383
-  },
-  {
-   "id": "n4-practice-4",
-   "level": "N4",
-   "words": 394
-  },
-  {
-   "id": "n4-practice-3",
-   "level": "N4",
-   "words": 382
+   "words": 445
   },
   {
    "id": "n4-practice-18",
@@ -186,6 +176,51 @@
    "id": "n4-practice-10",
    "level": "N4",
    "words": 415
+  },
+  {
+   "id": "n4-practice-9",
+   "level": "N4",
+   "words": 390
+  },
+  {
+   "id": "n4-practice-8",
+   "level": "N4",
+   "words": 415
+  },
+  {
+   "id": "n4-practice-7",
+   "level": "N4",
+   "words": 394
+  },
+  {
+   "id": "n4-practice-6",
+   "level": "N4",
+   "words": 398
+  },
+  {
+   "id": "n4-practice-5",
+   "level": "N4",
+   "words": 383
+  },
+  {
+   "id": "n4-practice-4",
+   "level": "N4",
+   "words": 394
+  },
+  {
+   "id": "n4-practice-3",
+   "level": "N4",
+   "words": 382
+  },
+  {
+   "id": "n4-practice-2",
+   "level": "N4",
+   "words": 665
+  },
+  {
+   "id": "n4-practice-1",
+   "level": "N4",
+   "words": 455
   },
   {
    "id": "n3-practice-8",

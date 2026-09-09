@@ -43,7 +43,19 @@ WORDS = os.path.join(ROOT, "data", "words")
 # start after them. Their hand-written questions live in practice-bank/seed/
 # and are topped up rather than replaced - see top_up().
 FIRST = 3
-PAPERS = 16
+# How many composed papers each level gets, and it is per level on purpose.
+#
+# A single number looked simpler and was wrong. Raising it to 23 let N5 take
+# a seventeenth paper out of the same banks that top_up() draws on, and the
+# two hand-written N5 papers lost the questions it had already given them -
+# Practice Test 1 went from 67 questions back to 52. The composed papers are
+# dealt first and the seeds get the remainder, so growing a level quietly
+# shrinks its own oldest papers unless it is asked for deliberately.
+#
+# A level still stops at whatever its banks support; build() takes the
+# smaller of the two.
+PAPERS = {"n5": 16, "n4": 23, "n3": 16, "n2": 16, "n1": 16}
+DEFAULT_PAPERS = 16
 SEED = os.path.join(ROOT, "data", "practice-bank", "seed")
 DEAL = os.path.join(ROOT, "data", "practice-bank", "deal.json")
 
@@ -725,6 +737,40 @@ def top_up(level, banks, used, rng):
     return done
 
 
+def sweep(level, papers):
+    """Delete composed papers this level no longer makes.
+
+    The builder writes Practice Test 3 upwards and never removed anything,
+    so a level that shrank left its last paper on disk - still in the index,
+    still sat by anybody who had the link, and holding the questions that
+    had gone back into circulation. That is how n5-practice-19 came to carry
+    the same twelve questions as n5-practice-1.
+
+    A seed paper is never swept: it is hand-written, and top_up() rewrites
+    it in place rather than dealing it.
+    """
+    seeds = set()
+    if os.path.isdir(SEED):
+        seeds = set(fn[:-5] for fn in os.listdir(SEED) if fn.endswith(".json"))
+    last = FIRST + papers - 1
+    gone = 0
+    for fn in sorted(os.listdir(OUT)):
+        name = fn[:-5]
+        if not fn.endswith(".json") or not name.startswith(level + "-practice-"):
+            continue
+        if name in seeds:
+            continue
+        try:
+            number = int(name.rsplit("-", 1)[1])
+        except ValueError:
+            continue
+        if number > last:
+            os.remove(os.path.join(OUT, fn))
+            print("%s: removed %s (no longer composed)" % (level.upper(), name))
+            gone += 1
+    return gone
+
+
 def build(level):
     banks = {}
     for _, kinds in SHAPE[level]:
@@ -738,8 +784,9 @@ def build(level):
             "%s has %d, needs %d" % (k, have, n) for k, n, have in short)))
         return 0
 
-    papers = min(PAPERS, min(len(banks[k]) // n for _, kinds in SHAPE[level]
-                             for k, n in kinds))
+    papers = min(PAPERS.get(level, DEFAULT_PAPERS),
+                 min(len(banks[k]) // n for _, kinds in SHAPE[level]
+                     for k, n in kinds))
 
     rng = random.Random("%s-practice" % level)
     for k in sorted(banks):
@@ -764,6 +811,8 @@ def build(level):
         io.open(os.path.join(OUT, "%s-practice-%d.json" % (level, number)),
                 "w", encoding="utf-8").write(
             json.dumps(paper, ensure_ascii=False, indent=1))
+
+    sweep(level, papers)
 
     used = {}
     for _, kinds in SHAPE[level]:
