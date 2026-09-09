@@ -132,6 +132,7 @@ I18N.register("en", {
  "exam.speakPlay": "Play",
  "exam.speakSlow": "Slower",
  "exam.speakStop": "Stop",
+ "exam.speakThisOne": "Just this question, spoken by your device — no video, works offline.",
  "exam.spokenOnly": "The options are spoken only — listen and choose a number.",
  "exam.start": "Start exam",
  "exam.studyMode": "Study mode",

@@ -132,6 +132,7 @@ I18N.register("ko", {
  "exam.speakPlay": "재생",
  "exam.speakSlow": "느리게",
  "exam.speakStop": "정지",
+ "exam.speakThisOne": "이 문제만 기기 음성으로 읽어 줍니다. 영상 없이 오프라인에서도 됩니다.",
  "exam.spokenOnly": "선택지는 음성으로만 제공됩니다 — 듣고 번호를 고르세요.",
  "exam.start": "시험 시작",
  "exam.studyMode": "학습 모드",

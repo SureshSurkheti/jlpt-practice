@@ -503,9 +503,10 @@
     return rows;
   }
 
-  function buildScript(q) {
+  function buildScript(q, compact) {
     if (!speechFor(q).length) return null;
-    var node = el("div", "q-script");
+    if (compact && !canSpeak()) return null;
+    var node = el("div", "q-script" + (compact ? " is-compact" : ""));
 
     if (canSpeak()) {
       var bar = el("div", "q-script-bar");
@@ -519,11 +520,14 @@
       slow.addEventListener("click", function () { playScript(q, node, 0.7); });
       stop.addEventListener("click", stopSpeaking);
       bar.appendChild(play);
-      bar.appendChild(slow);
+      if (!compact) bar.appendChild(slow);
       bar.appendChild(stop);
-      bar.appendChild(el("span", "q-script-note", esc(t("exam.speakNote"))));
+      bar.appendChild(el("span", "q-script-note",
+        esc(t(compact ? "exam.speakThisOne" : "exam.speakNote"))));
       node.appendChild(bar);
     }
+
+    if (compact) return node;
 
     var det = el("details", "q-transcript");
     if (!canSpeak()) det.open = true;
@@ -1415,13 +1419,23 @@
 
       item.number = paperNumber(item, last.seen);
       last.seen++;
-      /* Whether this question needs the spoken fallback at all. A section
-         with a recording that plays does not: the recording is the real
-         thing, and a play button under every question below it would be
-         clutter on top of the bar that already covers them. A section with
-         no recording, or with the one that returns 404, does. */
-      item.needsSpeech = item.category === "listening" &&
-        (!last.audio || DEAD_AUDIO_IDS.indexOf(driveId(last.audio)) !== -1);
+      /* Whether this question offers the spoken script, and how much of it.
+         A section with no recording, or with the one that returns 404, gets
+         the full control - play, slower, stop, and the script behind a
+         summary - because that is the only way to hear it at all.
+
+         A section whose recording plays gets a smaller version: play and
+         stop and nothing else. The recording is the real thing and stays
+         above, but it covers six questions in one go, so it cannot replay
+         2番 on its own and it cannot be heard with the tab offline. Both of
+         those are worth a chip under the question. The script itself stays
+         hidden there - it is already in the answer panel after marking, and
+         a summary saying "transcript" beside a question you have not
+         answered yet is an invitation to read it instead. */
+      var live = last.audio &&
+        DEAD_AUDIO_IDS.indexOf(driveId(last.audio)) === -1;
+      item.needsSpeech = item.category === "listening" && !live;
+      item.compactSpeech = item.category === "listening" && !!live;
 
       var block = last.blocks[last.blocks.length - 1];
       if (!block || block.passage !== (q.passage || null)) {
@@ -2160,7 +2174,8 @@
     wireFigures(head);
     node.appendChild(head);
 
-    var script = item.needsSpeech ? buildScript(q) : null;
+    var script = (item.needsSpeech || item.compactSpeech)
+      ? buildScript(q, item.compactSpeech) : null;
     if (script) node.appendChild(script);
 
     var width = blank ? " is-numeric"

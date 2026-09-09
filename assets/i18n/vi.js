@@ -132,6 +132,7 @@ I18N.register("vi", {
  "exam.speakPlay": "Phát",
  "exam.speakSlow": "Chậm hơn",
  "exam.speakStop": "Dừng",
+ "exam.speakThisOne": "Chỉ câu này, đọc bằng giọng thiết bị — không video, dùng được ngoại tuyến.",
  "exam.spokenOnly": "Các lựa chọn chỉ có trong âm thanh — hãy nghe và chọn số.",
  "exam.start": "Bắt đầu thi",
  "exam.studyMode": "Chế độ học",

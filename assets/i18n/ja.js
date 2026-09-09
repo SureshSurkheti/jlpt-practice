@@ -132,6 +132,7 @@ I18N.register("ja", {
  "exam.speakPlay": "再生",
  "exam.speakSlow": "ゆっくり",
  "exam.speakStop": "停止",
+ "exam.speakThisOne": "この問題だけを端末の音声で読み上げます。動画なし、オフライン可。",
  "exam.spokenOnly": "選択肢は音声のみです。聞いて番号を選んでください。",
  "exam.start": "試験を始める",
  "exam.studyMode": "学習モード",

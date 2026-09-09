@@ -132,6 +132,7 @@ I18N.register("fil", {
  "exam.speakPlay": "I-play",
  "exam.speakSlow": "Bagalan",
  "exam.speakStop": "Itigil",
+ "exam.speakThisOne": "Ang tanong na ito lang, binabasa ng device — walang video, gumagana offline.",
  "exam.spokenOnly": "Ang mga pagpipilian ay binibigkas lamang — makinig at pumili ng numero.",
  "exam.start": "Simulan ang pagsusulit",
  "exam.studyMode": "Study mode",

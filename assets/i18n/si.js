@@ -132,6 +132,7 @@ I18N.register("si", {
  "exam.speakPlay": "වාදනය",
  "exam.speakSlow": "සෙමින්",
  "exam.speakStop": "නවත්වන්න",
+ "exam.speakThisOne": "මෙම ප්‍රශ්නය පමණක්, ඔබේ උපාංගයේ හඬින් — වීඩියෝ නැත, නොබැඳිව ක්‍රියා කරයි.",
  "exam.spokenOnly": "විකල්ප කථනයෙන් පමණි — අසා අංකයක් තෝරන්න.",
  "exam.start": "විභාගය අරඹන්න",
  "exam.studyMode": "ඉගෙනුම් ආකාරය",

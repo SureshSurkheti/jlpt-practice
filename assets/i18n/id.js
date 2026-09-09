@@ -132,6 +132,7 @@ I18N.register("id", {
  "exam.speakPlay": "Putar",
  "exam.speakSlow": "Lebih lambat",
  "exam.speakStop": "Berhenti",
+ "exam.speakThisOne": "Hanya soal ini, dibacakan perangkat — tanpa video, bisa offline.",
  "exam.spokenOnly": "Pilihan hanya diucapkan — simak lalu pilih nomornya.",
  "exam.start": "Mulai ujian",
  "exam.studyMode": "Mode belajar",

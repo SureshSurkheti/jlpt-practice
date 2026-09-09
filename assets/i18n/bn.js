@@ -132,6 +132,7 @@ I18N.register("bn", {
  "exam.speakPlay": "চালান",
  "exam.speakSlow": "ধীরে",
  "exam.speakStop": "থামান",
+ "exam.speakThisOne": "শুধু এই প্রশ্নটি, ডিভাইসের কণ্ঠে — ভিডিও ছাড়া, অফলাইনেও চলে।",
  "exam.spokenOnly": "বিকল্পগুলো কেবল বলা হয় — শুনে সংখ্যা বাছুন।",
  "exam.start": "পরীক্ষা শুরু করুন",
  "exam.studyMode": "অধ্যয়ন মোড",

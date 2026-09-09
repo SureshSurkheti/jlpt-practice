@@ -132,6 +132,7 @@ I18N.register("zh", {
  "exam.speakPlay": "播放",
  "exam.speakSlow": "放慢",
  "exam.speakStop": "停止",
+ "exam.speakThisOne": "仅朗读本题，使用设备语音——无视频，可离线。",
  "exam.spokenOnly": "选项只有语音——请听后选择数字。",
  "exam.start": "开始考试",
  "exam.studyMode": "学习模式",

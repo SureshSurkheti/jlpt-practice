@@ -132,6 +132,7 @@ I18N.register("pt-BR", {
  "exam.speakPlay": "Tocar",
  "exam.speakSlow": "Mais devagar",
  "exam.speakStop": "Parar",
+ "exam.speakThisOne": "Só esta questão, lida pelo aparelho — sem vídeo, funciona offline.",
  "exam.spokenOnly": "As opções são apenas faladas — ouça e escolha um número.",
  "exam.start": "Iniciar prova",
  "exam.studyMode": "Modo estudo",

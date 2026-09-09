@@ -132,6 +132,7 @@ I18N.register("hi", {
  "exam.speakPlay": "चलाएँ",
  "exam.speakSlow": "धीमा",
  "exam.speakStop": "रोकें",
+ "exam.speakThisOne": "सिर्फ़ यह प्रश्न, आपके डिवाइस की आवाज़ में — बिना वीडियो, ऑफ़लाइन भी।",
  "exam.spokenOnly": "विकल्प केवल बोले जाते हैं — सुनकर संख्या चुनें।",
  "exam.start": "परीक्षा शुरू करें",
  "exam.studyMode": "अध्ययन मोड",

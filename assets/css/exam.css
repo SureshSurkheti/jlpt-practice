@@ -2716,3 +2716,21 @@
   margin-top: 6px;
   font-weight: 600;
 }
+
+/* The smaller form, under a question whose 問題 already has a recording
+   playing above it. Play and stop and a line of explanation - no speed
+   control and no script, because the recording is the real thing here and
+   this is only for replaying one question or for hearing it offline. */
+.q-script.is-compact {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 6px 0 10px;
+}
+
+.q-script.is-compact .q-script-bar { padding: 0; gap: 7px; }
+
+.q-script.is-compact .q-play {
+  padding: 5px 12px;
+  font-size: 0.8rem;
+}
