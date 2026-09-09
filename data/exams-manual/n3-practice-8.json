@@ -7,112 +7,112 @@
    "id": "vocabulary",
    "questions": [
     {
-     "prompt": "重い荷物で<u>腕</u>が痛くなった。",
-     "choices": [
-      "うで",
-      "うって",
-      "うち",
-      "うて"
-     ],
-     "explanation": "腕 = うで - arm",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "調査の結果を課長に<u>報告</u>した。",
-     "choices": [
-      "ほうこく",
-      "ほこく",
-      "ぼうこく",
-      "ぽうこく"
-     ],
-     "explanation": "報告 = ほうこく - report, information",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "家族が私の生活を<u>支える</u>くれている。",
-     "choices": [
-      "ざさえて",
-      "ささえで",
-      "さざえて",
-      "ささえて"
-     ],
-     "explanation": "支える = ささえて - to be blocked, to choke, to be obstructed",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "この機械の仕組みは少し<u>複雑</u>だ。",
-     "choices": [
-      "ふぐざつ",
-      "ぷくざつ",
-      "ふくさつ",
-      "ふくざつ"
-     ],
-     "explanation": "複雑 = ふくざつ - complexity, complication",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "店の前に人が長く<u>並んで</u>いる。",
      "choices": [
-      "ならんて",
       "ならんで",
       "ならんち",
-      "ならで"
+      "ならで",
+      "ならんて"
      ],
      "explanation": "並んで = ならんで",
      "passage": null,
-     "answer": 2,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
      "prompt": "電気代を<u>節約</u>するようにしている。",
      "choices": [
-      "ぜつやく",
-      "せつやぐ",
       "せつやく",
-      "せつやっく"
+      "ぜつやく",
+      "せつやっく",
+      "せつやぐ"
      ],
      "explanation": "節約 = せつやく - economising, saving",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "田中さんは日本の歴史に<u>詳しい</u>。",
-     "choices": [
-      "くわしい",
-      "ぐわしい",
-      "くわっしい",
-      "くわじい"
-     ],
-     "explanation": "詳しい = くわしい - knowing very well, detailed, full, accurate",
      "passage": null,
      "answer": 1,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
+     "prompt": "田中さんは日本の歴史に<u>詳しい</u>。",
+     "choices": [
+      "くわっしい",
+      "ぐわしい",
+      "くわじい",
+      "くわしい"
+     ],
+     "explanation": "詳しい = くわしい - knowing very well, detailed, full, accurate",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
      "prompt": "朝の駅はいつも<u>混雑</u>している。",
      "choices": [
+      "こんざっつ",
       "ごんざつ",
       "こんさつ",
-      "こんざつ",
-      "こんざっつ"
+      "こんざつ"
      ],
      "explanation": "混雑 = こんざつ - confusion, congestion",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "この料金は税を<u>含んで</u>います。",
+     "choices": [
+      "ふぐんで",
+      "ふくんで",
+      "ぷくんで",
+      "ふくんて"
+     ],
+     "explanation": "含んで = ふくんで",
+     "passage": null,
+     "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "忘れ物をして家に<u>戻った</u>。",
+     "choices": [
+      "もとった",
+      "もどた",
+      "もどった",
+      "むどった"
+     ],
+     "explanation": "戻った = もどった",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "家族が私の生活を<u>支えて</u>くれている。",
+     "choices": [
+      "ささえて",
+      "ささえで",
+      "ざさえて",
+      "さざえて"
+     ],
+     "explanation": "支えて = ささえて",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "水をやらなかったので花が<u>枯れて</u>しまった。",
+     "choices": [
+      "がれて",
+      "かれで",
+      "かれて",
+      "かれって"
+     ],
+     "explanation": "枯れて = かれて",
      "passage": null,
      "answer": 3,
      "category": "vocabulary",

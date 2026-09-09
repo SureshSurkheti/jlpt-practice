@@ -7,30 +7,16 @@
    "id": "vocabulary",
    "questions": [
     {
-     "prompt": "部長の<u>命令</u>で、急に出張することになった。",
-     "choices": [
-      "めいりい",
-      "めれい",
-      "めいれ",
-      "めいれい"
-     ],
-     "explanation": "命令 = めいれい - order, command, decree, directive, (software) instruction",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "写真をとるには<u>許可</u>が必要です。",
      "choices": [
-      "きょか",
+      "きょっか",
       "きょが",
       "ぎょか",
-      "きょっか"
+      "きょか"
      ],
      "explanation": "許可 = きょか - permission, approval",
      "passage": null,
-     "answer": 1,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
@@ -38,9 +24,9 @@
      "prompt": "遠くの山から<u>煙</u>が上がっている。",
      "choices": [
       "けむり",
-      "けむれ",
+      "きむり",
       "げむり",
-      "きむり"
+      "けむれ"
      ],
      "explanation": "煙 = けむり - smoke, fumes",
      "passage": null,
@@ -49,58 +35,44 @@
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "水をやらなかったので花が<u>枯れる</u>しまった。",
-     "choices": [
-      "かれて",
-      "がれて",
-      "かれで",
-      "かれって"
-     ],
-     "explanation": "枯れる = かれて - to wither, to die (plant), to be blasted (plant)",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "祖母は毎朝<u>畑</u>に出かける。",
      "choices": [
-      "ぱたけ",
       "はたけ",
+      "ばたけ",
       "はだけ",
-      "ばたけ"
+      "ぱたけ"
      ],
      "explanation": "畑 = はたけ - field",
      "passage": null,
-     "answer": 2,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
      "prompt": "けさ病院で<u>血液</u>検査を受けた。",
      "choices": [
+      "けつえき",
       "けつえぎ",
-      "けっつえき",
       "げつえき",
-      "けつえき"
+      "けっつえき"
      ],
      "explanation": "血液 = けつえき - blood",
      "passage": null,
-     "answer": 4,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
      "prompt": "誕生日に友だちを<u>招いた</u>。",
      "choices": [
+      "まねいだ",
       "まねいた",
-      "まねいった",
       "まねた",
-      "まねいだ"
+      "まねいった"
      ],
      "explanation": "招いた = まねいた",
      "passage": null,
-     "answer": 1,
+     "answer": 2,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
@@ -108,11 +80,39 @@
      "prompt": "この山道はかなり<u>険しい</u>。",
      "choices": [
       "けわじい",
-      "けわしい",
       "けわっしい",
-      "げわしい"
+      "げわしい",
+      "けわしい"
      ],
      "explanation": "険しい = けわしい - inaccessible place, sharp eyes",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "夏はこの部屋の<u>湿度</u>が高くなる。",
+     "choices": [
+      "しつど",
+      "しっつど",
+      "しつと",
+      "じつど"
+     ],
+     "explanation": "湿度 = しつど - humidity",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "レポートの<u>提出</u>は金曜日までです。",
+     "choices": [
+      "てしゅつ",
+      "ていしゅつ",
+      "でいしゅつ",
+      "ていじゅつ"
+     ],
+     "explanation": "提出 = ていしゅつ - presentation, submission, filing",
      "passage": null,
      "answer": 2,
      "category": "vocabulary",

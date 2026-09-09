@@ -7,112 +7,112 @@
    "id": "vocabulary",
    "questions": [
     {
-     "prompt": "夏はこの部屋の<u>湿度</u>が高くなる。",
-     "choices": [
-      "じつど",
-      "しつと",
-      "しっつど",
-      "しつど"
-     ],
-     "explanation": "湿度 = しつど - humidity",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "レポートの<u>提出</u>は金曜日までです。",
-     "choices": [
-      "ていしゅつ",
-      "でいしゅつ",
-      "てしゅつ",
-      "ていじゅつ"
-     ],
-     "explanation": "提出 = ていしゅつ - presentation, submission, filing",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "この国の<u>経済</u>は少しずつ回復している。",
      "choices": [
-      "けいざい",
       "げいざい",
+      "けざい",
       "けいさい",
-      "けざい"
+      "けいざい"
      ],
      "explanation": "経済 = けいざい - finance, economy",
      "passage": null,
-     "answer": 1,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
      "prompt": "冬は<u>厚い</u>コートが手放せない。",
      "choices": [
+      "あつい",
       "あつえ",
-      "あとい",
       "あっつい",
-      "あつい"
+      "あとい"
      ],
      "explanation": "厚い = あつい - kind, deep, thick",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "今日は<u>波</u>が高いので泳げない。",
-     "choices": [
-      "なめ",
-      "なみ",
-      "なんみ",
-      "なんめ"
-     ],
-     "explanation": "波 = なみ - wave",
-     "passage": null,
-     "answer": 2,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "この言葉は少し古い<u>表現</u>だ。",
-     "choices": [
-      "ひょうげん",
-      "ぴょうげん",
-      "ひょうけん",
-      "ひょげん"
-     ],
-     "explanation": "表現 = ひょうげん - expression, presentation, representation (math)",
      "passage": null,
      "answer": 1,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "プレゼントをきれいな紙で<u>包む</u>。",
+     "prompt": "今日は<u>波</u>が高いので泳げない。",
      "choices": [
-      "とつむ",
-      "つっつむ",
-      "つとむ",
-      "つつむ"
+      "なみ",
+      "なんみ",
+      "なんめ",
+      "なめ"
      ],
-     "explanation": "包む = つつむ - to wrap",
+     "explanation": "波 = なみ - wave",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "この言葉は少し古い<u>表現</u>だ。",
+     "choices": [
+      "ひょうけん",
+      "ぴょうげん",
+      "ひょげん",
+      "ひょうげん"
+     ],
+     "explanation": "表現 = ひょうげん - expression, presentation, representation (math)",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
+     "prompt": "プレゼントをきれいな紙で<u>包む</u>。",
+     "choices": [
+      "つっつむ",
+      "つつむ",
+      "つとむ",
+      "とつむ"
+     ],
+     "explanation": "包む = つつむ - to wrap",
+     "passage": null,
+     "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
      "prompt": "久しぶりに先生を<u>訪ねる</u>つもりだ。",
      "choices": [
+      "たずねる",
       "だずねる",
       "たずにる",
-      "たすねる",
-      "たずねる"
+      "たすねる"
      ],
      "explanation": "訪ねる = たずねる - to visit",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "祖父は先週<u>退院</u>した。",
+     "choices": [
+      "たいえん",
+      "だいいん",
+      "たえいん",
+      "たいいん"
+     ],
+     "explanation": "退院 = たいいん - to leave hospital",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "雨で道が<u>泥</u>だらけになった。",
+     "choices": [
+      "どる",
+      "どうろ",
+      "とろ",
+      "どろ"
+     ],
+     "explanation": "泥 = どろ - mud",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",

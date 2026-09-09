@@ -91,28 +91,28 @@
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "忘れ物をして家に<u>戻る</u>った。",
+     "prompt": "来週、取引先を<u>訪問</u>する予定だ。",
      "choices": [
-      "もんど",
-      "もと",
-      "もど",
-      "むど"
+      "ぽうもん",
+      "ほもん",
+      "ほうもん",
+      "ぼうもん"
      ],
-     "explanation": "戻る = もど - to turn back",
+     "explanation": "訪問 = ほうもん - call, visit",
      "passage": null,
      "answer": 3,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "来週、取引先を<u>訪問</u>する予定だ。",
+     "prompt": "部長の<u>命令</u>で、急に出張することになった。",
      "choices": [
-      "ぼうもん",
-      "ほもん",
-      "ぽうもん",
-      "ほうもん"
+      "めれい",
+      "めいれ",
+      "めいりい",
+      "めいれい"
      ],
-     "explanation": "訪問 = ほうもん - call, visit",
+     "explanation": "命令 = めいれい - order, command, decree, directive, (software) instruction",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",

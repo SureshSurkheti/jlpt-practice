@@ -1,7 +1,7 @@
 # JLPT Practice
 
-A JLPT study site for learners in Japan, built around **123 papers
-(11,609 questions)** from N1–N5 that are played as timed, auto-scored exams:
+A JLPT study site for learners in Japan, built around **141 papers
+(13,505 questions)** from N1–N5 that are played as timed, auto-scored exams:
 89 archived sittings, and 34 written for this site in the same format.
 
 ## Run it
@@ -21,7 +21,7 @@ python3 -m http.server 5500
 | `index.html` | Home — progress overview and entry points |
 | `levels.html` | The five JLPT levels, with a mock-test button each |
 | `practice.html?lv=N2` | Per-level page: sections, modes, mock test |
-| `exams.html` | Library of all 123 papers, filter by level, search by year |
+| `exams.html` | Library of all 141 papers, filter by level, search by year |
 | `exam.html?id=n2-2023-12` | The exam player |
 | `stats.html` | Progress and accuracy per level |
 | `about.html` | About the project |
@@ -65,12 +65,17 @@ archived sittings.
 
 ## The papers written for this site
 
-N4 and N5 had two papers each. They now have **18 each**, because the archive
-holds hardly any at those levels and they are where most learners start.
-Thirty-two of them are composed rather than typed out: the questions live in
-item banks under `data/practice-bank/`, and `tools/build_practice_papers.py`
-deals them into papers of the published shape — 67 questions at N5, 93 at N4,
-across all three booklets.
+N4 and N5 had two papers each. They now have **18 each**, and N3, N2 and N1
+have **six original papers apiece** on top of what the archive holds. Fifty
+papers in all are composed rather than typed out: the questions live in item
+banks under `data/practice-bank/`, and `tools/build_practice_papers.py` deals
+them into papers of the published shape — 67 questions at N5, 93 at N4, 102 at
+N3, 107 at N2 and 107 at N1, across all three booklets.
+
+Every listening question on a composed paper carries its own script, so all of
+it is spoken by the device. That is the point of writing them: the archive lost
+eight 聴解 booklets and no amount of searching brings them back, but a paper we
+write ourselves is never missing its audio.
 
 ```bash
 python3 tools/build_practice_papers.py   # then the usual build chain
@@ -109,13 +114,26 @@ a bank can add a paper; it can no longer disturb one.
 
 ## What is still missing, and why
 
-Nine papers have a gap that will not be filled:
+Eight papers have a gap that will not be filled:
 
 | Papers | Gap | Why it stays |
 |---|---|---|
 | 6 N1 sittings, 1 N3 | no 聴解 booklet | The booklet was never archived. Writing one would put invented questions inside a paper labelled as a real sitting, which is the one thing this must not do. |
 | n1-2018-12 | 3 of 4 聴解 sections silent | Archived with neither a recording nor a transcript, so there is nothing to play and nothing to speak. |
-| n4-practice-1 | no 読解, no 聴解 | Scraped from someone else's practice set. Adding questions to it would make a hybrid that is honest about neither half. |
+| n4-practice-1 | no 聴解 | Scraped from someone else's practice set, and its listening page was never archived either. |
+
+The answer to those seven silent booklets is not to invent them. It is that
+N1, N2 and N3 each now have six papers of our own, every question of which is
+spoken — see **The papers written for this site** above.
+
+n4-practice-1 used to be listed here as missing its 読解 as well. It was not:
+the source page declares every question in its second booklet as 文法,
+including 問題4, 5 and 6, which are 短文, 中文 and 情報検索. The paper read
+correctly, because the player groups by instruction, but the index counts
+categories, so the library said there was no reading section and choosing
+Reading in the setup screen skipped ten questions that were sitting right
+there. `split_grammar_reading()` in `tools/build_exams.py` now catches that
+one case, and only that case.
 
 Checked rather than assumed: the six N1 and one N3 source pages carry no
 questions and no answer key at all — 0 bytes of either — and n1-2025-07 has no
@@ -193,7 +211,7 @@ sittings cannot simply be downloaded.
 
 ## Listening
 
-**115 of the 123 papers can be listened to end to end**, and 540 of the 543
+**133 of the 141 papers can be listened to end to end**, and 630 of the 633
 listening sections in them, by two different routes.
 
 The archived sittings that kept their recordings embed them from Google
@@ -275,7 +293,7 @@ Free JLPT practice — full mock papers, N5 to N1
 
 No sign-up. No ads. Nothing to pay. Open it and start.
 
-📝 123 practice papers, 11,609 questions — N5 through N1, in the real JLPT format
+📝 141 practice papers, 13,505 questions — N5 through N1, in the real JLPT format
 🆕 N5 and N4 now have 18 papers each — vocabulary, grammar, reading and listening, all three booklets
 🔤 Every word of every question, with its reading and meaning — 125,767 of them
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass

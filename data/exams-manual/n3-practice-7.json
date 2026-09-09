@@ -7,53 +7,11 @@
    "id": "vocabulary",
    "questions": [
     {
-     "prompt": "初めて会ったときの<u>印象</u>は今も覚えている。",
-     "choices": [
-      "いんしょう",
-      "いしょう",
-      "いんじょう",
-      "いんしょ"
-     ],
-     "explanation": "印象 = いんしょう - impression",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "店の前に大きな<u>看板</u>が立っている。",
-     "choices": [
-      "がんばん",
-      "かんはん",
-      "かんば",
-      "かんばん"
-     ],
-     "explanation": "看板 = かんばん - sign, signboard, doorplate, poster",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "姉は去年大学を<u>卒業</u>した。",
-     "choices": [
-      "そつぎょ",
-      "そつきょう",
-      "そつぎょう",
-      "ぞつぎょう"
-     ],
-     "explanation": "卒業 = そつぎょう - graduation",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "落ち葉がよく<u>燃える</u>。",
      "choices": [
       "もえる",
-      "もえろ",
       "むえる",
+      "もえろ",
       "もいる"
      ],
      "explanation": "燃える = もえる - to burn",
@@ -66,13 +24,13 @@
      "prompt": "夜中に大きな<u>地震</u>があった。",
      "choices": [
       "ししん",
+      "じじん",
       "じっしん",
-      "じしん",
-      "じじん"
+      "じしん"
      ],
      "explanation": "地震 = じしん - earthquake",
      "passage": null,
-     "answer": 3,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
@@ -80,13 +38,13 @@
      "prompt": "子どもの<u>成長</u>は本当に早い。",
      "choices": [
       "せいちょ",
-      "せいちょう",
       "ぜいちょう",
+      "せいちょう",
       "せちょう"
      ],
      "explanation": "成長 = せいちょう - growth, grow to adulthood",
      "passage": null,
-     "answer": 2,
+     "answer": 3,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
@@ -94,9 +52,9 @@
      "prompt": "部屋の<u>温度</u>を少し下げた。",
      "choices": [
       "おんど",
-      "おんと",
+      "うんど",
       "おど",
-      "うんど"
+      "おんと"
      ],
      "explanation": "温度 = おんど - temperature",
      "passage": null,
@@ -107,12 +65,54 @@
     {
      "prompt": "せっかくの誘いを<u>断る</u>のは心苦しい。",
      "choices": [
-      "ことわる",
       "こどわる",
       "こっとわる",
+      "ことわる",
       "ごとわる"
      ],
      "explanation": "断る = ことわる - to refuse, to decline, to dismiss",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "重い荷物で<u>腕</u>が痛くなった。",
+     "choices": [
+      "うて",
+      "うで",
+      "うって",
+      "うち"
+     ],
+     "explanation": "腕 = うで - arm",
+     "passage": null,
+     "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "調査の結果を課長に<u>報告</u>した。",
+     "choices": [
+      "ほうこく",
+      "ほこく",
+      "ぼうこく",
+      "ぽうこく"
+     ],
+     "explanation": "報告 = ほうこく - report, information",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "この機械の仕組みは少し<u>複雑</u>だ。",
+     "choices": [
+      "ふくざつ",
+      "ぷくざつ",
+      "ふぐざつ",
+      "ふくさつ"
+     ],
+     "explanation": "複雑 = ふくざつ - complexity, complication",
      "passage": null,
      "answer": 1,
      "category": "vocabulary",

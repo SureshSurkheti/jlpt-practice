@@ -190,17 +190,17 @@
   {
    "id": "n3-practice-8",
    "level": "N3",
-   "words": 600
+   "words": 596
   },
   {
    "id": "n3-practice-7",
    "level": "N3",
-   "words": 639
+   "words": 642
   },
   {
    "id": "n3-practice-6",
    "level": "N3",
-   "words": 632
+   "words": 631
   },
   {
    "id": "n3-practice-5",
@@ -210,12 +210,12 @@
   {
    "id": "n3-practice-4",
    "level": "N3",
-   "words": 620
+   "words": 618
   },
   {
    "id": "n3-practice-3",
    "level": "N3",
-   "words": 648
+   "words": 650
   },
   {
    "id": "n3-2024-12",
@@ -360,32 +360,32 @@
   {
    "id": "n2-practice-8",
    "level": "N2",
-   "words": 749
+   "words": 747
   },
   {
    "id": "n2-practice-7",
    "level": "N2",
-   "words": 780
+   "words": 781
   },
   {
    "id": "n2-practice-6",
    "level": "N2",
-   "words": 813
+   "words": 810
   },
   {
    "id": "n2-practice-5",
    "level": "N2",
-   "words": 790
+   "words": 793
   },
   {
    "id": "n2-practice-4",
    "level": "N2",
-   "words": 790
+   "words": 794
   },
   {
    "id": "n2-practice-3",
    "level": "N2",
-   "words": 809
+   "words": 812
   },
   {
    "id": "n2-2024-12",
@@ -531,6 +531,36 @@
    "id": "n2-2010-07",
    "level": "N2",
    "words": 1329
+  },
+  {
+   "id": "n1-practice-8",
+   "level": "N1",
+   "words": 952
+  },
+  {
+   "id": "n1-practice-7",
+   "level": "N1",
+   "words": 964
+  },
+  {
+   "id": "n1-practice-6",
+   "level": "N1",
+   "words": 957
+  },
+  {
+   "id": "n1-practice-5",
+   "level": "N1",
+   "words": 929
+  },
+  {
+   "id": "n1-practice-4",
+   "level": "N1",
+   "words": 947
+  },
+  {
+   "id": "n1-practice-3",
+   "level": "N1",
+   "words": 956
   },
   {
    "id": "n1-2025-07",

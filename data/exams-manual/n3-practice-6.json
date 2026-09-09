@@ -7,72 +7,30 @@
    "id": "vocabulary",
    "questions": [
     {
-     "prompt": "祖父は先週<u>退院</u>した。",
-     "choices": [
-      "たえいん",
-      "だいいん",
-      "たいいん",
-      "たいえん"
-     ],
-     "explanation": "退院 = たいいん - to leave hospital",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "雨で道が<u>泥</u>だらけになった。",
-     "choices": [
-      "どうろ",
-      "どる",
-      "とろ",
-      "どろ"
-     ],
-     "explanation": "泥 = どろ - mud",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "彼の<u>努力</u>がやっと実を結んだ。",
      "choices": [
-      "どりょっく",
       "とりょく",
       "どりょぐ",
-      "どりょく"
+      "どりょく",
+      "どりょっく"
      ],
      "explanation": "努力 = どりょく - great effort, exertion, endeavour, effort",
      "passage": null,
-     "answer": 4,
+     "answer": 3,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
      "prompt": "助けてくれた友人に<u>感謝</u>している。",
      "choices": [
-      "かんじゃ",
-      "かんしゃ",
       "かしゃ",
-      "がんしゃ"
+      "かんじゃ",
+      "がんしゃ",
+      "かんしゃ"
      ],
      "explanation": "感謝 = かんしゃ - thanks, gratitude",
      "passage": null,
-     "answer": 2,
-     "category": "vocabulary",
-     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
-     "prompt": "この料金は税を<u>含む</u>んでいます。",
-     "choices": [
-      "ぶく",
-      "ふぐ",
-      "ふく",
-      "ぷく"
-     ],
-     "explanation": "含む = ふく - to hold in the mouth, to bear in mind",
-     "passage": null,
-     "answer": 3,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
@@ -81,12 +39,12 @@
      "choices": [
       "とうろぐ",
       "どうろく",
-      "とうろく",
-      "とろく"
+      "とろく",
+      "とうろく"
      ],
      "explanation": "登録 = とうろく - registration; register; entry; record",
      "passage": null,
-     "answer": 3,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
     },
@@ -95,8 +53,8 @@
      "choices": [
       "するとい",
       "するどい",
-      "ずるどい",
-      "すろどい"
+      "すろどい",
+      "ずるどい"
      ],
      "explanation": "鋭い = するどい - pointed, sharp",
      "passage": null,
@@ -107,12 +65,54 @@
     {
      "prompt": "牛乳は<u>冷蔵庫</u>に入れておいてください。",
      "choices": [
-      "れいぞうこ",
-      "れいぞこ",
       "れいそうこ",
-      "れぞうこ"
+      "れぞうこ",
+      "れいぞうこ",
+      "れいぞこ"
      ],
      "explanation": "冷蔵庫 = れいぞうこ - refrigerator",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "初めて会ったときの<u>印象</u>は今も覚えている。",
+     "choices": [
+      "いしょう",
+      "いんじょう",
+      "いんしょう",
+      "いんしょ"
+     ],
+     "explanation": "印象 = いんしょう - impression",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "店の前に大きな<u>看板</u>が立っている。",
+     "choices": [
+      "かんはん",
+      "かんばん",
+      "がんばん",
+      "かんば"
+     ],
+     "explanation": "看板 = かんばん - sign, signboard, doorplate, poster",
+     "passage": null,
+     "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題1　＿＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "姉は去年大学を<u>卒業</u>した。",
+     "choices": [
+      "そつぎょう",
+      "そつぎょ",
+      "そつきょう",
+      "ぞつぎょう"
+     ],
+     "explanation": "卒業 = そつぎょう - graduation",
      "passage": null,
      "answer": 1,
      "category": "vocabulary",

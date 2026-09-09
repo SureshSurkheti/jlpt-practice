@@ -432,6 +432,31 @@ def gloss_note(word, reading):
     return "%s - %s" % (base, en) if en else base
 
 
+KANA = re.compile(r"[\u3041-\u3096]")
+
+
+def check_okurigana(word, reading):
+    """The word goes into the sentence, so it has to be the inflected form.
+
+    問題1 prints the sentence with the word underlined, and the sentence is
+    written round a hole the word drops into. A bank entry that stores the
+    dictionary form for a sentence that needs a た or a って produces
+    「税を含むんでいます」 - and nothing downstream notices, because both
+    halves are valid Japanese on their own.
+
+    The tell is cheap and exact: if the word ends in okurigana, its reading
+    ends in the same kana. 含む/ふく fails it, 断る/ことわる passes.
+    Twenty-eight entries across three levels were wrong this way.
+    """
+    if not reading or not KANA.match(word[-1]):
+        return
+    if not reading.endswith(word[-1]):
+        raise ValueError(
+            "%s is read %s: the okurigana disagree, so the bank is storing "
+            "a different form of the word than the sentence needs"
+            % (word, reading))
+
+
 def _mcq(prompt, choices, note, passage=None):
     """A question with its choices still in bank order - answer first."""
     return {
@@ -449,6 +474,7 @@ def expand(level, kind, item, rng):
         right = item.get("r") or word_reading(level, item["w"])
         if not right:
             raise ValueError("no reading known for %s" % item["w"])
+        check_okurigana(item["w"], right)
         wrong = item.get("d") or vocab_gen.reading_distractors(
             right, avoid=[r for r in _READINGS.get(item["w"], []) if r != right])
         if not wrong:
@@ -460,6 +486,7 @@ def expand(level, kind, item, rng):
     if kind == "orthography":
         right = item["w"]
         read = item.get("r") or word_reading(level, right)
+        check_okurigana(right, read)
         wrong = item.get("d") or vocab_gen.written_distractors(right)
         if not wrong:
             raise ValueError("no written distractors for %s" % right)
@@ -502,6 +529,16 @@ def expand(level, kind, item, rng):
                      [p for p in shown if p != parts[star]], note)]
 
     if kind == "cloze":
+        # The blanks are numbered, and the player prints the questions in
+        # the order they are listed. If the passage carries 【5】 before
+        # 【4】, the paper asks them out of order and the reader has to hunt
+        # back up the page for each one.
+        order = re.findall(r"\u3010(\d+)\u3011", item["passage"])
+        want = [str(i) for i in range(1, len(item["qs"]) + 1)]
+        if order != want:
+            raise ValueError(
+                "cloze blanks appear as %s but the questions are %s"
+                % (",".join(order), ",".join(want)))
         out = []
         for i, q in enumerate(item["qs"], 1):
             out.append(_mcq("【%d】" % i, q["ch"], q.get("n"),
