@@ -50,6 +50,13 @@ GEMINABLE = "かきくけこさしすせそたちつてとぱぴぷぺぽはひ�
 
 SMALL = "ゃゅょぁぃぅぇぉっ"
 
+# ゃ, ゅ and ょ attach to the i-row and to nothing else. A rule that swaps a
+# vowel can otherwise turn いんしょう into いんせょう, which is not a word
+# somebody might write - it is a string Japanese has no way of pronouncing,
+# and a wrong answer that can be ruled out without reading it is not a
+# question. See _plausible().
+YOON_BASE = "きしちにひみりぎじびぴ"
+
 
 def _mora(r):
     """Split a reading into morae, keeping ゃゅょ attached to their kana."""
@@ -206,6 +213,9 @@ def _plausible(cand, right):
     # っ at the end, or in front of a vowel, is not a possible Japanese word.
     if cand.endswith("っ"):
         return False
+    for i, ch in enumerate(cand):
+        if ch in "ゃゅょ" and (i == 0 or cand[i - 1] not in YOON_BASE):
+            return False
     for i, ch in enumerate(cand[:-1]):
         if ch == "っ" and cand[i + 1] not in GEMINABLE:
             return False

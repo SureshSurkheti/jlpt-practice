@@ -107,10 +107,10 @@
     {
      "prompt": "母が　<u>入院</u>して　います。",
      "choices": [
-      "ねゅういん",
+      "にゅうえん",
       "にゅいん",
       "にゅういん",
-      "にゅうえん"
+      "にゅうい"
      ],
      "explanation": "入院 = にゅういん - to hospitalise",
      "passage": null,
@@ -189,14 +189,14 @@
      "instruction": "問題2　＿＿＿の　ことばは　どう　書きますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },
     {
-     "prompt": "みんな　<u>Uӣ[い</u>しました。",
+     "prompt": "みんな　<u>さんせい</u>しました。",
      "choices": [
       "賛譲",
       "賛醸",
       "賛情",
       "賛成"
      ],
-     "explanation": "賛成 = Uӣ[い - approval, agreement, support, favour",
+     "explanation": "賛成 = さんせい - approval, agreement, support, favour",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",

@@ -72,15 +72,49 @@ SHAPE = {
         ("listening", [("listen1", 8), ("listen2", 7),
                        ("listen3", 5), ("listen4", 8)]),
     ],
+    # N3 upwards the paper stops spacing its words and starts asking about
+    # 用法 - which of four sentences uses this word properly - and about the
+    # gist of a talk nothing is printed for. Both are new kinds of item, not
+    # harder versions of an old one, so both get their own bank.
+    "n3": [
+        ("vocabulary", [("reading", 8), ("orthography", 6), ("context", 11),
+                        ("paraphrase", 5), ("usage", 5)]),
+        ("grammar-reading", [("grammar", 13), ("order", 5), ("cloze", 1),
+                             ("short", 4), ("mid", 3), ("long", 1),
+                             ("info", 1)]),
+        ("listening", [("listen1", 6), ("listen2", 6), ("gist", 3),
+                       ("listen3", 4), ("listen4", 9)]),
+    ],
+    "n2": [
+        ("vocabulary", [("reading", 5), ("orthography", 5), ("formation", 5),
+                        ("context", 7), ("paraphrase", 5), ("usage", 5)]),
+        ("grammar-reading", [("grammar", 12), ("order", 5), ("cloze", 1),
+                             ("short", 5), ("mid", 3), ("compare", 1),
+                             ("essay", 1), ("info", 1)]),
+        ("listening", [("listen1", 5), ("listen2", 6), ("gist", 5),
+                       ("listen4", 12), ("listen5a", 2), ("listen5b", 1)]),
+    ],
+    "n1": [
+        ("vocabulary", [("reading", 6), ("context", 7),
+                        ("paraphrase", 6), ("usage", 6)]),
+        ("grammar-reading", [("grammar", 10), ("order", 5), ("cloze", 1),
+                             ("short", 4), ("mid", 3), ("long", 1),
+                             ("compare", 1), ("essay", 1), ("info", 1)]),
+        ("listening", [("listen1", 6), ("listen2", 7), ("gist", 6),
+                       ("listen4", 14), ("listen5a", 2), ("listen5b", 1)]),
+    ],
 }
 
 CATEGORY = {
     "reading": "vocabulary", "orthography": "vocabulary",
-    "context": "vocabulary", "paraphrase": "vocabulary",
+    "formation": "vocabulary", "context": "vocabulary",
+    "paraphrase": "vocabulary", "usage": "vocabulary",
     "grammar": "grammar", "order": "grammar", "cloze": "grammar",
-    "short": "reading", "mid": "reading", "info": "reading",
-    "listen1": "listening", "listen2": "listening",
+    "short": "reading", "mid": "reading", "long": "reading",
+    "compare": "reading", "essay": "reading", "info": "reading",
+    "listen1": "listening", "listen2": "listening", "gist": "listening",
     "listen3": "listening", "listen4": "listening",
+    "listen5a": "listening", "listen5b": "listening",
 }
 
 # 問題 numbers restart in each part of the booklet, so they are held here
@@ -154,9 +188,153 @@ MONDAI = {
         "listen4": (4, "問題4　問題4では、絵などが　ありません。文を　聞いて、"
                        "1から3の　中から、いちばん　いい　ものを　一つ　えらんで　ください。"),
     },
+    "n3": {
+        "reading": (1, "問題1　＿＿＿のことばの読み方として最もよいものを、"
+                       "1・2・3・4から一つえらびなさい。"),
+        "orthography": (2, "問題2　＿＿＿のことばを漢字で書くとき、最もよいものを、"
+                           "1・2・3・4から一つえらびなさい。"),
+        "context": (3, "問題3　（）に入れるのに最もよいものを、"
+                       "1・2・3・4から一つえらびなさい。"),
+        "paraphrase": (4, "問題4　＿＿＿のことばに意味が最も近いものを、"
+                          "1・2・3・4から一つえらびなさい。"),
+        "usage": (5, "問題5　つぎのことばの使い方として最もよいものを、"
+                     "1・2・3・4から一つえらびなさい。"),
+        "grammar": (1, "問題1　つぎの文の（）に入れるのに最もよいものを、"
+                       "1・2・3・4から一つえらびなさい。"),
+        "order": (2, "問題2　つぎの文の＿★＿に入る最もよいものを、"
+                     "1・2・3・4から一つえらびなさい。"),
+        "cloze": (3, "問題3　つぎの文章を読んで、文章全体の内容を考えて、"
+                     "【1】から【5】の中に入る最もよいものを、"
+                     "1・2・3・4から一つえらびなさい。"),
+        "short": (4, "問題4　つぎの文章を読んで、質問に答えなさい。"
+                     "答えは、1・2・3・4から最もよいものを一つえらびなさい。"),
+        "mid": (5, "問題5　つぎの文章を読んで、質問に答えなさい。"
+                   "答えは、1・2・3・4から最もよいものを一つえらびなさい。"),
+        "long": (6, "問題6　つぎの文章を読んで、質問に答えなさい。"
+                    "答えは、1・2・3・4から最もよいものを一つえらびなさい。"),
+        "info": (7, "問題7　右のページを見て、下の質問に答えなさい。"
+                    "答えは、1・2・3・4から最もよいものを一つえらびなさい。"),
+        "listen1": (1, "問題1　問題1では、まず質問を聞いてください。"
+                       "それから話を聞いて、問題用紙の1から4の中から、"
+                       "最もよいものを一つえらんでください。"),
+        "listen2": (2, "問題2　問題2では、まず質問を聞いてください。"
+                       "そのあと、問題用紙のせんたくしを読んでください。"
+                       "読む時間があります。それから話を聞いて、"
+                       "問題用紙の1から4の中から、最もよいものを一つえらんでください。"),
+        "gist": (3, "問題3　問題3では、問題用紙に何もいんさつされていません。"
+                    "この問題は、全体としてどんな内容かを聞く問題です。"
+                    "話の前に質問はありません。まず話を聞いてください。"
+                    "それから、質問とせんたくしを聞いて、1から4の中から、"
+                    "最もよいものを一つえらんでください。"),
+        "listen3": (4, "問題4　問題4では、場面の説明を読んでから、話を聞いてください。"
+                       "やじるし（→）の人は何と言いますか。"
+                       "1から3の中から、最もよいものを一つえらんでください。"),
+        "listen4": (5, "問題5　問題5では、問題用紙に何もいんさつされていません。"
+                       "まず文を聞いてください。それから、それに対する返事を聞いて、"
+                       "1から3の中から、最もよいものを一つえらんでください。"),
+    },
+    "n2": {
+        "reading": (1, "問題1　＿＿＿の言葉の読み方として最もよいものを、"
+                       "1・2・3・4から一つ選びなさい。"),
+        "orthography": (2, "問題2　＿＿＿の言葉を漢字で書くとき、最もよいものを、"
+                           "1・2・3・4から一つ選びなさい。"),
+        "formation": (3, "問題3　（　　）に入れるのに最もよいものを、"
+                         "1・2・3・4から一つ選びなさい。"),
+        "context": (4, "問題4　（　　）に入れるのに最もよいものを、"
+                       "1・2・3・4から一つ選びなさい。"),
+        "paraphrase": (5, "問題5　＿＿＿の言葉に意味が最も近いものを、"
+                          "1・2・3・4から一つ選びなさい。"),
+        "usage": (6, "問題6　次の言葉の使い方として最もよいものを、"
+                     "1・2・3・4から一つ選びなさい。"),
+        "grammar": (7, "問題7　次の文の（　　）に入れるのに最もよいものを、"
+                       "1・2・3・4から一つ選びなさい。"),
+        "order": (8, "問題8　次の文の＿★＿に入る最もよいものを、"
+                     "1・2・3・4から一つ選びなさい。"),
+        "cloze": (9, "問題9　次の文章を読んで、文章全体の内容を考えて、"
+                     "【1】から【5】の中に入る最もよいものを、"
+                     "1・2・3・4から一つ選びなさい。"),
+        "short": (10, "問題10　次の文章を読んで、後の問いに対する答えとして"
+                      "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "mid": (11, "問題11　次の文章を読んで、後の問いに対する答えとして"
+                    "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "compare": (12, "問題12　次のAとBの文章を読んで、後の問いに対する答えとして"
+                        "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "essay": (13, "問題13　次の文章を読んで、後の問いに対する答えとして"
+                      "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "info": (14, "問題14　右のページを見て、下の問いに対する答えとして"
+                     "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "listen1": (1, "問題1　問題1では、まず質問を聞いてください。"
+                       "それから話を聞いて、問題用紙の1から4の中から、"
+                       "最もよいものを一つ選んでください。"),
+        "listen2": (2, "問題2　問題2では、まず質問を聞いてください。"
+                       "そのあと、問題用紙のせんたくしを読んでください。読む時間があります。"
+                       "それから話を聞いて、問題用紙の1から4の中から、"
+                       "最もよいものを一つ選んでください。"),
+        "gist": (3, "問題3　問題3では、問題用紙に何も印刷されていません。"
+                    "この問題は、全体としてどんな内容かを聞く問題です。"
+                    "話の前に質問はありません。まず話を聞いてください。"
+                    "それから、質問とせんたくしを聞いて、1から4の中から、"
+                    "最もよいものを一つ選んでください。"),
+        "listen4": (4, "問題4　問題4では、問題用紙に何も印刷されていません。"
+                       "まず文を聞いてください。それから、それに対する返事を聞いて、"
+                       "1から3の中から、最もよいものを一つ選んでください。"),
+        "listen5a": (5, "問題5　問題5では、長めの話を聞きます。"
+                        "問題用紙にメモをとってもかまいません。"),
+        "listen5b": (5, "問題5　問題5では、長めの話を聞きます。"
+                        "問題用紙にメモをとってもかまいません。"),
+    },
+    "n1": {
+        "reading": (1, "問題1　＿＿＿の言葉の読み方として最もよいものを、"
+                       "1・2・3・4から一つ選びなさい。"),
+        "context": (2, "問題2　（　　）に入れるのに最もよいものを、"
+                       "1・2・3・4から一つ選びなさい。"),
+        "paraphrase": (3, "問題3　＿＿＿の言葉に意味が最も近いものを、"
+                          "1・2・3・4から一つ選びなさい。"),
+        "usage": (4, "問題4　次の言葉の使い方として最もよいものを、"
+                     "1・2・3・4から一つ選びなさい。"),
+        "grammar": (5, "問題5　次の文の（　　）に入れるのに最もよいものを、"
+                       "1・2・3・4から一つ選びなさい。"),
+        "order": (6, "問題6　次の文の＿★＿に入る最もよいものを、"
+                     "1・2・3・4から一つ選びなさい。"),
+        "cloze": (7, "問題7　次の文章を読んで、文章全体の趣旨を踏まえて、"
+                     "【1】から【5】の中に入る最もよいものを、"
+                     "1・2・3・4から一つ選びなさい。"),
+        "short": (8, "問題8　次の文章を読んで、後の問いに対する答えとして"
+                     "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "mid": (9, "問題9　次の文章を読んで、後の問いに対する答えとして"
+                   "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "long": (10, "問題10　次の文章を読んで、後の問いに対する答えとして"
+                     "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "compare": (11, "問題11　次のAとBの文章を読んで、後の問いに対する答えとして"
+                        "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "essay": (12, "問題12　次の文章を読んで、後の問いに対する答えとして"
+                      "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "info": (13, "問題13　右のページを見て、下の問いに対する答えとして"
+                     "最もよいものを、1・2・3・4から一つ選びなさい。"),
+        "listen1": (1, "問題1　問題1では、まず質問を聞いてください。"
+                       "それから話を聞いて、問題用紙の1から4の中から、"
+                       "最もよいものを一つ選んでください。"),
+        "listen2": (2, "問題2　問題2では、まず質問を聞いてください。"
+                       "そのあと、問題用紙のせんたくしを読んでください。読む時間があります。"
+                       "それから話を聞いて、問題用紙の1から4の中から、"
+                       "最もよいものを一つ選んでください。"),
+        "gist": (3, "問題3　問題3では、問題用紙に何も印刷されていません。"
+                    "この問題は、全体としてどんな内容かを聞く問題です。"
+                    "話の前に質問はありません。まず話を聞いてください。"
+                    "それから、質問とせんたくしを聞いて、1から4の中から、"
+                    "最もよいものを一つ選んでください。"),
+        "listen4": (4, "問題4　問題4では、問題用紙に何も印刷されていません。"
+                       "まず文を聞いてください。それから、それに対する返事を聞いて、"
+                       "1から3の中から、最もよいものを一つ選んでください。"),
+        "listen5a": (5, "問題5　問題5では、長めの話を聞きます。"
+                        "問題用紙にメモをとってもかまいません。"),
+        "listen5b": (5, "問題5　問題5では、長めの話を聞きます。"
+                        "問題用紙にメモをとってもかまいません。"),
+    },
 }
 
-PASSAGE_KINDS = ("cloze", "short", "mid", "info")
+PASSAGE_KINDS = ("cloze", "short", "mid", "long", "compare",
+                 "essay", "info")
 
 
 # --------------------------------------------------------------------------
@@ -173,11 +351,13 @@ def item_key(kind, item):
     """What identifies a bank item, independent of where it is in the file."""
     if kind in ("reading", "orthography"):
         return item["w"] + "|" + item["s"]
-    if kind in ("context", "paraphrase", "grammar"):
+    if kind in ("context", "paraphrase", "grammar", "formation"):
         return item["s"]
+    if kind == "usage":
+        return item["w"]
     if kind == "order":
         return "".join(item["parts"])
-    if kind.startswith("listen"):
+    if kind == "gist" or kind.startswith("listen"):
         return (item.get("say") or item.get("scene")
                 or json.dumps(item.get("script"), ensure_ascii=False))
     return item["passage"]
@@ -287,8 +467,15 @@ def expand(level, kind, item, rng):
         return [_mcq(prompt, [right] + list(wrong),
                      item.get("n") or gloss_note(right, read))]
 
-    if kind in ("context", "paraphrase", "grammar"):
+    if kind in ("context", "paraphrase", "grammar", "formation"):
         return [_mcq(item["s"], item["ch"], item.get("n"))]
+
+    if kind == "usage":
+        # 用法. The word is the prompt and the four choices are whole
+        # sentences, only one of which uses it the way Japanese uses it.
+        # The other three are the point of the question: each is a sentence
+        # somebody learning the word from a glossary would happily write.
+        return [_mcq(item["w"], item["ch"], item.get("n"))]
 
     if kind == "order":
         # The four fragments in the order they belong, and which of the four
@@ -321,7 +508,7 @@ def expand(level, kind, item, rng):
                             passage=item["passage"]))
         return out
 
-    if kind in ("short", "mid", "info"):
+    if kind in PASSAGE_KINDS:
         return [_mcq(q["s"], q["ch"], q.get("n"), passage=item["passage"])
                 for q in item["qs"]]
 
@@ -334,6 +521,28 @@ def expand(level, kind, item, rng):
         node = _mcq(q, item["ch"], item.get("n"))
         node["script"] = script
         return [node]
+
+    if kind in ("gist", "listen5a"):
+        # 概要理解 and the single-question half of 統合理解. Nothing at all is
+        # printed: not the question, not the choices. You hear the talk, then
+        # you hear what is being asked, then you hear the four answers once.
+        # So the whole thing is script, and the prompt is empty on purpose -
+        # printing the question here would hand over the answer.
+        node = _mcq("", item["ch"], item.get("n"))
+        node["_spoken_pre"] = [list(r) for r in item["script"]]
+        node["_spoken_choices"] = item["q"]
+        return [node]
+
+    if kind == "listen5b":
+        # The other half of 統合理解: one long talk, then two questions whose
+        # choices are printed. Both carry the talk, so either can replay it.
+        script = [list(r) for r in item["script"]]
+        out = []
+        for q in item["qs"]:
+            node = _mcq(q["q"], q["ch"], q.get("n"))
+            node["script"] = [list(r) for r in script]
+            out.append(node)
+        return out
 
     if kind == "listen3":
         # 発話表現. The real paper shows a picture and an arrow at the person
@@ -381,9 +590,13 @@ def make_questions(level, kind, items, rng):
             # 問題3 and 問題4 read the choices aloud, numbered. The numbers
             # have to match the order they are printed in, so this waits
             # for the shuffle.
+            pre = q.pop("_spoken_pre", None)
             opener = q.pop("_spoken_choices", None)
-            if opener is not None:
-                q["script"] = [["", opener]] + [
+            if pre or opener is not None:
+                lines = [list(r) for r in (pre or [])]
+                if opener is not None:
+                    lines.append(["", opener])
+                q["script"] = lines + [
                     [str(j + 1), c] for j, c in enumerate(q["choices"])]
             q["category"] = CATEGORY[kind]
             q["instruction"] = instruction
@@ -527,6 +740,39 @@ def build(level):
     return papers
 
 
+# Latin and Cyrillic letters do appear in a real paper - ABC in a diagram,
+# a company name, 5,300円 - but they appear in the passage, never in the
+# stem of a vocabulary item or in one of its four choices. Where they turn
+# up there it is a note-to-self that never got written over, and it is
+# invisible in review because the eye reads past a word it understands.
+# Three Latin letters or more, because one or two are how a real paper writes
+# the A and B of a comparison, 30GB and 98cm; an all-capital run is let
+# through as an acronym. A single Cyrillic or Hangul letter is enough, because no paper
+# here has any business containing one - and one letter is exactly how it
+# hides, in the middle of a word the eye reads straight past.
+STRAY = re.compile(r"[A-Za-z]{3,}|[\u0400-\u04ff\uac00-\ud7af]")
+
+
+def stray_letters():
+    """Any composed question whose stem or choices are not Japanese."""
+    out = []
+    for fn in sorted(os.listdir(OUT)):
+        if not fn.endswith(".json"):
+            continue
+        exam = json.load(io.open(os.path.join(OUT, fn), encoding="utf-8"))
+        for part in exam["parts"]:
+            for q in part["questions"]:
+                # <u>, <br> and the table in an information-search question
+                # are ours; what is left of the text has to be Japanese.
+                strip = lambda t: re.sub(r"</?[a-z]+[^>]*>", "", t or "")
+                texts = [strip(q.get("prompt")), strip(q.get("passage"))]
+                for text in texts + list(q["choices"]):
+                    for run in STRAY.findall(text):
+                        if not run.isupper():
+                            out.append((exam["id"], text[:50]))
+    return out
+
+
 def duplicates():
     """Any question that ended up in more than one paper.
 
@@ -567,11 +813,16 @@ def main():
     global DEAL_STATE
     DEAL_STATE = read_deal()
     total = 0
-    for level in ("n5", "n4"):
+    for level in ("n5", "n4", "n3", "n2", "n1"):
         total += build(level)
     io.open(DEAL, "w", encoding="utf-8").write(
         json.dumps(DEAL_STATE, ensure_ascii=False, indent=1))
     print("wrote %d papers" % total)
+    stray = stray_letters()
+    if stray:
+        print("!! %d question(s) carry non-Japanese text:" % len(stray))
+        for exam_id, text in stray:
+            print("   %s: %s" % (exam_id, text))
     repeats = duplicates()
     if repeats:
         print("!! %d question(s) appear in more than one paper:" % len(repeats))

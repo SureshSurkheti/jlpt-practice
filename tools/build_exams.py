@@ -654,6 +654,59 @@ def load_manual():
 # build
 # --------------------------------------------------------------------------
 
+MONDAI_NUM = re.compile(r"(?:\u554f\u984c|\u3082\u3093\u3060\u3044|\u9593\u984c)\s*\|?\s*(\d+)")
+
+
+def split_grammar_reading(level, parts):
+    """Rescue a 文法・読解 booklet the source declared as all grammar.
+
+    Each question in the source pages carries a declared type, and that is
+    what the category comes from. One page has it wrong: every question in
+    n4-practice-1's second booklet is declared grammar, including 問題4, 5
+    and 6, which are 短文, 中文 and 情報検索. The paper reads correctly - the
+    player groups by instruction, so the three 読解 問題 print as their own
+    sections - but the index counts categories, so the library said the
+    paper had no reading section, and picking Reading in the setup screen
+    skipped ten questions that were sitting right there.
+
+    The fix is deliberately narrow. It fires only when a whole booklet
+    declares a single category, which is the signature of a page that never
+    made the split at all rather than one that made it differently: at N3,
+    N4 and N5 that booklet is always 文法 for its first three 問題 and 読解
+    for the rest. Where the source did split the booklet, its answer is kept
+    - two papers number their 問題 straight through the paper instead of
+    restarting, and second-guessing them would break both.
+
+    Returns the number of questions moved.
+    """
+    if level not in ("N3", "N4", "N5"):
+        return 0
+    part = next((p for p in parts if p["id"] == "grammar-reading"), None)
+    if not part:
+        return 0
+    if set(q["category"] for q in part["questions"]) != {"grammar"}:
+        return 0
+
+    order = []
+    for q in part["questions"]:
+        m = MONDAI_NUM.search(q.get("instruction") or "")
+        num = int(m.group(1)) if m else None
+        if num not in order:
+            order.append(num)
+    if len(order) <= 3:
+        return 0
+
+    reading = set(order[3:])
+    moved = 0
+    for q in part["questions"]:
+        m = MONDAI_NUM.search(q.get("instruction") or "")
+        num = int(m.group(1)) if m else None
+        if num in reading:
+            q["category"] = "reading"
+            moved += 1
+    return moved
+
+
 PART_ORDER = {"vocabulary": 0, "grammar-reading": 1, "listening": 2}
 PART_LABEL = {
     "vocabulary": "Vocabulary (文字・語彙)",
@@ -707,6 +760,16 @@ def main():
                 "source": rel,
                 "questions": questions,
             })
+
+        moved = split_grammar_reading(level, parts)
+        if moved:
+            counts = defaultdict(int)
+            for p in parts:
+                for q in p["questions"]:
+                    counts[q["category"]] += 1
+            warnings.append(
+                f"{exam_id}: booklet declared all-grammar; {moved} question(s) "
+                f"re-read as 読解 from the 問題 they sit in")
 
         total = sum(len(p["questions"]) for p in parts)
         if total == 0:
