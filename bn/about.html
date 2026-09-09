@@ -119,6 +119,18 @@
            as notices rather than as the body of the page. -->
       <div class="about-notices">
         <div class="about-notes-col">
+          <!-- Who to write to, on its own and above the fine print. The name
+               was buried in the credits and the address only appeared inside
+               the takedown paragraph, so the two things a reader most often
+               wants from an About page were the two hardest to find on it.
+               The address is written as surkhetisuresh123@gmail.com and substituted at build
+               time - see finish_html() - so it lives in exactly one place. -->
+          <section class="about-plain about-who">
+            <h2 data-i18n="about.whoTitle">এই সাইট কে চালায়</h2>
+            <p data-i18n="about.whoBody">JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি।</p>
+            <p><a class="text-link" href="mailto:surkhetisuresh123@gmail.com">surkhetisuresh123@gmail.com</a></p>
+          </section>
+
           <section class="about-plain about-hosting">
             <p data-i18n="about.p3">শ্রবণ অডিও Google Drive থেকে এবং পরীক্ষার চিত্রগুলো Internet Archive থেকে আসে, তাই এই দুই অংশে ইন্টারনেট লাগে — আর অন্য যেকোনো এমবেড করা ফাইলের মতোই ওই সেবাগুলো অনুরোধটি দেখে।</p>
           </section>
@@ -195,14 +207,15 @@
     
       <div class="footer-legal">
         <div class="container footer-bottom">
-          <div>© 2026 JLPT Practice</div>
+          <div>&copy; 2026 JLPT Practice.
+            <span data-i18n="footer.rights">সর্বস্বত্ব সংরক্ষিত।</span></div>
         </div>
       </div>
     </footer>
 
     <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
-    <script defer src="/assets/i18n/en.js?v=3802a6d7"></script>
-    <script defer src="/assets/i18n/bn.js?v=08e04a49"></script>
+    <script defer src="/assets/i18n/en.js?v=808292cf"></script>
+    <script defer src="/assets/i18n/bn.js?v=cf72b0b4"></script>
     <script defer src="/assets/js/site.js?v=313ea7fb"></script>
   </body>
 </html>

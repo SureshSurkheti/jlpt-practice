@@ -10,6 +10,8 @@
    ========================================================================== */
 
 I18N.register("en", {
+  "about.whoTitle": "Who runs this site",
+  "about.whoBody": "JLPT Practice is built and maintained by Suresh Surkheti.",
   "exam.noRecording": "No recording",
   "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
   "exam.missingPartsGo": "Sit the {part} booklet from {paper} instead",
@@ -197,6 +199,7 @@ I18N.register("en", {
   "study.kanjiMissing": "That kanji is not in this list",
   "study.kanjiMissingBody": "Pick a character from the list, or try another level.",
   "lang.label": "Language",
+  "footer.rights": "All rights reserved.",
   "footer.tagline": "Study smarter. Live better in Japan.",
   "footer.colPractice": "Practice",
   "footer.colStudy": "Study",
@@ -450,6 +453,9 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
+  "about.whoTitle": "このサイトの運営者",
+  "about.whoBody": "JLPT Practice は Suresh Surkheti が制作・運営しています。",
+  "footer.rights": "無断転載を禁じます。",
   "exam.noRecording": "音声なし",
   "exam.missingParts": "この回に含まれていない科目: {parts}。これらの問題は出典元で公開されなかったため、この回にはありません。",
   "exam.missingPartsGo": "かわりに{paper}の{part}を受ける",
@@ -822,6 +828,9 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
+  "about.whoTitle": "Ai điều hành trang này",
+  "about.whoBody": "JLPT Practice do Suresh Surkheti xây dựng và duy trì.",
+  "footer.rights": "Bảo lưu mọi quyền.",
   "exam.noRecording": "Không có bản ghi",
   "exam.missingParts": "Không có trong kỳ thi này: {parts}. Những câu hỏi đó chưa từng được đăng ở nguồn của các đề này, nên đề thiếu phần đó.",
   "exam.missingPartsGo": "Làm phần {part} của {paper} thay thế",
@@ -1194,6 +1203,9 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
+  "about.whoTitle": "यो साइट कसले चलाउँछ",
+  "about.whoBody": "JLPT Practice सुरेश सुर्खेतीले बनाएका र सञ्चालन गर्ने गरेका हुन्।",
+  "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रेकर्डिङ छैन",
   "exam.missingParts": "यस परीक्षामा छैन: {parts}। ती प्रश्नहरू यी पेपरहरूको स्रोतमा कहिल्यै प्रकाशित भएनन्, त्यसैले यो खण्ड छुटेको छ।",
   "exam.missingPartsGo": "सट्टामा {paper} को {part} भाग गर्नुहोस्",
@@ -1566,6 +1578,9 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
+  "about.whoTitle": "本站由谁运营",
+  "about.whoBody": "JLPT Practice 由 Suresh Surkheti 开发并维护。",
+  "footer.rights": "版权所有。",
   "exam.noRecording": "无录音",
   "exam.missingParts": "本次考试缺少：{parts}。这些题目在本站资料来源处从未公开，因此该部分不在此卷中。",
   "exam.missingPartsGo": "改做 {paper} 的{part}部分",
@@ -1937,6 +1952,9 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
+  "about.whoTitle": "이 사이트 운영자",
+  "about.whoBody": "JLPT Practice는 Suresh Surkheti가 만들고 운영합니다.",
+  "footer.rights": "모든 권리 보유.",
   "exam.noRecording": "음성 없음",
   "exam.missingParts": "이 회차에 없는 과목: {parts}. 해당 문제는 출처에 공개된 적이 없어 이 시험지에는 없습니다.",
   "exam.missingPartsGo": "대신 {paper}의 {part} 파트를 풀기",
@@ -2308,6 +2326,9 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
+  "about.whoTitle": "Siapa yang mengelola situs ini",
+  "about.whoBody": "JLPT Practice dibuat dan dikelola oleh Suresh Surkheti.",
+  "footer.rights": "Hak cipta dilindungi undang-undang.",
   "exam.noRecording": "Tidak ada rekaman",
   "exam.missingParts": "Tidak ada di sesi ini: {parts}. Soal-soal itu tidak pernah diterbitkan di sumber naskah ini, jadi bagian tersebut tidak ada.",
   "exam.missingPartsGo": "Kerjakan bagian {part} dari {paper}",
@@ -2679,6 +2700,9 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
+  "about.whoTitle": "Sino ang nagpapatakbo ng site na ito",
+  "about.whoBody": "Ang JLPT Practice ay ginawa at pinapanatili ni Suresh Surkheti.",
+  "footer.rights": "Nakalaan ang lahat ng karapatan.",
   "exam.noRecording": "Walang recording",
   "exam.missingParts": "Wala sa pagsusulit na ito: {parts}. Hindi kailanman nailathala ang mga tanong na iyon sa pinagmulan ng mga papel na ito, kaya kulang ang bahaging iyon.",
   "exam.missingPartsGo": "Sagutan na lang ang {part} mula sa {paper}",
@@ -3050,6 +3074,9 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
+  "about.whoTitle": "Quem mantém este site",
+  "about.whoBody": "O JLPT Practice é criado e mantido por Suresh Surkheti.",
+  "footer.rights": "Todos os direitos reservados.",
   "exam.noRecording": "Sem gravação",
   "exam.missingParts": "Não está nesta aplicação: {parts}. Essas questões nunca foram publicadas na origem destas provas, então a prova está sem essa seção.",
   "exam.missingPartsGo": "Faça a seção de {part} de {paper}",
@@ -3421,6 +3448,9 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
+  "about.whoTitle": "यह साइट कौन चलाता है",
+  "about.whoBody": "JLPT Practice को सुरेश सुर्खेती बनाते और चलाते हैं।",
+  "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रिकॉर्डिंग नहीं",
   "exam.missingParts": "इस सत्र में नहीं है: {parts}। ये प्रश्न इन पेपरों के स्रोत पर कभी प्रकाशित नहीं हुए, इसलिए यह खंड यहाँ नहीं है।",
   "exam.missingPartsGo": "इसके बजाय {paper} का {part} भाग करें",
@@ -3792,6 +3822,9 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
+  "about.whoTitle": "এই সাইট কে চালায়",
+  "about.whoBody": "JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি।",
+  "footer.rights": "সর্বস্বত্ব সংরক্ষিত।",
   "exam.noRecording": "রেকর্ডিং নেই",
   "exam.missingParts": "এই পরীক্ষায় নেই: {parts}। এই প্রশ্নগুলি এই পেপারগুলির উৎসে কখনও প্রকাশিত হয়নি, তাই অংশটি এখানে নেই।",
   "exam.missingPartsGo": "বদলে {paper}-এর {part} অংশটি দিন",
@@ -4163,6 +4196,9 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
+  "about.whoTitle": "මෙම අඩවිය කවුරුන් විසින්ද",
+  "about.whoBody": "JLPT Practice ගොඩනඟා පවත්වාගෙන යනු ලබන්නේ Suresh Surkheti විසිනි.",
+  "footer.rights": "සියලුම හිමිකම් ඇවිරිණි.",
   "exam.noRecording": "පටිගත කිරීමක් නැත",
   "exam.missingParts": "මෙම වාරයේ නොමැත: {parts}. එම ප්‍රශ්න මෙම ප්‍රශ්න පත්‍රවල මූලාශ්‍රයේ කිසිදා පළ නොවූ නිසා එම කොටස මෙහි නැත.",
   "exam.missingPartsGo": "ඒ වෙනුවට {paper} හි {part} කොටස කරන්න",

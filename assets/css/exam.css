@@ -2038,7 +2038,20 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2px 14px;
-  margin-top: 2px;
+  /* All of the card's slack, above this line and nowhere else.
+
+     The five descriptions are not the same length: N2 and N1 run to three
+     lines where N5, N4 and N3 run to two. With the slack below the counts,
+     "35 papers / 3,675 questions" sat 19px lower on those two cards than on
+     the other three and left 11px above the button instead of 31 - a row of
+     five that agreed at every edge and disagreed everywhere between them.
+
+     So the top block hangs from the top and the bottom block hangs from the
+     bottom, and the difference collects in the middle, where it is empty
+     card and nobody can see it. No line count is assumed, which matters:
+     the description is translated, and a language that needs four lines
+     would break any fixed height written here. */
+  margin-top: auto;
   margin-bottom: 4px;
   color: var(--muted);
   font-size: 0.78rem;
@@ -2058,14 +2071,12 @@
    bar in the level's colour that names the action. The arrow steps right
    under the pointer; the bar answers the press. */
 .lvcard-go {
-  /* Five descriptions of two to four lines each left five buttons sitting at
-     five different heights across the row. */
-  margin-top: auto;
+  /* Sits directly under the counts; the slack that used to be pushed in
+     here is now taken above them - see .lvcard-facts. */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: auto;
   padding: 11px 14px;
   border-radius: 12px;
   background: var(--level-color, var(--blue));

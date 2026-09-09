@@ -477,6 +477,9 @@ def parse_source(path):
 
 MANUAL_DIR = os.path.join(ROOT, "data", "exams-manual")
 
+# "n3-practice-12" and "practice-2" alike: what matters is the number.
+PRACTICE_NUM = re.compile(r"practice-(\d+)$")
+
 REQUIRED_Q = ("prompt", "choices", "answer")
 
 
@@ -865,6 +868,23 @@ def main():
                 + audio_coverage(p["questions"]))) for p in exam["parts"]],
             "sortKey": exam["period"],
         })
+
+    # The index is sorted as text, which is exactly right for a dated paper:
+    # "2024-12" > "2024-07" > "2018-12" is newest first. It is exactly wrong
+    # for a numbered one, because "9" > "18" as text - so the library counted
+    # down 9, 8, 7 ... 3 and then started again at 18, 17 ... 10, at every
+    # level. Padding the number makes the text comparison agree with the
+    # numeric one.
+    #
+    # The two papers that came in through the archive rather than the
+    # composer wrote the key as "practice-1" with no level prefix, which put
+    # them above every other paper at their level because "p" sorts after
+    # "n". The prefix is dropped from all of them here instead: the sort is
+    # already grouped by level, so it was never carrying anything.
+    for entry in index:
+        found = PRACTICE_NUM.search(entry.get("sortKey") or "")
+        if found:
+            entry["sortKey"] = "practice-%04d" % int(found.group(1))
 
     index.sort(key=lambda e: (e["level"], e["sortKey"]), reverse=True)
     with open(os.path.join(OUT_DIR, "index.json"), "w", encoding="utf-8") as f:

@@ -120,6 +120,18 @@
            as notices rather than as the body of the page. -->
       <div class="about-notices">
         <div class="about-notes-col">
+          <!-- Who to write to, on its own and above the fine print. The name
+               was buried in the credits and the address only appeared inside
+               the takedown paragraph, so the two things a reader most often
+               wants from an About page were the two hardest to find on it.
+               The address is written as surkhetisuresh123@gmail.com and substituted at build
+               time - see finish_html() - so it lives in exactly one place. -->
+          <section class="about-plain about-who">
+            <h2 data-i18n="about.whoTitle">이 사이트 운영자</h2>
+            <p data-i18n="about.whoBody">JLPT Practice는 Suresh Surkheti가 만들고 운영합니다.</p>
+            <p><a class="text-link" href="mailto:surkhetisuresh123@gmail.com">surkhetisuresh123@gmail.com</a></p>
+          </section>
+
           <section class="about-plain about-hosting">
             <p data-i18n="about.p3">청해 음성은 Google 드라이브에서, 시험 도판은 Internet Archive에서 불러옵니다. 이 두 부분은 인터넷 연결이 필요하며, 다른 임베드 파일과 마찬가지로 해당 서비스에 요청이 남습니다.</p>
           </section>
@@ -196,14 +208,15 @@
     
       <div class="footer-legal">
         <div class="container footer-bottom">
-          <div>© 2026 JLPT Practice</div>
+          <div>&copy; 2026 JLPT Practice.
+            <span data-i18n="footer.rights">모든 권리 보유.</span></div>
         </div>
       </div>
     </footer>
 
     <script defer src="/assets/js/i18n.js?v=b87e0299"></script>
-    <script defer src="/assets/i18n/en.js?v=3802a6d7"></script>
-    <script defer src="/assets/i18n/ko.js?v=053476ae"></script>
+    <script defer src="/assets/i18n/en.js?v=808292cf"></script>
+    <script defer src="/assets/i18n/ko.js?v=1f82b2a4"></script>
     <script defer src="/assets/js/site.js?v=313ea7fb"></script>
   </body>
 </html>

@@ -24,6 +24,7 @@ Run:  python3 tools/build_static.py
 """
 
 import hashlib
+import datetime
 import io
 import json
 import os
@@ -219,6 +220,11 @@ def finish_html(html, table=None, en=None):
     and deferred they run in the same order after the document is parsed
     and the first paint no longer waits."""
     html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
+    # The year in the copyright line was typed into all eleven source pages
+    # and would have gone stale on the same night every year - which matters
+    # more now that the line makes an assertion rather than just naming the
+    # site. It is the build's business, not the author's.
+    html = html.replace("%%YEAR%%", str(datetime.date.today().year))
     html = ASSET_REF.sub(
         lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), m.group(3),
                                     asset_version(m.group(3))), html)

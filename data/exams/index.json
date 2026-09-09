@@ -1,342 +1,6 @@
 {
  "exams": [
   {
-   "id": "n5-practice-9",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 9",
-   "period": "n5-practice-9",
-   "periodLabel": "Practice Test 9",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-9"
-  },
-  {
-   "id": "n5-practice-8",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 8",
-   "period": "n5-practice-8",
-   "periodLabel": "Practice Test 8",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-8"
-  },
-  {
-   "id": "n5-practice-7",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 7",
-   "period": "n5-practice-7",
-   "periodLabel": "Practice Test 7",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-7"
-  },
-  {
-   "id": "n5-practice-6",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 6",
-   "period": "n5-practice-6",
-   "periodLabel": "Practice Test 6",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-6"
-  },
-  {
-   "id": "n5-practice-5",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 5",
-   "period": "n5-practice-5",
-   "periodLabel": "Practice Test 5",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-5"
-  },
-  {
-   "id": "n5-practice-4",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 4",
-   "period": "n5-practice-4",
-   "periodLabel": "Practice Test 4",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-4"
-  },
-  {
-   "id": "n5-practice-3",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 3",
-   "period": "n5-practice-3",
-   "periodLabel": "Practice Test 3",
-   "totalQuestions": 67,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 5,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 22,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-3"
-  },
-  {
-   "id": "n5-practice-2",
-   "origin": "practice",
-   "level": "N5",
-   "title": "JLPT N5 — Practice Test 2",
-   "period": "n5-practice-2",
-   "periodLabel": "Practice Test 2",
-   "totalQuestions": 69,
-   "categoryCounts": {
-    "vocabulary": 21,
-    "grammar": 17,
-    "reading": 7,
-    "listening": 24
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 21,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 24,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 24,
-     "audio": 24,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n5-practice-2"
-  },
-  {
    "id": "n5-practice-18",
    "origin": "practice",
    "level": "N5",
@@ -376,7 +40,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-18"
+   "sortKey": "practice-0018"
   },
   {
    "id": "n5-practice-17",
@@ -418,7 +82,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-17"
+   "sortKey": "practice-0017"
   },
   {
    "id": "n5-practice-16",
@@ -460,7 +124,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-16"
+   "sortKey": "practice-0016"
   },
   {
    "id": "n5-practice-15",
@@ -502,7 +166,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-15"
+   "sortKey": "practice-0015"
   },
   {
    "id": "n5-practice-14",
@@ -544,7 +208,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-14"
+   "sortKey": "practice-0014"
   },
   {
    "id": "n5-practice-13",
@@ -586,7 +250,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-13"
+   "sortKey": "practice-0013"
   },
   {
    "id": "n5-practice-12",
@@ -628,7 +292,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-12"
+   "sortKey": "practice-0012"
   },
   {
    "id": "n5-practice-11",
@@ -670,7 +334,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-11"
+   "sortKey": "practice-0011"
   },
   {
    "id": "n5-practice-10",
@@ -712,7 +376,343 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-10"
+   "sortKey": "practice-0010"
+  },
+  {
+   "id": "n5-practice-9",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 9",
+   "period": "n5-practice-9",
+   "periodLabel": "Practice Test 9",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0009"
+  },
+  {
+   "id": "n5-practice-8",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 8",
+   "period": "n5-practice-8",
+   "periodLabel": "Practice Test 8",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0008"
+  },
+  {
+   "id": "n5-practice-7",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 7",
+   "period": "n5-practice-7",
+   "periodLabel": "Practice Test 7",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0007"
+  },
+  {
+   "id": "n5-practice-6",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 6",
+   "period": "n5-practice-6",
+   "periodLabel": "Practice Test 6",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0006"
+  },
+  {
+   "id": "n5-practice-5",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 5",
+   "period": "n5-practice-5",
+   "periodLabel": "Practice Test 5",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0005"
+  },
+  {
+   "id": "n5-practice-4",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 4",
+   "period": "n5-practice-4",
+   "periodLabel": "Practice Test 4",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0004"
+  },
+  {
+   "id": "n5-practice-3",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 3",
+   "period": "n5-practice-3",
+   "periodLabel": "Practice Test 3",
+   "totalQuestions": 67,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 22,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0003"
+  },
+  {
+   "id": "n5-practice-2",
+   "origin": "practice",
+   "level": "N5",
+   "title": "JLPT N5 — Practice Test 2",
+   "period": "n5-practice-2",
+   "periodLabel": "Practice Test 2",
+   "totalQuestions": 69,
+   "categoryCounts": {
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 7,
+    "listening": 24
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 21,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 24,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0002"
   },
   {
    "id": "n5-practice-1",
@@ -754,376 +754,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n5-practice-1"
-  },
-  {
-   "id": "n4-practice-2",
-   "origin": "archive",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 2",
-   "period": "practice-2",
-   "periodLabel": "Practice Test 2",
-   "totalQuestions": 98,
-   "categoryCounts": {
-    "vocabulary": 35,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "practice-2"
-  },
-  {
-   "id": "n4-practice-1",
-   "origin": "archive",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 1",
-   "period": "practice-1",
-   "periodLabel": "Practice Test 1",
-   "totalQuestions": 69,
-   "categoryCounts": {
-    "vocabulary": 34,
-    "grammar": 25,
-    "reading": 10
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 34,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    }
-   ],
-   "sortKey": "practice-1"
-  },
-  {
-   "id": "n4-practice-9",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 9",
-   "period": "n4-practice-9",
-   "periodLabel": "Practice Test 9",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-9"
-  },
-  {
-   "id": "n4-practice-8",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 8",
-   "period": "n4-practice-8",
-   "periodLabel": "Practice Test 8",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-8"
-  },
-  {
-   "id": "n4-practice-7",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 7",
-   "period": "n4-practice-7",
-   "periodLabel": "Practice Test 7",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-7"
-  },
-  {
-   "id": "n4-practice-6",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 6",
-   "period": "n4-practice-6",
-   "periodLabel": "Practice Test 6",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-6"
-  },
-  {
-   "id": "n4-practice-5",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 5",
-   "period": "n4-practice-5",
-   "periodLabel": "Practice Test 5",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-5"
-  },
-  {
-   "id": "n4-practice-4",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 4",
-   "period": "n4-practice-4",
-   "periodLabel": "Practice Test 4",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-4"
-  },
-  {
-   "id": "n4-practice-3",
-   "origin": "practice",
-   "level": "N4",
-   "title": "JLPT N4 — Practice Test 3",
-   "period": "n4-practice-3",
-   "periodLabel": "Practice Test 3",
-   "totalQuestions": 93,
-   "categoryCounts": {
-    "vocabulary": 30,
-    "grammar": 25,
-    "reading": 10,
-    "listening": 28
-   },
-   "parts": [
-    {
-     "id": "vocabulary",
-     "label": "Vocabulary (文字・語彙)",
-     "count": 30,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "grammar-reading",
-     "label": "Grammar & Reading (文法・読解)",
-     "count": 35,
-     "audio": 0,
-     "sections": 0,
-     "audioSections": 0
-    },
-    {
-     "id": "listening",
-     "label": "Listening (聴解)",
-     "count": 28,
-     "audio": 28,
-     "sections": 4,
-     "audioSections": 4
-    }
-   ],
-   "sortKey": "n4-practice-3"
+   "sortKey": "practice-0001"
   },
   {
    "id": "n4-practice-18",
@@ -1165,7 +796,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-18"
+   "sortKey": "practice-0018"
   },
   {
    "id": "n4-practice-17",
@@ -1207,7 +838,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-17"
+   "sortKey": "practice-0017"
   },
   {
    "id": "n4-practice-16",
@@ -1249,7 +880,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-16"
+   "sortKey": "practice-0016"
   },
   {
    "id": "n4-practice-15",
@@ -1291,7 +922,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-15"
+   "sortKey": "practice-0015"
   },
   {
    "id": "n4-practice-14",
@@ -1333,7 +964,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-14"
+   "sortKey": "practice-0014"
   },
   {
    "id": "n4-practice-13",
@@ -1375,7 +1006,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-13"
+   "sortKey": "practice-0013"
   },
   {
    "id": "n4-practice-12",
@@ -1417,7 +1048,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-12"
+   "sortKey": "practice-0012"
   },
   {
    "id": "n4-practice-11",
@@ -1459,7 +1090,7 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-11"
+   "sortKey": "practice-0011"
   },
   {
    "id": "n4-practice-10",
@@ -1501,7 +1132,376 @@
      "audioSections": 4
     }
    ],
-   "sortKey": "n4-practice-10"
+   "sortKey": "practice-0010"
+  },
+  {
+   "id": "n4-practice-9",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 9",
+   "period": "n4-practice-9",
+   "periodLabel": "Practice Test 9",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0009"
+  },
+  {
+   "id": "n4-practice-8",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 8",
+   "period": "n4-practice-8",
+   "periodLabel": "Practice Test 8",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0008"
+  },
+  {
+   "id": "n4-practice-7",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 7",
+   "period": "n4-practice-7",
+   "periodLabel": "Practice Test 7",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0007"
+  },
+  {
+   "id": "n4-practice-6",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 6",
+   "period": "n4-practice-6",
+   "periodLabel": "Practice Test 6",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0006"
+  },
+  {
+   "id": "n4-practice-5",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 5",
+   "period": "n4-practice-5",
+   "periodLabel": "Practice Test 5",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0005"
+  },
+  {
+   "id": "n4-practice-4",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 4",
+   "period": "n4-practice-4",
+   "periodLabel": "Practice Test 4",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0004"
+  },
+  {
+   "id": "n4-practice-3",
+   "origin": "practice",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 3",
+   "period": "n4-practice-3",
+   "periodLabel": "Practice Test 3",
+   "totalQuestions": 93,
+   "categoryCounts": {
+    "vocabulary": 30,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 30,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0003"
+  },
+  {
+   "id": "n4-practice-2",
+   "origin": "archive",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 2",
+   "period": "practice-2",
+   "periodLabel": "Practice Test 2",
+   "totalQuestions": 98,
+   "categoryCounts": {
+    "vocabulary": 35,
+    "grammar": 25,
+    "reading": 10,
+    "listening": 28
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 28,
+     "audio": 28,
+     "sections": 4,
+     "audioSections": 4
+    }
+   ],
+   "sortKey": "practice-0002"
+  },
+  {
+   "id": "n4-practice-1",
+   "origin": "archive",
+   "level": "N4",
+   "title": "JLPT N4 — Practice Test 1",
+   "period": "practice-1",
+   "periodLabel": "Practice Test 1",
+   "totalQuestions": 69,
+   "categoryCounts": {
+    "vocabulary": 34,
+    "grammar": 25,
+    "reading": 10
+   },
+   "parts": [
+    {
+     "id": "vocabulary",
+     "label": "Vocabulary (文字・語彙)",
+     "count": 34,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    },
+    {
+     "id": "grammar-reading",
+     "label": "Grammar & Reading (文法・読解)",
+     "count": 35,
+     "audio": 0,
+     "sections": 0,
+     "audioSections": 0
+    }
+   ],
+   "sortKey": "practice-0001"
   },
   {
    "id": "n3-practice-8",
@@ -1543,7 +1543,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n3-practice-8"
+   "sortKey": "practice-0008"
   },
   {
    "id": "n3-practice-7",
@@ -1585,7 +1585,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n3-practice-7"
+   "sortKey": "practice-0007"
   },
   {
    "id": "n3-practice-6",
@@ -1627,7 +1627,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n3-practice-6"
+   "sortKey": "practice-0006"
   },
   {
    "id": "n3-practice-5",
@@ -1669,7 +1669,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n3-practice-5"
+   "sortKey": "practice-0005"
   },
   {
    "id": "n3-practice-4",
@@ -1711,7 +1711,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n3-practice-4"
+   "sortKey": "practice-0004"
   },
   {
    "id": "n3-practice-3",
@@ -1753,7 +1753,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n3-practice-3"
+   "sortKey": "practice-0003"
   },
   {
    "id": "n3-2024-12",
@@ -2972,7 +2972,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n2-practice-8"
+   "sortKey": "practice-0008"
   },
   {
    "id": "n2-practice-7",
@@ -3014,7 +3014,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n2-practice-7"
+   "sortKey": "practice-0007"
   },
   {
    "id": "n2-practice-6",
@@ -3056,7 +3056,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n2-practice-6"
+   "sortKey": "practice-0006"
   },
   {
    "id": "n2-practice-5",
@@ -3098,7 +3098,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n2-practice-5"
+   "sortKey": "practice-0005"
   },
   {
    "id": "n2-practice-4",
@@ -3140,7 +3140,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n2-practice-4"
+   "sortKey": "practice-0004"
   },
   {
    "id": "n2-practice-3",
@@ -3182,7 +3182,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n2-practice-3"
+   "sortKey": "practice-0003"
   },
   {
    "id": "n2-2024-12",
@@ -4452,7 +4452,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n1-practice-8"
+   "sortKey": "practice-0008"
   },
   {
    "id": "n1-practice-7",
@@ -4494,7 +4494,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n1-practice-7"
+   "sortKey": "practice-0007"
   },
   {
    "id": "n1-practice-6",
@@ -4536,7 +4536,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n1-practice-6"
+   "sortKey": "practice-0006"
   },
   {
    "id": "n1-practice-5",
@@ -4578,7 +4578,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n1-practice-5"
+   "sortKey": "practice-0005"
   },
   {
    "id": "n1-practice-4",
@@ -4620,7 +4620,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n1-practice-4"
+   "sortKey": "practice-0004"
   },
   {
    "id": "n1-practice-3",
@@ -4662,7 +4662,7 @@
      "audioSections": 5
     }
    ],
-   "sortKey": "n1-practice-3"
+   "sortKey": "practice-0003"
   },
   {
    "id": "n1-2025-07",
