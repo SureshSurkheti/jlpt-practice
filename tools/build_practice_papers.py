@@ -371,11 +371,51 @@ def build(level):
     return papers
 
 
+def duplicates():
+    """Any question that ended up in more than one paper.
+
+    Each bank item is dealt once, so a repeat means the same question was
+    written into two different banks - a sentence that is both a 文脈規定
+    item and a 文法 item, say. That is a mistake in the bank, not in the
+    deal, and it is invisible until somebody sits both papers. The passage
+    is part of the key: two cloze blanks both printed as 【1】 with the same
+    four choices are different questions when they sit under different
+    passages.
+    """
+    seen = {}
+    repeats = []
+    for fn in sorted(os.listdir(OUT)):
+        if not fn.endswith(".json"):
+            continue
+        exam = json.load(io.open(os.path.join(OUT, fn), encoding="utf-8"))
+        for part in exam["parts"]:
+            for q in part["questions"]:
+                # 即時応答 prints nothing but its three choices, so two
+                # of them look identical on the page while being different
+                # questions - what is being asked is in the recording. The
+                # script is part of what makes the question.
+                key = (q.get("passage") or "",
+                       json.dumps(q.get("script") or "", ensure_ascii=False),
+                       q["prompt"], tuple(sorted(q["choices"])))
+                if key in seen:
+                    repeats.append((seen[key], exam["id"], q["prompt"][:40]))
+                else:
+                    seen[key] = exam["id"]
+    return repeats
+
+
 def main():
     total = 0
     for level in ("n5", "n4"):
         total += build(level)
     print("wrote %d papers" % total)
+    repeats = duplicates()
+    if repeats:
+        print("!! %d question(s) appear in more than one paper:" % len(repeats))
+        for a, b, prompt in repeats:
+            print("   %s and %s: %s" % (a, b, prompt))
+    else:
+        print("no question appears in more than one paper")
 
 
 if __name__ == "__main__":

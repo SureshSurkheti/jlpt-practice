@@ -1,7 +1,8 @@
 # JLPT Practice
 
-A JLPT study site for learners in Japan, built around **86 past papers
-(8,127 questions)** from N1–N5 that are played as timed, auto-scored exams.
+A JLPT study site for learners in Japan, built around **123 papers
+(11,520 questions)** from N1–N5 that are played as timed, auto-scored exams:
+89 archived sittings, and 34 written for this site in the same format.
 
 ## Run it
 
@@ -20,7 +21,7 @@ python3 -m http.server 5500
 | `index.html` | Home — progress overview and entry points |
 | `levels.html` | The five JLPT levels, with a mock-test button each |
 | `practice.html?lv=N2` | Per-level page: sections, modes, mock test |
-| `exams.html` | Library of all 86 past papers, filter by level, search by year |
+| `exams.html` | Library of all 123 papers, filter by level, search by year |
 | `exam.html?id=n2-2023-12` | The exam player |
 | `stats.html` | Progress and accuracy per level |
 | `about.html` | About the project |
@@ -31,7 +32,7 @@ python3 -m http.server 5500
 assets/css/styles.css        shared design tokens and site chrome
 assets/css/exam.css          exam player + exam library
 assets/js/i18n.js            translation engine (data-i18n, t(), no reload)
-assets/js/i18n-strings.js    171 UI strings x 12 languages
+assets/js/i18n-strings.js    419 UI strings x 12 languages
 assets/js/site.js            levels, practice page, progress store
 assets/js/exam-player.js     the exam: setup, one-page paper, marking
 assets/js/exams-browser.js   exam library listing
@@ -61,6 +62,34 @@ and gives an estimated JLPT scaled score with a section breakdown.
 You can add your own papers in `data/exams-manual/` — they are validated on
 build and labelled "Practice paper" so they are never confused with the
 archived sittings.
+
+## The papers written for this site
+
+N4 and N5 had two papers each. They now have **18 each**, because the archive
+holds hardly any at those levels and they are where most learners start.
+Thirty-two of them are composed rather than typed out: the questions live in
+item banks under `data/practice-bank/`, and `tools/build_practice_papers.py`
+deals them into papers of the published shape — 67 questions at N5, 93 at N4,
+across all three booklets.
+
+```bash
+python3 tools/build_practice_papers.py   # then the usual build chain
+```
+
+Two things the assembler does that a hand-written paper does not:
+
+- **It shuffles the choices.** The banks store the right answer first, because
+  a bank you can check by eye is a bank that gets checked. The first
+  hand-written paper shipped with all 21 answers in position 1 — you could
+  score 100% by always picking the first choice. Answers now land 289/287/
+  260/236 across the four positions at N5 and 403/383/398/304 at N4.
+- **It refuses to repeat itself.** Every item is dealt once, and the build
+  checks afterwards that no question — passage, script, prompt and choices —
+  appears in two papers anywhere in the library.
+
+The wrong readings in 問題1 and the wrong spellings in 問題2 are derived rather
+than typed; see the note at the top of `tools/vocab_gen.py` for how, and why
+there are only five rules.
 
 ## The home page notice
 
@@ -110,7 +139,7 @@ the paper's:
 Meanings are always English — they are the help, not the thing being tested —
 while the buttons and headings follow the language picker.
 
-83 of the 86 papers have one — every N1, N2 and N3 sitting. To rebuild, or to
+Every paper has one. To rebuild, or to
 extend it to the remaining N4 and N5 papers (edit `LEVELS` in the script):
 
 ```bash
@@ -125,8 +154,24 @@ sittings cannot simply be downloaded.
 
 ## Listening
 
-Listening plays in the page. The recordings are embedded from Google Drive,
-which needs a connection.
+**112 of the 123 papers can be listened to end to end**, by two different
+routes.
+
+The 80 archived sittings that kept their recordings embed them from Google
+Drive, which needs a connection. The 32 papers written for this site have no
+recording and never will — the recordings that exist belong to the people who
+made them — so their scripts are spoken instead, by the voice already
+installed on the device reading the page. Nothing is downloaded and nothing is
+hosted; it works with the tab offline. Two speakers get two different voices
+where the device has them.
+
+It is a synthetic voice and the page says so under every play button: this is
+not a recording of the real exam. Where the device has no Japanese voice at
+all — which happens on Android without TTS data installed — the play button is
+not drawn and the transcript opens by default, so the question is still
+answerable by reading.
+
+### The archived recordings
 
 This was broken until now, and the cause was not obvious: the archived pages
 embed each recording as a **Wayback-wrapped copy of the Drive preview page**,
@@ -173,25 +218,22 @@ tested.
   browser. There is no backend.
 
 
-gokakumichi.com — 合格道, "the road to passing". Distinctive, brandable, meaningful to learners, no trademark exposure. This is the one I'd register.
-shikenhall.com — 試験場, and it already matches your existing tagline "Examination hall", so your branding needs no change.
-nihongomock.com — least clever, clearest: says "mock tests" immediately, which helps a stranger who lands on it.
-
-
-
-Rewrite — for a Facebook or community group
+## Advertising copy
 
 Figures below are current as of the last build. Rebuild and re-check before
 posting: tools/build_static.py prints the paper and question counts.
+
+### For a Facebook or community group
 
 Free JLPT practice — full mock papers, N5 to N1
 
 No sign-up. No ads. Nothing to pay. Open it and start.
 
-📝 91 practice papers, 8,960 questions — N5 through N1, in the real JLPT format
-🔤 Every word of every question, with its reading and meaning — 114,966 of them
+📝 123 practice papers, 11,520 questions — N5 through N1, in the real JLPT format
+🆕 N5 and N4 now have 18 papers each — vocabulary, grammar, reading and listening, all three booklets
+🔤 Every word of every question, with its reading and meaning — 125,403 of them
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
-🎧 80 papers you can listen to end to end
+🎧 112 papers you can listen to end to end
 🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
 🇳🇵 N5 and N4 word meanings in Nepali — 1,753 words
 📚 9,639 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
@@ -201,36 +243,37 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 
 👉 https://nihongomock.com
 
-Shorter version — for a comment or reply
+### Shorter — for a comment or reply
 
-Free JLPT practice site — 91 full mock papers N5–N1, timed and auto-marked, 80 of them with listening. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+Free JLPT practice site — 123 full mock papers N5–N1, timed and auto-marked, 112 of them with listening. N5 and N4 have 18 papers each, all three booklets. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
 https://nihongomock.com
 
-One line — for X, Threads, a chat group
+### One line — for X, Threads, a chat group
 
-91 free JLPT mock papers, N5 to N1. Timed, auto-marked, and every word of every question glossed with its reading. No sign-up, no ads.
+123 free JLPT mock papers, N5 to N1 — 18 each at N5 and N4, listening included. Timed, auto-marked, every word glossed. No sign-up, no ads.
 https://nihongomock.com
 
-If you are posting again to a group that has seen it before, lead with what
-changed rather than the same list — a repost with no news reads as spam:
+### If the group has seen it before
 
-New on the free JLPT practice site: every word of every question now shows its reading and meaning — 114,966 across 91 papers. Plus a cover-the-answers mode on the vocabulary, kanji and grammar lists, so you can test yourself instead of just reading.
+A repost with no news reads as spam, so lead with what changed:
+
+New on the free JLPT practice site: N5 and N4 now have 18 full papers each, up from 2. Every one has all three booklets — 文字・語彙, 文法・読解 and 聴解 — and the listening is spoken aloud in the page, so you can actually sit it. 11,520 questions across 123 papers now.
 https://nihongomock.com
 
-Nepali version
+### Nepali
 
 नि:शुल्क JLPT अभ्यास — N5 देखि N1 सम्म
 
 दर्ता गर्नु पर्दैन। विज्ञापन छैन। पैसा तिर्नु पर्दैन।
 
-📝 ९१ अभ्यास प्रश्नपत्र, ८,९६० प्रश्न — वास्तविक JLPT ढाँचामा
+📝 १२३ अभ्यास प्रश्नपत्र, ११,५२० प्रश्न — वास्तविक JLPT ढाँचामा
+🆕 N5 र N4 मा अब १८-१८ वटा प्रश्नपत्र — शब्द, व्याकरण, पठन र श्रवण सबै
 🔤 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ
 ⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
-🎧 ८० प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने
+🎧 ११२ प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने
 🇳🇵 N5 र N4 का १,७५३ शब्दको अर्थ नेपालीमा
 📚 ९,६३९ शब्द, २,२११ कान्जी (लेख्ने क्रम सहित), २८० व्याकरण
 📱 मोबाइल र कम्प्युटर दुवैमा; इन्टरनेट बिना पनि चल्छ
 🔒 तपाईंको अङ्क तपाईंकै यन्त्रमा रहन्छ
 
 👉 https://nihongomock.com
-
