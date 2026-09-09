@@ -357,20 +357,6 @@
      "instruction": "問題3　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },
     {
-     "prompt": "父は　たばこを　やめました。",
-     "choices": [
-      "父は　たばこを　買いました。",
-      "父は　たばこが　好きです。",
-      "父は　もう　たばこを　すいません。",
-      "父は　まだ　たばこを　すいます。"
-     ],
-     "explanation": "やめる — to stop doing.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "この　やまは　のぼるのが　たいへんです。",
      "choices": [
       "この　やまには　のぼれません。",
@@ -425,40 +411,26 @@
      "answer": 3,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "その　かばんは　私の　ものでは　ありません。",
+     "choices": [
+      "その　かばんは　私のでは　ありません。",
+      "その　かばんは　新しいです。",
+      "その　かばんは　私のです。",
+      "その　かばんは　高いです。"
+     ],
+     "explanation": "私のものではない.",
+     "passage": null,
+     "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     }
    ]
   },
   {
    "id": "grammar-reading",
    "questions": [
-    {
-     "prompt": "かれは　もう　着いて　いる（　　）　です。",
-     "choices": [
-      "はず",
-      "もの",
-      "つもり",
-      "ところ"
-     ],
-     "explanation": "…はずだ — ought to be.",
-     "passage": null,
-     "answer": 1,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "ともだちに　あう（　　）　に　えきへ　行きました。",
-     "choices": [
-      "はず",
-      "ため",
-      "こと",
-      "よう"
-     ],
-     "explanation": "…ために.",
-     "passage": null,
-     "answer": 2,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
     {
      "prompt": "うちへ　帰る（　　）　に　スーパーへ　よりました。",
      "choices": [
@@ -638,6 +610,34 @@
      "explanation": "…つもりだ — intend to.",
      "passage": null,
      "answer": 1,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "毎日　運動する　（　　）　に　して　います。",
+     "choices": [
+      "もの",
+      "よう",
+      "こと",
+      "はず"
+     ],
+     "explanation": "…ようにしている.",
+     "passage": null,
+     "answer": 2,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "かのじょは　うたが　じょうず（　　）　ダンスも　じょうずです。",
+     "choices": [
+      "なので",
+      "だし",
+      "だから",
+      "なのに"
+     ],
+     "explanation": "…だし.",
+     "passage": null,
+     "answer": 2,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼は<u>しぶしぶ</u>引き受けた。",
-     "choices": [
-      "はっきり",
-      "よろこんで",
-      "すぐに",
-      "いやいや"
-     ],
-     "explanation": "しぶしぶ — reluctantly.",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その道具は<u>もはや</u>使えない。",
      "choices": [
       "もう",
@@ -421,6 +407,20 @@
       "気楽だ"
      ],
      "explanation": "のんき — easygoing.",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼は<u>ついでに</u>買ってきた。",
+     "choices": [
+      "急いで",
+      "わざわざ",
+      "こっそり",
+      "その用事のときに一緒に"
+     ],
+     "explanation": "ついでに — while at it.",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",

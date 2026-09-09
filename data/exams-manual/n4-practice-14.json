@@ -432,34 +432,6 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "かれは　まるで　こどもの（　　）です。",
-     "choices": [
-      "よう",
-      "そう",
-      "こと",
-      "はず"
-     ],
-     "explanation": "まるで…のよう.",
-     "passage": null,
-     "answer": 1,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "この　しごとは　やっても　やって（　　）　おわりません。",
-     "choices": [
-      "は",
-      "が",
-      "を",
-      "も"
-     ],
-     "explanation": "…ても…ても.",
-     "passage": null,
-     "answer": 4,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "ごはんを　食べた（　　）で、はを　みがきます。",
      "choices": [
       "とき",
@@ -638,6 +610,34 @@
      "explanation": "…の ほかに.",
      "passage": null,
      "answer": 1,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "ご案内は　わたし（　　）　いたします。",
+     "choices": [
+      "に",
+      "で",
+      "を",
+      "が"
+     ],
+     "explanation": "が singles out the doer.",
+     "passage": null,
+     "answer": 4,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "音楽を　聞き（　　）　勉強します。",
+     "choices": [
+      "ずに",
+      "なくて",
+      "ないで",
+      "ながら"
+     ],
+     "explanation": "…ながら.",
+     "passage": null,
+     "answer": 4,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

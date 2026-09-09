@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼女は<u>謙虚</u>だ。",
-     "choices": [
-      "えらそうにしない",
-      "しずかだ",
-      "おこりっぽい",
-      "自慢する"
-     ],
-     "explanation": "謙虚 — humble.",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "この機械は<u>めったに</u>故障しない。",
      "choices": [
       "ほとんど故障しない",
@@ -421,6 +407,20 @@
       "一つも"
      ],
      "explanation": "おおよそ — roughly.",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼は<u>几帳面</u>だ。",
+     "choices": [
+      "おおざっぱだ",
+      "だらしない",
+      "きちんとしている",
+      "のんびりしている"
+     ],
+     "explanation": "几帳面 — meticulous.",
      "passage": null,
      "answer": 3,
      "category": "vocabulary",

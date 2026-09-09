@@ -432,34 +432,6 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "駅に　着いた（　　）　電話して　ください。",
-     "choices": [
-      "ば",
-      "なら",
-      "と",
-      "ら"
-     ],
-     "explanation": "…たら — when.",
-     "passage": null,
-     "answer": 4,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "わたしは　あたらしい　パソコンが　（　　）　です。",
-     "choices": [
-      "ほしがる",
-      "ください",
-      "ほしい",
-      "したい"
-     ],
-     "explanation": "…がほしい for oneself.",
-     "passage": null,
-     "answer": 3,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "かさは　持って　行かなくても　（　　）　です。",
      "choices": [
       "ほしい",
@@ -636,6 +608,34 @@
       "ほど"
      ],
      "explanation": "…ほど…ない.",
+     "passage": null,
+     "answer": 4,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "あさごはんを　食べ（　　）　学校へ　行きました。",
+     "choices": [
+      "ずに",
+      "ないで　は",
+      "なくて",
+      "なく　て"
+     ],
+     "explanation": "…ずに — without eating.",
+     "passage": null,
+     "answer": 1,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "ひまな　とき　本を　読ん（　　）　音楽を　聞い（　　）　します。",
+     "choices": [
+      "でも…ても",
+      "ても…でも",
+      "たり…だり",
+      "だり…たり"
+     ],
+     "explanation": "…たり…たりする.",
      "passage": null,
      "answer": 4,
      "category": "grammar",

@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "会場は<u>がらがら</u>だった。",
-     "choices": [
-      "とても広かった",
-      "うるさかった",
-      "ほとんど人がいなかった",
-      "とても混んでいた"
-     ],
-     "explanation": "がらがら — nearly empty.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その知らせを聞いて<u>ほっとした</u>。",
      "choices": [
       "がっかりした",
@@ -423,6 +409,20 @@
      "explanation": "びっくり = おどろく.",
      "passage": null,
      "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "田中さんはいつも<u>のんきな</u>ことを言っている。",
+     "choices": [
+      "気楽な",
+      "まじめな",
+      "みじかい",
+      "おかしな"
+     ],
+     "explanation": "のんき — easygoing.",
+     "passage": null,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

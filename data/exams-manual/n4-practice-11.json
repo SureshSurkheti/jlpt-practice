@@ -488,20 +488,6 @@
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },
     {
-     "prompt": "これは　わたしが　米（　　）　作った　パンです。",
-     "choices": [
-      "や",
-      "で",
-      "の",
-      "に"
-     ],
-     "explanation": "material で.",
-     "passage": null,
-     "answer": 2,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "この　じしょは　多くの　人に　（　　）　います。",
      "choices": [
       "つかわせて",
@@ -638,6 +624,20 @@
      "explanation": "…た まま.",
      "passage": null,
      "answer": 3,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "この　資料を　（　　）ました。",
+     "choices": [
+      "ごらんに　なり",
+      "はいけんし",
+      "めしあがり",
+      "おみせに　なり"
+     ],
+     "explanation": "拝見する — humble see.",
+     "passage": null,
+     "answer": 2,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

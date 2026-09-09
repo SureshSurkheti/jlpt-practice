@@ -432,34 +432,6 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "すみませんが　まどを　しめて　（　　）　ませんか。",
-     "choices": [
-      "いただけ",
-      "もらい",
-      "やり",
-      "さしあげ"
-     ],
-     "explanation": "…ていただけませんか.",
-     "passage": null,
-     "answer": 1,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "母が　セーターを　あんで　（　　）　ました。",
-     "choices": [
-      "やり",
-      "くれ",
-      "あげ",
-      "もらい"
-     ],
-     "explanation": "…てくれる — done for me.",
-     "passage": null,
-     "answer": 2,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "じゅぎょうちゅうに　ねて（　　）　いけません。",
      "choices": [
       "は",
@@ -638,6 +610,34 @@
      "explanation": "…たまま.",
      "passage": null,
      "answer": 4,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "この　へやは　ひろい（　　）　あかるいです。",
+     "choices": [
+      "て　から",
+      "し",
+      "ので　に",
+      "のに"
+     ],
+     "explanation": "…し — and what's more.",
+     "passage": null,
+     "answer": 2,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "まどが　（　　）　あります。",
+     "choices": [
+      "しまり",
+      "しめて",
+      "しまって",
+      "しめ"
+     ],
+     "explanation": "…てある — left in that state.",
+     "passage": null,
+     "answer": 2,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

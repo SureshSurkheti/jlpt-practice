@@ -432,34 +432,6 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "この　ボタンを　おす（　　）　ドアが　あきます。",
-     "choices": [
-      "ても",
-      "と",
-      "ら",
-      "ば　なら"
-     ],
-     "explanation": "…と — whenever.",
-     "passage": null,
-     "answer": 2,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "へやには　いす（　　）　ありません。",
-     "choices": [
-      "も",
-      "ほど",
-      "だけ",
-      "しか"
-     ],
-     "explanation": "…しか…ない.",
-     "passage": null,
-     "answer": 4,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "この　うたは　多くの　人に　（　　）　います。",
      "choices": [
       "歌えて",
@@ -636,6 +608,34 @@
       "つき"
      ],
      "explanation": "…たまま.",
+     "passage": null,
+     "answer": 2,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "すみませんが　まどを　しめて　（　　）　ませんか。",
+     "choices": [
+      "いただけ",
+      "もらい",
+      "やり",
+      "さしあげ"
+     ],
+     "explanation": "…ていただけませんか.",
+     "passage": null,
+     "answer": 1,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "母が　セーターを　あんで　（　　）　ました。",
+     "choices": [
+      "やり",
+      "くれ",
+      "あげ",
+      "もらい"
+     ],
+     "explanation": "…てくれる — done for me.",
      "passage": null,
      "answer": 2,
      "category": "grammar",

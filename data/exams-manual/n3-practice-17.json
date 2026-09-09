@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "その計画は<u>白紙</u>に戻った。",
-     "choices": [
-      "始まった",
-      "決まった",
-      "進んでいる",
-      "なかったことになった"
-     ],
-     "explanation": "白紙に戻る.",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その仕事は<u>思いのほか</u>早く終わった。",
      "choices": [
       "おそく",
@@ -423,6 +409,20 @@
      "explanation": "丈夫 — sturdy.",
      "passage": null,
      "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼は<u>わざわざ</u>来てくれた。",
+     "choices": [
+      "急いで",
+      "ついでに",
+      "そのためだけに",
+      "しかたなく"
+     ],
+     "explanation": "わざわざ — specially.",
+     "passage": null,
+     "answer": 3,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

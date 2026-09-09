@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼は<u>たいそう</u>喜んだ。",
-     "choices": [
-      "あまり",
-      "少し",
-      "とても",
-      "まったく"
-     ],
-     "explanation": "たいそう — greatly.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "彼は<u>柔軟</u>に対応した。",
      "choices": [
       "状況に合わせて",
@@ -421,6 +407,20 @@
       "もうすぐ"
      ],
      "explanation": "じきに — shortly.",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼女は<u>ひときわ</u>目立っていた。",
+     "choices": [
+      "少しも",
+      "あまり",
+      "まったく",
+      "特に"
+     ],
+     "explanation": "ひときわ — conspicuously.",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",

@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "その計画は<u>頓挫</u>した。",
-     "choices": [
-      "始まった",
-      "早く終わった",
-      "途中で止まった",
-      "うまくいった"
-     ],
-     "explanation": "頓挫 — to stall.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その計画は<u>実に</u>面白い。",
      "choices": [
       "本当に",
@@ -421,6 +407,20 @@
       "ただそればかり"
      ],
      "explanation": "ひたすら — single-mindedly.",
+     "passage": null,
+     "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼は<u>しぶしぶ</u>引き受けた。",
+     "choices": [
+      "はっきり",
+      "よろこんで",
+      "すぐに",
+      "いやいや"
+     ],
+     "explanation": "しぶしぶ — reluctantly.",
      "passage": null,
      "answer": 4,
      "category": "vocabulary",

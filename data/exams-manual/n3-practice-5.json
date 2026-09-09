@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼女の話は<u>おおげさ</u>だ。",
-     "choices": [
-      "よくわからない",
-      "本当のことだ",
-      "実際より大きく言っている",
-      "とてもみじかい"
-     ],
-     "explanation": "おおげさ — exaggerated.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "この服は<u>地味</u>だ。",
      "choices": [
       "古い",
@@ -423,6 +409,20 @@
      "explanation": "ややこしい — fiddly.",
      "passage": null,
      "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "会場は<u>がらがら</u>だった。",
+     "choices": [
+      "とても広かった",
+      "うるさかった",
+      "ほとんど人がいなかった",
+      "とても混んでいた"
+     ],
+     "explanation": "がらがら — nearly empty.",
+     "passage": null,
+     "answer": 3,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼女は<u>あっさり</u>認めた。",
-     "choices": [
-      "しぶしぶ",
-      "やっと",
-      "かんたんに",
-      "なかなか"
-     ],
-     "explanation": "あっさり — readily.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "この件は<u>のちほど</u>連絡します。",
      "choices": [
       "来年",
@@ -421,6 +407,20 @@
       "運悪く"
      ],
      "explanation": "幸い — fortunately.",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "その意見に<u>ことごとく</u>反対された。",
+     "choices": [
+      "半分",
+      "一つだけ",
+      "全部",
+      "少し"
+     ],
+     "explanation": "ことごとく — every one.",
      "passage": null,
      "answer": 3,
      "category": "vocabulary",

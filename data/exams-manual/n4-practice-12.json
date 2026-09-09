@@ -432,20 +432,6 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "この　資料を　（　　）ました。",
-     "choices": [
-      "ごらんに　なり",
-      "はいけんし",
-      "めしあがり",
-      "おみせに　なり"
-     ],
-     "explanation": "拝見する — humble see.",
-     "passage": null,
-     "answer": 2,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "かれは　来る　と　いった（　　）、来ませんでした。",
      "choices": [
       "から",
@@ -572,20 +558,6 @@
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },
     {
-     "prompt": "わたしの　父は　中国語も　英語（　　）　話せます。",
-     "choices": [
-      "も",
-      "で",
-      "を",
-      "が"
-     ],
-     "explanation": "…も…も.",
-     "passage": null,
-     "answer": 1,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "わたしは　田中と　（　　）ます。",
      "choices": [
       "おっしゃい",
@@ -638,6 +610,34 @@
      "explanation": "…と 思う.",
      "passage": null,
      "answer": 3,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "この　しごとは　あなた（　　)　まかせます。",
+     "choices": [
+      "を",
+      "で",
+      "が",
+      "に"
+     ],
+     "explanation": "…に まかせる.",
+     "passage": null,
+     "answer": 4,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "この　しごとは　あした（　　）に　おわらせます。",
+     "choices": [
+      "まで",
+      "より",
+      "から",
+      "までに"
+     ],
+     "explanation": "…までに.",
+     "passage": null,
+     "answer": 1,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼は<u>頻繁</u>に来る。",
-     "choices": [
-      "一度だけ",
-      "めったに",
-      "何度も",
-      "たまに"
-     ],
-     "explanation": "頻繁 — frequently.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "彼女は<u>てっきり</u>来ると思っていた。",
      "choices": [
       "まちがいなく",
@@ -423,6 +409,20 @@
      "explanation": "手軽 — easily.",
      "passage": null,
      "answer": 4,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "その品は<u>格安</u>だった。",
+     "choices": [
+      "とても安かった",
+      "古かった",
+      "とても高かった",
+      "ふつうだった"
+     ],
+     "explanation": "格安 — a bargain.",
+     "passage": null,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

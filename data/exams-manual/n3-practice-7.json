@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "田中さんはいつも<u>のんきな</u>ことを言っている。",
-     "choices": [
-      "気楽な",
-      "まじめな",
-      "みじかい",
-      "おかしな"
-     ],
-     "explanation": "のんき — easygoing.",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その仕事を<u>引き受けた</u>。",
      "choices": [
       "やると言った",
@@ -423,6 +409,20 @@
      "explanation": "すべて = 全部.",
      "passage": null,
      "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "その計画は<u>中止</u>になった。",
+     "choices": [
+      "やめることになった",
+      "続くことになった",
+      "早くなった",
+      "おくれることになった"
+     ],
+     "explanation": "中止 — called off.",
+     "passage": null,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

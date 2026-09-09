@@ -385,20 +385,6 @@
      "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },
     {
-     "prompt": "この　電車は　各駅に　止まります。",
-     "choices": [
-      "この　電車は　全部の　駅に　止まります。",
-      "この　電車は　とても　速いです。",
-      "この　電車は　どこにも　止まりません。",
-      "この　電車は　大きい　駅だけに　止まります。"
-     ],
-     "explanation": "各駅 — every station.",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "かのじょは　しゅっぱつの　じゅんびを　して　います。",
      "choices": [
       "かのじょは　もう　出かけました。",
@@ -425,40 +411,26 @@
      "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "父は　たばこを　やめました。",
+     "choices": [
+      "父は　たばこを　買いました。",
+      "父は　たばこが　好きです。",
+      "父は　もう　たばこを　すいません。",
+      "父は　まだ　たばこを　すいます。"
+     ],
+     "explanation": "やめる — to stop doing.",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿の　文と　だいたい　同じ　意味の　文が　あります。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     }
    ]
   },
   {
    "id": "grammar-reading",
    "questions": [
-    {
-     "prompt": "あさごはんを　食べ（　　）　学校へ　行きました。",
-     "choices": [
-      "ずに",
-      "ないで　は",
-      "なくて",
-      "なく　て"
-     ],
-     "explanation": "…ずに — without eating.",
-     "passage": null,
-     "answer": 1,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "ひまな　とき　本を　読ん（　　）　音楽を　聞い（　　）　します。",
-     "choices": [
-      "でも…ても",
-      "ても…でも",
-      "たり…だり",
-      "だり…たり"
-     ],
-     "explanation": "…たり…たりする.",
-     "passage": null,
-     "answer": 4,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
     {
      "prompt": "どろぼうに　さいふを　（　　）　ました。",
      "choices": [
@@ -638,6 +610,34 @@
      "explanation": "…やすい — easy to.",
      "passage": null,
      "answer": 3,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "かれは　もう　着いて　いる（　　）　です。",
+     "choices": [
+      "はず",
+      "もの",
+      "つもり",
+      "ところ"
+     ],
+     "explanation": "…はずだ — ought to be.",
+     "passage": null,
+     "answer": 1,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "ともだちに　あう（　　）　に　えきへ　行きました。",
+     "choices": [
+      "はず",
+      "ため",
+      "こと",
+      "よう"
+     ],
+     "explanation": "…ために.",
+     "passage": null,
+     "answer": 2,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

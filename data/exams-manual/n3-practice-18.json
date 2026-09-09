@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼は<u>わざわざ</u>来てくれた。",
-     "choices": [
-      "急いで",
-      "ついでに",
-      "そのためだけに",
-      "しかたなく"
-     ],
-     "explanation": "わざわざ — specially.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "会場は<u>ひっそり</u>していた。",
      "choices": [
       "とても静かだった",
@@ -421,6 +407,20 @@
       "はっきり"
      ],
      "explanation": "やむを得ず — unavoidably.",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼女は<u>あっさり</u>認めた。",
+     "choices": [
+      "しぶしぶ",
+      "やっと",
+      "かんたんに",
+      "なかなか"
+     ],
+     "explanation": "あっさり — readily.",
      "passage": null,
      "answer": 3,
      "category": "vocabulary",

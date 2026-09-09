@@ -432,34 +432,6 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "わたしの　かわり（　　）　行って　くれませんか。",
-     "choices": [
-      "が",
-      "を",
-      "に",
-      "で"
-     ],
-     "explanation": "…の かわりに.",
-     "passage": null,
-     "answer": 3,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
-     "prompt": "なに（　　）　食べたいです。",
-     "choices": [
-      "が",
-      "を",
-      "も",
-      "か"
-     ],
-     "explanation": "なにか.",
-     "passage": null,
-     "answer": 4,
-     "category": "grammar",
-     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
-    },
-    {
      "prompt": "だれ（　　）　この　ことを　しりません。",
      "choices": [
       "か",
@@ -638,6 +610,34 @@
      "explanation": "…て いただく.",
      "passage": null,
      "answer": 1,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "この　部屋は　となりの　部屋（　　）　広いです。",
+     "choices": [
+      "しか",
+      "ほど",
+      "より",
+      "だけ"
+     ],
+     "explanation": "…より.",
+     "passage": null,
+     "answer": 3,
+     "category": "grammar",
+     "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
+    },
+    {
+     "prompt": "あの　人は　わらって（　　）　います。",
+     "choices": [
+      "ほど",
+      "だけ",
+      "ばかり",
+      "しか"
+     ],
+     "explanation": "…て ばかり いる.",
+     "passage": null,
+     "answer": 3,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },

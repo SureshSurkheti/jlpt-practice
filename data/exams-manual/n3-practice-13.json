@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼は<u>いまだに</u>返事をくれない。",
-     "choices": [
-      "もう",
-      "すぐに",
-      "今でもまだ",
-      "やっと"
-     ],
-     "explanation": "いまだに — still not.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その説明は<u>的確</u>だ。",
      "choices": [
       "わかりにくい",
@@ -423,6 +409,20 @@
      "explanation": "だらだら — idly.",
      "passage": null,
      "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "この店は<u>年中無休</u>だ。",
+     "choices": [
+      "一年中休まない",
+      "一年中休みだ",
+      "冬だけ休む",
+      "日曜だけ休む"
+     ],
+     "explanation": "年中無休 — never closed.",
+     "passage": null,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

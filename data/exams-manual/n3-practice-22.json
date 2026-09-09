@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "その量は<u>ちょうど</u>いい。",
-     "choices": [
-      "少し少ない",
-      "ずいぶん多い",
-      "ぴったり",
-      "少し多い"
-     ],
-     "explanation": "ちょうど — just right.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "彼は<u>ろくに</u>説明しなかった。",
      "choices": [
       "長く",
@@ -421,6 +407,20 @@
       "しずかだ"
      ],
      "explanation": "おおざっぱ — casual about detail.",
+     "passage": null,
+     "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "その計画は<u>頓挫</u>した。",
+     "choices": [
+      "始まった",
+      "早く終わった",
+      "途中で止まった",
+      "うまくいった"
+     ],
+     "explanation": "頓挫 — to stall.",
      "passage": null,
      "answer": 3,
      "category": "vocabulary",

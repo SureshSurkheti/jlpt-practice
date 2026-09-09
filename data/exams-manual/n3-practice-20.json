@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "その意見に<u>ことごとく</u>反対された。",
-     "choices": [
-      "半分",
-      "一つだけ",
-      "全部",
-      "少し"
-     ],
-     "explanation": "ことごとく — every one.",
-     "passage": null,
-     "answer": 3,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "彼は<u>抜け目がない</u>。",
      "choices": [
       "のんびりしている",
@@ -423,6 +409,20 @@
      "explanation": "てきぱき — briskly.",
      "passage": null,
      "answer": 3,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "その話は<u>いまさら</u>聞けない。",
+     "choices": [
+      "今となっては",
+      "あとで",
+      "今すぐ",
+      "前もって"
+     ],
+     "explanation": "いまさら — at this late stage.",
+     "passage": null,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

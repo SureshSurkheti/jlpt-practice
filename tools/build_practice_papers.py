@@ -885,6 +885,66 @@ def stray_letters():
     return out
 
 
+EXAMS = os.path.join(ROOT, "data", "exams")
+BLANK = re.compile(r"\uff08\u3000*\uff09|<u>")
+
+
+def _bare(text):
+    """A sentence with its spacing, brackets and punctuation taken off, so
+    two writings of the same sentence compare equal."""
+    text = re.sub(r"<[^>]+>", "", text or "")
+    return re.sub(
+        r"[\s\u3000\uff08\uff09()\u3010\u3011\uff3f_\u30fb\u3002\u3001,.]",
+        "", text)
+
+
+def borrowed():
+    """Any question we composed whose sentence is also in an archived paper.
+
+    The whole claim of these papers is that they are ours, and that claim is
+    only as good as the banks behind it. Two of the first items ever written
+    into n4-grammar turned out to be lifted straight from n4-practice-1 -
+    same sentence, same four choices - sitting inside papers described as
+    original, and they had been shipping for months.
+
+    Only item sentences are compared. A question carrying a blank or an
+    underline is one somebody sat down and wrote, and it has to be ours. A
+    question about a passage is not: "筆者が言いたいことは何か" is the rubric of
+    every reading section ever printed, and the passage under it is our own.
+
+    Choice sets are deliberately not compared on their own. Every particle
+    question in every paper offers が, に, で, を; flagging that buried the two
+    real findings under eighty that were nothing at all.
+    """
+    archive = set()
+    for fn in sorted(os.listdir(EXAMS)):
+        if not fn.endswith(".json") or fn == "index.json":
+            continue
+        exam = json.load(io.open(os.path.join(EXAMS, fn), encoding="utf-8"))
+        if exam.get("origin") == "practice":
+            continue
+        for part in exam.get("parts") or []:
+            for q in part.get("questions") or []:
+                stem = _bare(q.get("prompt"))
+                if len(stem) >= 8:
+                    archive.add(stem)
+
+    out = []
+    for fn in sorted(os.listdir(OUT)):
+        if not fn.endswith(".json"):
+            continue
+        exam = json.load(io.open(os.path.join(OUT, fn), encoding="utf-8"))
+        for part in exam["parts"]:
+            for q in part["questions"]:
+                prompt = q.get("prompt") or ""
+                if not BLANK.search(prompt):
+                    continue
+                stem = _bare(prompt)
+                if len(stem) >= 8 and stem in archive:
+                    out.append((exam["id"], prompt[:50]))
+    return out
+
+
 def duplicates():
     """Any question that ended up in more than one paper.
 
@@ -930,6 +990,15 @@ def main():
     io.open(DEAL, "w", encoding="utf-8").write(
         json.dumps(DEAL_STATE, ensure_ascii=False, indent=1))
     print("wrote %d papers" % total)
+    taken = borrowed()
+    if taken:
+        print("!! %d composed question(s) share a sentence with an archived "
+              "paper:" % len(taken))
+        for exam_id, prompt in taken:
+            print("   %s: %s" % (exam_id, prompt))
+    else:
+        print("no composed question shares a sentence with an archived paper")
+
     stray = stray_letters()
     if stray:
         print("!! %d question(s) carry non-Japanese text:" % len(stray))

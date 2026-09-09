@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "彼は<u>ついでに</u>買ってきた。",
-     "choices": [
-      "急いで",
-      "わざわざ",
-      "こっそり",
-      "その用事のときに一緒に"
-     ],
-     "explanation": "ついでに — while at it.",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その部屋は<u>殺風景</u>だ。",
      "choices": [
       "せまい",
@@ -423,6 +409,20 @@
      "explanation": "あいまい — vague.",
      "passage": null,
      "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼は<u>いったん</u>家に帰った。",
+     "choices": [
+      "たまに",
+      "一度",
+      "ずっと",
+      "やっと"
+     ],
+     "explanation": "いったん — once, for the time being.",
+     "passage": null,
+     "answer": 2,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

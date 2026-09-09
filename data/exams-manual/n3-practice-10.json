@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "その話は<u>ややこしい</u>。",
-     "choices": [
-      "かんたんだ",
-      "新しい",
-      "つまらない",
-      "複雑でわかりにくい"
-     ],
-     "explanation": "ややこしい — fiddly.",
-     "passage": null,
-     "answer": 4,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "その説明は<u>くどい</u>。",
      "choices": [
       "わかりやすい",
@@ -423,6 +409,20 @@
      "explanation": "わずか — a mere.",
      "passage": null,
      "answer": 2,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "彼女は<u>謙虚</u>だ。",
+     "choices": [
+      "えらそうにしない",
+      "しずかだ",
+      "おこりっぽい",
+      "自慢する"
+     ],
+     "explanation": "謙虚 — humble.",
+     "passage": null,
+     "answer": 1,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },

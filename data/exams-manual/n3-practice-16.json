@@ -357,20 +357,6 @@
      "instruction": "問題3　（）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。"
     },
     {
-     "prompt": "その品は<u>格安</u>だった。",
-     "choices": [
-      "とても安かった",
-      "古かった",
-      "とても高かった",
-      "ふつうだった"
-     ],
-     "explanation": "格安 — a bargain.",
-     "passage": null,
-     "answer": 1,
-     "category": "vocabulary",
-     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
-    },
-    {
      "prompt": "彼は<u>頑固</u>だ。",
      "choices": [
       "すぐ考えを変える",
@@ -423,6 +409,20 @@
      "explanation": "気さく — approachable.",
      "passage": null,
      "answer": 1,
+     "category": "vocabulary",
+     "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
+    },
+    {
+     "prompt": "その計画は<u>白紙</u>に戻った。",
+     "choices": [
+      "始まった",
+      "決まった",
+      "進んでいる",
+      "なかったことになった"
+     ],
+     "explanation": "白紙に戻る.",
+     "passage": null,
+     "answer": 4,
      "category": "vocabulary",
      "instruction": "問題4　＿＿＿のことばに意味が最も近いものを、1・2・3・4から一つえらびなさい。"
     },
