@@ -2,7 +2,7 @@
 I18N.register("bn", {
  "about.body": "জাপানে বসবাসকারীদের জন্য বিনামূল্যের JLPT অধ্যয়ন সাইট।",
  "about.creditsCode": "কোড MIT লাইসেন্সের অধীনে।",
- "about.creditsExams": "পরীক্ষার প্রশ্নের কপিরাইট JEES ও Japan Foundation-এর। এখানে কেবল অধ্যয়নের জন্য দেওয়া হয়েছে।",
+ "about.creditsExams": "এখানকার %%OWN%%টি পেপার এই সাইটের জন্যই লেখা হয়েছে। বাকি %%ARCHIVED%%টি সংরক্ষিত পুরোনো পরীক্ষা, যেগুলোর প্রশ্নের কপিরাইট JEES ও Japan Foundation-এর। নিচের বিজ্ঞপ্তি দেখুন।",
  "about.creditsKanji": "কাঞ্জির উচ্চারণ, অর্থ ও JLPT স্তর নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে। স্ট্রোকের ক্রম নেওয়া হয়েছে <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> লাইসেন্সের অধীনে।",
  "about.creditsTitle": "কৃতজ্ঞতা",
  "about.creditsWords": "শব্দের অর্থ ও উচ্চারণ নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে।",
@@ -10,7 +10,7 @@ I18N.register("bn", {
  "about.p1": "এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায় — সময় গণনা, স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।",
  "about.p2": "কোনো অ্যাকাউন্ট বা সাইন-আপ নেই। আপনার উত্তর, স্কোর ও অগ্রগতি কেবল এই ব্রাউজারেই সংরক্ষিত থাকে, কোথাও আপলোড হয় না।",
  "about.p3": "শ্রবণ অডিও Google Drive থেকে এবং পরীক্ষার চিত্রগুলো Internet Archive থেকে আসে, তাই এই দুই অংশে ইন্টারনেট লাগে — আর অন্য যেকোনো এমবেড করা ফাইলের মতোই ওই সেবাগুলো অনুরোধটি দেখে।",
- "about.rightsBody": "এই সাইটের পরীক্ষার প্রশ্নগুলির কপিরাইট জাপান এডুকেশনাল এক্সচেঞ্জেস অ্যান্ড সার্ভিসেস (JEES) এবং জাপান ফাউন্ডেশনের। এগুলি অনুমতি নিয়ে প্রকাশ করা হয়নি। এই সাইট বিনামূল্যের, এখানে কোনো বিজ্ঞাপন নেই, কিছু বিক্রি করা হয় না এবং কোনো আয় হয় না; প্রশ্নগুলি এখানে আছে কেবল যাতে শিক্ষার্থী পরীক্ষার মতো পরিবেশে অনুশীলন করতে পারেন, অন্য কোনো উদ্দেশ্যে নয়।",
+ "about.rightsBody": "এই সাইটের %%ARCHIVED%%টি পেপার সংরক্ষিত পুরোনো পরীক্ষা। সেগুলোর প্রশ্নের কপিরাইট JEES ও Japan Foundation-এর, এবং সেগুলো অনুমতি নিয়ে প্রকাশ করা হয়নি। বাকি %%OWN%%টি পেপার এই সাইটের জন্যই লেখা। এই সাইট বিনামূল্যের, বিজ্ঞাপনহীন, কিছু বিক্রি করে না এবং কোনো আয় করে না।",
  "about.rightsOfficial": "আপনি যদি পড়াশোনা করছেন এবং এমন উপকরণ চান যা নিঃসন্দেহে অবাধে ব্যবহারযোগ্য, তবে JLPT আয়োজকেরা নিজেরাই সরকারি নমুনা প্রশ্ন প্রকাশ করেন:",
  "about.rightsOfficialLink": "jlpt.jp — সরকারি নমুনা প্রশ্ন",
  "about.rightsRemove": "এখানকার কোনো উপকরণের অধিকার আপনার হলে এবং আপনি তা সরাতে চাইলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> ঠিকানায় ইমেল করুন; কোনো তর্ক ছাড়াই এবং আনুষ্ঠানিক নোটিশ না চেয়েই তা সরিয়ে দেওয়া হবে - আপনি বললে সবটুকুই। কোন প্রশ্নপত্র বা ফাইল জড়িত তা জানাবেন। এভাবে জানানো যেকোনো কিছু ৭২ ঘণ্টার মধ্যে সরিয়ে ফেলা হয়।",

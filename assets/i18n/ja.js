@@ -2,7 +2,7 @@
 I18N.register("ja", {
  "about.body": "日本に住む人のための無料のJLPT学習サイトです。",
  "about.creditsCode": "コードはMITライセンスです。",
- "about.creditsExams": "試験問題の著作権はJEESおよび国際交流基金に帰属します。学習目的で掲載しています。",
+ "about.creditsExams": "このサイトの練習問題のうち%%OWN%%回分は当サイトが独自に作成したものです。残りの%%ARCHIVED%%回分は過去の試験を保存したもので、その問題の著作権はJEESおよび国際交流基金にあります。下記の注意書きをご覧ください。",
  "about.creditsKanji": "漢字の読み・意味・JLPTレベルは <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）によります。筆順は <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> ライセンス）によります。",
  "about.creditsTitle": "クレジット",
  "about.creditsWords": "語の意味と読みは <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）に基づいています。",
@@ -10,7 +10,7 @@ I18N.register("ja", {
  "about.p1": "ここにある問題はJLPTと同じ形式で解けます。時間を計って自動採点され、解説と聴解スクリプトが付いています。",
  "about.p2": "アカウント登録はありません。解答・スコア・進捗はこのブラウザ内にのみ保存され、どこにも送信されません。",
  "about.p3": "聴解音声は Google ドライブから、試験中の図版は Internet Archive から読み込まれます。この2つにはインターネット接続が必要で、埋め込みファイルと同様に各サービス側にアクセスが記録されます。",
- "about.rightsBody": "このサイトに掲載している試験問題の著作権は、日本国際教育支援協会（JEES）および国際交流基金に帰属します。許諾を得て掲載しているものではありません。このサイトは無料で、広告を掲載せず、何も販売せず、収益を一切得ていません。問題を掲載しているのは、学習者が本番と同じ条件で受験できるようにするためであり、それ以外の目的はありません。",
+ "about.rightsBody": "このサイトの%%ARCHIVED%%回分は過去の試験を保存したものです。その問題の著作権は日本国際教育支援協会（JEES）および国際交流基金にあり、許可を得て公開しているものではありません。残りの%%OWN%%回分は当サイトが独自に作成したものです。当サイトは無料で、広告を掲載せず、何も販売しておらず、収益もありません。保存された問題は、学習者が試験と同じ形式で解けるようにするためだけに置いています。",
  "about.rightsOfficial": "権利関係の明確な教材をお探しであれば、JLPTの主催者自身が公式の問題例を公開しています。",
  "about.rightsOfficialLink": "jlpt.jp — 公式の問題例",
  "about.rightsRemove": "このサイトの素材について権利をお持ちで削除をご希望の場合は、<a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> までご連絡ください。異議を唱えることも、正式な通知を求めることもなく削除します。ご希望であればすべて削除します。対象となる問題やファイルをお知らせください。この方法でご連絡いただいたものは72時間以内に削除します。",

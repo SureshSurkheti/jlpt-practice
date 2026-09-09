@@ -2,7 +2,7 @@
 I18N.register("hi", {
  "about.body": "जापान में रहने वालों के लिए निःशुल्क JLPT अध्ययन साइट।",
  "about.creditsCode": "कोड MIT लाइसेंस के अंतर्गत है।",
- "about.creditsExams": "परीक्षा प्रश्नों का कॉपीराइट JEES और Japan Foundation के पास है। यहाँ केवल अध्ययन हेतु दिए गए हैं।",
+ "about.creditsExams": "यहाँ के %%OWN%% पेपर इसी साइट के लिए लिखे गए हैं। बाकी %%ARCHIVED%% पुरानी परीक्षाओं के संग्रह हैं, जिनके प्रश्नों का कॉपीराइट JEES और Japan Foundation के पास है। नीचे दी गई सूचना देखें।",
  "about.creditsKanji": "कांजी के उच्चारण, अर्थ और JLPT स्तर <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है। स्ट्रोक क्रम <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel से लिया गया है, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
  "about.creditsTitle": "आभार",
  "about.creditsWords": "शब्दों के अर्थ और उच्चारण <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
@@ -10,7 +10,7 @@ I18N.register("hi", {
  "about.p1": "यहाँ के प्रश्नपत्र JLPT के अपने प्रारूप में ही हल किए जाते हैं — समयबद्ध, स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।",
  "about.p2": "कोई खाता या साइन-अप नहीं है। आपके उत्तर, अंक और प्रगति सिर्फ़ इसी ब्राउज़र में सहेजे जाते हैं और कहीं अपलोड नहीं होते।",
  "about.p3": "सुनने वाला ऑडियो Google Drive से और परीक्षा के चित्र Internet Archive से आते हैं, इसलिए इन दो हिस्सों के लिए इंटरनेट चाहिए — और किसी भी एम्बेड फ़ाइल की तरह वे सेवाएँ अनुरोध देखती हैं।",
- "about.rightsBody": "इस साइट पर दिए गए परीक्षा प्रश्नों का कॉपीराइट जापान एजुकेशनल एक्सचेंजेज़ एंड सर्विसेज़ (JEES) और जापान फाउंडेशन के पास है। इन्हें अनुमति लेकर प्रकाशित नहीं किया गया है। यह साइट नि:शुल्क है, इसमें कोई विज्ञापन नहीं है, कुछ भी बेचा नहीं जाता और कोई कमाई नहीं होती; प्रश्न यहाँ केवल इसलिए हैं ताकि सीखने वाला परीक्षा जैसी परिस्थितियों में अभ्यास कर सके, इसके अतिरिक्त कोई उद्देश्य नहीं है।",
+ "about.rightsBody": "इस साइट के %%ARCHIVED%% पेपर पुरानी परीक्षाओं के संग्रह हैं। उनके प्रश्नों का कॉपीराइट JEES और Japan Foundation के पास है, और वे अनुमति लेकर प्रकाशित नहीं किए गए हैं। बाकी %%OWN%% पेपर इसी साइट के लिए लिखे गए हैं। यह साइट मुफ़्त है, इसमें विज्ञापन नहीं है, कुछ बेचा नहीं जाता और कोई कमाई नहीं होती।",
  "about.rightsOfficial": "यदि आप पढ़ाई कर रहे हैं और ऐसी सामग्री चाहते हैं जिसका उपयोग निस्संदेह मुक्त हो, तो JLPT आयोजक स्वयं आधिकारिक नमूना प्रश्न प्रकाशित करते हैं:",
  "about.rightsOfficialLink": "jlpt.jp — आधिकारिक नमूना प्रश्न",
  "about.rightsRemove": "यदि यहाँ की किसी सामग्री पर आपका अधिकार है और आप उसे हटवाना चाहते हैं, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर ईमेल कीजिए; उसे हटा दिया जाएगा - आप कहें तो पूरी की पूरी - बिना किसी बहस के और बिना किसी औपचारिक सूचना की माँग किए। कृपया बताइए कि कौन से प्रश्नपत्र या फ़ाइलें इससे संबंधित हैं। इस तरह बताई गई कोई भी सामग्री 72 घंटे के भीतर हटा दी जाती है।",

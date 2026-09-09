@@ -2,7 +2,7 @@
 I18N.register("pt-BR", {
  "about.body": "Site gratuito de estudo do JLPT para quem mora no Japão.",
  "about.creditsCode": "O código é licenciado sob MIT.",
- "about.creditsExams": "As questões das provas são copyright da JEES e da Japan Foundation. Reproduzidas aqui apenas para estudo.",
+ "about.creditsExams": "%%OWN%% das provas aqui foram escritas para este site. As outras %%ARCHIVED%% são exames anteriores arquivados, cujas questões são de direito autoral da JEES e da Japan Foundation. Veja o aviso abaixo.",
  "about.creditsKanji": "As leituras, os significados e os níveis JLPT dos kanji vêm do <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. A ordem dos traços vem do <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
  "about.creditsTitle": "Créditos",
  "about.creditsWords": "Os significados e as leituras das palavras derivam do <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -10,7 +10,7 @@ I18N.register("pt-BR", {
  "about.p1": "Cada prova aqui é feita no formato do próprio JLPT — cronometrada, corrigida automaticamente, com explicações das respostas e transcrições da audição.",
  "about.p2": "Não há conta nem cadastro. Suas respostas, notas e progresso ficam salvos apenas neste navegador e nunca são enviados.",
  "about.p3": "O áudio de compreensão vem do Google Drive e os diagramas das provas vêm do Internet Archive, então essas duas partes precisam de conexão — e esses serviços veem a requisição, como aconteceria com qualquer arquivo incorporado.",
- "about.rightsBody": "As questões de prova deste site são de direito autoral da Japan Educational Exchanges and Services (JEES) e da Fundação Japão. Não são publicadas com autorização. Este site é gratuito, não exibe anúncios, não vende nada e não gera nenhuma receita; as questões estão aqui para que o estudante possa fazer uma prova em condições de exame, e para nenhum outro fim.",
+ "about.rightsBody": "%%ARCHIVED%% das provas deste site são exames anteriores arquivados. Suas questões são de direito autoral da JEES e da Japan Foundation, e não são publicadas com permissão. As outras %%OWN%% provas foram escritas para este site. Este site é gratuito, não tem publicidade, não vende nada e não gera receita.",
  "about.rightsOfficial": "Se você está estudando e quer material cujo uso seja indiscutivelmente livre, os organizadores do JLPT publicam questões oficiais de exemplo:",
  "about.rightsOfficialLink": "jlpt.jp — questões oficiais de exemplo",
  "about.rightsRemove": "Se você detém direitos sobre qualquer material aqui e quer que ele saia do ar, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> e ele será removido - tudo, se você pedir - sem discussão e sem exigir notificação formal. Diga, por favor, quais provas ou arquivos estão envolvidos. Tudo que for informado assim é removido em até 72 horas.",

@@ -2,7 +2,7 @@
 I18N.register("en", {
  "about.body": "A free JLPT study site for people living in Japan.",
  "about.creditsCode": "The code is MIT licensed.",
- "about.creditsExams": "Exam questions are the copyright of JEES and the Japan Foundation. See the notice below.",
+ "about.creditsExams": "%%OWN%% of the papers here were written for this site. The other %%ARCHIVED%% are archived past sittings, whose questions are the copyright of JEES and the Japan Foundation. See the notice below.",
  "about.creditsKanji": "Kanji readings, meanings and JLPT levels come from <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Stroke order is drawn from <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
  "about.creditsTitle": "Credits",
  "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -10,7 +10,7 @@ I18N.register("en", {
  "about.p1": "Each paper here is played in the JLPT's own format — timed, marked automatically, with answer explanations and listening scripts.",
  "about.p2": "There is no account and no sign-up. Your answers, scores and progress are stored only in this browser and are never uploaded.",
  "about.p3": "Listening audio plays from Google Drive and the exam diagrams load from the Internet Archive, so those two parts need a connection — and those services see the request, as they would for any embedded file.",
- "about.rightsBody": "The exam questions on this site are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation. They are not published with permission. This site is free, carries no advertising, sells nothing and earns nothing; the questions are here so that a learner can sit a paper under exam conditions, and for no other purpose.",
+ "about.rightsBody": "%%ARCHIVED%% of the papers on this site are archived past sittings. Their questions are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation, and they are not published with permission. The other %%OWN%% papers were written for this site and are its own. This site is free, carries no advertising, sells nothing and earns nothing; the archived questions are here so that a learner can sit a paper under exam conditions, and for no other purpose.",
  "about.rightsOfficial": "If you are studying and want material that is unquestionably free to use, the JLPT organisers publish official sample questions themselves:",
  "about.rightsOfficialLink": "jlpt.jp — official sample questions",
  "about.rightsRemove": "If you hold rights in any material here and want it taken down, email <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> and it will be removed - all of it if you ask - without argument and without requiring a formal notice. Please say which papers or files are involved. Anything reported this way is removed within 72 hours.",

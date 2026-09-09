@@ -727,7 +727,11 @@ def site_counts():
     """The figures the home page advertises, counted from the data files at
     build time. Typed into a template they would quietly go stale the first
     time a list grew; counted here they cannot."""
-    counts = {"words": 0, "kanji": 0, "grammar": 0, "nepali": 0, "papers": 0}
+    counts = {"words": 0, "kanji": 0, "grammar": 0, "nepali": 0, "papers": 0,
+              # Split by where the paper came from, because the About page
+              # has to say which questions are ours and which are not, and
+              # that ratio moves every time a level is grown.
+              "own": 0, "archived": 0}
     for level in LEVELS:
         for kind, field in (("words", "words"), ("kanji", "kanji"),
                             ("grammar", "patterns")):
@@ -742,7 +746,10 @@ def site_counts():
                 counts["nepali"] += sum(1 for x in items if x.get("ne"))
     idx = os.path.join(ROOT, "data", "exams", "index.json")
     if os.path.exists(idx):
-        counts["papers"] = len(json.load(io.open(idx, encoding="utf-8"))["exams"])
+        exams = json.load(io.open(idx, encoding="utf-8"))["exams"]
+        counts["papers"] = len(exams)
+        counts["own"] = sum(1 for e in exams if e.get("origin") == "practice")
+        counts["archived"] = counts["papers"] - counts["own"]
     return counts
 
 
@@ -1364,6 +1371,8 @@ def main():
             # back is exactly what happened the first time. The client-side
             # pass covers visible text; this covers what a crawler reads.
             html = html.replace("%%PAPERS%%", str(COUNTS["papers"]))
+            html = html.replace("%%OWN%%", str(COUNTS["own"]))
+            html = html.replace("%%ARCHIVED%%", str(COUNTS["archived"]))
             # The takedown address again, this time for the interface strings.
             #
             # %%CONTACT%% is substituted in the markup above, which is what a

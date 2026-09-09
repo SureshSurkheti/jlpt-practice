@@ -2,7 +2,7 @@
 I18N.register("vi", {
  "about.body": "Trang học JLPT miễn phí cho những người đang sống ở Nhật.",
  "about.creditsCode": "Mã nguồn theo giấy phép MIT.",
- "about.creditsExams": "Bản quyền câu hỏi thi thuộc JEES và Japan Foundation. Đăng lại chỉ để học tập.",
+ "about.creditsExams": "%%OWN%% đề trong số này được biên soạn riêng cho trang này. %%ARCHIVED%% đề còn lại là các kỳ thi cũ được lưu trữ, câu hỏi thuộc bản quyền của JEES và Japan Foundation. Xem thông báo bên dưới.",
  "about.creditsKanji": "Cách đọc, nghĩa và cấp độ JLPT của kanji lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Thứ tự nét lấy từ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
  "about.creditsTitle": "Ghi công",
  "about.creditsWords": "Nghĩa và cách đọc của từ được lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -10,7 +10,7 @@ I18N.register("vi", {
  "about.p1": "Mỗi đề ở đây được làm đúng theo định dạng của JLPT — có bấm giờ, chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.",
  "about.p2": "Không cần tài khoản, không cần đăng ký. Câu trả lời, điểm số và tiến độ của bạn chỉ được lưu trong trình duyệt này và không bao giờ được tải lên.",
  "about.p3": "Âm thanh nghe hiểu phát từ Google Drive và hình minh hoạ trong đề tải từ Internet Archive, nên hai phần này cần kết nối mạng — và các dịch vụ đó thấy yêu cầu, như với bất kỳ tệp nhúng nào.",
- "about.rightsBody": "Bản quyền các câu hỏi thi trên trang này thuộc về Hiệp hội Hỗ trợ Giáo dục Quốc tế Nhật Bản (JEES) và Quỹ Giao lưu Quốc tế Nhật Bản. Chúng không được đăng tải với sự cho phép. Trang này miễn phí, không có quảng cáo, không bán gì và không thu được gì; các câu hỏi có ở đây để người học có thể làm bài trong điều kiện như thi thật, và không nhằm mục đích nào khác.",
+ "about.rightsBody": "%%ARCHIVED%% đề trên trang này là các kỳ thi cũ được lưu trữ. Câu hỏi của chúng thuộc bản quyền của JEES và Japan Foundation, và không được đăng với sự cho phép. %%OWN%% đề còn lại được biên soạn riêng cho trang này. Trang này miễn phí, không quảng cáo, không bán gì và không thu lợi; các đề lưu trữ ở đây chỉ để người học làm bài trong điều kiện như thi thật.",
  "about.rightsOfficial": "Nếu bạn đang học và muốn tài liệu chắc chắn được phép sử dụng, ban tổ chức JLPT có công bố đề mẫu chính thức:",
  "about.rightsOfficialLink": "jlpt.jp — đề mẫu chính thức",
  "about.rightsRemove": "Nếu bạn giữ bản quyền với bất kỳ tài liệu nào ở đây và muốn gỡ xuống, hãy gửi email tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> và tài liệu sẽ được gỡ - toàn bộ nếu bạn yêu cầu - không tranh cãi và không cần thông báo chính thức. Vui lòng cho biết đề thi hoặc tệp nào có liên quan. Mọi phản ánh theo cách này được gỡ trong vòng 72 giờ.",

@@ -93,6 +93,16 @@
         counts.papers != null ? String(counts.papers) : "");
     }
 
+    /* Same reasoning for the split: how many papers are ours and how many
+       came from the archive is a fact about the data, and the About page
+       says it in twelve languages. */
+    if (value.indexOf("%%OWN%%") !== -1 || value.indexOf("%%ARCHIVED%%") !== -1) {
+      var c = global.SITE_COUNTS || {};
+      value = value.replace(/%%OWN%%/g, c.own != null ? String(c.own) : "")
+                   .replace(/%%ARCHIVED%%/g,
+                            c.archived != null ? String(c.archived) : "");
+    }
+
     if (value.indexOf("%%CONTACT%%") === -1) return value;
     var email = contact();
     /* With no address to put in, leave the sentence intact and drop the

@@ -2,7 +2,7 @@
 I18N.register("ko", {
  "about.body": "일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.",
  "about.creditsCode": "코드는 MIT 라이선스입니다.",
- "about.creditsExams": "시험 문제의 저작권은 JEES와 일본국제교류기금에 있습니다. 학습 목적으로만 게시합니다.",
+ "about.creditsExams": "이 중 %%OWN%%회분은 본 사이트가 직접 만든 문제입니다. 나머지 %%ARCHIVED%%회분은 과거 시험을 보관한 것으로, 문제의 저작권은 JEES와 일본국제교류기금에 있습니다. 아래 안내를 참고하세요.",
  "about.creditsKanji": "한자의 읽기, 뜻, JLPT 등급은 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다. 획순은 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 라이선스를 따릅니다.",
  "about.creditsTitle": "크레딧",
  "about.creditsWords": "단어의 뜻과 읽기는 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다.",
@@ -10,7 +10,7 @@ I18N.register("ko", {
  "about.p1": "여기 있는 시험지는 JLPT와 같은 형식으로 풀 수 있습니다 — 시간 측정, 자동 채점, 해설과 청해 스크립트 제공.",
  "about.p2": "계정도 가입도 없습니다. 답안과 점수, 진행 상황은 이 브라우저에만 저장되며 어디에도 전송되지 않습니다.",
  "about.p3": "청해 음성은 Google 드라이브에서, 시험 도판은 Internet Archive에서 불러옵니다. 이 두 부분은 인터넷 연결이 필요하며, 다른 임베드 파일과 마찬가지로 해당 서비스에 요청이 남습니다.",
- "about.rightsBody": "이 사이트에 실린 시험 문제의 저작권은 일본국제교육지원협회(JEES)와 일본국제교류기금에 있습니다. 허가를 받아 게재한 것이 아닙니다. 이 사이트는 무료이며 광고가 없고 아무것도 판매하지 않으며 수익을 얻지 않습니다. 문제를 실은 것은 학습자가 실제 시험과 같은 조건에서 풀어 볼 수 있도록 하기 위해서일 뿐, 다른 목적은 없습니다.",
+ "about.rightsBody": "이 사이트의 %%ARCHIVED%%회분은 과거 시험을 보관한 것입니다. 그 문제의 저작권은 JEES와 일본국제교류기금에 있으며, 허가를 받아 공개한 것이 아닙니다. 나머지 %%OWN%%회분은 본 사이트가 직접 만든 것입니다. 이 사이트는 무료이며 광고가 없고 아무것도 판매하지 않으며 수익도 없습니다.",
  "about.rightsOfficial": "학습용으로 이용에 문제가 없는 자료를 원하신다면, JLPT 주최 측이 공식 예시 문제를 직접 공개하고 있습니다:",
  "about.rightsOfficialLink": "jlpt.jp — 공식 예시 문제",
  "about.rightsRemove": "이곳의 자료에 대한 권리를 가지고 계시고 삭제를 원하신다면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> 으로 메일을 보내 주십시오. 이의 제기 없이, 정식 통지를 요구하지 않고 삭제합니다. 원하시면 전부 삭제합니다. 어떤 시험지나 파일이 해당되는지 알려 주십시오. 이렇게 알려 주신 내용은 72시간 이내에 삭제됩니다.",

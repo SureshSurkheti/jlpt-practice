@@ -2,7 +2,7 @@
 I18N.register("si", {
  "about.body": "ජපානයේ ජීවත් වන අය සඳහා නොමිලේ JLPT ඉගෙනුම් අඩවියක්.",
  "about.creditsCode": "කේතය MIT බලපත්‍රය යටතේ ය.",
- "about.creditsExams": "විභාග ප්‍රශ්නවල ප්‍රකාශන හිමිකම JEES සහ Japan Foundation සතුය. මෙහි ඇත්තේ ඉගෙනීම සඳහා පමණි.",
+ "about.creditsExams": "මෙහි ඇති ප්‍රශ්න පත්‍ර %%OWN%%ක් මෙම අඩවිය සඳහාම ලියන ලද ඒවා ය. සෙසු %%ARCHIVED%% පසුගිය විභාග වල සංරක්ෂිත පිටපත් වන අතර, එම ප්‍රශ්නවල ප්‍රකාශන හිමිකම JEES සහ Japan Foundation සතු ය. පහත දැන්වීම බලන්න.",
  "about.creditsKanji": "කන්ජි අකුරුවල කියවීම්, අර්ථ සහ JLPT මට්ටම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත. ඉරි අඳින අනුපිළිවෙල ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
  "about.creditsTitle": "ස්තුතිය",
  "about.creditsWords": "වචනවල අර්ථ සහ කියවීම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
@@ -10,7 +10,7 @@ I18N.register("si", {
  "about.p1": "මෙහි ඇති සෑම ප්‍රශ්න පත්‍රයක්ම JLPT හි ම ආකෘතියෙන් කළ හැක — කාලය ගණන් කර, ස්වයංක්‍රීයව ලකුණු දී, පිළිතුරු පැහැදිලි කිරීම් සහ ශ්‍රවණ පිටපත් සමඟ.",
  "about.p2": "ගිණුමක් හෝ ලියාපදිංචියක් නැත. ඔබේ පිළිතුරු, ලකුණු සහ ප්‍රගතිය මෙම බ්‍රවුසරයේ පමණක් සුරැකෙන අතර කිසිවිටෙකත් උඩුගත නොවේ.",
  "about.p3": "සවන්දීමේ ශ්‍රව්‍ය Google Drive වෙතින්ද, විභාග රූප සටහන් Internet Archive වෙතින්ද පූරණය වේ. එබැවින් මෙම කොටස් දෙකට සම්බන්ධතාවක් අවශ්‍ය වන අතර, වෙනත් ඕනෑම කාවැද්දූ ගොනුවක් මෙන් එම සේවා ඉල්ලීම දකී.",
- "about.rightsBody": "මෙම අඩවියේ ඇති විභාග ප්‍රශ්නවල ප්‍රකාශන හිමිකම හිමි වන්නේ Japan Educational Exchanges and Services (JEES) සහ Japan Foundation ආයතනවලට ය. ඒවා අවසර ඇතිව ප්‍රකාශයට පත් කර නොමැත. මෙම අඩවිය නොමිලේ ය, දැන්වීම් නොමැත, කිසිවක් අලෙවි නොකරයි, කිසිදු ආදායමක් නොලබයි; ප්‍රශ්න මෙහි ඇත්තේ ඉගෙනුම් ලබන්නෙකුට විභාග තත්ත්වයන් යටතේ ප්‍රශ්න පත්‍රයකට මුහුණ දිය හැකි වනු පිණිස පමණි, වෙනත් කිසිදු අරමුණක් සඳහා නොවේ.",
+ "about.rightsBody": "මෙම අඩවියේ ප්‍රශ්න පත්‍ර %%ARCHIVED%%ක් පසුගිය විභාග වල සංරක්ෂිත පිටපත් වේ. ඒවායේ ප්‍රශ්නවල ප්‍රකාශන හිමිකම JEES සහ Japan Foundation සතු වන අතර, ඒවා අවසරය ඇතිව ප්‍රකාශයට පත් කර නොමැත. සෙසු ප්‍රශ්න පත්‍ර %%OWN%% මෙම අඩවිය සඳහාම ලියන ලද ඒවා ය. මෙම අඩවිය නොමිලේ ය, දැන්වීම් නොමැත, කිසිවක් අලෙවි නොකරයි, ආදායමක් ද නොලබයි.",
  "about.rightsOfficial": "ඔබ ඉගෙනුම් ලබමින් සිටින අතර භාවිතයට නිසැකවම නිදහස් ද්‍රව්‍ය අවශ්‍ය නම්, JLPT සංවිධායකයෝම නිල නියැදි ප්‍රශ්න ප්‍රකාශයට පත් කරති:",
  "about.rightsOfficialLink": "jlpt.jp — නිල නියැදි ප්‍රශ්න",
  "about.rightsRemove": "මෙහි ඇති කිසියම් ද්‍රව්‍යයක් සම්බන්ධයෙන් ඔබට හිමිකම් ඇත්නම් සහ එය ඉවත් කිරීමට අවශ්‍ය නම්, <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ඊමේල් කරන්න. එය ඉවත් කරනු ලැබේ - ඔබ ඉල්ලා සිටියොත් සියල්ලම - තර්ක නොකර, විධිමත් දැනුම්දීමක් නොඉල්ලා. කුමන ප්‍රශ්න පත්‍ර හෝ ගොනු සම්බන්ධ දැයි කරුණාකර සඳහන් කරන්න. මෙලෙස දැනුම් දෙන ඕනෑම දෙයක් පැය 72ක් ඇතුළත ඉවත් කරනු ලැබේ.",

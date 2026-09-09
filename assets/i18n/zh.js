@@ -2,7 +2,7 @@
 I18N.register("zh", {
  "about.body": "为在日本生活的人提供的免费JLPT学习网站。",
  "about.creditsCode": "代码采用 MIT 许可。",
- "about.creditsExams": "试题版权归 JEES 与日本国际交流基金会所有，此处仅供学习使用。",
+ "about.creditsExams": "其中 %%OWN%% 套试卷由本站自行编写，其余 %%ARCHIVED%% 套为存档的历年真题，题目版权属于 JEES 与日本国际交流基金会。详见下方声明。",
  "about.creditsKanji": "汉字的读音、释义与 JLPT 等级来自 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。笔顺来自 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 授权。",
  "about.creditsTitle": "致谢",
  "about.creditsWords": "词义与读音来自 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。",
@@ -10,7 +10,7 @@ I18N.register("zh", {
  "about.p1": "这里的试题按JLPT本身的格式作答 — 计时、自动评分，并附答案解析和听力原文。",
  "about.p2": "无需账号，无需注册。你的作答、成绩和进度只保存在本浏览器中，绝不会上传。",
  "about.p3": "听力音频来自 Google 云端硬盘，试题插图来自 Internet Archive，因此这两部分需要联网 — 与任何嵌入文件一样，这些服务会看到该请求。",
- "about.rightsBody": "本站的试题版权属于日本国际教育支援协会（JEES）与日本国际交流基金会。这些内容并非经授权发布。本站免费、不含广告、不销售任何商品，也不获取任何收益；收录试题只是为了让学习者能在与考试相同的条件下作答，别无其他目的。",
+ "about.rightsBody": "本站有 %%ARCHIVED%% 套试卷为存档的历年真题，其题目版权属于 JEES 与日本国际交流基金会，并未获得授权发布。其余 %%OWN%% 套由本站自行编写。本站免费、无广告、不销售任何商品、也无任何收益；存档题目仅供学习者在考试条件下练习之用。",
  "about.rightsOfficial": "如果你正在备考，并希望使用授权明确的材料，JLPT 主办方自己发布了官方样题：",
  "about.rightsOfficialLink": "jlpt.jp — 官方样题",
  "about.rightsRemove": "如果你对本站任何材料拥有权利并希望将其撤下，请发邮件至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>，我们会照办 - 你要求的话可以全部删除 - 不作争辩，也无需正式通知。请说明涉及哪些试卷或文件。以此方式反映的内容将在 72 小时内删除。",

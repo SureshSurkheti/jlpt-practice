@@ -2,7 +2,7 @@
 I18N.register("id", {
  "about.body": "Situs belajar JLPT gratis untuk orang yang tinggal di Jepang.",
  "about.creditsCode": "Kode berlisensi MIT.",
- "about.creditsExams": "Hak cipta soal ujian dimiliki JEES dan Japan Foundation. Dimuat di sini hanya untuk belajar.",
+ "about.creditsExams": "%%OWN%% paket soal di sini ditulis khusus untuk situs ini. %%ARCHIVED%% sisanya adalah arsip ujian terdahulu, yang soalnya merupakan hak cipta JEES dan Japan Foundation. Lihat pemberitahuan di bawah.",
  "about.creditsKanji": "Cara baca, arti, dan tingkat JLPT kanji berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Urutan goresan diambil dari <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
  "about.creditsTitle": "Kredit",
  "about.creditsWords": "Arti dan cara baca kata berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
@@ -10,7 +10,7 @@ I18N.register("id", {
  "about.p1": "Setiap soal di sini dikerjakan dalam format JLPT itu sendiri — berwaktu, dinilai otomatis, dengan penjelasan jawaban dan transkrip menyimak.",
  "about.p2": "Tidak ada akun dan tidak perlu mendaftar. Jawaban, nilai, dan kemajuan Anda hanya tersimpan di peramban ini dan tidak pernah diunggah.",
  "about.p3": "Audio menyimak diputar dari Google Drive dan diagram soal dimuat dari Internet Archive, jadi kedua bagian itu perlu koneksi — dan layanan tersebut melihat permintaannya, seperti pada berkas tersemat mana pun.",
- "about.rightsBody": "Hak cipta soal ujian di situs ini dimiliki oleh Japan Educational Exchanges and Services (JEES) dan Japan Foundation. Soal-soal ini tidak diterbitkan dengan izin. Situs ini gratis, tanpa iklan, tidak menjual apa pun, dan tidak memperoleh penghasilan apa pun; soal ada di sini agar pembelajar dapat mengerjakannya dalam kondisi seperti ujian sebenarnya, dan bukan untuk tujuan lain.",
+ "about.rightsBody": "%%ARCHIVED%% paket soal di situs ini adalah arsip ujian terdahulu. Soalnya merupakan hak cipta JEES dan Japan Foundation, dan tidak diterbitkan dengan izin. %%OWN%% paket lainnya ditulis untuk situs ini. Situs ini gratis, tanpa iklan, tidak menjual apa pun dan tidak menghasilkan apa pun.",
  "about.rightsOfficial": "Jika Anda sedang belajar dan menginginkan materi yang jelas bebas digunakan, penyelenggara JLPT menerbitkan sendiri contoh soal resmi:",
  "about.rightsOfficialLink": "jlpt.jp — contoh soal resmi",
  "about.rightsRemove": "Jika Anda memegang hak atas materi apa pun di sini dan ingin materi itu diturunkan, kirim surel ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> dan materi tersebut akan dihapus - seluruhnya bila Anda minta - tanpa perdebatan dan tanpa memerlukan pemberitahuan resmi. Mohon sebutkan naskah atau berkas mana yang dimaksud. Apa pun yang dilaporkan dengan cara ini dihapus dalam waktu 72 jam.",
