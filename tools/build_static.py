@@ -1587,8 +1587,25 @@ def main():
             html = apply_i18n(tpl_paper, table, en)
             html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang,
                           html, count=1)
+            # A page about an archived sitting is kept out of search.
+            #
+            # Those questions are on the site they were taken from and have
+            # been for years, so a page carrying them is a second copy of
+            # something Google already has - it competes with nothing, and
+            # the doubt it earns is spread over the whole domain, including
+            # the 59 papers written here that nobody else has. Search is
+            # also the way a rights holder is most likely to find any of
+            # this, and there is no reason to be in the index for material
+            # that is not ours to publish.
+            #
+            # It changes nothing else. The paper stays on the site, stays
+            # listed on the exams page, and is sat exactly as before: this
+            # is one <meta> line, not a deletion. And it is "noindex,
+            # follow", so the links out of it still pass through to the
+            # study lists and the papers either side.
+            mine = e.get("origin") == "practice"
             head = seo_head(lang, url, title, desc, langs,
-                            lambda l, eid=e["id"]: paper_url(l, eid), True, ld)
+                            lambda l, eid=e["id"]: paper_url(l, eid), mine, ld)
             a, b = html.index("<title>"), html.index('<link rel="preload"')
             html = html[:a] + head.lstrip() + "    " + html[b:]
 
@@ -1609,7 +1626,12 @@ def main():
 
             io.open(os.path.join(base, "exam", "%s.html" % e["id"]),
                     "w", encoding="utf-8").write(finish_html(html, table, en))
-            written.append((url, lang, "paper"))
+            # Only the indexable ones go in the sitemap. A sitemap that
+            # lists a noindex page asks a crawler to fetch what it is then
+            # told to discard, and says two opposite things about the same
+            # address.
+            if mine:
+                written.append((url, lang, "paper"))
             paper_pages += 1
 
     print("wrote %d core pages, %d study pages and %d paper pages "
