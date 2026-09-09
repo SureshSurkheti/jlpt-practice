@@ -238,5 +238,35 @@
     "n": "The 30GB plan is 3,000 yen with a 500-yen student discount."
    }
   ]
+ },
+ {
+  "passage": "<b>こうみんかん　きょうしつ</b><br><table border=\"1\"><tr><th>きょうしつ</th><th>よう日</th><th>じかん</th><th>おかね</th></tr><tr><td>うた</td><td>月</td><td>18:00〜19:00</td><td>1,000円</td></tr><tr><td>ダンス</td><td>水</td><td>18:00〜19:30</td><td>1,500円</td></tr><tr><td>え</td><td>土</td><td>10:00〜12:00</td><td>1,200円</td></tr><tr><td>りょうり</td><td>土</td><td>14:00〜16:00</td><td>2,000円</td></tr></table><br>※　土よう日の　きょうしつは　二つ　いっしょに　もうしこむと　500円　やすく　なります。",
+  "qs": [
+   {
+    "s": "土よう日に　二つとも　もうしこむと、いくら　はらいますか。",
+    "ch": [
+     "2,700円",
+     "3,200円",
+     "2,500円",
+     "3,700円"
+    ],
+    "n": "1,200 + 2,000 less the 500 discount."
+   }
+  ]
+ },
+ {
+  "passage": "<b>あさの　でんしゃ</b><br><table border=\"1\"><tr><th>でんしゃ</th><th>えきを　でる</th><th>つく</th><th>とまる　えき</th></tr><tr><td>ふつう</td><td>7:00</td><td>8:00</td><td>ぜんぶ</td></tr><tr><td>かいそく</td><td>7:15</td><td>7:55</td><td>五つ</td></tr><tr><td>きゅうこう</td><td>7:30</td><td>8:00</td><td>三つ</td></tr><tr><td>とっきゅう</td><td>7:40</td><td>8:05</td><td>二つ</td></tr></table><br>※　とっきゅうは　べつに　500円　かかります。",
+  "qs": [
+   {
+    "s": "八じまでに　つきたいです。おかねを　はらいたく　ありません。いちばん　おそく　でる　でんしゃは　どれですか。",
+    "ch": [
+     "きゅうこう",
+     "かいそく",
+     "ふつう",
+     "とっきゅう"
+    ],
+    "n": "The express arrives at 8:00 and costs nothing extra; the limited express costs more and arrives late."
+   }
+  ]
  }
 ]

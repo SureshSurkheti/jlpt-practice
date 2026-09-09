@@ -596,7 +596,19 @@ def load_manual():
         for part in exam["parts"]:
             part.setdefault("label", PART_LABEL[part["id"]])
             part.setdefault("source", "hand-authored")
+            # The 問題 instruction is written once, at the top of the group it
+            # belongs to - that is how anyone writing a paper by hand would
+            # write it. The player starts a new section wherever the
+            # instruction changes, so leaving the rest of the group empty split
+            # every 問題 in two: a heading with one question under it, then the
+            # other six with no heading at all. Twenty sections where the paper
+            # has ten. Carried down instead.
+            carried = None
             for n, q in enumerate(part["questions"], 1):
+                if q.get("instruction"):
+                    carried = q["instruction"]
+                elif carried:
+                    q["instruction"] = carried
                 q.setdefault("n", n)
                 q.setdefault("number", None)
                 q.setdefault("passage", None)

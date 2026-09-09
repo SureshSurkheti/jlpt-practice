@@ -1,7 +1,7 @@
 # JLPT Practice
 
 A JLPT study site for learners in Japan, built around **123 papers
-(11,520 questions)** from N1–N5 that are played as timed, auto-scored exams:
+(11,608 questions)** from N1–N5 that are played as timed, auto-scored exams:
 89 archived sittings, and 34 written for this site in the same format.
 
 ## Run it
@@ -91,6 +91,35 @@ The wrong readings in 問題1 and the wrong spellings in 問題2 are derived rat
 than typed; see the note at the top of `tools/vocab_gen.py` for how, and why
 there are only five rules.
 
+**Practice Tests 1 and 2 are topped up, not replaced.** They were written by
+hand before any of this existed — Test 2 was a whole paper bar its 聴解, and
+Test 1 was three questions and never more. The hand-written questions live in
+`data/practice-bank/seed/` and what was missing is dealt in around them, so
+Test 1 is now a full 67-question paper that still opens with the two 漢字読み
+questions it was written with. A seed question says which 問題 it belongs to;
+a booklet that is absent is dealt whole, and continues the paper's own 問題
+numbering rather than starting again at 1.
+
+**The deal is written down** (`data/practice-bank/deal.json`). A seeded
+shuffle makes a rebuild reproducible only while the bank does not change:
+append one item and everything after it moves, quietly dealing different
+questions into papers that already exist. The file records the order, so
+items already dealt keep their place and anything new is appended. Adding to
+a bank can add a paper; it can no longer disturb one.
+
+## What is still missing, and why
+
+Nine papers have a gap that will not be filled:
+
+| Papers | Gap | Why it stays |
+|---|---|---|
+| 6 N1 sittings, 1 N3 | no 聴解 booklet | The booklet was never archived. Writing one would put invented questions inside a paper labelled as a real sitting, which is the one thing this must not do. |
+| n1-2018-12 | 3 of 4 聴解 sections silent | Archived with neither a recording nor a transcript, so there is nothing to play and nothing to speak. |
+| n4-practice-1 | no 読解, no 聴解 | Scraped from someone else's practice set. Adding questions to it would make a hybrid that is honest about neither half. |
+
+The library says so on each of them rather than leaving a reader to find out
+by sitting a section in silence.
+
 ## The home page notice
 
 The home page opens with a panel built from the data itself, not written by
@@ -154,7 +183,7 @@ sittings cannot simply be downloaded.
 
 ## Listening
 
-**113 of the 123 papers can be listened to end to end**, and 532 of the 535
+**115 of the 123 papers can be listened to end to end**, and 540 of the 543
 listening sections in them, by two different routes.
 
 The archived sittings that kept their recordings embed them from Google
@@ -236,11 +265,11 @@ Free JLPT practice — full mock papers, N5 to N1
 
 No sign-up. No ads. Nothing to pay. Open it and start.
 
-📝 123 practice papers, 11,520 questions — N5 through N1, in the real JLPT format
+📝 123 practice papers, 11,608 questions — N5 through N1, in the real JLPT format
 🆕 N5 and N4 now have 18 papers each — vocabulary, grammar, reading and listening, all three booklets
-🔤 Every word of every question, with its reading and meaning — 125,403 of them
+🔤 Every word of every question, with its reading and meaning — 125,767 of them
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
-🎧 113 papers you can listen to end to end
+🎧 115 papers you can listen to end to end
 🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
 🇳🇵 N5 and N4 word meanings in Nepali — 1,753 words
 📚 9,639 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
@@ -252,7 +281,7 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 
 ### Shorter — for a comment or reply
 
-Free JLPT practice site — 123 full mock papers N5–N1, timed and auto-marked, 113 of them with listening. N5 and N4 have 18 papers each, all three booklets. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+Free JLPT practice site — 123 full mock papers N5–N1, timed and auto-marked, 115 of them with listening. N5 and N4 have 18 papers each, all three booklets. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
 https://nihongomock.com
 
 ### One line — for X, Threads, a chat group
@@ -264,7 +293,7 @@ https://nihongomock.com
 
 A repost with no news reads as spam, so lead with what changed:
 
-New on the free JLPT practice site: N5 and N4 now have 18 full papers each, up from 2. Every one has all three booklets — 文字・語彙, 文法・読解 and 聴解 — and the listening is spoken aloud in the page, so you can actually sit it. 11,520 questions across 123 papers now.
+New on the free JLPT practice site: N5 and N4 now have 18 full papers each, up from 2. Every one has all three booklets — 文字・語彙, 文法・読解 and 聴解 — and the listening is spoken aloud in the page, so you can actually sit it. 11,608 questions across 123 papers now.
 https://nihongomock.com
 
 ### Nepali
@@ -273,11 +302,11 @@ https://nihongomock.com
 
 दर्ता गर्नु पर्दैन। विज्ञापन छैन। पैसा तिर्नु पर्दैन।
 
-📝 १२३ अभ्यास प्रश्नपत्र, ११,५२० प्रश्न — वास्तविक JLPT ढाँचामा
+📝 १२३ अभ्यास प्रश्नपत्र, ११,६०८ प्रश्न — वास्तविक JLPT ढाँचामा
 🆕 N5 र N4 मा अब १८-१८ वटा प्रश्नपत्र — शब्द, व्याकरण, पठन र श्रवण सबै
 🔤 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ
 ⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
-🎧 ११२ प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने
+🎧 ११५ प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने
 🇳🇵 N5 र N4 का १,७५३ शब्दको अर्थ नेपालीमा
 📚 ९,६३९ शब्द, २,२११ कान्जी (लेख्ने क्रम सहित), २८० व्याकरण
 📱 मोबाइल र कम्प्युटर दुवैमा; इन्टरनेट बिना पनि चल्छ

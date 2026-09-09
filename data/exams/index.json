@@ -301,11 +301,12 @@
    "title": "JLPT N5 — Practice Test 2",
    "period": "n5-practice-2",
    "periodLabel": "Practice Test 2",
-   "totalQuestions": 45,
+   "totalQuestions": 69,
    "categoryCounts": {
     "vocabulary": 21,
     "grammar": 17,
-    "reading": 7
+    "reading": 7,
+    "listening": 24
    },
    "parts": [
     {
@@ -323,6 +324,14 @@
      "audio": 0,
      "sections": 0,
      "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
     }
    ],
    "sortKey": "n5-practice-2"
@@ -712,16 +721,18 @@
    "title": "JLPT N5 — Practice Test 1",
    "period": "n5-practice-1",
    "periodLabel": "Practice Test 1",
-   "totalQuestions": 3,
+   "totalQuestions": 67,
    "categoryCounts": {
-    "vocabulary": 2,
-    "grammar": 1
+    "vocabulary": 21,
+    "grammar": 17,
+    "reading": 5,
+    "listening": 24
    },
    "parts": [
     {
      "id": "vocabulary",
      "label": "Vocabulary (文字・語彙)",
-     "count": 2,
+     "count": 21,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
@@ -729,10 +740,18 @@
     {
      "id": "grammar-reading",
      "label": "Grammar & Reading (文法・読解)",
-     "count": 1,
+     "count": 22,
      "audio": 0,
      "sections": 0,
      "audioSections": 0
+    },
+    {
+     "id": "listening",
+     "label": "Listening (聴解)",
+     "count": 24,
+     "audio": 24,
+     "sections": 4,
+     "audioSections": 4
     }
    ],
    "sortKey": "n5-practice-1"

@@ -28,6 +28,7 @@ import io
 import json
 import os
 import random
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -38,9 +39,13 @@ BANK = os.path.join(ROOT, "data", "practice-bank")
 OUT = os.path.join(ROOT, "data", "exams-manual")
 WORDS = os.path.join(ROOT, "data", "words")
 
-# Practice Tests 1 and 2 at each level are hand-written whole and stay where
-# they are; the composed ones start after them.
+# Practice Tests 1 and 2 at each level are hand-written; the composed ones
+# start after them. Their hand-written questions live in practice-bank/seed/
+# and are topped up rather than replaced - see top_up().
 FIRST = 3
+PAPERS = 16
+SEED = os.path.join(ROOT, "data", "practice-bank", "seed")
+DEAL = os.path.join(ROOT, "data", "practice-bank", "deal.json")
 
 # --------------------------------------------------------------------------
 # the shape of a paper
@@ -162,6 +167,51 @@ def load(level, kind):
     if not os.path.exists(path):
         return []
     return json.load(io.open(path, encoding="utf-8"))
+
+
+def item_key(kind, item):
+    """What identifies a bank item, independent of where it is in the file."""
+    if kind in ("reading", "orthography"):
+        return item["w"] + "|" + item["s"]
+    if kind in ("context", "paraphrase", "grammar"):
+        return item["s"]
+    if kind == "order":
+        return "".join(item["parts"])
+    if kind.startswith("listen"):
+        return (item.get("say") or item.get("scene")
+                or json.dumps(item.get("script"), ensure_ascii=False))
+    return item["passage"]
+
+
+# --------------------------------------------------------------------------
+# the deal, and why it is written down
+#
+# Shuffling a bank with a fixed seed makes a rebuild reproducible, but only
+# while the bank does not change. Add one item and every later item moves,
+# which quietly deals different questions into papers that already exist -
+# so somebody's "Practice Test 7, question 12" becomes a different question
+# because an unrelated item was written months later.
+#
+# So the order is recorded. Items already in the deal keep the position they
+# had; anything new is shuffled among itself and appended. Adding to a bank
+# can then only add, never disturb.
+
+def read_deal():
+    if os.path.exists(DEAL):
+        return json.load(io.open(DEAL, encoding="utf-8"))
+    return {}
+
+
+def ordered(deal, level, kind, items, rng):
+    order_was = deal.get(level, {}).get(kind, [])
+    pos = dict((k, i) for i, k in enumerate(order_was))
+    known = sorted((x for x in items if item_key(kind, x) in pos),
+                   key=lambda x: pos[item_key(kind, x)])
+    fresh = [x for x in items if item_key(kind, x) not in pos]
+    rng.shuffle(fresh)
+    out = known + fresh
+    deal.setdefault(level, {})[kind] = [item_key(kind, x) for x in out]
+    return out
 
 
 _READINGS = {}
@@ -308,6 +358,123 @@ def expand(level, kind, item, rng):
 # --------------------------------------------------------------------------
 # assembly
 
+MONDAI_NUM = re.compile(r"(?:\u554f\u984c|\u3082\u3093\u3060\u3044)\s*(\d+)")
+
+
+def renumber(instruction, was, now):
+    """問題3 -> 問題13, wherever the number appears in the instruction."""
+    for head in ("\u554f\u984c", "\u3082\u3093\u3060\u3044"):
+        instruction = instruction.replace("%s%d" % (head, was),
+                                          "%s%d" % (head, now))
+    return instruction
+
+
+def make_questions(level, kind, items, rng):
+    """Bank items as finished questions of one 問題."""
+    _mondai, instruction = MONDAI[level][kind]
+    out = []
+    for item in items:
+        for q in expand(level, kind, item, rng):
+            right = q.pop("_correct")
+            rng.shuffle(q["choices"])
+            q["answer"] = q["choices"].index(right) + 1
+            # 問題3 and 問題4 read the choices aloud, numbered. The numbers
+            # have to match the order they are printed in, so this waits
+            # for the shuffle.
+            opener = q.pop("_spoken_choices", None)
+            if opener is not None:
+                q["script"] = [["", opener]] + [
+                    [str(j + 1), c] for j, c in enumerate(q["choices"])]
+            q["category"] = CATEGORY[kind]
+            q["instruction"] = instruction
+            out.append(q)
+    return out
+
+
+# --------------------------------------------------------------------------
+# topping up the hand-written papers
+#
+# Practice Tests 1 and 2 were written by hand, before any of this existed.
+# Test 2 is a whole paper bar its 聴解; Test 1 is three questions and was
+# never anything more. Neither is deleted and neither is rewritten: the
+# hand-written questions live in practice-bank/seed/, and what is missing is
+# dealt from the same banks and appended.
+#
+# A seed question may carry a "kind" saying which 問題 it belongs to. Where
+# it does, that 問題 is filled up to its published count around it. Where a
+# part carries no kinds at all it is taken as finished and left alone, and a
+# part that is absent is dealt whole.
+
+def top_up(level, banks, used, rng):
+    if not os.path.isdir(SEED):
+        return 0
+    done = 0
+    for fn in sorted(os.listdir(SEED)):
+        if not fn.startswith(level) or not fn.endswith(".json"):
+            continue
+        seed = json.load(io.open(os.path.join(SEED, fn), encoding="utf-8"))
+
+        # Practice Test 2 numbers its 問題 straight through the paper - 1 to 4
+        # in 文字・語彙 and 5 to 10 in 文法・読解 - rather than restarting in
+        # each booklet the way the printed paper does. A 聴解 section appended
+        # to it as 問題1 would read as though the paper started again. So a
+        # booklet dealt whole into a seed paper continues that paper's own
+        # numbering instead of using its own.
+        offset = 0
+        for part_id, kinds in SHAPE[level]:
+            was = next((p for p in seed["parts"] if p["id"] == part_id), None)
+            if was and not any(q.get("kind") for q in was["questions"]):
+                for q in was["questions"]:
+                    m = MONDAI_NUM.search(q.get("instruction") or "")
+                    if m:
+                        offset = max(offset, int(m.group(1)))
+
+        parts = []
+        added = 0
+        for part_id, kinds in SHAPE[level]:
+            was = next((p for p in seed["parts"] if p["id"] == part_id), None)
+            kept = list(was["questions"]) if was else []
+            questions = []
+            for kind, n in kinds:
+                mine = [q for q in kept if q.get("kind") == kind]
+                if was and not any(q.get("kind") for q in kept):
+                    continue                    # the part is finished as it is
+                for q in mine:
+                    q = dict(q)
+                    q.pop("kind", None)
+                    q["instruction"] = MONDAI[level][kind][1]
+                    q.setdefault("category", CATEGORY[kind])
+                    questions.append(q)
+                short = n - len(mine)
+                if short > 0:
+                    take = banks[kind][used[kind]:used[kind] + short]
+                    used[kind] += short
+                    got = make_questions(level, kind, take, rng)
+                    if offset and not mine:
+                        num = MONDAI[level][kind][0]
+                        for q in got:
+                            q["instruction"] = renumber(
+                                q["instruction"], num, num + offset)
+                    questions.extend(got)
+                    added += len(got)
+            if was and not any(q.get("kind") for q in kept):
+                parts.append({"id": part_id, "questions": kept})
+            elif questions:
+                parts.append({"id": part_id, "questions": questions})
+        if not added:
+            continue
+        paper = dict(seed)
+        paper["parts"] = parts
+        io.open(os.path.join(OUT, "%s.json" % seed["id"]), "w",
+                encoding="utf-8").write(
+            json.dumps(paper, ensure_ascii=False, indent=1))
+        print("%s: topped up with %d questions (now %d)"
+              % (seed["id"], added,
+                 sum(len(p["questions"]) for p in paper["parts"])))
+        done += 1
+    return done
+
+
 def build(level):
     banks = {}
     for _, kinds in SHAPE[level]:
@@ -321,12 +488,12 @@ def build(level):
             "%s has %d, needs %d" % (k, have, n) for k, n, have in short)))
         return 0
 
-    papers = min(len(banks[k]) // n for _, kinds in SHAPE[level]
-                 for k, n in kinds)
+    papers = min(PAPERS, min(len(banks[k]) // n for _, kinds in SHAPE[level]
+                             for k, n in kinds))
 
     rng = random.Random("%s-practice" % level)
-    for k in banks:
-        rng.shuffle(banks[k])
+    for k in sorted(banks):
+        banks[k] = ordered(DEAL_STATE, level, k, banks[k], rng)
 
     for i in range(papers):
         number = FIRST + i
@@ -334,23 +501,8 @@ def build(level):
         for part_id, kinds in SHAPE[level]:
             questions = []
             for kind, n in kinds:
-                mondai, instruction = MONDAI[level][kind]
-                for item in banks[kind][i * n:(i + 1) * n]:
-                    for q in expand(level, kind, item, rng):
-                        right = q.pop("_correct")
-                        rng.shuffle(q["choices"])
-                        q["answer"] = q["choices"].index(right) + 1
-                        # 問題3 and 問題4 read the choices aloud, numbered.
-                        # The numbers have to match the order they are
-                        # printed in, so this waits for the shuffle.
-                        opener = q.pop("_spoken_choices", None)
-                        if opener is not None:
-                            q["script"] = [["", opener]] + [
-                                [str(i + 1), c]
-                                for i, c in enumerate(q["choices"])]
-                        q["category"] = CATEGORY[kind]
-                        q["instruction"] = instruction
-                        questions.append(q)
+                questions.extend(make_questions(
+                    level, kind, banks[kind][i * n:(i + 1) * n], rng))
             parts.append({"id": part_id, "questions": questions})
 
         paper = {
@@ -363,11 +515,15 @@ def build(level):
                 "w", encoding="utf-8").write(
             json.dumps(paper, ensure_ascii=False, indent=1))
 
-    per = sum(len(p["questions"]) for p in parts)
-    left = min(len(banks[k]) - papers * n for _, kinds in SHAPE[level]
-               for k, n in kinds)
-    print("%s: %d papers of %d questions (%d spare items in the tightest bank)"
-          % (level.upper(), papers, per, left))
+    used = {}
+    for _, kinds in SHAPE[level]:
+        for k, n in kinds:
+            used[k] = papers * n
+    per = sum(n for _, kinds in SHAPE[level] for _, n in kinds)
+    left = min(len(banks[k]) - used[k] for k in used)
+    print("%s: %d papers (%d spare items in the tightest bank)"
+          % (level.upper(), papers, left))
+    top_up(level, banks, used, rng)
     return papers
 
 
@@ -404,10 +560,17 @@ def duplicates():
     return repeats
 
 
+DEAL_STATE = {}
+
+
 def main():
+    global DEAL_STATE
+    DEAL_STATE = read_deal()
     total = 0
     for level in ("n5", "n4"):
         total += build(level)
+    io.open(DEAL, "w", encoding="utf-8").write(
+        json.dumps(DEAL_STATE, ensure_ascii=False, indent=1))
     print("wrote %d papers" % total)
     repeats = duplicates()
     if repeats:
