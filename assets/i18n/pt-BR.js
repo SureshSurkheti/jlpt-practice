@@ -275,6 +275,8 @@ I18N.register("pt-BR", {
  "notice.wordsBody": "As provas de todos os níveis trazem significados em inglês com furigana sobre os kanji. O botão sob cada questão explica cada palavra da questão e das quatro alternativas, além das palavras difíceis dos textos de leitura e das transcrições de audição.",
  "notice.yes": "Sim",
  "paper.mondai": "Grupos de questões",
+ "paper.sampleNote": "Quatro questões, sem as respostas. Inicie a prova para responder a todas, com tempo e correção.",
+ "paper.sampleTitle": "Algumas questões desta prova",
  "practice.answeredCorrectly": "questões corretas",
  "practice.body": "Todos os níveis estão aqui. Treine uma seção ou faça a prova inteira.",
  "practice.levels": "níveis",

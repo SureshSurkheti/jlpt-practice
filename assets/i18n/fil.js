@@ -275,6 +275,8 @@ I18N.register("fil", {
  "notice.wordsBody": "May kahulugan sa Ingles ang mga papel sa lahat ng antas, na may furigana sa ibabaw ng kanji. Ipinapaliwanag ng butones sa ilalim ng bawat tanong ang bawat salita sa tanong at sa apat na sagot, at ang mahihirap na salita sa mga babasahin at transcript ng pakikinig.",
  "notice.yes": "Meron",
  "paper.mondai": "Mga pangkat ng tanong",
+ "paper.sampleNote": "Apat na tanong, walang sagot. Simulan ang papel para sagutan lahat, may oras at awtomatikong pagmamarka.",
+ "paper.sampleTitle": "Ilang tanong mula sa papel na ito",
  "practice.answeredCorrectly": "tanong na tama",
  "practice.body": "Nandito ang lahat ng antas. Magsanay ng isang bahagi, o sagutan ang buong set.",
  "practice.levels": "antas",

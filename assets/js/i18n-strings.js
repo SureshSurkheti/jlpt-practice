@@ -10,6 +10,8 @@
    ========================================================================== */
 
 I18N.register("en", {
+  "paper.sampleTitle": "A few questions from this paper",
+  "paper.sampleNote": "Four of the questions, without their answers. Start the paper to sit all of them, timed and marked.",
   "about.whoBody": "JLPT Practice is built and maintained by Suresh Surkheti. If anything here is wrong, missing or ought to come down, write to <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "exam.noRecording": "No recording",
   "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
@@ -452,6 +454,8 @@ I18N.register("en", {
 });
 
 I18N.register("ja", {
+  "paper.sampleTitle": "この回の問題から",
+  "paper.sampleNote": "解答なしで4問だけ。全問を時間を計って解くには、下から始めてください。",
   "about.whoBody": "JLPT Practice は Suresh Surkheti が制作・運営しています。間違いや不足、削除のご依頼など、何でも <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> までご連絡ください。",
   "footer.rights": "無断転載を禁じます。",
   "exam.noRecording": "音声なし",
@@ -826,6 +830,8 @@ I18N.register("ja", {
 });
 
 I18N.register("vi", {
+  "paper.sampleTitle": "Một vài câu trong đề này",
+  "paper.sampleNote": "Bốn câu hỏi, không kèm đáp án. Bắt đầu làm đề để làm toàn bộ, có tính giờ và chấm điểm.",
   "about.whoBody": "JLPT Practice do Suresh Surkheti xây dựng và duy trì. Nếu có gì sai, thiếu hoặc cần gỡ xuống, hãy viết thư tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Bảo lưu mọi quyền.",
   "exam.noRecording": "Không có bản ghi",
@@ -1200,6 +1206,8 @@ I18N.register("vi", {
 });
 
 I18N.register("ne", {
+  "paper.sampleTitle": "यस पत्रका केही प्रश्न",
+  "paper.sampleNote": "उत्तरबिना चार प्रश्न। सबै प्रश्न समयसहित र स्वतः जाँचसहित गर्न पत्र सुरु गर्नुहोस्।",
   "about.whoBody": "JLPT Practice सुरेश सुर्खेतीले बनाएका र सञ्चालन गर्ने गरेका हुन्। केही गलत, छुटेको वा हटाउनुपर्ने भए <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> मा लेख्नुहोस्।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रेकर्डिङ छैन",
@@ -1574,6 +1582,8 @@ I18N.register("ne", {
 });
 
 I18N.register("zh", {
+  "paper.sampleTitle": "本套题的部分试题",
+  "paper.sampleNote": "四道题，不含答案。开始答题即可完成全部题目，计时并自动评分。",
   "about.whoBody": "JLPT Practice 由 Suresh Surkheti 开发并维护。如有错误、遗漏或需要撤下的内容，请写信至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>。",
   "footer.rights": "版权所有。",
   "exam.noRecording": "无录音",
@@ -1947,6 +1957,8 @@ I18N.register("zh", {
 });
 
 I18N.register("ko", {
+  "paper.sampleTitle": "이 회차의 문제 일부",
+  "paper.sampleNote": "정답 없이 네 문제만. 전체를 시간을 재고 채점까지 하려면 시험을 시작하세요.",
   "about.whoBody": "JLPT Practice는 Suresh Surkheti가 만들고 운영합니다. 잘못되었거나 빠졌거나 내려야 할 것이 있으면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> 으로 연락해 주세요.",
   "footer.rights": "모든 권리 보유.",
   "exam.noRecording": "음성 없음",
@@ -2320,6 +2332,8 @@ I18N.register("ko", {
 });
 
 I18N.register("id", {
+  "paper.sampleTitle": "Beberapa soal dari paket ini",
+  "paper.sampleNote": "Empat soal, tanpa jawaban. Mulai paket ini untuk mengerjakan semuanya, dengan waktu dan penilaian.",
   "about.whoBody": "JLPT Practice dibuat dan dikelola oleh Suresh Surkheti. Jika ada yang keliru, kurang, atau perlu diturunkan, kirim surel ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Hak cipta dilindungi undang-undang.",
   "exam.noRecording": "Tidak ada rekaman",
@@ -2693,6 +2707,8 @@ I18N.register("id", {
 });
 
 I18N.register("fil", {
+  "paper.sampleTitle": "Ilang tanong mula sa papel na ito",
+  "paper.sampleNote": "Apat na tanong, walang sagot. Simulan ang papel para sagutan lahat, may oras at awtomatikong pagmamarka.",
   "about.whoBody": "Ang JLPT Practice ay ginawa at pinapanatili ni Suresh Surkheti. Kung may mali, kulang, o dapat tanggalin, sumulat sa <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Nakalaan ang lahat ng karapatan.",
   "exam.noRecording": "Walang recording",
@@ -3066,6 +3082,8 @@ I18N.register("fil", {
 });
 
 I18N.register("pt-BR", {
+  "paper.sampleTitle": "Algumas questões desta prova",
+  "paper.sampleNote": "Quatro questões, sem as respostas. Inicie a prova para responder a todas, com tempo e correção.",
   "about.whoBody": "O JLPT Practice é criado e mantido por Suresh Surkheti. Se algo aqui estiver errado, faltando ou precisar ser removido, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Todos os direitos reservados.",
   "exam.noRecording": "Sem gravação",
@@ -3439,6 +3457,8 @@ I18N.register("pt-BR", {
 });
 
 I18N.register("hi", {
+  "paper.sampleTitle": "इस पेपर के कुछ प्रश्न",
+  "paper.sampleNote": "उत्तर के बिना चार प्रश्न। सभी प्रश्न समय के साथ और स्वतः जाँच के साथ हल करने के लिए पेपर शुरू करें।",
   "about.whoBody": "JLPT Practice को सुरेश सुर्खेती बनाते और चलाते हैं। यहाँ कुछ ग़लत हो, छूट गया हो या हटाया जाना चाहिए, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर लिखें।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रिकॉर्डिंग नहीं",
@@ -3812,6 +3832,8 @@ I18N.register("hi", {
 });
 
 I18N.register("bn", {
+  "paper.sampleTitle": "এই পেপারের কয়েকটি প্রশ্ন",
+  "paper.sampleNote": "উত্তর ছাড়া চারটি প্রশ্ন। সময় ধরে ও স্বয়ংক্রিয় মূল্যায়নসহ সবগুলো করতে পেপারটি শুরু করুন।",
   "about.whoBody": "JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি। এখানে কিছু ভুল, অনুপস্থিত বা সরানো দরকার হলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> ঠিকানায় লিখুন।",
   "footer.rights": "সর্বস্বত্ব সংরক্ষিত।",
   "exam.noRecording": "রেকর্ডিং নেই",
@@ -4185,6 +4207,8 @@ I18N.register("bn", {
 });
 
 I18N.register("si", {
+  "paper.sampleTitle": "මෙම ප්‍රශ්න පත්‍රයේ ප්‍රශ්න කිහිපයක්",
+  "paper.sampleNote": "පිළිතුරු නොමැතිව ප්‍රශ්න හතරක්. සියල්ල කාලය සමඟ හා ලකුණු කිරීම සමඟ කිරීමට ප්‍රශ්න පත්‍රය ආරම්භ කරන්න.",
   "about.whoBody": "JLPT Practice ගොඩනඟා පවත්වාගෙන යනු ලබන්නේ Suresh Surkheti විසිනි. යමක් වැරදි නම්, නැති නම්, හෝ ඉවත් කළ යුතු නම් <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ලියන්න.",
   "footer.rights": "සියලුම හිමිකම් ඇවිරිණි.",
   "exam.noRecording": "පටිගත කිරීමක් නැත",

@@ -275,6 +275,8 @@ I18N.register("ja", {
  "notice.wordsBody": "全レベルの問題に、漢字のふりがな付きで英語の意味が付いています。各問題の下のボタンから、設問と4つの選択肢のすべての語句、および本文・聴解スクリプトの難しい語句を見られます。",
  "notice.yes": "あり",
  "paper.mondai": "問題別",
+ "paper.sampleNote": "解答なしで4問だけ。全問を時間を計って解くには、下から始めてください。",
+ "paper.sampleTitle": "この回の問題から",
  "practice.answeredCorrectly": "問正解",
  "practice.body": "全レベルをこのページに。1科目だけ解くことも、1回分を通して解くこともできます。",
  "practice.levels": "レベル",

@@ -1101,6 +1101,58 @@ def part_name(part_id, table, en):
     return t(table, key, en) if key else part_id
 
 
+_PAPER_SAMPLE = {}
+
+# Four is a sample; a hundred would be the paper. The point is to give the
+# page a few sentences of its own real Japanese, not to publish the sitting.
+SAMPLE_MAX = 4
+
+
+def paper_sample(exam_id):
+    """A few questions from a paper, for the papers that are ours to show.
+
+    The landing page deliberately carried no exam text - see paper_body -
+    and for an archived sitting that is still right: those questions belong
+    to JEES and the Japan Foundation, they are already on the site they were
+    taken from, and putting more of them into crawlable HTML would add
+    exposure and no answer.
+
+    Our own papers are the opposite case on both counts. Nobody else has
+    them, and a page about one of them was 409 characters of English with 28
+    Japanese characters in it - a table of section counts, repeated for every
+    paper at the level. The one genuinely original thing the site has was
+    the one thing a search engine could not see.
+
+    So: one question from each 問題, up to four, from papers we composed.
+    No answers, and nothing that needs a passage to make sense - a question
+    hanging off a text nobody can see is not a sample, it is a fragment.
+    """
+    if exam_id in _PAPER_SAMPLE:
+        return _PAPER_SAMPLE[exam_id]
+
+    out = []
+    path = os.path.join(ROOT, "data", "exams", exam_id + ".json")
+    exam = json.load(io.open(path, encoding="utf-8"))
+    seen = set()
+    for part in exam.get("parts") or []:
+        for q in part.get("questions") or []:
+            if len(out) >= SAMPLE_MAX:
+                break
+            # 即時応答 prints nothing at all: the line being answered is in
+            # the recording. There is no question here to show.
+            if not (q.get("prompt") or "").strip():
+                continue
+            if q.get("passage"):
+                continue
+            ins = q.get("instruction") or ""
+            if ins in seen:
+                continue
+            seen.add(ins)
+            out.append((ins, q["prompt"], list(q.get("choices") or [])))
+    _PAPER_SAMPLE[exam_id] = out
+    return out
+
+
 def paper_body(exam, table, en, prev_ex, next_ex):
     """The page for one paper.
 
@@ -1196,6 +1248,26 @@ def paper_body(exam, table, en, prev_ex, next_ex):
                  % (esc(t(table, "study.words", en)), vocab_total,
                     esc(t(table, "study.wordsCount", en)), pills))
 
+    # Only for the papers we wrote. See paper_sample().
+    sample = ""
+    if exam.get("origin") == "practice":
+        shown = paper_sample(exam["id"])
+        if shown:
+            items = []
+            for ins, prompt, choices in shown:
+                opts = "".join("<li>%s</li>" % esc(c) for c in choices)
+                items.append(
+                    '<li><p class="ps-mondai">%s</p>'
+                    '<p class="ps-prompt">%s</p>'
+                    '<ol class="ps-choices">%s</ol></li>'
+                    % (esc(re.sub(r"<[^>]+>", " ", ins).strip()), prompt, opts))
+            sample = ('<h2 class="paper-h2">%s</h2>\n'
+                      '      <p class="paper-sample-note">%s</p>\n'
+                      '      <ol class="paper-sample">%s</ol>\n      '
+                      % (esc(t(table, "paper.sampleTitle", en)),
+                         esc(t(table, "paper.sampleNote", en)),
+                         "".join(items)))
+
     return (
         '<main class="container page-shell paper-page">\n'
         '      <p class="paper-kicker"><a href="./exams.html">%s</a>'
@@ -1210,7 +1282,7 @@ def paper_body(exam, table, en, prev_ex, next_ex):
         '        <tbody>%s</tbody>\n'
         '        <tfoot><tr><td>%s</td><td>%d</td></tr></tfoot>\n'
         '      </table>\n'
-        '      %s%s<ul class="paper-notes">%s</ul>\n'
+        '      %s%s%s<ul class="paper-notes">%s</ul>\n'
         '      <nav class="paper-near">%s</nav>\n'
         '    </main>'
         % (esc(t(table, "nav.exams", en)), esc(lv),
@@ -1222,7 +1294,7 @@ def paper_body(exam, table, en, prev_ex, next_ex):
            esc(t(table, "exams.statQuestions", en)),
            rows,
            esc(t(table, "exams.statQuestions", en)), total,
-           mondai, vocab, "".join(notes), "".join(near)))
+           mondai, vocab, sample, "".join(notes), "".join(near)))
 
 
 def main():

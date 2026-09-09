@@ -275,6 +275,8 @@ I18N.register("id", {
  "notice.wordsBody": "Soal di semua level dilengkapi arti bahasa Inggris dengan furigana di atas kanji. Tombol di bawah setiap soal menjelaskan setiap kata pada soal dan empat pilihannya, serta kata-kata sulit pada teks bacaan dan transkrip menyimak.",
  "notice.yes": "Ada",
  "paper.mondai": "Kelompok soal",
+ "paper.sampleNote": "Empat soal, tanpa jawaban. Mulai paket ini untuk mengerjakan semuanya, dengan waktu dan penilaian.",
+ "paper.sampleTitle": "Beberapa soal dari paket ini",
  "practice.answeredCorrectly": "soal dijawab benar",
  "practice.body": "Semua level ada di sini. Latih satu bagian, atau kerjakan satu set penuh.",
  "practice.levels": "level",

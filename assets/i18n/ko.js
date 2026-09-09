@@ -275,6 +275,8 @@ I18N.register("ko", {
  "notice.wordsBody": "모든 레벨의 시험지에 한자 위 후리가나와 함께 영어 뜻이 붙어 있습니다. 각 문제 아래 버튼에서 문제와 네 개 선택지의 모든 단어, 그리고 독해 지문과 청해 스크립트의 어려운 단어를 볼 수 있습니다.",
  "notice.yes": "있음",
  "paper.mondai": "문제 구성",
+ "paper.sampleNote": "정답 없이 네 문제만. 전체를 시간을 재고 채점까지 하려면 시험을 시작하세요.",
+ "paper.sampleTitle": "이 회차의 문제 일부",
  "practice.answeredCorrectly": "문제 정답",
  "practice.body": "모든 레벨이 여기 있습니다. 한 과목만 연습하거나 전체를 풀어 보세요.",
  "practice.levels": "레벨",

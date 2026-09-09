@@ -3990,3 +3990,52 @@ body.is-leaving { opacity: 0; }
   font-variant-numeric: lining-nums tabular-nums;
 }
 .paper-lv b { font-weight: 800; color: var(--navy); }
+
+
+/* --------------------------------------------------------------------------
+   A few real questions on the landing page of a paper we wrote.
+
+   Numbered, quiet, and answerless. It is a sample, not the paper: the type
+   is a step down from the body so it reads as an excerpt, and the choices
+   are a plain list rather than the buttons they become in the player -
+   nothing here is clickable, and it should not look as though it is.
+   -------------------------------------------------------------------------- */
+.paper-sample-note {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.paper-sample {
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.paper-sample > li {
+  padding: 16px 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.ps-mondai {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+.ps-prompt {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.ps-prompt u { text-underline-offset: 3px; }
+.ps-choices {
+  margin: 0;
+  padding-left: 1.4em;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+.ps-choices li { padding-left: 2px; }
