@@ -284,6 +284,8 @@ I18N.register("id", {
  "paper.practiceTest": "Latihan Ujian {n}",
  "paper.sampleNote": "Empat soal, tanpa jawaban. Mulai paket ini untuk mengerjakan semuanya, dengan waktu dan penilaian.",
  "paper.sampleTitle": "Beberapa soal dari paket ini",
+ "paper.startAria": "Mulai {paper}",
+ "paper.startBtn": "Mulai paket ini",
  "practice.answeredCorrectly": "soal dijawab benar",
  "practice.body": "Semua level ada di sini. Latih satu bagian, atau kerjakan satu set penuh.",
  "practice.levels": "level",

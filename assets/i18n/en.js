@@ -284,6 +284,8 @@ I18N.register("en", {
  "paper.practiceTest": "Practice Test {n}",
  "paper.sampleNote": "Four of the questions, without their answers. Start the paper to sit all of them, timed and marked.",
  "paper.sampleTitle": "A few questions from this paper",
+ "paper.startAria": "Start {paper}",
+ "paper.startBtn": "Start this paper",
  "practice.answeredCorrectly": "questions answered correctly",
  "practice.body": "Every level is here. Drill one skill, or sit the whole paper.",
  "practice.levels": "levels",

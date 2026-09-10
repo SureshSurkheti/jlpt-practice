@@ -284,6 +284,8 @@ I18N.register("vi", {
  "paper.practiceTest": "Đề luyện tập {n}",
  "paper.sampleNote": "Bốn câu hỏi, không kèm đáp án. Bắt đầu làm đề để làm toàn bộ, có tính giờ và chấm điểm.",
  "paper.sampleTitle": "Một vài câu trong đề này",
+ "paper.startAria": "Bắt đầu {paper}",
+ "paper.startBtn": "Bắt đầu đề này",
  "practice.answeredCorrectly": "câu trả lời đúng",
  "practice.body": "Tất cả các cấp độ đều ở đây. Luyện riêng một phần, hoặc làm cả đề.",
  "practice.levels": "cấp độ",

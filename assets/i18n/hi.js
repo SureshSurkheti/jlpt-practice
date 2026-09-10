@@ -284,6 +284,8 @@ I18N.register("hi", {
  "paper.practiceTest": "अभ्यास परीक्षा {n}",
  "paper.sampleNote": "उत्तर के बिना चार प्रश्न। सभी प्रश्न समय के साथ और स्वतः जाँच के साथ हल करने के लिए पेपर शुरू करें।",
  "paper.sampleTitle": "इस पेपर के कुछ प्रश्न",
+ "paper.startAria": "{paper} शुरू करें",
+ "paper.startBtn": "यह पेपर शुरू करें",
  "practice.answeredCorrectly": "प्रश्न सही",
  "practice.body": "सभी स्तर यहीं हैं। एक भाग का अभ्यास करें, या पूरा प्रश्नपत्र दें।",
  "practice.levels": "स्तर",

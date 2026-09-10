@@ -29,6 +29,8 @@ import io
 import json
 import os
 import re
+
+import minify
 from collections import OrderedDict
 import shutil
 from urllib.parse import quote
@@ -226,6 +228,62 @@ def asset_version(rel):
     return _ASSET_VERSIONS[rel]
 
 
+def shipped(rel):
+    """The file a page should actually link to: the stripped copy if there
+    is one, and the source if there is not. See write_minified()."""
+    stem, dot, ext = rel.rpartition(".")
+    if dot and ext in ("css", "js") and not stem.endswith(".min"):
+        small = "%s.min.%s" % (stem, ext)
+        if os.path.exists(os.path.join(ROOT, small)):
+            return small
+    return rel
+
+
+def write_minified():
+    """A comment-stripped copy of every stylesheet and page script.
+
+    The sources are heavily commented and that is deliberate; the comments
+    are half of styles.css and half of exam-player.js, and no browser wants
+    any of it. So the sources stay as they are, a .min copy is written
+    beside each one, and the pages link to that: 169 KB of gzipped CSS and
+    JS down to 79.
+
+    The check is the point of doing it here rather than trusting a tool.
+    Every string and regex literal in the source must come out of the
+    stripped copy unchanged - which is exactly what goes wrong if a comment
+    marker inside a string, or a division mistaken for a regex, throws the
+    scanner off - and the build stops if one of them moved.
+    """
+    made = 0
+    for sub, ext in (("css", "css"), ("js", "js")):
+        d = os.path.join(ROOT, "assets", sub)
+        for fn in sorted(os.listdir(d)):
+            if not fn.endswith("." + ext) or fn.endswith(".min." + ext):
+                continue
+            # The master string table is a build input, not a page asset.
+            if fn == "i18n-strings.js":
+                continue
+            raw = io.open(os.path.join(d, fn), encoding="utf-8").read()
+            is_js = ext == "js"
+            small = minify.js(raw) if is_js else minify.css(raw)
+            before = minify.literals(raw, is_js)
+            after = minify.literals(small, is_js)
+            if before != after:
+                for a, b in zip(before, after):
+                    if a != b:
+                        raise SystemExit(
+                            "minify changed a literal in assets/%s/%s:\n"
+                            "  source %r\n  output %r" % (sub, fn, a[:120], b[:120]))
+                raise SystemExit(
+                    "minify lost %d literal(s) in assets/%s/%s"
+                    % (abs(len(before) - len(after)), sub, fn))
+            out = os.path.join(d, fn[:-len(ext)] + "min." + ext)
+            if not os.path.exists(out) or io.open(out, encoding="utf-8").read() != small:
+                io.open(out, "w", encoding="utf-8").write(small)
+            made += 1
+    return made
+
+
 # href="assets/…", src="/assets/…", href="../assets/…" - but not the fonts,
 # which carry their version in the file name because styles.css refers to
 # them by url() and a query string here would make two addresses for one file.
@@ -289,8 +347,8 @@ def finish_html(html, table=None, en=None):
     # site. It is the build's business, not the author's.
     html = html.replace("%%YEAR%%", str(datetime.date.today().year))
     html = ASSET_REF.sub(
-        lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), m.group(3),
-                                    asset_version(m.group(3))), html)
+        lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), shipped(m.group(3)),
+                                    asset_version(shipped(m.group(3)))), html)
     return html.replace('<script src="', '<script defer src="')
 
 # --------------------------------------------------------------------------
@@ -657,9 +715,24 @@ def meta_for(lang, page, table, en):
 
 
 def json_ld(lang, url, title, desc, url_of):
-    """One WebSite node and one WebPage node, linked."""
+    """A WebSite node, a WebPage node and the Organization behind them."""
     root = SITE + ("/" if lang == DEFAULT_LANG else "/" + lang + "/")
 
+    # The publisher used to be an anonymous {Organization, name} inline on
+    # the WebSite node, which says the site has a publisher and nothing about
+    # who. Given an @id it is one entity that every page refers to, with a
+    # logo, an address to write to, and the sameAs that ties the twelve
+    # language trees to one publisher rather than twelve.
+    org = {
+        "@type": "Organization",
+        "@id": SITE + "/#organization",
+        "name": SITE_NAME,
+        "url": SITE + "/",
+        "email": CONTACT_EMAIL,
+        "logo": {"@type": "ImageObject",
+                 "url": SITE + "/apple-touch-icon.png",
+                 "width": 180, "height": 180},
+    }
     site = {
         "@type": "WebSite",
         "@id": root + "#website",
@@ -667,7 +740,7 @@ def json_ld(lang, url, title, desc, url_of):
         "name": SITE_NAME,
         "inLanguage": lang,
         "description": desc,
-        "publisher": {"@type": "Organization", "name": SITE_NAME},
+        "publisher": {"@id": SITE + "/#organization"},
     }
     page = {
         "@type": "WebPage",
@@ -679,7 +752,7 @@ def json_ld(lang, url, title, desc, url_of):
         "isPartOf": {"@id": root + "#website"},
     }
 
-    graph = [site, page]
+    graph = [org, site, page]
     return ('    <script type="application/ld+json">%s</script>'
             % json.dumps({"@context": "https://schema.org", "@graph": graph},
                          ensure_ascii=False, separators=(",", ":")))
@@ -719,6 +792,12 @@ def seo_head(lang, url, title, desc, langs, url_of, indexable, extra=""):
         '    <meta property="og:type" content="website" />',
         '    <meta property="og:site_name" content="%s" />' % SITE_NAME,
         '    <meta property="og:locale" content="%s" />' % OG_LOCALE.get(lang, lang.replace("-", "_")),
+        # The other eleven, so a platform that supports it can pick the
+        # reader's own language rather than only the one it was handed.
+        "\n".join(
+            '    <meta property="og:locale:alternate" content="%s" />'
+            % OG_LOCALE.get(l, l.replace("-", "_"))
+            for l in langs if l != lang) if indexable else "",
         '    <meta property="og:title" content="%s" />' % esc(title),
         '    <meta property="og:description" content="%s" />' % esc(desc),
         '    <meta property="og:url" content="%s" />' % url,
@@ -1361,7 +1440,8 @@ def paper_body(exam, table, en, prev_ex, next_ex):
         '      <h1>%s</h1>\n'
         '      <p class="paper-lead">%d %s</p>\n'
         '      <p class="paper-actions">'
-        '<a class="btn btn-primary" href="./exam.html?id=%s">%s</a>'
+        '<a class="btn btn-primary" href="./exam.html?id=%s" '
+        'aria-label="%s">%s</a>'
         '<a class="btn btn-quiet" href="./study/%s-words.html">%s %s</a></p>\n'
         '      <table class="paper-parts">\n'
         '        <thead><tr><th>%s</th><th>%s</th></tr></thead>\n'
@@ -1374,7 +1454,10 @@ def paper_body(exam, table, en, prev_ex, next_ex):
         % (esc(t(table, "nav.exams", en)), esc(lv),
            esc(paper_name(table, en, exam)),
            total, esc(t(table, "exams.questionsShort", en)),
-           esc(exam["id"]), esc(t(table, "exams.start", en)),
+           esc(exam["id"]),
+           esc(tf(table, "paper.startAria", en,
+                  paper=paper_name(table, en, exam))),
+           esc(t(table, "paper.startBtn", en)),
            lv.lower(), esc(t(table, "exams.study", en)), esc(lv),
            esc(t(table, "exam.sectionsWord", en)),
            esc(t(table, "exams.statQuestions", en)),
@@ -1387,6 +1470,9 @@ def main():
     tr = load_translations()
     exams = load_exam_index()
     write_language_files(tr)
+    # Before anything links to an asset: the pages ask for the stripped copy
+    # and asset_version() hashes it, so it has to exist first.
+    print("minified %d assets" % write_minified())
     global COUNTS
     COUNTS = site_counts()
     en = tr[DEFAULT_LANG]
@@ -1755,8 +1841,10 @@ def main():
             path = os.path.join(gdir, fn)
             html = io.open(path, encoding="utf-8").read()
             fresh = STAMPED_REF.sub(
-                lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2), m.group(3),
-                                            asset_version(m.group(3))), html)
+                lambda m: '%s%s%s?v=%s"' % (m.group(1), m.group(2),
+                                            shipped(m.group(3)),
+                                            asset_version(shipped(m.group(3)))),
+                html)
             if fresh != html:
                 io.open(path, "w", encoding="utf-8").write(fresh)
                 stale += 1
@@ -1826,6 +1914,13 @@ def main():
                    "assets/js/exam-player.js", "assets/js/study.js",
                    "assets/js/quiz.js", "assets/js/review.js",
                    "offline.html"]
+        # The language tables belong in the stamp too. Their own ?v= already
+        # keeps a changed table from being served stale, but with them out of
+        # the hash a translation-only change left the version alone, and the
+        # previous table sat in the shell cache with nothing to evict it.
+        covered += sorted("assets/i18n/" + f for f in
+                          os.listdir(os.path.join(ROOT, "assets", "i18n"))
+                          if f.endswith(".js"))
         h = hashlib.sha1()
         for rel in covered:
             fp = os.path.join(ROOT, rel)
@@ -1838,8 +1933,10 @@ def main():
                     'var VERSION = "%s";' % stamp, sw, count=1)
         # The precache list must name the same addresses the pages do, or
         # the worker would store one copy and the page would fetch another.
-        sw = re.sub(r'"(/assets/[^"?]+)(\?v=[0-9a-f]+)?"',
-                    lambda m: '"%s?v=%s"' % (m.group(1), asset_version(m.group(1)[1:])),
+        sw = re.sub(r'"(/assets/[^"?]+?)(?:\.min)?(\.[a-z]+)(?:\?v=[0-9a-f]+)?"',
+                    lambda m: '"/%s?v=%s"' % (
+                        shipped(m.group(1)[1:] + m.group(2)),
+                        asset_version(shipped(m.group(1)[1:] + m.group(2)))),
                     sw)
         io.open(sw_path, "w", encoding="utf-8").write(sw)
         print("sw.js version %s" % stamp)

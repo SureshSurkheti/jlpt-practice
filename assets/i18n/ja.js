@@ -284,6 +284,8 @@ I18N.register("ja", {
  "paper.practiceTest": "模擬試験{n}",
  "paper.sampleNote": "解答なしで4問だけ。全問を時間を計って解くには、下から始めてください。",
  "paper.sampleTitle": "この回の問題から",
+ "paper.startAria": "{paper}を始める",
+ "paper.startBtn": "この回を始める",
  "practice.answeredCorrectly": "問正解",
  "practice.body": "全レベルをこのページに。1科目だけ解くことも、1回分を通して解くこともできます。",
  "practice.levels": "レベル",

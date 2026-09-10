@@ -284,6 +284,8 @@ I18N.register("bn", {
  "paper.practiceTest": "অনুশীলন পরীক্ষা {n}",
  "paper.sampleNote": "উত্তর ছাড়া চারটি প্রশ্ন। সময় ধরে ও স্বয়ংক্রিয় মূল্যায়নসহ সবগুলো করতে পেপারটি শুরু করুন।",
  "paper.sampleTitle": "এই পেপারের কয়েকটি প্রশ্ন",
+ "paper.startAria": "{paper} শুরু করুন",
+ "paper.startBtn": "এই পেপারটি শুরু করুন",
  "practice.answeredCorrectly": "প্রশ্ন সঠিক",
  "practice.body": "সব স্তর এখানেই। একটি অংশ অভ্যাস করুন, বা পুরো প্রশ্নপত্র দিন।",
  "practice.levels": "স্তর",

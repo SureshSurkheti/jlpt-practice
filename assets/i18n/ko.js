@@ -284,6 +284,8 @@ I18N.register("ko", {
  "paper.practiceTest": "모의고사 {n}",
  "paper.sampleNote": "정답 없이 네 문제만. 전체를 시간을 재고 채점까지 하려면 시험을 시작하세요.",
  "paper.sampleTitle": "이 회차의 문제 일부",
+ "paper.startAria": "{paper} 시작",
+ "paper.startBtn": "이 회차 시작하기",
  "practice.answeredCorrectly": "문제 정답",
  "practice.body": "모든 레벨이 여기 있습니다. 한 과목만 연습하거나 전체를 풀어 보세요.",
  "practice.levels": "레벨",

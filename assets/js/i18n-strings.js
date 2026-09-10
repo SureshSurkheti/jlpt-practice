@@ -28,6 +28,16 @@ I18N.register("en", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} Questions",
   "paper.metaTitleArchive": "JLPT {lv} {period} — Practice Paper, {q} Questions",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "Start {paper}",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "Start this paper",
   "about.whoBody": "JLPT Practice is built and maintained by Suresh Surkheti. If anything here is wrong, missing or ought to come down, write to <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "exam.noRecording": "No recording",
   "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
@@ -492,6 +502,16 @@ I18N.register("ja", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — 全{q}問",
   "paper.metaTitleArchive": "JLPT {lv} {period} — 模擬問題 全{q}問",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "{paper}を始める",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "この回を始める",
   "about.whoBody": "JLPT Practice は Suresh Surkheti が制作・運営しています。間違いや不足、削除のご依頼など、何でも <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> までご連絡ください。",
   "footer.rights": "無断転載を禁じます。",
   "exam.noRecording": "音声なし",
@@ -888,6 +908,16 @@ I18N.register("vi", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} câu hỏi",
   "paper.metaTitleArchive": "JLPT {lv} {period} — Đề luyện tập, {q} câu hỏi",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "Bắt đầu {paper}",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "Bắt đầu đề này",
   "about.whoBody": "JLPT Practice do Suresh Surkheti xây dựng và duy trì. Nếu có gì sai, thiếu hoặc cần gỡ xuống, hãy viết thư tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Bảo lưu mọi quyền.",
   "exam.noRecording": "Không có bản ghi",
@@ -1284,6 +1314,16 @@ I18N.register("ne", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} प्रश्न",
   "paper.metaTitleArchive": "JLPT {lv} {period} — अभ्यास प्रश्नपत्र, {q} प्रश्न",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "{paper} सुरु गर्नुहोस्",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "यो पत्र सुरु गर्नुहोस्",
   "about.whoBody": "JLPT Practice सुरेश सुर्खेतीले बनाएका र सञ्चालन गर्ने गरेका हुन्। केही गलत, छुटेको वा हटाउनुपर्ने भए <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> मा लेख्नुहोस्।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रेकर्डिङ छैन",
@@ -1680,6 +1720,16 @@ I18N.register("zh", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q}题",
   "paper.metaTitleArchive": "JLPT {lv} {period} — 模拟试卷，{q}题",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "开始{paper}",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "开始这套试卷",
   "about.whoBody": "JLPT Practice 由 Suresh Surkheti 开发并维护。如有错误、遗漏或需要撤下的内容，请写信至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>。",
   "footer.rights": "版权所有。",
   "exam.noRecording": "无录音",
@@ -2075,6 +2125,16 @@ I18N.register("ko", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q}문항",
   "paper.metaTitleArchive": "JLPT {lv} {period} — 모의고사, {q}문항",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "{paper} 시작",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "이 회차 시작하기",
   "about.whoBody": "JLPT Practice는 Suresh Surkheti가 만들고 운영합니다. 잘못되었거나 빠졌거나 내려야 할 것이 있으면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> 으로 연락해 주세요.",
   "footer.rights": "모든 권리 보유.",
   "exam.noRecording": "음성 없음",
@@ -2470,6 +2530,16 @@ I18N.register("id", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} Soal",
   "paper.metaTitleArchive": "JLPT {lv} {period} — Soal Latihan, {q} Soal",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "Mulai {paper}",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "Mulai paket ini",
   "about.whoBody": "JLPT Practice dibuat dan dikelola oleh Suresh Surkheti. Jika ada yang keliru, kurang, atau perlu diturunkan, kirim surel ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Hak cipta dilindungi undang-undang.",
   "exam.noRecording": "Tidak ada rekaman",
@@ -2865,6 +2935,16 @@ I18N.register("fil", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} Tanong",
   "paper.metaTitleArchive": "JLPT {lv} {period} — Practice Paper, {q} Tanong",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "Simulan ang {paper}",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "Simulan ang papel na ito",
   "about.whoBody": "Ang JLPT Practice ay ginawa at pinapanatili ni Suresh Surkheti. Kung may mali, kulang, o dapat tanggalin, sumulat sa <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Nakalaan ang lahat ng karapatan.",
   "exam.noRecording": "Walang recording",
@@ -3260,6 +3340,16 @@ I18N.register("pt-BR", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} Questões",
   "paper.metaTitleArchive": "JLPT {lv} {period} — Simulado, {q} Questões",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "Iniciar {paper}",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "Iniciar esta prova",
   "about.whoBody": "O JLPT Practice é criado e mantido por Suresh Surkheti. Se algo aqui estiver errado, faltando ou precisar ser removido, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Todos os direitos reservados.",
   "exam.noRecording": "Sem gravação",
@@ -3655,6 +3745,16 @@ I18N.register("hi", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q} प्रश्न",
   "paper.metaTitleArchive": "JLPT {lv} {period} — अभ्यास प्रश्नपत्र, {q} प्रश्न",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "{paper} शुरू करें",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "यह पेपर शुरू करें",
   "about.whoBody": "JLPT Practice को सुरेश सुर्खेती बनाते और चलाते हैं। यहाँ कुछ ग़लत हो, छूट गया हो या हटाया जाना चाहिए, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर लिखें।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रिकॉर्डिंग नहीं",
@@ -4050,6 +4150,16 @@ I18N.register("bn", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — {q}টি প্রশ্ন",
   "paper.metaTitleArchive": "JLPT {lv} {period} — অনুশীলন প্রশ্নপত্র, {q}টি প্রশ্ন",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "{paper} শুরু করুন",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "এই পেপারটি শুরু করুন",
   "about.whoBody": "JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি। এখানে কিছু ভুল, অনুপস্থিত বা সরানো দরকার হলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> ঠিকানায় লিখুন।",
   "footer.rights": "সর্বস্বত্ব সংরক্ষিত।",
   "exam.noRecording": "রেকর্ডিং নেই",
@@ -4445,6 +4555,16 @@ I18N.register("si", {
   "paper.name": "JLPT {lv} — {period}",
   "paper.metaTitle": "JLPT {lv} {period} — ප්‍රශ්න {q}",
   "paper.metaTitleArchive": "JLPT {lv} {period} — පුහුණු ප්‍රශ්න පත්‍රය, ප්‍රශ්න {q}",
+  /* The accessible name of the Start button on a paper page. The visible
+     word is "Start", which says nothing on its own to a screen reader
+     moving through links - or to a crawler reading them. */
+  "paper.startAria": "{paper} ආරම්භ කරන්න",
+  /* The button on a paper page, where "Start" on its own was the whole
+     of the link text. A link a crawler reads out of context, and one
+     more thing on the page saying what the page is. The row buttons in
+     the library keep the short word - there the paper is named beside
+     them. */
+  "paper.startBtn": "මෙම ප්‍රශ්න පත්‍රය ආරම්භ කරන්න",
   "about.whoBody": "JLPT Practice ගොඩනඟා පවත්වාගෙන යනු ලබන්නේ Suresh Surkheti විසිනි. යමක් වැරදි නම්, නැති නම්, හෝ ඉවත් කළ යුතු නම් <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ලියන්න.",
   "footer.rights": "සියලුම හිමිකම් ඇවිරිණි.",
   "exam.noRecording": "පටිගත කිරීමක් නැත",

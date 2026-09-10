@@ -284,6 +284,8 @@ I18N.register("zh", {
  "paper.practiceTest": "模拟试卷{n}",
  "paper.sampleNote": "四道题，不含答案。开始答题即可完成全部题目，计时并自动评分。",
  "paper.sampleTitle": "本套题的部分试题",
+ "paper.startAria": "开始{paper}",
+ "paper.startBtn": "开始这套试卷",
  "practice.answeredCorrectly": "题答对",
  "practice.body": "所有级别都在这里。可以只练一个部分，也可以做完整一套。",
  "practice.levels": "级别",

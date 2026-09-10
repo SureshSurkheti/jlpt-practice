@@ -284,6 +284,8 @@ I18N.register("fil", {
  "paper.practiceTest": "Practice Test {n}",
  "paper.sampleNote": "Apat na tanong, walang sagot. Simulan ang papel para sagutan lahat, may oras at awtomatikong pagmamarka.",
  "paper.sampleTitle": "Ilang tanong mula sa papel na ito",
+ "paper.startAria": "Simulan ang {paper}",
+ "paper.startBtn": "Simulan ang papel na ito",
  "practice.answeredCorrectly": "tanong na tama",
  "practice.body": "Nandito ang lahat ng antas. Magsanay ng isang bahagi, o sagutan ang buong set.",
  "practice.levels": "antas",

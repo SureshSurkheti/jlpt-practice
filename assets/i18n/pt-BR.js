@@ -284,6 +284,8 @@ I18N.register("pt-BR", {
  "paper.practiceTest": "Simulado {n}",
  "paper.sampleNote": "Quatro questões, sem as respostas. Inicie a prova para responder a todas, com tempo e correção.",
  "paper.sampleTitle": "Algumas questões desta prova",
+ "paper.startAria": "Iniciar {paper}",
+ "paper.startBtn": "Iniciar esta prova",
  "practice.answeredCorrectly": "questões corretas",
  "practice.body": "Todos os níveis estão aqui. Treine uma seção ou faça a prova inteira.",
  "practice.levels": "níveis",
