@@ -371,6 +371,15 @@ I18N.register("en", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "This paper was written for this site, so your browser reads the conversation aloud. Press play on each question.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "{n} questions are still blank",
+  "exam.blanksBody": "A blank answer is marked wrong.",
+  "exam.blanksGo": "Go to the first one",
+  "exam.blanksAnyway": "Submit anyway",
+  "exam.dialogClose": "Keep working",
   "exam.speakNone": "No Japanese voice is installed on this device, so the script is shown instead.",
   "exam.spokenOnly": "The options are spoken only — listen and choose a number.",
   "exam.figureMissing": "This picture is kept on an outside archive and has not loaded.",
@@ -793,6 +802,15 @@ I18N.register("ja", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "この問題はこのサイトのために作られたものです。会話はブラウザの音声で読み上げられます。各問題の再生ボタンを押してください。",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "未回答が{n}問あります",
+  "exam.blanksBody": "未回答は不正解として採点されます。",
+  "exam.blanksGo": "最初の未回答へ",
+  "exam.blanksAnyway": "このまま提出",
+  "exam.dialogClose": "続ける",
   "exam.speakNone": "この端末には日本語の音声がないため、スクリプトを表示しています。",
   "exam.spokenOnly": "選択肢は音声のみです。聞いて番号を選んでください。",
   "exam.figureMissing": "この画像は外部のアーカイブにあり、読み込めませんでした。",
@@ -1199,6 +1217,15 @@ I18N.register("vi", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "Đề này được viết riêng cho trang này, nên trình duyệt sẽ đọc to đoạn hội thoại. Nhấn phát ở từng câu hỏi.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "Còn {n} câu chưa trả lời",
+  "exam.blanksBody": "Câu bỏ trống bị tính là sai.",
+  "exam.blanksGo": "Đến câu đầu tiên",
+  "exam.blanksAnyway": "Vẫn nộp",
+  "exam.dialogClose": "Tiếp tục làm",
   "exam.speakNone": "Thiết bị này chưa cài giọng tiếng Nhật, nên phần lời thoại được hiển thị thay thế.",
   "exam.spokenOnly": "Các lựa chọn chỉ có trong âm thanh — hãy nghe và chọn số.",
   "exam.figureMissing": "Hình này được lưu ở kho lưu trữ bên ngoài và chưa tải được.",
@@ -1605,6 +1632,15 @@ I18N.register("ne", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "यो प्रश्नपत्र यही साइटका लागि लेखिएको हो, त्यसैले कुराकानी ब्राउजरले पढेर सुनाउँछ। हरेक प्रश्नमा प्ले थिच्नुहोस्।",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "{n} प्रश्न अझै खाली छन्",
+  "exam.blanksBody": "खाली उत्तर गलत मानिन्छ।",
+  "exam.blanksGo": "पहिलोमा जानुहोस्",
+  "exam.blanksAnyway": "जसरी भए पनि पेस गर्नुहोस्",
+  "exam.dialogClose": "काम जारी राख्नुहोस्",
   "exam.speakNone": "यो यन्त्रमा जापानी आवाज छैन, त्यसैले स्क्रिप्ट देखाइएको छ।",
   "exam.spokenOnly": "विकल्पहरू अडियोमा मात्र छन् — सुनेर नम्बर छान्नुहोस्।",
   "exam.figureMissing": "यो चित्र बाहिरी अभिलेखालयमा राखिएको छ र लोड हुन सकेन।",
@@ -2011,6 +2047,15 @@ I18N.register("zh", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "本套题是为本站编写的，对话由浏览器朗读。请在每道题上点击播放。",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "还有 {n} 道题未作答",
+  "exam.blanksBody": "未作答按错误计分。",
+  "exam.blanksGo": "跳到第一题",
+  "exam.blanksAnyway": "仍然提交",
+  "exam.dialogClose": "继续作答",
   "exam.speakNone": "本设备未安装日语语音，因此改为显示脚本。",
   "exam.spokenOnly": "选项只有语音——请听后选择数字。",
   "exam.figureMissing": "这张图片存放在外部存档，未能加载。",
@@ -2416,6 +2461,15 @@ I18N.register("ko", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "이 문제는 이 사이트를 위해 만든 것이라 대화를 브라우저가 읽어 줍니다. 각 문제의 재생 버튼을 누르세요.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "아직 {n}문항이 비어 있습니다",
+  "exam.blanksBody": "비워 둔 답은 오답으로 채점됩니다.",
+  "exam.blanksGo": "첫 번째로 이동",
+  "exam.blanksAnyway": "그대로 제출",
+  "exam.dialogClose": "계속 풀기",
   "exam.speakNone": "이 기기에 일본어 음성이 없어 스크립트를 표시합니다.",
   "exam.spokenOnly": "선택지는 음성으로만 제공됩니다 — 듣고 번호를 고르세요.",
   "exam.figureMissing": "이 그림은 외부 아카이브에 있으며 불러오지 못했습니다.",
@@ -2821,6 +2875,15 @@ I18N.register("id", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "Paket soal ini ditulis untuk situs ini, jadi percakapannya dibacakan oleh peramban. Tekan putar di setiap soal.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "Masih ada {n} soal yang kosong",
+  "exam.blanksBody": "Jawaban kosong dihitung salah.",
+  "exam.blanksGo": "Ke soal pertama",
+  "exam.blanksAnyway": "Tetap kumpulkan",
+  "exam.dialogClose": "Lanjut mengerjakan",
   "exam.speakNone": "Perangkat ini tidak punya suara bahasa Jepang, jadi naskahnya ditampilkan.",
   "exam.spokenOnly": "Pilihan hanya diucapkan — simak lalu pilih nomornya.",
   "exam.figureMissing": "Gambar ini disimpan di arsip luar dan gagal dimuat.",
@@ -3226,6 +3289,15 @@ I18N.register("fil", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "Isinulat ang papel na ito para sa site na ito, kaya binabasa nang malakas ng browser mo ang usapan. Pindutin ang play sa bawat tanong.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "May {n} tanong pang walang sagot",
+  "exam.blanksBody": "Ang walang sagot ay ibinibilang na mali.",
+  "exam.blanksGo": "Pumunta sa una",
+  "exam.blanksAnyway": "Isumite pa rin",
+  "exam.dialogClose": "Magpatuloy",
   "exam.speakNone": "Walang naka-install na boses na Hapon sa device na ito, kaya ipinapakita ang script.",
   "exam.spokenOnly": "Ang mga pagpipilian ay binibigkas lamang — makinig at pumili ng numero.",
   "exam.figureMissing": "Ang larawang ito ay nasa panlabas na archive at hindi na-load.",
@@ -3631,6 +3703,15 @@ I18N.register("pt-BR", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "Esta prova foi escrita para este site, então o navegador lê o diálogo em voz alta. Toque em reproduzir em cada questão.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "{n} questões ainda estão em branco",
+  "exam.blanksBody": "Uma resposta em branco conta como errada.",
+  "exam.blanksGo": "Ir para a primeira",
+  "exam.blanksAnyway": "Enviar mesmo assim",
+  "exam.dialogClose": "Continuar",
   "exam.speakNone": "Este aparelho não tem voz em japonês instalada, então o roteiro é exibido.",
   "exam.spokenOnly": "As opções são apenas faladas — ouça e escolha um número.",
   "exam.figureMissing": "Esta imagem fica em um arquivo externo e não carregou.",
@@ -4036,6 +4117,15 @@ I18N.register("hi", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "यह पेपर इसी साइट के लिए लिखा गया है, इसलिए बातचीत ब्राउज़र पढ़कर सुनाता है। हर प्रश्न पर प्ले दबाएँ।",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "{n} प्रश्न अब भी खाली हैं",
+  "exam.blanksBody": "खाली उत्तर गलत गिना जाता है।",
+  "exam.blanksGo": "पहले पर जाएँ",
+  "exam.blanksAnyway": "फिर भी जमा करें",
+  "exam.dialogClose": "जारी रखें",
   "exam.speakNone": "इस डिवाइस में जापानी आवाज़ नहीं है, इसलिए स्क्रिप्ट दिखाई जा रही है।",
   "exam.spokenOnly": "विकल्प केवल बोले जाते हैं — सुनकर संख्या चुनें।",
   "exam.figureMissing": "यह चित्र बाहरी संग्रह में रखा है और लोड नहीं हो सका।",
@@ -4441,6 +4531,15 @@ I18N.register("bn", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "এই পেপারটি এই সাইটের জন্যই লেখা, তাই কথোপকথন ব্রাউজার পড়ে শোনায়। প্রতিটি প্রশ্নে প্লে চাপুন।",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "{n}টি প্রশ্ন এখনো ফাঁকা",
+  "exam.blanksBody": "ফাঁকা উত্তর ভুল হিসেবে গণ্য হয়।",
+  "exam.blanksGo": "প্রথমটিতে যান",
+  "exam.blanksAnyway": "তবুও জমা দিন",
+  "exam.dialogClose": "চালিয়ে যান",
   "exam.speakNone": "এই ডিভাইসে জাপানি কণ্ঠ নেই, তাই স্ক্রিপ্ট দেখানো হচ্ছে।",
   "exam.spokenOnly": "বিকল্পগুলো কেবল বলা হয় — শুনে সংখ্যা বাছুন।",
   "exam.figureMissing": "এই ছবিটি বাইরের একটি সংরক্ষণাগারে রাখা এবং লোড হয়নি।",
@@ -4846,6 +4945,15 @@ I18N.register("si", {
      never had a recording to lose, and telling its reader one was not
      archived describes a loss that never happened. */
   "exam.audioSpokenOwn": "මෙම ප්‍රශ්න පත්‍රය මෙම වෙබ් අඩවිය සඳහාම ලියන ලද්දකි, එබැවින් සංවාදය ඔබේ බ්‍රව්සරය හඬින් කියවයි. එක් එක් ප්‍රශ්නයේ play ඔබන්න.",
+  /* The submit dialog. It used to be window.confirm(), whose buttons are
+     the browser's and come in the browser's language - so a reader on a
+     Japanese phone got a Nepali sentence under an OK and a Cancel they
+     could not read, at the one moment that costs them their answers. */
+  "exam.blanksTitle": "තවමත් ප්‍රශ්න {n}ක් හිස්ව ඇත",
+  "exam.blanksBody": "හිස් පිළිතුරක් වැරදි ලෙස ගණන් ගැනේ.",
+  "exam.blanksGo": "පළමුවැන්න වෙත යන්න",
+  "exam.blanksAnyway": "කෙසේ වෙතත් ඉදිරිපත් කරන්න",
+  "exam.dialogClose": "දිගටම කරන්න",
   "exam.speakNone": "මෙම උපාංගයේ ජපන් හඬක් නොමැති නිසා පිටපත පෙන්වයි.",
   "exam.spokenOnly": "විකල්ප කථනයෙන් පමණි — අසා අංකයක් තෝරන්න.",
   "exam.figureMissing": "මෙම පින්තූරය බාහිර සංරක්ෂිතයක ඇති අතර පූරණය වූයේ නැත.",

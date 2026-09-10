@@ -2040,6 +2040,7 @@ overflow: hidden;
 @media (max-width: 620px) {
 .review-strip { flex-direction: column; align-items: stretch; }
 .review-strip .btn { justify-content: center; }
+.review-strip p { -webkit-line-clamp: 3; min-height: 4.65em; }
 }
 .hero-section .review-strip-wrap { padding-top: clamp(22px, 2.6vw, 34px); }
 .hero-section .review-strip {
@@ -2837,3 +2838,48 @@ font-size: 0.92rem;
 line-height: 1.9;
 }
 .ps-choices li { padding-left: 2px; }
+.lang-offer {
+position: fixed;
+z-index: 60;
+left: 50%;
+bottom: max(12px, env(safe-area-inset-bottom));
+transform: translate(-50%, calc(100% + 24px));
+display: flex;
+align-items: stretch;
+gap: 2px;
+width: min(560px, calc(100vw - 24px));
+background: var(--navy, #112d4e);
+color: #fff;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(17, 45, 78, 0.28);
+opacity: 0;
+transition: transform .32s cubic-bezier(.2, .7, .3, 1), opacity .32s;
+}
+.lang-offer.is-in { transform: translate(-50%, 0); opacity: 1; }
+.lang-offer-go {
+flex: 1;
+min-width: 0;
+padding: 13px 16px;
+color: #fff;
+font-size: 0.95rem;
+font-weight: 600;
+line-height: 1.35;
+text-decoration: none;
+border-radius: 12px 0 0 12px;
+}
+.lang-offer-go:hover, .lang-offer-go:focus-visible { background: rgba(255, 255, 255, 0.12); }
+.lang-offer-close {
+flex: none;
+width: 44px;
+border: 0;
+background: rgba(255, 255, 255, 0.08);
+color: #fff;
+font-size: 1rem;
+line-height: 1;
+cursor: pointer;
+border-radius: 0 12px 12px 0;
+}
+.lang-offer-close:hover, .lang-offer-close:focus-visible { background: rgba(255, 255, 255, 0.2); }
+@media (prefers-reduced-motion: reduce) {
+.lang-offer { transition: opacity .2s; transform: translate(-50%, 0); }
+}

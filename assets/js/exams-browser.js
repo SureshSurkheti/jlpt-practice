@@ -149,7 +149,7 @@
 
     host.innerHTML =
       stat(exams.length, t("exams.statPapers")) +
-      stat(questions.toLocaleString(), t("exams.statQuestions")) +
+      stat(groupNum(questions), t("exams.statQuestions")) +
       stat(Object.keys(levels).length, t("exams.statLevels")) +
       (glossed ? stat(glossed, t("exams.statWordMeanings")) : "");
   }
@@ -212,7 +212,7 @@
           '<span class="lvcard-facts">' +
             "<span><b>" + g.papers + "</b> " +
               esc(t(g.papers === 1 ? "exams.paper" : "exams.papers")) + "</span>" +
-            "<span><b>" + g.questions.toLocaleString() + "</b> " +
+            "<span><b>" + groupNum(g.questions) + "</b> " +
               esc(t("exams.questionsShort")) + "</span>" +
           "</span>" +
           /* A bare arrow said "something happens" without saying what.

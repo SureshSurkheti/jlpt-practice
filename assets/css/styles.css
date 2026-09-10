@@ -3067,6 +3067,15 @@ body.is-leaving { opacity: 0; }
 @media (max-width: 620px) {
   .review-strip { flex-direction: column; align-items: stretch; }
   .review-strip .btn { justify-content: center; }
+  /* Three on a phone, because two is not enough to hold the sentence there
+     and it was being cut mid-word - in English, Vietnamese, Filipino and
+     Portuguese - for every reader who had not started a review queue yet,
+     which is exactly the reader the sentence is for.
+
+     The floor moves with the clamp and has to: the guarantee is that the
+     box is the same height whatever the script puts in it, so the number of
+     lines it reserves and the number it will show must be the same number. */
+  .review-strip p { -webkit-line-clamp: 3; min-height: 4.65em; }
 }
 
 /* The same strip on the blue ground of the hero. The gold edge stays -
@@ -4078,3 +4087,66 @@ body.is-leaving { opacity: 0; }
   line-height: 1.9;
 }
 .ps-choices li { padding-left: 2px; }
+
+/* ==========================================================================
+   The language offer
+
+   A bar at the foot of the screen offering the page in the reader's own
+   language. See offerLanguage() in i18n.js for why it is an offer and not
+   a redirect.
+
+   Fixed, not in the flow: it appears after the scripts run, and anything
+   that pushes the page down at that point is a layout shift on a metric
+   this site scores 0 on. It slides up from under the fold instead, which
+   costs nothing and reads as arriving rather than appearing.
+   ========================================================================== */
+.lang-offer {
+  position: fixed;
+  z-index: 60;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  transform: translate(-50%, calc(100% + 24px));
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  width: min(560px, calc(100vw - 24px));
+  background: var(--navy, #112d4e);
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(17, 45, 78, 0.28);
+  opacity: 0;
+  transition: transform .32s cubic-bezier(.2, .7, .3, 1), opacity .32s;
+}
+.lang-offer.is-in { transform: translate(-50%, 0); opacity: 1; }
+
+.lang-offer-go {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  border-radius: 12px 0 0 12px;
+}
+.lang-offer-go:hover, .lang-offer-go:focus-visible { background: rgba(255, 255, 255, 0.12); }
+
+.lang-offer-close {
+  flex: none;
+  /* 44px, because it is the one thing on the bar you might be aiming for
+     with a thumb and missing it means following a link you did not want. */
+  width: 44px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 0 12px 12px 0;
+}
+.lang-offer-close:hover, .lang-offer-close:focus-visible { background: rgba(255, 255, 255, 0.2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-offer { transition: opacity .2s; transform: translate(-50%, 0); }
+}

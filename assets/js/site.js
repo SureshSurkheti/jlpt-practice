@@ -725,7 +725,7 @@ function renderFeatures() {
       <span class="feature-stat-sub">${sub}</span>
     </div>`;
 
-  const nf = (v) => v.toLocaleString();
+  const nf = (v) => groupNum(v);
   const levels = 'N5 &rarr; N1';
 
   host.innerHTML =
@@ -824,7 +824,7 @@ function renderNotice() {
     const glossed = (glossary && glossary.exams ? glossary.exams : [])
       .reduce((n, e) => n + e.words, 0);
     lead.innerHTML =
-      `<strong>${glossed.toLocaleString()}</strong> ` +
+      `<strong>${groupNum(glossed)}</strong> ` +
       `${t('notice.colWords').toLowerCase()} &middot; ${t('notice.wordsBody')}`;
     lead.hidden = false;
   }

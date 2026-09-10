@@ -1228,14 +1228,21 @@
     card.appendChild(timeBox);
 
     /* -- actions -- */
-    /* Said where the mistake is, not in a browser alert: the boxes are two
-       inches above this button and the message points straight at them. */
+    /* Said where the mistake is, not in a browser alert.
+
+       It used to sit above the Start button, on the reasoning that the
+       message should be where the press was. But pressing Start also
+       scrolls back to the boxes - which is the right thing to do - and the
+       message stayed behind, two hundred pixels below the fold. What a
+       reader actually got for pressing the biggest button on the page was
+       the page jumping and four empty circles, with the explanation off
+       screen. So it lives under the boxes now, and the scroll brings it. */
     var errBox = el("p", "setup-error");
     errBox.id = "setupError";
     errBox.hidden = true;
     errBox.setAttribute("role", "alert");
     errBox.textContent = t("exam.errorPickSection");
-    card.appendChild(errBox);
+    partsBox.appendChild(errBox);
 
     var actions = el("div", "setup-actions");
     var startBtn = el("button", "btn btn-primary btn-lg", t("exam.start"));
@@ -1273,19 +1280,25 @@
     function refreshHint() {
       var n = pickedCount(pickedCategories());
       var hint = document.getElementById("timeHint");
+      var shown = document.getElementById("setupError");
       if (hint) {
         hint.textContent = n
           ? n + " " + t("exam.selected")
           : t("exam.selectOne");
+        /* Once the error is up it says this same sentence in red, directly
+           underneath. Two of them is not twice as clear. */
+        hint.hidden = !n && !!(shown && !shown.hidden);
       }
-      /* Start stays live with nothing ticked. A disabled button gives no
-         reason for being disabled, and on a phone the boxes it refers to are
-         off the top of the screen by the time you reach it. Pressing it says
-         what is missing instead. */
-      if (n) {
-        var err = document.getElementById("setupError");
-        if (err) err.hidden = true;
+      /* Start stays clickable with nothing ticked - a disabled button gives
+         no reason for being disabled, and pressing it is how you find out.
+         But it should not look ready either, so it is marked and dimmed:
+         aria-disabled tells a screen reader the same thing the colour tells
+         everyone else, and the click handler still runs and explains. */
+      if (startBtn) {
+        startBtn.setAttribute("aria-disabled", n ? "false" : "true");
+        startBtn.classList.toggle("is-waiting", !n);
       }
+      if (n && shown) shown.hidden = true;
       syncPickAll();
       var mins = document.getElementById("timerMinutes");
       if (mins && n && !minutesEdited &&
@@ -1381,8 +1394,12 @@
           err.classList.remove("is-shake");
           void err.offsetWidth;          /* restart the animation */
           err.classList.add("is-shake");
+          var quiet = document.getElementById("timeHint");
+          if (quiet) quiet.hidden = true;
+          /* The message, with the boxes above it: "end" puts it at the foot
+             of the screen, so both are in view at once. */
+          err.scrollIntoView({ block: "end", behavior: "smooth" });
         }
-        grid.scrollIntoView({ block: "center", behavior: "smooth" });
         return;
       }
       clearProgress();
@@ -3227,6 +3244,87 @@
 
   /* ------------------------------------------------------------- scoring */
 
+  /* ------------------------------------------------------- submit dialog */
+
+  /* Asking before you throw away marks.
+
+     This was window.confirm(). The sentence in it was translated; the two
+     buttons were not, and could not be - they are the browser's, in the
+     browser's language. A reader on a phone set to Japanese got a Nepali
+     question under an OK and a Cancel, at the single moment in the whole
+     paper that is expensive to get wrong.
+
+     And OK/Cancel were the wrong two choices anyway. What somebody who has
+     left eleven questions blank usually wants is neither of them: they want
+     to go and answer them, and they have no way to find them in a paper
+     that is thirty thousand pixels tall. So that is the first button. */
+  function askBlanks(blanks, first, onSubmit) {
+    var back = document.activeElement;
+    var veil = el("div", "exam-dialog-veil");
+    var box = el("div", "exam-dialog");
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+
+    var head = el("h2", "exam-dialog-title",
+      tf("exam.blanksTitle", { n: blanks }));
+    head.id = "examDialogTitle";
+    box.setAttribute("aria-labelledby", head.id);
+    box.appendChild(head);
+    box.appendChild(el("p", "exam-dialog-body", t("exam.blanksBody")));
+
+    var row = el("div", "exam-dialog-actions");
+    var go = el("button", "btn btn-primary", t("exam.blanksGo"));
+    var anyway = el("button", "btn btn-quiet", t("exam.blanksAnyway"));
+    var stay = el("button", "btn btn-ghost", t("exam.dialogClose"));
+    [go, anyway, stay].forEach(function (b) { b.type = "button"; row.appendChild(b); });
+    box.appendChild(row);
+    veil.appendChild(box);
+
+    function close() {
+      document.removeEventListener("keydown", onKey, true);
+      veil.remove();
+      if (back && back.focus) back.focus();
+    }
+    /* Escape closes and Tab stays inside: a modal you can tab out of is a
+       modal that loses the reader behind it. */
+    function onKey(ev) {
+      if (ev.key === "Escape") { ev.preventDefault(); close(); return; }
+      if (ev.key !== "Tab") return;
+      var focusable = [go, anyway, stay];
+      var i = focusable.indexOf(document.activeElement);
+      var next = ev.shiftKey ? i - 1 : i + 1;
+      if (i === -1 || next < 0 || next >= focusable.length) {
+        ev.preventDefault();
+        focusable[ev.shiftKey ? focusable.length - 1 : 0].focus();
+      }
+    }
+    document.addEventListener("keydown", onKey, true);
+    veil.addEventListener("click", function (ev) { if (ev.target === veil) close(); });
+    go.addEventListener("click", function () {
+      close();
+      if (first !== null) jumpTo(first);
+    });
+    anyway.addEventListener("click", function () { close(); onSubmit(); });
+    stay.addEventListener("click", close);
+
+    /* No first blank to go to means the whole paper is blank and jumping
+       lands on question 1, which is where they already are. */
+    if (first === null) go.remove();
+
+    document.body.appendChild(veil);
+    (first === null ? anyway : go).focus();
+  }
+
+  /* The index of the first unanswered question in `scope`, or null. */
+  function firstBlank(scope) {
+    for (var i = 0; i < state.questions.length; i++) {
+      var item = state.questions[i];
+      if (scope && paperOfCategory(item.category) !== scope) continue;
+      if (!state.answers[item.key]) return i;
+    }
+    return null;
+  }
+
   /* Same warning as the whole-paper submit, but counted over this section
      only - "48 unanswered" when 44 of them are in a section you have not
      opened yet is not a warning, it is noise. */
@@ -3237,14 +3335,20 @@
     var blanks = here.filter(function (item) {
       return !state.answers[item.key];
     }).length;
-    if (blanks > 0 && !window.confirm(blanks + " " + t("exam.confirmBlanks"))) return;
-    submitSection(state.paper);
+    var paper = state.paper;
+    if (blanks > 0) {
+      askBlanks(blanks, firstBlank(paper), function () { submitSection(paper); });
+      return;
+    }
+    submitSection(paper);
   }
 
   function confirmSubmit() {
-    var total = state.questions.length;
-    var blanks = total - answeredCount();
-    if (blanks > 0 && !window.confirm(blanks + " " + t("exam.confirmBlanks"))) return;
+    var blanks = state.questions.length - answeredCount();
+    if (blanks > 0) {
+      askBlanks(blanks, firstBlank(null), function () { submitExam(false); });
+      return;
+    }
     submitExam(false);
   }
 

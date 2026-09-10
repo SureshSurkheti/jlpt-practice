@@ -1582,6 +1582,10 @@ font-size: 0.88rem;
 font-weight: 600;
 }
 .setup-error.is-shake { animation: setup-shake 0.42s ease; }
+.btn.is-waiting {
+filter: saturate(0.45);
+opacity: 0.62;
+}
 @keyframes setup-shake {
 0%, 100% { transform: translateX(0); }
 20% { transform: translateX(-6px); }
@@ -1935,4 +1939,32 @@ opacity: 0.75;
 }
 .q-passage .q-script.is-read {
 margin: 0 0 10px;
+}
+.exam-dialog-veil {
+position: fixed;
+inset: 0;
+z-index: 200;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+background: rgba(17, 45, 78, 0.44);
+animation: dialog-veil 0.16s ease;
+}
+@keyframes dialog-veil { from { opacity: 0; } }
+.exam-dialog {
+width: min(420px, 100%);
+padding: 22px;
+background: #fff;
+border-radius: 16px;
+box-shadow: 0 24px 60px rgba(17, 45, 78, 0.3);
+animation: dialog-rise 0.2s cubic-bezier(.2, .7, .3, 1);
+}
+@keyframes dialog-rise { from { transform: translateY(12px); opacity: 0; } }
+.exam-dialog-title { margin: 0 0 6px; font-size: 1.12rem; color: var(--navy); }
+.exam-dialog-body { margin: 0 0 18px; color: var(--muted); font-size: 0.92rem; }
+.exam-dialog-actions { display: grid; gap: 8px; }
+.exam-dialog-actions .btn { width: 100%; justify-content: center; }
+@media (prefers-reduced-motion: reduce) {
+.exam-dialog-veil, .exam-dialog { animation: none; }
 }
