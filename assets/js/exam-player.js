@@ -1173,7 +1173,7 @@
             "&cat=" + esc(id) + '">' +
             esc(tf("exam.missingPartsGo", {
               part: metaLabel(CATEGORY_META, id),
-              paper: other.periodLabel || other.id
+              paper: paperPeriod(other) || other.id
             })) + " \u2192</a>"));
       });
     }
@@ -1852,7 +1852,8 @@
           '<span class="exam-back-text">' + esc(backLabel) + "</span>" +
         "</a>" +
         '<span class="exam-level-chip">' + esc(state.exam.level) + "</span>" +
-        '<span class="exam-bar-period">' + esc(state.exam.periodLabel) + "</span>" +
+        '<span class="exam-bar-period">' + esc(paperPeriod(state.exam)) +
+          "</span>" +
       "</div>";
 
     if (state.reviewed) {
@@ -1989,9 +1990,17 @@
                !hasFullAudio() && !state.sharedAudio) {
       /* No recording was ever archived for this 問題, and the transcript is
          standing in for it. Said once, above the questions, rather than
-         repeated under every play button. */
+         repeated under every play button.
+
+         Which of the two sentences depends on where the paper came from. A
+         paper written here never had a recording to lose, and "no recording
+         was archived for this section" describes a loss that did not happen
+         - it reads as a fault on the 118 papers where speech is simply how
+         the listening works. */
       head.appendChild(el("div", "q-audio-aside",
-        '<p class="q-audio-note">' + esc(t("exam.audioLostSpoken")) + "</p>"));
+        '<p class="q-audio-note">' + esc(t(
+          state.exam && state.exam.origin === "practice"
+            ? "exam.audioSpokenOwn" : "exam.audioLostSpoken")) + "</p>"));
     }
 
     node.appendChild(head);

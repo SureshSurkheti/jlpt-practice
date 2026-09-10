@@ -231,8 +231,11 @@
     var shown = exams.filter(function (e) {
       if (filterLevel !== "all" && e.level !== filterLevel) return false;
       if (!query) return true;
-      var hay = (e.level + " " + e.title + " " + e.periodLabel + " " + e.period)
-        .toLowerCase();
+      /* Searched in both languages: the English label is what the paper is
+         called in the JSON and what somebody typing "July 2011" will use,
+         and the translated one is what is on the screen in front of them. */
+      var hay = (e.level + " " + e.title + " " + e.periodLabel + " " +
+                 paperPeriod(e) + " " + e.period).toLowerCase();
       return hay.indexOf(query) !== -1;
     });
 
@@ -373,7 +376,7 @@
       '<div class="exam-row-when">' +
         '<span class="exam-level-chip" style="background:' + color + '">' +
           esc(e.level) + "</span>" +
-        '<span class="exam-row-title">' + esc(e.periodLabel) + "</span>" +
+        '<span class="exam-row-title">' + esc(paperPeriod(e)) + "</span>" +
       "</div>" +
       /* The flags belong on the end of the make-up line, not in a column of
          their own. Parked out on the right, "No listening section" floated

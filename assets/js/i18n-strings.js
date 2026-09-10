@@ -12,6 +12,22 @@
 I18N.register("en", {
   "paper.sampleTitle": "A few questions from this paper",
   "paper.sampleNote": "Four of the questions, without their answers. Start the paper to sit all of them, timed and marked.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "Practice Test {n}",
+  "paper.july": "July {y}",
+  "paper.december": "December {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} Questions",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — Practice Paper, {q} Questions",
   "about.whoBody": "JLPT Practice is built and maintained by Suresh Surkheti. If anything here is wrong, missing or ought to come down, write to <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "exam.noRecording": "No recording",
   "exam.missingParts": "Not in this sitting: {parts}. Those questions were never published where these papers come from, so the paper is short that section.",
@@ -99,15 +115,14 @@ I18N.register("en", {
   "cal.julyNote": "The worldwide sitting date. July is not held in every country, and application dates are set locally — check yours.",
   "cal.official": "Official information",
   "about.rightsTitle": "Copyright and removal requests",
-  "about.rightsBody": "%%ARCHIVED%% of the papers on this site are archived past sittings. Their questions are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation, and they are not published with permission. The other %%OWN%% papers were written for this site and are its own. This site is free, carries no advertising, sells nothing and earns nothing; the archived questions are here so that a learner can sit a paper under exam conditions, and for no other purpose.",
-  "about.rightsRemove": "If you hold rights in any material here and want it taken down, email <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> and it will be removed - all of it if you ask - without argument and without requiring a formal notice. Please say which papers or files are involved. Anything reported this way is removed within 72 hours.",
-  "about.rightsOfficial": "If you are studying and want material that is unquestionably free to use, the JLPT organisers publish official sample questions themselves:",
+  "about.rightsBody": "%%ARCHIVED%% of the papers here are archived past sittings. Their questions are the copyright of the Japan Educational Exchanges and Services (JEES) and the Japan Foundation, and are not published with permission. The other %%OWN%% were written for this site. Nothing here is sold or advertised, and the site earns nothing.",
+  "about.rightsRemove": "If you hold rights in anything here and want it taken down, email <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>. It will be removed — all of it if you ask — within 72 hours, without argument and without a formal notice.",
+  "about.rightsOfficial": "The JLPT organisers publish official sample questions themselves:",
   "about.rightsOfficialLink": "jlpt.jp — official sample questions",
   "about.creditsTitle": "Credits",
   "about.creditsCode": "The code is MIT licensed.",
   "about.creditsKanji": "Kanji readings, meanings and JLPT levels come from <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> \u00a9 EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Stroke order is drawn from <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> \u00a9 Ulrich Apel, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Word meanings and readings are derived from <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, licensed <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
-  "about.creditsExams": "%%OWN%% of the papers here were written for this site. The other %%ARCHIVED%% are archived past sittings, whose questions are the copyright of JEES and the Japan Foundation. See the notice below.",
   "notice.paperOne": "1 paper",
   "exam.audioTrouble": "Not playing?",
   "notice.title": "What is available",
@@ -141,9 +156,9 @@ I18N.register("en", {
   "exam.wordsHideAll": "Hide word meanings",
   "exams.originArchive": "Practice paper",
   "exams.originPractice": "Practice paper",
-  "about.p1": "Each paper here is played in the JLPT's own format — timed, marked automatically, with answer explanations and listening scripts.",
-  "about.p2": "There is no account and no sign-up. Your answers, scores and progress are stored only in this browser and are never uploaded.",
-  "about.p3": "Listening audio plays from Google Drive and the exam diagrams load from the Internet Archive, so those two parts need a connection — and those services see the request, as they would for any embedded file.",
+  "about.p1": "%%PAPERS%% full-length papers from N5 to N1, in the JLPT's own format — timed, marked automatically, with answer explanations, listening scripts and a word list for every paper.",
+  "about.p2": "No account, no sign-up, no adverts and no trackers. Your answers, scores and progress are stored in this browser and are never uploaded.",
+  "about.p3": "Listening audio plays from Google Drive and the exam diagrams load from the Internet Archive, so both need a connection — and those services see the request.",
   "about.official": "Free official sample questions from the JLPT organisers",
   "level.N5": "Basic greetings and everyday expressions.",
   "level.N4": "Everyday conversation and simple texts.",
@@ -342,6 +357,10 @@ I18N.register("en", {
   "exam.speakThisOne": "Just this question, spoken by your device — no video, works offline.",
   "exam.speakRead": "Read aloud by your device, now that this section is marked.",
   "exam.audioLostSpoken": "No recording was archived for this section, so the script is read aloud instead.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "This paper was written for this site, so your browser reads the conversation aloud. Press play on each question.",
   "exam.speakNone": "No Japanese voice is installed on this device, so the script is shown instead.",
   "exam.spokenOnly": "The options are spoken only — listen and choose a number.",
   "exam.figureMissing": "This picture is kept on an outside archive and has not loaded.",
@@ -457,6 +476,22 @@ I18N.register("en", {
 I18N.register("ja", {
   "paper.sampleTitle": "この回の問題から",
   "paper.sampleNote": "解答なしで4問だけ。全問を時間を計って解くには、下から始めてください。",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "模擬試験{n}",
+  "paper.july": "{y}年7月",
+  "paper.december": "{y}年12月",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — 全{q}問",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — 模擬問題 全{q}問",
   "about.whoBody": "JLPT Practice は Suresh Surkheti が制作・運営しています。間違いや不足、削除のご依頼など、何でも <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> までご連絡ください。",
   "footer.rights": "無断転載を禁じます。",
   "exam.noRecording": "音声なし",
@@ -549,11 +584,10 @@ I18N.register("ja", {
   "about.creditsKanji": "漢字の読み・意味・JLPTレベルは <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）によります。筆順は <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> ライセンス）によります。",
   "about.creditsWords": "語の意味と読みは <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）に基づいています。",
   "about.rightsTitle": "著作権と削除のご依頼",
-  "about.rightsBody": "このサイトの%%ARCHIVED%%回分は過去の試験を保存したものです。その問題の著作権は日本国際教育支援協会（JEES）および国際交流基金にあり、許可を得て公開しているものではありません。残りの%%OWN%%回分は当サイトが独自に作成したものです。当サイトは無料で、広告を掲載せず、何も販売しておらず、収益もありません。保存された問題は、学習者が試験と同じ形式で解けるようにするためだけに置いています。",
-  "about.rightsOfficial": "権利関係の明確な教材をお探しであれば、JLPTの主催者自身が公式の問題例を公開しています。",
+  "about.rightsBody": "ここにある%%ARCHIVED%%回分は過去に実施された試験の保存版で、その問題の著作権は日本国際教育支援協会（JEES）と国際交流基金にあり、許諾を得て掲載しているものではありません。残る%%OWN%%回分はこのサイトのために作成したものです。販売も広告もなく、収益は一切ありません。",
+  "about.rightsOfficial": "JLPTの主催団体は、公式のサンプル問題を自ら公開しています。",
   "about.rightsOfficialLink": "jlpt.jp — 公式の問題例",
-  "about.rightsRemove": "このサイトの素材について権利をお持ちで削除をご希望の場合は、<a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> までご連絡ください。異議を唱えることも、正式な通知を求めることもなく削除します。ご希望であればすべて削除します。対象となる問題やファイルをお知らせください。この方法でご連絡いただいたものは72時間以内に削除します。",
-  "about.creditsExams": "このサイトの練習問題のうち%%OWN%%回分は当サイトが独自に作成したものです。残りの%%ARCHIVED%%回分は過去の試験を保存したもので、その問題の著作権はJEESおよび国際交流基金にあります。下記の注意書きをご覧ください。",
+  "about.rightsRemove": "ここにある素材の権利をお持ちで削除をご希望の場合は、<a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>までご連絡ください。ご要望があればすべて、異議を申し立てることなく、正式な通知を求めることもなく、72時間以内に削除します。",
   "notice.paperOne": "1回分",
   "exam.audioTrouble": "再生できませんか？",
   "notice.title": "現在利用できるもの",
@@ -588,9 +622,9 @@ I18N.register("ja", {
   "exam.wordsHideAll": "語句の意味を隠す",
   "exams.originArchive": "模擬試験",
   "exams.originPractice": "練習問題",
-  "about.p1": "ここにある問題はJLPTと同じ形式で解けます。時間を計って自動採点され、解説と聴解スクリプトが付いています。",
-  "about.p2": "アカウント登録はありません。解答・スコア・進捗はこのブラウザ内にのみ保存され、どこにも送信されません。",
-  "about.p3": "聴解音声は Google ドライブから、試験中の図版は Internet Archive から読み込まれます。この2つにはインターネット接続が必要で、埋め込みファイルと同様に各サービス側にアクセスが記録されます。",
+  "about.p1": "N5からN1までの模擬試験%%PAPERS%%回分。JLPTと同じ形式で、時間を計って自動採点し、解説・聴解スクリプト・回ごとの単語リストが付きます。",
+  "about.p2": "アカウント登録も広告もトラッキングもありません。解答・点数・学習の記録はこのブラウザ内にだけ保存され、どこにも送信されません。",
+  "about.p3": "聴解の音声はGoogleドライブから、図版はInternet Archiveから読み込まれるため、この2つには通信が必要で、両サービスからはアクセスが見えます。",
   "about.official": "JLPT主催者による無料の公式サンプル問題",
   "level.N5": "基本的なあいさつと日常表現。",
   "level.N4": "日常会話とやさしい文章。",
@@ -735,6 +769,10 @@ I18N.register("ja", {
   "exam.speakThisOne": "この問題だけを端末の音声で読み上げます。動画なし、オフライン可。",
   "exam.speakRead": "採点後なので、この問題を端末の音声で読み上げられます。",
   "exam.audioLostSpoken": "この問題の録音は残っていないため、スクリプトを読み上げます。",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "この問題はこのサイトのために作られたものです。会話はブラウザの音声で読み上げられます。各問題の再生ボタンを押してください。",
   "exam.speakNone": "この端末には日本語の音声がないため、スクリプトを表示しています。",
   "exam.spokenOnly": "選択肢は音声のみです。聞いて番号を選んでください。",
   "exam.figureMissing": "この画像は外部のアーカイブにあり、読み込めませんでした。",
@@ -834,6 +872,22 @@ I18N.register("ja", {
 I18N.register("vi", {
   "paper.sampleTitle": "Một vài câu trong đề này",
   "paper.sampleNote": "Bốn câu hỏi, không kèm đáp án. Bắt đầu làm đề để làm toàn bộ, có tính giờ và chấm điểm.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "Đề luyện tập {n}",
+  "paper.july": "Tháng 7/{y}",
+  "paper.december": "Tháng 12/{y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} câu hỏi",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — Đề luyện tập, {q} câu hỏi",
   "about.whoBody": "JLPT Practice do Suresh Surkheti xây dựng và duy trì. Nếu có gì sai, thiếu hoặc cần gỡ xuống, hãy viết thư tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Bảo lưu mọi quyền.",
   "exam.noRecording": "Không có bản ghi",
@@ -926,11 +980,10 @@ I18N.register("vi", {
   "about.creditsKanji": "Cách đọc, nghĩa và cấp độ JLPT của kanji lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Thứ tự nét lấy từ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Nghĩa và cách đọc của từ được lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Bản quyền và yêu cầu gỡ bỏ",
-  "about.rightsBody": "%%ARCHIVED%% đề trên trang này là các kỳ thi cũ được lưu trữ. Câu hỏi của chúng thuộc bản quyền của JEES và Japan Foundation, và không được đăng với sự cho phép. %%OWN%% đề còn lại được biên soạn riêng cho trang này. Trang này miễn phí, không quảng cáo, không bán gì và không thu lợi; các đề lưu trữ ở đây chỉ để người học làm bài trong điều kiện như thi thật.",
-  "about.rightsOfficial": "Nếu bạn đang học và muốn tài liệu chắc chắn được phép sử dụng, ban tổ chức JLPT có công bố đề mẫu chính thức:",
+  "about.rightsBody": "%%ARCHIVED%% đề ở đây là các kỳ thi đã qua được lưu lại. Câu hỏi của chúng thuộc bản quyền của Japan Educational Exchanges and Services (JEES) và Japan Foundation, và không được đăng với sự cho phép. %%OWN%% đề còn lại được viết cho trang này. Trang không bán gì, không quảng cáo và không thu được gì.",
+  "about.rightsOfficial": "Ban tổ chức JLPT tự công bố đề mẫu chính thức:",
   "about.rightsOfficialLink": "jlpt.jp — đề mẫu chính thức",
-  "about.rightsRemove": "Nếu bạn giữ bản quyền với bất kỳ tài liệu nào ở đây và muốn gỡ xuống, hãy gửi email tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> và tài liệu sẽ được gỡ - toàn bộ nếu bạn yêu cầu - không tranh cãi và không cần thông báo chính thức. Vui lòng cho biết đề thi hoặc tệp nào có liên quan. Mọi phản ánh theo cách này được gỡ trong vòng 72 giờ.",
-  "about.creditsExams": "%%OWN%% đề trong số này được biên soạn riêng cho trang này. %%ARCHIVED%% đề còn lại là các kỳ thi cũ được lưu trữ, câu hỏi thuộc bản quyền của JEES và Japan Foundation. Xem thông báo bên dưới.",
+  "about.rightsRemove": "Nếu bạn giữ bản quyền với bất kỳ nội dung nào ở đây và muốn gỡ xuống, hãy gửi email tới <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>. Nội dung sẽ được gỡ — toàn bộ nếu bạn yêu cầu — trong vòng 72 giờ, không tranh cãi và không cần thông báo chính thức.",
   "notice.paperOne": "1 đề",
   "exam.audioTrouble": "Không phát được?",
   "notice.title": "Hiện có những gì",
@@ -965,9 +1018,9 @@ I18N.register("vi", {
   "exam.wordsHideAll": "Ẩn nghĩa của từ",
   "exams.originArchive": "Đề luyện tập",
   "exams.originPractice": "Đề luyện tập",
-  "about.p1": "Mỗi đề ở đây được làm đúng theo định dạng của JLPT — có bấm giờ, chấm điểm tự động, kèm giải thích đáp án và transcript phần nghe.",
-  "about.p2": "Không cần tài khoản, không cần đăng ký. Câu trả lời, điểm số và tiến độ của bạn chỉ được lưu trong trình duyệt này và không bao giờ được tải lên.",
-  "about.p3": "Âm thanh nghe hiểu phát từ Google Drive và hình minh hoạ trong đề tải từ Internet Archive, nên hai phần này cần kết nối mạng — và các dịch vụ đó thấy yêu cầu, như với bất kỳ tệp nhúng nào.",
+  "about.p1": "%%PAPERS%% đề đầy đủ từ N5 đến N1, đúng định dạng của JLPT — bấm giờ, chấm tự động, kèm giải thích đáp án, lời thoại nghe và danh sách từ vựng cho từng đề.",
+  "about.p2": "Không tài khoản, không đăng ký, không quảng cáo, không theo dõi. Câu trả lời, điểm số và tiến độ chỉ lưu trong trình duyệt này và không bao giờ được tải lên.",
+  "about.p3": "Âm thanh nghe phát từ Google Drive và hình vẽ trong đề tải từ Internet Archive, nên hai phần này cần kết nối — và các dịch vụ đó thấy được yêu cầu.",
   "about.official": "Câu hỏi mẫu chính thức miễn phí từ ban tổ chức JLPT",
   "level.N5": "Chào hỏi cơ bản và cách nói hằng ngày.",
   "level.N4": "Hội thoại hằng ngày và văn bản đơn giản.",
@@ -1112,6 +1165,10 @@ I18N.register("vi", {
   "exam.speakThisOne": "Chỉ câu này, đọc bằng giọng thiết bị — không video, dùng được ngoại tuyến.",
   "exam.speakRead": "Đã chấm xong, nên phần này có thể đọc bằng giọng thiết bị.",
   "exam.audioLostSpoken": "Không có bản ghi âm cho phần này, nên lời thoại được đọc to thay thế.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "Đề này được viết riêng cho trang này, nên trình duyệt sẽ đọc to đoạn hội thoại. Nhấn phát ở từng câu hỏi.",
   "exam.speakNone": "Thiết bị này chưa cài giọng tiếng Nhật, nên phần lời thoại được hiển thị thay thế.",
   "exam.spokenOnly": "Các lựa chọn chỉ có trong âm thanh — hãy nghe và chọn số.",
   "exam.figureMissing": "Hình này được lưu ở kho lưu trữ bên ngoài và chưa tải được.",
@@ -1211,6 +1268,22 @@ I18N.register("vi", {
 I18N.register("ne", {
   "paper.sampleTitle": "यस पत्रका केही प्रश्न",
   "paper.sampleNote": "उत्तरबिना चार प्रश्न। सबै प्रश्न समयसहित र स्वतः जाँचसहित गर्न पत्र सुरु गर्नुहोस्।",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "अभ्यास परीक्षा {n}",
+  "paper.july": "जुलाई {y}",
+  "paper.december": "डिसेम्बर {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} प्रश्न",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — अभ्यास प्रश्नपत्र, {q} प्रश्न",
   "about.whoBody": "JLPT Practice सुरेश सुर्खेतीले बनाएका र सञ्चालन गर्ने गरेका हुन्। केही गलत, छुटेको वा हटाउनुपर्ने भए <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> मा लेख्नुहोस्।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रेकर्डिङ छैन",
@@ -1303,11 +1376,10 @@ I18N.register("ne", {
   "about.creditsKanji": "कान्जीका उच्चारण, अर्थ र JLPT स्तर <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG बाट लिइएका हुन्, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> अन्तर्गत अनुमतिप्राप्त। स्ट्रोक क्रम <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel बाट लिइएको हो, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> अन्तर्गत अनुमतिप्राप्त।",
   "about.creditsWords": "शब्दका अर्थ र उच्चारण <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG बाट लिइएका हुन्, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> अन्तर्गत अनुमतिप्राप्त।",
   "about.rightsTitle": "प्रतिलिपि अधिकार र हटाउने अनुरोध",
-  "about.rightsBody": "यस साइटका %%ARCHIVED%% पेपर विगतका परीक्षाहरूको संग्रह हुन्। तिनका प्रश्नहरूको प्रतिलिपि अधिकार JEES र Japan Foundation सँग छ, र ती अनुमति लिएर प्रकाशित गरिएका होइनन्। बाँकी %%OWN%% पेपर यसै साइटका लागि लेखिएका हुन्। यो साइट नि:शुल्क छ, विज्ञापन छैन, केही बिक्री गर्दैन र कुनै आम्दानी छैन।",
-  "about.rightsOfficial": "तपाईं अध्ययन गर्दै हुनुहुन्छ र प्रयोग गर्न निर्विवाद रूपमा स्वतन्त्र सामग्री चाहनुहुन्छ भने, JLPT आयोजकहरूले आफैँ आधिकारिक नमुना प्रश्नहरू प्रकाशित गर्छन्:",
+  "about.rightsBody": "यहाँका %%ARCHIVED%% प्रश्नपत्र विगतका परीक्षाका सङ्ग्रह हुन्। तिनका प्रश्नको प्रतिलिपि अधिकार Japan Educational Exchanges and Services (JEES) र Japan Foundation सँग छ, र ती अनुमति लिएर राखिएका होइनन्। बाँकी %%OWN%% यही साइटका लागि लेखिएका हुन्। यहाँ केही बिक्री हुँदैन, विज्ञापन छैन, र साइटले केही कमाउँदैन।",
+  "about.rightsOfficial": "JLPT आयोजकहरूले आधिकारिक नमुना प्रश्न आफैँ प्रकाशित गर्छन्:",
   "about.rightsOfficialLink": "jlpt.jp — आधिकारिक नमुना प्रश्न",
-  "about.rightsRemove": "यहाँको कुनै सामग्रीमा तपाईंको अधिकार छ र त्यसलाई हटाउन चाहनुहुन्छ भने <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> मा इमेल गर्नुहोस्; कुनै तर्क नगरी र औपचारिक सूचना नमागी हटाइनेछ - तपाईंले भन्नुभयो भने सबै। कुन प्रश्नपत्र वा फाइलहरू सम्बन्धित छन् भनी उल्लेख गर्नुहोस्। यसरी जानकारी गराइएको कुरा ७२ घण्टाभित्र हटाइन्छ।",
-  "about.creditsExams": "यहाँका %%OWN%% पेपर यसै साइटका लागि लेखिएका हुन्। बाँकी %%ARCHIVED%% विगतका परीक्षाहरूको संग्रह हुन्, जसका प्रश्नहरूको प्रतिलिपि अधिकार JEES र Japan Foundation सँग छ। तलको सूचना हेर्नुहोस्।",
+  "about.rightsRemove": "यहाँका कुनै पनि सामग्रीको अधिकार तपाईंसँग छ र हटाउन चाहनुहुन्छ भने <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> मा इमेल गर्नुहोस्। तपाईंले भन्नुभयो भने सबै नै, कुनै तर्क नगरी र औपचारिक सूचना नमागी, ७२ घण्टाभित्र हटाइनेछ।",
   "notice.paperOne": "1 प्रश्नपत्र",
   "exam.audioTrouble": "बजेको छैन?",
   "notice.title": "अहिले उपलब्ध सामग्री",
@@ -1342,9 +1414,9 @@ I18N.register("ne", {
   "exam.wordsHideAll": "शब्दार्थ लुकाउनुहोस्",
   "exams.originArchive": "अभ्यास प्रश्नपत्र",
   "exams.originPractice": "अभ्यास प्रश्नपत्र",
-  "about.p1": "यहाँका प्रश्नपत्र JLPT कै ढाँचामा दिन सकिन्छ — समय गणना, स्वतः अङ्क, उत्तरको व्याख्या र सुनाइको स्क्रिप्टसहित।",
-  "about.p2": "खाता वा दर्ता चाहिँदैन। तपाईंका उत्तर, अङ्क र प्रगति यही ब्राउजरमा मात्र सुरक्षित हुन्छन्, कहीँ पठाइँदैन।",
-  "about.p3": "सुन्ने अडियो Google Drive बाट र परीक्षाका चित्रहरू Internet Archive बाट लोड हुन्छन्, त्यसैले यी दुई भागलाई इन्टरनेट चाहिन्छ — र अरू एम्बेड गरिएको फाइलजस्तै ती सेवाहरूले अनुरोध देख्छन्।",
+  "about.p1": "N5 देखि N1 सम्म %%PAPERS%% पूरा प्रश्नपत्र, JLPT कै ढाँचामा — समय गणना, स्वतः जाँच, उत्तरको व्याख्या, श्रवणको स्क्रिप्ट र हरेक पत्रको शब्द सूचीसहित।",
+  "about.p2": "खाता छैन, दर्ता छैन, विज्ञापन छैन, ट्र्याकर छैन। तपाईंका उत्तर, अंक र प्रगति यही ब्राउजरमा मात्र राखिन्छ र कहिल्यै अपलोड हुँदैन।",
+  "about.p3": "श्रवणको अडियो Google Drive बाट र परीक्षाका चित्र Internet Archive बाट लोड हुन्छन्, त्यसैले यी दुईलाई इन्टरनेट चाहिन्छ — र ती सेवाहरूले अनुरोध देख्छन्।",
   "about.official": "JLPT आयोजकको निःशुल्क आधिकारिक नमुना प्रश्न",
   "level.N5": "आधारभूत अभिवादन र दैनिक अभिव्यक्ति।",
   "level.N4": "दैनिक कुराकानी र सरल पाठ।",
@@ -1489,6 +1561,10 @@ I18N.register("ne", {
   "exam.speakThisOne": "यही प्रश्न मात्र, यन्त्रकै आवाजमा — भिडियो छैन, अफलाइन पनि चल्छ।",
   "exam.speakRead": "अंक दिइसकेपछि यो भाग यन्त्रकै आवाजमा सुन्न सकिन्छ।",
   "exam.audioLostSpoken": "यस भागको रेकर्डिङ छैन, त्यसैले स्क्रिप्ट पढेर सुनाइन्छ।",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "यो प्रश्नपत्र यही साइटका लागि लेखिएको हो, त्यसैले कुराकानी ब्राउजरले पढेर सुनाउँछ। हरेक प्रश्नमा प्ले थिच्नुहोस्।",
   "exam.speakNone": "यो यन्त्रमा जापानी आवाज छैन, त्यसैले स्क्रिप्ट देखाइएको छ।",
   "exam.spokenOnly": "विकल्पहरू अडियोमा मात्र छन् — सुनेर नम्बर छान्नुहोस्।",
   "exam.figureMissing": "यो चित्र बाहिरी अभिलेखालयमा राखिएको छ र लोड हुन सकेन।",
@@ -1588,6 +1664,22 @@ I18N.register("ne", {
 I18N.register("zh", {
   "paper.sampleTitle": "本套题的部分试题",
   "paper.sampleNote": "四道题，不含答案。开始答题即可完成全部题目，计时并自动评分。",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "模拟试卷{n}",
+  "paper.july": "{y}年7月",
+  "paper.december": "{y}年12月",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q}题",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — 模拟试卷，{q}题",
   "about.whoBody": "JLPT Practice 由 Suresh Surkheti 开发并维护。如有错误、遗漏或需要撤下的内容，请写信至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>。",
   "footer.rights": "版权所有。",
   "exam.noRecording": "无录音",
@@ -1680,11 +1772,10 @@ I18N.register("zh", {
   "about.creditsKanji": "汉字的读音、释义与 JLPT 等级来自 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。笔顺来自 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 授权。",
   "about.creditsWords": "词义与读音来自 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。",
   "about.rightsTitle": "版权与删除请求",
-  "about.rightsBody": "本站有 %%ARCHIVED%% 套试卷为存档的历年真题，其题目版权属于 JEES 与日本国际交流基金会，并未获得授权发布。其余 %%OWN%% 套由本站自行编写。本站免费、无广告、不销售任何商品、也无任何收益；存档题目仅供学习者在考试条件下练习之用。",
-  "about.rightsOfficial": "如果你正在备考，并希望使用授权明确的材料，JLPT 主办方自己发布了官方样题：",
+  "about.rightsBody": "本站 %%ARCHIVED%% 套试卷是往届考试的存档，其试题版权属于日本国际教育支援协会（JEES）与国际交流基金，并未获得授权发布。其余 %%OWN%% 套是为本站编写的。本站不出售任何东西，没有广告，也没有任何收入。",
+  "about.rightsOfficial": "JLPT 主办方自己发布了官方样题：",
   "about.rightsOfficialLink": "jlpt.jp — 官方样题",
-  "about.rightsRemove": "如果你对本站任何材料拥有权利并希望将其撤下，请发邮件至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>，我们会照办 - 你要求的话可以全部删除 - 不作争辩，也无需正式通知。请说明涉及哪些试卷或文件。以此方式反映的内容将在 72 小时内删除。",
-  "about.creditsExams": "其中 %%OWN%% 套试卷由本站自行编写，其余 %%ARCHIVED%% 套为存档的历年真题，题目版权属于 JEES 与日本国际交流基金会。详见下方声明。",
+  "about.rightsRemove": "如果你拥有本站任何内容的权利并希望撤下，请发邮件至 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>。我们会在 72 小时内移除——你要求的话可以全部移除——不作辩解，也不要求正式通知。",
   "notice.paperOne": "1 套",
   "exam.audioTrouble": "无法播放？",
   "notice.title": "目前可用内容",
@@ -1719,9 +1810,9 @@ I18N.register("zh", {
   "exam.wordsHideAll": "隐藏词语释义",
   "exams.originArchive": "模拟题",
   "exams.originPractice": "练习题",
-  "about.p1": "这里的试题按JLPT本身的格式作答 — 计时、自动评分，并附答案解析和听力原文。",
-  "about.p2": "无需账号，无需注册。你的作答、成绩和进度只保存在本浏览器中，绝不会上传。",
-  "about.p3": "听力音频来自 Google 云端硬盘，试题插图来自 Internet Archive，因此这两部分需要联网 — 与任何嵌入文件一样，这些服务会看到该请求。",
+  "about.p1": "从 N5 到 N1 共 %%PAPERS%% 套完整试卷，按 JLPT 本身的格式作答——计时、自动评分，附答案解析、听力原文和每套试卷的单词表。",
+  "about.p2": "不需要账号，不用注册，没有广告，也没有追踪。你的答案、成绩和进度只存在这个浏览器里，不会上传。",
+  "about.p3": "听力音频来自 Google Drive，试题图示来自互联网档案馆，因此这两部分需要联网——这两项服务也会看到请求。",
   "about.official": "JLPT主办方提供的免费官方样题",
   "level.N5": "基本问候和日常表达。",
   "level.N4": "日常会话和简单文章。",
@@ -1866,6 +1957,10 @@ I18N.register("zh", {
   "exam.speakThisOne": "仅朗读本题，使用设备语音——无视频，可离线。",
   "exam.speakRead": "本节已评分，可用设备语音朗读。",
   "exam.audioLostSpoken": "本部分没有录音，改为朗读脚本。",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "本套题是为本站编写的，对话由浏览器朗读。请在每道题上点击播放。",
   "exam.speakNone": "本设备未安装日语语音，因此改为显示脚本。",
   "exam.spokenOnly": "选项只有语音——请听后选择数字。",
   "exam.figureMissing": "这张图片存放在外部存档，未能加载。",
@@ -1964,6 +2059,22 @@ I18N.register("zh", {
 I18N.register("ko", {
   "paper.sampleTitle": "이 회차의 문제 일부",
   "paper.sampleNote": "정답 없이 네 문제만. 전체를 시간을 재고 채점까지 하려면 시험을 시작하세요.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "모의고사 {n}",
+  "paper.july": "{y}년 7월",
+  "paper.december": "{y}년 12월",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q}문항",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — 모의고사, {q}문항",
   "about.whoBody": "JLPT Practice는 Suresh Surkheti가 만들고 운영합니다. 잘못되었거나 빠졌거나 내려야 할 것이 있으면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> 으로 연락해 주세요.",
   "footer.rights": "모든 권리 보유.",
   "exam.noRecording": "음성 없음",
@@ -2056,11 +2167,10 @@ I18N.register("ko", {
   "about.creditsKanji": "한자의 읽기, 뜻, JLPT 등급은 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다. 획순은 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 라이선스를 따릅니다.",
   "about.creditsWords": "단어의 뜻과 읽기는 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다.",
   "about.rightsTitle": "저작권 및 삭제 요청",
-  "about.rightsBody": "이 사이트의 %%ARCHIVED%%회분은 과거 시험을 보관한 것입니다. 그 문제의 저작권은 JEES와 일본국제교류기금에 있으며, 허가를 받아 공개한 것이 아닙니다. 나머지 %%OWN%%회분은 본 사이트가 직접 만든 것입니다. 이 사이트는 무료이며 광고가 없고 아무것도 판매하지 않으며 수익도 없습니다.",
-  "about.rightsOfficial": "학습용으로 이용에 문제가 없는 자료를 원하신다면, JLPT 주최 측이 공식 예시 문제를 직접 공개하고 있습니다:",
+  "about.rightsBody": "여기 있는 %%ARCHIVED%%회분은 지난 시험을 보관한 것으로, 그 문제의 저작권은 일본국제교육지원협회(JEES)와 국제교류기금에 있으며 허락을 받고 공개한 것이 아닙니다. 나머지 %%OWN%%회분은 이 사이트를 위해 만들었습니다. 파는 것도 광고도 없고, 사이트는 아무것도 벌지 않습니다.",
+  "about.rightsOfficial": "JLPT 주최 측이 공식 샘플 문제를 직접 공개하고 있습니다.",
   "about.rightsOfficialLink": "jlpt.jp — 공식 예시 문제",
-  "about.rightsRemove": "이곳의 자료에 대한 권리를 가지고 계시고 삭제를 원하신다면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> 으로 메일을 보내 주십시오. 이의 제기 없이, 정식 통지를 요구하지 않고 삭제합니다. 원하시면 전부 삭제합니다. 어떤 시험지나 파일이 해당되는지 알려 주십시오. 이렇게 알려 주신 내용은 72시간 이내에 삭제됩니다.",
-  "about.creditsExams": "이 중 %%OWN%%회분은 본 사이트가 직접 만든 문제입니다. 나머지 %%ARCHIVED%%회분은 과거 시험을 보관한 것으로, 문제의 저작권은 JEES와 일본국제교류기금에 있습니다. 아래 안내를 참고하세요.",
+  "about.rightsRemove": "여기 있는 자료의 권리를 갖고 계시고 내려주기를 원하신다면 <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>으로 메일을 보내 주세요. 요청하시면 전부, 이의 없이, 정식 통지 없이도 72시간 안에 삭제합니다.",
   "notice.paperOne": "1회분",
   "exam.audioTrouble": "재생되지 않나요?",
   "notice.title": "현재 이용 가능한 자료",
@@ -2095,9 +2205,9 @@ I18N.register("ko", {
   "exam.wordsHideAll": "단어 뜻 숨기기",
   "exams.originArchive": "모의고사",
   "exams.originPractice": "연습문제",
-  "about.p1": "여기 있는 시험지는 JLPT와 같은 형식으로 풀 수 있습니다 — 시간 측정, 자동 채점, 해설과 청해 스크립트 제공.",
-  "about.p2": "계정도 가입도 없습니다. 답안과 점수, 진행 상황은 이 브라우저에만 저장되며 어디에도 전송되지 않습니다.",
-  "about.p3": "청해 음성은 Google 드라이브에서, 시험 도판은 Internet Archive에서 불러옵니다. 이 두 부분은 인터넷 연결이 필요하며, 다른 임베드 파일과 마찬가지로 해당 서비스에 요청이 남습니다.",
+  "about.p1": "N5부터 N1까지 전체 %%PAPERS%%회분. JLPT와 같은 형식으로 시간을 재고 자동 채점하며, 해설·청해 스크립트·회차별 단어 목록이 함께 있습니다.",
+  "about.p2": "계정도 가입도 광고도 추적도 없습니다. 답안과 점수, 학습 기록은 이 브라우저에만 저장되며 어디로도 전송되지 않습니다.",
+  "about.p3": "청해 음성은 Google 드라이브에서, 시험 그림은 인터넷 아카이브에서 불러오므로 이 둘은 연결이 필요하고, 해당 서비스에는 요청이 보입니다.",
   "about.official": "JLPT 주최측의 무료 공식 샘플 문제",
   "level.N5": "기본 인사와 일상 표현.",
   "level.N4": "일상 회화와 쉬운 글.",
@@ -2242,6 +2352,10 @@ I18N.register("ko", {
   "exam.speakThisOne": "이 문제만 기기 음성으로 읽어 줍니다. 영상 없이 오프라인에서도 됩니다.",
   "exam.speakRead": "채점이 끝났으므로 이 부분을 기기 음성으로 읽어 줍니다.",
   "exam.audioLostSpoken": "이 파트의 녹음이 남아 있지 않아 스크립트를 읽어 줍니다.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "이 문제는 이 사이트를 위해 만든 것이라 대화를 브라우저가 읽어 줍니다. 각 문제의 재생 버튼을 누르세요.",
   "exam.speakNone": "이 기기에 일본어 음성이 없어 스크립트를 표시합니다.",
   "exam.spokenOnly": "선택지는 음성으로만 제공됩니다 — 듣고 번호를 고르세요.",
   "exam.figureMissing": "이 그림은 외부 아카이브에 있으며 불러오지 못했습니다.",
@@ -2340,6 +2454,22 @@ I18N.register("ko", {
 I18N.register("id", {
   "paper.sampleTitle": "Beberapa soal dari paket ini",
   "paper.sampleNote": "Empat soal, tanpa jawaban. Mulai paket ini untuk mengerjakan semuanya, dengan waktu dan penilaian.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "Latihan Ujian {n}",
+  "paper.july": "Juli {y}",
+  "paper.december": "Desember {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} Soal",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — Soal Latihan, {q} Soal",
   "about.whoBody": "JLPT Practice dibuat dan dikelola oleh Suresh Surkheti. Jika ada yang keliru, kurang, atau perlu diturunkan, kirim surel ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Hak cipta dilindungi undang-undang.",
   "exam.noRecording": "Tidak ada rekaman",
@@ -2432,11 +2562,10 @@ I18N.register("id", {
   "about.creditsKanji": "Cara baca, arti, dan tingkat JLPT kanji berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Urutan goresan diambil dari <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Arti dan cara baca kata berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Hak cipta dan permintaan penghapusan",
-  "about.rightsBody": "%%ARCHIVED%% paket soal di situs ini adalah arsip ujian terdahulu. Soalnya merupakan hak cipta JEES dan Japan Foundation, dan tidak diterbitkan dengan izin. %%OWN%% paket lainnya ditulis untuk situs ini. Situs ini gratis, tanpa iklan, tidak menjual apa pun dan tidak menghasilkan apa pun.",
-  "about.rightsOfficial": "Jika Anda sedang belajar dan menginginkan materi yang jelas bebas digunakan, penyelenggara JLPT menerbitkan sendiri contoh soal resmi:",
+  "about.rightsBody": "%%ARCHIVED%% paket soal di sini adalah arsip ujian yang sudah berlalu. Soalnya adalah hak cipta Japan Educational Exchanges and Services (JEES) dan Japan Foundation, dan tidak diterbitkan dengan izin. %%OWN%% sisanya ditulis untuk situs ini. Tidak ada yang dijual, tidak ada iklan, dan situs ini tidak menghasilkan apa pun.",
+  "about.rightsOfficial": "Penyelenggara JLPT sendiri menerbitkan contoh soal resmi:",
   "about.rightsOfficialLink": "jlpt.jp — contoh soal resmi",
-  "about.rightsRemove": "Jika Anda memegang hak atas materi apa pun di sini dan ingin materi itu diturunkan, kirim surel ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> dan materi tersebut akan dihapus - seluruhnya bila Anda minta - tanpa perdebatan dan tanpa memerlukan pemberitahuan resmi. Mohon sebutkan naskah atau berkas mana yang dimaksud. Apa pun yang dilaporkan dengan cara ini dihapus dalam waktu 72 jam.",
-  "about.creditsExams": "%%OWN%% paket soal di sini ditulis khusus untuk situs ini. %%ARCHIVED%% sisanya adalah arsip ujian terdahulu, yang soalnya merupakan hak cipta JEES dan Japan Foundation. Lihat pemberitahuan di bawah.",
+  "about.rightsRemove": "Jika Anda memegang hak atas apa pun di sini dan ingin menurunkannya, kirim email ke <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>. Materi itu akan dihapus — semuanya jika Anda minta — dalam 72 jam, tanpa bantahan dan tanpa perlu pemberitahuan resmi.",
   "notice.paperOne": "1 naskah",
   "exam.audioTrouble": "Tidak diputar?",
   "notice.title": "Yang tersedia saat ini",
@@ -2471,9 +2600,9 @@ I18N.register("id", {
   "exam.wordsHideAll": "Sembunyikan arti kata",
   "exams.originArchive": "Soal latihan",
   "exams.originPractice": "Soal latihan",
-  "about.p1": "Setiap soal di sini dikerjakan dalam format JLPT itu sendiri — berwaktu, dinilai otomatis, dengan penjelasan jawaban dan transkrip menyimak.",
-  "about.p2": "Tidak ada akun dan tidak perlu mendaftar. Jawaban, nilai, dan kemajuan Anda hanya tersimpan di peramban ini dan tidak pernah diunggah.",
-  "about.p3": "Audio menyimak diputar dari Google Drive dan diagram soal dimuat dari Internet Archive, jadi kedua bagian itu perlu koneksi — dan layanan tersebut melihat permintaannya, seperti pada berkas tersemat mana pun.",
+  "about.p1": "%%PAPERS%% paket soal lengkap dari N5 sampai N1, dalam format JLPT sendiri — berwaktu, dinilai otomatis, dengan pembahasan jawaban, naskah menyimak, dan daftar kosakata untuk tiap paket.",
+  "about.p2": "Tanpa akun, tanpa pendaftaran, tanpa iklan, tanpa pelacak. Jawaban, nilai, dan kemajuanmu disimpan di peramban ini saja dan tidak pernah diunggah.",
+  "about.p3": "Audio menyimak diputar dari Google Drive dan gambar soal dimuat dari Internet Archive, jadi keduanya butuh koneksi — dan layanan itu melihat permintaannya.",
   "about.official": "Contoh soal resmi gratis dari penyelenggara JLPT",
   "level.N5": "Sapaan dasar dan ungkapan sehari-hari.",
   "level.N4": "Percakapan sehari-hari dan teks sederhana.",
@@ -2618,6 +2747,10 @@ I18N.register("id", {
   "exam.speakThisOne": "Hanya soal ini, dibacakan perangkat — tanpa video, bisa offline.",
   "exam.speakRead": "Sudah dinilai, jadi bagian ini bisa dibacakan perangkat.",
   "exam.audioLostSpoken": "Tidak ada rekaman untuk bagian ini, jadi naskahnya dibacakan.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "Paket soal ini ditulis untuk situs ini, jadi percakapannya dibacakan oleh peramban. Tekan putar di setiap soal.",
   "exam.speakNone": "Perangkat ini tidak punya suara bahasa Jepang, jadi naskahnya ditampilkan.",
   "exam.spokenOnly": "Pilihan hanya diucapkan — simak lalu pilih nomornya.",
   "exam.figureMissing": "Gambar ini disimpan di arsip luar dan gagal dimuat.",
@@ -2716,6 +2849,22 @@ I18N.register("id", {
 I18N.register("fil", {
   "paper.sampleTitle": "Ilang tanong mula sa papel na ito",
   "paper.sampleNote": "Apat na tanong, walang sagot. Simulan ang papel para sagutan lahat, may oras at awtomatikong pagmamarka.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "Practice Test {n}",
+  "paper.july": "Hulyo {y}",
+  "paper.december": "Disyembre {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} Tanong",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — Practice Paper, {q} Tanong",
   "about.whoBody": "Ang JLPT Practice ay ginawa at pinapanatili ni Suresh Surkheti. Kung may mali, kulang, o dapat tanggalin, sumulat sa <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Nakalaan ang lahat ng karapatan.",
   "exam.noRecording": "Walang recording",
@@ -2808,11 +2957,10 @@ I18N.register("fil", {
   "about.creditsKanji": "Ang mga bigkas, kahulugan at antas ng JLPT ng kanji ay mula sa <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Ang pagkakasunod-sunod ng guhit ay mula sa <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Ang kahulugan at bigkas ng mga salita ay hango sa <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Karapatang-sipi at kahilingang tanggalin",
-  "about.rightsBody": "%%ARCHIVED%% sa mga papel dito ay mga naka-archive na dating pagsusulit. Ang mga tanong ay copyright ng JEES at ng Japan Foundation, at hindi inilathala nang may pahintulot. Ang %%OWN%% pang papel ay isinulat para sa site na ito. Libre ang site na ito, walang ad, walang ibinebenta at walang kinikita.",
-  "about.rightsOfficial": "Kung nag-aaral ka at gusto mo ng materyal na tiyak na malayang gamitin, may inilalathalang opisyal na halimbawang tanong ang mga nag-oorganisa ng JLPT:",
+  "about.rightsBody": "%%ARCHIVED%% sa mga papel dito ay naka-archive na mga nakaraang pagsusulit. Ang mga tanong ay copyright ng Japan Educational Exchanges and Services (JEES) at ng Japan Foundation, at hindi inilathala nang may pahintulot. Ang %%OWN%% na iba ay isinulat para sa site na ito. Walang ibinebenta, walang ads, at walang kinikita ang site.",
+  "about.rightsOfficial": "Ang mga nag-oorganisa ng JLPT mismo ay naglalathala ng opisyal na halimbawang tanong:",
   "about.rightsOfficialLink": "jlpt.jp — opisyal na halimbawang tanong",
-  "about.rightsRemove": "Kung may karapatan ka sa alinmang materyal dito at nais mo itong ipatanggal, mag-email sa <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> at aalisin ito - lahat kung hihilingin mo - nang walang pagtatalo at hindi na kailangan ng pormal na abiso. Pakisabi kung aling mga pagsusulit o file ang tinutukoy. Anumang iulat sa paraang ito ay inaalis sa loob ng 72 oras.",
-  "about.creditsExams": "%%OWN%% sa mga papel dito ay isinulat para sa site na ito. Ang natitirang %%ARCHIVED%% ay mga naka-archive na dating pagsusulit, na ang mga tanong ay copyright ng JEES at ng Japan Foundation. Tingnan ang paunawa sa ibaba.",
+  "about.rightsRemove": "Kung may karapatan ka sa anumang nandito at gusto mong tanggalin, mag-email sa <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>. Aalisin ito — lahat kung hihilingin mo — sa loob ng 72 oras, walang pagtatalo at hindi na kailangan ng pormal na abiso.",
   "notice.paperOne": "1 papel",
   "exam.audioTrouble": "Hindi tumutugtog?",
   "notice.title": "Ano ang available ngayon",
@@ -2847,9 +2995,9 @@ I18N.register("fil", {
   "exam.wordsHideAll": "Itago ang kahulugan",
   "exams.originArchive": "Pagsasanay na pagsusulit",
   "exams.originPractice": "Pagsasanay na pagsusulit",
-  "about.p1": "Ang bawat papel dito ay sinasagutan sa mismong pormat ng JLPT — may timer, automatic na pagmamarka, at may paliwanag ng sagot at transcript ng pakikinig.",
-  "about.p2": "Walang account at walang sign-up. Ang mga sagot, iskor at progreso mo ay nakatago lang sa browser na ito at hindi kailanman ina-upload.",
-  "about.p3": "Ang listening audio ay mula sa Google Drive at ang mga diagram ng pagsusulit ay mula sa Internet Archive, kaya kailangan ng koneksyon ang dalawang ito — at nakikita ng mga serbisyong iyon ang request, gaya ng sa anumang naka-embed na file.",
+  "about.p1": "%%PAPERS%% buong papel mula N5 hanggang N1, sa mismong format ng JLPT — may oras, awtomatikong minamarkahan, may paliwanag ng sagot, script ng pakikinig at listahan ng salita sa bawat papel.",
+  "about.p2": "Walang account, walang sign-up, walang ads at walang tracker. Ang mga sagot, iskor at progreso mo ay nasa browser na ito lang at hindi kailanman ina-upload.",
+  "about.p3": "Ang audio sa pakikinig ay mula sa Google Drive at ang mga larawan sa pagsusulit ay mula sa Internet Archive, kaya kailangan ng koneksyon ng dalawang ito — at nakikita ng mga serbisyong iyon ang request.",
   "about.official": "Libreng opisyal na sample na tanong mula sa mga organisador ng JLPT",
   "level.N5": "Pangunahing pagbati at pang-araw-araw na pahayag.",
   "level.N4": "Pang-araw-araw na usapan at simpleng teksto.",
@@ -2994,6 +3142,10 @@ I18N.register("fil", {
   "exam.speakThisOne": "Ang tanong na ito lang, binabasa ng device — walang video, gumagana offline.",
   "exam.speakRead": "Nascore na, kaya mababasa ito nang malakas ng device.",
   "exam.audioLostSpoken": "Walang recording para sa bahaging ito, kaya binabasa nang malakas ang script.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "Isinulat ang papel na ito para sa site na ito, kaya binabasa nang malakas ng browser mo ang usapan. Pindutin ang play sa bawat tanong.",
   "exam.speakNone": "Walang naka-install na boses na Hapon sa device na ito, kaya ipinapakita ang script.",
   "exam.spokenOnly": "Ang mga pagpipilian ay binibigkas lamang — makinig at pumili ng numero.",
   "exam.figureMissing": "Ang larawang ito ay nasa panlabas na archive at hindi na-load.",
@@ -3092,6 +3244,22 @@ I18N.register("fil", {
 I18N.register("pt-BR", {
   "paper.sampleTitle": "Algumas questões desta prova",
   "paper.sampleNote": "Quatro questões, sem as respostas. Inicie a prova para responder a todas, com tempo e correção.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "Simulado {n}",
+  "paper.july": "Julho de {y}",
+  "paper.december": "Dezembro de {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} Questões",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — Simulado, {q} Questões",
   "about.whoBody": "O JLPT Practice é criado e mantido por Suresh Surkheti. Se algo aqui estiver errado, faltando ou precisar ser removido, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>.",
   "footer.rights": "Todos os direitos reservados.",
   "exam.noRecording": "Sem gravação",
@@ -3184,11 +3352,10 @@ I18N.register("pt-BR", {
   "about.creditsKanji": "As leituras, os significados e os níveis JLPT dos kanji vêm do <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. A ordem dos traços vem do <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
   "about.creditsWords": "Os significados e as leituras das palavras derivam do <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
   "about.rightsTitle": "Direitos autorais e pedidos de remoção",
-  "about.rightsBody": "%%ARCHIVED%% das provas deste site são exames anteriores arquivados. Suas questões são de direito autoral da JEES e da Japan Foundation, e não são publicadas com permissão. As outras %%OWN%% provas foram escritas para este site. Este site é gratuito, não tem publicidade, não vende nada e não gera receita.",
-  "about.rightsOfficial": "Se você está estudando e quer material cujo uso seja indiscutivelmente livre, os organizadores do JLPT publicam questões oficiais de exemplo:",
+  "about.rightsBody": "%%ARCHIVED%% das provas aqui são aplicações passadas arquivadas. Suas questões são propriedade da Japan Educational Exchanges and Services (JEES) e da Japan Foundation, e não estão publicadas com permissão. As outras %%OWN%% foram escritas para este site. Nada aqui é vendido ou anunciado, e o site não ganha nada.",
+  "about.rightsOfficial": "Os organizadores do JLPT publicam questões de exemplo oficiais:",
   "about.rightsOfficialLink": "jlpt.jp — questões oficiais de exemplo",
-  "about.rightsRemove": "Se você detém direitos sobre qualquer material aqui e quer que ele saia do ar, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> e ele será removido - tudo, se você pedir - sem discussão e sem exigir notificação formal. Diga, por favor, quais provas ou arquivos estão envolvidos. Tudo que for informado assim é removido em até 72 horas.",
-  "about.creditsExams": "%%OWN%% das provas aqui foram escritas para este site. As outras %%ARCHIVED%% são exames anteriores arquivados, cujas questões são de direito autoral da JEES e da Japan Foundation. Veja o aviso abaixo.",
+  "about.rightsRemove": "Se você detém direitos sobre algo aqui e quer que saia do ar, escreva para <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>. Será removido — tudo, se você pedir — em até 72 horas, sem discussão e sem exigir notificação formal.",
   "notice.paperOne": "1 prova",
   "exam.audioTrouble": "Não está tocando?",
   "notice.title": "O que está disponível",
@@ -3223,9 +3390,9 @@ I18N.register("pt-BR", {
   "exam.wordsHideAll": "Ocultar significados",
   "exams.originArchive": "Simulado",
   "exams.originPractice": "Prova de treino",
-  "about.p1": "Cada prova aqui é feita no formato do próprio JLPT — cronometrada, corrigida automaticamente, com explicações das respostas e transcrições da audição.",
-  "about.p2": "Não há conta nem cadastro. Suas respostas, notas e progresso ficam salvos apenas neste navegador e nunca são enviados.",
-  "about.p3": "O áudio de compreensão vem do Google Drive e os diagramas das provas vêm do Internet Archive, então essas duas partes precisam de conexão — e esses serviços veem a requisição, como aconteceria com qualquer arquivo incorporado.",
+  "about.p1": "%%PAPERS%% provas completas do N5 ao N1, no formato do próprio JLPT — cronometradas, corrigidas automaticamente, com explicação das respostas, roteiros de escuta e uma lista de palavras para cada prova.",
+  "about.p2": "Sem conta, sem cadastro, sem anúncios e sem rastreadores. Suas respostas, notas e progresso ficam só neste navegador e nunca são enviados.",
+  "about.p3": "O áudio de escuta vem do Google Drive e as figuras das provas vêm do Internet Archive, então essas duas partes precisam de conexão — e esses serviços veem a requisição.",
   "about.official": "Questões de amostra oficiais e gratuitas dos organizadores do JLPT",
   "level.N5": "Cumprimentos básicos e expressões do dia a dia.",
   "level.N4": "Conversas do dia a dia e textos simples.",
@@ -3370,6 +3537,10 @@ I18N.register("pt-BR", {
   "exam.speakThisOne": "Só esta questão, lida pelo aparelho — sem vídeo, funciona offline.",
   "exam.speakRead": "Já corrigido, então isto pode ser lido em voz alta pelo aparelho.",
   "exam.audioLostSpoken": "Não há gravação para esta seção, então o roteiro é lido em voz alta.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "Esta prova foi escrita para este site, então o navegador lê o diálogo em voz alta. Toque em reproduzir em cada questão.",
   "exam.speakNone": "Este aparelho não tem voz em japonês instalada, então o roteiro é exibido.",
   "exam.spokenOnly": "As opções são apenas faladas — ouça e escolha um número.",
   "exam.figureMissing": "Esta imagem fica em um arquivo externo e não carregou.",
@@ -3468,6 +3639,22 @@ I18N.register("pt-BR", {
 I18N.register("hi", {
   "paper.sampleTitle": "इस पेपर के कुछ प्रश्न",
   "paper.sampleNote": "उत्तर के बिना चार प्रश्न। सभी प्रश्न समय के साथ और स्वतः जाँच के साथ हल करने के लिए पेपर शुरू करें।",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "अभ्यास परीक्षा {n}",
+  "paper.july": "जुलाई {y}",
+  "paper.december": "दिसंबर {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q} प्रश्न",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — अभ्यास प्रश्नपत्र, {q} प्रश्न",
   "about.whoBody": "JLPT Practice को सुरेश सुर्खेती बनाते और चलाते हैं। यहाँ कुछ ग़लत हो, छूट गया हो या हटाया जाना चाहिए, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर लिखें।",
   "footer.rights": "सर्वाधिकार सुरक्षित।",
   "exam.noRecording": "रिकॉर्डिंग नहीं",
@@ -3560,11 +3747,10 @@ I18N.register("hi", {
   "about.creditsKanji": "कांजी के उच्चारण, अर्थ और JLPT स्तर <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है। स्ट्रोक क्रम <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel से लिया गया है, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
   "about.creditsWords": "शब्दों के अर्थ और उच्चारण <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
   "about.rightsTitle": "कॉपीराइट और सामग्री हटाने के अनुरोध",
-  "about.rightsBody": "इस साइट के %%ARCHIVED%% पेपर पुरानी परीक्षाओं के संग्रह हैं। उनके प्रश्नों का कॉपीराइट JEES और Japan Foundation के पास है, और वे अनुमति लेकर प्रकाशित नहीं किए गए हैं। बाकी %%OWN%% पेपर इसी साइट के लिए लिखे गए हैं। यह साइट मुफ़्त है, इसमें विज्ञापन नहीं है, कुछ बेचा नहीं जाता और कोई कमाई नहीं होती।",
-  "about.rightsOfficial": "यदि आप पढ़ाई कर रहे हैं और ऐसी सामग्री चाहते हैं जिसका उपयोग निस्संदेह मुक्त हो, तो JLPT आयोजक स्वयं आधिकारिक नमूना प्रश्न प्रकाशित करते हैं:",
+  "about.rightsBody": "यहाँ के %%ARCHIVED%% पेपर बीती परीक्षाओं का संग्रह हैं। उनके प्रश्नों का कॉपीराइट Japan Educational Exchanges and Services (JEES) और Japan Foundation के पास है, और वे अनुमति लेकर प्रकाशित नहीं किए गए हैं। बाकी %%OWN%% इसी साइट के लिए लिखे गए हैं। यहाँ कुछ बेचा नहीं जाता, कोई विज्ञापन नहीं है, और साइट कुछ नहीं कमाती।",
+  "about.rightsOfficial": "JLPT के आयोजक स्वयं आधिकारिक नमूना प्रश्न प्रकाशित करते हैं:",
   "about.rightsOfficialLink": "jlpt.jp — आधिकारिक नमूना प्रश्न",
-  "about.rightsRemove": "यदि यहाँ की किसी सामग्री पर आपका अधिकार है और आप उसे हटवाना चाहते हैं, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर ईमेल कीजिए; उसे हटा दिया जाएगा - आप कहें तो पूरी की पूरी - बिना किसी बहस के और बिना किसी औपचारिक सूचना की माँग किए। कृपया बताइए कि कौन से प्रश्नपत्र या फ़ाइलें इससे संबंधित हैं। इस तरह बताई गई कोई भी सामग्री 72 घंटे के भीतर हटा दी जाती है।",
-  "about.creditsExams": "यहाँ के %%OWN%% पेपर इसी साइट के लिए लिखे गए हैं। बाकी %%ARCHIVED%% पुरानी परीक्षाओं के संग्रह हैं, जिनके प्रश्नों का कॉपीराइट JEES और Japan Foundation के पास है। नीचे दी गई सूचना देखें।",
+  "about.rightsRemove": "अगर यहाँ की किसी सामग्री के अधिकार आपके पास हैं और आप उसे हटवाना चाहते हैं, तो <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> पर ईमेल करें। आपके कहने पर सब कुछ, बिना बहस और बिना औपचारिक सूचना के, 72 घंटे के भीतर हटा दिया जाएगा।",
   "notice.paperOne": "1 प्रश्नपत्र",
   "exam.audioTrouble": "नहीं चल रहा?",
   "notice.title": "अभी क्या उपलब्ध है",
@@ -3599,9 +3785,9 @@ I18N.register("hi", {
   "exam.wordsHideAll": "शब्दों के अर्थ छिपाएँ",
   "exams.originArchive": "अभ्यास प्रश्नपत्र",
   "exams.originPractice": "अभ्यास प्रश्नपत्र",
-  "about.p1": "यहाँ के प्रश्नपत्र JLPT के अपने प्रारूप में ही हल किए जाते हैं — समयबद्ध, स्वतः जाँच, उत्तर की व्याख्या और श्रवण स्क्रिप्ट के साथ।",
-  "about.p2": "कोई खाता या साइन-अप नहीं है। आपके उत्तर, अंक और प्रगति सिर्फ़ इसी ब्राउज़र में सहेजे जाते हैं और कहीं अपलोड नहीं होते।",
-  "about.p3": "सुनने वाला ऑडियो Google Drive से और परीक्षा के चित्र Internet Archive से आते हैं, इसलिए इन दो हिस्सों के लिए इंटरनेट चाहिए — और किसी भी एम्बेड फ़ाइल की तरह वे सेवाएँ अनुरोध देखती हैं।",
+  "about.p1": "N5 से N1 तक %%PAPERS%% पूरे पेपर, JLPT के अपने प्रारूप में — समयबद्ध, स्वतः जाँचे हुए, उत्तर की व्याख्या, श्रवण की स्क्रिप्ट और हर पेपर के लिए शब्द सूची के साथ।",
+  "about.p2": "न खाता, न साइन-अप, न विज्ञापन, न ट्रैकर। आपके उत्तर, अंक और प्रगति सिर्फ़ इसी ब्राउज़र में रहते हैं और कभी अपलोड नहीं होते।",
+  "about.p3": "श्रवण का ऑडियो Google Drive से और परीक्षा के चित्र Internet Archive से आते हैं, इसलिए इन दोनों के लिए कनेक्शन चाहिए — और वे सेवाएँ अनुरोध देखती हैं।",
   "about.official": "JLPT आयोजकों के निःशुल्क आधिकारिक नमूना प्रश्न",
   "level.N5": "बुनियादी अभिवादन और रोज़मर्रा के वाक्य।",
   "level.N4": "रोज़मर्रा की बातचीत और सरल पाठ।",
@@ -3746,6 +3932,10 @@ I18N.register("hi", {
   "exam.speakThisOne": "सिर्फ़ यह प्रश्न, आपके डिवाइस की आवाज़ में — बिना वीडियो, ऑफ़लाइन भी।",
   "exam.speakRead": "जाँच हो चुकी है, इसलिए इसे डिवाइस की आवाज़ में सुना जा सकता है.",
   "exam.audioLostSpoken": "इस भाग की रिकॉर्डिंग नहीं है, इसलिए स्क्रिप्ट पढ़कर सुनाई जाती है।",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "यह पेपर इसी साइट के लिए लिखा गया है, इसलिए बातचीत ब्राउज़र पढ़कर सुनाता है। हर प्रश्न पर प्ले दबाएँ।",
   "exam.speakNone": "इस डिवाइस में जापानी आवाज़ नहीं है, इसलिए स्क्रिप्ट दिखाई जा रही है।",
   "exam.spokenOnly": "विकल्प केवल बोले जाते हैं — सुनकर संख्या चुनें।",
   "exam.figureMissing": "यह चित्र बाहरी संग्रह में रखा है और लोड नहीं हो सका।",
@@ -3844,6 +4034,22 @@ I18N.register("hi", {
 I18N.register("bn", {
   "paper.sampleTitle": "এই পেপারের কয়েকটি প্রশ্ন",
   "paper.sampleNote": "উত্তর ছাড়া চারটি প্রশ্ন। সময় ধরে ও স্বয়ংক্রিয় মূল্যায়নসহ সবগুলো করতে পেপারটি শুরু করুন।",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "অনুশীলন পরীক্ষা {n}",
+  "paper.july": "জুলাই {y}",
+  "paper.december": "ডিসেম্বর {y}",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — {q}টি প্রশ্ন",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — অনুশীলন প্রশ্নপত্র, {q}টি প্রশ্ন",
   "about.whoBody": "JLPT Practice তৈরি ও পরিচালনা করেন সুরেশ সুরখেতি। এখানে কিছু ভুল, অনুপস্থিত বা সরানো দরকার হলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> ঠিকানায় লিখুন।",
   "footer.rights": "সর্বস্বত্ব সংরক্ষিত।",
   "exam.noRecording": "রেকর্ডিং নেই",
@@ -3936,11 +4142,10 @@ I18N.register("bn", {
   "about.creditsKanji": "কাঞ্জির উচ্চারণ, অর্থ ও JLPT স্তর নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে। স্ট্রোকের ক্রম নেওয়া হয়েছে <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> লাইসেন্সের অধীনে।",
   "about.creditsWords": "শব্দের অর্থ ও উচ্চারণ নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে।",
   "about.rightsTitle": "কপিরাইট ও অপসারণের অনুরোধ",
-  "about.rightsBody": "এই সাইটের %%ARCHIVED%%টি পেপার সংরক্ষিত পুরোনো পরীক্ষা। সেগুলোর প্রশ্নের কপিরাইট JEES ও Japan Foundation-এর, এবং সেগুলো অনুমতি নিয়ে প্রকাশ করা হয়নি। বাকি %%OWN%%টি পেপার এই সাইটের জন্যই লেখা। এই সাইট বিনামূল্যের, বিজ্ঞাপনহীন, কিছু বিক্রি করে না এবং কোনো আয় করে না।",
-  "about.rightsOfficial": "আপনি যদি পড়াশোনা করছেন এবং এমন উপকরণ চান যা নিঃসন্দেহে অবাধে ব্যবহারযোগ্য, তবে JLPT আয়োজকেরা নিজেরাই সরকারি নমুনা প্রশ্ন প্রকাশ করেন:",
+  "about.rightsBody": "এখানকার %%ARCHIVED%%টি পেপার আগের পরীক্ষার সংরক্ষিত রূপ। এগুলোর প্রশ্নের কপিরাইট Japan Educational Exchanges and Services (JEES) ও Japan Foundation-এর, এবং অনুমতি নিয়ে প্রকাশ করা হয়নি। বাকি %%OWN%%টি এই সাইটের জন্যই লেখা। এখানে কিছু বিক্রি হয় না, বিজ্ঞাপন নেই, সাইটটি কিছুই আয় করে না।",
+  "about.rightsOfficial": "JLPT আয়োজকেরা নিজেরাই সরকারি নমুনা প্রশ্ন প্রকাশ করেন:",
   "about.rightsOfficialLink": "jlpt.jp — সরকারি নমুনা প্রশ্ন",
-  "about.rightsRemove": "এখানকার কোনো উপকরণের অধিকার আপনার হলে এবং আপনি তা সরাতে চাইলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> ঠিকানায় ইমেল করুন; কোনো তর্ক ছাড়াই এবং আনুষ্ঠানিক নোটিশ না চেয়েই তা সরিয়ে দেওয়া হবে - আপনি বললে সবটুকুই। কোন প্রশ্নপত্র বা ফাইল জড়িত তা জানাবেন। এভাবে জানানো যেকোনো কিছু ৭২ ঘণ্টার মধ্যে সরিয়ে ফেলা হয়।",
-  "about.creditsExams": "এখানকার %%OWN%%টি পেপার এই সাইটের জন্যই লেখা হয়েছে। বাকি %%ARCHIVED%%টি সংরক্ষিত পুরোনো পরীক্ষা, যেগুলোর প্রশ্নের কপিরাইট JEES ও Japan Foundation-এর। নিচের বিজ্ঞপ্তি দেখুন।",
+  "about.rightsRemove": "এখানকার কোনো উপকরণের অধিকার আপনার হলে এবং সরাতে চাইলে <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a>-এ ইমেল করুন। আপনি বললে সবকিছুই, কোনো তর্ক ছাড়া ও আনুষ্ঠানিক নোটিশ ছাড়াই, ৭২ ঘণ্টার মধ্যে সরিয়ে ফেলা হবে।",
   "notice.paperOne": "1টি প্রশ্নপত্র",
   "exam.audioTrouble": "বাজছে না?",
   "notice.title": "এখন যা পাওয়া যাচ্ছে",
@@ -3975,9 +4180,9 @@ I18N.register("bn", {
   "exam.wordsHideAll": "শব্দের অর্থ লুকান",
   "exams.originArchive": "অভ্যাস প্রশ্নপত্র",
   "exams.originPractice": "অভ্যাস প্রশ্নপত্র",
-  "about.p1": "এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায় — সময় গণনা, স্বয়ংক্রিয় নম্বর, উত্তরের ব্যাখ্যা ও শ্রবণ স্ক্রিপ্টসহ।",
-  "about.p2": "কোনো অ্যাকাউন্ট বা সাইন-আপ নেই। আপনার উত্তর, স্কোর ও অগ্রগতি কেবল এই ব্রাউজারেই সংরক্ষিত থাকে, কোথাও আপলোড হয় না।",
-  "about.p3": "শ্রবণ অডিও Google Drive থেকে এবং পরীক্ষার চিত্রগুলো Internet Archive থেকে আসে, তাই এই দুই অংশে ইন্টারনেট লাগে — আর অন্য যেকোনো এমবেড করা ফাইলের মতোই ওই সেবাগুলো অনুরোধটি দেখে।",
+  "about.p1": "N5 থেকে N1 পর্যন্ত %%PAPERS%%টি পূর্ণাঙ্গ পেপার, JLPT-এর নিজস্ব ফরম্যাটে — সময় ধরে, স্বয়ংক্রিয় মূল্যায়নসহ, উত্তরের ব্যাখ্যা, শোনার স্ক্রিপ্ট আর প্রতিটি পেপারের শব্দতালিকাসহ।",
+  "about.p2": "কোনো অ্যাকাউন্ট নেই, সাইন-আপ নেই, বিজ্ঞাপন নেই, ট্র্যাকার নেই। আপনার উত্তর, নম্বর আর অগ্রগতি শুধু এই ব্রাউজারেই থাকে, কখনো আপলোড হয় না।",
+  "about.p3": "শোনার অডিও Google Drive থেকে আর পরীক্ষার ছবি Internet Archive থেকে আসে, তাই এই দুটির জন্য সংযোগ দরকার — এবং ওই পরিষেবাগুলো অনুরোধটি দেখতে পায়।",
   "about.official": "JLPT আয়োজকদের বিনামূল্যের সরকারি নমুনা প্রশ্ন",
   "level.N5": "মৌলিক শুভেচ্ছা ও দৈনন্দিন প্রকাশ।",
   "level.N4": "দৈনন্দিন কথাবার্তা ও সহজ লেখা।",
@@ -4122,6 +4327,10 @@ I18N.register("bn", {
   "exam.speakThisOne": "শুধু এই প্রশ্নটি, ডিভাইসের কণ্ঠে — ভিডিও ছাড়া, অফলাইনেও চলে।",
   "exam.speakRead": "মূল্যায়ন শেষ, তাই এটি ডিভাইসের কণ্ঠে শোনা যাবে।",
   "exam.audioLostSpoken": "এই অংশের কোনো রেকর্ডিং নেই, তাই স্ক্রিপ্ট পড়ে শোনানো হয়।",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "এই পেপারটি এই সাইটের জন্যই লেখা, তাই কথোপকথন ব্রাউজার পড়ে শোনায়। প্রতিটি প্রশ্নে প্লে চাপুন।",
   "exam.speakNone": "এই ডিভাইসে জাপানি কণ্ঠ নেই, তাই স্ক্রিপ্ট দেখানো হচ্ছে।",
   "exam.spokenOnly": "বিকল্পগুলো কেবল বলা হয় — শুনে সংখ্যা বাছুন।",
   "exam.figureMissing": "এই ছবিটি বাইরের একটি সংরক্ষণাগারে রাখা এবং লোড হয়নি।",
@@ -4220,6 +4429,22 @@ I18N.register("bn", {
 I18N.register("si", {
   "paper.sampleTitle": "මෙම ප්‍රශ්න පත්‍රයේ ප්‍රශ්න කිහිපයක්",
   "paper.sampleNote": "පිළිතුරු නොමැතිව ප්‍රශ්න හතරක්. සියල්ල කාලය සමඟ හා ලකුණු කිරීම සමඟ කිරීමට ප්‍රශ්න පත්‍රය ආරම්භ කරන්න.",
+
+  /* A paper's own name, in the reader's language.
+
+     Until these existed the name was assembled in English in the builder
+     and pasted into eleven other languages unchanged, so 2,277 pages -
+     every paper in every language but English - shared a <title> with ten
+     others and read "JLPT N2 — Practice Test 3 — JLPT Practice" to a
+     reader of Nepali. The month is spelt out per language rather than
+     formatted from a date, because 2011年7月 and Tháng 7/2011 put the year
+     and the month on opposite sides of each other. */
+  "paper.practiceTest": "පුහුණු විභාගය {n}",
+  "paper.july": "{y} ජූලි",
+  "paper.december": "{y} දෙසැම්බර්",
+  "paper.name": "JLPT {lv} — {period}",
+  "paper.metaTitle": "JLPT {lv} {period} — ප්‍රශ්න {q}",
+  "paper.metaTitleArchive": "JLPT {lv} {period} — පුහුණු ප්‍රශ්න පත්‍රය, ප්‍රශ්න {q}",
   "about.whoBody": "JLPT Practice ගොඩනඟා පවත්වාගෙන යනු ලබන්නේ Suresh Surkheti විසිනි. යමක් වැරදි නම්, නැති නම්, හෝ ඉවත් කළ යුතු නම් <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ලියන්න.",
   "footer.rights": "සියලුම හිමිකම් ඇවිරිණි.",
   "exam.noRecording": "පටිගත කිරීමක් නැත",
@@ -4312,11 +4537,10 @@ I18N.register("si", {
   "about.creditsKanji": "කන්ජි අකුරුවල කියවීම්, අර්ථ සහ JLPT මට්ටම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත. ඉරි අඳින අනුපිළිවෙල ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
   "about.creditsWords": "වචනවල අර්ථ සහ කියවීම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
   "about.rightsTitle": "ප්‍රකාශන හිමිකම සහ ඉවත් කිරීමේ ඉල්ලීම්",
-  "about.rightsBody": "මෙම අඩවියේ ප්‍රශ්න පත්‍ර %%ARCHIVED%%ක් පසුගිය විභාග වල සංරක්ෂිත පිටපත් වේ. ඒවායේ ප්‍රශ්නවල ප්‍රකාශන හිමිකම JEES සහ Japan Foundation සතු වන අතර, ඒවා අවසරය ඇතිව ප්‍රකාශයට පත් කර නොමැත. සෙසු ප්‍රශ්න පත්‍ර %%OWN%% මෙම අඩවිය සඳහාම ලියන ලද ඒවා ය. මෙම අඩවිය නොමිලේ ය, දැන්වීම් නොමැත, කිසිවක් අලෙවි නොකරයි, ආදායමක් ද නොලබයි.",
-  "about.rightsOfficial": "ඔබ ඉගෙනුම් ලබමින් සිටින අතර භාවිතයට නිසැකවම නිදහස් ද්‍රව්‍ය අවශ්‍ය නම්, JLPT සංවිධායකයෝම නිල නියැදි ප්‍රශ්න ප්‍රකාශයට පත් කරති:",
+  "about.rightsBody": "මෙහි ඇති ප්‍රශ්න පත්‍ර %%ARCHIVED%%ක් පසුගිය විභාගවල සංරක්ෂිත පිටපත් වේ. ඒවායේ ප්‍රශ්නවල ප්‍රකාශන හිමිකම Japan Educational Exchanges and Services (JEES) සහ Japan Foundation සතු වන අතර, ඒවා අවසරය ඇතිව පළ කර නැත. සෙසු %%OWN%% මෙම වෙබ් අඩවිය සඳහාම ලියන ලදී. මෙහි කිසිවක් අලෙවි නොකෙරේ, දැන්වීම් නැත, අඩවියට කිසිදු ආදායමක් නැත.",
+  "about.rightsOfficial": "JLPT සංවිධායකයෝම නිල නියැදි ප්‍රශ්න ප්‍රකාශයට පත් කරති:",
   "about.rightsOfficialLink": "jlpt.jp — නිල නියැදි ප්‍රශ්න",
-  "about.rightsRemove": "මෙහි ඇති කිසියම් ද්‍රව්‍යයක් සම්බන්ධයෙන් ඔබට හිමිකම් ඇත්නම් සහ එය ඉවත් කිරීමට අවශ්‍ය නම්, <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ඊමේල් කරන්න. එය ඉවත් කරනු ලැබේ - ඔබ ඉල්ලා සිටියොත් සියල්ලම - තර්ක නොකර, විධිමත් දැනුම්දීමක් නොඉල්ලා. කුමන ප්‍රශ්න පත්‍ර හෝ ගොනු සම්බන්ධ දැයි කරුණාකර සඳහන් කරන්න. මෙලෙස දැනුම් දෙන ඕනෑම දෙයක් පැය 72ක් ඇතුළත ඉවත් කරනු ලැබේ.",
-  "about.creditsExams": "මෙහි ඇති ප්‍රශ්න පත්‍ර %%OWN%%ක් මෙම අඩවිය සඳහාම ලියන ලද ඒවා ය. සෙසු %%ARCHIVED%% පසුගිය විභාග වල සංරක්ෂිත පිටපත් වන අතර, එම ප්‍රශ්නවල ප්‍රකාශන හිමිකම JEES සහ Japan Foundation සතු ය. පහත දැන්වීම බලන්න.",
+  "about.rightsRemove": "මෙහි ඇති කිසියම් දෙයක අයිතිය ඔබ සතු නම් සහ එය ඉවත් කිරීමට අවශ්‍ය නම්, <a class=\"text-link\" href=\"mailto:%%CONTACT%%\">%%CONTACT%%</a> වෙත ලියන්න. ඔබ ඉල්ලා සිටියහොත් සියල්ලම, තර්ක නොකර, විධිමත් දැනුම්දීමක් නොඉල්ලා, පැය 72ක් ඇතුළත ඉවත් කරනු ලැබේ.",
   "notice.paperOne": "ප්‍රශ්න පත්‍ර 1",
   "exam.audioTrouble": "වාදනය නොවේද?",
   "notice.title": "දැන් තිබෙන දේ",
@@ -4351,9 +4575,9 @@ I18N.register("si", {
   "exam.wordsHideAll": "වචන අර්ථ සඟවන්න",
   "exams.originArchive": "පුහුණු ප්‍රශ්න පත්‍රය",
   "exams.originPractice": "පුහුණු ප්‍රශ්න පත්‍රය",
-  "about.p1": "මෙහි ඇති සෑම ප්‍රශ්න පත්‍රයක්ම JLPT හි ම ආකෘතියෙන් කළ හැක — කාලය ගණන් කර, ස්වයංක්‍රීයව ලකුණු දී, පිළිතුරු පැහැදිලි කිරීම් සහ ශ්‍රවණ පිටපත් සමඟ.",
-  "about.p2": "ගිණුමක් හෝ ලියාපදිංචියක් නැත. ඔබේ පිළිතුරු, ලකුණු සහ ප්‍රගතිය මෙම බ්‍රවුසරයේ පමණක් සුරැකෙන අතර කිසිවිටෙකත් උඩුගත නොවේ.",
-  "about.p3": "සවන්දීමේ ශ්‍රව්‍ය Google Drive වෙතින්ද, විභාග රූප සටහන් Internet Archive වෙතින්ද පූරණය වේ. එබැවින් මෙම කොටස් දෙකට සම්බන්ධතාවක් අවශ්‍ය වන අතර, වෙනත් ඕනෑම කාවැද්දූ ගොනුවක් මෙන් එම සේවා ඉල්ලීම දකී.",
+  "about.p1": "N5 සිට N1 දක්වා සම්පූර්ණ ප්‍රශ්න පත්‍ර %%PAPERS%%ක්, JLPT හි ආකෘතියෙන්ම — කාලය සමඟ, ස්වයංක්‍රීයව ලකුණු කර, පිළිතුරු පැහැදිලි කිරීම්, ශ්‍රවණ පිටපත් සහ එක් එක් ප්‍රශ්න පත්‍රයට වචන ලැයිස්තුවක් සමඟ.",
+  "about.p2": "ගිණුමක් නැත, ලියාපදිංචියක් නැත, දැන්වීම් නැත, ලුහුබැඳීම් නැත. ඔබේ පිළිතුරු, ලකුණු සහ ප්‍රගතිය මෙම බ්‍රව්සරයේ පමණක් තැන්පත් වන අතර කිසිදා උඩුගත නොවේ.",
+  "about.p3": "ශ්‍රවණ ශබ්දය Google Drive වෙතින් සහ ප්‍රශ්න පත්‍රයේ රූප Internet Archive වෙතින් පැමිණේ, එබැවින් මේ දෙකට සම්බන්ධතාවක් අවශ්‍යය — එම සේවා ඉල්ලීම දකී.",
   "about.official": "JLPT සංවිධායකයන්ගේ නොමිලේ නිල ආදර්ශ ප්‍රශ්න",
   "level.N5": "මූලික ආචාර කිරීම් සහ දෛනික ප්‍රකාශන.",
   "level.N4": "දෛනික සංවාද සහ සරල පෙළ.",
@@ -4498,6 +4722,10 @@ I18N.register("si", {
   "exam.speakThisOne": "මෙම ප්‍රශ්නය පමණක්, ඔබේ උපාංගයේ හඬින් — වීඩියෝ නැත, නොබැඳිව ක්‍රියා කරයි.",
   "exam.speakRead": "ලකුණු දී ඇති නිසා, මෙය ඔබේ උපාංගයේ හඬින් කියවිය හැක.",
   "exam.audioLostSpoken": "මෙම කොටසේ පටිගත කිරීමක් නොමැති නිසා පිටපත හඬින් කියවයි.",
+  /* Not the same sentence as audioLostSpoken above. A paper written here
+     never had a recording to lose, and telling its reader one was not
+     archived describes a loss that never happened. */
+  "exam.audioSpokenOwn": "මෙම ප්‍රශ්න පත්‍රය මෙම වෙබ් අඩවිය සඳහාම ලියන ලද්දකි, එබැවින් සංවාදය ඔබේ බ්‍රව්සරය හඬින් කියවයි. එක් එක් ප්‍රශ්නයේ play ඔබන්න.",
   "exam.speakNone": "මෙම උපාංගයේ ජපන් හඬක් නොමැති නිසා පිටපත පෙන්වයි.",
   "exam.spokenOnly": "විකල්ප කථනයෙන් පමණි — අසා අංකයක් තෝරන්න.",
   "exam.figureMissing": "මෙම පින්තූරය බාහිර සංරක්ෂිතයක ඇති අතර පූරණය වූයේ නැත.",

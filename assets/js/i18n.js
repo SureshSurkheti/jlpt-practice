@@ -135,6 +135,27 @@
     });
   }
 
+  /* A paper's period, in the reader's language: "July 2011", "Practice Test
+     3". The label in the JSON is written once, in English, because the file
+     names and the search index are built from it; this is the only place it
+     is turned into something to read. Anything that does not match either
+     shape is passed through, so an unrecognised label degrades to the
+     English it already was rather than to a raw key. */
+  function paperPeriod(exam) {
+    var label = (exam && exam.periodLabel) || "";
+    var m = /^(July|December)\s+(\d{4})$/.exec(label);
+    if (m) return tf("paper." + m[1].toLowerCase(), { y: m[2] });
+    m = /^Practice Test\s+(\d+)$/.exec(label);
+    if (m) return tf("paper.practiceTest", { n: m[1] });
+    return label;
+  }
+
+  /* The paper's full name: "JLPT N2 — Practice Test 3". */
+  function paperName(exam) {
+    if (!exam) return "";
+    return tf("paper.name", { lv: exam.level, period: paperPeriod(exam) });
+  }
+
   function applyTo(scope) {
     scope = scope || document;
 
@@ -233,6 +254,8 @@
     root: ROOT,
     t: t,
     tf: tf,
+    paperPeriod: paperPeriod,
+    paperName: paperName,
     current: current,
     setLanguage: setLanguage,
     apply: applyTo,
@@ -246,4 +269,6 @@
   /* Short global aliases - the page scripts use t('key') directly. */
   global.t = t;
   global.tf = tf;
+  global.paperPeriod = paperPeriod;
+  global.paperName = paperName;
 })(window);

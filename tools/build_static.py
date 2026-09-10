@@ -83,6 +83,11 @@ def load_translations():
     out = {}
     for lang, body in re.findall(r'I18N\.register\("([\w-]+)",\s*(\{.*?\n\}\);)',
                                  src, re.S):
+        # The tables are read as JSON, and JSON has no comments - so a note
+        # explaining a key used to break the whole build. Only a comment
+        # standing on its own lines is removed, never one that begins mid
+        # line, so a /* inside a translated string is left alone.
+        body = re.sub(r"^[ \t]*/\*.*?\*/[ \t]*\n", "", body, flags=re.S | re.M)
         body = re.sub(r",(\s*\})", r"\1", body.rstrip(");").rstrip())
         out[lang] = json.loads(body)
     return out
@@ -125,6 +130,52 @@ def t(table, key, fallback_table):
 def esc(text):
     return (str(text).replace("&", "&amp;").replace("<", "&lt;")
             .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+def tf(table, key, en, **kw):
+    """A translated string with its {placeholders} filled in."""
+    out = t(table, key, en)
+    for k, v in kw.items():
+        out = out.replace("{%s}" % k, str(v))
+    return out
+
+
+# The two shapes a periodLabel ever takes, and nothing else: "July 2011" or
+# "December 2014" for an archived sitting, "Practice Test 3" for one written
+# here. Parsed rather than stored per language because the label is written
+# once, in the paper's own JSON, and only its rendering is a translation.
+PERIOD_RE = re.compile(r"^(July|December)\s+(\d{4})$")
+PRACTICE_RE = re.compile(r"^Practice Test\s+(\d+)$")
+
+
+def period_label(table, en, e):
+    """"July 2011" / "Practice Test 3", in the reader's language."""
+    label = e.get("periodLabel") or ""
+    m = PERIOD_RE.match(label)
+    if m:
+        return tf(table, "paper.%s" % m.group(1).lower(), en, y=m.group(2))
+    m = PRACTICE_RE.match(label)
+    if m:
+        return tf(table, "paper.practiceTest", en, n=m.group(1))
+    return label
+
+
+def paper_name(table, en, e):
+    """The paper's name as a reader sees it: the <h1>, the breadcrumb, the
+    prev/next links. e["title"] is the English one and stays in the JSON,
+    where the search index and the file names use it."""
+    return tf(table, "paper.name", en, lv=e["level"],
+              period=period_label(table, en, e))
+
+
+def paper_title(table, en, e):
+    """The <title>. Says how many questions, because a searcher comparing two
+    results is choosing between whole papers and that is the difference."""
+    key = ("paper.metaTitle" if e.get("origin") == "practice"
+           else "paper.metaTitleArchive")
+    return tf(table, key, en, lv=e["level"],
+              period=period_label(table, en, e),
+              q=e.get("totalQuestions") or 0)
 
 
 # --------------------------------------------------------------------------
@@ -1039,7 +1090,8 @@ def paper_index(exams, table, en):
         rows = sorted(rows, key=lambda e: e.get("sortKey") or e["id"],
                       reverse=True)
         links = "".join(
-            '<a href="exam/%s.html">%s</a>' % (esc(e["id"]), esc(e["periodLabel"]))
+            '<a href="exam/%s.html">%s</a>'
+            % (esc(e["id"]), esc(period_label(table, en, e)))
             for e in rows)
         blocks.append(
             '<div class="paper-index-level"><h3>%s</h3><div>%s</div></div>'
@@ -1231,7 +1283,8 @@ def paper_body(exam, table, en, prev_ex, next_ex):
     for other, arrow in ((prev_ex, "\u2190"), (next_ex, "\u2192")):
         if other:
             near.append('<a href="./exam/%s.html">%s %s</a>'
-                        % (other["id"], arrow, esc(other["title"])))
+                        % (other["id"], arrow,
+                           esc(paper_name(table, en, other))))
     near.append('<a href="./exams.html">%s</a>'
                 % esc(t(table, "exams.title", en)))
 
@@ -1307,7 +1360,7 @@ def paper_body(exam, table, en, prev_ex, next_ex):
         '      <nav class="paper-near">%s</nav>\n'
         '    </main>'
         % (esc(t(table, "nav.exams", en)), esc(lv),
-           esc(exam["title"]),
+           esc(paper_name(table, en, exam)),
            total, esc(t(table, "exams.questionsShort", en)),
            esc(exam["id"]), esc(t(table, "exams.start", en)),
            lv.lower(), esc(t(table, "exams.study", en)), esc(lv),
@@ -1584,14 +1637,14 @@ def main():
             url = paper_url(lang, e["id"])
             total = e.get("totalQuestions") or 0
             qword = t(table, "exams.questionsShort", en)
-            if lang == DEFAULT_LANG:
-                shape = ("JLPT %s %s — %d Questions" if e.get("origin") == "practice"
-                         else "JLPT %s %s — Practice Paper, %d Questions")
-                title = shape % (e["level"], e["periodLabel"], total)
-            else:
-                title = "%s — %s" % (e["title"], SITE_NAME)
+            # Both of these used to be built in English and reused as-is
+            # for the other eleven languages, so every paper's title was
+            # shared with ten other pages and its description opened with a
+            # name a reader of that language could not read.
+            name = paper_name(table, en, e)
+            title = paper_title(table, en, e)
             desc = clip_desc("%s. %d %s. %s" % (
-                e["title"], total, qword, t(table, "exams.body", en)))
+                name, total, qword, t(table, "exams.body", en)))
 
             ld = ('    <script type="application/ld+json">'
                   '{"@context":"https://schema.org","@type":"LearningResource",'
@@ -1605,7 +1658,7 @@ def main():
             ld += "\n" + breadcrumbs([
                 (t(table, "nav.home", en), page_url(lang, "index.html")),
                 (t(table, "nav.exams", en), page_url(lang, "exams.html")),
-                (e["title"], url)])
+                (name, url)])
 
             html = apply_i18n(tpl_paper, table, en)
             html = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang,
