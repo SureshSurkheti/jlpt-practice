@@ -1020,6 +1020,12 @@ def paper_index(exams, table, en):
     Links in the markup are the route. It is also the fastest way for a
     reader to reach a specific sitting, which is why it is a list and not a
     hidden block of anchors.
+
+    Closed by default, because at 207 papers it had become a wall: five
+    levels of it under a page that already lists the same papers in a table
+    you can filter. <details> keeps both - the links are in the markup
+    whether or not the summary has been clicked, so a crawler still walks
+    them, and a reader sees one line until they want the rest.
     """
     by_level = {}
     for e in exams:
@@ -1039,8 +1045,16 @@ def paper_index(exams, table, en):
             '<div class="paper-index-level"><h3>%s</h3><div>%s</div></div>'
             % (esc(lv), links))
 
-    return ('<nav class="paper-index" aria-label="%s">\n        %s\n      </nav>'
-            % (esc(t(table, "exams.title", en)), "\n        ".join(blocks)))
+    total = sum(len(by_level.get(lv) or []) for lv in LEVELS_UPPER)
+    return ('<details class="paper-index-wrap">\n'
+            '        <summary>%s <span>%d</span></summary>\n'
+            '        <nav class="paper-index" aria-label="%s">\n'
+            '          %s\n'
+            '        </nav>\n'
+            '      </details>'
+            % (esc(t(table, "exams.browseAll", en)), total,
+               esc(t(table, "exams.title", en)),
+               "\n          ".join(blocks)))
 
 
 _PAPER_FACTS = {}

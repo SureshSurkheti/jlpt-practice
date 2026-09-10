@@ -640,7 +640,10 @@
 
    Opaque, not the old translucent gradient: questions now pass underneath it.
    It stops travelling at the end of its own 問題, because that is where its
-   parent .paper-section ends. */
+   parent .paper-section ends - which is right when the recording really is
+   that 問題's own. Where one file covers the whole listening test the player
+   is drawn once as a child of .exam-paper instead, and the same rule then
+   carries it to the end of the paper. See wholeListeningAudio(). */
 .q-audio {
   position: sticky;
   /* Flush against the command bar, not ten pixels below it. That slot was
@@ -1756,7 +1759,8 @@
    Reading blocks are exempt: the passage and its questions need the width. */
 .paper-section:not(.has-passage) .section-head > *,
 .paper-section:not(.has-passage) > .q-audio,
-.exam-paper > .q-audio-full-bar,
+.exam-paper > .q-audio,
+.exam-paper > .q-audio-aside,
 .paper-block:not(.has-passage) .block-questions {
   max-width: 78ch;
   margin-inline: auto;
@@ -2509,13 +2513,15 @@
 
 /* The whole-test recording: the paper's own audio bar, wearing the paper's
    own chrome, so a reader does not have to work out that this row is a
-   player too. Same blue, same dock under the command bar, same pin.
+   player too. Same blue, same width.
 
-   It never offsets itself: --full-h is this bar's height, set on #examPaper
-   so the paper's own players pin below it, and zeroed here so the bar does
-   not push itself down by its own height. */
+   Not pinned, though. A YouTube embed pinned to the top of the paper holds a
+   16:9 frame there for the whole sitting, and it is the one player a reader
+   is least likely to be using - it is somebody else's upload, offered as a
+   fallback. It sits at the head of the listening test and scrolls away with
+   it; the Drive recording, which is the paper's own audio, is what stays. */
 .q-audio-full-bar {
-  --full-h: 0px;
+  position: static;
   flex-wrap: wrap;
   row-gap: 4px;
 }
@@ -2620,11 +2626,10 @@
 
 .q-audio-stop:hover { border-color: var(--blue); color: var(--navy); }
 
-/* Two pinned players is one too many. While the whole-test recording is
-   running, the paper's own player for this 問題 is both redundant and in the
-   way - between the header, the command bar, a 180px frame and a 60px player
-   there was more chrome than paper. It goes back to the flow until Stop. */
-.exam-paper.is-full-playing .paper-section .q-audio { position: static; }
+/* This used to unpin the paper's own player while the whole-test recording
+   was running, because two pinned players is one too many. The whole-test bar
+   does not pin any more, so there is only ever one - and unpinning the Drive
+   player was the wrong one to lose: it is the recording being followed. */
 
 @media (max-width: 620px) {
   /* .q-audio goes display:block on a phone, so the row rules above stop

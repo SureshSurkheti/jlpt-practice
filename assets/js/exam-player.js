@@ -1771,16 +1771,34 @@
     /* One paper at a time, the way the real sitting works. */
     if (state.papers.length > 1) main.appendChild(buildPaperTabs());
 
-    /* The whole-test recording goes in once, immediately above the first
-       listening 問題 that is actually on screen. */
+    /* Both whole-test players go in once, immediately above the first
+       listening 問題 that is actually on screen: the YouTube upload, and the
+       Drive file where the sitting uses one recording for the lot.
+
+       As direct children of #examPaper they are bound by the paper rather
+       than by a 問題, which is what lets the pinned one travel to the end of
+       it. */
     var fullBar = fullAudioBar();
     var fullPlaced = false;
 
+    state.sharedAudio = wholeListeningAudio();
+    var sharedBar = state.sharedAudio
+      ? driveBar(state.sharedAudio, t("exam.audioFullTag"))
+      : null;
+    var sharedPlaced = false;
+
     state.sections.forEach(function (section) {
       if (state.paper && paperOfCategory(section.category) !== state.paper) return;
-      if (fullBar && !fullPlaced && section.category === "listening") {
-        main.appendChild(fullBar);
-        fullPlaced = true;
+      if (section.category === "listening") {
+        if (fullBar && !fullPlaced) {
+          main.appendChild(fullBar);
+          fullPlaced = true;
+        }
+        if (sharedBar && !sharedPlaced) {
+          main.appendChild(sharedBar);
+          main.appendChild(driveAside());
+          sharedPlaced = true;
+        }
       }
       main.appendChild(buildSection(section));
     });
@@ -1792,8 +1810,10 @@
     wirePaper();
     syncStickyOffsets();
     watchSticky();
-    if (fullPlaced) watchFullBar(fullBar);
-    else main.style.removeProperty("--full-h");
+    /* --full-h was this bar's measured height, added to the offset of every
+       pinned player so the two docked rather than overlapped. The bar does
+       not pin any more, so nothing has to clear it. */
+    main.style.removeProperty("--full-h");
     refreshProgress();
     updateSpy();
   }
@@ -1935,15 +1955,12 @@
     } else if (section.audio && deadAudio) {
       head.appendChild(el("div", "q-audio-aside is-failed",
         '<p class="q-audio-note">' + deadAudioHTML() + "</p>"));
-    } else if (section.audio) {
+    } else if (section.audio && section.audio !== state.sharedAudio) {
       /* No error event fires for a cross-origin iframe, so the way out is
-         offered up front rather than after a failure we cannot see. Kept out
-         of the pinned bar: it is help, not a control. */
-      head.appendChild(el("div", "q-audio-aside",
-        '<p class="q-audio-note">' + esc(t("exam.audioNote")) + "</p>" +
-        '<details class="q-audio-help"><summary>' +
-          esc(t("exam.audioTrouble")) + "</summary><p>" +
-          audioHelpHTML() + "</p></details>"));
+         offered up front rather than after a failure we cannot see. When one
+         recording serves the whole test the note goes under that single bar
+         instead, rather than being repeated inside every 問題. */
+      head.appendChild(driveAside());
     }
 
     /* A listening section whose own recording was never archived. Without
@@ -1964,12 +1981,12 @@
        it - they are about audio that will not play, and here it plays. */
     if (!section.audio && !spoken && section.category === "listening") {
       head.appendChild(el("div", "q-audio-aside is-failed",
-        hasFullAudio()
+        (hasFullAudio() || state.sharedAudio)
           ? '<p class="q-audio-note">' + esc(t("exam.audioInFull")) + "</p>"
           : "<p class=\"q-audio-note\"><strong>" + esc(t("exams.noAudio")) +
             "</strong><br>" + audioHelpHTML() + "</p>"));
     } else if (!section.audio && spoken && section.category === "listening" &&
-               !hasFullAudio()) {
+               !hasFullAudio() && !state.sharedAudio) {
       /* No recording was ever archived for this 問題, and the transcript is
          standing in for it. Said once, above the questions, rather than
          repeated under every play button. */
@@ -1979,11 +1996,69 @@
 
     node.appendChild(head);
 
-    if (section.audio && !deadAudio) {
-      node.appendChild(el("div", "q-audio",
+    if (section.audio && !deadAudio && section.audio !== state.sharedAudio) {
+      node.appendChild(driveBar(section.audio, section.tag));
+    }
+
+    section.blocks.forEach(function (block) {
+      node.appendChild(buildBlock(block));
+    });
+    return node;
+  }
+
+  /* One recording for the whole listening test, attached to 問題1.
+
+     28 of the 80 archived papers with audio have a single Drive file and
+     four to six 問題, and only the first 問題 carries it - because the
+     source page had one player at the head of the listening section and the
+     parser hung it on the block it sat in. That file is the whole test, not
+     問題1's share of it.
+
+     Left inside 問題1 it scrolled away at 問題2 and the remaining sections
+     said "No listening audio", which was untrue: the audio was on the page,
+     just out of reach and mislabelled. Lifted out it pins for the paper, and
+     the sections that have no recording of their own point at it.
+
+     The other 52 papers have four or five distinct recordings, one per 問題.
+     Those really do belong where they sit and are left alone.
+
+     Returns the URL, or null when the 問題 have recordings of their own,
+     when the listening test is a single 問題, or when the file is dead. */
+  function wholeListeningAudio() {
+    var urls = [];
+    var sections = 0;
+    state.sections.forEach(function (section) {
+      if (section.category !== "listening") return;
+      if (state.paper && paperOfCategory(section.category) !== state.paper) return;
+      sections++;
+      if (section.audio && urls.indexOf(section.audio) === -1) {
+        urls.push(section.audio);
+      }
+    });
+    if (urls.length !== 1 || sections < 2) return null;
+    if (DEAD_AUDIO_IDS.indexOf(driveId(urls[0])) !== -1) return null;
+    return urls[0];
+  }
+
+  /* The note that goes under a Drive player: what it is, and the way out if
+     it will not play. Kept out of the pinned bar - it is help, not a
+     control - and said once per player rather than once per 問題. */
+  function driveAside() {
+    return el("div", "q-audio-aside",
+      '<p class="q-audio-note">' + esc(t("exam.audioNote")) + "</p>" +
+      '<details class="q-audio-help"><summary>' +
+        esc(t("exam.audioTrouble")) + "</summary><p>" +
+        audioHelpHTML() + "</p></details>");
+  }
+
+  /* The Drive player itself, drawn either inside the 問題 it belongs to or -
+     when one recording serves the whole listening test - once above the lot.
+     See wholeListeningAudio(). */
+  function driveBar(url, tag) {
+    return el("div", "q-audio",
         '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
           "<b>" + esc(t("exam.audio")) + "</b>" +
-          (section.tag ? "<i>" + esc(section.tag) + "</i>" : "") +
+          (tag ? "<i>" + esc(tag) + "</i>" : "") +
         "</span>" +
         /* The iframe is 76px because that is the height Drive's preview page
            lays its player out for - below about 68 it clips its own controls.
@@ -1997,16 +2072,10 @@
            and lays out exactly as it wants; the 60px window is centred on
            what it actually draws. */
         '<div class="q-audio-frame">' +
-          '<iframe src="' + esc(audioURL(section.audio)) + '" width="100%" ' +
+          '<iframe src="' + esc(audioURL(url)) + '" width="100%" ' +
             'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
             '" loading="lazy"></iframe>' +
-        "</div>"));
-    }
-
-    section.blocks.forEach(function (block) {
-      node.appendChild(buildBlock(block));
-    });
-    return node;
+        "</div>");
   }
 
   /* ------------------------------------------------------------- figures */
@@ -2123,12 +2192,13 @@
      inside every section that had no recording of its own. One paper, one
      bar, at the top of the listening.
 
-     Sticky, for the reason the Drive player is sticky: a recording you cannot
-     see is a recording you cannot pause, and a listening 問題 is taller than
-     the screen. It pins under the command bar and travels the rest of the
-     paper, and the paper's own players pin underneath it - .q-audio adds
-     --full-h to its offset, which is this bar's measured height, so the two
-     dock rather than overlap.
+     It does not pin. It used to, and the paper's own players docked beneath
+     it, which meant a 16:9 YouTube frame held the top of the screen for the
+     whole sitting on behalf of the one player a reader is least likely to
+     start - it is somebody else's upload, offered as a fallback for when the
+     Drive file will not play. The recording that pins is the paper's own; see
+     wholeListeningAudio(). This one sits at the head of the listening test
+     and scrolls away with it.
 
      Nothing of YouTube is loaded until the button is pressed. An <iframe>
      written at render time would fetch their player and set their cookies on
@@ -2202,7 +2272,6 @@
       size.textContent = t(big ? "exam.audioFullSmaller"
                                : "exam.audioFullBigger");
       size.setAttribute("aria-pressed", big ? "true" : "false");
-      measureFullBar(bar);
     }
 
     size.addEventListener("click", function () {
@@ -2221,7 +2290,6 @@
       paperNode(bar).classList.remove("is-full-playing");
       stop.hidden = true;
       size.hidden = true;
-      measureFullBar(bar);
     }
 
     function play() {
@@ -2249,29 +2317,8 @@
     return bar;
   }
 
-  /* The paper's own players pin below this bar, so its height has to be a
-     number the stylesheet can read. It changes twice - when the frame
-     replaces the button, and when the viewport reflows the bar onto another
-     row - so it is measured on both rather than guessed. */
-  var fullBarRO = null;
-
   function paperNode(bar) {
     return bar.closest(".exam-paper") || document.createElement("div");
-  }
-
-  function measureFullBar(bar) {
-    var paper = document.getElementById("examPaper");
-    if (!paper || !bar || !bar.parentNode) return;
-    paper.style.setProperty("--full-h",
-      Math.round(bar.getBoundingClientRect().height) + "px");
-  }
-
-  function watchFullBar(bar) {
-    measureFullBar(bar);
-    if (typeof ResizeObserver !== "function") return;
-    if (fullBarRO) fullBarRO.disconnect();
-    fullBarRO = new ResizeObserver(function () { measureFullBar(bar); });
-    fullBarRO.observe(bar);
   }
 
   function buildBlock(block) {

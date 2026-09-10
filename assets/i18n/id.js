@@ -159,6 +159,7 @@ I18N.register("id", {
  "exams.audioLinked": "rekaman lengkap tersedia",
  "exams.audioPartial": "Audio {have}/{all}",
  "exams.body": "Setiap soal di sini dikerjakan dalam format JLPT itu sendiri, berwaktu dan dinilai otomatis. Kerjakan satu set penuh atau latih satu bagian saja.",
+ "exams.browseAll": "Lihat semua soal",
  "exams.hasWords": "Arti kata",
  "exams.loading": "Memuat…",
  "exams.noAudio": "Tanpa audio menyimak",

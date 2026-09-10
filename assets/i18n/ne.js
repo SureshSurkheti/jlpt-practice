@@ -159,6 +159,7 @@ I18N.register("ne", {
  "exams.audioLinked": "पूरा रेकर्डिङ उपलब्ध",
  "exams.audioPartial": "अडियो {have}/{all}",
  "exams.body": "यहाँका प्रश्नपत्र JLPT कै ढाँचामा दिइन्छन्, समय गणना र स्वतः अङ्कसहित। पूरा परीक्षा दिनुहोस् वा एउटै भाग अभ्यास गर्नुहोस्।",
+ "exams.browseAll": "सबै पेपर हेर्नुहोस्",
  "exams.hasWords": "शब्दार्थ",
  "exams.loading": "लोड हुँदै…",
  "exams.noAudio": "सुनाइको अडियो छैन",

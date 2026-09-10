@@ -159,6 +159,7 @@ I18N.register("bn", {
  "exams.audioLinked": "সম্পূর্ণ রেকর্ডিং আছে",
  "exams.audioPartial": "অডিও {have}/{all}",
  "exams.body": "এখানের প্রতিটি প্রশ্নপত্র JLPT-র নিজস্ব ধাঁচেই দেওয়া যায়, সময় গণনা ও স্বয়ংক্রিয় নম্বরসহ। পূর্ণ প্রশ্নপত্র দিন বা একটি অংশ অভ্যাস করুন।",
+ "exams.browseAll": "সব প্রশ্নপত্র দেখুন",
  "exams.hasWords": "শব্দের অর্থ",
  "exams.loading": "লোড হচ্ছে…",
  "exams.noAudio": "শ্রবণ অডিও নেই",

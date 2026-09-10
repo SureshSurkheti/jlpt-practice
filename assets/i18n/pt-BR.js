@@ -159,6 +159,7 @@ I18N.register("pt-BR", {
  "exams.audioLinked": "gravação completa disponível",
  "exams.audioPartial": "Áudio {have}/{all}",
  "exams.body": "Cada prova aqui é feita no formato do próprio JLPT, cronometrada e corrigida automaticamente. Faça a prova inteira ou treine uma seção.",
+ "exams.browseAll": "Ver todas as provas",
  "exams.hasWords": "Significado das palavras",
  "exams.loading": "Carregando…",
  "exams.noAudio": "Sem áudio de audição",

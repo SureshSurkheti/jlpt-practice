@@ -159,6 +159,7 @@ I18N.register("vi", {
  "exams.audioLinked": "có bản ghi đầy đủ",
  "exams.audioPartial": "Âm thanh {have}/{all}",
  "exams.body": "Mỗi đề ở đây được làm đúng theo định dạng của JLPT, có bấm giờ và chấm điểm tự động. Làm cả đề hoặc luyện riêng từng phần.",
+ "exams.browseAll": "Xem tất cả đề thi",
  "exams.hasWords": "Nghĩa của từ",
  "exams.loading": "Đang tải đề thi…",
  "exams.noAudio": "Không có file nghe",

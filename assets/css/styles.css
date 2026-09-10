@@ -3884,11 +3884,50 @@ body.is-leaving { opacity: 0; }
 /* The plain index of every paper, under the library table. See paper_index
    in tools/build_static.py: the table above it is drawn by a script and so
    is invisible to a crawler, and these links are the route into the 91
-   paper pages. Quiet, because it is a directory rather than the feature. */
-.paper-index {
+   paper pages. Quiet, because it is a directory rather than the feature.
+
+   Folded shut. Two hundred papers of links is a wall under a page that has
+   already listed them in a table you can filter, and the crawl route does
+   not depend on the fold being open - the anchors are in the markup either
+   way. One line until a reader asks for the rest. */
+.paper-index-wrap {
   margin-top: 44px;
   padding-top: 26px;
   border-top: 1px solid var(--line);
+}
+.paper-index-wrap > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 2px;
+  color: var(--navy);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.paper-index-wrap > summary::-webkit-details-marker { display: none; }
+/* A caret of our own, so the disclosure reads the same in every browser and
+   turns to point down when the list is open. */
+.paper-index-wrap > summary::before {
+  content: "\203a";
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+.paper-index-wrap[open] > summary::before { transform: rotate(90deg); }
+.paper-index-wrap > summary:hover { color: var(--blue, #2d6eb4); }
+.paper-index-wrap > summary span {
+  color: var(--muted);
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.paper-index {
+  margin-top: 18px;
 }
 .paper-index-level { margin-bottom: 18px; }
 .paper-index-level h3 {

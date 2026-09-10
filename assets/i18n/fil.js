@@ -159,6 +159,7 @@ I18N.register("fil", {
  "exams.audioLinked": "may buong recording",
  "exams.audioPartial": "Audio {have}/{all}",
  "exams.body": "Ang bawat papel dito ay sinasagutan sa mismong pormat ng JLPT, may timer at automatic na pagmamarka. Sagutan ang buong set o isang bahagi lamang.",
+ "exams.browseAll": "Tingnan ang lahat ng papel",
  "exams.hasWords": "Kahulugan ng salita",
  "exams.loading": "Naglo-load…",
  "exams.noAudio": "Walang listening audio",

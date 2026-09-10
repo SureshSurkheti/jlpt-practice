@@ -159,6 +159,7 @@ I18N.register("ko", {
  "exams.audioLinked": "전체 음성 있음",
  "exams.audioPartial": "음성 {have}/{all}",
  "exams.body": "여기 있는 시험지는 JLPT와 같은 형식으로, 시간 측정과 자동 채점이 됩니다. 전체를 풀거나 한 과목만 연습할 수 있습니다.",
+ "exams.browseAll": "모든 시험지 보기",
  "exams.hasWords": "단어 뜻",
  "exams.loading": "불러오는 중…",
  "exams.noAudio": "청해 음성 없음",

@@ -159,6 +159,7 @@ I18N.register("en", {
  "exams.audioLinked": "full recording available",
  "exams.audioPartial": "Audio {have}/{all}",
  "exams.body": "Each paper here is played in the JLPT's own format, timed and marked automatically. Sit a whole paper or drill one section.",
+ "exams.browseAll": "Browse all papers",
  "exams.hasWords": "Word meanings",
  "exams.loading": "Loading exams…",
  "exams.noAudio": "No listening audio",

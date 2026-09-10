@@ -258,23 +258,48 @@ def strip_choice_number(text):
 
 PROMPT_NUM_RE = re.compile(
     r"^\s*(?:<br\s*/?>\s*)*"          # stray leading breaks
-    r"\(?(\d{1,2})\s*(番|[).）、．.])\s*",
+    # 番 and its kana spelling both: the N4/N5 listening booklets print
+    # "1ばん", and matching only the kanji left those eight reading "1 1ばん".
+    r"\(?(\d{1,2})\s*(番|ばん|[).）、．.])\s*",
     re.I,
 )
 
 
-def split_prompt_number(prompt):
+# The same number with nothing after it but a space - "5 この書類を…".
+# There is no delimiter to key on, so this alone is not enough to strip it;
+# see split_prompt_number.
+PROMPT_BARE_NUM_RE = re.compile(r"^\s*(?:<br\s*/?>\s*)*(\d{1,2})(?:\s+|$)")
+
+
+def split_prompt_number(prompt, qn=None):
     """Separate the paper's own question number from the prompt text.
 
     Sources write prompts as '1) ...', '45. ...' or '1番' (listening). The
     player already shows its own counter, so the paper number is kept apart
     and rendered as a small badge instead of reading like a first option.
+
+    Some sources print it with no delimiter at all, just a space, and those
+    slipped through: 286 questions across the archive rendered as "5  5 この
+    書類を…", the badge and the prompt each saying five. A bare figure is too
+    common to strip on sight - a prompt may legitimately open with one - so
+    it comes off only when it is *this question's own* number, which is the
+    one the booklet printed and the badge already draws. Question 12 opening
+    "5 月に…" keeps its five.
+
+    A prompt that is nothing *but* the number is the same case at its limit:
+    the 問題7 cloze items carry "41" and no text, because the sentence they
+    belong to is in the passage above, where the gap is already marked 【41】.
+    The badge carries the number; the prompt is left empty rather than
+    printing it a second time.
     """
     m = PROMPT_NUM_RE.match(prompt or "")
-    if not m:
-        return None, (prompt or "").strip()
-    label = m.group(1) + ("番" if m.group(2) == "番" else "")
-    return label, prompt[m.end():].strip()
+    if m:
+        label = m.group(1) + ("番" if m.group(2) in ("番", "ばん") else "")
+        return label, prompt[m.end():].strip()
+    m = PROMPT_BARE_NUM_RE.match(prompt or "")
+    if m and qn is not None and m.group(1) == str(qn):
+        return m.group(1), prompt[m.end():].strip()
+    return None, (prompt or "").strip()
 
 
 # --------------------------------------------------------------------------
@@ -432,7 +457,7 @@ def parse_source(path):
         answer = q.get("answer")
         if not answer or answer not in choices:
             answer = None
-        number, prompt = split_prompt_number(q.get("prompt") or "")
+        number, prompt = split_prompt_number(q.get("prompt") or "", qn)
 
         # No "has anything to read" test here, deliberately.
         #

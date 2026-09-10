@@ -159,6 +159,7 @@ I18N.register("zh", {
  "exams.audioLinked": "有完整录音",
  "exams.audioPartial": "音频 {have}/{all}",
  "exams.body": "这里的试题按JLPT本身的格式作答，计时并自动评分。可以做完整一套，也可以只练一个部分。",
+ "exams.browseAll": "查看所有试卷",
  "exams.hasWords": "词语释义",
  "exams.loading": "加载中…",
  "exams.noAudio": "无听力音频",

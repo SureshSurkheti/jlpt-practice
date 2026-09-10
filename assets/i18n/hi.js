@@ -159,6 +159,7 @@ I18N.register("hi", {
  "exams.audioLinked": "पूरी रिकॉर्डिंग उपलब्ध",
  "exams.audioPartial": "ऑडियो {have}/{all}",
  "exams.body": "यहाँ के प्रश्नपत्र JLPT के अपने प्रारूप में ही हल किए जाते हैं, समयबद्ध और स्वतः जाँच वाले। पूरा प्रश्नपत्र दें या एक भाग का अभ्यास करें।",
+ "exams.browseAll": "सभी पेपर देखें",
  "exams.hasWords": "शब्दों के अर्थ",
  "exams.loading": "लोड हो रहा है…",
  "exams.noAudio": "श्रवण ऑडियो नहीं",
