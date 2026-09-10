@@ -1031,7 +1031,18 @@
       state.exam = exam;
       return loadGlossary(exam.id).then(renderSetup);
     }).catch(function (err) {
-      fail(t("exam.errorBody"),
+      /* The message used to end "run a local web server so the browser can
+         load it", which is true and is addressed to whoever is building the
+         site. A reader following a stale bookmark got told to install a
+         server. The reasons that apply to them - it moved, the connection
+         went - are the message now, and the developer's case is shown only
+         when the page really is being opened off a disk.
+
+         The technical line stays underneath either way: it is what makes a
+         report worth acting on when somebody does write in. */
+      var extra = location.protocol === "file:"
+        ? " " + t("exam.errorFileHint") : "";
+      fail(t("exam.errorBody") + extra,
         String(err && err.message ? err.message : err)
       );
     });
