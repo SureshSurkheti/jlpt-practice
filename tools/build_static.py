@@ -270,6 +270,18 @@ def finish_html(html, table=None, en=None):
     before DOMContentLoaded, but the parser still stopped for each of them,
     and deferred they run in the same order after the document is parsed
     and the first paint no longer waits."""
+    # Every page, not just the home page. i18n.js fills %%PAPERS%%, %%OWN%%
+    # and %%ARCHIVED%% out of this on its way through the table, and it runs
+    # on load - so a page that carried the tokens but not the counts had the
+    # numbers written into the markup here and then wiped by the script a
+    # moment later. The About page's copyright notice was reading "of the
+    # papers on this site are archived past sittings", with no number in
+    # front of it, on the live site.
+    if COUNTS:
+        html = html.replace(
+            "</head>",
+            '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
+            % json.dumps(COUNTS, separators=(",", ":")), 1)
     html = html.replace("%%CONTACT%%", CONTACT_EMAIL)
     # The year in the copyright line was typed into all eleven source pages
     # and would have gone stale on the same night every year - which matters
@@ -1413,10 +1425,6 @@ def main():
                     '<div id="levelsContent">%s</div>'
                     % levels_table(exams, table, en))
             if page == "index.html":
-                html = html.replace(
-                    "</head>",
-                    '    <script>window.SITE_COUNTS=%s;</script>\n  </head>'
-                    % json.dumps(COUNTS, separators=(",", ":")))
                 html = html.replace('<div class="hero-countdown" id="examCountdown"></div>',
                                     countdown_block(lang, table, en))
                 html = html.replace('<div class="feature-stat-grid" id="featureGrid"></div>',
