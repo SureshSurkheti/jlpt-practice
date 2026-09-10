@@ -432,16 +432,16 @@
    "id": "grammar-reading",
    "questions": [
     {
-     "prompt": "かれは　もう　帰って　（　　)ました。",
+     "prompt": "かれは　もう　帰って　（　　）ました。",
      "choices": [
-      "おき",
-      "み",
       "しまい",
-      "あり"
+      "み",
+      "あり",
+      "おき"
      ],
      "explanation": "…て しまう.",
      "passage": null,
-     "answer": 3,
+     "answer": 1,
      "category": "grammar",
      "instruction": "問題1　（　　）に　何を　入れますか。1・2・3・4から　いちばん　いい　ものを　一つ　えらんで　ください。"
     },
