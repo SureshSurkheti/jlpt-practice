@@ -1766,6 +1766,17 @@
   margin-inline: auto;
 }
 
+/* .exam-paper is a grid, and an auto inline margin on a grid item switches
+   off the default stretch - so the whole-test players, whose parent is the
+   paper rather than a 問題, fell back to shrink-to-fit. The YouTube bar has
+   enough in it to reach the measure anyway; the Drive bar is a label and a
+   300px frame, so it sat 164px short of every question below it and
+   off-centre against them. Fill the measure explicitly. */
+.exam-paper > .q-audio,
+.exam-paper > .q-audio-aside {
+  width: 100%;
+}
+
 /* ==========================================================================
    Phones: keep the sticky chrome small
 
