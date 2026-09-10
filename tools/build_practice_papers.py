@@ -54,7 +54,7 @@ FIRST = 3
 #
 # A level still stops at whatever its banks support; build() takes the
 # smaller of the two.
-PAPERS = {"n5": 16, "n4": 25, "n3": 25, "n2": 16, "n1": 16}
+PAPERS = {"n5": 16, "n4": 25, "n3": 25, "n2": 25, "n1": 16}
 DEFAULT_PAPERS = 16
 SEED = os.path.join(ROOT, "data", "practice-bank", "seed")
 DEAL = os.path.join(ROOT, "data", "practice-bank", "deal.json")
