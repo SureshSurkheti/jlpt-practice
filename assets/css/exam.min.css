@@ -342,8 +342,7 @@ padding: 20px 22px;
 background: #fffdf6;
 border: 1px solid #f0e4c4;
 border-radius: 18px;
-max-height: calc(100vh - var(--header-h, 74px) - var(--bar-h, 62px) - 56px);
-overflow-y: auto;
+z-index: 2;
 }
 .q-passage-label {
 font-size: 0.74rem;
@@ -353,7 +352,18 @@ text-transform: uppercase;
 color: var(--gold);
 margin-bottom: 12px;
 }
-.q-passage-body { font-size: 1rem; line-height: 2; color: var(--text); }
+.q-passage-body {
+font-size: 1rem;
+line-height: 2;
+color: var(--text);
+max-height: calc(var(--psg-lines, 12) * 2rem);
+overflow-y: auto;
+overscroll-behavior: contain;
+}
+.q-passage-body.has-more {
+-webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6rem), transparent);
+mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6rem), transparent);
+}
 .q-passage-body img { margin: 12px auto; border-radius: 8px; }
 .q-passage-body table { border-collapse: collapse; margin: 12px 0; width: 100%; }
 .q-passage-body td, .q-passage-body th {
@@ -1134,16 +1144,18 @@ padding: 8px 12px 10px;
 }
 @media (max-width: 960px) {
 .paper-block.has-passage { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-.q-passage { max-height: 46vh; top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 12px); }
+.q-passage { top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 12px); }
 }
 @media (max-width: 860px) {
 .exam-page .site-header { position: static; }
 .exam-page .exam-bar { top: 0; }
-.exam-page .paper-question { scroll-margin-top: calc(var(--bar-h, 62px) + 14px); }
+.exam-page .paper-question {
+scroll-margin-top: calc(var(--bar-h, 62px) + var(--psg-h, 0px) + 14px);
+}
 .exam-page .q-audio { top: calc(var(--bar-h, 62px) + var(--full-h, 0px)); }
 .exam-page .q-passage {
 top: calc(var(--bar-h, 62px) + 12px);
-max-height: 42vh;
+--psg-lines: 9;
 }
 .exam-bar-inner { flex-wrap: wrap; gap: 12px; }
 .exam-bar-progress { order: 3; width: 100%; flex-basis: 100%; }
@@ -1987,3 +1999,6 @@ animation: dialog-rise 0.2s cubic-bezier(.2, .7, .3, 1);
 @media (prefers-reduced-motion: reduce) {
 .exam-dialog-veil, .exam-dialog { animation: none; }
 }
+@media (max-height: 760px) { .exam-page .q-passage { --psg-lines: 8; } }
+@media (max-height: 620px) { .exam-page .q-passage { --psg-lines: 6; } }
+@media (max-height: 500px) { .exam-page .q-passage { --psg-lines: 4; } }

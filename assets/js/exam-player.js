@@ -2513,6 +2513,8 @@
         if (pread) pnode.insertBefore(pread, pnode.querySelector(".q-passage-body"));
       }
       wireFigures(pnode);
+      wirePassageFade(pnode.querySelector(".q-passage-body"));
+      wirePassageStop(pnode);
       node.appendChild(pnode);
     }
 
@@ -3032,6 +3034,41 @@
     box.appendChild(p);
     box.appendChild(buildPaperTabs(true));
     return box;
+  }
+
+  /* Whether a passage has more text under the fold, kept true as it is read.
+
+     The prose box is capped at a whole number of lines, so the cut is clean -
+     but a clean cut looks like the end of the passage. The fade says
+     otherwise, and stops saying it the moment there is nothing left, which
+     is why this is not simply a permanent gradient in the stylesheet. */
+  /* How much room the pinned passage takes, so a question jumped to lands
+     under it rather than behind it. Measured rather than guessed: the box is
+     capped in lines and the cap changes with the screen. */
+  function wirePassageStop(passage) {
+    if (!passage) return;
+    function sync() {
+      var h = Math.round(passage.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--psg-h", h + "px");
+    }
+    sync();
+    window.addEventListener("resize", sync);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+  }
+
+  function wirePassageFade(body) {
+    if (!body) return;
+    function sync() {
+      var more = body.scrollHeight - body.clientHeight - body.scrollTop > 2;
+      body.classList.toggle("has-more", more);
+    }
+    body.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    /* After layout, and again after the web font lands - a passage measured
+       in a fallback face is measured at the wrong height. */
+    sync();
+    setTimeout(sync, 0);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
   }
 
   function buildFinish() {

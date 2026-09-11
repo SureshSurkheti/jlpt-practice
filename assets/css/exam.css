@@ -442,6 +442,19 @@
 
 /* -- reading passage: stays in view while its questions scroll -- */
 
+/* The box no longer scrolls; the prose inside it does.
+
+   Scrolling the whole box carried the label and the "Word meanings" button
+   away with the text - the button was deliberately put at the top so a
+   sticky box could not strand it out of reach, and then the inner scroll
+   stranded it anyway, halfway up a paragraph. Now they sit still and only
+   the passage moves under them.
+
+   The height is counted in lines rather than in vh. At 42vh the text area
+   came out 312px against a 32px line-height: 9.75 lines, so every passage
+   on the site was sliced horizontally through the middle of its tenth row
+   of characters. A half-cut line does not read as "there is more below", it
+   reads as a broken page. */
 .q-passage {
   position: sticky;
   top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 20px);
@@ -449,8 +462,14 @@
   background: #fffdf6;
   border: 1px solid #f0e4c4;
   border-radius: 18px;
-  max-height: calc(100vh - var(--header-h, 74px) - var(--bar-h, 62px) - 56px);
-  overflow-y: auto;
+  /* A sticky box with no z-index is painted in document order, so the
+     question block below it - which comes later in the DOM - was drawn on
+     top of the passage that was supposed to be staying in view. Measured on
+     an N3 reading block: the question head began 82px above the bottom of
+     the passage and covered it, which is why passage text appeared to run
+     on to the question's grey background and why the flag sat in the middle
+     of a sentence. The passage is the thing that stays; it goes above. */
+  z-index: 2;
 }
 .q-passage-label {
   font-size: 0.74rem;
@@ -460,7 +479,23 @@
   color: var(--gold);
   margin-bottom: 12px;
 }
-.q-passage-body { font-size: 1rem; line-height: 2; color: var(--text); }
+.q-passage-body {
+  font-size: 1rem;
+  /* One line is 2rem. Every cap below is a whole multiple of it. */
+  line-height: 2;
+  color: var(--text);
+  max-height: calc(var(--psg-lines, 12) * 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Fade the last line while there is more under it, and only then - a fade
+   that stayed after you reached the end would be telling you something
+   untrue. wirePassageFade() in exam-player.js keeps the class honest. */
+.q-passage-body.has-more {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6rem), transparent);
+}
 .q-passage-body img { margin: 12px auto; border-radius: 8px; }
 .q-passage-body table { border-collapse: collapse; margin: 12px 0; width: 100%; }
 .q-passage-body td, .q-passage-body th {
@@ -1550,7 +1585,7 @@
   /* Not enough width to keep a passage beside its questions: stack them and
      let the passage stay pinned at a readable height while scrolling. */
   .paper-block.has-passage { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .q-passage { max-height: 46vh; top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 12px); }
+  .q-passage { top: calc(var(--header-h, 74px) + var(--bar-h, 62px) + 12px); }
 }
 
 @media (max-width: 860px) {
@@ -1558,13 +1593,20 @@
      header scroll away and give the command bar the top of the screen. */
   .exam-page .site-header { position: static; }
   .exam-page .exam-bar { top: 0; }
-  .exam-page .paper-question { scroll-margin-top: calc(var(--bar-h, 62px) + 14px); }
+  /* Clear the pinned passage as well as the bar, or jumping to a question -
+     from the flag, or from "go to the first blank" - lands it underneath
+     the passage now that the passage is properly on top. The variable is
+     set by wirePassageStop() as each block is built; a paper with no
+     passage falls back to 0 and the margin is the bar alone. */
+  .exam-page .paper-question {
+    scroll-margin-top: calc(var(--bar-h, 62px) + var(--psg-h, 0px) + 14px);
+  }
   /* The site header scrolls away here, so the pinned player must not leave a
      header's worth of gap above itself. */
   .exam-page .q-audio { top: calc(var(--bar-h, 62px) + var(--full-h, 0px)); }
   .exam-page .q-passage {
     top: calc(var(--bar-h, 62px) + 12px);
-    max-height: 42vh;
+    --psg-lines: 9;
   }
 
   .exam-bar-inner { flex-wrap: wrap; gap: 12px; }
@@ -2853,3 +2895,14 @@
 @media (prefers-reduced-motion: reduce) {
   .exam-dialog-veil, .exam-dialog { animation: none; }
 }
+
+/* A passage may not take the whole screen on a short one. Counted in lines,
+   so the cut still lands between two rows of characters.
+
+   Written at the same weight as the width rule above - .exam-page .q-passage,
+   not .q-passage - because that rule is two classes and would otherwise win
+   on specificity whatever the order: a phone held sideways, 600px tall, was
+   getting the nine lines meant for a phone held upright. */
+@media (max-height: 760px) { .exam-page .q-passage { --psg-lines: 8; } }
+@media (max-height: 620px) { .exam-page .q-passage { --psg-lines: 6; } }
+@media (max-height: 500px) { .exam-page .q-passage { --psg-lines: 4; } }
