@@ -256,6 +256,7 @@
                    kanji: "study.kanjiCount" }[state.kind];
       host.innerHTML = countLine(0, noun, false) + bar +
         '<p class="stats-empty">' + esc(t(why)) + "</p>";
+      watchMarks();
       return;
     }
 
@@ -288,9 +289,67 @@
       '<div class="study-list' + (state.cover ? " is-covered" : "") + '">' +
         head + body +
       "</div>";
+    watchMarks();
   }
 
   var STATE_CLASS = { k: " is-known", d: " is-learning" };
+
+  /* The mark control is built when its row comes near the viewport, not at
+     load.
+
+     A word list runs to 3,760 rows and a checkmark-and-cross pair is three
+     elements each: 11,280 elements built up front for a control most readers
+     touch on a couple of dozen words. Measured on n1-words that was 30,090
+     DOM nodes against 18,807 elements of shipped HTML - a third of the page
+     existed to offer a button nobody had asked for yet, and it is the
+     difference between that page's Lighthouse score and every other study
+     page's.
+
+     This is the deferral the rows already get for layout: the stylesheet
+     hands off-screen rows to content-visibility, and this hands them their
+     buttons on the same terms. The margin builds a screenful either side
+     ahead of the scroll, so the control is always there before the row is.
+
+     Only word lists have marks - kanji and grammar rows never called
+     markButtons - so nothing else on the page is touched. */
+  var markWatcher = null;
+
+  function fillMarks(row) {
+    if (!row || row.querySelector(".study-mark")) return;
+    var w = row.getAttribute("data-w");
+    if (w) row.insertAdjacentHTML("beforeend", markButtons(w));
+  }
+
+  function watchMarks() {
+    if (markWatcher) { markWatcher.disconnect(); markWatcher = null; }
+    if (state.kind !== "words") return;
+    var rows = host.querySelectorAll(".study-row[data-w]");
+    if (!rows.length) return;
+
+    /* Without IntersectionObserver, build all of them - which is what this
+       page did before. A slower first paint beats a row you cannot mark. */
+    if (typeof IntersectionObserver !== "function") {
+      Array.prototype.forEach.call(rows, fillMarks);
+      return;
+    }
+
+    markWatcher = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        fillMarks(e.target);
+        markWatcher.unobserve(e.target);
+      });
+    }, { rootMargin: "800px 0px" });
+    Array.prototype.forEach.call(rows, function (r) { markWatcher.observe(r); });
+  }
+
+  /* Reaching a row by keyboard or by a screen reader does not always scroll
+     it, and a row you can focus is a row you must be able to mark. */
+  function fillOnReach(ev) {
+    var row = ev.target && ev.target.closest
+      ? ev.target.closest(".study-row[data-w]") : null;
+    if (row) fillMarks(row);
+  }
 
   function markButtons(w) {
     var s = marks[w] || "";
@@ -344,7 +403,6 @@
         (!row.r || row.r === row.w ? " is-echo" : "") + '">' + esc(row.r || "") +
         (row.romaji ? '<em>' + esc(row.romaji) + "</em>" : "") + "</span>" +
       '<span class="study-en">' + esc(row.en) + ne + "</span>" +
-      markButtons(row.w) +
     "</div>";
   }
 
@@ -526,7 +584,11 @@
     });
   }
 
+  host.addEventListener("focusin", fillOnReach);
+
   host.addEventListener("click", function (ev) {
+    fillOnReach(ev);
+
     if (ev.target.closest(".kanji-open-close")) { closeKanji(); return; }
 
     var mark = ev.target.closest(".study-mark button");
