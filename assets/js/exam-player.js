@@ -334,13 +334,63 @@
 
   var SPEECH = window.speechSynthesis || null;
   var jaVoices = [];
+  var femaleVoices = [];
+  var maleVoices = [];
   var speaking = null;
+
+  /* Which voice is a woman's and which is a man's.
+
+     There is no API for this - SpeechSynthesisVoice carries a name, a lang
+     and nothing else - so it is a list of the names the platforms actually
+     ship. Anything not on it is left unknown rather than guessed at, and an
+     unknown voice is used only when there is no known one to use.
+
+     Apple ships Kyoko and Otoya as the two Japanese voices and adds the
+     newer expressive set (Eddy, Flo, Reed, Rocko, Sandy, Shelley and the
+     grandparents) in every language. Microsoft ships Haruka and Ichiro and
+     the newer neural pair Nanami and Keita. Android names its voices with
+     the word in them, which is the one case that needs care: "female"
+     contains "male", so it has to be asked about first. */
+  var VOICE_F = /(kyoko|o-?ren|haruka|ayumi|nanami|sayaka|shiori|mayu|aoi|mizuki|kazuha|tomoko|nayuki|flo|sandy|shelley|grandma)/i;
+  var VOICE_M = /(otoya|hattori|ichiro|keita|daichi|naoki|masaru|takumi|eddy|grandpa|reed|rocko)/i;
+
+  function voiceGender(v) {
+    var name = (v && v.name) || "";
+    var low = name.toLowerCase();
+    if (low.indexOf("female") !== -1) return "f";   /* before "male" */
+    if (low.indexOf("male") !== -1) return "m";
+    if (/\u5973\u6027|\u5973\u58f0/.test(name)) return "f";
+    if (/\u7537\u6027|\u7537\u58f0/.test(name)) return "m";
+    if (VOICE_F.test(name)) return "f";
+    if (VOICE_M.test(name)) return "m";
+    return null;
+  }
+
+  /* Better voices first. The expressive set reads Japanese noticeably worse
+     than the two built for it, so being able to tell a man from a woman is
+     not worth dropping Kyoko for Grandma - the ranking keeps both. */
+  var VOICE_GOOD = /(kyoko|otoya|hattori|o-?ren|haruka|ichiro|nanami|keita|ayumi|daichi|google)/i;
+  var VOICE_FINE = /(premium|enhanced|neural|natural)/i;
+
+  function voiceRank(v) {
+    var name = (v && v.name) || "";
+    return (VOICE_FINE.test(name) ? 0 : 2) + (VOICE_GOOD.test(name) ? 0 : 1);
+  }
 
   function loadVoices() {
     if (!SPEECH) return;
     var all = [];
     try { all = SPEECH.getVoices() || []; } catch (e) { all = []; }
     jaVoices = all.filter(function (v) { return /^ja(-|_|$)/i.test(v.lang || ""); });
+    /* Stable: sort() is not required to be, and two voices of equal rank
+       swapping places between calls would change who is speaking. */
+    jaVoices = jaVoices.map(function (v, i) { return { v: v, i: i }; })
+      .sort(function (a, b) {
+        return (voiceRank(a.v) - voiceRank(b.v)) || (a.i - b.i);
+      })
+      .map(function (x) { return x.v; });
+    femaleVoices = jaVoices.filter(function (v) { return voiceGender(v) === "f"; });
+    maleVoices = jaVoices.filter(function (v) { return voiceGender(v) === "m"; });
   }
 
   if (SPEECH) {
@@ -357,13 +407,104 @@
     return !!(SPEECH && jaVoices.length);
   }
 
-  /* One voice per speaker, so 男の人 and 女の人 are told apart by ear rather
-     than by reading the label - which is the whole point of the exercise.
-     Where the device has only one Japanese voice they share it, and the
-     pitch is nudged instead. */
-  function voiceFor(speaker, order) {
-    if (!jaVoices.length) return null;
-    return jaVoices[order % jaVoices.length];
+  /* Who each label in a script should sound like.
+
+     The scripts use four kinds of label and only four: 女 for the woman, 男
+     for the man, "" for the examiner reading the question, and 1-4 for the
+     examiner reading the answer options aloud.
+
+     This used to hand out voices in the order the labels first appeared -
+     first speaker gets voice one, second gets voice two - which is wrong in
+     two ways at once. Whoever spoke first got whichever voice the device
+     happened to list first, so the man was read in a woman's voice on every
+     script where he opened; and the four numbered options were four
+     different speakers, when they are one person reading a list.
+
+     So: 女 gets a woman's voice, 男 gets a man's, and the examiner and the
+     options share a third - or the man's, if the device has only two, since
+     a male announcer beside a female speaker is what the exam sounds like.
+     Where two roles have to share, the pitch is parted by gender rather
+     than by turn order: the man down, the woman up. */
+  function assignVoices(lines) {
+    var roles = {};
+    lines.forEach(function (l) { roles[l.who || ""] = true; });
+
+    var used = [];
+    function take(pool) {
+      for (var i = 0; i < pool.length; i++) {
+        if (used.indexOf(pool[i]) === -1) { used.push(pool[i]); return pool[i]; }
+      }
+      return null;
+    }
+    var unknown = jaVoices.filter(function (v) { return !voiceGender(v); });
+
+    var she = roles["\u5973"]
+      ? (take(femaleVoices) || take(unknown) || femaleVoices[0] || jaVoices[0] || null)
+      : null;
+    /* A device with two women's voices and no man's is better served by
+       giving him the spare one an octave down than by putting both speakers
+       on the same voice: a different timbre and a lower pitch beats the same
+       timbre and a lower pitch. The pitch correction below is what makes it
+       read as a man either way. */
+    var he = roles["\u7537"]
+      ? (take(maleVoices) || take(unknown) || take(femaleVoices)
+         || maleVoices[0] || jaVoices[0] || null)
+      : null;
+    /* The examiner last, so a script with both speakers in it gives them
+       the two voices that actually match them before the narrator takes
+       what is left - and only a voice worth listening to.
+
+       Apple ships an expressive set (Eddy, Grandpa, Rocko and the rest) in
+       every language, and they read Japanese markedly worse than the two
+       voices built for it. Taking one of those for the examiner just
+       because it was still unused meant the question - the sentence the
+       whole item turns on - was the worst-read line on the page. Better to
+       reuse the man's voice a little lower: same clarity, still a different
+       person. */
+    var reuse = he || she || null;
+    var ceiling = reuse ? voiceRank(reuse) : 99;
+    function takeUpTo(pool) {
+      for (var i = 0; i < pool.length; i++) {
+        if (used.indexOf(pool[i]) === -1 && voiceRank(pool[i]) <= ceiling) {
+          used.push(pool[i]);
+          return pool[i];
+        }
+      }
+      return null;
+    }
+    var narrator = takeUpTo(maleVoices) || takeUpTo(unknown) || takeUpTo(femaleVoices)
+      || reuse || jaVoices[0] || null;
+
+    var map = {};
+    map["\u5973"] = { voice: she, pitch: null };
+    map["\u7537"] = { voice: he, pitch: null };
+    map[""] = { voice: narrator, pitch: null };
+
+    /* Sharing a voice is not a failure - most devices have two Japanese
+       voices and some have one - but two people at the same pitch is one
+       person talking to himself, so part them. And where the only voice
+       available for a speaker is the wrong sex, the pitch is what carries
+       it: down for the man, up for the woman. */
+    if (she && he && she === he) {
+      map["\u5973"].pitch = 1.15;
+      map["\u7537"].pitch = 0.85;
+    } else {
+      if (he && voiceGender(he) === "f") map["\u7537"].pitch = 0.85;
+      if (she && voiceGender(she) === "m") map["\u5973"].pitch = 1.15;
+    }
+    if (narrator && ((she && narrator === she) || (he && narrator === he))) {
+      /* Only when it collides with the speaker of its own apparent sex, so
+         a male announcer beside a female speaker is left alone. */
+      if ((he && narrator === he) || (!he && she && narrator === she)) {
+        map[""].pitch = (map[""].pitch || 1) * 0.94;
+      }
+    }
+
+    /* The numbered options are the examiner reading a list, so they are the
+       examiner's voice exactly - same voice, same pitch, no drift between
+       option 2 and option 3. */
+    ["1", "2", "3", "4"].forEach(function (n) { map[n] = map[""]; });
+    return map;
   }
 
   function stopSpeaking() {
@@ -537,8 +678,7 @@
     var lines = speakChunks(rawLines);
     if (!lines.length) return;
 
-    var order = {};
-    var next = 0;
+    var cast = assignVoices(lines);
     var token = {};
     speaking = { node: node, token: token };
     node.classList.add("is-playing");
@@ -560,15 +700,11 @@
       }
       var line = lines[i];
       var u = new SpeechSynthesisUtterance(line.text);
-      if (!(line.who in order)) order[line.who] = next++;
-      var v = voiceFor(line.who, order[line.who]);
+      var part = cast[line.who] || cast[""];
+      var v = part && part.voice;
       if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "ja-JP"; }
       u.rate = rate;
-      /* Only when the device has a single Japanese voice: two speakers in
-         the same voice at the same pitch is one person talking to himself. */
-      if (jaVoices.length < 2 && line.who) {
-        u.pitch = order[line.who] % 2 ? 0.85 : 1.15;
-      }
+      if (part && part.pitch) u.pitch = part.pitch;
       u.onend = function () {
         /* A beat only where the speaker changes: without one the two sides
            of an exchange run together into a single sentence. Between two
