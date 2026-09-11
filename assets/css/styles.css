@@ -3163,6 +3163,36 @@ body.is-leaving { opacity: 0; }
 .hero-section .review-strip h2 { color: #fff; }
 .hero-section .review-strip p { color: rgba(255, 255, 255, 0.78); }
 
+/* Loud once it has something to say, quiet until then.
+
+   All three states - never used it, nothing due today, forty words due -
+   drew the identical panel with the identical filled white pill. So a
+   first-time visitor met two white pills of equal weight in the blue:
+   "Browse exams", which is the way into the site, and "Open review", which
+   for them opens a page reading "Your review queue is empty." The widest,
+   heaviest block in the hero was the one block they could not use.
+
+   The fill is earned by having a queue. Until then the same button is
+   outlined - still white text, still the full tap target, still the first
+   thing a returning reader's eye lands on once it fills in.
+
+   Geometry is deliberately untouched: same box, same padding, same
+   min-height, same clamped two lines of text. The class is added after the
+   queue is read from storage, so anything that changed size here would
+   shift the hero under the reader. Only the fill changes. */
+.hero-section .review-strip:not(.is-active) .btn-primary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}
+.hero-section .review-strip:not(.is-active) .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: #fff;
+  box-shadow: none;
+}
+
 /* Progress page: one line per level with marks. */
 .stats-know-list {
   list-style: none;

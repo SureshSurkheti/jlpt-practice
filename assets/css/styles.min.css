@@ -2083,6 +2083,18 @@ backdrop-filter: blur(6px);
 }
 .hero-section .review-strip h2 { color: #fff; }
 .hero-section .review-strip p { color: rgba(255, 255, 255, 0.78); }
+.hero-section .review-strip:not(.is-active) .btn-primary {
+background: transparent;
+color: #fff;
+border: 1px solid rgba(255, 255, 255, 0.5);
+box-shadow: none;
+}
+.hero-section .review-strip:not(.is-active) .btn-primary:hover {
+background: rgba(255, 255, 255, 0.14);
+color: #fff;
+border-color: #fff;
+box-shadow: none;
+}
 .stats-know-list {
 list-style: none;
 margin: 8px 0 0;

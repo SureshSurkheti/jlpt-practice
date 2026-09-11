@@ -1212,6 +1212,13 @@ function renderReviewStrip() {
   const c = srsCounts();
   if (c.due) body.textContent = tf('home.reviewDue', { n: c.due });
   else if (c.total) body.textContent = tf('home.reviewClear', { n: c.total });
+
+  /* Only a strip with something behind it gets the filled button - see the
+     note on .review-strip:not(.is-active) in styles.css. Absent by default
+     in the markup, so a reader with no JavaScript gets the quiet one, which
+     is the honest state for a queue that has not been read. */
+  const strip = body.closest('.review-strip');
+  if (strip) strip.classList.toggle('is-active', !!(c.due || c.total));
 }
 
 function renderAll() {
