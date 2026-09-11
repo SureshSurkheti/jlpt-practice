@@ -647,11 +647,25 @@ body > main { flex: 1 0 auto; }
   font-size: 0.82rem;
   line-height: 1.35;
   color: rgba(255, 255, 255, 0.78);
-  /* Two of the five descriptions run long; one line each keeps the five rows
-     the same height, which is what makes the column scannable. */
+  /* Up to two lines, then clip.
+
+     One line with an ellipsis kept the five rows the same height, which is
+     what makes the column scannable - but it cut N2 to "Newspapers, business
+     Japanese, abstract ..." and N1 to "Academic and literary Japanese at
+     natural ...", and those are the two levels a reader actually agonises
+     over. Worse, it got worse as the screen got wider: below 1100px the hero
+     is one column and the panel has the full width, so nothing was cut; from
+     1280px up the panel takes its share of a two-column grid and English
+     lost N2 and N1, Portuguese lost N5 as well, Indonesian N4.
+
+     A row that is one line taller costs less than a description that stops
+     before its noun. The clamp stays at two so a long translation cannot
+     turn one row into a paragraph. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
 }
 .hero-level i {
   font-style: normal;
