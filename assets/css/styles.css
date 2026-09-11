@@ -2334,18 +2334,51 @@ body.is-leaving { opacity: 0; }
 /* The back link is the first thing inside <main>, and <main> already has a
    generous top padding - so its own top margin was added to that and left
    about seventy pixels of nothing above the first control on the page. */
-.page-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 0;
+/* The Back chip is for the installed app only.
+
+   Researched before cutting it: 231 pages carried one, and 219 of them
+   pointed at a page their own header already links to - 180 study lists
+   back to study.html, the guides and the progress page back to index.html,
+   the quiz back to study.html. The twelfth case, review.html -> stats.html,
+   is not in the header but is in that page's own footer. So every one of
+   them was a second route to somewhere the page already offered.
+
+   And the header is position:sticky. The full nav - Home, Levels, Exams,
+   Study, About, Guides - is on screen at every scroll position on all 231
+   of those pages, which is why the chip was not even winning on distance.
+   On top of that the browser has a back button and the phone has a back
+   gesture, and the chip's own click handler just calls history.back().
+
+   It stays for one case, which is why this is a media query and not a
+   deletion: the manifest asks for display:standalone, and an installed app
+   on iOS or on the desktop has no browser chrome to go back with. There the
+   chip is the only way back, so there it shows.
+
+   A media query rather than JavaScript on purpose. The build writes this
+   element into the HTML to avoid the 0.22 layout shift that inserting it
+   after paint used to cause (see mount_back in build_static.py); deciding
+   it in CSS keeps that guarantee - the page is laid out correctly on the
+   first paint in both modes, with no flash and no shift either way. */
+.page-back { display: none; }
+
+@media (display-mode: standalone), (display-mode: minimal-ui),
+       (display-mode: fullscreen), (display-mode: window-controls-overlay) {
+  .page-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 0;
+  }
 }
 /* The guide article is the odd one out: this rule was written for a
    .page-intro, and on a guide the chip's next sibling is the <article>, so
    nothing applied and the kicker sat 4px under the button against the 17-19px
    every other page with a chip gives it. */
-.page-back + .page-intro,
-.page-back + .guide { padding-top: 14px; }
+@media (display-mode: standalone), (display-mode: minimal-ui),
+       (display-mode: fullscreen), (display-mode: window-controls-overlay) {
+  .page-back + .page-intro,
+  .page-back + .guide { padding-top: 14px; }
+}
 
 .study-page .page-intro p { max-width: 68ch; }
 

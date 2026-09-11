@@ -1570,14 +1570,21 @@ border-color: var(--blue);
 color: var(--blue);
 box-shadow: 0 6px 14px -5px rgba(45, 110, 180, 0.35);
 }
+.page-back { display: none; }
+@media (display-mode: standalone), (display-mode: minimal-ui),
+(display-mode: fullscreen), (display-mode: window-controls-overlay) {
 .page-back {
 display: inline-flex;
 align-items: center;
 gap: 7px;
 margin-top: 0;
 }
+}
+@media (display-mode: standalone), (display-mode: minimal-ui),
+(display-mode: fullscreen), (display-mode: window-controls-overlay) {
 .page-back + .page-intro,
 .page-back + .guide { padding-top: 14px; }
+}
 .study-page .page-intro p { max-width: 68ch; }
 .study-coverage { margin-top: clamp(18px, 2vw, 26px); }
 .study-coverage h2 {
