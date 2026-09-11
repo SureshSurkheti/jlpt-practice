@@ -29,18 +29,24 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nihongomock.com/#organization","name":"JLPT Practice","url":"https://nihongomock.com/","email":"surkhetisuresh123@gmail.com","logo":{"@type":"ImageObject","url":"https://nihongomock.com/apple-touch-icon.png","width":180,"height":180}},{"@type":"WebSite","@id":"https://nihongomock.com/hi/#website","url":"https://nihongomock.com/hi/","name":"JLPT Practice","inLanguage":"hi","description":"आपने जो स्तर पढ़े, उनकी शुद्धता और गतिविधि।","publisher":{"@id":"https://nihongomock.com/#organization"}},{"@type":"WebPage","@id":"https://nihongomock.com/hi/stats.html#webpage","url":"https://nihongomock.com/hi/stats.html","name":"आपकी प्रगति — JLPT Practice","description":"आपने जो स्तर पढ़े, उनकी शुद्धता और गतिविधि।","inLanguage":"hi","isPartOf":{"@id":"https://nihongomock.com/hi/#website"}}]}</script>
     <link rel="preload" href="/assets/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/cormorant-v21-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/css/styles.min.css?v=34b43d6a" />
+    <link rel="stylesheet" href="/assets/css/styles.min.css?v=2468a3da" />
     <style>
       /* Stats page only. Everything shared with the rest of the site lives in
          styles.css; these are the four blocks unique to this page. */
 
       /* Three cards, so auto-fit rather than a fixed four-column track that
          left a hole on the right. They sit on the light page background, not
-         on a hero, so they are panels like every other card on the site. */
+         on a hero, so they are panels like every other card on the site.
+
+         The floor was 210px, which is wider than a third of a phone, so on
+         the device most people read this on the three numbers stacked into
+         a column three cards tall - the better part of a screen spent on
+         "0", "-" and "0 / 5". They are a single glance, not three; at 96px
+         they stay a single glance on a 320px phone. */
       .stats-grid-4 {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-        gap: clamp(12px, 1.2vw, 18px);
+        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+        gap: clamp(8px, 1.2vw, 18px);
         margin-top: clamp(18px, 2vw, 28px);
       }
 
@@ -48,22 +54,24 @@
         background: var(--panel);
         border: 1px solid var(--line);
         border-radius: 20px;
-        padding: var(--card-pad);
+        padding: clamp(12px, 1.6vw, 24px);
         display: grid;
-        gap: 10px;
+        gap: 6px;
+        align-content: start;
         box-shadow: 0 10px 24px rgba(17, 45, 78, 0.04);
       }
 
       .big-stat-label {
-        font-size: 0.72rem;
-        letter-spacing: 0.1em;
+        font-size: 0.66rem;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         font-weight: 700;
+        line-height: 1.3;
         color: var(--muted);
       }
 
       .big-stat-number {
-        font-size: clamp(2rem, 2.4vw, 2.6rem);
+        font-size: clamp(1.6rem, 2.4vw, 2.6rem);
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--navy);
@@ -191,7 +199,7 @@
            machine is not yours. -->
       <section class="stats-data">
         <h2 data-i18n="stats.dataTitle">आपके अंक इसी डिवाइस पर हैं</h2>
-        <p data-i18n="stats.dataBody">कोई खाता नहीं है और कुछ अपलोड नहीं होता, इसलिए ये अंक सिर्फ़ इसी ब्राउज़र में रहते हैं। इसका मतलब यह भी है कि ये दूसरे डिवाइस पर नहीं जाते, और यह ब्राउज़र साझा करने वाला हर व्यक्ति इन्हें देख सकता है। ले जाने के लिए फ़ाइल में सहेजें, या साझा डिवाइस पर काम पूरा होने पर मिटा दें।</p>
+        <p data-i18n="stats.dataBody">आपके अंक सिर्फ़ इसी ब्राउज़र में सहेजे जाते हैं। दूसरे उपकरण पर ले जाने के लिए फ़ाइल में सहेजें, या साझा कंप्यूटर हो तो मिटा दें।</p>
         <div class="stats-data-actions">
           <button type="button" class="btn btn-ghost" id="exportScores"
                   data-i18n="stats.export">फ़ाइल में सहेजें</button>
@@ -257,9 +265,9 @@
     </footer>
 
     <script defer src="/assets/js/i18n.min.js?v=5a74bc38"></script>
-    <script defer src="/assets/i18n/en.js?v=73b9e2b1"></script>
-    <script defer src="/assets/i18n/hi.js?v=5abcd57a"></script>
-    <script defer src="/assets/js/site.min.js?v=21c7a2ef"></script>
-    <script defer src="/assets/js/stats.min.js?v=6f4988d9"></script>
+    <script defer src="/assets/i18n/en.js?v=aa19bc93"></script>
+    <script defer src="/assets/i18n/hi.js?v=3a268590"></script>
+    <script defer src="/assets/js/site.min.js?v=3db5c00b"></script>
+    <script defer src="/assets/js/stats.min.js?v=4214016f"></script>
   </body>
 </html>

@@ -1693,7 +1693,9 @@ body.is-leaving { opacity: 0; }
 
 /* --------------------------------------------------------------- notice */
 
-.notice-section { padding: 26px 0 6px; }
+/* Last thing on the home page now that the level grid below it has gone,
+   so it carries the page's bottom margin rather than 6px of it. */
+.notice-section { padding: 26px 0 var(--sp-section); }
 
 .notice-card {
   background: #fff;
@@ -1703,8 +1705,33 @@ body.is-leaving { opacity: 0; }
   padding: 22px 24px;
   box-shadow: 0 1px 3px rgba(16, 32, 56, .06);
 }
-.notice-head h2 { margin: 0 0 4px; font-size: 1.12rem; color: var(--navy); }
-.notice-head p { margin: 0 0 16px; font-size: .88rem; color: var(--muted); }
+
+/* Shut, this is one pressable line and a sentence saying what is behind it.
+   The + is drawn rather than left to the browser so the heading and the
+   caption sit in one column beside it, instead of the caption wrapping under
+   a triangle. */
+.notice-head {
+  display: grid;
+  grid-template-columns: 1.2em minmax(0, 1fr);
+  gap: 0 6px;
+  cursor: pointer;
+  list-style: none;
+}
+.notice-head::-webkit-details-marker { display: none; }
+.notice-head::before {
+  content: "+";
+  grid-row: 1 / span 2;
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: var(--gold, #d9a63a);
+}
+.notice-card[open] > .notice-head::before { content: "\2212"; }
+.notice-head h2 { margin: 0; font-size: 1.12rem; color: var(--navy); }
+.notice-head span { font-size: .88rem; color: var(--muted); }
+.notice-head:hover h2 { color: var(--blue); }
+
+.notice-body { margin-top: 18px; }
 
 .notice-table-wrap { overflow-x: auto; }
 .notice-table {
@@ -1903,29 +1930,6 @@ body.is-leaving { opacity: 0; }
    meanings cover, what to do when a recording will not play - are support
    notes, and printing them on the landing page buried the level cards under a
    screen of caveats. They fold away instead. */
-.notice-more { margin-top: 18px; border-top: 1px solid var(--line); }
-
-.notice-more > summary {
-  padding: 14px 0 0;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--navy);
-  list-style: none;
-}
-.notice-more > summary::-webkit-details-marker { display: none; }
-
-.notice-more > summary::before {
-  content: "+";
-  display: inline-block;
-  width: 1.1em;
-  font-weight: 800;
-  color: var(--gold);
-}
-.notice-more[open] > summary::before { content: "\2212"; }
-.notice-more > summary:hover { color: var(--blue); }
-
-.notice-more .notice-foot { margin-top: 14px; padding-top: 0; border-top: 0; }
 
 /* ==========================================================================
    Practice page
@@ -2103,6 +2107,26 @@ body.is-leaving { opacity: 0; }
 }
 .plevel-foot .btn { font-size: 0.86rem; padding: 10px 16px; }
 
+/* The two secondary routes out of a level card. Links rather than buttons -
+   see the note in levelBlock() - but still a finger's worth of height, so
+   demoting them in weight does not demote them in reach. */
+.plevel-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+.plevel-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--blue);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.plevel-links a:hover,
+.plevel-links a:focus-visible { text-decoration: underline; }
+
 .plevel-note { margin: 10px 0 0; font-size: 0.76rem; color: var(--muted); }
 
 .plevel-msg {
@@ -2140,6 +2164,7 @@ body.is-leaving { opacity: 0; }
   .plevel-facts dd { font-size: 0.9rem; }
   .plevel-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plevel-foot .btn { width: 100%; }
+  .plevel-links { width: 100%; justify-content: space-between; gap: 4px 12px; }
 }
 
 /* ==========================================================================

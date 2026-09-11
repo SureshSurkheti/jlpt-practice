@@ -160,10 +160,18 @@ function renderSectionPerformance(rows) {
   const container = document.getElementById('sectionPerformanceGrid');
   if (!container) return;
 
+  /* The same "no study data yet" sentence was printed twice on an empty
+     page - once for the levels above, once here - which made an empty page
+     look like it had failed twice. The breakdown has nothing to break down
+     until something has been sat, so it stands down and lets the one above
+     it speak. */
+  const section = container.closest('.section-performance');
   if (!rows.length) {
-    container.innerHTML = `<p class="stats-empty">${t('stats.empty')}</p>`;
+    container.innerHTML = '';
+    if (section) section.hidden = true;
     return;
   }
+  if (section) section.hidden = false;
 
   const LABEL = {
     language: 'exam.sectionLanguage',

@@ -166,55 +166,33 @@
         <div class="feature-stat-grid" id="featureGrid"></div>
       </section>
 
+      <!-- Everything the site holds, level by level: how many papers, how
+           many carry listening, which have word meanings, and the notes
+           about what needs a connection.
+
+           It is shut now. Open, it was a four-column table and three
+           paragraphs of caveat sitting between the reader and the bottom of
+           the page - a page whose job is to send someone to a paper, not to
+           brief them on the catalogue. Nobody arriving needs the per-level
+           breakdown; the person who does need it is looking for it, and one
+           line they can press is enough for them. The <details> inside it,
+           which held the same three notes one layer deeper, is gone: two
+           nested disclosures to reach one sentence about listening audio was
+           a filing cabinet, not a page. -->
       <section class="container notice-section">
-        <div class="notice-card" id="noticeCard">
-          <div class="notice-head">
+        <details class="notice-card" id="noticeCard">
+          <summary class="notice-head">
             <h2 data-i18n="notice.title"></h2>
-            <p data-i18n="notice.intro"></p>
-          </div>
-          <div class="notice-table-wrap">
-            <table class="notice-table" id="noticeTable"></table>
-          </div>
-          <p class="notice-words" id="noticeWords" hidden></p>
-
-          <details class="notice-more">
-            <summary data-i18n="notice.moreLabel"></summary>
+            <span data-i18n="notice.intro"></span>
+          </summary>
+          <div class="notice-body">
+            <div class="notice-table-wrap">
+              <table class="notice-table" id="noticeTable"></table>
+            </div>
+            <p class="notice-words" id="noticeWords" hidden></p>
             <div class="notice-foot" id="noticeFoot"></div>
-          </details>
-        </div>
-      </section>
-
-      <section class="container level-section">
-        <div class="section-header level-header-row">
-          <div>
-            <h2 data-i18n="home.chooseLevel"></h2>
-            <p data-i18n="home.chooseLevelBody"></p>
           </div>
-          <a href="levels.html" class="text-link" data-i18n="home.viewAllLevels"></a>
-        </div>
-
-        <div class="level-grid">
-          <a class="level-card level-n5" href="levels.html?lv=N5">
-            <span class="level-code">N5</span>
-            <span class="level-desc" data-i18n="level.N5"></span>
-          </a>
-          <a class="level-card level-n4" href="levels.html?lv=N4">
-            <span class="level-code">N4</span>
-            <span class="level-desc" data-i18n="level.N4"></span>
-          </a>
-          <a class="level-card level-n3" href="levels.html?lv=N3">
-            <span class="level-code">N3</span>
-            <span class="level-desc" data-i18n="level.N3"></span>
-          </a>
-          <a class="level-card level-n2" href="levels.html?lv=N2">
-            <span class="level-code">N2</span>
-            <span class="level-desc" data-i18n="level.N2"></span>
-          </a>
-          <a class="level-card level-n1" href="levels.html?lv=N1">
-            <span class="level-code">N1</span>
-            <span class="level-desc" data-i18n="level.N1"></span>
-          </a>
-        </div>
+        </details>
       </section>
     </main>
 

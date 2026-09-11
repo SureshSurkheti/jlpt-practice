@@ -646,12 +646,21 @@ function levelBlock(lv) {
           <dd>${LEVEL_MINUTES[lv]} ${t('levels.minutes')}</dd></div>
       </dl>
       <div class="plevel-skills">${skills}</div>
+      <!-- One button, then two links. It was three buttons of the same
+           size and weight, which is a card asking you to choose between
+           three things rather than a card telling you what to do. There is
+           only one obvious thing to do with a level - sit its paper - and
+           five cards of three buttons is fifteen identical blue and white
+           rectangles down a phone. The other two still go where they went;
+           they read as what they are, the quieter way round. -->
       <div class="plevel-foot">
         <button type="button" class="btn btn-primary plevel-mock" data-level="${lv}">
           ${t('practice.mockTest')}
         </button>
-        <a href="${listUrl}" class="btn btn-ghost">${t('practice.studyLists')}</a>
-        <a href="quiz.html?level=${lv}&amp;kind=words" class="btn btn-ghost">${t('quiz.button')}</a>
+        <span class="plevel-links">
+          <a href="${listUrl}">${t('practice.studyLists')}</a>
+          <a href="quiz.html?level=${lv}&amp;kind=words">${t('quiz.button')}</a>
+        </span>
       </div>
       <p class="plevel-note">${examUrl
         ? `${t('practice.officialPaper')} · ${exam.label}`
@@ -836,8 +845,6 @@ function renderNotice() {
         `<p>${t('notice.audioBody')}</p>` +
         `<p>${tf('notice.audioDead', { paper: DEAD_AUDIO.label })}</p>` +
         `<p>${tf('notice.noListeningBody', { n: noListening })}</p></div>` +
-      `<div class="notice-item"><h3>${t('notice.colWords')}</h3>` +
-        `<p>${t('notice.wordsBody')}</p></div>` +
       `<div class="notice-item notice-help"><h3>${t('notice.helpTitle')}</h3>` +
         `<p>${t('notice.helpBody')}</p>` +
         '<p><a href="https://play.google.com/store/apps/details?id=dpt.com.nihongo_jsempai"' +
