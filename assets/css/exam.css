@@ -486,7 +486,14 @@
   color: var(--text);
   max-height: calc(var(--psg-lines, 12) * 2rem);
   overflow-y: auto;
-  overscroll-behavior: contain;
+  /* No overscroll-behavior here. It was set to "contain" to stop the page
+     moving while the passage was being scrolled, and the cost was worse than
+     the cure: once you had read to the bottom of the passage, a finger on the
+     yellow card scrolled nothing at all. The card is half the screen on a
+     phone, so that is half the screen that does not answer a drag - and
+     nothing tells you to move your thumb. Default chaining means the passage
+     scrolls first and the page takes over at its end, which is what every
+     other nested scroller on a phone does. */
 }
 
 /* Fade the last line while there is more under it, and only then - a fade

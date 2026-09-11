@@ -358,7 +358,6 @@ line-height: 2;
 color: var(--text);
 max-height: calc(var(--psg-lines, 12) * 2rem);
 overflow-y: auto;
-overscroll-behavior: contain;
 }
 .q-passage-body.has-more {
 -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6rem), transparent);
