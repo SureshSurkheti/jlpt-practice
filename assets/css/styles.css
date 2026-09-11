@@ -990,18 +990,32 @@ body > main { flex: 1 0 auto; }
   padding-bottom: 26px;
 }
 
-/* Two columns as soon as two will fit, which on a phone is the single
-   biggest saving here: one column stacked brand, Practice, Study and This
-   site into 710px of grid, and side by side the two short columns cost one
-   row instead of two. Below 380px it goes back to one - "Copyright and
-   removal requests" in a 145px column is four lines of ragged text. */
-@media (min-width: 380px) {
-  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Three link columns, side by side, with the brand across the top.
+
+   Two columns left the third one - "This site" - alone on a row of its own
+   with an empty cell beside it, so the footer paid for four rows to hold
+   three columns of links. Measured on the home page: 777px of a 2,348px
+   page, a third of it, on every page of the site. Three columns is 598.
+
+   It is the same 28 links either way; none of them moved or went. Below
+   360px they go back to two, where a third of the width is too narrow for
+   "Vocabulary and grammar" to wrap into anything but a ladder. */
+@media (min-width: 360px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(14px, 3vw, 40px);
+  }
   .footer-brand { grid-column: 1 / -1; }
 }
 
 @media (min-width: 620px) {
   .footer-brand { grid-column: auto; }
+}
+
+/* Two columns is the fallback below 360px, not one. */
+@media (max-width: 359px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-brand { grid-column: 1 / -1; }
 }
 
 @media (min-width: 900px) {
@@ -1893,6 +1907,21 @@ body.is-leaving { opacity: 0; }
   border-top: 1px solid var(--line);
 }
 .about-notes-col { display: grid; gap: 18px; align-content: start; }
+
+/* Fine print set as fine print. These blocks inherit .about-plain, which is
+   1.8 line-height on a 68ch measure - a reading setting, right for the four
+   paragraphs above and wrong here, where it made the licence text and the
+   rights notice read as three more sections of body copy. On a phone the
+   part a reader actually reads was 291px and this was 900. Nothing is
+   removed - the attributions are a condition of CC BY-SA and the removal
+   notice is the site's own undertaking, so both stay open on the page - it
+   is just no longer competing with the prose for the same voice. */
+.about-notices .about-plain {
+  line-height: 1.62;
+  font-size: 0.83rem;
+}
+.about-notices .about-plain p { margin: 0 0 11px; }
+.about-notices .about-plain p:last-child { margin-bottom: 0; }
 
 /* The credits are a card in this column, so the rule that used to separate
    them from prose above would be a line across the top of the card. */

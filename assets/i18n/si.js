@@ -3,7 +3,7 @@ I18N.register("si", {
  "about.body": "ජපානයේ ජීවත් වන අය සඳහා නොමිලේ JLPT ඉගෙනුම් අඩවියක්.",
  "about.creditsCode": "කේතය MIT බලපත්‍රය යටතේ ය.",
  "about.creditsKanji": "කන්ජි අකුරුවල කියවීම්, අර්ථ සහ JLPT මට්ටම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත. ඉරි අඳින අනුපිළිවෙල ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
- "about.creditsTitle": "ස්තුතිය",
+ "about.creditsTitle": "මෙම අඩවිය සෑදී ඇත්තේ කුමකින්ද",
  "about.creditsWords": "වචනවල අර්ථ සහ කියවීම් ලබාගෙන ඇත්තේ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG වෙතිනි, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> යටතේ බලපත්‍ර ලබා ඇත.",
  "about.official": "JLPT සංවිධායකයන්ගේ නොමිලේ නිල ආදර්ශ ප්‍රශ්න",
  "about.p1": "N5 සිට N1 දක්වා සම්පූර්ණ ප්‍රශ්න පත්‍ර %%PAPERS%%ක්, සැබෑ JLPT ආකෘතියෙන් — කාලය මනිමින්, ස්වයංක්‍රීයව ලකුණු කරමින්, පිළිතුරු පැහැදිලි කිරීම්, ශ්‍රවණ පිටපත් සහ වචන ලැයිස්තු සමඟ.",

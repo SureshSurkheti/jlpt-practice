@@ -3,7 +3,7 @@ I18N.register("ko", {
  "about.body": "일본에 사는 사람들을 위한 무료 JLPT 학습 사이트.",
  "about.creditsCode": "코드는 MIT 라이선스입니다.",
  "about.creditsKanji": "한자의 읽기, 뜻, JLPT 등급은 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다. 획순은 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 라이선스를 따릅니다.",
- "about.creditsTitle": "크레딧",
+ "about.creditsTitle": "이 사이트를 이루는 것",
  "about.creditsWords": "단어의 뜻과 읽기는 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG에서 가져왔으며 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 라이선스를 따릅니다.",
  "about.official": "JLPT 주최측의 무료 공식 샘플 문제",
  "about.p1": "N5부터 N1까지 실제 JLPT 형식의 전체 문제 %%PAPERS%%세트 — 시간 측정, 자동 채점, 해설과 청해 스크립트, 단어 목록 포함.",

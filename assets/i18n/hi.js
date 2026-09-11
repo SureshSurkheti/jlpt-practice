@@ -3,7 +3,7 @@ I18N.register("hi", {
  "about.body": "जापान में रहने वालों के लिए निःशुल्क JLPT अध्ययन साइट।",
  "about.creditsCode": "कोड MIT लाइसेंस के अंतर्गत है।",
  "about.creditsKanji": "कांजी के उच्चारण, अर्थ और JLPT स्तर <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है। स्ट्रोक क्रम <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel से लिया गया है, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
- "about.creditsTitle": "आभार",
+ "about.creditsTitle": "यह साइट किससे बनी है",
  "about.creditsWords": "शब्दों के अर्थ और उच्चारण <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG से लिए गए हैं, जो <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> के अंतर्गत लाइसेंस प्राप्त है।",
  "about.official": "JLPT आयोजकों के निःशुल्क आधिकारिक नमूना प्रश्न",
  "about.p1": "N5 से N1 तक %%PAPERS%% पूरे पेपर, असली JLPT प्रारूप में — समय के साथ, अपने आप जाँचे हुए, उत्तर की व्याख्या, सुनने की स्क्रिप्ट और शब्द सूची सहित।",

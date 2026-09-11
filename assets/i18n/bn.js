@@ -3,7 +3,7 @@ I18N.register("bn", {
  "about.body": "জাপানে বসবাসকারীদের জন্য বিনামূল্যের JLPT অধ্যয়ন সাইট।",
  "about.creditsCode": "কোড MIT লাইসেন্সের অধীনে।",
  "about.creditsKanji": "কাঞ্জির উচ্চারণ, অর্থ ও JLPT স্তর নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে। স্ট্রোকের ক্রম নেওয়া হয়েছে <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> লাইসেন্সের অধীনে।",
- "about.creditsTitle": "কৃতজ্ঞতা",
+ "about.creditsTitle": "এই সাইট কী দিয়ে তৈরি",
  "about.creditsWords": "শব্দের অর্থ ও উচ্চারণ নেওয়া হয়েছে <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG থেকে, <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> লাইসেন্সের অধীনে।",
  "about.official": "JLPT আয়োজকদের বিনামূল্যের সরকারি নমুনা প্রশ্ন",
  "about.p1": "N5 থেকে N1 পর্যন্ত %%PAPERS%%টি পূর্ণ পেপার, আসল JLPT ফরম্যাটে — সময় ধরে, স্বয়ংক্রিয়ভাবে যাচাই করা, উত্তরের ব্যাখ্যা, শোনার স্ক্রিপ্ট ও শব্দতালিকাসহ।",

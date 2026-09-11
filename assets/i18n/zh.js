@@ -3,7 +3,7 @@ I18N.register("zh", {
  "about.body": "为在日本生活的人提供的免费JLPT学习网站。",
  "about.creditsCode": "代码采用 MIT 许可。",
  "about.creditsKanji": "汉字的读音、释义与 JLPT 等级来自 <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。笔顺来自 <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> 授权。",
- "about.creditsTitle": "致谢",
+ "about.creditsTitle": "本站的构成",
  "about.creditsWords": "词义与读音来自 <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG，依 <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> 授权。",
  "about.official": "JLPT主办方提供的免费官方样题",
  "about.p1": "%%PAPERS%% 套完整试卷，N5 到 N1，与真实 JLPT 格式相同 —— 计时、自动评分，附解析、听力原文和单词表。",

@@ -3,7 +3,7 @@ I18N.register("ja", {
  "about.body": "日本に住む人のための無料のJLPT学習サイトです。",
  "about.creditsCode": "コードはMITライセンスです。",
  "about.creditsKanji": "漢字の読み・意味・JLPTレベルは <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）によります。筆順は <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a> ライセンス）によります。",
- "about.creditsTitle": "クレジット",
+ "about.creditsTitle": "このサイトの構成",
  "about.creditsWords": "語の意味と読みは <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG（<a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> ライセンス）に基づいています。",
  "about.official": "JLPT主催者による無料の公式サンプル問題",
  "about.p1": "N5からN1まで、本試験と同じ形式の問題%%PAPERS%%セット。時間を計り、自動で採点し、解説・聴解スクリプト・単語リストが付きます。",

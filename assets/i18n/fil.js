@@ -3,7 +3,7 @@ I18N.register("fil", {
  "about.body": "Libreng JLPT study site para sa mga naninirahan sa Japan.",
  "about.creditsCode": "Ang code ay lisensyadong MIT.",
  "about.creditsKanji": "Ang mga bigkas, kahulugan at antas ng JLPT ng kanji ay mula sa <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Ang pagkakasunod-sunod ng guhit ay mula sa <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
- "about.creditsTitle": "Mga kredito",
+ "about.creditsTitle": "Saan gawa ang site na ito",
  "about.creditsWords": "Ang kahulugan at bigkas ng mga salita ay hango sa <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, lisensyado sa ilalim ng <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
  "about.official": "Libreng opisyal na sample na tanong mula sa mga organisador ng JLPT",
  "about.p1": "%%PAPERS%% buong papel mula N5 hanggang N1 sa totoong pormat ng JLPT — may timer, awtomatikong tinatsekan, may paliwanag, script ng pakikinig at listahan ng salita.",

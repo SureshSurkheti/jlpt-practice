@@ -3,7 +3,7 @@ I18N.register("pt-BR", {
  "about.body": "Site gratuito de estudo do JLPT para quem mora no Japão.",
  "about.creditsCode": "O código é licenciado sob MIT.",
  "about.creditsKanji": "As leituras, os significados e os níveis JLPT dos kanji vêm do <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. A ordem dos traços vem do <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
- "about.creditsTitle": "Créditos",
+ "about.creditsTitle": "Do que este site é feito",
  "about.creditsWords": "Os significados e as leituras das palavras derivam do <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, sob licença <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
  "about.official": "Questões de amostra oficiais e gratuitas dos organizadores do JLPT",
  "about.p1": "%%PAPERS%% provas completas de N5 a N1 no formato real do JLPT — cronometradas, corrigidas automaticamente, com explicações, transcrições de áudio e listas de palavras.",

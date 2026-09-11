@@ -3,7 +3,7 @@ I18N.register("vi", {
  "about.body": "Trang học JLPT miễn phí cho những người đang sống ở Nhật.",
  "about.creditsCode": "Mã nguồn theo giấy phép MIT.",
  "about.creditsKanji": "Cách đọc, nghĩa và cấp độ JLPT của kanji lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Thứ tự nét lấy từ <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
- "about.creditsTitle": "Ghi công",
+ "about.creditsTitle": "Những gì tạo nên trang này",
  "about.creditsWords": "Nghĩa và cách đọc của từ được lấy từ <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, giấy phép <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
  "about.official": "Câu hỏi mẫu chính thức miễn phí từ ban tổ chức JLPT",
  "about.p1": "%%PAPERS%% đề đầy đủ từ N5 đến N1, đúng định dạng JLPT — bấm giờ, chấm tự động, kèm giải thích, kịch bản nghe và danh sách từ.",

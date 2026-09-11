@@ -3,7 +3,7 @@ I18N.register("id", {
  "about.body": "Situs belajar JLPT gratis untuk orang yang tinggal di Jepang.",
  "about.creditsCode": "Kode berlisensi MIT.",
  "about.creditsKanji": "Cara baca, arti, dan tingkat JLPT kanji berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/wiki/index.php/KANJIDIC_Project\" target=\"_blank\" rel=\"noopener\">KANJIDIC2</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>. Urutan goresan diambil dari <a class=\"text-link\" href=\"http://kanjivg.tagaini.net\" target=\"_blank\" rel=\"noopener\">KanjiVG</a> © Ulrich Apel, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 3.0</a>.",
- "about.creditsTitle": "Kredit",
+ "about.creditsTitle": "Situs ini dibangun dari apa",
  "about.creditsWords": "Arti dan cara baca kata berasal dari <a class=\"text-link\" href=\"https://www.edrdg.org/jmdict/j_jmdict.html\" target=\"_blank\" rel=\"noopener\">JMdict</a> © EDRDG, berlisensi <a class=\"text-link\" href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>.",
  "about.official": "Contoh soal resmi gratis dari penyelenggara JLPT",
  "about.p1": "%%PAPERS%% paket soal lengkap N5 sampai N1 dalam format JLPT asli — pakai timer, dinilai otomatis, dengan pembahasan, skrip menyimak, dan daftar kata.",
