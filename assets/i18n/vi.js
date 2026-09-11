@@ -108,6 +108,7 @@ I18N.register("vi", {
  "exam.noRecording": "Không có bản ghi",
  "exam.notYet": "CHƯA ĐẠT",
  "exam.of": "trên",
+ "exam.otherSections": "Sang phần khác",
  "exam.partialNote": "Bạn chỉ làm một phần của đề, nên điểm đạt được quy đổi theo các phần đã làm. Đề đầy đủ tính trên 180 điểm.",
  "exam.pass": "ĐẠT",
  "exam.passMark": "Điểm đạt",

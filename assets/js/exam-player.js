@@ -2916,10 +2916,21 @@
   }
 
   /* The switcher. Each tab carries how much of that paper is done, which is
-     the one number worth showing here - the bar above already has the total. */
-  function buildPaperTabs() {
-    var nav = el("div", "paper-tabs");
-    nav.setAttribute("role", "tablist");
+     the one number worth showing here - the bar above already has the total.
+
+     It is built twice on a multi-section sitting: once at the top of the
+     paper, and once at the foot - see buildFinish(). The foot copy is the
+     same control, but it is not a second tablist; two tablists driving the
+     same content is a confusing thing to hand a screen reader, so that copy
+     is a plain group of buttons. */
+  function buildPaperTabs(atFoot) {
+    var nav = el("div", "paper-tabs" + (atFoot ? " is-foot" : ""));
+    if (atFoot) {
+      nav.setAttribute("role", "group");
+      nav.setAttribute("aria-label", t("exam.otherSections"));
+    } else {
+      nav.setAttribute("role", "tablist");
+    }
 
     state.papers.forEach(function (paper) {
       var done = 0;
@@ -2934,8 +2945,13 @@
         (full ? " is-done" : done > 0 ? " is-started" : ""));
       b.type = "button";
       b.dataset.paper = paper.key;
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-selected", on ? "true" : "false");
+      if (atFoot) {
+        /* The section you just finished is not somewhere to go next. */
+        b.disabled = on;
+      } else {
+        b.setAttribute("role", "tab");
+        b.setAttribute("aria-selected", on ? "true" : "false");
+      }
       var saved = bestsFor(state.exam.id);
       var pb = saved && saved[paper.key];
       b.innerHTML =
@@ -2996,6 +3012,28 @@
     jumpTo((next || list[0]).index);
   }
 
+  /* The way on to the next section, at the point where someone needs it.
+
+     The switcher was drawn once, at the top of the paper, and left there.
+     Measured on N3 Practice Test 4 with all four sections chosen: the tabs
+     sit 230px down a page that is 20,234px long, so a reader who works
+     through Language Knowledge and reaches the end is 18,586px past the only
+     control that moves them to Reading. What met them at the bottom was
+     "Mark this section" and "Submit exam" - and once the section was marked,
+     nothing at all but a review hint, under a comment in this file promising
+     "the way on to the next one".
+
+     So the switcher is drawn again at the foot. Not pinned to the screen:
+     pinning it would spend 44px of every phone screen, for all 20,000px of
+     scrolling, on a need that arises once - at the end, where this is. */
+  function addSectionWay(box) {
+    if (state.papers.length < 2) return box;
+    var p = el("p", "paper-finish-next", t("exam.otherSections"));
+    box.appendChild(p);
+    box.appendChild(buildPaperTabs(true));
+    return box;
+  }
+
   function buildFinish() {
     var box = el("div", "paper-finish");
     if (state.reviewed) {
@@ -3012,7 +3050,7 @@
         rev.setAttribute("href", "review.html");
         box.appendChild(rev);
       }
-      return box;
+      return addSectionWay(box);
     }
 
     /* This paper is already marked but others are not: nothing to submit
@@ -3020,7 +3058,7 @@
     if (currentMarked()) {
       box.innerHTML = "<h2>" + esc(t("exam.endOfPaper")) + "</h2>" +
         "<p>" + esc(t("exam.reviewHint")) + "</p>";
-      return box;
+      return addSectionWay(box);
     }
 
     box.innerHTML =
@@ -3050,7 +3088,7 @@
     } else {
       here.textContent = t("exam.submitExam");
     }
-    return box;
+    return addSectionWay(box);
   }
 
   /* ------------------------------------------------------------ question state
@@ -3092,8 +3130,11 @@
     /* The switcher carries a per-section count, so it has to move as the
        section fills - otherwise the tick that says "this one is finished"
        only appears after you navigate away and come back. */
-    var tabs = document.querySelector(".paper-tabs");
-    if (tabs) tabs.parentNode.replaceChild(buildPaperTabs(), tabs);
+    /* Both copies - the tablist at the top and the group at the foot. */
+    document.querySelectorAll(".paper-tabs").forEach(function (tabs) {
+      tabs.parentNode.replaceChild(
+        buildPaperTabs(tabs.classList.contains("is-foot")), tabs);
+    });
 
     /* What the flag is for: a count of what you marked to come back to, and
        a way back to it, at the point where you are deciding to submit. */

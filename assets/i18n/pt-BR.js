@@ -108,6 +108,7 @@ I18N.register("pt-BR", {
  "exam.noRecording": "Sem gravação",
  "exam.notYet": "AINDA NÃO",
  "exam.of": "de",
+ "exam.otherSections": "Ir para outra seção",
  "exam.partialNote": "Você fez parte da prova, então a nota de corte foi ajustada às seções feitas. A prova completa vale 180.",
  "exam.pass": "APROVADO",
  "exam.passMark": "Nota de corte",

@@ -108,6 +108,7 @@ I18N.register("zh", {
  "exam.noRecording": "无录音",
  "exam.notYet": "未合格",
  "exam.of": "/",
+ "exam.otherSections": "前往其他部分",
  "exam.partialNote": "你只做了部分内容，所以合格分按所做部分折算。完整试卷满分180。",
  "exam.pass": "合格",
  "exam.passMark": "合格分",

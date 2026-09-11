@@ -627,6 +627,25 @@ font-family: var(--font-display);
 font-size: 1.5rem;
 color: var(--navy);
 }
+.paper-finish-next {
+margin: 22px 0 10px;
+padding-top: 20px;
+border-top: 1px solid var(--line);
+font-size: 0.82rem;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+color: var(--muted);
+}
+.paper-tabs.is-foot {
+flex-wrap: wrap;
+justify-content: center;
+}
+.paper-tabs.is-foot .paper-tab[disabled] {
+opacity: 0.45;
+cursor: default;
+box-shadow: none;
+}
 .paper-finish p:not(.finish-flagged) { margin: 0 0 20px; color: var(--muted); }
 .section-card {
 padding: var(--card-pad);

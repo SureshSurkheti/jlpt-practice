@@ -108,6 +108,7 @@ I18N.register("id", {
  "exam.noRecording": "Tidak ada rekaman",
  "exam.notYet": "BELUM",
  "exam.of": "dari",
+ "exam.otherSections": "Ke bagian lain",
  "exam.partialNote": "Anda mengerjakan sebagian ujian, jadi nilai lulus disesuaikan dengan bagian yang dikerjakan. Soal penuh dinilai dari 180.",
  "exam.pass": "LULUS",
  "exam.passMark": "Nilai lulus",

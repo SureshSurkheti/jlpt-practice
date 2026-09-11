@@ -108,6 +108,7 @@ I18N.register("ko", {
  "exam.noRecording": "음성 없음",
  "exam.notYet": "불합격",
  "exam.of": "/",
+ "exam.otherSections": "다른 과목으로",
  "exam.partialNote": "일부 과목만 응시했으므로 합격점은 응시한 과목에 맞춰 조정되었습니다. 전체는 180점 만점입니다.",
  "exam.pass": "합격",
  "exam.passMark": "합격점",

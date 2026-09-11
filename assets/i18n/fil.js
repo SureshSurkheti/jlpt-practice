@@ -108,6 +108,7 @@ I18N.register("fil", {
  "exam.noRecording": "Walang recording",
  "exam.notYet": "HINDI PA",
  "exam.of": "sa",
+ "exam.otherSections": "Pumunta sa ibang bahagi",
  "exam.partialNote": "Bahagi lamang ang sinagutan mo, kaya ang pasadong marka ay nakaayon sa mga bahaging sinagutan. Ang buong pagsusulit ay 180.",
  "exam.pass": "PASADO",
  "exam.passMark": "Pasadong marka",

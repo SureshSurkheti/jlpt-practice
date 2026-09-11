@@ -108,6 +108,7 @@ I18N.register("en", {
  "exam.noRecording": "No recording",
  "exam.notYet": "NOT YET",
  "exam.of": "of",
+ "exam.otherSections": "Go to another section",
  "exam.partialNote": "You took part of the exam, so the pass mark shown is scaled to the sections you sat. A full paper is scored out of 180.",
  "exam.pass": "PASS",
  "exam.passMark": "Pass mark",

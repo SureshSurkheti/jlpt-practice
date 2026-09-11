@@ -911,6 +911,34 @@
   font-size: 1.5rem;
   color: var(--navy);
 }
+
+/* The second copy of the section switcher, at the foot of the paper.
+
+   See addSectionWay() in exam-player.js for why it is here at all. It is
+   separated from the buttons above it by a rule, because it answers a
+   different question: those finish this section, this one leaves it. The
+   section you are already on is disabled rather than hidden, so the row
+   keeps the same shape and you can see where you have been. */
+.paper-finish-next {
+  margin: 22px 0 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.paper-tabs.is-foot {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.paper-tabs.is-foot .paper-tab[disabled] {
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+}
+
 /* :not() so the flagged notice keeps its own auto margins - this rule is
    one specificity point heavier and was silently resetting them to 0, which
    left the notice pinned to the left edge of a centred block. */

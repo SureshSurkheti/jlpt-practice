@@ -108,6 +108,7 @@ I18N.register("ja", {
  "exam.noRecording": "音声なし",
  "exam.notYet": "不合格",
  "exam.of": "/",
+ "exam.otherSections": "ほかの科目へ",
  "exam.partialNote": "一部の科目のみ受験したため、合格点は受験した科目に合わせて調整しています。全科目は180点満点です。",
  "exam.pass": "合格",
  "exam.passMark": "合格点",
