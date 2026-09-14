@@ -2913,3 +2913,32 @@
 @media (max-height: 760px) { .exam-page .q-passage { --psg-lines: 8; } }
 @media (max-height: 620px) { .exam-page .q-passage { --psg-lines: 6; } }
 @media (max-height: 500px) { .exam-page .q-passage { --psg-lines: 4; } }
+
+/* Below 375px the level chip goes the way the section label already went.
+
+   The command bar is one row plus the progress bar. At 360px - a Galaxy and
+   most of the Android field - it did not fit, and wrapping cost a whole
+   extra row: 132px of bar instead of 90px, on the screen where 42px is
+   worth most. English missed by ONE pixel: 325px wanted against 324px
+   available. Seven of the twelve languages missed it - Indonesian by 30px,
+   Nepali 13, Portuguese 12, Filipino 11, Vietnamese 5, Bengali 3 - because
+   "Submit" is "Kumpulkan" and "Kembali" in some of them and two characters
+   in others.
+
+   The chip is 44px of that, plus its 8px gap. It says which level you are
+   sitting, which the setup screen said, the paper's own title says, and the
+   result says again - and unlike the timer and Submit beside it, nothing
+   depends on reading it mid-question. Dropping it below 375px buys every
+   language a comfortable fit and keeps the bar to one row. */
+@media (max-width: 480px) {
+  .exam-level-chip { display: none; }
+}
+
+/* The narrowest phones need a little more than the chip's 52px. Indonesian
+   asks for 18px beyond it at 320px - "Kumpulkan ujian" for "Submit exam" -
+   so the bar's own spacing gives it up there rather than spending a row. */
+@media (max-width: 360px) {
+  .exam-bar-inner { gap: 8px; }
+  .exam-bar-id, .exam-bar-tools { gap: 5px; }
+  .exam-bar .btn, .exam-timer, .exam-back { padding-left: 8px; padding-right: 8px; }
+}

@@ -2001,3 +2001,11 @@ animation: dialog-rise 0.2s cubic-bezier(.2, .7, .3, 1);
 @media (max-height: 760px) { .exam-page .q-passage { --psg-lines: 8; } }
 @media (max-height: 620px) { .exam-page .q-passage { --psg-lines: 6; } }
 @media (max-height: 500px) { .exam-page .q-passage { --psg-lines: 4; } }
+@media (max-width: 480px) {
+.exam-level-chip { display: none; }
+}
+@media (max-width: 360px) {
+.exam-bar-inner { gap: 8px; }
+.exam-bar-id, .exam-bar-tools { gap: 5px; }
+.exam-bar .btn, .exam-timer, .exam-back { padding-left: 8px; padding-right: 8px; }
+}
