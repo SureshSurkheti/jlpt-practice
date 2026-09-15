@@ -238,20 +238,36 @@ Two things it deliberately will not do:
   the question is marked. Those ask how a word is read and how it is written;
   furigana over the stem is the answer printed above the question. In study
   mode the hold lifts on that question the moment it is answered.
-- **A word read two ways is left bare.** 人 is ひと alone and にん after a
-  number, 中 is なか and ちゅう. The browser matches a word list against the
-  text with no tokenizer of its own, so it would get those wrong — and wrong
-  furigana is worse than none, because the reader cannot tell it is a guess
-  and will learn it. Measured against the tokenizer over 73,000 annotations:
-  **82% of kanji words get a reading, and 99.7% of the readings shown are the
-  one the tokenizer gave in context.**
+- **A word read two ways is still left bare, where nothing says which.** 人 is
+  ひと alone and にん after a number, 中 is なか and ちゅう. The browser matches
+  a word list against the text with no tokenizer of its own, so it would get
+  those wrong — and wrong furigana is worse than none, because the reader
+  cannot tell it is a guess and will learn it.
+
+**The list holds the word with its kana neighbours** where the word alone
+cannot be decided: 人が is ひとが, 中で is なかで, 来ます is きます and 来なく
+is こなく. Longer keys are matched first, so the context wins wherever it is
+listed — which is what a table keyed by surface could not do before, and is
+most of the kanji on an N5 paper.
+
+Only kana neighbours, never a second kanji word: gluing two kanji words
+together and concatenating what the tokenizer said reads 二人 as ににん (the
+word is ふたり) and 三百 as さんひゃく (さんびゃく). Rendaku and 熟字訓 happen
+at exactly that seam, so nothing is joined across it. And a key carrying kana
+only matches where its kanji edge stands alone — inside 三人が or 4人は it is
+a fragment of a longer count, and is skipped.
+
+Measured against the tokenizer, per-kanji, over 77,000 annotations on twenty
+papers: **the readings shown are the tokenizer's in 99.69% of cases**, and the
+contextual keys added 406 correct readings against 9 wrong ones. Ruby drawn on
+a paper: N5 170 → 193, N4 614 → 659.
 
 ```bash
 pip3 install janome              # the same tokenizer the glossary uses
-python3 tools/build_furigana.py  # ~50s, writes data/furigana/<exam-id>.json
+python3 tools/build_furigana.py  # ~95s, writes data/furigana/<exam-id>.json
 ```
 
-5.6 MB in all, one file per paper, fetched only when a reader turns furigana
+6.2 MB in all, one file per paper, fetched only when a reader turns furigana
 on.
 
 ## Listening

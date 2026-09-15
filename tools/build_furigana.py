@@ -174,6 +174,84 @@ def read_exam(exam, tokenizer):
 DOMINANT = 0.9
 
 
+# Kana letters only: not \u30fb (the ・ between 月よう日・火よう日), not the
+# repeat marks, not the kana-like punctuation that shares their block.
+KANA_ONLY = re.compile(r"^[\u3041-\u3096\u30a1-\u30fa\u30fc]+$")
+
+
+def read_phrases(exam, tokenizer, covered):
+    """surface -> Counter of readings, for a word carrying its kana neighbours.
+
+    The table is keyed by surface, so it can hold one reading for 人 and no
+    more - and 人 is ひと on its own, にん after a number. DOMINANT leaves it
+    bare, which on an N5 paper is most of the kanji on the page.
+
+    A longer key can hold what a shorter one cannot: 人と is ひとと wherever
+    it occurs, 中で is なかで, 日に is ひに. The reading is the tokenizer's own
+    reading for that word in that sentence, with the kana written out as they
+    stand - and the neighbours are kana, never a second kanji word. That last
+    part is the whole safety of it. Gluing two kanji words together and
+    concatenating their readings gets 二人 wrong (ニ + ニン, where the word is
+    ふたり) and 三百 wrong (サン + ヒャク, where the number is さんびゃく):
+    rendaku and 熟字訓 happen at exactly that seam. Nothing is glued across
+    it here; a kana neighbour reads as itself.
+    """
+    phrases = collections.defaultdict(collections.Counter)
+    seen_text = set()
+
+    for raw in texts_of(exam):
+        text = strip_html(raw)
+        if not has_kanji(text) or text in seen_text:
+            continue
+        seen_text.add(text)
+        tokens = list(tokenizer.tokenize(text))
+        reads = [to_hiragana(tk.reading or "") for tk in tokens]
+
+        for i, token in enumerate(tokens):
+            if not has_kanji(token.surface) or token.surface in covered:
+                continue
+            if not reads[i] or "*" in reads[i]:
+                continue
+
+            tags = token.part_of_speech.split(",")
+            suffix = len(tags) > 1 and tags[1] == "\u63a5\u5c3e"
+
+            def kana(j):
+                """A kana neighbour this word can safely be glued to.
+
+                Particles and auxiliaries, always: they are never part of the
+                word in front of them, so the word's own reading is its
+                reading. A kana *suffix* only where the word is itself tagged
+                a suffix - which is the tokenizer saying it has already
+                analysed the compound. 水よう日 is where that matters: janome
+                reads it 水(ミズ) + よう + 日(ビ), so gluing 水 to a suffix it
+                did not recognise would print 水[みず]よう over すいようび.
+                """
+                if not (0 <= j < len(tokens)) or not KANA_ONLY.match(tokens[j].surface):
+                    return False
+                if not reads[j] or "*" in reads[j]:
+                    return False
+                near = tokens[j].part_of_speech.split(",")
+                if near[0] in ("\u52a9\u8a5e", "\u52a9\u52d5\u8a5e"):
+                    return True
+                return suffix and len(near) > 1 and near[1] == "\u63a5\u5c3e"
+
+            # Shortest first: one neighbour to the right, then to the left,
+            # then both. A shorter key is a key that matches more sentences.
+            spans = []
+            if kana(i + 1):
+                spans.append((i, i + 1))
+            if kana(i - 1):
+                spans.append((i - 1, i))
+                if kana(i + 1):
+                    spans.append((i - 1, i + 1))
+            for a, b in spans:
+                surface = "".join(tk.surface for tk in tokens[a:b + 1])
+                phrases[surface][("".join(reads[a:b + 1]))] += 1
+
+    return phrases
+
+
 def usable(corpus):
     """The surfaces worth annotating, and the reading to use for each."""
     keep = {}
@@ -225,9 +303,35 @@ def main():
 
     keep, dropped = usable(corpus)
 
+    # What the word table can actually draw: a word whose reading survived
+    # DOMINANT and which annotate() could align. Everything else is a word the
+    # reader still sees bare, and is what the second pass goes after.
+    covered = set()
+    for surface, reading in keep.items():
+        if annotate(surface, reading):
+            covered.add(surface)
+
+    # Second pass, for those. Tokenized again rather than held in memory: the
+    # corpus is 207 papers of tokens and the run is a minute either way.
+    phrase_corpus = collections.defaultdict(collections.Counter)
+    paper_phrases = []
+    for i, (name, exam, _) in enumerate(papers, 1):
+        found = read_phrases(exam, tokenizer, covered)
+        paper_phrases.append(found)
+        for surface, counts in found.items():
+            phrase_corpus[surface].update(counts)
+        if i % 20 == 0 or i == len(papers):
+            sys.stdout.write("\r  reading in context %d/%d" % (i, len(papers)))
+            sys.stdout.flush()
+
+    # Same rule: a phrase read two ways in the corpus is a phrase the browser
+    # would sometimes get wrong, and is left bare like the word inside it.
+    keep_phrase, _ = usable(phrase_corpus)
+
     per_level = collections.Counter()
     total_words = 0
-    for name, exam, readings in papers:
+    total_phrases = 0
+    for (name, exam, readings), found in zip(papers, paper_phrases):
         table = {}
         for surface in readings:
             reading = keep.get(surface)
@@ -236,6 +340,19 @@ def main():
             form = annotate(surface, reading)
             if form:
                 table[surface] = form
+        words_only = len(table)
+        # Longer keys are matched first by the player, so a phrase covers the
+        # word inside it wherever both are in the table.
+        for surface in found:
+            if surface in table:
+                continue
+            reading = keep_phrase.get(surface)
+            if not reading:
+                continue
+            form = annotate(surface, reading)
+            if form:
+                table[surface] = form
+        total_phrases += len(table) - words_only
         out = {"id": exam["id"], "level": exam.get("level"), "words": table}
         with io.open(os.path.join(OUT_DIR, name), "w", encoding="utf-8") as fh:
             json.dump(out, fh, ensure_ascii=False, separators=(",", ":"))
@@ -245,6 +362,8 @@ def main():
     sys.stdout.write("\r%s\r" % (" " * 40))
     print("wrote %d furigana tables, %d word readings in all"
           % (len(papers), total_words))
+    print("  of those, %d are a word carrying its kana neighbours, which is "
+          "how\n  the table holds two readings for one surface" % total_phrases)
     print("  by level: " + "  ".join("%s %d" % (lv, n)
                                      for lv, n in sorted(per_level.items())))
     print("  %d distinct words; %d left bare as ambiguous (%s%s)"

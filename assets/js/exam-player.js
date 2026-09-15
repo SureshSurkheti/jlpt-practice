@@ -3068,6 +3068,16 @@
 
   var FURI_KEY = "jlpt.exam.furigana";
   var FURI_KANJI = /[々一-鿿]/;
+  /* A table key that carries kana as well as kanji is a word with its
+     neighbours attached - 人が, 中で, 来まし - and it is only that word when
+     its kanji edge stands on its own. Inside 三人が the key 人が is a
+     fragment of 三人, which is read にん, so it is left for the matcher to
+     skip. See build_furigana.py. */
+  var FURI_KANA = /[\u3041-\u3096\u30a1-\u30fa]/;
+  /* What may not stand against that edge. Digits as well as kanji: 4人 is
+     よにん and 2人 is ふたり, and the key 人が would otherwise read both of
+     them ひと. */
+  var FURI_EDGE = /[々一-鿿0-9\uff10-\uff19]/;
   var furiMax = 1;          /* longest word in the table */
   var furiHead = null;      /* first characters of words, to skip the rest */
 
@@ -3150,6 +3160,15 @@
               ((i > 0 && FURI_KANJI.test(text.charAt(i - 1))) ||
                (i + 1 < n && FURI_KANJI.test(text.charAt(i + 1))))) {
             continue;
+          }
+          /* The same boundary, for a key that carries kana: its kanji edge
+             has to stand alone or the key is part of a longer compound and
+             is being read as the wrong word. */
+          if (FURI_KANA.test(word)) {
+            if (FURI_KANJI.test(word.charAt(0)) && i > 0 &&
+                FURI_EDGE.test(text.charAt(i - 1))) continue;
+            if (FURI_KANJI.test(word.charAt(len - 1)) && i + len < n &&
+                FURI_EDGE.test(text.charAt(i + len))) continue;
           }
           hit = word;
           break;
