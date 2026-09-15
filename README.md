@@ -350,15 +350,18 @@ which is why the round play button arrived with its top sliced off.
 There is one box now, and the iframe fills it, so nothing can be cropped by
 the thing it was drawn to fit.
 
-How tall that box should be is not ours to decide, because **which player Drive
-draws is not ours to know**. Signed out it is a compact control strip — round
-play button, scrubber, time, volume — which wants about 76px. Signed in to a
-Google account it is a waveform display, which wants more and is squeezed into
-76. The frame is cross-origin; nothing on this side can ask which one arrived.
+**Which player Drive draws is not ours to know.** Signed out it is a compact
+control strip — round play button, scrubber, time, volume. Signed in to a
+Google account it is a waveform display. The frame is cross-origin; nothing on
+this side can ask which one arrived, and both want about the same room: 76px.
 
-So the box is 96px, and a **Smaller / Bigger** button beside the player moves it
-between 96 and 76. The choice is remembered and applies to every recording on
-the paper — they come from the same account, so they are the same player.
+Which is more room than a strip of chrome should take on a bar that docks at
+the top of the screen. So the frame is laid out at the 76px a whole player
+needs, and then scaled down to **68px** — smaller bar, nothing cut off. A
+shorter frame would have cropped: 76px of player through a 68px window is 8px
+of missing controls, which is the bug this section opens with. Scaling takes
+nothing away, and there is no size button any more: one height, always the
+small one.
 
 **Nothing of Google's is fetched until the recording is asked for.** Drawn at
 render time, one frame per 問題 meant five Google pages loading at once on a

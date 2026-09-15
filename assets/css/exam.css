@@ -735,19 +735,20 @@
 
    Which player a reader gets is Drive's decision, made inside a frame we
    cannot see into. Signed out it is a control strip - a round play button, a
-   scrubber, the time, a volume control - which wants about 76px. Signed in to
-   a Google account it is a waveform display, which wants about 110 and is cut
-   off in 76. Nothing on this side can ask which one arrived, so the height is
-   the reader's to set and is remembered; see driveBar() in exam-player.js.
+   scrubber, the time, a volume control. Signed in to a Google account it is a
+   waveform display instead. Nothing on this side can ask which one arrived,
+   and both want about the same room: 76px.
 
-   The iframe simply fills the box rather than carrying a height of its own.
-   That is what was broken before: a 76px frame shown through a 60px window,
-   so a player drawn to fit was cut off by the thing it was drawn to fit. */
+   So the frame is laid out at 76 - Drive draws a whole player into it, either
+   one - and then the whole thing is scaled down. A smaller bar without a
+   cropped player, which is what a shorter frame would have given: 76px of
+   player shown through a 68px window is 8px of missing controls. Cropping is
+   what was wrong with this bar before; scaling takes nothing away. */
 .q-audio-frame {
   position: relative;
   flex: 1;
   min-width: 0;
-  height: var(--drive-h, 96px);
+  height: 68px;
   overflow: hidden;
   border-radius: 10px;
   background: #fff;
@@ -755,12 +756,16 @@
   align-items: center;
   justify-content: center;
 }
-.q-audio-drive.is-short { --drive-h: 76px; }
+/* 76 x 0.895 = 68, and the width is widened by the same fraction so that the
+   scaled frame still fills the box edge to edge. Anchored top left because
+   that is the corner the box and the frame already share. */
 .q-audio-frame iframe {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 111.8%;
+  height: 76px;
   border: 0;
+  transform: scale(0.895);
+  transform-origin: 0 0;
 }
 
 /* Before the recording is asked for there is no frame at all - see driveBar()
@@ -2883,8 +2888,6 @@
   gap: 6px;
 }
 
-.q-audio-drive .q-audio-size { flex: none; align-self: center; }
-
 .q-audio-size {
   padding: 5px 12px;
   border: 1px solid var(--line);
@@ -3010,21 +3013,17 @@
   /* .q-audio goes display:block on a phone, so the row rules above stop
      applying; give the pieces their own stacking instead. */
 
-  /* Except the Drive player, which would then be three stacked rows - label,
-     player, size button - and a third of the screen when it is docked at the
-     top. Two rows: the label keeps its line and takes the button with it. */
+  /* Except the Drive player: two rows, the label and then the player, and
+     the row gap kept tight - the bar docks at the top of the screen and
+     everything it takes is taken from the questions. */
   .q-audio-drive {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     row-gap: 6px;
   }
-  /* The frame is written between the two in the markup, and a full-width
-     flex item starts a new line - so without these the button lands on a
-     third row under the player, which is the row this rule exists to save. */
-  .q-audio-drive .q-audio-label { flex: 1 1 auto; order: 1; }
-  .q-audio-drive .q-audio-size { flex: none; order: 2; }
-  .q-audio-drive .q-audio-frame { flex: 1 1 100%; order: 3; }
+  .q-audio-drive .q-audio-label { flex: 1 1 auto; }
+  .q-audio-drive .q-audio-frame { flex: 1 1 100%; }
 
   .q-audio-full-bar .q-audio-play { width: 100%; justify-content: center; }
   /* Not full width: a pinned 16:9 frame across a phone is a third of the
