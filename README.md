@@ -342,6 +342,13 @@ there it is the listening section's player and is pinned like one. Where the
 paper has a recording of its own, the upload stays where it is drawn, at the
 head of the listening test, as a single row with a Play button.
 
+**The site is allowed to frame its own pages.** `frame-src` in `vercel.json`
+names the Drive and YouTube hosts the player needs — and naming it at all
+replaces what `default-src 'self'` had been providing, so for a while an
+`<iframe>` pointing at one of the site's own pages was refused by the site's
+own policy, with Chrome's "This content is blocked" in place of the page. It
+lists `'self'` first now.
+
 ### Why the recording is an iframe and not an `<audio>` element
 
 Because Google will not allow anything else. The file is real audio and can be
