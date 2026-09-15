@@ -2377,13 +2377,14 @@
       frame.innerHTML = '<span class="q-audio-loading">' +
         esc(t("exam.audioLoading")) + "</span>";
 
-      /* 76px because that is the height Drive's preview page lays its player
-         out for - below about 68 it clips its own controls - and the wrapper
-         crops the empty bottom quarter away. See .q-audio-frame. */
+      /* The frame is given the height the stylesheet reserves for it, not a
+         number of its own: Drive lays its player out to fit the frame, and
+         the two disagreeing is what cropped the controls. See
+         .q-audio-frame. */
       var pane = document.createElement("iframe");
       pane.src = audioURL(url) + "?autoplay=1";
       pane.width = "100%";
-      pane.height = "76";
+      pane.height = String(frame.clientHeight || 96);
       pane.allow = "autoplay";
       pane.title = t("exam.audio");
       /* A cross-origin frame tells us nothing about what is inside it, but it

@@ -721,15 +721,24 @@
   color: var(--muted);
   font-variant-numeric: lining-nums tabular-nums;
 }
-/* The window onto Drive's player. See buildSection() in exam-player.js: the
-   iframe is 76px because that is what Drive lays out for, and it draws only
-   in the top 48 of it, so this crops the empty quarter off the bottom and
-   leaves the controls centred in what you see. */
+/* The window onto Drive's player.
+
+   It used to be 60px onto a 76px frame, cropping what was measured to be an
+   empty bottom quarter. That measurement held for one of Drive's players and
+   not the other: signed in to a Google account, the preview draws a taller
+   layout - a waveform and a large round play button - and the 60px window cut
+   the top off that button. Nobody could have guessed the control was there,
+   and it looked like a broken player rather than a cropped one.
+
+   Which player a reader gets is Drive's decision, made inside a frame we
+   cannot see into, so the window has to fit the larger of them. No crop: the
+   frame is exactly as tall as the iframe, and whatever Drive draws is shown
+   whole. */
 .q-audio-frame {
   position: relative;
   flex: 1;
   min-width: 0;
-  height: 60px;
+  height: var(--drive-h, 96px);
   overflow: hidden;
   border-radius: 10px;
   background: #fff;
@@ -740,7 +749,7 @@
 .q-audio-frame iframe {
   display: block;
   width: 100%;
-  height: 76px;
+  height: var(--drive-h, 96px);
   border: 0;
 }
 

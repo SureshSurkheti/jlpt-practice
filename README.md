@@ -342,6 +342,15 @@ When a recording stalls, nothing is reported back to the page — the frame is
 Google's. So "Not playing?" now also names the full recording at the top of
 the section on the 33 papers that have one.
 
+**The window onto Drive's player does not crop it.** It used to be 60px onto a
+76px frame, cutting away what had been measured as an empty bottom quarter.
+That measurement held for one of Drive's players and not the other: signed in
+to a Google account, the preview draws a taller layout — a waveform and a large
+round play button — and the 60px window cut the top off that button, so it read
+as a broken player rather than a cropped one. Which player a reader gets is
+Drive's decision, made inside a frame that cannot be seen into, so the window
+now fits the larger of the two and nothing is cropped.
+
 **Nothing of Google's is fetched until the recording is asked for.** Drawn at
 render time, one frame per 問題 meant five Google pages loading at once on a
 paper with a recording each, and what a reader saw while they arrived was five
