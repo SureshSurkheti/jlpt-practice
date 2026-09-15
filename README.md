@@ -297,6 +297,33 @@ player shows them once the question is marked, the right one marked and the one
 that was picked beside it. Before marking the buttons stay blank, because blank
 is the exercise.
 
+### Which player follows you down the paper
+
+One recording covers a whole 問題 — six questions in sequence — so the player
+has to stay in reach while you work through them. Once you scroll past it, it
+lifts out of the paper and floats in the corner, and docks again when you
+scroll back or press **Back to the paper**. It is the same element throughout,
+never a copy: moving the iframe or rebuilding it reloads the player and
+restarts the recording from zero.
+
+Only ever one at a time, and it is **the paper's own recording**. Which 問題
+you are on is decided at the middle of the screen rather than at its top edge,
+so 問題1's recording lets go as 問題2 arrives instead of hanging on until the
+last pixel of its section has gone.
+
+The YouTube upload is a stand-in for the sittings whose audio the archive never
+got, so it floats **only on the papers where it is the only audio there is**.
+Where the paper has a recording of its own, the upload stays where it is drawn,
+at the head of the listening test, as a single row with a Play button.
+
+**A correction that came out of this.** One recording was treated as one
+recording for the whole test, and drawn above the paper labelled "whole
+listening test". Counted across the library, that is true of no paper at all:
+every sitting with a single file has it on exactly one of its five or six 問題,
+because the source published 問題1 and stopped. So a 問題1 recording was sitting
+above 問題5 with the wrong label on it. It is now drawn inside the 問題 it is a
+recording of, and the other sections say the full recording above covers them.
+
 ### The archived recordings
 
 This was broken until now, and the cause was not obvious: the archived pages

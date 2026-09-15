@@ -1952,8 +1952,10 @@
    Reading blocks are exempt: the passage and its questions need the width. */
 .paper-section:not(.has-passage) .section-head > *,
 .paper-section:not(.has-passage) > .q-audio,
+.paper-section:not(.has-passage) > .q-audio-slot,
+.paper-section:not(.has-passage) > .q-audio-aside,
 .exam-paper > .q-audio,
-.exam-paper > .q-audio-full-slot,
+.exam-paper > .q-audio-slot,
 .exam-paper > .q-audio-aside,
 .paper-block:not(.has-passage) .block-questions {
   max-width: 78ch;
@@ -1967,7 +1969,7 @@
    300px frame, so it sat 164px short of every question below it and
    off-centre against them. Fill the measure explicitly. */
 .exam-paper > .q-audio,
-.exam-paper > .q-audio-full-slot,
+.exam-paper > .q-audio-slot,
 .exam-paper > .q-audio-aside {
   width: 100%;
 }
@@ -1979,8 +1981,23 @@
 
    The bar's own bottom margin moves onto the slot, so the gap under the
    player is the same whether it is sitting in the slot or floating. */
-.q-audio-full-slot { margin-bottom: 18px; }
-.q-audio-full-slot > .q-audio-full-bar { margin-bottom: 0; }
+.q-audio-slot { margin-bottom: 18px; }
+.q-audio-slot > .q-audio { margin-bottom: 0; }
+
+/* A player in a slot does not pin. It floats instead - see the floating
+   player in exam-player.js - and an element cannot do both: sticky would keep
+   it under the command bar, so the slot would scroll away beneath it and the
+   two would be on screen at once, in two different places.
+
+   Which also settles its shape. Docked under the command bar it was square
+   along the top and rounded below, because that is what a control fixed to
+   the underside of a bar looks like. Standing on its own inside a 問題, that
+   flat top edge reads as a box that has lost its lid. */
+.q-audio-slot > .q-audio {
+  position: static;
+  border-top: 1px solid rgba(45, 110, 180, 0.28);
+  border-radius: 14px;
+}
 
 /* ==========================================================================
    Phones: keep the sticky chrome small
@@ -2718,13 +2735,31 @@
 }
 
 /* Inside an answer button the note is all there is, and the button is
-   already small: no second border around it. */
+   already small: no second border around it.
+
+   And the message goes back into the flow. Everywhere else the note is laid
+   over the hole the picture would have filled, which keeps the page from
+   moving when a figure is given up on; in a button there is no hole, because
+   min-height is 0 here - so an absolutely positioned note was being centred
+   on a box of no height and spilled out of the button in both directions,
+   over the option above it and the one below. In flow it simply makes the
+   button as tall as the sentence. */
 .choice .fig.is-failed {
   min-height: 0;
   margin: 0;
   border: 0;
   background: none;
 }
+
+.choice .fig.is-failed .fig-note {
+  position: static;
+  inset: auto;
+  padding: 2px 0;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.choice .fig.is-failed img { display: none; }
 
 /* A line saying whose the recording is - a reader handed somebody else's
    upload should be told so before they press play, not after. */
@@ -2739,11 +2774,11 @@
    own chrome, so a reader does not have to work out that this row is a
    player too. Same blue, same width.
 
-   Not pinned, though. A YouTube embed pinned to the top of the paper holds a
-   16:9 frame there for the whole sitting, and it is the one player a reader
-   is least likely to be using - it is somebody else's upload, offered as a
-   fallback. It sits at the head of the listening test and scrolls away with
-   it; the Drive recording, which is the paper's own audio, is what stays. */
+   It stays where it is drawn on any paper that has a recording of its own:
+   that recording is the real thing, and it is the one that floats. This bar
+   is a stand-in for the sittings whose audio the archive never got, so it
+   goes to the corner only on the papers where it is the only audio there is.
+   See hasOwnAudio() in exam-player.js. */
 .q-audio-full-bar {
   position: static;
   flex-wrap: wrap;
@@ -2873,7 +2908,7 @@
    16:9 frame across the head of the screen for the whole sitting - which is
    why it stopped pinning in the first place. Down here it covers a corner of
    the margin, it is dismissed by Stop, and Back to the paper returns it. */
-.q-audio-full-bar.is-floating {
+.q-audio.is-floating {
   position: fixed;
   /* .q-audio sets a top, for the docked-under-the-command-bar player it
      normally is. Left standing, a fixed box with both a top and a bottom is
@@ -2891,16 +2926,32 @@
   box-shadow: 0 18px 44px -14px rgba(17, 45, 78, 0.55);
 }
 
-.q-audio-full-bar.is-floating.is-big {
+.q-audio.is-floating.is-big {
   width: min(520px, calc(100vw - 32px));
 }
 
 /* Whose recording it is has already been read once, up in the paper, and
    down here it is the one line that can push the controls off a phone. */
-.q-audio-full-bar.is-floating .q-audio-whose { display: none; }
+.q-audio.is-floating .q-audio-whose { display: none; }
+
+/* The paper's own recording, floating. 360px is not enough for a label and a
+   player side by side, so the label keeps the first row with the dock button
+   and the player takes the second. */
+.q-audio-drive.is-floating {
+  flex-wrap: wrap;
+  row-gap: 8px;
+  padding: 10px 12px;
+}
+/* No crop in the corner. The 60px window is cut to fit what Drive draws at
+   the widths it has in the paper; at the 336px it gets here it lays out a
+   larger centred play button instead, and the crop took the top off it. */
+.q-audio-drive.is-floating .q-audio-frame { height: 76px; }
+.q-audio-drive.is-floating .q-audio-label { flex: 1 1 auto; }
+.q-audio-drive.is-floating .q-audio-frame { flex: 1 1 100%; }
+.q-audio-drive.is-floating .q-audio-dock { flex: none; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .q-audio-full-bar.is-floating { animation: float-in 0.18s ease; }
+  .q-audio.is-floating { animation: float-in 0.18s ease; }
 }
 @keyframes float-in { from { transform: translateY(10px); opacity: 0; } }
 
@@ -2908,8 +2959,8 @@
   /* Across the foot rather than in a corner: 360px does not fit beside a
      phone's margins, and a box floating half off the screen is worse than
      one that owns the strip it is in. */
-  .q-audio-full-bar.is-floating,
-  .q-audio-full-bar.is-floating.is-big {
+  .q-audio.is-floating,
+  .q-audio.is-floating.is-big {
     top: auto;
     left: 10px;
     right: 10px;

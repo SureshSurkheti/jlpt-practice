@@ -1973,9 +1973,9 @@
        As direct children of #examPaper they are bound by the paper rather
        than by a 問題, which is what lets the pinned one travel to the end of
        it. */
-    /* The paper is being rebuilt, so the bar that was floating is about to
-       stop existing. Let go of it before it does. */
-    floatEnd();
+    /* The paper is being rebuilt, so the players that could float are about
+       to stop existing. Let go of them before they do. */
+    floatForget();
 
     var fullBar = fullAudioBar();
     var fullPlaced = false;
@@ -1986,15 +1986,31 @@
       : null;
     var sharedPlaced = false;
 
+    /* Which player follows the reader down the paper.
+
+       The paper's own recording, wherever there is one. It is the real thing
+       - the sitting's own audio, in the 問題 it belongs to - and it is what
+       somebody working through the section is listening to.
+
+       The YouTube upload is a stand-in for the recordings the archive never
+       got, so it floats only on the papers where it is the only audio there
+       is. Where the paper has its own, the upload stays where it is drawn, at
+       the head of the listening test, and scrolls away with it. */
+    var ownAudio = hasOwnAudio();
+
     state.sections.forEach(function (section) {
       if (state.paper && paperOfCategory(section.category) !== state.paper) return;
       if (section.category === "listening") {
         if (fullBar && !fullPlaced) {
           main.appendChild(fullBar);
+          if (!ownAudio) {
+            floatAdd(fullBar.floatBar, fullBar, main, fullBar.floatWhen);
+          }
           fullPlaced = true;
         }
         if (sharedBar && !sharedPlaced) {
           main.appendChild(sharedBar);
+          floatAdd(sharedBar.floatBar, sharedBar, main, null);
           main.appendChild(driveAside());
           sharedPlaced = true;
         }
@@ -2142,15 +2158,15 @@
        cut it into six from here - the files are hosted read-only and served
        through an iframe we cannot script.
 
-       What we can do is stop it scrolling away. The player is pinned to the
-       top of the reading area for as long as any question in this 問題 is on
-       screen, so it really is above every question rather than only above the
-       first. Rewinding to catch 4番 again no longer means scrolling back up
-       past three questions to find the play button.
+       What we can do is stop it scrolling away. Once the reader is past it,
+       the player lifts out of the paper and floats in the corner for as long
+       as any question in this 問題 is on screen, so rewinding to catch 4番
+       again no longer means scrolling back up past three questions to find
+       the play button. Past the end of the 問題 it lets go, and the next
+       recording takes over.
 
-       It sits outside .section-head for that reason: sticky boxes are bound
-       by their own parent, and the head is only as tall as the instruction.
-       As a direct child of the section it can travel the whole 問題. */
+       It sits outside .section-head for that reason: the head is only as tall
+       as the instruction, and the player has to belong to the whole 問題. */
     var deadAudio = section.audio &&
       DEAD_AUDIO_IDS.indexOf(driveId(section.audio)) !== -1;
 
@@ -2169,13 +2185,14 @@
     } else if (section.audio && deadAudio) {
       head.appendChild(el("div", "q-audio-aside is-failed",
         '<p class="q-audio-note">' + deadAudioHTML() + "</p>"));
-    } else if (section.audio && section.audio !== state.sharedAudio) {
-      /* No error event fires for a cross-origin iframe, so the way out is
-         offered up front rather than after a failure we cannot see. When one
-         recording serves the whole test the note goes under that single bar
-         instead, rather than being repeated inside every 問題. */
-      head.appendChild(driveAside());
     }
+
+    /* The note that belongs under the player - what the recording is, and
+       what to do if it will not play. Held back until the player itself has
+       been placed: read before it, a sentence about a recording needing a
+       connection sits between the instruction and the thing it describes. */
+    var aside = (section.audio && !deadAudio &&
+                 section.audio !== state.sharedAudio) ? driveAside() : null;
 
     /* A listening section whose own recording was never archived. Without
        this the questions simply appeared with no player and no explanation,
@@ -2219,7 +2236,12 @@
     node.appendChild(head);
 
     if (section.audio && !deadAudio && section.audio !== state.sharedAudio) {
-      node.appendChild(driveBar(section.audio, section.tag));
+      var player = driveBar(section.audio, section.tag);
+      node.appendChild(player);
+      if (aside) node.appendChild(aside);
+      /* Its 問題 is its scope: past the end of this section it is the wrong
+         recording to still be holding on to. */
+      floatAdd(player.floatBar, player, node, null);
     }
 
     section.blocks.forEach(function (block) {
@@ -2246,18 +2268,41 @@
 
      Returns the URL, or null when the 問題 have recordings of their own,
      when the listening test is a single 問題, or when the file is dead. */
+  /* Whether this paper has a recording of its own that plays - as opposed to
+     the YouTube upload, which belongs to somebody else and is offered only
+     where the archive kept nothing. */
+  function hasOwnAudio() {
+    var found = false;
+    state.sections.forEach(function (section) {
+      if (section.category !== "listening") return;
+      if (state.paper && paperOfCategory(section.category) !== state.paper) return;
+      if (!section.audio) return;
+      if (DEAD_AUDIO_IDS.indexOf(driveId(section.audio)) !== -1) return;
+      found = true;
+    });
+    return found;
+  }
+
   function wholeListeningAudio() {
     var urls = [];
     var sections = 0;
+    var covered = 0;
     state.sections.forEach(function (section) {
       if (section.category !== "listening") return;
       if (state.paper && paperOfCategory(section.category) !== state.paper) return;
       sections++;
-      if (section.audio && urls.indexOf(section.audio) === -1) {
-        urls.push(section.audio);
-      }
+      if (!section.audio) return;
+      covered++;
+      if (urls.indexOf(section.audio) === -1) urls.push(section.audio);
     });
     if (urls.length !== 1 || sections < 2) return null;
+    /* One file is not the same as one file for the whole test. Counted over
+       the library, every paper with a single recording has it on exactly one
+       of its five or six 問題 - the source published 問題1 and stopped - so
+       promoting that file to the head of the paper put a 問題1 recording
+       above 問題5 with "whole listening test" written next to it.
+       It belongs to the 問題 it is a recording of. */
+    if (covered !== sections) return null;
     if (DEAD_AUDIO_IDS.indexOf(driveId(urls[0])) !== -1) return null;
     return urls[0];
   }
@@ -2277,7 +2322,7 @@
      when one recording serves the whole listening test - once above the lot.
      See wholeListeningAudio(). */
   function driveBar(url, tag) {
-    return el("div", "q-audio",
+    var bar = el("div", "q-audio q-audio-drive",
         '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
           "<b>" + esc(t("exam.audio")) + "</b>" +
           (tag ? "<i>" + esc(tag) + "</i>" : "") +
@@ -2297,7 +2342,21 @@
           '<iframe src="' + esc(audioURL(url)) + '" width="100%" ' +
             'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
             '" loading="lazy"></iframe>' +
-        "</div>");
+        "</div>" +
+        '<button type="button" class="q-audio-dock" hidden>' +
+          '<span aria-hidden="true">\u2193</span> ' +
+          esc(t("exam.audioFullDock")) + "</button>");
+
+    /* The same slot arrangement the whole-test player uses: the bar stays put
+       in the DOM so the iframe is never reloaded, and the slot holds the gap
+       while the bar is floating. */
+    var slot = el("div", "q-audio-slot");
+    slot.appendChild(bar);
+    slot.floatBar = bar;
+    bar.querySelector(".q-audio-dock").addEventListener("click", function () {
+      slot.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+    return slot;
   }
 
   /* ------------------------------------------------------------- figures */
@@ -2474,56 +2533,90 @@
      is the one thing a reader forty minutes into a track cannot afford. The
      slot it came out of keeps its height while it is away, so the paper does
      not jump underneath as it takes off. */
-  var floatBar = null;
-  var floatSlot = null;
+  /* Every player that may float, in the order the paper draws them, and the
+     one that is floating now. There is more than one on most papers - a
+     recording per 問題 - and only ever one in the corner: the player for the
+     stretch of paper you are actually reading. */
+  var floaters = [];
+  var floating = null;
 
-  function floatEnd() {
-    if (floatBar) {
-      floatBar.classList.remove("is-floating");
-      var dock = floatBar.querySelector(".q-audio-dock");
-      if (dock) dock.hidden = true;
-    }
-    if (floatSlot) {
-      floatSlot.classList.remove("is-away");
-      floatSlot.style.height = "";
-    }
-    floatBar = null;
-    floatSlot = null;
+  function floatForget() {
+    floaters.forEach(function (f) { floatSet(f, false); });
+    floaters = [];
+    floating = null;
   }
 
-  function floatBegin(bar, slot) {
-    floatEnd();
-    floatBar = bar;
-    floatSlot = slot;
-    floatSync();
+  /* bar   the player itself, which never moves in the DOM
+     slot  the box it sits in, which holds its height while it is away
+     scope the stretch of paper this player is the player for - its own 問題,
+           or the whole listening paper for a recording that covers the lot
+     live  whether it is worth floating at all right now (the YouTube bar is
+           only a Play button until it is started) */
+  function floatAdd(bar, slot, scope, live) {
+    floaters.push({ bar: bar, slot: slot, scope: scope, live: live });
   }
 
-  /* Float while the slot has gone up under the command bar, dock again when
-     it comes back. The slot only takes on the bar's height once the bar has
-     left it, so what is held open is measured rather than guessed - and the
-     slot's own top does not move when that happens, so there is nothing here
-     that can oscillate. */
+  function floatSet(f, on) {
+    var was = f.bar.classList.contains("is-floating");
+    if (was === on) return;
+    if (on) f.slot.style.height = f.bar.offsetHeight + "px";
+    f.slot.classList.toggle("is-away", on);
+    f.bar.classList.toggle("is-floating", on);
+    if (!on) f.slot.style.height = "";
+    var dock = f.bar.querySelector(".q-audio-dock");
+    if (dock) dock.hidden = !on;
+  }
+
+  /* A player floats while the slot it came out of has gone up under the
+     command bar and the 問題 it belongs to is the one being read.
+
+     Which 問題 that is, is decided at the middle of the reading area rather
+     than at its top edge. Measured at the top, a section counted as current
+     until its very last pixel had gone - so 問題1's recording was still in
+     the corner while 問題2's heading, its instruction and its own player
+     filled the screen, two players in view at once and the floating one the
+     wrong recording. The middle of the screen is what a reader would call
+     the part they are on, and the handover happens there.
+
+     The slot's own top does not move when the bar leaves it - the slot takes
+     the height over - so there is nothing here that can oscillate. */
   function floatSync() {
-    if (!floatBar || !floatSlot) return;
-    if (!document.body.contains(floatBar)) { floatEnd(); return; }
+    if (!floaters.length) return;
     var cmd = document.querySelector(".exam-bar");
     var limit = cmd ? cmd.getBoundingClientRect().bottom : 0;
-    var away = floatBar.classList.contains("is-floating");
-    var want = floatSlot.getBoundingClientRect().top < limit;
-    if (want === away) return;
-    if (want) floatSlot.style.height = floatBar.offsetHeight + "px";
-    floatSlot.classList.toggle("is-away", want);
-    floatBar.classList.toggle("is-floating", want);
-    if (!want) floatSlot.style.height = "";
-    var dock = floatBar.querySelector(".q-audio-dock");
-    if (dock) dock.hidden = !want;
+    var height = window.innerHeight || document.documentElement.clientHeight;
+    var middle = limit + (height - limit) / 2;
+    var pick = null;
+    var gone = false;
+
+    floaters.forEach(function (f) {
+      if (!document.body.contains(f.bar)) { gone = true; return; }
+      if (f.live && !f.live()) return;
+      if (f.slot.getBoundingClientRect().top >= limit) return;
+      if (f.scope) {
+        var scope = f.scope.getBoundingClientRect();
+        if (scope.top > middle || scope.bottom <= middle) return;
+      }
+      pick = f;          /* the last one still in range: the 問題 you are in */
+    });
+
+    floaters.forEach(function (f) {
+      if (document.body.contains(f.bar)) floatSet(f, f === pick);
+    });
+    floating = pick;
+    if (gone) {
+      floaters = floaters.filter(function (f) {
+        return document.body.contains(f.bar);
+      });
+    }
   }
 
   /* On the scroll itself, not on a timer behind it. The question spy can
      afford to wait 80ms because nothing moves when it runs; this decides
      whether a player is on the screen at all, and a player that arrives a
-     tick late arrives visibly late. It costs two rectangle reads per scroll,
-     and only measures the bar's height on the one scroll that moves it.
+     tick late arrives visibly late. It costs a rectangle read or two per
+     player per scroll, and measures a bar's height only on the scroll that
+     moves it.
 
      Not requestAnimationFrame either: frames stop being delivered whenever
      the page is not being painted, and a player that only moves while
@@ -2563,8 +2656,12 @@
        the bar would be a grid item too, and would cost a 20px gap even at
        zero height. The slot is the grid item, the bar lives in it, and the
        height is held there while the bar is floating. */
-    var slot = el("div", "q-audio-full-slot");
+    var slot = el("div", "q-audio-slot q-audio-full-slot");
     slot.appendChild(bar);
+    slot.floatBar = bar;
+    /* Only worth the corner once it is actually playing - idle it is a Play
+       button, and a Play button that follows you around is clutter. */
+    slot.floatWhen = function () { return bar.classList.contains("is-playing"); };
 
     var media = bar.querySelector(".q-audio-full-media");
     var stop = bar.querySelector(".q-audio-stop");
@@ -2605,8 +2702,9 @@
       paperNode(bar).classList.remove("is-full-playing");
       stop.hidden = true;
       size.hidden = true;
-      /* Nothing is playing, so there is nothing to keep in reach. */
-      if (floatBar === bar) floatEnd();
+      /* Nothing is playing, so there is nothing to keep in reach. The bar
+         stays registered; playing (q.v.) makes it eligible again. */
+      floatSync();
     }
 
     function play() {
@@ -2627,7 +2725,7 @@
       stop.hidden = false;
       size.hidden = false;
       applySize();
-      floatBegin(bar, slot);
+      floatSync();
     }
 
     /* Back to where it belongs: scrolling the slot into view docks the bar

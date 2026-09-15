@@ -1029,6 +1029,18 @@ def main():
         json.dump({"exams": index}, f, ensure_ascii=False, indent=1)
 
     # ---- report -------------------------------------------------------
+    # The full-recording links live in their own file and are stamped into the
+    # papers afterwards. Left to a separate command, that step is one a person
+    # has to remember - and forgetting it is silent: the papers rebuild fine,
+    # the site loads fine, and 33 listening sections simply have no player any
+    # more. That happened. It is a step of this build now, so it cannot be
+    # skipped by running the build.
+    try:
+        import apply_listening_links
+        apply_listening_links.main()
+    except Exception as exc:                      # noqa: BLE001 - reported
+        print("could not attach the full-recording links: %s" % exc)
+
     print(f"sessions found : {len(sessions)}")
     if manual:
         print(f"hand-authored  : {len(manual)}")
