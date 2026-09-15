@@ -389,10 +389,9 @@ I18N.register("en", {
   "exam.audioFullTag": "whole listening test",
   "exam.audioFullStop": "Stop",
   "exam.audioFullBigger": "Bigger", "exam.audioFullSmaller": "Smaller",
-  /* On the player once it has left the page and is floating in the corner of
-     the screen: this scrolls back to the slot it came out of, which docks it
-     on the way. */
-  "exam.audioFullDock": "Back to the paper",
+  /* Shown inside "Not playing?" on the papers that also carry a full upload:
+     the recording that is stalling is not the only way to hear the test. */
+  "exam.audioAlsoFull": "This sitting is also on the full recording at the top of the listening section.",
 
   /* The furigana toggle in the command bar. The papers print none - the real
      exam does not - so this is the reader adding it, and the button says
@@ -833,11 +832,11 @@ I18N.register("ja", {
   "exam.audioFullLabel": "全体の音声",
   "exam.audioFullTag": "聴解セクション全体",
   "exam.audioFullStop": "停止",
-  "exam.audioFullDock": "元の位置に戻す",
   "exam.furiShow": "ふりがな",
   "exam.furiHide": "ふりがなを消す",
   "exam.spokenOptions": "読み上げられた選択肢",
   "exam.audioFullBigger": "大きく", "exam.audioFullSmaller": "小さく",
+  "exam.audioAlsoFull": "この回は、聴解セクション上部の全体録音でも聞けます。",
   "exam.endOfPaper": "問題終了", "exam.allAnswered": "すべて解答済みです。提出できます。",
   "exam.otherSections": "ほかの科目へ",
   "exam.blanksRemain": "問が未解答です。",
@@ -1665,11 +1664,11 @@ I18N.register("ne", {
   "exam.audioFullLabel": "पूरा रेकर्डिङ",
   "exam.audioFullTag": "सम्पूर्ण श्रवण खण्ड",
   "exam.audioFullStop": "रोक्नुहोस्",
-  "exam.audioFullDock": "पृष्ठमा फर्काउनुहोस्",
   "exam.furiShow": "फुरिगाना",
   "exam.furiHide": "फुरिगाना हटाउनुहोस्",
   "exam.spokenOptions": "सुनाइएका विकल्पहरू",
   "exam.audioFullBigger": "ठूलो", "exam.audioFullSmaller": "सानो",
+  "exam.audioAlsoFull": "यो परीक्षा सुन्ने खण्डको सुरुमा रहेको पूर्ण रेकर्डिङमा पनि छ।",
   "exam.endOfPaper": "प्रश्नपत्र समाप्त", "exam.allAnswered": "सबै उत्तर दिइयो। बुझाउन सक्नुहुन्छ।",
   "exam.otherSections": "अर्को खण्डमा जानुहोस्",
   "exam.blanksRemain": "प्रश्न खाली छन्।",

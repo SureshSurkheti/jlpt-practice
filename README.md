@@ -299,30 +299,48 @@ is the exercise.
 
 ### Which player follows you down the paper
 
-One recording covers a whole 問題 — six questions in sequence — so the player
-has to stay in reach while you work through them. Once you scroll past it, it
-lifts out of the paper and floats in the corner, and docks again when you
-scroll back or press **Back to the paper**. It is the same element throughout,
-never a copy: moving the iframe or rebuilding it reloads the player and
-restarts the recording from zero.
+One recording covers a whole 問題 — six questions in sequence — and on 28
+papers a single file covers the entire sitting, so the player has to stay in
+reach while you work through it. Once you scroll past it, it leaves the page
+and **docks under the command bar**, at the same width as the questions, and
+drops back into place when you scroll up to it. It is the same element
+throughout, never a copy: moving the iframe or rebuilding it reloads the player
+and restarts the recording from zero.
 
-Only ever one at a time, and it is **the paper's own recording**. Which 問題
-you are on is decided at the middle of the screen rather than at its top edge,
-so 問題1's recording lets go as 問題2 arrives instead of hanging on until the
-last pixel of its section has gone.
+Only ever one at a time, and it is **the paper's own recording**. A whole-test
+file follows you the length of the listening paper; a per-問題 file follows you
+through its own 問題 and then hands over. Which 問題 you are on is decided at
+the middle of the screen rather than at its top edge, so 問題1's recording lets
+go as 問題2 arrives instead of hanging on until the last pixel of its section
+has gone.
 
 The YouTube upload is a stand-in for the sittings whose audio the archive never
 got, so it floats **only on the papers where it is the only audio there is**.
 Where the paper has a recording of its own, the upload stays where it is drawn,
 at the head of the listening test, as a single row with a Play button.
 
-**A correction that came out of this.** One recording was treated as one
-recording for the whole test, and drawn above the paper labelled "whole
-listening test". Counted across the library, that is true of no paper at all:
-every sitting with a single file has it on exactly one of its five or six 問題,
-because the source published 問題1 and stopped. So a 問題1 recording was sitting
-above 問題5 with the wrong label on it. It is now drawn inside the 問題 it is a
-recording of, and the other sections say the full recording above covers them.
+### Why the recording is an iframe and not an `<audio>` element
+
+Because Google will not allow anything else. The file is real audio and can be
+addressed directly —
+
+```
+https://drive.usercontent.google.com/download?id=<id>&export=download
+→ 200, content-type: audio/mp4, accept-ranges: bytes,
+  access-control-allow-origin: *
+```
+
+— and a browser still refuses it, because the same response carries
+**`cross-origin-resource-policy: same-site`**. CORP is checked before CORS
+helps: the bytes may not be embedded by another site at all, and a native
+player reports it as `MEDIA_ELEMENT_ERROR: Format error`. The iframe is
+Google's supported way to embed a Drive file, so it is the only way to play
+one of these recordings on this page, and playback speed and keyboard seeking
+are Drive's to offer rather than ours.
+
+When a recording stalls, nothing is reported back to the page — the frame is
+Google's. So "Not playing?" now also names the full recording at the top of
+the section on the 33 papers that have one.
 
 ### The archived recordings
 

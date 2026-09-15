@@ -1982,7 +1982,7 @@
 
     state.sharedAudio = wholeListeningAudio();
     var sharedBar = state.sharedAudio
-      ? driveBar(state.sharedAudio, t("exam.audioFullTag"))
+      ? driveBar(state.sharedAudio, t("exam.audioFullTag"), true)
       : null;
     var sharedPlaced = false;
 
@@ -2286,23 +2286,24 @@
   function wholeListeningAudio() {
     var urls = [];
     var sections = 0;
-    var covered = 0;
     state.sections.forEach(function (section) {
       if (section.category !== "listening") return;
       if (state.paper && paperOfCategory(section.category) !== state.paper) return;
       sections++;
       if (!section.audio) return;
-      covered++;
       if (urls.indexOf(section.audio) === -1) urls.push(section.audio);
     });
     if (urls.length !== 1 || sections < 2) return null;
-    /* One file is not the same as one file for the whole test. Counted over
-       the library, every paper with a single recording has it on exactly one
-       of its five or six 問題 - the source published 問題1 and stopped - so
-       promoting that file to the head of the paper put a 問題1 recording
-       above 問題5 with "whole listening test" written next to it.
-       It belongs to the 問題 it is a recording of. */
-    if (covered !== sections) return null;
+    /* One file, and it really is the whole test.
+
+       This was briefly changed to require every 問題 to carry the file before
+       treating it as a whole-test recording, on the evidence that only one of
+       them does. The evidence was about the page, not the recording: the
+       source embedded its player once, under 問題1, and left the rest bare.
+       The file itself is 201407N2.m4a - 41 minutes, one .m4a, the whole
+       sitting - so the section it was embedded under says nothing about what
+       is in it, and drawing it inside 問題1 hid four 問題 worth of audio
+       behind a heading. */
     if (DEAD_AUDIO_IDS.indexOf(driveId(urls[0])) !== -1) return null;
     return urls[0];
   }
@@ -2311,20 +2312,30 @@
      it will not play. Kept out of the pinned bar - it is help, not a
      control - and said once per player rather than once per 問題. */
   function driveAside() {
+    /* When a recording stalls there is nothing to see: the frame is Google's
+       and it reports nothing back to us. What we can do is name the other way
+       in. On the 33 papers that have a full upload as well, that is the whole
+       sitting, one click away, and it was going unmentioned in exactly the
+       situation it exists for. */
+    var alsoFull = hasFullAudio()
+      ? "<br>" + esc(t("exam.audioAlsoFull")) : "";
     return el("div", "q-audio-aside",
       '<p class="q-audio-note">' + esc(t("exam.audioNote")) + "</p>" +
       '<details class="q-audio-help"><summary>' +
         esc(t("exam.audioTrouble")) + "</summary><p>" +
-        audioHelpHTML() + "</p></details>");
+        audioHelpHTML() + alsoFull + "</p></details>");
   }
 
   /* The Drive player itself, drawn either inside the 問題 it belongs to or -
      when one recording serves the whole listening test - once above the lot.
      See wholeListeningAudio(). */
-  function driveBar(url, tag) {
+  function driveBar(url, tag, whole) {
     var bar = el("div", "q-audio q-audio-drive",
         '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
-          "<b>" + esc(t("exam.audio")) + "</b>" +
+          /* "Audio for this section" is the wrong words for the one file that
+             is the whole sitting - beside a tag reading "whole listening
+             test" it contradicted itself. */
+          "<b>" + esc(t(whole ? "exam.audioFullLabel" : "exam.audio")) + "</b>" +
           (tag ? "<i>" + esc(tag) + "</i>" : "") +
         "</span>" +
         /* The iframe is 76px because that is the height Drive's preview page
@@ -2342,10 +2353,7 @@
           '<iframe src="' + esc(audioURL(url)) + '" width="100%" ' +
             'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
             '" loading="lazy"></iframe>' +
-        "</div>" +
-        '<button type="button" class="q-audio-dock" hidden>' +
-          '<span aria-hidden="true">\u2193</span> ' +
-          esc(t("exam.audioFullDock")) + "</button>");
+        "</div>");
 
     /* The same slot arrangement the whole-test player uses: the bar stays put
        in the DOM so the iframe is never reloaded, and the slot holds the gap
@@ -2353,9 +2361,6 @@
     var slot = el("div", "q-audio-slot");
     slot.appendChild(bar);
     slot.floatBar = bar;
-    bar.querySelector(".q-audio-dock").addEventListener("click", function () {
-      slot.scrollIntoView({ block: "start", behavior: "smooth" });
-    });
     return slot;
   }
 
@@ -2563,8 +2568,6 @@
     f.slot.classList.toggle("is-away", on);
     f.bar.classList.toggle("is-floating", on);
     if (!on) f.slot.style.height = "";
-    var dock = f.bar.querySelector(".q-audio-dock");
-    if (dock) dock.hidden = !on;
   }
 
   /* A player floats while the slot it came out of has gone up under the
@@ -2642,9 +2645,6 @@
           "</a></p>" +
         '<div class="q-audio-full-btns">' +
           '<button type="button" class="q-audio-size" hidden></button>' +
-          '<button type="button" class="q-audio-dock" hidden>' +
-            '<span aria-hidden="true">\u2193</span> ' +
-            esc(t("exam.audioFullDock")) + "</button>" +
           '<button type="button" class="q-audio-stop" hidden>' +
             '<span aria-hidden="true">\u2715</span> ' +
             esc(t("exam.audioFullStop")) + "</button>" +
@@ -2666,7 +2666,6 @@
     var media = bar.querySelector(".q-audio-full-media");
     var stop = bar.querySelector(".q-audio-stop");
     var size = bar.querySelector(".q-audio-size");
-    var dock = bar.querySelector(".q-audio-dock");
 
     /* This bar is pinned under the command bar, so whatever height it takes
        it keeps for the whole paper. A 16:9 frame 320px wide is 180px of that,
@@ -2727,12 +2726,6 @@
       applySize();
       floatSync();
     }
-
-    /* Back to where it belongs: scrolling the slot into view docks the bar
-       into it on the way, so this is a scroll and nothing else. */
-    dock.addEventListener("click", function () {
-      slot.scrollIntoView({ block: "start", behavior: "smooth" });
-    });
 
     stop.addEventListener("click", idle);
     idle();

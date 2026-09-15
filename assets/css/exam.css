@@ -2885,87 +2885,50 @@
 
 .q-audio-stop:hover { border-color: var(--blue); color: var(--navy); }
 
-.q-audio-dock {
-  padding: 5px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #fff;
-  color: var(--ink-soft);
-  font-size: 0.78rem;
-  font-weight: 600;
-  cursor: pointer;
-}
+/* ------------------------------------------------- floating at the top
 
-.q-audio-dock:hover { border-color: var(--blue); color: var(--navy); }
-
-/* ------------------------------------------------ floating in the corner
-
-   Once the reader has scrolled past it, the whole-test player leaves the
-   page and parks here, so pause and rewind stay within reach of whichever
+   Once the reader has scrolled past it, a player leaves the page and docks
+   under the command bar, so pause and rewind stay in reach of whichever
    question is on screen. See the floating player in exam-player.js.
 
-   The corner, not the top. Docked under the command bar it would hold a
-   16:9 frame across the head of the screen for the whole sitting - which is
-   why it stopped pinning in the first place. Down here it covers a corner of
-   the margin, it is dismissed by Stop, and Back to the paper returns it. */
+   At the top, flush against the bar, because that is where a player that
+   belongs to the paper belongs: it reads as one continuous piece of chrome -
+   square along the top, rounded below - and it covers the margin above the
+   questions rather than the questions themselves. A box in a corner has to
+   be dismissed before it stops sitting on the paper; this never covers
+   anything you are reading.
+
+   It keeps the reading measure, so its edges line up with the questions
+   underneath it rather than running the width of the window. */
 .q-audio.is-floating {
   position: fixed;
-  /* .q-audio sets a top, for the docked-under-the-command-bar player it
-     normally is. Left standing, a fixed box with both a top and a bottom is
-     stretched between them - which came out as a player the height of the
-     window. */
-  top: auto;
-  left: auto;
-  right: 16px;
-  bottom: 16px;
-  z-index: 60;
-  width: min(360px, calc(100vw - 32px));
-  margin: 0;
-  border: 1px solid rgba(45, 110, 180, 0.34);
-  border-radius: 14px;
-  box-shadow: 0 18px 44px -14px rgba(17, 45, 78, 0.55);
+  top: calc(var(--header-h, 74px) + var(--bar-h, 62px));
+  left: 0;
+  right: 0;
+  bottom: auto;
+  z-index: 40;
+  width: min(78ch, calc(100vw - 24px));
+  margin: 0 auto;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 14px 30px -16px rgba(17, 45, 78, 0.5);
 }
 
-.q-audio.is-floating.is-big {
-  width: min(520px, calc(100vw - 32px));
-}
-
-/* Whose recording it is has already been read once, up in the paper, and
-   down here it is the one line that can push the controls off a phone. */
-.q-audio.is-floating .q-audio-whose { display: none; }
-
-/* The paper's own recording, floating. 360px is not enough for a label and a
-   player side by side, so the label keeps the first row with the dock button
-   and the player takes the second. */
-.q-audio-drive.is-floating {
-  flex-wrap: wrap;
-  row-gap: 8px;
-  padding: 10px 12px;
-}
-/* No crop in the corner. The 60px window is cut to fit what Drive draws at
-   the widths it has in the paper; at the 336px it gets here it lays out a
-   larger centred play button instead, and the crop took the top off it. */
-.q-audio-drive.is-floating .q-audio-frame { height: 76px; }
-.q-audio-drive.is-floating .q-audio-label { flex: 1 1 auto; }
-.q-audio-drive.is-floating .q-audio-frame { flex: 1 1 100%; }
-.q-audio-drive.is-floating .q-audio-dock { flex: none; }
+/* The whole-test upload is 16:9 and would hold a picture across the top of
+   the screen for the whole sitting, so floating it keeps the thumbnail. */
+.q-audio-full-bar.is-floating { flex-wrap: wrap; row-gap: 4px; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .q-audio.is-floating { animation: float-in 0.18s ease; }
+  .q-audio.is-floating { animation: float-in 0.16s ease; }
 }
-@keyframes float-in { from { transform: translateY(10px); opacity: 0; } }
+@keyframes float-in { from { transform: translateY(-8px); opacity: 0; } }
 
 @media (max-width: 620px) {
-  /* Across the foot rather than in a corner: 360px does not fit beside a
-     phone's margins, and a box floating half off the screen is worse than
-     one that owns the strip it is in. */
-  .q-audio.is-floating,
-  .q-audio.is-floating.is-big {
-    top: auto;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+  .q-audio.is-floating {
     width: auto;
+    left: 8px;
+    right: 8px;
+    border-radius: 0 0 12px 12px;
   }
 }
 
