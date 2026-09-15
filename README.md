@@ -347,12 +347,18 @@ the section on the 33 papers that have one.
 and a player drawn to fit 76px does not survive being shown through 60 of them,
 which is why the round play button arrived with its top sliced off.
 
-There is one number now, 76px, for both the frame and the window. That is the
-height Drive lays out its compact control strip for: a round play button, a
-scrubber, the time, a volume control, on black. Given more room it switches to
-a waveform display instead, which is bigger, slower to read and no better for
-finding your place in a listening test — so the box is sized for the player
-worth having.
+There is one box now, and the iframe fills it, so nothing can be cropped by
+the thing it was drawn to fit.
+
+How tall that box should be is not ours to decide, because **which player Drive
+draws is not ours to know**. Signed out it is a compact control strip — round
+play button, scrubber, time, volume — which wants about 76px. Signed in to a
+Google account it is a waveform display, which wants more and is squeezed into
+76. The frame is cross-origin; nothing on this side can ask which one arrived.
+
+So the box is 96px, and a **Smaller / Bigger** button beside the player moves it
+between 96 and 76. The choice is remembered and applies to every recording on
+the paper — they come from the same account, so they are the same player.
 
 **Nothing of Google's is fetched until the recording is asked for.** Drawn at
 render time, one frame per 問題 meant five Google pages loading at once on a

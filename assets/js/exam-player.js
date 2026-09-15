@@ -2350,6 +2350,53 @@
      Drive's; the only alternative would be to play the file ourselves, and
      Drive serves it with cross-origin-resource-policy: same-site, which a
      browser refuses to a media element on another site. */
+  /* How tall the box around Drive's player is, and why that is a question at
+     all.
+
+     Drive draws one of two players inside that frame, and which one is its
+     decision, taken from inside a page we cannot see into. Signed out, it is a
+     control strip - a round play button, a scrubber, the time, a volume
+     control - which wants about 76px. Signed in to a Google account it is a
+     waveform display instead, which wants more room and is squeezed in 76.
+     Nothing on this side can ask which one arrived.
+
+     So the reader gets the choice, and it is remembered. Tall enough for the
+     waveform by default, because a cropped player reads as a broken one and
+     most people are signed in to Google in Chrome; one press makes it the
+     height of the strip for everyone else. */
+  var DRIVE_TALL_KEY = "jlpt.exam.driveTall";
+
+  function readDriveTall() {
+    try {
+      return localStorage.getItem(DRIVE_TALL_KEY) !== "0";
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function saveDriveTall(tall) {
+    try {
+      localStorage.setItem(DRIVE_TALL_KEY, tall ? "1" : "0");
+    } catch (e) { /* a browser that refuses storage still gets the toggle */ }
+  }
+
+  /* Every player on the paper is the same height: they are the same player
+     from the same account, so a reader who has had to shrink one has had to
+     shrink all of them. */
+  function applyDriveHeight() {
+    var tall = readDriveTall();
+    Array.prototype.forEach.call(document.querySelectorAll(".q-audio-drive"),
+      function (bar) {
+        bar.classList.toggle("is-short", !tall);
+        var button = bar.querySelector(".q-audio-size");
+        if (!button) return;
+        button.textContent = t(tall ? "exam.audioFullSmaller"
+                                    : "exam.audioFullBigger");
+        button.setAttribute("aria-pressed", tall ? "true" : "false");
+      });
+    floatSync();
+  }
+
   function driveBar(url, tag, whole) {
     var bar = el("div", "q-audio q-audio-drive",
         '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
@@ -2360,9 +2407,15 @@
           "<b>" + esc(t(whole ? "exam.audioWhole" : "exam.audio")) + "</b>" +
           (tag && !whole ? "<i>" + esc(tag) + "</i>" : "") +
         "</span>" +
-        '<div class="q-audio-frame"></div>');
+        '<div class="q-audio-frame"></div>' +
+        '<button type="button" class="q-audio-size" hidden></button>');
 
     var frame = bar.querySelector(".q-audio-frame");
+    var size = bar.querySelector(".q-audio-size");
+    size.addEventListener("click", function () {
+      saveDriveTall(bar.classList.contains("is-short"));
+      applyDriveHeight();
+    });
 
     function idle() {
       frame.className = "q-audio-frame";
@@ -2370,6 +2423,7 @@
         '<span class="q-audio-open-icon" aria-hidden="true">\u25b6</span>' +
         "<span>" + esc(t("exam.audioPlay")) + "</span></button>";
       frame.querySelector(".q-audio-open").addEventListener("click", start);
+      size.hidden = true;
     }
 
     function start() {
@@ -2377,14 +2431,13 @@
       frame.innerHTML = '<span class="q-audio-loading">' +
         esc(t("exam.audioLoading")) + "</span>";
 
-      /* The frame is given the height the stylesheet reserves for it, not a
-         number of its own: Drive lays its player out to fit the frame, and
-         the two disagreeing is what cropped the controls. See
-         .q-audio-frame. */
+      /* The frame fills whatever box the stylesheet gives it rather than
+         carrying a height of its own: Drive lays its player out to fit the
+         frame, and the two disagreeing is what cropped the controls. It also
+         means the box can be resized afterwards and Drive will re-lay itself
+         out inside it. See .q-audio-frame. */
       var pane = document.createElement("iframe");
       pane.src = audioURL(url) + "?autoplay=1";
-      pane.width = "100%";
-      pane.height = String(frame.clientHeight || 76);
       pane.allow = "autoplay";
       pane.title = t("exam.audio");
       /* A cross-origin frame tells us nothing about what is inside it, but it
@@ -2393,6 +2446,9 @@
         frame.classList.remove("is-loading");
       });
       frame.appendChild(pane);
+      /* Only once there is a player to resize. */
+      size.hidden = false;
+      applyDriveHeight();
     }
 
     /* The same slot arrangement the whole-test player uses: the bar stays put
