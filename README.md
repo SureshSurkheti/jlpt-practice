@@ -178,6 +178,15 @@ Every word is covered on both halves of a question — the prompt **and** the
 options. Words written in kanji get furigana; words already written in kana get
 a meaning but no furigana, being already their own reading.
 
+**On a listening question that is all of it**, with every filter off: the four
+options, the options recovered from the transcript on the questions whose paper
+printed none, and the whole transcript. A reading passage is on the page to be
+read again and keeps the level filter below, or the list buries the one word
+that stopped you; a transcript is the only place the spoken words can be seen
+at all, and the ones worth naming there are exactly the ordinary words that
+went past too fast. It costs about 7% more words on a paper and buys ten more
+of them on every listening question.
+
 **Anything written with kanji is explained, whatever its level.** The kanji is
 itself the difficulty: someone who cannot read 横 cannot look it up either, so
 filtering those by level would leave exactly the words that stop a reader
@@ -307,6 +316,11 @@ drops back into place when you scroll up to it. It is the same element
 throughout, never a copy: moving the iframe or rebuilding it reloads the player
 and restarts the recording from zero.
 
+It follows you from the start, with nothing pressed. It used to wait until it
+was playing — a Play button that trails you down the page is clutter — but on a
+listening paper the Play button is the thing you are reaching for, and scrolling
+back to the head of the 問題 to find it is the greater clutter.
+
 Only ever one at a time, and it is **the paper's own recording**. A whole-test
 file follows you the length of the listening paper; a per-問題 file follows you
 through its own 問題 and then hands over. Which 問題 you are on is decided at
@@ -315,9 +329,10 @@ go as 問題2 arrives instead of hanging on until the last pixel of its section
 has gone.
 
 The YouTube upload is a stand-in for the sittings whose audio the archive never
-got, so it floats **only on the papers where it is the only audio there is**.
-Where the paper has a recording of its own, the upload stays where it is drawn,
-at the head of the listening test, as a single row with a Play button.
+got, so it floats **only on the papers where it is the only audio there is** —
+there it is the listening section's player and is pinned like one. Where the
+paper has a recording of its own, the upload stays where it is drawn, at the
+head of the listening test, as a single row with a Play button.
 
 ### Why the recording is an iframe and not an `<audio>` element
 
@@ -363,6 +378,13 @@ of missing controls, which is the bug this section opens with. Scaling takes
 nothing away, and there is no size button any more: one height, always the
 small one.
 
+The player is then **pushed down 8px**, because Drive does not centre its own
+controls: it keeps about 17px of empty page below them, so the play button, the
+scrubber and the time sit 8px above the middle of whatever box they are given.
+Measured at 68, 76 and 140px — it is a fixed strip, not a proportion. The 8px
+of frame that uncovers at the top is painted `#1e1e1e`, sampled from Drive's own
+page, so the join cannot be seen.
+
 **Nothing of Google's is fetched until the recording is asked for.** Drawn at
 render time, one frame per 問題 meant five Google pages loading at once on a
 paper with a recording each, and what a reader saw while they arrived was five
@@ -371,8 +393,7 @@ into someone else's page. So the player starts as a button in the site's own
 chrome and the frame is created by the click that asks for it, which is also a
 user gesture, so pressing it plays rather than loading a second play button.
 Until the frame reports itself loaded, the box says "Starting the player…"
-rather than sitting there black. A player follows you down the paper only once
-it is actually playing.
+rather than sitting there black.
 
 ### The archived recordings
 

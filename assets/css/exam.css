@@ -758,13 +758,20 @@
 }
 /* 76 x 0.895 = 68, and the width is widened by the same fraction so that the
    scaled frame still fills the box edge to edge. Anchored top left because
-   that is the corner the box and the frame already share. */
+   that is the corner the box and the frame already share.
+
+   Then pushed down 8px, because Drive does not centre its own controls: it
+   keeps about 17px of empty page below them, so the play button, the scrubber
+   and the time sit 8px above the middle of whatever box they are given. That
+   was measured at 68, 76 and 140px - it is a fixed strip, not a proportion.
+   The 8px of frame this uncovers at the top is painted Drive's own page
+   colour below, and the 8px lost at the bottom is that empty strip. */
 .q-audio-frame iframe {
   display: block;
   width: 111.8%;
   height: 76px;
   border: 0;
-  transform: scale(0.895);
+  transform: translateY(8px) scale(0.895);
   transform-origin: 0 0;
 }
 
@@ -789,11 +796,13 @@
 .q-audio-open:hover { border-color: var(--blue); }
 .q-audio-open-icon { font-size: 1.05rem; line-height: 1; color: var(--blue); }
 
-/* Once it is live the frame is Drive's page, which is black, and the window
-   is cropped to the part of it that has controls in it. */
+/* Once it is live the frame is Drive's page, and the window is cropped to the
+   part of it that has controls in it. The colour is Drive's own page colour,
+   sampled from it, so that the strip the iframe does not cover cannot be told
+   from the player above it. */
 .q-audio-frame.is-live {
   display: block;
-  background: #111;
+  background: #1e1e1e;
 }
 
 /* While it is arriving, the box says so instead of sitting there black. The

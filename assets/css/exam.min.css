@@ -491,7 +491,7 @@ display: block;
 width: 111.8%;
 height: 76px;
 border: 0;
-transform: scale(0.895);
+transform: translateY(8px) scale(0.895);
 transform-origin: 0 0;
 }
 .q-audio-open {
@@ -512,7 +512,7 @@ transition: 0.16s ease;
 .q-audio-open-icon { font-size: 1.05rem; line-height: 1; color: var(--blue); }
 .q-audio-frame.is-live {
 display: block;
-background: #111;
+background: #1e1e1e;
 }
 .q-audio-loading {
 position: absolute;

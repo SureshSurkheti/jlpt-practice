@@ -121,6 +121,14 @@ def texts_of(exam):
             for choice in q.get("choices") or []:
                 if choice:
                     yield choice
+            # The options of a listening question whose paper printed none:
+            # recovered from the transcript, shown on the page, and so read
+            # like any other option.
+            if q.get("spokenPrompt"):
+                yield q["spokenPrompt"]
+            for choice in q.get("spokenChoices") or []:
+                if choice:
+                    yield choice
             for line in q.get("script") or []:
                 # [speaker, text]
                 if isinstance(line, (list, tuple)) and len(line) > 1 and line[1]:

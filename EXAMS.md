@@ -333,6 +333,15 @@ Both level lists are merged, keeping the **easiest** level any of them claims
 for a word. This matters: on its own the first source files 見る at N3 only,
 which would have the glossary explaining "to see" on an N3 paper.
 
+### Two kinds of text
+
+The question is read in full — prompt, four options, and on a listening
+question the options recovered from the transcript. So is a **listening
+transcript**: no level cut and no stop list, because it is the only place the
+spoken words can be seen at all. A **reading passage** keeps the filters
+described below; it runs to hundreds of words and stays on the page to be
+re-read.
+
 ### Which words get a meaning
 
 Segmentation is done by [janome](https://github.com/mocobeta/janome)
@@ -340,7 +349,11 @@ Segmentation is done by [janome](https://github.com/mocobeta/janome)
 each token. A word is kept only if all of the following hold:
 
 - it is a content word — noun, verb, adjective, adverb, conjunction; particles,
-  auxiliaries, pronouns, numbers, proper nouns and suffixes are dropped;
+  auxiliaries, pronouns, numbers and proper nouns are dropped. A suffix is
+  dropped on its own but joined to the noun in front of it when the pair is a
+  headword: the tokenizer hands 消費者 over as 消費 + 者 and 必要性 as 必要 +
+  性, and the glossary was explaining "consumption" under a heading that reads
+  "consumer". 伝統的, 活性化, 問題点 and 技術力 come back the same way;
 - **it is written with kanji** — those are kept unconditionally, at every
   level. The kanji is itself the difficulty: a reader who cannot read 横
   cannot look it up either, so filtering by level would leave exactly the

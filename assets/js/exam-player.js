@@ -2004,13 +2004,13 @@
         if (fullBar && !fullPlaced) {
           main.appendChild(fullBar);
           if (!ownAudio) {
-            floatAdd(fullBar.floatBar, fullBar, main, fullBar.floatWhen);
+            floatAdd(fullBar.floatBar, fullBar, main);
           }
           fullPlaced = true;
         }
         if (sharedBar && !sharedPlaced) {
           main.appendChild(sharedBar);
-          floatAdd(sharedBar.floatBar, sharedBar, main, sharedBar.floatWhen);
+          floatAdd(sharedBar.floatBar, sharedBar, main);
           main.appendChild(driveAside());
           sharedPlaced = true;
         }
@@ -2241,7 +2241,7 @@
       if (aside) node.appendChild(aside);
       /* Its 問題 is its scope: past the end of this section it is the wrong
          recording to still be holding on to. */
-      floatAdd(player.floatBar, player, node, player.floatWhen);
+      floatAdd(player.floatBar, player, node);
     }
 
     section.blocks.forEach(function (block) {
@@ -2397,10 +2397,6 @@
         frame.classList.remove("is-loading");
       });
       frame.appendChild(pane);
-      /* It is worth following the reader down the paper only now that it is
-         playing something, and floatWhen below says so - but nothing else is
-         going to ask the question, so ask it here. */
-      floatSync();
     }
 
     /* The same slot arrangement the whole-test player uses: the bar stays put
@@ -2409,10 +2405,11 @@
     var slot = el("div", "q-audio-slot");
     slot.appendChild(bar);
     slot.floatBar = bar;
-    /* Worth keeping in reach only once it is playing something. Until then it
-       is a Play button, and a Play button that follows the reader down the
-       page is clutter - the same rule the YouTube bar follows. */
-    slot.floatWhen = function () { return frame.classList.contains("is-live"); };
+    /* It follows the reader from the start, before anything has been pressed.
+       It used to wait until it was playing, on the grounds that a Play button
+       which follows you around is clutter - but on a listening paper the Play
+       button is the thing you are reaching for, and having to scroll back up
+       to the top of the 問題 to find it is the clutter. */
     idle();
     return slot;
   }
@@ -2610,8 +2607,8 @@
            or the whole listening paper for a recording that covers the lot
      live  whether it is worth floating at all right now (the YouTube bar is
            only a Play button until it is started) */
-  function floatAdd(bar, slot, scope, live) {
-    floaters.push({ bar: bar, slot: slot, scope: scope, live: live });
+  function floatAdd(bar, slot, scope) {
+    floaters.push({ bar: bar, slot: slot, scope: scope });
   }
 
   function floatSet(f, on) {
@@ -2647,7 +2644,6 @@
 
     floaters.forEach(function (f) {
       if (!document.body.contains(f.bar)) { gone = true; return; }
-      if (f.live && !f.live()) return;
       if (f.slot.getBoundingClientRect().top >= limit) return;
       if (f.scope) {
         var scope = f.scope.getBoundingClientRect();
@@ -2712,9 +2708,9 @@
     var slot = el("div", "q-audio-slot q-audio-full-slot");
     slot.appendChild(bar);
     slot.floatBar = bar;
-    /* Only worth the corner once it is actually playing - idle it is a Play
-       button, and a Play button that follows you around is clutter. */
-    slot.floatWhen = function () { return bar.classList.contains("is-playing"); };
+    /* Pinned from the start, like the paper's own recording: on the papers
+       where this is the only audio there is, it is the listening section's
+       player, and a player you have to go back up the page for is no use. */
 
     var media = bar.querySelector(".q-audio-full-media");
     var stop = bar.querySelector(".q-audio-stop");

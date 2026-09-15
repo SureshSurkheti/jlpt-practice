@@ -3,8 +3,9 @@
 Build per-exam English word glossaries for the JLPT papers.
 
 For every question the paper shows in Japanese - prompt, reading passage,
-answer choices and (for listening) the Japanese transcript - this writes the
-reading (as furigana) plus a short English meaning.
+answer choices, the options recovered from a listening transcript, and (for
+listening) the transcript itself - this writes the reading (as furigana) plus
+a short English meaning.
 
 Two rules, because the two kinds of text are read differently.
 
@@ -15,11 +16,16 @@ about the average candidate rather than about this reader. A kana spelling
 also names its homophones, since on a "what is the reading" question the four
 options are kana precisely because the kanji is the answer.
 
-Reading passages and listening transcripts keep a level filter: they run to
-hundreds of words, and a list with every は and する in it buries the one word
-that stopped you. A word is kept there when it is at the paper's level or
-harder, or written with kanji, or in no JLPT list at all - an unlisted word
-is far more often rare than trivial.
+Reading passages keep a level filter: they run to hundreds of words, and a
+list with every は and する in it buries the one word that stopped you. A word
+is kept there when it is at the paper's level or harder, or written with kanji,
+or in no JLPT list at all - an unlisted word is far more often rare than
+trivial.
+
+Listening transcripts are read in full, like the question. A passage is on the
+page to be read again; a transcript is the only place the spoken words can be
+seen at all, and the words worth naming there are precisely the ordinary ones
+that went past too fast to catch.
 
 Data sources (both downloaded once into data/dict/):
   jmdict-eng   readings, English glosses, part of speech, common flag
@@ -491,6 +497,39 @@ class Glosser(object):
             level = self.jlpt_reading.get(reading)
         return level
 
+    def grow(self, tokens, i):
+        """A noun and the suffix bound to it, read as the one word it is.
+
+        The tokenizer hands 消費者 over as 消費 + 者, 必要性 as 必要 + 性,
+        伝統的 as 伝統 + 的. The suffix half is dropped as a suffix, so the
+        glossary was explaining "consumption" under a heading that reads
+        "consumer". They are joined only when the joined form is a headword
+        in its own right, which is what stops 意見 + 書 becoming a word that
+        is not one.
+        """
+        parts = tokens[i].part_of_speech.split(",")
+        if parts[0] != "\u540d\u8a5e":
+            return None
+        surface = tokens[i].surface
+        reading = to_hiragana(tokens[i].reading or "")
+        last = i
+        # Two at most: 近代 + 化 + 論 is a word, 者 + 的 + 化 is a pile.
+        for j in range(i + 1, min(i + 3, len(tokens))):
+            tags = tokens[j].part_of_speech.split(",")
+            if tags[0] != "\u540d\u8a5e" or len(tags) < 2 or tags[1] != "\u63a5\u5c3e":
+                break
+            surface += tokens[j].surface
+            reading += to_hiragana(tokens[j].reading or "")
+            last = j
+        if last == i:
+            return None
+        key = unicodedata.normalize("NFKC", surface)
+        if "*" in reading:
+            reading = ""
+        if self.lookup(key, reading) is None:
+            return None
+        return key, reading, last
+
     def words_in(self, text, seen, strict=False, options=False, question=False):
         """Ordered list of (key, entry) worth glossing, skipping `seen` keys.
 
@@ -501,9 +540,10 @@ class Glosser(object):
         by, and "everyone knows it by N3" is a statement about the average
         candidate, not about the person reading this question.
 
-        Reading passages and listening transcripts keep the level rule.
-        They run to hundreds of words, and a list with every は and する in
-        it buries the one word that actually stopped you.
+        Reading passages keep the level rule. They run to hundreds of words,
+        and a list with every は and する in it buries the one word that
+        actually stopped you. Listening transcripts are passed question=True
+        instead - see build_exam().
 
         `options` narrows that further to one answer choice, which brings its
         own debris rule below.
@@ -548,6 +588,9 @@ class Glosser(object):
                 if fragment_of_compound(tokens, pos_i):
                     continue
                 key = normalise(token)
+                grown = self.grow(tokens, pos_i)
+                if grown:
+                    key, grown_reading = grown[0], grown[1]
                 if len(key) < 2 and not has_kanji(key):
                     continue
                 if key in seen:
@@ -559,7 +602,7 @@ class Glosser(object):
                 if not question and key in STOP:
                     continue
 
-                hint = to_hiragana(token.reading or "")
+                hint = grown_reading if grown else to_hiragana(token.reading or "")
                 if hint == "*":
                     hint = ""
                 entry = self.lookup(key, hint)
@@ -705,10 +748,28 @@ def build_exam(exam, glosser):
                         words.setdefault(lone, entry)
                         keys.append(lone)
                         seen.add(lone)
+            # On a listening question whose four options were never printed
+            # - the original paper printed pictures, or the options were only
+            # read out - the page shows the ones recovered from the
+            # transcript instead. They are answer options like any others,
+            # and are read under the same rule: in full, every filter off.
+            collect(q.get("spokenPrompt") or "", seen, keys, question=True)
+            for choice in q.get("spokenChoices") or []:
+                collect(choice, seen, keys, options=True, question=True)
+
             # The explanation field holds the Japanese listening transcript,
             # and for the other sections the Japanese quoted inside a
             # Vietnamese note. japanese_only() keeps just the Japanese.
-            collect(japanese_only(q.get("explanation") or ""), seen, keys)
+            #
+            # A listening transcript is read in full, the way a question is:
+            # no level cut and no stop list. It is not a reading passage,
+            # which is on the page to be re-read - the transcript is the one
+            # chance to see what was said, the words in it are the words that
+            # went past too fast, and the four options are quoted inside it.
+            # It costs about 7% more words on a paper and buys ten more of
+            # them per listening question.
+            collect(japanese_only(q.get("explanation") or ""), seen, keys,
+                    question=part["id"] == "listening")
             if keys:
                 per_question[qid] = keys
 
