@@ -2010,7 +2010,7 @@
         }
         if (sharedBar && !sharedPlaced) {
           main.appendChild(sharedBar);
-          floatAdd(sharedBar.floatBar, sharedBar, main, null);
+          floatAdd(sharedBar.floatBar, sharedBar, main, sharedBar.floatWhen);
           main.appendChild(driveAside());
           sharedPlaced = true;
         }
@@ -2241,7 +2241,7 @@
       if (aside) node.appendChild(aside);
       /* Its 問題 is its scope: past the end of this section it is the wrong
          recording to still be holding on to. */
-      floatAdd(player.floatBar, player, node, null);
+      floatAdd(player.floatBar, player, node, player.floatWhen);
     }
 
     section.blocks.forEach(function (block) {
@@ -2329,31 +2329,70 @@
   /* The Drive player itself, drawn either inside the 問題 it belongs to or -
      when one recording serves the whole listening test - once above the lot.
      See wholeListeningAudio(). */
+  /* Nothing of Drive is loaded until the recording is asked for.
+
+     Drawn at render time, the frame fetches a Google page for every 問題 on
+     the paper at once - five of them on a sitting with a recording each - and
+     what a reader sees while those arrive is five black rectangles, because
+     the black is Drive's own player and we are looking at the inside of
+     somebody else's page through a window. Waiting for a recording nobody has
+     asked to hear yet is the worst version of that: a black box, loading.
+
+     So the player starts as a button in the paper's own chrome, and the frame
+     is created by the click that asks for it - the same way the YouTube bar
+     works. The click is a user gesture, which is also what lets autoplay
+     through, so pressing it plays rather than loading a second play button.
+     Until the frame reports back that it has loaded, the box says so in
+     words rather than sitting there black.
+
+     The frame itself cannot be dressed any further than this. It is
+     cross-origin, so its colours, its controls and its playback speed are
+     Drive's; the only alternative would be to play the file ourselves, and
+     Drive serves it with cross-origin-resource-policy: same-site, which a
+     browser refuses to a media element on another site. */
   function driveBar(url, tag, whole) {
     var bar = el("div", "q-audio q-audio-drive",
         '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
           /* "Audio for this section" is the wrong words for the one file that
-             is the whole sitting - beside a tag reading "whole listening
-             test" it contradicted itself. */
-          "<b>" + esc(t(whole ? "exam.audioFullLabel" : "exam.audio")) + "</b>" +
-          (tag ? "<i>" + esc(tag) + "</i>" : "") +
+             is the whole sitting - and "Full recording" is the YouTube bar's
+             own label, so on the papers that have both, both rows read the
+             same. This one says which test it is the audio for. */
+          "<b>" + esc(t(whole ? "exam.audioWhole" : "exam.audio")) + "</b>" +
+          (tag && !whole ? "<i>" + esc(tag) + "</i>" : "") +
         "</span>" +
-        /* The iframe is 76px because that is the height Drive's preview page
-           lays its player out for - below about 68 it clips its own controls.
-           But it only draws in the top 48 of that: measured on three
-           different recordings at 348, 560 and 700px wide, the play button,
-           scrubber and volume sit at 24-36px from the top every time, so the
-           bottom quarter of the frame is empty field. That is why the
-           controls looked to be riding high in the black box.
+        '<div class="q-audio-frame"></div>');
 
-           The wrapper crops the dead part away. Drive still gets its 76px
-           and lays out exactly as it wants; the 60px window is centred on
-           what it actually draws. */
-        '<div class="q-audio-frame">' +
-          '<iframe src="' + esc(audioURL(url)) + '" width="100%" ' +
-            'height="76" allow="autoplay" title="' + esc(t("exam.audio")) +
-            '" loading="lazy"></iframe>' +
-        "</div>");
+    var frame = bar.querySelector(".q-audio-frame");
+
+    function idle() {
+      frame.className = "q-audio-frame";
+      frame.innerHTML = '<button type="button" class="q-audio-open">' +
+        '<span class="q-audio-open-icon" aria-hidden="true">\u25b6</span>' +
+        "<span>" + esc(t("exam.audioPlay")) + "</span></button>";
+      frame.querySelector(".q-audio-open").addEventListener("click", start);
+    }
+
+    function start() {
+      frame.className = "q-audio-frame is-live is-loading";
+      frame.innerHTML = '<span class="q-audio-loading">' +
+        esc(t("exam.audioLoading")) + "</span>";
+
+      /* 76px because that is the height Drive's preview page lays its player
+         out for - below about 68 it clips its own controls - and the wrapper
+         crops the empty bottom quarter away. See .q-audio-frame. */
+      var pane = document.createElement("iframe");
+      pane.src = audioURL(url) + "?autoplay=1";
+      pane.width = "100%";
+      pane.height = "76";
+      pane.allow = "autoplay";
+      pane.title = t("exam.audio");
+      /* A cross-origin frame tells us nothing about what is inside it, but it
+         does say when it has loaded, which is all the notice needs. */
+      pane.addEventListener("load", function () {
+        frame.classList.remove("is-loading");
+      });
+      frame.appendChild(pane);
+    }
 
     /* The same slot arrangement the whole-test player uses: the bar stays put
        in the DOM so the iframe is never reloaded, and the slot holds the gap
@@ -2361,6 +2400,11 @@
     var slot = el("div", "q-audio-slot");
     slot.appendChild(bar);
     slot.floatBar = bar;
+    /* Worth keeping in reach only once it is playing something. Until then it
+       is a Play button, and a Play button that follows the reader down the
+       page is clutter - the same rule the YouTube bar follows. */
+    slot.floatWhen = function () { return frame.classList.contains("is-live"); };
+    idle();
     return slot;
   }
 

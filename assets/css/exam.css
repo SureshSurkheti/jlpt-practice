@@ -726,12 +726,16 @@
    in the top 48 of it, so this crops the empty quarter off the bottom and
    leaves the controls centred in what you see. */
 .q-audio-frame {
+  position: relative;
   flex: 1;
   min-width: 0;
   height: 60px;
   overflow: hidden;
   border-radius: 10px;
   background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .q-audio-frame iframe {
   display: block;
@@ -739,6 +743,50 @@
   height: 76px;
   border: 0;
 }
+
+/* Before the recording is asked for there is no frame at all - see driveBar()
+   in exam-player.js. What stands in its place is a button in the paper's own
+   colours, so a listening paper opens as a page rather than as a row of black
+   rectangles waiting on Google. */
+.q-audio-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: 0.16s ease;
+}
+.q-audio-open:hover { border-color: var(--blue); }
+.q-audio-open-icon { font-size: 1.05rem; line-height: 1; color: var(--blue); }
+
+/* Once it is live the frame is Drive's page, which is black, and the window
+   is cropped to the part of it that has controls in it. */
+.q-audio-frame.is-live {
+  display: block;
+  background: #111;
+}
+
+/* While it is arriving, the box says so instead of sitting there black. The
+   notice is laid over the frame rather than replacing it, so nothing moves
+   when Drive finishes loading. */
+.q-audio-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel-soft);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.q-audio-frame:not(.is-loading) .q-audio-loading { display: none; }
 
 /* Everything about the audio that is not a control: the note, and the way
    out when it will not play. Left in the section head so the pinned bar

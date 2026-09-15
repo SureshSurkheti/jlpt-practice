@@ -392,6 +392,14 @@ I18N.register("en", {
   /* Shown inside "Not playing?" on the papers that also carry a full upload:
      the recording that is stalling is not the only way to hear the test. */
   "exam.audioAlsoFull": "This sitting is also on the full recording at the top of the listening section.",
+  /* The paper's own recording where one file covers the sitting. Not "Full
+     recording": that is what the YouTube bar says, and 33 papers carry both,
+     which made the two rows read identically. */
+  "exam.audioWhole": "Audio for the whole test",
+  /* The Drive player before it is asked for, and while it is arriving.
+     Nothing of Google's is fetched until this button is pressed. */
+  "exam.audioPlay": "Play the recording",
+  "exam.audioLoading": "Starting the player…",
 
   /* The furigana toggle in the command bar. The papers print none - the real
      exam does not - so this is the reader adding it, and the button says
@@ -837,6 +845,9 @@ I18N.register("ja", {
   "exam.spokenOptions": "読み上げられた選択肢",
   "exam.audioFullBigger": "大きく", "exam.audioFullSmaller": "小さく",
   "exam.audioAlsoFull": "この回は、聴解セクション上部の全体録音でも聞けます。",
+  "exam.audioWhole": "聴解全体の音声",
+  "exam.audioPlay": "再生する",
+  "exam.audioLoading": "プレーヤーを起動しています…",
   "exam.endOfPaper": "問題終了", "exam.allAnswered": "すべて解答済みです。提出できます。",
   "exam.otherSections": "ほかの科目へ",
   "exam.blanksRemain": "問が未解答です。",
@@ -1669,6 +1680,9 @@ I18N.register("ne", {
   "exam.spokenOptions": "सुनाइएका विकल्पहरू",
   "exam.audioFullBigger": "ठूलो", "exam.audioFullSmaller": "सानो",
   "exam.audioAlsoFull": "यो परीक्षा सुन्ने खण्डको सुरुमा रहेको पूर्ण रेकर्डिङमा पनि छ।",
+  "exam.audioWhole": "पूरा सुन्ने खण्डको अडियो",
+  "exam.audioPlay": "रेकर्डिङ बजाउनुहोस्",
+  "exam.audioLoading": "प्लेयर सुरु हुँदैछ…",
   "exam.endOfPaper": "प्रश्नपत्र समाप्त", "exam.allAnswered": "सबै उत्तर दिइयो। बुझाउन सक्नुहुन्छ।",
   "exam.otherSections": "अर्को खण्डमा जानुहोस्",
   "exam.blanksRemain": "प्रश्न खाली छन्।",

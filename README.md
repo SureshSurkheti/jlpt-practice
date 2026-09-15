@@ -342,6 +342,17 @@ When a recording stalls, nothing is reported back to the page — the frame is
 Google's. So "Not playing?" now also names the full recording at the top of
 the section on the 33 papers that have one.
 
+**Nothing of Google's is fetched until the recording is asked for.** Drawn at
+render time, one frame per 問題 meant five Google pages loading at once on a
+paper with a recording each, and what a reader saw while they arrived was five
+black rectangles — the black being Drive's own player, seen through a window
+into someone else's page. So the player starts as a button in the site's own
+chrome and the frame is created by the click that asks for it, which is also a
+user gesture, so pressing it plays rather than loading a second play button.
+Until the frame reports itself loaded, the box says "Starting the player…"
+rather than sitting there black. A player follows you down the paper only once
+it is actually playing.
+
 ### The archived recordings
 
 This was broken until now, and the cause was not obvious: the archived pages
