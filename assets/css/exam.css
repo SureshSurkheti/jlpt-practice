@@ -731,14 +731,21 @@
    and it looked like a broken player rather than a cropped one.
 
    Which player a reader gets is Drive's decision, made inside a frame we
-   cannot see into, so the window has to fit the larger of them. No crop: the
-   frame is exactly as tall as the iframe, and whatever Drive draws is shown
-   whole. */
+   cannot see into. What is ours to get right is that the window and the frame
+   are the same size: Drive lays its player out to the height the iframe is
+   given, so a window smaller than that crops a player that was drawn to fit.
+   One number now, and no crop.
+
+   76px is that number because it is the height Drive draws its compact
+   control strip for - a round play button, a scrubber, a volume control -
+   which is the player worth having. Given more room it switches to a
+   waveform display, which is bigger, slower to read and no more useful for
+   finding your place in a listening test. */
 .q-audio-frame {
   position: relative;
   flex: 1;
   min-width: 0;
-  height: var(--drive-h, 96px);
+  height: var(--drive-h, 76px);
   overflow: hidden;
   border-radius: 10px;
   background: #fff;
@@ -749,7 +756,7 @@
 .q-audio-frame iframe {
   display: block;
   width: 100%;
-  height: var(--drive-h, 96px);
+  height: var(--drive-h, 76px);
   border: 0;
 }
 

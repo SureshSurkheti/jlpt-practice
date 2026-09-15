@@ -2384,7 +2384,7 @@
       var pane = document.createElement("iframe");
       pane.src = audioURL(url) + "?autoplay=1";
       pane.width = "100%";
-      pane.height = String(frame.clientHeight || 96);
+      pane.height = String(frame.clientHeight || 76);
       pane.allow = "autoplay";
       pane.title = t("exam.audio");
       /* A cross-origin frame tells us nothing about what is inside it, but it

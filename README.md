@@ -343,13 +343,16 @@ Google's. So "Not playing?" now also names the full recording at the top of
 the section on the 33 papers that have one.
 
 **The window onto Drive's player does not crop it.** It used to be 60px onto a
-76px frame, cutting away what had been measured as an empty bottom quarter.
-That measurement held for one of Drive's players and not the other: signed in
-to a Google account, the preview draws a taller layout — a waveform and a large
-round play button — and the 60px window cut the top off that button, so it read
-as a broken player rather than a cropped one. Which player a reader gets is
-Drive's decision, made inside a frame that cannot be seen into, so the window
-now fits the larger of the two and nothing is cropped.
+76px frame, cutting away what had been measured as an empty bottom quarter —
+and a player drawn to fit 76px does not survive being shown through 60 of them,
+which is why the round play button arrived with its top sliced off.
+
+There is one number now, 76px, for both the frame and the window. That is the
+height Drive lays out its compact control strip for: a round play button, a
+scrubber, the time, a volume control, on black. Given more room it switches to
+a waveform display instead, which is bigger, slower to read and no better for
+finding your place in a listening test — so the box is sized for the player
+worth having.
 
 **Nothing of Google's is fetched until the recording is asked for.** Drawn at
 render time, one frame per 問題 meant five Google pages loading at once on a

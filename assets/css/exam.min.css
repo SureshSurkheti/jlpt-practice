@@ -478,7 +478,7 @@ font-variant-numeric: lining-nums tabular-nums;
 position: relative;
 flex: 1;
 min-width: 0;
-height: var(--drive-h, 96px);
+height: var(--drive-h, 76px);
 overflow: hidden;
 border-radius: 10px;
 background: #fff;
@@ -489,7 +489,7 @@ justify-content: center;
 .q-audio-frame iframe {
 display: block;
 width: 100%;
-height: var(--drive-h, 96px);
+height: var(--drive-h, 76px);
 border: 0;
 }
 .q-audio-open {
