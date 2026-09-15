@@ -104,6 +104,22 @@ Two quirks handled deliberately:
   have no printed options at all (問題3 — "nothing is printed on the
   question sheet"). Those render as numbered buttons, which is authentic.
 
+### Two fields the source does not have
+
+`add_spoken()` derives them from the transcript after parsing:
+
+| Field | What it is |
+|---|---|
+| `spokenPrompt` | The question the recording asks, for a 問題 that prints none |
+| `spokenChoices` | The options it reads out, in order |
+
+Only on listening questions whose printed choices are all empty, and only
+where the tail of the transcript is a clean run of numbered options: **1,368
+of the 1,436** such questions that have a transcript. The player shows them
+once the question is marked — before that the buttons stay blank, because
+blank is the exercise. See `spoken_options()` for what counts as a clean run,
+and why the search starts from the end of the transcript.
+
 ## The player
 
 `exam.html` + `assets/js/exam-player.js` + `assets/css/exam.css`.

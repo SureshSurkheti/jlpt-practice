@@ -41,10 +41,12 @@ assets/js/stats.js           statistics page
 data/exams/index.json        catalogue of every built exam
 data/exams/<id>.json         one exam (questions, keys, explanations)
 data/glossary/<id>.json      word meanings for one paper (N1, N2, N3)
+data/furigana/<id>.json      the reading of every kanji word in one paper
 data/dict/                   dictionary build inputs, never served
 tools/build_exams.py         rebuilds data/exams from the archived sources
 tools/fetch_dicts.py         downloads JMdict and the JLPT level lists
 tools/build_glossary.py      rebuilds data/glossary
+tools/build_furigana.py      rebuilds data/furigana
 
 jlpt_n1_pages/ … jlpt_n4_pages/
     258 archived source pages, named <exam-id>-<paper>.html. Input to the
@@ -209,6 +211,40 @@ See **[EXAMS.md](EXAMS.md)** for how the data is extracted, how to rebuild it,
 the scoring model, why some exams have no listening section, and why newer
 sittings cannot simply be downloaded.
 
+## Furigana
+
+The papers print none — not one `<ruby>` in 20,346 questions — because the
+real N1, N2 and N3 papers print none either. Reading 遂行 unaided is part of
+what is being tested.
+
+That is the right call for sitting a paper and the wrong one for learning from
+it: a word you cannot read is a word you cannot look up, because you do not
+know how it sounds. So **Furigana** in the command bar draws the readings over
+the paper's own text, and remembers the choice. Off by default — a paper with
+furigana is an easier paper, and that has to be the reader's decision.
+
+Two things it deliberately will not do:
+
+- **問題1 and 問題2 of the vocabulary booklet keep their readings back** until
+  the question is marked. Those ask how a word is read and how it is written;
+  furigana over the stem is the answer printed above the question. In study
+  mode the hold lifts on that question the moment it is answered.
+- **A word read two ways is left bare.** 人 is ひと alone and にん after a
+  number, 中 is なか and ちゅう. The browser matches a word list against the
+  text with no tokenizer of its own, so it would get those wrong — and wrong
+  furigana is worse than none, because the reader cannot tell it is a guess
+  and will learn it. Measured against the tokenizer over 73,000 annotations:
+  **82% of kanji words get a reading, and 99.7% of the readings shown are the
+  one the tokenizer gave in context.**
+
+```bash
+pip3 install janome              # the same tokenizer the glossary uses
+python3 tools/build_furigana.py  # ~50s, writes data/furigana/<exam-id>.json
+```
+
+5.6 MB in all, one file per paper, fetched only when a reader turns furigana
+on.
+
 ## Listening
 
 **133 of the 141 papers can be listened to end to end**, and 630 of the 633
@@ -233,6 +269,33 @@ not a recording of the real exam. Where the device has no Japanese voice at
 all — which happens on Android without TTS data installed — the play button is
 not drawn and the transcript opens by default, so the question is still
 answerable by reading.
+
+### The script, and the questions that were never printed
+
+**Every listening question carries its script**, on every paper, behind a fold
+that stays shut until it is asked for. It used to appear only where the
+recording would not play, on the reasoning that a script beside an unanswered
+question is an invitation to read instead of listen — which is true, and is
+the reader's decision rather than the page's. Reading along with a recording is
+how a great deal of listening is learned, and a script that only unlocks after
+marking cannot be used that way at all.
+
+The script is printed as a script: one line per turn, the speaker held out to
+the left, and without the source site's own Vietnamese label (*Tham khảo:*)
+that used to head every one of them.
+
+**1,468 listening questions print no options at all.** That is not damage —
+問題3 and 問題4 print nothing on the question sheet by design, and the four
+choices are read out at the end of the recording. Marked, the paper therefore
+said "the answer was 3" against four blank buttons, with no way to find out
+what 3 had been without scrubbing back through the audio.
+
+They are in the transcript, because the transcript is of a recording that reads
+them out. `tools/build_exams.py` lifts them back out of it — **1,368 of the
+1,436 that have a transcript**, with the question that was asked — and the
+player shows them once the question is marked, the right one marked and the one
+that was picked beside it. Before marking the buttons stay blank, because blank
+is the exercise.
 
 ### The archived recordings
 

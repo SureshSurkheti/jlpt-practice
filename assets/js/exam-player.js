@@ -27,6 +27,7 @@
 
   var DATA_DIR = (window.SITE_ROOT || "") + "data/exams/";
   var GLOSSARY_DIR = (window.SITE_ROOT || "") + "data/glossary/";
+  var FURIGANA_DIR = (window.SITE_ROOT || "") + "data/furigana/";
 
   /* The organisers publish complete practice workbooks - questions, answers,
      transcripts and listening audio for every level from N5 to N1 - on the
@@ -165,6 +166,9 @@
     filter: "all",
     glossary: null,     // word meanings for this paper, if the level has them
     wordsOpen: false,   // whether every word panel is showing at once
+    furigana: null,     // word -> reading table, once it has been asked for
+    furiOn: false,      // whether furigana is being drawn (remembered)
+    furiGone: false,    // true if this paper has no table to fetch
     saveFailed: false   // true only if localStorage refused the answers
   };
 
@@ -803,9 +807,22 @@
     return node;
   }
 
+  /* The script under a listening question: the play controls, and the words
+     themselves behind a fold.
+
+     The fold used to be drawn only where the recording would not play. The
+     reasoning was that a summary saying "Script" next to a question you have
+     not answered is an invitation to read the answer instead of hearing it -
+     which is true, and is also a decision that belongs to the person
+     practising rather than to the page. Reading along with a recording is how
+     a great deal of listening is actually learned, and a script that only
+     appears once the paper is marked cannot be used that way at all.
+
+     So it is on every listening question now, on every paper, and it stays
+     shut until it is asked for. Where there is no recording it opens by
+     itself, because there the script is the only way in. */
   function buildScript(q, compact) {
     if (!speechFor(q).length) return null;
-    if (compact && !canSpeak()) return null;
     var node = el("div", "q-script" + (compact ? " is-compact" : ""));
 
     if (canSpeak()) {
@@ -827,16 +844,22 @@
       node.appendChild(bar);
     }
 
-    if (compact) return node;
-
     var det = el("details", "q-transcript");
-    if (!canSpeak()) det.open = true;
+    /* Open by default only where there is nothing to listen to: no recording
+       and no voice on the device. Then the script is not a shortcut past the
+       question, it is the question. */
+    if (!compact && !canSpeak()) det.open = true;
     det.innerHTML = "<summary>" + esc(t("exam.transcript")) + "</summary>" +
       '<div class="q-transcript-body">' +
         (canSpeak() ? "" : '<p class="q-script-note">' +
           esc(t("exam.speakNone")) + "</p>") +
         transcriptHTML(q) +
       "</div>";
+    det.addEventListener("toggle", function () {
+      /* Furigana is drawn over what is on the page, and until this is opened
+         the script is not. */
+      if (det.open) furiQuestion(det.closest(".paper-question"));
+    });
     node.appendChild(det);
     return node;
   }
@@ -1165,7 +1188,15 @@
     }).then(function (exam) {
       if (!exam) return;
       state.exam = exam;
-      return loadGlossary(exam.id).then(renderSetup);
+      /* Furigana is remembered between papers, so a reader who turned it on
+         yesterday should not have to turn it on again today - and should not
+         watch the paper redraw itself a moment after it appears either. When
+         it is wanted, the table is fetched alongside the glossary, before the
+         first render. When it is not, it is never fetched at all. */
+      state.furiOn = readFuriPref();
+      var ready = [loadGlossary(exam.id)];
+      if (state.furiOn) ready.push(loadFurigana(exam.id));
+      return Promise.all(ready).then(renderSetup);
     }).catch(function (err) {
       /* The message used to end "run a local web server so the browser can
          load it", which is true and is addressed to whoever is building the
@@ -1942,6 +1973,10 @@
        As direct children of #examPaper they are bound by the paper rather
        than by a 問題, which is what lets the pinned one travel to the end of
        it. */
+    /* The paper is being rebuilt, so the bar that was floating is about to
+       stop existing. Let go of it before it does. */
+    floatEnd();
+
     var fullBar = fullAudioBar();
     var fullPlaced = false;
 
@@ -1980,6 +2015,9 @@
     main.style.removeProperty("--full-h");
     refreshProgress();
     updateSpy();
+    /* A render throws away the annotated nodes with everything else, so the
+       furigana has to be drawn again over what replaced them. */
+    furiRefresh();
   }
 
   function buildBar() {
@@ -1995,6 +2033,17 @@
         '<span class="words-all-short" aria-hidden="true">\u8a9e</span>' +
         "</button>"
       : "";
+    /* Beside the glossary button, and built the same way: the sentence where
+       there is room, one character where there is not. Hidden only once a
+       paper has been found to have no table. */
+    var furiLabel = t(state.furiOn ? "exam.furiHide" : "exam.furiShow");
+    var furiToggle = state.furiGone ? "" :
+      '<button type="button" class="btn btn-ghost words-all furi-all' +
+      (state.furiOn ? " is-on" : "") + '" id="furiBtn" aria-pressed="' +
+      (state.furiOn ? "true" : "false") + '" aria-label="' + esc(furiLabel) +
+      '"><span class="words-all-full">' + esc(furiLabel) + "</span>" +
+      '<span class="words-all-short" aria-hidden="true">\u3075</span>' +
+      "</button>";
     /* Leaving is safe at any point: answers, flags and the deadline are all
        written to storage as you go, and reopening the paper offers Resume. */
     /* Back steps out one level, to this paper's own setup screen - the place
@@ -2027,7 +2076,7 @@
           '<div class="exam-bar-progress">' +
             '<span class="bar-section" id="barSection">' + esc(t("exam.reviewing")) + '</span>' +
           "</div>" +
-          '<div class="exam-bar-tools">' + wordsAll +
+          '<div class="exam-bar-tools">' + furiToggle + wordsAll +
             '<div class="exam-timer is-off">' + s.rightTotal + " / " +
               s.qTotal + " " + esc(t("exam.correctOf")) + "</div>" +
             '<button type="button" class="btn btn-primary" id="retryBtn">' +
@@ -2045,7 +2094,7 @@
           '<span id="examCount"></span>' +
         "</div>" +
         '<div class="exam-bar-tools">' +
-          '<span class="bar-section" id="barSection"></span>' + wordsAll +
+          '<span class="bar-section" id="barSection"></span>' + furiToggle + wordsAll +
           (state.timed
             ? '<div class="exam-timer' +
               /* A stopwatch is not a deadline: no urgency colour, no ticking
@@ -2401,6 +2450,87 @@
     return !!(full && full.url && videoId(full.url));
   }
 
+  /* ------------------------------------------------ the floating player
+
+     The whole-test recording runs the length of the listening paper, and the
+     questions it is being played against are several screens below the bar it
+     started from. Left where it is drawn, the player is out of sight by 2番:
+     pausing it, rewinding ten seconds, or just checking it is still running
+     means scrolling back to the head of the section and then finding your
+     place again.
+
+     So once it is playing and the reader has scrolled past it, it lifts out
+     of the page and parks in the corner of the screen, and drops back into
+     its slot when they scroll up to it.
+
+     It floats rather than pins for the reason it stopped pinning: a 16:9
+     frame docked under the command bar holds the top of the screen for the
+     whole sitting. In the corner it keeps the controls within reach without
+     standing between the reader and the question.
+
+     Throughout, it is the same element - only its position changes. Moving
+     the <iframe> into another parent, or drawing a second floating copy of
+     it, reloads YouTube's player and restarts the recording from zero, which
+     is the one thing a reader forty minutes into a track cannot afford. The
+     slot it came out of keeps its height while it is away, so the paper does
+     not jump underneath as it takes off. */
+  var floatBar = null;
+  var floatSlot = null;
+
+  function floatEnd() {
+    if (floatBar) {
+      floatBar.classList.remove("is-floating");
+      var dock = floatBar.querySelector(".q-audio-dock");
+      if (dock) dock.hidden = true;
+    }
+    if (floatSlot) {
+      floatSlot.classList.remove("is-away");
+      floatSlot.style.height = "";
+    }
+    floatBar = null;
+    floatSlot = null;
+  }
+
+  function floatBegin(bar, slot) {
+    floatEnd();
+    floatBar = bar;
+    floatSlot = slot;
+    floatSync();
+  }
+
+  /* Float while the slot has gone up under the command bar, dock again when
+     it comes back. The slot only takes on the bar's height once the bar has
+     left it, so what is held open is measured rather than guessed - and the
+     slot's own top does not move when that happens, so there is nothing here
+     that can oscillate. */
+  function floatSync() {
+    if (!floatBar || !floatSlot) return;
+    if (!document.body.contains(floatBar)) { floatEnd(); return; }
+    var cmd = document.querySelector(".exam-bar");
+    var limit = cmd ? cmd.getBoundingClientRect().bottom : 0;
+    var away = floatBar.classList.contains("is-floating");
+    var want = floatSlot.getBoundingClientRect().top < limit;
+    if (want === away) return;
+    if (want) floatSlot.style.height = floatBar.offsetHeight + "px";
+    floatSlot.classList.toggle("is-away", want);
+    floatBar.classList.toggle("is-floating", want);
+    if (!want) floatSlot.style.height = "";
+    var dock = floatBar.querySelector(".q-audio-dock");
+    if (dock) dock.hidden = !want;
+  }
+
+  /* On the scroll itself, not on a timer behind it. The question spy can
+     afford to wait 80ms because nothing moves when it runs; this decides
+     whether a player is on the screen at all, and a player that arrives a
+     tick late arrives visibly late. It costs two rectangle reads per scroll,
+     and only measures the bar's height on the one scroll that moves it.
+
+     Not requestAnimationFrame either: frames stop being delivered whenever
+     the page is not being painted, and a player that only moves while
+     something repaints is a player that sometimes never moves. */
+  window.addEventListener("scroll", floatSync, { passive: true });
+  window.addEventListener("resize", floatSync);
+
   function fullAudioBar() {
     var full = state.exam && state.exam.listeningFull;
     if (!hasFullAudio()) return null;
@@ -2419,15 +2549,27 @@
           "</a></p>" +
         '<div class="q-audio-full-btns">' +
           '<button type="button" class="q-audio-size" hidden></button>' +
+          '<button type="button" class="q-audio-dock" hidden>' +
+            '<span aria-hidden="true">\u2193</span> ' +
+            esc(t("exam.audioFullDock")) + "</button>" +
           '<button type="button" class="q-audio-stop" hidden>' +
             '<span aria-hidden="true">\u2715</span> ' +
             esc(t("exam.audioFullStop")) + "</button>" +
         "</div>" +
       "</div>";
 
+    /* The bar is drawn inside a slot of its own rather than straight into the
+       paper, because the paper is a grid: an empty placeholder added beside
+       the bar would be a grid item too, and would cost a 20px gap even at
+       zero height. The slot is the grid item, the bar lives in it, and the
+       height is held there while the bar is floating. */
+    var slot = el("div", "q-audio-full-slot");
+    slot.appendChild(bar);
+
     var media = bar.querySelector(".q-audio-full-media");
     var stop = bar.querySelector(".q-audio-stop");
     var size = bar.querySelector(".q-audio-size");
+    var dock = bar.querySelector(".q-audio-dock");
 
     /* This bar is pinned under the command bar, so whatever height it takes
        it keeps for the whole paper. A 16:9 frame 320px wide is 180px of that,
@@ -2463,6 +2605,8 @@
       paperNode(bar).classList.remove("is-full-playing");
       stop.hidden = true;
       size.hidden = true;
+      /* Nothing is playing, so there is nothing to keep in reach. */
+      if (floatBar === bar) floatEnd();
     }
 
     function play() {
@@ -2483,11 +2627,18 @@
       stop.hidden = false;
       size.hidden = false;
       applySize();
+      floatBegin(bar, slot);
     }
+
+    /* Back to where it belongs: scrolling the slot into view docks the bar
+       into it on the way, so this is a scroll and nothing else. */
+    dock.addEventListener("click", function () {
+      slot.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
 
     stop.addEventListener("click", idle);
     idle();
-    return bar;
+    return slot;
   }
 
   function paperNode(bar) {
@@ -2542,6 +2693,8 @@
        left alone. Decided here rather than with :has(img) in CSS: the class
        works in every browser and the failure mode of the selector is the
        exact band this avoids. */
+    if (holdsFurigana(q)) node.dataset.hold = "1";
+
     var media = /<img/i.test(q.prompt || "");
     var head = el("div", "pq-head" + (media ? " has-media" : ""));
     head.innerHTML =
@@ -2706,6 +2859,262 @@
       "</div>";
     if (state.wordsOpen) group.classList.add("is-open");
     return group;
+  }
+
+  /* ============================================================ furigana
+
+     The archived papers carry no ruby at all - 8,127 questions, not one. That
+     is faithful: the real N1, N2 and N3 papers print none either, because
+     reading 遂行 unaided is part of what is being tested.
+
+     It is also what turns a paper into a wall when it is being used to learn
+     from rather than to sit. A word you cannot read is a word you cannot look
+     up - you do not know how it sounds - so the question stops being about
+     Japanese and becomes about the four characters you are stuck on. The
+     glossary helps, but it lists words in a panel in dictionary form, and 見て
+     is not 見る.
+
+     So the reading of every word in the paper is built once, offline, by
+     tools/build_furigana.py, and drawn over the text here on a toggle. Off by
+     default and remembered: a paper with furigana is an easier paper, and
+     that has to be the reader's choice rather than ours.
+
+     Not on 問題1 and 問題2 of the vocabulary booklet, though - not until they
+     are marked. Those ask how a word is read and how it is written, and
+     furigana over the stem is the answer printed above the question. See
+     holdsFurigana().
+
+     The table is a word list, not marked-up text: 見て -> 見[み]て. The base
+     of each reading is the run of kanji in front of the bracket, which is
+     what lets お金[かね] mean furigana over 金 alone with no separator to
+     store. The builder guarantees that rule holds for every entry. */
+
+  var FURI_KEY = "jlpt.exam.furigana";
+  var FURI_KANJI = /[々一-鿿]/;
+  var furiMax = 1;          /* longest word in the table */
+  var furiHead = null;      /* first characters of words, to skip the rest */
+
+  function readFuriPref() {
+    try {
+      return localStorage.getItem(FURI_KEY) === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function saveFuriPref(on) {
+    try {
+      localStorage.setItem(FURI_KEY, on ? "1" : "0");
+    } catch (e) { /* a browser that refuses storage still gets the toggle */ }
+  }
+
+  /* One file per paper, fetched the first time somebody asks for furigana
+     rather than on every load - it is 30-60 KB that most sittings never
+     want. A paper without one is not an error; the button goes away. */
+  function loadFurigana(id) {
+    return fetch(FURIGANA_DIR + id + ".json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (f) {
+        if (!f || !f.words) { state.furiGone = true; return false; }
+        state.furigana = f.words;
+        furiMax = 1;
+        furiHead = {};
+        for (var w in f.words) {
+          if (w.length > furiMax) furiMax = w.length;
+          furiHead[w.charAt(0)] = true;
+        }
+        return true;
+      })
+      .catch(function () { state.furiGone = true; return false; });
+  }
+
+  /* 見[み]て -> <ruby>見<rt>み</rt></ruby>て */
+  function furiMarkup(form) {
+    var out = "", buf = "", i = 0, ch, close, reading, cut;
+    while (i < form.length) {
+      ch = form.charAt(i);
+      if (ch !== "[") { buf += ch; i += 1; continue; }
+      close = form.indexOf("]", i);
+      if (close === -1) { buf += ch; i += 1; continue; }
+      reading = form.slice(i + 1, close);
+      /* The base is the kanji run at the end of what has been collected;
+         anything before it is plain text that happens to sit in the same
+         word - the お of お金. */
+      cut = buf.length;
+      while (cut > 0 && FURI_KANJI.test(buf.charAt(cut - 1))) cut -= 1;
+      out += esc(buf.slice(0, cut)) +
+        '<ruby data-furi="1">' + esc(buf.slice(cut)) +
+        "<rt>" + esc(reading) + "</rt></ruby>";
+      buf = "";
+      i = close + 1;
+    }
+    return out + esc(buf);
+  }
+
+  /* Longest word first, because 日本語 and 日本 are both in the table and the
+     shorter one must not win. Returns null when nothing in the string is in
+     the table, so the caller can leave the text node alone. */
+  function furiRuby(text) {
+    var table = state.furigana;
+    var out = "", i = 0, n = text.length, hit, len, word, found = false;
+    while (i < n) {
+      hit = null;
+      if (furiHead[text.charAt(i)]) {
+        for (len = Math.min(furiMax, n - i); len > 0; len -= 1) {
+          word = text.substr(i, len);
+          if (!table[word]) continue;
+          /* A single kanji is only itself when it stands on its own. 二 is
+             に as a number and ふた in 二人, and the table can only hold one
+             of them - so where the compound is not in the table either, the
+             pair is left bare rather than split down the middle and read
+             二[に]人. Longer entries are words in their own right and are
+             matched wherever they occur. */
+          if (len === 1 && FURI_KANJI.test(word) &&
+              ((i > 0 && FURI_KANJI.test(text.charAt(i - 1))) ||
+               (i + 1 < n && FURI_KANJI.test(text.charAt(i + 1))))) {
+            continue;
+          }
+          hit = word;
+          break;
+        }
+      }
+      if (hit) {
+        out += furiMarkup(table[hit]);
+        i += hit.length;
+        found = true;
+      } else {
+        out += esc(text.charAt(i));
+        i += 1;
+      }
+    }
+    return found ? out : null;
+  }
+
+  /* Text nodes only, and never inside ruby that is already there - the
+     glossary draws its own, and some archived questions print a reading as
+     part of the question. */
+  function furiApply(node) {
+    if (!node || node.classList.contains("is-furi")) return;
+    node.classList.add("is-furi");
+    if (!state.furigana) return;
+
+    var walk = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null, false);
+    var texts = [], t;
+    while ((t = walk.nextNode())) texts.push(t);
+
+    texts.forEach(function (text) {
+      var parent = text.parentNode;
+      if (!parent || !parent.closest) return;
+      if (!FURI_KANJI.test(text.nodeValue)) return;
+      if (parent.closest("ruby, rt, .choice-num, .pq-num")) return;
+      var html = furiRuby(text.nodeValue);
+      if (!html) return;
+      var box = document.createElement("span");
+      box.innerHTML = html;
+      var frag = document.createDocumentFragment();
+      while (box.firstChild) frag.appendChild(box.firstChild);
+      parent.replaceChild(frag, text);
+    });
+  }
+
+  /* Unwrapped one ruby at a time rather than by putting the original HTML
+     back. The passage and the listening options carry <img> elements with
+     load watchers on them (see wireFigures), and rewriting innerHTML would
+     hand back new images with nothing watching them. */
+  function furiClear(node) {
+    if (!node) return;
+    node.classList.remove("is-furi");
+    Array.prototype.forEach.call(node.querySelectorAll("ruby[data-furi]"),
+      function (ruby) {
+        var rt = ruby.querySelector("rt");
+        if (rt) ruby.removeChild(rt);
+        var text = document.createTextNode(ruby.textContent);
+        ruby.parentNode.replaceChild(text, ruby);
+      });
+    if (node.normalize) node.normalize();
+  }
+
+  /* 問題1 of the vocabulary booklet asks how the underlined word is read;
+     問題2 asks how it is written. Furigana over either prints the answer
+     above the question, so those two keep it until they are marked - after
+     which there is nothing left to give away and the reading is the whole
+     point of looking again. */
+  var FURI_HOLD = /読み方|どう\s*書き|漢字で書|ひらがなで/;
+
+  function holdsFurigana(q) {
+    return q.category === "vocabulary" &&
+      FURI_HOLD.test(stripTags(q.instruction || ""));
+  }
+
+  /* Everything on the paper that is Japanese to be read. The 問題 heading and
+     the choice numbers are not: they are furniture. */
+  var FURI_OPEN = ".section-instruction, .q-passage-body, " +
+    ".q-transcript-body, .q-explain, .q-spoken";
+  var FURI_HELD = ".pq-prompt, .choice-text";
+
+  /* Whether this question is still keeping its reading back. A 問題1 stem
+     opens up the moment the answer is out - which in study mode is as soon as
+     it is answered, one question at a time, and in exam mode is when the
+     paper is marked. */
+  function furiHeld(qnode) {
+    if (!qnode || qnode.dataset.hold !== "1") return false;
+    if (currentMarked()) return false;
+    var item = state.questions[parseInt(qnode.dataset.index, 10)];
+    if (state.mode === "study" && item && state.answers[item.key]) return false;
+    return true;
+  }
+
+  function furiIn(root, held) {
+    Array.prototype.forEach.call(root.querySelectorAll(FURI_OPEN), furiApply);
+    if (held) return;
+    Array.prototype.forEach.call(root.querySelectorAll(FURI_HELD), furiApply);
+  }
+
+  /* One question, after its answer has been revealed: the explanation is new
+     text that has never been through here, and the stem may just have been
+     let out of hold. */
+  function furiQuestion(qnode) {
+    if (!state.furiOn || !state.furigana || !qnode) return;
+    furiIn(qnode, furiHeld(qnode));
+  }
+
+  /* Called after every render, because a render throws away the annotated
+     nodes along with everything else. */
+  function furiRefresh() {
+    if (!state.furiOn || !state.furigana) return;
+    var paper = document.getElementById("examPaper");
+    if (!paper) return;
+    Array.prototype.forEach.call(paper.querySelectorAll(FURI_OPEN), furiApply);
+    Array.prototype.forEach.call(paper.querySelectorAll(".paper-question"),
+      function (qnode) { furiIn(qnode, furiHeld(qnode)); });
+  }
+
+  function setFurigana(on) {
+    state.furiOn = on;
+    saveFuriPref(on);
+    updateFuriButton(on);
+    if (!on) {
+      Array.prototype.forEach.call(document.querySelectorAll(".is-furi"),
+        furiClear);
+      return;
+    }
+    if (state.furigana) { furiRefresh(); return; }
+    loadFurigana(state.exam.id).then(function (ok) {
+      if (ok) furiRefresh();
+      else updateFuriButton(false);
+    });
+  }
+
+  function updateFuriButton(on) {
+    var btn = document.getElementById("furiBtn");
+    if (!btn) return;
+    if (state.furiGone) { btn.hidden = true; return; }
+    var label = t(on ? "exam.furiHide" : "exam.furiShow");
+    btn.classList.toggle("is-on", !!on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.setAttribute("aria-label", label);
+    var full = btn.querySelector(".words-all-full");
+    if (full) full.textContent = label;
   }
 
   function toggleWords(group) {
@@ -3323,6 +3732,13 @@
       });
     }
 
+    var furi = document.getElementById("furiBtn");
+    if (furi) {
+      furi.addEventListener("click", function () {
+        setFurigana(!state.furiOn);
+      });
+    }
+
     var submit = document.getElementById("submitBtn");
     if (submit) submit.addEventListener("click", confirmSubmit);
     var retry = document.getElementById("retryBtn");
@@ -3348,6 +3764,9 @@
     saveProgress();
     var fresh = buildQuestion(item);
     node.parentNode.replaceChild(fresh, node);
+    /* A fresh question is unannotated text, and unanswered again - so the
+       reading questions go back into hold. */
+    furiQuestion(fresh);
     fresh.classList.add("is-target");
     setTimeout(function () { fresh.classList.remove("is-target"); }, 900);
     refreshProgress();
@@ -3370,6 +3789,9 @@
       });
 
     if (state.mode === "study") reveal(item, node);
+    /* The explanation has only just been written, and a 読み方 stem has only
+       just stopped being a spoiler. */
+    furiQuestion(node);
     refreshProgress();
   }
 
@@ -3435,11 +3857,57 @@
       "</strong>" + explainHTML(item);
   }
 
+  /* What the recording said and the page never printed.
+
+     問題3 and 問題4 print nothing on the question sheet - that is how the
+     real test is sat - so a marked paper used to say "the answer was 3"
+     against four blank buttons, with no way to find out what 3 had been.
+     The options are read out at the end of the recording, so they are in the
+     transcript, and tools/build_exams.py lifts them back out of it.
+
+     Only after marking. Before that the question is blank because the exam
+     made it blank, and filling it in would be answering it. */
+  function spokenHTML(item) {
+    var q = item.q;
+    if (!q.spokenChoices || !q.spokenChoices.length) return "";
+    var picked = state.answers[item.key];
+    var rows = q.spokenChoices.map(function (text, i) {
+      var n = i + 1;
+      var cls = "q-spoken-opt";
+      if (n === q.answer) cls += " is-right";
+      else if (n === picked) cls += " is-wrong";
+      return '<li class="' + cls + '">' +
+        '<span class="q-spoken-n">' + n + "</span>" +
+        '<span class="q-spoken-t">' + esc(text) + "</span></li>";
+    }).join("");
+    return '<div class="q-spoken">' +
+      '<span class="q-spoken-label">' + esc(t("exam.spokenOptions")) + "</span>" +
+      (q.spokenPrompt
+        ? '<p class="q-spoken-q">' + esc(q.spokenPrompt) + "</p>" : "") +
+      '<ol class="q-spoken-list">' + rows + "</ol></div>";
+  }
+
   function explainHTML(item) {
-    if (!item.q.explanation) return "";
+    var q = item.q;
+
+    /* A listening explanation is the script, and it was being printed the
+       way the archive stored it: one paragraph, the speakers run together,
+       and "Tham khảo:" - the source site's own Vietnamese label for it - at
+       the front. It is parsed into its speakers everywhere else on the page;
+       this makes the marked paper agree. */
+    if (item.category === "listening") {
+      var rows = transcriptHTML(q);
+      var spoken = spokenHTML(item);
+      if (!rows) return spoken;
+      return spoken +
+        '<div class="q-explain"><span class="q-explain-label">' +
+        esc(t("exam.transcript")) + "</span>" +
+        '<div class="q-transcript-body">' + rows + "</div></div>";
+    }
+
+    if (!q.explanation) return "";
     return '<div class="q-explain"><span class="q-explain-label">' +
-      esc(t(item.category === "listening" ? "exam.transcript" : "exam.explanation")) +
-      "</span>" + item.q.explanation + "</div>";
+      esc(t("exam.explanation")) + "</span>" + q.explanation + "</div>";
   }
 
   /* ------------------------------------------------------------ filtering */

@@ -564,6 +564,117 @@ def validate_manual(exam, path):
     return errs
 
 
+# --------------------------------------------------------------------------
+# the questions that were never printed
+# --------------------------------------------------------------------------
+
+# 1,468 listening questions have no options on the page, and that is not a
+# gap in the archive: 問題3 and 問題4 print nothing on the question sheet by
+# design - "問題用紙に何も印刷されていません" - and the four choices are read
+# out at the end of the recording instead.
+#
+# Which is fine while the recording plays, and useless afterwards. Reviewing a
+# marked paper, a reader sees "question 17, the answer was 3" against four
+# empty buttons, with no way to find out what 3 was without scrubbing back
+# through forty minutes of audio. The same is true of anyone whose recording
+# never survived.
+#
+# The options are not lost, though. The transcript ends with them, because the
+# transcript is of a recording that reads them out - so they can be lifted
+# back out of it, along with the question that was asked. 1,368 of the 1,436
+# such questions that have a transcript give up all of theirs.
+#
+# They are stored apart from `choices` rather than filling it in. A question
+# the exam printed blank has to stay blank while it is being answered - that
+# is the exercise, and it is what the real sitting does - so these appear only
+# once it is marked. See spokenHTML() in exam-player.js.
+
+TRANSCRIPT_LEAD = re.compile(
+    r"^\s*(?:tham\s*kh[ảa]o|参考|スクリプト)"
+    r"\s*[:：]\s*", re.I)
+OPTION_MARK = re.compile(
+    r"(?:^|\n)[ \t　]*([1-4１-４])[ \t　]*"
+    r"[.．、。:：]?[ \t　]*")
+SPOKEN_QUESTION = re.compile(
+    r"[^\n。？?]*(?:か)[。？?]\s*$")
+OPTION_DIGITS = {"1": 1, "2": 2, "3": 3, "4": 4,
+                 "１": 1, "２": 2, "３": 3, "４": 4}
+
+
+def transcript_text(html):
+    """A transcript as lines of plain text, with the source site's label off."""
+    text = re.sub(r"<br\s*/?>", "\n", html or "")
+    text = re.sub(r"<[^>]+>", "\n", text)
+    for entity, char in (("&nbsp;", " "), ("&amp;", "&"),
+                         ("&lt;", "<"), ("&gt;", ">"), ("&#39;", "'")):
+        text = text.replace(entity, char)
+    text = TRANSCRIPT_LEAD.sub("", text.strip())
+    return re.sub(r"[ \t　]+", " ", text)
+
+
+def spoken_options(html, want):
+    """The question and the options read out at the end of a transcript.
+
+    Returns (question, [options]) or (None, None) if the tail of the
+    transcript is not a clean run of `want` numbered options - which is the
+    case for about one in twenty, usually because the archive lost the
+    numbers along with the line breaks.
+    """
+    text = transcript_text(html)
+    if not text or want < 2:
+        return None, None
+
+    marks = [(OPTION_DIGITS[m.group(1)], m.start(), m.end())
+             for m in OPTION_MARK.finditer(text)]
+
+    # The last run of 1..want in the transcript, searched from the end: a
+    # conversation about prices is full of numbers, and only the run that
+    # counts up to exactly as many options as the paper has, at the end, is
+    # the option list.
+    for i in range(len(marks) - want, -1, -1):
+        run = marks[i:i + want]
+        if [r[0] for r in run] != list(range(1, want + 1)):
+            continue
+        options = []
+        for j, (_, start, end) in enumerate(run):
+            stop = run[j + 1][1] if j + 1 < len(run) else len(text)
+            options.append(re.sub(r"\s+", " ", text[end:stop]).strip())
+        # A spoken option is a phrase. Anything longer is a stretch of the
+        # conversation that happens to sit behind a number.
+        if not all(options) or max(len(o) for o in options) > 90:
+            continue
+
+        head = text[:run[0][1]].strip()
+        asked = SPOKEN_QUESTION.search(head)
+        if asked:
+            question = asked.group(0).strip()
+        else:
+            lines = [ln.strip() for ln in head.split("\n") if ln.strip()]
+            question = lines[-1] if lines and len(lines[-1]) <= 60 else None
+        return question, options
+
+    return None, None
+
+
+def add_spoken(questions):
+    """Fill in what the recording said for questions the paper left blank."""
+    found = 0
+    for q in questions:
+        if q.get("category") != "listening":
+            continue
+        choices = q.get("choices") or []
+        if not choices or any((c or "").strip() for c in choices):
+            continue
+        question, options = spoken_options(q.get("explanation"), len(choices))
+        if not options:
+            continue
+        q["spokenChoices"] = options
+        if question:
+            q["spokenPrompt"] = question
+        found += 1
+    return found
+
+
 def listenable(q):
     """Can this question be heard rather than read?
 
@@ -766,6 +877,7 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     index = []
     warnings = []
+    recovered = 0
 
     for (level, period), files in sorted(sessions.items()):
         label = labels[(level, period)]
@@ -780,6 +892,7 @@ def main():
                 warnings.append(f"{rel}: {note}")
             if not questions:
                 continue
+            recovered += add_spoken(questions)
             for q in questions:
                 counts[q["category"]] += 1
             parts.append({
@@ -921,6 +1034,7 @@ def main():
         print(f"hand-authored  : {len(manual)}")
     print(f"exams written  : {len(index)}")
     print(f"questions total: {sum(e['totalQuestions'] for e in index)}")
+    print(f"spoken options recovered from transcripts: {recovered}")
     by_level = defaultdict(lambda: [0, 0])
     for e in index:
         by_level[e["level"]][0] += 1

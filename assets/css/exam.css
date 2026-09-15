@@ -927,6 +927,90 @@
   margin-bottom: 8px;
 }
 
+/* The transcript, inside a marked question, is a script rather than a
+   paragraph - so it gets the same speaker layout the listening panel uses
+   rather than the explanation's prose spacing. */
+.q-explain > .q-transcript-body { padding: 0; }
+
+/* ------------------------------------------- the options nobody printed
+
+   問題3 and 問題4 print nothing on the question sheet; the four choices are
+   read out at the end of the recording. Marked, the paper used to show "the
+   answer was 3" against four blank buttons. These are those four options,
+   recovered from the transcript - see spokenHTML() in exam-player.js - with
+   the right one marked and the one that was picked, if it was a different
+   one. */
+.q-spoken {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  font-size: 0.93rem;
+}
+
+.q-spoken-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.q-spoken-q {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.8;
+}
+
+.q-spoken-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.q-spoken-opt {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  line-height: 1.8;
+}
+
+.q-spoken-n {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--panel-soft);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.q-spoken-t { min-width: 0; }
+
+.q-spoken-opt.is-right {
+  border-color: #2f8f5b;
+  background: rgba(47, 143, 91, 0.08);
+}
+.q-spoken-opt.is-right .q-spoken-n { background: #2f8f5b; color: #fff; }
+
+.q-spoken-opt.is-wrong {
+  border-color: #c2553f;
+  background: rgba(194, 85, 63, 0.07);
+}
+.q-spoken-opt.is-wrong .q-spoken-n { background: #c2553f; color: #fff; }
+
 /* -- marked-up state after submitting -- */
 
 .is-reviewed .paper-question {
@@ -1717,6 +1801,38 @@
 .gw-p { font-size: .72rem; font-style: italic; color: var(--ink-soft); }
 .gw-g { color: var(--ink-soft); }
 
+/* ------------------------------------------------------------- furigana
+
+   Readings drawn over the paper's own text by the reader's toggle, not by the
+   paper - the archived sittings print none. See the furigana section of
+   exam-player.js.
+
+   Ruby costs height: a line with readings over it is around 1.4 times as tall
+   as one without, and a browser left to itself adds that height unevenly, so
+   an annotated line and a bare line in the same paragraph sit at different
+   pitches and the text looks buckled. Fixing the line height for annotated
+   blocks is what keeps a passage readable with the toggle on.
+
+   The reading is deliberately small and grey: it is there to be glanced at by
+   somebody who is stuck, and at full contrast it competes with the sentence
+   it is explaining. */
+.is-furi { line-height: 2.1; }
+.is-furi ruby { ruby-position: over; }
+.is-furi rt {
+  font-size: 0.56em;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+  /* Chrome and Safari disagree about whether an rt inherits the emphasis of
+     its base; a bold stem with bold furigana over it is a smear at 0.56em. */
+  font-style: normal;
+}
+
+/* Inside the choice buttons the line box is what decides the button's height,
+   so the same pair of rules keeps four options the same size as each other
+   whether or not their text happened to contain kanji. */
+.choice-text.is-furi { line-height: 2; display: inline-block; }
+
 /* The bar button opens every panel on the paper at once. */
 .words-all { white-space: nowrap; }
 .words-all.is-on {
@@ -1837,6 +1953,7 @@
 .paper-section:not(.has-passage) .section-head > *,
 .paper-section:not(.has-passage) > .q-audio,
 .exam-paper > .q-audio,
+.exam-paper > .q-audio-full-slot,
 .exam-paper > .q-audio-aside,
 .paper-block:not(.has-passage) .block-questions {
   max-width: 78ch;
@@ -1850,9 +1967,20 @@
    300px frame, so it sat 164px short of every question below it and
    off-centre against them. Fill the measure explicitly. */
 .exam-paper > .q-audio,
+.exam-paper > .q-audio-full-slot,
 .exam-paper > .q-audio-aside {
   width: 100%;
 }
+
+/* The slot the whole-test player sits in, and the height it holds open while
+   the player is floating in the corner. See the floating player in
+   exam-player.js: the bar has to stay the same element to keep YouTube from
+   reloading, so the space it vacates is held here rather than by a copy.
+
+   The bar's own bottom margin moves onto the slot, so the gap under the
+   player is the same whether it is sitting in the slot or floating. */
+.q-audio-full-slot { margin-bottom: 18px; }
+.q-audio-full-slot > .q-audio-full-bar { margin-bottom: 0; }
 
 /* ==========================================================================
    Phones: keep the sticky chrome small
@@ -2722,6 +2850,74 @@
 
 .q-audio-stop:hover { border-color: var(--blue); color: var(--navy); }
 
+.q-audio-dock {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.q-audio-dock:hover { border-color: var(--blue); color: var(--navy); }
+
+/* ------------------------------------------------ floating in the corner
+
+   Once the reader has scrolled past it, the whole-test player leaves the
+   page and parks here, so pause and rewind stay within reach of whichever
+   question is on screen. See the floating player in exam-player.js.
+
+   The corner, not the top. Docked under the command bar it would hold a
+   16:9 frame across the head of the screen for the whole sitting - which is
+   why it stopped pinning in the first place. Down here it covers a corner of
+   the margin, it is dismissed by Stop, and Back to the paper returns it. */
+.q-audio-full-bar.is-floating {
+  position: fixed;
+  /* .q-audio sets a top, for the docked-under-the-command-bar player it
+     normally is. Left standing, a fixed box with both a top and a bottom is
+     stretched between them - which came out as a player the height of the
+     window. */
+  top: auto;
+  left: auto;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  width: min(360px, calc(100vw - 32px));
+  margin: 0;
+  border: 1px solid rgba(45, 110, 180, 0.34);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px -14px rgba(17, 45, 78, 0.55);
+}
+
+.q-audio-full-bar.is-floating.is-big {
+  width: min(520px, calc(100vw - 32px));
+}
+
+/* Whose recording it is has already been read once, up in the paper, and
+   down here it is the one line that can push the controls off a phone. */
+.q-audio-full-bar.is-floating .q-audio-whose { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .q-audio-full-bar.is-floating { animation: float-in 0.18s ease; }
+}
+@keyframes float-in { from { transform: translateY(10px); opacity: 0; } }
+
+@media (max-width: 620px) {
+  /* Across the foot rather than in a corner: 360px does not fit beside a
+     phone's margins, and a box floating half off the screen is worse than
+     one that owns the strip it is in. */
+  .q-audio-full-bar.is-floating,
+  .q-audio-full-bar.is-floating.is-big {
+    top: auto;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+  }
+}
+
 /* This used to unpin the paper's own player while the whole-test recording
    was running, because two pinned players is one too many. The whole-test bar
    does not pin any more, so there is only ever one - and unpinning the Drive
@@ -2846,6 +3042,18 @@
   padding: 5px 12px;
   font-size: 0.8rem;
 }
+
+/* The script fold on a question whose recording plays. It is the quietest
+   thing in the question - a line of small text that opens when it is asked
+   for - because here the recording is the exercise and the script is the
+   help. Given a rule of its own so it does not sit flush against the
+   options above it. */
+.q-script.is-compact .q-transcript {
+  margin-top: 4px;
+  border-top: 1px solid var(--line);
+}
+.q-script.is-compact .q-transcript > summary { padding: 7px 0; }
+.q-script.is-compact .q-transcript-body { padding: 2px 0 8px; }
 
 /* The read-aloud bar on a marked 語彙, 文法 or 読解 question. It sits among
    the marked answer and the word list rather than above an unanswered
