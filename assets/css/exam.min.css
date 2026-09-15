@@ -478,10 +478,8 @@ font-variant-numeric: lining-nums tabular-nums;
 position: relative;
 flex: 1;
 min-width: 0;
-height: 68px;
 overflow: hidden;
 border-radius: 10px;
-background: #fff;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -513,6 +511,7 @@ transition: 0.16s ease;
 .q-audio-frame.is-live {
 display: block;
 background: #1e1e1e;
+height: 68px;
 }
 .q-audio-loading {
 position: absolute;
@@ -2014,7 +2013,7 @@ cursor: pointer;
 .q-audio-stop:hover { border-color: var(--blue); color: var(--navy); }
 .q-audio.is-floating {
 position: fixed;
-top: calc(var(--header-h, 74px) + var(--bar-h, 62px));
+top: var(--dock-h, calc(var(--header-h, 74px) + var(--bar-h, 62px)));
 left: 0;
 right: 0;
 bottom: auto;

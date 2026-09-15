@@ -748,14 +748,16 @@
   position: relative;
   flex: 1;
   min-width: 0;
-  height: 68px;
   overflow: hidden;
   border-radius: 10px;
-  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* The height belongs to the player, not to the button that asks for it: an
+   empty 68px box with a Play button adrift in it was a third of the bar on a
+   phone, and white space where there is nothing to see. The live frame takes
+   its height below. */
 /* 76 x 0.895 = 68, and the width is widened by the same fraction so that the
    scaled frame still fills the box edge to edge. Anchored top left because
    that is the corner the box and the frame already share.
@@ -803,6 +805,7 @@
 .q-audio-frame.is-live {
   display: block;
   background: #1e1e1e;
+  height: 68px;
 }
 
 /* While it is arriving, the box says so instead of sitting there black. The
@@ -2983,7 +2986,10 @@
    underneath it rather than running the width of the window. */
 .q-audio.is-floating {
   position: fixed;
-  top: calc(var(--header-h, 74px) + var(--bar-h, 62px));
+  /* --dock-h is the command bar's own bottom edge, set by floatSync() as the
+     page scrolls. The fallback behind it is only right while the site header
+     is sticky, which it is not on a phone - see floatSync(). */
+  top: var(--dock-h, calc(var(--header-h, 74px) + var(--bar-h, 62px)));
   left: 0;
   right: 0;
   bottom: auto;

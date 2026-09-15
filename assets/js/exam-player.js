@@ -2592,6 +2592,7 @@
      one that is floating now. There is more than one on most papers - a
      recording per 問題 - and only ever one in the corner: the player for the
      stretch of paper you are actually reading. */
+  var floatDock = null;
   var floaters = [];
   var floating = null;
 
@@ -2637,6 +2638,19 @@
     if (!floaters.length) return;
     var cmd = document.querySelector(".exam-bar");
     var limit = cmd ? cmd.getBoundingClientRect().bottom : 0;
+    /* Where a floating bar docks, in viewport coordinates: the bottom edge of
+       the command bar, as it actually is on the screen right now.
+
+       The stylesheet used to add --header-h to --bar-h instead, which is the
+       same number only while the site header is sticky. On a phone it is not:
+       it scrolls away, the command bar sticks to the top of the window on its
+       own, and the sum put the player 109px below where it docks - floating in
+       the middle of the questions rather than under the bar. This is measured
+       from the element, so there is no arrangement it can be wrong about. */
+    if (limit !== floatDock) {
+      floatDock = limit;
+      document.documentElement.style.setProperty("--dock-h", limit + "px");
+    }
     var height = window.innerHeight || document.documentElement.clientHeight;
     var middle = limit + (height - limit) / 2;
     var pick = null;

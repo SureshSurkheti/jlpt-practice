@@ -316,6 +316,14 @@ drops back into place when you scroll up to it. It is the same element
 throughout, never a copy: moving the iframe or rebuilding it reloads the player
 and restarts the recording from zero.
 
+Where it docks is **measured from the command bar**, not added up from the
+heights of the things above it. The stylesheet used to place it at the site
+header's height plus the command bar's, which is the same number only while the
+header is sticky — and on a phone it is not: it scrolls away and the command
+bar sticks to the top of the window on its own. So on a phone the player was
+docking 109px too low, floating in the middle of the questions. `floatSync()`
+now publishes the bar's own bottom edge as `--dock-h` on every scroll.
+
 It follows you from the start, with nothing pressed. It used to wait until it
 was playing — a Play button that trails you down the page is clutter — but on a
 listening paper the Play button is the thing you are reaching for, and scrolling
