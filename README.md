@@ -397,11 +397,24 @@ page, so the join cannot be seen.
 render time, one frame per 問題 meant five Google pages loading at once on a
 paper with a recording each, and what a reader saw while they arrived was five
 black rectangles — the black being Drive's own player, seen through a window
-into someone else's page. So the player starts as a button in the site's own
-chrome and the frame is created by the click that asks for it, which is also a
-user gesture, so pressing it plays rather than loading a second play button.
-Until the frame reports itself loaded, the box says "Starting the player…"
-rather than sitting there black.
+into someone else's page. So the frame is created by the click that asks for
+it, which is also a user gesture, so pressing it plays rather than loading a
+second play button. Until the frame reports itself loaded, the box says
+"Starting the player…" rather than sitting there black.
+
+What stands in the frame's place is **the same box the player arrives in** —
+68px, `#1e1e1e`, a white play arrow and "Play the recording". It was a white
+panel with a small button in it, which read as an empty gap in the bar and then
+swapped itself for something black: two things to look at where there is only
+one control.
+
+Pressing it still costs a wait, and most of that wait is Google's page loading,
+which is not ours to shorten. The part that is: a cold press also pays for a
+DNS lookup, a TCP connection and a TLS handshake to a host the browser has
+never spoken to. `warmDrive()` opens those with `rel="preconnect"` as the
+listening section is drawn, so they are paid while the reader is still on the
+instructions — about 100–150ms on a desktop connection, and more on a phone,
+where a handshake is round trips rather than milliseconds.
 
 ### The archived recordings
 

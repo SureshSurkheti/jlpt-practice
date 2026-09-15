@@ -278,6 +278,28 @@
     return id ? "https://drive.google.com/file/d/" + id + "/preview" : url;
   }
 
+  /* The wait between pressing Play and hearing anything is Google's page, and
+     most of it is not ours to shorten - but the first part is. A cold press
+     pays for a DNS lookup, a TCP connection and a TLS handshake to a host the
+     browser has never spoken to, which on a phone is most of a second before
+     the request for the player has even left. Opening those as the listening
+     section is drawn spends that time while the reader is still reading the
+     instructions. Once per page, and only on a paper that has a recording. */
+  var warmed = false;
+
+  function warmDrive() {
+    if (warmed) return;
+    warmed = true;
+    ["https://drive.google.com", "https://drive.usercontent.google.com"]
+      .forEach(function (host) {
+        var link = document.createElement("link");
+        link.rel = "preconnect";
+        link.href = host;
+        link.crossOrigin = "";
+        document.head.appendChild(link);
+      });
+  }
+
   /* Checked on 2026-09-01 by requesting all 235 distinct recordings: every
      one still serves audio except this, which returns 404. There is no way to
      detect a failed cross-origin iframe from here, so the one known-dead file
@@ -2356,6 +2378,7 @@
      There is nothing here for a reader to set - see .q-audio-frame. */
 
   function driveBar(url, tag, whole) {
+    warmDrive();
     var bar = el("div", "q-audio q-audio-drive",
         '<span class="q-audio-label"><span aria-hidden="true">\u266a</span>' +
           /* "Audio for this section" is the wrong words for the one file that
