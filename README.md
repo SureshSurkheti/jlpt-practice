@@ -1,8 +1,13 @@
 # JLPT Practice
 
-A JLPT study site for learners in Japan, built around **141 papers
-(13,505 questions)** from N1–N5 that are played as timed, auto-scored exams:
-89 archived sittings, and 34 written for this site in the same format.
+A JLPT study site for learners in Japan, built around **207 papers
+(20,346 questions)** from N1–N5 that are played as timed, auto-scored exams:
+89 archived sittings, and 118 written for this site in the same format.
+
+Every paper carries furigana on a toggle, a meaning for every word in it, and
+a script for every listening question — 199 of the 207 can be sat end to end,
+sound and all. See **Advertising copy** at the foot of this file for the short
+version.
 
 ## Run it
 
@@ -21,7 +26,7 @@ python3 -m http.server 5500
 | `index.html` | Home — progress overview and entry points |
 | `levels.html` | The five JLPT levels, with a mock-test button each |
 | `practice.html?lv=N2` | Per-level page: sections, modes, mock test |
-| `exams.html` | Library of all 141 papers, filter by level, search by year |
+| `exams.html` | Library of all 207 papers, filter by level, search by year |
 | `exam.html?id=n2-2023-12` | The exam player |
 | `stats.html` | Progress and accuracy per level |
 | `about.html` | About the project |
@@ -32,7 +37,7 @@ python3 -m http.server 5500
 assets/css/styles.css        shared design tokens and site chrome
 assets/css/exam.css          exam player + exam library
 assets/js/i18n.js            translation engine (data-i18n, t(), no reload)
-assets/js/i18n-strings.js    419 UI strings x 12 languages
+assets/js/i18n-strings.js    449 UI strings x 12 languages
 assets/js/site.js            levels, practice page, progress store
 assets/js/exam-player.js     the exam: setup, one-page paper, marking
 assets/js/exams-browser.js   exam library listing
@@ -67,12 +72,12 @@ archived sittings.
 
 ## The papers written for this site
 
-N4 and N5 had two papers each. They now have **18 each**, and N3, N2 and N1
-have **six original papers apiece** on top of what the archive holds. Fifty
-papers in all are composed rather than typed out: the questions live in item
-banks under `data/practice-bank/`, and `tools/build_practice_papers.py` deals
-them into papers of the published shape — 67 questions at N5, 93 at N4, 102 at
-N3, 107 at N2 and 107 at N1, across all three booklets.
+N4 and N5 had two papers each. N5 has **18** now and N4 has **27**, and N1,
+N2 and N3 have **25 original papers apiece** on top of what the archive holds.
+**118 papers in all** are composed rather than typed out: the questions live in
+item banks under `data/practice-bank/`, and `tools/build_practice_papers.py`
+deals them into papers of the published shape — 67 questions at N5, 93 at N4,
+102 at N3, 107 at N2 and 107 at N1, across all three booklets.
 
 Every listening question on a composed paper carries its own script, so all of
 it is spoken by the device. That is the point of writing them: the archive lost
@@ -125,7 +130,7 @@ Eight papers have a gap that will not be filled:
 | n4-practice-1 | no 聴解 | Scraped from someone else's practice set, and its listening page was never archived either. |
 
 The answer to those seven silent booklets is not to invent them. It is that
-N1, N2 and N3 each now have six papers of our own, every question of which is
+N1, N2 and N3 each now have 25 papers of our own, every question of which is
 spoken — see **The papers written for this site** above.
 
 n4-practice-1 used to be listed here as missing its 読解 as well. It was not:
@@ -163,8 +168,9 @@ all, and where to practise listening if audio will not play for you.
 
 ## Word meanings
 
-The **N1, N2 and N3** papers carry a built-in glossary. Every question, reading
-passage and listening transcript has a **Word meanings** button, and one button
+**Every paper carries a glossary**, N1 to N5 — 18,201 different words. Every
+question, reading passage and listening transcript has a **Word meanings**
+button, and one button
 in the command bar opens them all at once. Each entry gives the word with
 furigana over the kanji, its JLPT level, its part of speech, and a short
 English meaning:
@@ -272,15 +278,15 @@ on.
 
 ## Listening
 
-**133 of the 141 papers can be listened to end to end**, and 630 of the 633
-listening sections in them, by two different routes.
+**199 of the 207 papers can be listened to end to end**, and every one of the
+954 listening sections in them, by two different routes. The other eight have
+no 聴解 booklet in the archive at all.
 
 The archived sittings that kept their recordings embed them from Google
 Drive, which needs a connection. Everything else is spoken by the voice
-already installed on the device reading the page — the 32 papers written for
-this site, which have no recording and never will, and the 799 archived
-questions across 34 papers whose sound file was never archived or has since
-died. Those carry a transcript, the site already prints it, and reading text
+already installed on the device reading the page — the 118 papers written for
+this site, which have no recording and never will, and the 28 questions on the
+one archived paper whose sound file has since died. Those carry a transcript, the site already prints it, and reading text
 that is already on the page aloud in the reader's own browser is what a
 screen reader does: no copy is made and nothing is hosted.
 
@@ -490,7 +496,8 @@ tested.
 ## Advertising copy
 
 Figures below are current as of the last build. Rebuild and re-check before
-posting: tools/build_static.py prints the paper and question counts.
+posting: `tools/build_static.py` prints the paper and question counts,
+`build_glossary.py` and `build_furigana.py` print theirs.
 
 ### For a Facebook or community group
 
@@ -498,14 +505,15 @@ Free JLPT practice — full mock papers, N5 to N1
 
 No sign-up. No ads. Nothing to pay. Open it and start.
 
-📝 141 practice papers, 13,505 questions — N5 through N1, in the real JLPT format
-🆕 N5 and N4 now have 18 papers each — vocabulary, grammar, reading and listening, all three booklets
-🔤 Every word of every question, with its reading and meaning — 125,767 of them
+📝 207 mock papers, 20,346 questions — N5 through N1, in the real JLPT format
+🎧 199 of them can be listened to end to end — the original recording where it survives, read aloud by your device where it does not
+📖 Every listening question has its script on the page, to read after you have tried to hear it — 6,002 of them
+🔤 Furigana over the whole paper at one tap — every question, every option, every passage, every script. Off until you want it
+📚 Word meanings on every paper: 18,201 words with the reading, the JLPT level and a short meaning — the question, the options, and every word of the listening
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
-🎧 115 papers you can listen to end to end
 🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
-🇳🇵 N5 and N4 word meanings in Nepali — 1,753 words
-📚 9,639 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
+🇳🇵 N5 and N4 word meanings in Nepali — 1,473 words
+🗂️ 9,638 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
 🙈 Cover the answers on any list and test yourself, tap a row to check
 📱 Phone or computer. Installs like an app and works offline
 🔒 Your scores stay on your own device. Nothing is uploaded
@@ -514,20 +522,33 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 
 ### Shorter — for a comment or reply
 
-Free JLPT practice site — 123 full mock papers N5–N1, timed and auto-marked, 115 of them with listening. N5 and N4 have 18 papers each, all three booklets. Every word of every question comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
+Free JLPT practice site — 207 full mock papers N5–N1, timed and auto-marked, 199 of them with listening you can hear end to end and read the script of afterwards. Furigana over the whole paper at one tap, and every word comes with its reading and meaning. 12 languages including Nepali. No sign-up, no ads, nothing to pay.
 https://nihongomock.com
 
 ### One line — for X, Threads, a chat group
 
-123 free JLPT mock papers, N5 to N1 — 18 each at N5 and N4, listening included. Timed, auto-marked, every word glossed. No sign-up, no ads.
+207 free JLPT mock papers, N5 to N1 — timed, auto-marked, listening included with the script. Furigana and word meanings on every line. No sign-up, no ads.
 https://nihongomock.com
 
 ### If the group has seen it before
 
 A repost with no news reads as spam, so lead with what changed:
 
-New on the free JLPT practice site: N5 and N4 now have 18 full papers each, up from 2. Every one has all three booklets — 文字・語彙, 文法・読解 and 聴解 — and the listening is spoken aloud in the page, so you can actually sit it. 11,609 questions across 123 papers now.
+New on the free JLPT practice site: **furigana over the whole paper**, on a button — every question, every option, every reading passage, every listening script, 205,686 readings built word by word. **Every listening question now shows its script**, so you can hear it, guess, and then read exactly what was said. The word meanings cover the listening too, including the 1,368 questions whose four options were never printed on the paper — they are recovered from the recording and shown. And the audio player follows you down the page instead of being left at the top of the section.
 https://nihongomock.com
+
+### For a listening-focused post
+
+Listening is the section most people lose the pass on, and the hardest to practise alone.
+
+🎧 199 papers you can sit end to end — 954 listening sections
+📖 Every question's script on the page: hear it, answer it, then read what was actually said
+🗣️ Where the recording is lost, your device reads the script aloud — works offline
+🔤 Furigana over the script, and a meaning for every word in it
+🖼️ 1,368 questions whose options were only read out, never printed, recovered from the recording and shown
+▶️ The player stays with you as you scroll, and hands over from 問題 to 問題
+
+👉 https://nihongomock.com
 
 ### Nepali
 
@@ -535,13 +556,14 @@ https://nihongomock.com
 
 दर्ता गर्नु पर्दैन। विज्ञापन छैन। पैसा तिर्नु पर्दैन।
 
-📝 १२३ अभ्यास प्रश्नपत्र, ११,६०९ प्रश्न — वास्तविक JLPT ढाँचामा
-🆕 N5 र N4 मा अब १८-१८ वटा प्रश्नपत्र — शब्द, व्याकरण, पठन र श्रवण सबै
-🔤 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ
+📝 २०७ अभ्यास प्रश्नपत्र, २०,३४६ प्रश्न — वास्तविक JLPT ढाँचामा
+🎧 १९९ प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने — रेकर्डिङ नभएको ठाउँमा तपाईंकै यन्त्रले पढेर सुनाउँछ
+📖 हरेक श्रवण प्रश्नको स्क्रिप्ट पृष्ठमै — सुनेपछि के भनिएको थियो पढ्न सकिन्छ
+🔤 एक थिचाइमै पूरै प्रश्नपत्रमा फुरिगाना — प्रश्न, विकल्प, पठन र स्क्रिप्ट सबैमा
+📚 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ — १८,२०१ शब्द
 ⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
-🎧 ११५ प्रश्नपत्रको सुनाइ पूरै सुन्न मिल्ने
-🇳🇵 N5 र N4 का १,७५३ शब्दको अर्थ नेपालीमा
-📚 ९,६३९ शब्द, २,२११ कान्जी (लेख्ने क्रम सहित), २८० व्याकरण
+🇳🇵 N5 र N4 का १,४७३ शब्दको अर्थ नेपालीमा
+🗂️ ९,६३८ शब्द, २,२११ कान्जी (लेख्ने क्रम सहित), २८० व्याकरण
 📱 मोबाइल र कम्प्युटर दुवैमा; इन्टरनेट बिना पनि चल्छ
 🔒 तपाईंको अङ्क तपाईंकै यन्त्रमा रहन्छ
 

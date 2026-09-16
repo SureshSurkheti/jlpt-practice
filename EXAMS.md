@@ -25,7 +25,8 @@ No Vietnamese interface, no iframes of external sites, no raw archive pages.
 
 ## Current data
 
-Built from 258 source files → **86 exams, 8,127 questions**
+Built from 258 source files → **89 archived exams**; with the 118 written
+for this site, **207 papers and 20,346 questions** in all
 (85 archived + 1 hand-authored example).
 
 | Level | Exams | Questions |
@@ -310,12 +311,10 @@ Anything malformed is reported and skipped rather than silently breaking the
 site — bad ids, out-of-range answers, unknown categories and missing fields
 are all caught, with the file and question index named.
 
-## Word meanings (N1, N2 and N3)
+## Word meanings
 
 `tools/build_glossary.py` writes one file per paper into `data/glossary/`,
-which the player fetches only for papers that have one. 83 of the 86 papers
-have one; the two N4 papers and the single N5 paper do not, and there the word
-buttons simply do not appear.
+which the player fetches only for papers that have one. All 207 have one.
 
 ### Sources
 
