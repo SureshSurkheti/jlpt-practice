@@ -1024,7 +1024,20 @@ def main():
         if found:
             entry["sortKey"] = "practice-%04d" % int(found.group(1))
 
-    index.sort(key=lambda e: (e["level"], e["sortKey"]), reverse=True)
+    # Archived sittings first, then the papers written for this site. They
+    # used to interleave by accident - "practice-0027" sorts above "2024-12"
+    # because "p" is above "2" - so every level opened on Practice Test 27 and
+    # a reader looking for last December's paper scrolled past twenty-five
+    # papers that were never sat. A real sitting is what most people came for;
+    # the composed ones are the extra, and the extra goes at the bottom.
+    # Dated first, by date. Numbered after, by number. The two are told apart
+    # by the key rather than by the origin tag, because n4-practice-1 and -2
+    # came in through the archive and are numbered practice papers all the
+    # same - sorting on the tag put those two above the composed N4 papers
+    # and nothing above them.
+    index.sort(key=lambda e: (e["level"],
+                              1 if e["sortKey"][:1].isdigit() else 0,
+                              e["sortKey"]), reverse=True)
     with open(os.path.join(OUT_DIR, "index.json"), "w", encoding="utf-8") as f:
         json.dump({"exams": index}, f, ensure_ascii=False, indent=1)
 

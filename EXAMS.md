@@ -311,6 +311,26 @@ Anything malformed is reported and skipped rather than silently breaking the
 site — bad ids, out-of-range answers, unknown categories and missing fields
 are all caught, with the file and question index named.
 
+## The order papers are listed in
+
+`data/exams/index.json` is written in the order the library shows: **level,
+then the real sittings newest first, then the papers written for this site,
+highest number first.**
+
+They used to interleave. The sort key is text, `"practice-0027"` begins with a
+`p` and `"2024-12"` with a `2`, so every level opened on Practice Test 27 and
+last December's paper was twenty-five rows down. A real sitting is what most
+people come for; the composed papers are the extra, and the extra goes at the
+bottom.
+
+The two groups are told apart by whether the key starts with a digit, not by
+the `origin` tag: `n4-practice-1` and `n4-practice-2` came in through the
+archive and are tagged `archive`, but they are numbered practice papers and
+belong with the rest of them.
+
+The order also decides which paper `exam.html?level=N2` opens with no `id` —
+now December 2024 rather than Practice Test 27.
+
 ## Word meanings
 
 `tools/build_glossary.py` writes one file per paper into `data/glossary/`,
