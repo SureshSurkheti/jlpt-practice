@@ -17,6 +17,8 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +26,8 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from site_config import SITE  # noqa: E402
 
 ENDPOINT = "https://api.indexnow.org/indexnow"
-BATCH = 10000   # the API's own ceiling per request
+BATCH = 500     # the API allows 10,000; it refuses that many from a
+                # key it has never seen before, and 500 it takes.
 
 
 def key():
@@ -48,7 +51,10 @@ def submit(urls, k):
     }).encode("utf-8")
     req = urllib.request.Request(
         ENDPOINT, data=body,
-        headers={"Content-Type": "application/json; charset=utf-8"})
+        # Named, because the default is "Python-urllib/3.x" and the endpoint
+        # answers that with 403 whatever the key says.
+        headers={"Content-Type": "application/json; charset=utf-8",
+                 "User-Agent": "nihongomock-indexnow/1.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return r.status, r.read().decode("utf-8", "replace")[:200]
 
@@ -58,10 +64,19 @@ def main():
     urls = sys.argv[1:] or sitemap_urls()
     if not urls:
         sys.exit("nothing to submit")
+    sent = 0
     for i in range(0, len(urls), BATCH):
         chunk = urls[i:i + BATCH]
-        status, body = submit(chunk, k)
+        try:
+            status, body = submit(chunk, k)
+        except urllib.error.HTTPError as err:
+            print("%d urls -> HTTP %s %s"
+                  % (len(chunk), err.code, err.read()[:120]))
+            continue
+        sent += len(chunk)
         print("%d urls -> HTTP %s %s" % (len(chunk), status, body.strip()))
+        time.sleep(2)
+    print("submitted %d of %d" % (sent, len(urls)))
     return 0
 
 
