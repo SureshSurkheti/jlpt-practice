@@ -332,10 +332,26 @@ at exactly that seam, so nothing is joined across it. And a key carrying kana
 only matches where its kanji edge stands alone — inside 三人が or 4人は it is
 a fragment of a longer count, and is skipped.
 
-Measured against the tokenizer, per-kanji, over 77,000 annotations on twenty
-papers: **the readings shown are the tokenizer's in 99.69% of cases**, and the
-contextual keys added 406 correct readings against 9 wrong ones. Ruby drawn on
-a paper: N5 170 → 193, N4 614 → 659.
+**A third source: the glossary.** It reads the same papers with the same
+tokenizer, but settles a word against JMdict rather than against the reading
+janome happened to give it — so it holds 洗濯物, 代表的 and 上がる where this
+pass holds nothing, aligned already. 27,455 entries come from there. Two rules
+keep it from undoing the first pass: nothing shorter than two characters, since
+a lone kanji is ambiguous by nature and a dictionary cannot know which reading
+this sentence wants, and nothing the corpus itself found ambiguous.
+
+Measured against the tokenizer over twenty papers, **one kanji run at a time**
+— 担当者 read as one word is not a disagreement with a tokenizer that split it
+into 担当 + 者, and measuring per character said it was:
+
+| | before | after |
+|---|---|---|
+| reading matches the tokenizer | 82.80% | **85.62%** |
+| reading differs | 5.92% | **3.02%** |
+| left bare | 9.57% | 9.63% |
+
+Part of that remaining 3% is not a wrong reading but a partial one — 観光客
+shown as 観光[かんこう]客, where the run is right as far as it goes.
 
 ```bash
 pip3 install janome              # the same tokenizer the glossary uses

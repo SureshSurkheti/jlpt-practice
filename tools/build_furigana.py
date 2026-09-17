@@ -328,9 +328,11 @@ def main():
     # would sometimes get wrong, and is left bare like the word inside it.
     keep_phrase, _ = usable(phrase_corpus)
 
+    ambiguous = set(dropped)
     per_level = collections.Counter()
     total_words = 0
     total_phrases = 0
+    total_gloss = 0
     for (name, exam, readings), found in zip(papers, paper_phrases):
         table = {}
         for surface in readings:
@@ -353,6 +355,34 @@ def main():
             if form:
                 table[surface] = form
         total_phrases += len(table) - words_only
+
+        # Third source: the glossary built for this paper. It reads the same
+        # papers with the same tokenizer, but it settles a word against JMdict
+        # rather than against the reading janome gave it - so it holds 洗濯物,
+        # 代表的 and 上がる where this pass holds nothing, aligned already.
+        #
+        # Two rules keep it from undoing the first pass. Only words of two
+        # characters or more: a lone kanji is ambiguous by nature and the
+        # dictionary cannot know which reading this sentence wants, which is
+        # the whole reason DOMINANT leaves it bare. And nothing the corpus
+        # found ambiguous, whatever the dictionary says about it.
+        gpath = os.path.join(ROOT, "data", "glossary", name)
+        if os.path.exists(gpath):
+            gloss = json.load(io.open(gpath, encoding="utf-8")).get("words") or {}
+            for word, entry in gloss.items():
+                if word in table or len(word) < 2 or word in ambiguous:
+                    continue
+                segments = entry.get("ruby")
+                if not segments or not has_kanji(word):
+                    continue
+                if "".join(text for text, _ in segments) != word:
+                    continue
+                form = "".join("%s[%s]" % (text, read) if read else text
+                               for text, read in segments)
+                if form != word:
+                    table[word] = form
+                    total_gloss += 1
+
         out = {"id": exam["id"], "level": exam.get("level"), "words": table}
         with io.open(os.path.join(OUT_DIR, name), "w", encoding="utf-8") as fh:
             json.dump(out, fh, ensure_ascii=False, separators=(",", ":"))
@@ -364,6 +394,8 @@ def main():
           % (len(papers), total_words))
     print("  of those, %d are a word carrying its kana neighbours, which is "
           "how\n  the table holds two readings for one surface" % total_phrases)
+    print("  and %d came from the glossary, settled against JMdict rather "
+          "than\n  against the tokenizer" % total_gloss)
     print("  by level: " + "  ".join("%s %d" % (lv, n)
                                      for lv, n in sorted(per_level.items())))
     print("  %d distinct words; %d left bare as ambiguous (%s%s)"
