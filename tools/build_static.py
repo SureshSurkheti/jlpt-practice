@@ -129,6 +129,10 @@ def t(table, key, fallback_table):
     return fallback_table.get(key, key)
 
 
+def commas(n):
+    return format(n, ",")
+
+
 def esc(text):
     return (str(text).replace("&", "&amp;").replace("<", "&lt;")
             .replace(">", "&gt;").replace('"', "&quot;"))
@@ -1112,7 +1116,7 @@ def study_rows(level, kind, table, en, up=""):
     return "\n      ".join(out), len(rows)
 
 
-def levels_table(exams, table, en):
+def levels_table(exams, table, en, lang=None):
     """What each level holds, in the markup.
 
     The five level cards are drawn by site.js from a fetch, so <main> on this
@@ -1143,9 +1147,15 @@ def levels_table(exams, table, en):
                  (row.get("words") or (0, 0))[0],
                  (row.get("kanji") or (0, 0))[0],
                  (row.get("grammar") or (0, 0))[0]]
+        # The level name leads to the level's own page where there is one -
+        # that is the page that answers "what is JLPT N3", and it is the only
+        # link into it from the markup. The level pages are English, so the
+        # other eleven trees keep the link they had, into the word list.
+        href = ("level/%s.html" % level if lang == DEFAULT_LANG
+                else "study/%s-words.html" % level)
         rows.append(
-            '<tr><th scope="row"><a href="study/%s-words.html">%s</a></th>%s</tr>'
-            % (level, esc(lv), "".join("<td>%d</td>" % c for c in cells)))
+            '<tr><th scope="row"><a href="%s">%s</a></th>%s</tr>'
+            % (href, esc(lv), "".join("<td>%d</td>" % c for c in cells)))
 
     return ('<table class="levels-facts">\n'
             '        <thead><tr>%s</tr></thead>\n'
@@ -1315,6 +1325,322 @@ def paper_sample(exam_id):
             out.append((ins, q["prompt"], list(q.get("choices") or [])))
     _PAPER_SAMPLE[exam_id] = out
     return out
+
+
+# ---------------------------------------------------------------- levels
+#
+# One page per level, and the reason they exist is the same as the reason the
+# paper pages do: the phrase people actually type. "JLPT N3 practice test" is
+# the highest-volume thing this site could answer, and until now the only
+# address that answered it was practice.html?lv=N3 - one shell for five
+# levels, noindex by necessity, invisible. levels.html covers all five in one
+# table and can only ever be a list.
+#
+# English only, deliberately. The body here is written, not translated: the
+# other eleven trees would be a machine translation of a page whose whole
+# value is being a better answer than the ten pages above it, and a machine
+# translation is not that. They can be written later, by someone who reads
+# the language.
+
+WIDE_DIGITS = {ord(c): ord(d) for c, d in zip(
+    "\uff10\uff11\uff12\uff13\uff14\uff15\uff16\uff17\uff18\uff19", "0123456789")}
+PART_ORDER = ["vocabulary", "grammar", "grammar-reading",
+              "reading", "listening"]
+
+LEVEL_SCORED = {
+    "N5": ("Language knowledge &amp; Reading (0–120) · Listening (0–60)", 80),
+    "N4": ("Language knowledge &amp; Reading (0–120) · Listening (0–60)", 90),
+    "N3": ("Language knowledge (0–60) · Reading (0–60) · Listening (0–60)", 95),
+    "N2": ("Language knowledge (0–60) · Reading (0–60) · Listening (0–60)", 90),
+    "N1": ("Language knowledge (0–60) · Reading (0–60) · Listening (0–60)", 100),
+}
+
+# From the JLPT's published timetable; the same table site.js carries, and
+# post-2022 for every level. See LEVEL_MINUTES there.
+LEVEL_MINUTES = {"N5": 90, "N4": 115, "N3": 140, "N2": 155, "N1": 165}
+
+# The JLPT stopped publishing word and kanji lists in 2010; these are the
+# figures the site quotes elsewhere and are estimates, said to be estimates.
+LEVEL_LOAD = {
+    "N5": ("~100", "~800"), "N4": ("~300", "~1,500"), "N3": ("~600", "~3,500"),
+    "N2": ("~1,000", "~6,000"), "N1": ("~2,000", "~10,000"),
+}
+
+LEVEL_LEAD = {
+    "N5": "N5 is the first level: the kana, about a hundred kanji, and the "
+          "Japanese of a classroom and a convenience store. It is the only "
+          "level where everything you meet has been taught to you.",
+    "N4": "N4 is where the sentences stop being examples. Plain form, casual "
+          "speech and the first long passages: still everyday Japanese, but "
+          "spoken at the speed people actually speak it.",
+    "N3": "N3 is the level people underestimate. It is the bridge between the "
+          "textbook levels and the real ones, it has the highest pass mark of "
+          "any level, and it is where reading stops being decoding.",
+    "N2": "N2 is the level employers ask for. Newspapers, workplace Japanese, "
+          "and a listening section that no longer waits for you. Its pass "
+          "mark is lower than N3's, which surprises people - the exam is "
+          "harder, so the scale is set differently.",
+    "N1": "N1 is the top of the scale: editorials, abstract argument, and "
+          "listening that assumes you are following the speaker's reasoning "
+          "rather than their words.",
+}
+
+_MONDAI_NAMES = {
+    "vocabulary": "Vocabulary \u6587\u5b57\u30fb\u8a9e\u5f59",
+    "grammar": "Grammar \u6587\u6cd5",
+    "grammar-reading": "Grammar & Reading \u6587\u6cd5\u30fb\u8aad\u89e3",
+    "reading": "Reading \u8aad\u89e3",
+    "listening": "Listening \u8074\u89e3",
+}
+
+
+def level_url(lang, lv):
+    prefix = "" if lang == DEFAULT_LANG else "/" + lang
+    return "%s%s/level/%s.html" % (SITE, prefix, lv.lower())
+
+
+def level_facts(lv, exams):
+    """What the site itself can say about a level, counted rather than typed."""
+    papers = [e for e in exams if e["level"] == lv]
+    mine = [e for e in papers if e.get("origin") == "practice"]
+    questions = sum(e.get("totalQuestions") or 0 for e in papers)
+
+    # Per paper, not per level. Summed, this read "Vocabulary 1854" under a
+    # heading that said "Questions on an N3 paper".
+    counts = OrderedDict()
+    for key in ("vocabulary", "grammar", "reading", "listening"):
+        seen = sorted((e.get("categoryCounts") or {}).get(key, 0)
+                      for e in papers if (e.get("categoryCounts") or {}).get(key))
+        if seen:
+            counts[key] = (seen[0], seen[-1])
+
+    # The 問題 a level actually contains, and how many questions each holds on
+    # a typical paper. Counted over the papers rather than listed by hand,
+    # so it cannot drift from what the papers do.
+    # The papers write 問題７ and 問題7 both ways, and unnormalised the two
+    # arrive as different 問題 - the first draft of this page listed 問題5
+    # twice at N3, out of order, next to itself.
+    shape = {}
+    for e in papers[:12]:
+        parts_mondai, _, _ = paper_facts(e["id"])
+        for part_id, tags in parts_mondai:
+            slot = shape.setdefault(part_id, {})
+            for tag, n in tags:
+                num = int(tag[2:].translate(WIDE_DIGITS))
+                slot.setdefault(num, []).append(n)
+    shape = OrderedDict(
+        (part_id, OrderedDict(sorted(slot.items())))
+        for part_id, slot in sorted(
+            shape.items(),
+            key=lambda kv: PART_ORDER.index(kv[0]) if kv[0] in PART_ORDER else 9))
+
+    study = {}
+    for kind, field in (("words", "words"), ("kanji", "kanji"),
+                        ("grammar", "patterns")):
+        path = os.path.join(ROOT, "data", kind, lv.lower() + ".json")
+        if os.path.exists(path):
+            study[kind] = len(json.load(io.open(path, encoding="utf-8"))[field])
+
+    listening = scripts = 0
+    for e in papers:
+        heard, total = listening_scripts(e["id"])
+        listening += total
+        scripts += heard
+    return {"papers": papers, "mine": mine, "questions": questions,
+            "counts": counts, "shape": shape, "study": study,
+            "listening": listening, "scripts": scripts}
+
+
+_SCRIPTS = {}
+
+
+def listening_scripts(exam_id):
+    """(with a script, in all) for one paper's listening questions.
+
+    The claim the level pages make about listening is the one thing on them a
+    reader can check in ten seconds, so it is counted from the papers rather
+    than rounded up from the total.
+    """
+    if exam_id not in _SCRIPTS:
+        path = os.path.join(ROOT, "data", "exams", exam_id + ".json")
+        exam = json.load(io.open(path, encoding="utf-8"))
+        heard = total = 0
+        for part in exam.get("parts") or []:
+            for q in part.get("questions") or []:
+                if q.get("category") != "listening":
+                    continue
+                total += 1
+                if q.get("explanation") or q.get("script"):
+                    heard += 1
+        _SCRIPTS[exam_id] = (heard, total)
+    return _SCRIPTS[exam_id]
+
+
+def level_faq(lv, f):
+    """The five questions a level page is found by, and their answers."""
+    minutes = LEVEL_MINUTES[lv]
+    _scored, pass_mark = LEVEL_SCORED[lv]
+    kanji, vocab = LEVEL_LOAD[lv]
+    n_papers, n_mine = len(f["papers"]), len(f["mine"])
+
+    scripts_phrase = (
+        "All %s listening questions on this level" % commas(f["listening"])
+        if f["scripts"] >= f["listening"]
+        else "%s of the %s listening questions on this level"
+             % (commas(f["scripts"]), commas(f["listening"])))
+
+    return [
+        ("How long is the JLPT %s exam?" % lv,
+         "%d minutes in all. The papers here run to the same clock, section "
+         "by section, so a practice sitting costs what the real one does."
+         % minutes),
+        ("What score do you need to pass %s?" % lv,
+         "%d out of 180 — and every scored section has its own minimum "
+         "as well. One weak section fails the paper however high the total, "
+         "which is why the papers here are marked section by section."
+         % pass_mark),
+        ("How many kanji and words does %s need?" % lv,
+         "Around %s kanji and %s words. The JLPT stopped publishing its lists "
+         "in 2010, so every figure you will see quoted is an estimate, this "
+         "one included." % (kanji, vocab)),
+        ("Are the %s papers here free?" % lv,
+         "Yes, all %d of them, with no account and nothing to pay. %d are "
+         "written for this site; the rest are archived sittings, kept so you "
+         "can sit a real one." % (n_papers, n_mine)),
+        ("Can I practise %s listening?" % lv,
+         "Yes. %s carry their script, and where the original recording is "
+         "lost your own device reads that script aloud \u2014 so a listening "
+         "section is never a dead page." % scripts_phrase),
+    ]
+
+
+def level_faq_ld(lv, f):
+    """The same five questions as the page, as FAQPage.
+
+    Marked up because they are genuinely the five things asked about a level,
+    not because a rich result is wanted: the answers on the page and the
+    answers in the markup are built from one list, so they cannot drift apart,
+    which is the thing this markup is usually penalised for.
+    """
+    items = [{"@type": "Question", "name": q,
+              "acceptedAnswer": {"@type": "Answer", "text": a}}
+             for q, a in level_faq(lv, f)]
+    return ('    <script type="application/ld+json">%s</script>'
+            % json.dumps({"@context": "https://schema.org",
+                          "@type": "FAQPage", "mainEntity": items},
+                         ensure_ascii=False, separators=(",", ":")))
+
+
+def level_body(lv, f):
+    """The page for one level. Written to answer the phrase it is found by."""
+    minutes = LEVEL_MINUTES[lv]
+    scored, pass_mark = LEVEL_SCORED[lv]
+    kanji, vocab = LEVEL_LOAD[lv]
+    n_papers, n_mine = len(f["papers"]), len(f["mine"])
+
+    rows = "".join(
+        "<tr><td>%s</td><td>%s</td></tr>"
+        % (esc(EN_SECTION[k]), lo if lo == hi else "%d–%d" % (lo, hi))
+        for k, (lo, hi) in f["counts"].items())
+
+    shape = ""
+    for part_id, tags in f["shape"].items():
+        chips = "".join(
+            "<span><b>問題%d</b> %s</span>"
+            % (num, (str(min(ns)) if min(ns) == max(ns)
+                     else "%d–%d" % (min(ns), max(ns))))
+            for num, ns in tags.items())
+        shape += ("<li><em>%s</em><div>%s</div></li>"
+                  % (esc(_MONDAI_NAMES.get(part_id, part_id)), chips))
+
+    study_bits = []
+    for kind, label, href in (("words", "vocabulary", "words"),
+                              ("kanji", "kanji", "kanji"),
+                              ("grammar", "grammar points", "grammar")):
+        if f["study"].get(kind):
+            study_bits.append('<a href="../study/%s-%s.html">%s %s</a>'
+                              % (lv.lower(), href, commas(f["study"][kind]),
+                                 label))
+
+    newest = f["mine"][:6]
+    paper_links = "".join(
+        '<li><em><a href="../exam/%s.html">%s</a></em>'
+        '<div><span><b>%d</b> questions</span></div></li>'
+        % (e["id"], esc(e.get("periodLabel") or e["id"]),
+           e.get("totalQuestions") or 0) for e in newest)
+
+    faq = level_faq(lv, f)
+    faq_html = "".join(
+        '<details class="paper-faq"><summary>%s</summary><p>%s</p></details>'
+        % (esc(q), esc(a)) for q, a in faq)
+
+    return """<main class="container page-shell paper-page">
+      <p class="paper-kicker"><a href="../levels.html">%(levels)s</a>
+        <span aria-hidden="true">/</span> %(lv)s</p>
+
+      <h1>JLPT %(lv)s Practice Tests \u2014 %(n)d Free Mock Papers</h1>
+      <p class="paper-lead">%(lead)s</p>
+
+      <p class="paper-actions">
+        <a class="btn btn-primary" href="../exam.html?level=%(lv)s">Sit an %(lv)s paper</a>
+        <a class="btn btn-quiet" href="../exams.html?lv=%(lv)s">All %(n)d %(lv)s papers</a></p>
+
+      <p>%(n)d full %(lv)s papers are on this site, %(mine)d of them written
+      here and the rest archived sittings \u2014 %(q)s questions in all. Every
+      paper is timed like the real thing and marked section by section, and all
+      of it is free: no account, no payment, nothing to install.</p>
+
+      <h2 class="paper-h2">What is on the %(lv)s paper</h2>
+      <table class="paper-parts">
+        <tbody>
+          <tr><td>Sitting time</td><td>%(minutes)d minutes</td></tr>
+          <tr><td>Pass mark</td><td>%(pass)d / 180</td></tr>
+          <tr><td>Scored sections</td><td>%(scored)s</td></tr>
+          <tr><td>Kanji \u00b7 vocabulary</td><td>%(kanji)s \u00b7 %(vocab)s</td></tr>
+        </tbody>
+      </table>
+      <p class="paper-sample-note">To pass you need the total <em>and</em> every
+      section. One weak section fails the paper, however high the total \u2014
+      which is why every paper here is marked section by section.</p>
+
+      <h2 class="paper-h2">Questions on one %(lv)s paper</h2>
+      <table class="paper-parts">
+        <thead><tr><th>Section</th><th>Questions</th></tr></thead>
+        <tbody>%(rows)s</tbody>
+      </table>
+
+      <h2 class="paper-h2">The \u554f\u984c an %(lv)s paper contains</h2>
+      <p class="paper-sample-note">Counted across the %(lv)s papers on this
+      site, not listed from memory. A range is where the papers differ.</p>
+      <ul class="paper-mondai">%(shape)s</ul>
+
+      <h2 class="paper-h2">%(lv)s word, kanji and grammar lists</h2>
+      <p class="paper-lvs">%(study)s</p>
+
+      <h2 class="paper-h2">%(lv)s papers to sit</h2>
+      <ul class="paper-mondai">%(papers)s</ul>
+
+      <h2 class="paper-h2">Common questions about %(lv)s</h2>
+      %(faq)s
+
+      <p class="paper-sample-note">Pass marks and sitting times are the
+      official figures. Kanji and word counts are estimates \u2014 the JLPT
+      stopped publishing its lists in 2010.</p>
+
+      <p class="paper-near"><a href="../levels.html">%(levels)s</a>
+        <a href="../exams.html">All papers</a>
+        <a href="../guide/">Guides</a></p>
+    </main>""" % {
+        "lv": lv, "n": n_papers, "mine": n_mine, "q": commas(f["questions"]),
+        "lead": LEVEL_LEAD[lv], "minutes": minutes, "pass": pass_mark,
+        "scored": scored, "kanji": kanji, "vocab": vocab, "rows": rows,
+        "shape": shape, "study": " \u00b7 ".join(study_bits),
+        "papers": paper_links, "faq": faq_html, "levels": "Levels",
+    }
+
+
+EN_SECTION = {"vocabulary": "Vocabulary", "grammar": "Grammar",
+              "reading": "Reading", "listening": "Listening"}
 
 
 def paper_body(exam, table, en, prev_ex, next_ex):
@@ -1509,7 +1835,7 @@ def main():
                 html = html.replace(
                     '<div id="levelsContent"></div>',
                     '<div id="levelsContent">%s</div>'
-                    % levels_table(exams, table, en))
+                    % levels_table(exams, table, en, lang))
             if page == "index.html":
                 html = html.replace('<div class="hero-countdown" id="examCountdown"></div>',
                                     countdown_block(lang, table, en))
@@ -1705,6 +2031,59 @@ def main():
                 written.append((url, lang, "study"))
                 study_pages += 1
 
+    # --------------------------------------------------------------- levels
+    # One address per level, English only. See level_body().
+    tpl_level = io.open(os.path.join(ROOT, "_src", "exams.html"),
+                        encoding="utf-8").read()
+    level_pages = 0
+    os.makedirs(os.path.join(ROOT, "level"), exist_ok=True)
+    for lv in LEVELS_UPPER:
+        table, lang = tr[DEFAULT_LANG], DEFAULT_LANG
+        facts = level_facts(lv, exams)
+        url = level_url(lang, lv)
+        title = ("JLPT %s Practice Test \u2014 %d Free Mock Papers, "
+                 "Timed and Marked" % (lv, len(facts["papers"])))
+        desc = clip_desc(
+            "%d free JLPT %s mock papers, %s questions, timed like the real "
+            "exam and marked section by section. What is on the paper, the "
+            "pass mark, and every 問題 it contains."
+            % (len(facts["papers"]), lv, commas(facts["questions"])))
+
+        ld = ('    <script type="application/ld+json">'
+              '{"@context":"https://schema.org","@type":"LearningResource",'
+              '"name":%s,"url":%s,"educationalLevel":%s,"inLanguage":"en",'
+              '"learningResourceType":"practice exam",'
+              '"isAccessibleForFree":true,"isFamilyFriendly":true,'
+              '"publisher":{"@type":"Organization","name":%s}}</script>'
+              % (json.dumps(title, ensure_ascii=False), json.dumps(url),
+                 json.dumps(lv), json.dumps(SITE_NAME)))
+        ld += "\n" + breadcrumbs([
+            (t(table, "nav.home", en), page_url(lang, "index.html")),
+            (t(table, "nav.levels", en), page_url(lang, "levels.html")),
+            ("JLPT " + lv, url)])
+        ld += "\n" + level_faq_ld(lv, facts)
+
+        html = apply_i18n(tpl_level, table, en)
+        head = seo_head(lang, url, title, desc, [DEFAULT_LANG],
+                        lambda l, _lv=lv: level_url(l, _lv), True, ld)
+        a, b = html.index("<title>"), html.index('<link rel="preload"')
+        html = html[:a] + head.lstrip() + "    " + html[b:]
+        html = re.sub(r"<main\b.*?</main>", lambda m: level_body(lv, facts),
+                      html, count=1, flags=re.S)
+        html = html.replace("<!--LANGS-->", "")
+        # The template is the exams page, so it arrives with Exams lit in the
+        # navigation. This page is a level.
+        html = html.replace('<a href="exams.html" class="active"',
+                            '<a href="exams.html"', 1)
+        html = html.replace('<a href="levels.html"',
+                            '<a href="levels.html" class="active"', 1)
+        html = absolutise(html)
+        html = html.replace('href="./', 'href="../')
+        io.open(os.path.join(ROOT, "level", "%s.html" % lv.lower()),
+                "w", encoding="utf-8").write(finish_html(html, table, en))
+        written.append((url, DEFAULT_LANG, "level"))
+        level_pages += 1
+
     # --------------------------------------------------------------- papers
     # One address per paper. See paper_body for why these exist and why the
     # questions are not on them.
@@ -1804,9 +2183,10 @@ def main():
                 written.append((url, lang, "paper"))
             paper_pages += 1
 
-    print("wrote %d core pages, %d study pages and %d paper pages "
-          "across %d languages"
-          % (len(CORE_PAGES) * len(langs), study_pages, paper_pages, len(langs)))
+    print("wrote %d core pages, %d study pages, %d level pages and %d paper "
+          "pages across %d languages"
+          % (len(CORE_PAGES) * len(langs), study_pages, level_pages,
+             paper_pages, len(langs)))
 
     # The two pages that are neither localised nor listed: the 404 and the
     # offline fallback. Copied through the same last pass as everything else

@@ -2812,6 +2812,19 @@ letter-spacing: 0.1em;
 text-transform: uppercase;
 color: var(--muted);
 }
+.paper-faq {
+border-top: 1px solid var(--line);
+padding: 12px 0;
+}
+.paper-faq:last-of-type { border-bottom: 1px solid var(--line); }
+.paper-faq summary {
+cursor: pointer;
+font-weight: 700;
+color: var(--navy);
+list-style-position: outside;
+}
+.paper-faq summary::marker { color: var(--blue); }
+.paper-faq p { margin: 8px 0 0; color: var(--ink-soft); }
 .paper-mondai { margin: 0; padding: 0; list-style: none; }
 .paper-mondai li {
 display: flex;

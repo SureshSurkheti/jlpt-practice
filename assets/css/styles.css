@@ -4131,6 +4131,23 @@ body.is-leaving { opacity: 0; }
   text-transform: uppercase;
   color: var(--muted);
 }
+/* The five questions at the foot of a level page. A <details> rather than
+   five open paragraphs: the answers are short, and somebody who came for the
+   pass mark should not scroll past four other answers to leave. */
+.paper-faq {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+.paper-faq:last-of-type { border-bottom: 1px solid var(--line); }
+.paper-faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--navy);
+  list-style-position: outside;
+}
+.paper-faq summary::marker { color: var(--blue); }
+.paper-faq p { margin: 8px 0 0; color: var(--ink-soft); }
+
 .paper-mondai { margin: 0; padding: 0; list-style: none; }
 .paper-mondai li {
   display: flex;

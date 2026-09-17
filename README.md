@@ -166,6 +166,31 @@ Below it: how the listening audio works, the one paper whose recording has
 been lost upstream, how many papers were archived with no listening paper at
 all, and where to practise listening if audio will not play for you.
 
+## One page per level
+
+`/level/n5.html` … `/level/n1.html`, written by `tools/build_static.py`.
+
+They exist for the phrase people type. **"JLPT N3 practice test"** is the
+highest-volume thing this site can answer, and until now the only address that
+answered it was `practice.html?lv=N3` — one shell serving five levels, `noindex`
+by necessity, invisible. `levels.html` covers all five in one table and can
+only ever be a list.
+
+Each page carries what somebody asking about a level actually wants: the
+sitting time and pass mark (official figures), the scored sections, the kanji
+and vocabulary load (estimates, said to be estimates), how many questions each
+section holds **on one paper** rather than across the level, every 問題 the
+level contains with its question count counted from the papers themselves, the
+level's word and kanji lists, papers to sit, and the five questions the level
+is asked about — marked up as `FAQPage` from the same list the page renders,
+so the markup and the page cannot drift apart.
+
+**English only, deliberately.** The other eleven trees would be a machine
+translation of a page whose whole value is being a better answer than the ten
+pages above it in the results, and a machine translation is not that. The
+levels table links to the level page in English and to the word list in the
+other languages.
+
 ## Word meanings
 
 **Every paper carries a glossary**, N1 to N5 — 18,201 different words. Every
