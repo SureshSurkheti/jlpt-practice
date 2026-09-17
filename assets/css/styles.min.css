@@ -2760,7 +2760,7 @@ font-variant-numeric: lining-nums tabular-nums;
 margin-top: 18px;
 }
 .paper-index-level { margin-bottom: 18px; }
-.paper-index-level h3 {
+.paper-index-level h2 {
 margin: 0 0 8px;
 font-family: var(--font-sans);
 font-size: 0.72rem;

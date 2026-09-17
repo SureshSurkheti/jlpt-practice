@@ -1195,7 +1195,11 @@ def paper_index(exams, table, en):
             % (esc(e["id"]), esc(period_label(table, en, e)))
             for e in rows)
         blocks.append(
-            '<div class="paper-index-level"><h3>%s</h3><div>%s</div></div>'
+            # h2, not h3: the page's only other heading is the h1, and a
+            # document that goes h1 -> h3 tells a screen reader there is a
+            # level missing between them. It is styled by the class, so the
+            # tag can change without the page moving.
+            '<div class="paper-index-level"><h2>%s</h2><div>%s</div></div>'
             % (esc(lv), links))
 
     total = sum(len(by_level.get(lv) or []) for lv in LEVELS_UPPER)
