@@ -512,7 +512,7 @@ No sign-up. No ads. Nothing to pay. Open it and start.
 📚 Word meanings on every paper: 18,201 words with the reading, the JLPT level and a short meaning — the question, the options, and every word of the listening
 ⏱️ Timed and marked automatically, section by section — so you can see which section is weakest, which is what actually decides a pass
 🌏 12 languages — English, नेपाली, Tiếng Việt, Filipino, Bahasa Indonesia, 中文, 한국어, हिन्दी, বাংলা, සිංහල, Português, 日本語
-🇳🇵 N5 and N4 word meanings in Nepali — 1,473 words
+🇳🇵 N5 and N4 in Nepali — 1,473 words and all 280 grammar points, 1,753 entries in all
 🗂️ 9,638 vocabulary items, 2,211 kanji with stroke order, 280 grammar points
 🙈 Cover the answers on any list and test yourself, tap a row to check
 📱 Phone or computer. Installs like an app and works offline
@@ -562,7 +562,7 @@ Listening is the section most people lose the pass on, and the hardest to practi
 🔤 एक थिचाइमै पूरै प्रश्नपत्रमा फुरिगाना — प्रश्न, विकल्प, पठन र स्क्रिप्ट सबैमा
 📚 हरेक प्रश्नको हरेक शब्दको उच्चारण र अर्थ — १८,२०१ शब्द
 ⏱️ समय गणना र स्वतः अङ्क — कुन सेक्सन कमजोर छ देखाउँछ
-🇳🇵 N5 र N4 का १,४७३ शब्दको अर्थ नेपालीमा
+🇳🇵 N5 र N4 का १,४७३ शब्द र २८० व्याकरण नेपालीमा — जम्मा १,७५३
 🗂️ ९,६३८ शब्द, २,२११ कान्जी (लेख्ने क्रम सहित), २८० व्याकरण
 📱 मोबाइल र कम्प्युटर दुवैमा; इन्टरनेट बिना पनि चल्छ
 🔒 तपाईंको अङ्क तपाईंकै यन्त्रमा रहन्छ
