@@ -191,6 +191,50 @@ pages above it in the results, and a machine translation is not that. The
 levels table links to the level page in English and to the word list in the
 other languages.
 
+## Guides
+
+`guide/` — nine of them now, written by `tools/build_guides.py` (and
+`tools/guides_more.py`, which holds six of the nine so the builder stays
+readable).
+
+They are the indexable half of the site. The papers are disallowed in
+`robots.txt` because the questions are not ours to republish, which leaves
+search engines almost nothing here to read — so these are written to be real
+answers to what people type, out of facts the site already holds, and each
+one links into the level pages and the lists rather than ending in a wall.
+
+| Guide | The query it answers |
+|---|---|
+| `jlpt-scoring.html` | how the JLPT is scored, section minimums |
+| `which-jlpt-level.html` | which level to take |
+| `n4-to-n3.html` | the N4 → N3 jump |
+| `n3-or-n2.html` | N3 or N2, and the pass mark that inverts |
+| `jlpt-kanji-vocabulary-counts.html` | how many kanji per level |
+| `jlpt-question-types.html` | every 問題, what it asks |
+| `jlpt-listening-practice.html` | how to practise listening |
+| `jlpt-exam-day.html` | what the day is like, what to bring |
+| `jlpt-study-hours.html` | how long each level takes |
+
+The first three are translated into four other languages. The six new ones are
+English only for now, and the build **skips** a language that has no
+translation for a guide rather than writing English under a Nepali address —
+`hreflang` and the language picker list only the languages a guide actually
+exists in, or they would be links to a 404.
+
+## Telling search engines the pages exist
+
+`tools/indexnow.py` submits URLs to IndexNow, which Bing and Yandex take and
+Google does not. The key is a file at the site root; that file being live is
+the whole of the authentication, so deploy before submitting.
+
+```bash
+python3 tools/indexnow.py            # everything in sitemap.xml
+python3 tools/indexnow.py <url> ...  # just these
+```
+
+Google is the half this cannot do. That needs the domain verified in Search
+Console and the sitemap submitted there, which needs the owner's account.
+
 ## Word meanings
 
 **Every paper carries a glossary**, N1 to N5 — 18,201 different words. Every

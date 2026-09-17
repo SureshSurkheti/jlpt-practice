@@ -424,6 +424,11 @@ PAGES = [
        body=WHICH),
 ]
 
+# Six more, in a file of their own so this one stays readable. Same rule:
+# a real answer to something people type, out of facts the site already holds.
+from guides_more import EXTRA  # noqa: E402
+PAGES += EXTRA
+
 def ld_for(p):
     return json.dumps({
         "@context": "https://schema.org",
@@ -488,17 +493,32 @@ def out_dir(lang):
     return OUT if lang == "en" else os.path.join(os.path.dirname(OUT), lang, "guide")
 
 
+def has_page(lang, slug):
+    """Whether this guide exists in this language.
+
+    A guide written since the translations were made exists in English only,
+    and an hreflang pointing at the eleven addresses where it does not exist
+    is eleven links to a 404 - which is worse than no hreflang at all,
+    because a crawler takes it as a claim about the page.
+    """
+    if lang == "en" or not slug:
+        return True
+    return slug in TRANSLATED.get(lang, {}).get("pages", {})
+
+
 def hreflang(slug):
     rows = ['    <link rel="alternate" hreflang="%s" href="%s" />' % (l, guide_url(l, slug))
-            for l in LANGS]
+            for l in LANGS if has_page(l, slug)]
     rows.append('    <link rel="alternate" hreflang="x-default" href="%s" />' % guide_url("en", slug))
     return "\n".join(rows)
 
 
 def lang_links(lang, slug, table):
     label = esc(t(table, "lang.label", EN_TABLE))
+    # Only the languages this guide is actually written in - see has_page().
     items = "".join('<li><a href="%s" hreflang="%s" lang="%s">%s</a></li>'
-                    % (guide_url(l, slug), l, l, esc(NAMES[l])) for l in LANGS if l != lang)
+                    % (guide_url(l, slug), l, l, esc(NAMES[l]))
+                    for l in LANGS if l != lang and has_page(l, slug))
     return ('      <nav class="container lang-links" aria-label="%s">\n'
             '        <span>%s</span>\n        <ul>%s</ul>\n      </nav>\n' % (label, label, items))
 
@@ -562,7 +582,14 @@ def write_language(lang):
         if lang == "en":
             pages.append(dict(p))
         else:
-            tr = TRANSLATED[lang]["pages"][p["slug"]]
+            # A guide written since the translations were made has no entry
+            # here yet. It is skipped rather than written in English under a
+            # Nepali address: a page that lies about its own language is
+            # worse for the reader than a shorter index, and worse in search
+            # than not existing. Translate it and it appears.
+            tr = TRANSLATED[lang]["pages"].get(p["slug"])
+            if not tr:
+                continue
             pages.append(dict(slug=p["slug"], h1=tr["h1"], title=tr["title"],
                               desc=clip_desc(tr["desc"]), standfirst=tr["standfirst"],
                               body=tr["body"]))
