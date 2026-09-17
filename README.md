@@ -578,6 +578,74 @@ tested.
   browser. There is no backend.
 
 
+## Getting found
+
+Everything in this repository is the half of search that can be built. The
+half that cannot is below, and none of it is code: a search engine has to be
+told the site exists, and other sites have to point at it. Until the first
+three are done, nothing else on this list matters — a page nobody has been
+told about is a page nobody reads, however well it is marked up.
+
+Tick them off here as they are done.
+
+### Once, and first
+
+- [ ] **Verify the domain in Google Search Console.**
+      [search.google.com/search-console](https://search.google.com/search-console)
+      → Add property → **Domain** → `nihongomock.com` → add the TXT record it
+      gives you wherever DNS for the domain lives → Verify. If DNS is awkward,
+      use **URL prefix** and the **HTML file** method instead: that file goes
+      in the repository root and deploys with everything else.
+- [ ] **Submit the sitemap.** Search Console → Sitemaps → `sitemap.xml`.
+- [ ] **Request indexing** for the ten pages that matter most: the home page,
+      the five `/level/` pages, `/exams.html`, `/guide/`, and two guides.
+      URL Inspection → paste → Request indexing.
+- [ ] **Bing Webmaster Tools.**
+      [bing.com/webmasters](https://www.bing.com/webmasters) → **Import from
+      Google Search Console**. One click, once the first is done.
+      (`tools/indexnow.py` already tells Bing and Yandex when pages change;
+      this is the other half, and it is where their reports live.)
+- [x] **The GitHub description matches the site.** It said 148 papers for a
+      long time, and that repository is what a search for the site's own name
+      returns, so it was the first thing anybody read about the site.
+
+### Then, and this is the slow part
+
+- [ ] **Three real links.** Not paid, not exchanged: a language school, a
+      community organisation, a teacher who writes about the JLPT. Three good
+      ones is enough to start.
+- [ ] **Post it where the readers are.** The copy is at the foot of this file,
+      in English and in Nepali. Facebook groups for Nepali and Vietnamese
+      workers and students in Japan; r/LearnJapanese and r/JLPT, written as
+      what it is — somebody who built a free thing — because Reddit removes
+      advertising and rewards the other kind.
+- [ ] **Read the Nepali.** Eleven of the twelve languages are machine
+      translations and say so on the page. Nepali is the one this site's
+      stated readers use, and the only person on this project who can fix it
+      is its author.
+- [ ] **More guides.** Nine exist. The sites ranking above this one have
+      thirty. `tools/guides_more.py` is where they go.
+
+### Every week, once Search Console has data
+
+- [ ] **Read the Performance tab.** After two or three weeks it lists what
+      people actually typed to arrive. That list beats any guess about what to
+      write next: the queries where the site is on page two are the cheapest
+      pages it will ever write.
+- [ ] **Read the Pages tab** for anything excluded, and fix what it names.
+
+### Not to be done
+
+Paid links, directory spam, keyword stuffing, or bulk pages written by a
+machine. Each of them is a penalty risk, and this site is too carefully built
+to lose that way.
+
+### What to expect
+
+Google takes **two to six weeks** to index a new domain properly and longer to
+rank it. The first three boxes start that clock; until they are ticked the
+clock is not running.
+
 ## Advertising copy
 
 Figures below are current as of the last build. Rebuild and re-check before
