@@ -1,0 +1,1291 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>JLPT N2 Listening — The Phrases That Carry the Marks</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="255 phrases taken from 29 real JLPT N2 listening papers, each with an English and a Nepali meaning, furigana, and a real example from the paper it came from.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --navy:#14213d; --ink:#1b1b1b; --mute:#5c6470; --line:#e3e6ec; --bg:#ffffff;
+  --panel:#f7f8fb; --red:#c1121f; --gold:#8a6d3b; --teal:#0b4f6c; --soft:#eef1f7;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:14px/1.62 "Helvetica Neue",Helvetica,Arial,"Hiragino Kaku Gothic ProN",
+ "Kohinoor Devanagari","Devanagari Sangam MN","Noto Sans Devanagari",system-ui,sans-serif;}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+ruby{ruby-align:center}
+ruby rt{font-size:.5em;color:var(--mute);font-weight:400;line-height:1}
+.ne{font-family:"Kohinoor Devanagari","Devanagari Sangam MN","Noto Sans Devanagari",sans-serif}
+
+.hero{background:var(--navy);color:#fff;padding:44px 0 34px}
+.hero .kick{letter-spacing:.22em;font-size:10.5px;opacity:.72;margin:0 0 12px;text-transform:uppercase}
+.hero h1{margin:0 0 4px;font-size:32px;line-height:1.16;letter-spacing:-.01em}
+.hero .jp{margin:4px 0 16px;font-size:19px;opacity:.94}
+.hero .jp rt{color:rgba(255,255,255,.62)}
+.hero p{margin:0 0 12px;font-size:13.5px;opacity:.9;max-width:62ch}
+.hero .facts{display:flex;gap:26px;flex-wrap:wrap;margin:20px 0 0;padding:0;list-style:none}
+.hero .facts b{display:block;font-size:22px;font-weight:600;letter-spacing:-.01em}
+.hero .facts span{font-size:11px;opacity:.7;letter-spacing:.06em;text-transform:uppercase}
+
+h2.chap{font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+.chap-ne{font-size:13px;color:var(--teal);margin:0 0 8px}
+.chap-blurb{font-size:13px;color:var(--mute);margin:0 0 16px;max-width:66ch}
+section.chap{margin:34px 0 0;padding-top:20px;border-top:2px solid var(--navy)}
+section.chap:first-of-type{border-top:0}
+.chap-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chap-n{font-size:11px;letter-spacing:.16em;color:var(--mute)}
+
+table.ph{width:100%;border-collapse:collapse;margin:0}
+table.ph th{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mute);font-weight:600;border-bottom:1px solid var(--line);padding:0 8px 6px 0}
+table.ph td{vertical-align:top;padding:9px 8px 9px 0;border-bottom:1px solid var(--line)}
+tr.row{break-inside:avoid;page-break-inside:avoid}
+td.num{width:30px;color:var(--mute);font-size:11px;padding-top:12px}
+td.jp{width:27%}
+td.mean{width:38%}
+td.ex{width:32%}
+.jp b{font-size:16.5px;font-weight:600;display:block;line-height:1.5}
+.jp .kana{font-size:11px;color:var(--mute);display:block;margin-top:1px}
+.mean .en{display:block}
+.mean .nep{display:block;color:var(--teal);margin-top:3px;font-size:13px}
+.ex .s{display:block;font-size:12.5px;line-height:1.7}
+.ex .cite{display:block;font-size:10.5px;color:var(--mute);margin-top:3px}
+.freq{display:inline-block;font-size:10px;color:var(--mute);border:1px solid var(--line);
+  border-radius:999px;padding:1px 7px;margin-top:5px;white-space:nowrap}
+
+.note{background:var(--panel);border-left:3px solid var(--gold);padding:14px 16px;margin:22px 0;
+  font-size:13px;border-radius:0 6px 6px 0}
+.note h3{margin:0 0 6px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--gold)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:var(--panel);break-inside:avoid}
+.card h4{margin:0 0 3px;font-size:14px}
+.card .sub{font-size:11px;color:var(--mute);margin:0 0 6px}
+.card p{margin:0;font-size:12.5px;color:var(--ink)}
+.toc ol{columns:2;column-gap:30px;list-style:none;margin:0;padding:0}
+.toc li{margin:0 0 7px;font-size:13px;break-inside:avoid}
+.toc .t{font-weight:600}
+.toc .c{color:var(--mute);font-size:11px}
+footer{margin:46px 0 30px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--mute)}
+footer a{color:var(--teal)}
+
+@page{size:A4;margin:14mm 12mm 16mm}
+@media print{
+  body{font-size:10.5pt}
+  .hero{background:var(--navy) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.note,table.ph th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section.chap{break-before:page;page-break-before:always}
+  section.chap.first{break-before:auto;page-break-before:auto}
+  .jp b{font-size:12.5pt}
+  table.ph th{position:sticky}
+}
+</style>
+</head><body>
+
+<div class="hero"><div class="wrap">
+<p class="kick">nihongomock.com &middot; JLPT N2</p>
+<h1>The phrases that carry the marks</h1>
+<p class="jp">聴解で<ruby>点<rt>てん</rt></ruby>になる<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby></p>
+<p>Every phrase in this book was pulled out of the listening transcripts of real N2 papers, counted, and kept only if the papers actually use it. Nothing here is invented, and nothing here is padding.</p>
+<p class="ne">यस पुस्तिकाका सबै वाक्यांश वास्तविक N2 श्रवण परीक्षाका लिपिबाट निकालिएका हुन् — गनिएका, जाँचिएका, र साँच्चै प्रयोग हुनेमात्र राखिएका।</p>
+<ul class="facts">
+<li><b>255</b><span>phrases</span></li>
+<li><b>29</b><span>real papers</span></li>
+<li><b>877</b><span>questions</span></li>
+<li><b>6,875</b><span>lines of dialogue</span></li>
+<li><b>2010–2024</b><span>sittings covered</span></li>
+</ul></div></div>
+<div class="wrap">
+<div class="note"><h3>How this book was made</h3>
+<p>The listening transcripts of <b>29 real N2 papers</b> (2010-07 to 2024-12) were read end to end: 877 questions, 262,811 characters. The narrator's set-up line — <i><ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>と<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>話<rt>はな</rt></ruby>しています</i> — was then thrown away, because it repeats a fixed formula 877 times and would drown everything else. What was left is <b>6,875 lines of actual dialogue, 202,259 characters</b>. Every candidate phrase was matched against that. A phrase is in this book only if the papers use it; the figure beside each entry is how many lines it appears in, across how many separate sittings. The example under it is a real line from a named paper.</p>
+<p class="ne" style="margin-top:6px">यो पुस्तिका कसरी बन्यो — 29 वास्तविक N2 परीक्षाका श्रवण लिपि पूरै पढेर, हरेक वाक्यांश गनेर बनाइएको। जुन वाक्यांश परीक्षामा साँच्चै आउँदैन, त्यो यहाँ राखिएको छैन।</p></div>
+<section class="chap first"><div class="chap-head"><span class="chap-n">The paper</span><h2 class="chap">What the five sections ask of you</h2></div>
+<p class="chap-ne ne">श्रवण परीक्षाका पाँच भाग — कुन भागले के माग्छ</p>
+<div class="grid2">
+<div class="card"><h4>問題1 &middot; <ruby>課題<rt>かだい</rt></ruby><ruby>理解<rt>りかい</rt></ruby></h4><p class="sub">Task understanding — 145 transcripts held</p><p>You hear the question first. Someone will be told to do something — the mark is for what they do <em>first</em>.</p></div>
+<div class="card"><h4>問題2 &middot; ポイント<ruby>理解<rt>りかい</rt></ruby></h4><p class="sub">Point understanding — 169 transcripts held</p><p>You hear the question first, then a pause, then the talk. Usually <em>why</em>. Several reasons are named; one is the speaker's own.</p></div>
+<div class="card"><h4>問題3 &middot; <ruby>概要<rt>がいよう</rt></ruby><ruby>理解<rt>りかい</rt></ruby></h4><p class="sub">Gist understanding — 144 transcripts held</p><p>No question in advance. You must hold the speaker's attitude in your head until the question arrives.</p></div>
+<div class="card"><h4>問題4 &middot; <ruby>即時<rt>そくじ</rt></ruby><ruby>応答<rt>おうとう</rt></ruby></h4><p class="sub">Quick response — 321 transcripts held</p><p>One short line, three short replies, no time to think. The reply answers the <em>move</em>, not the vocabulary.</p></div>
+<div class="card"><h4>問題5 &middot; <ruby>統合<rt>とうごう</rt></ruby><ruby>理解<rt>りかい</rt></ruby></h4><p class="sub">Integrated understanding — 95 transcripts held</p><p>A long talk, then two or three people compare it. You are tracking who wants what.</p></div>
+</div>
+<div class="note" style="margin-top:18px"><h3>The one habit worth building</h3><p>In 問題1 and 問題2 the question is read <em>before</em> the talk. Use that. Decide what you are listening for, then listen only for it. Most lost marks at N2 are not vocabulary — they are a candidate who understood every word and answered a different question.</p><p class="ne" style="margin-top:6px">問題1 र 問題2 मा प्रश्न पहिले नै सुनाइन्छ। त्यसैले पहिले के खोज्ने हो निर्णय गर्नुहोस्, अनि त्यही मात्र सुन्नुहोस्।</p></div>
+</section>
+<section class="chap first"><div class="chap-head"><span class="chap-n">Contents</span><h2 class="chap">The fourteen groups</h2></div><div class="toc"><ol>
+<li><span class="t">1. What happens first</span> <span class="c">&middot; 20 phrases</span><br><span class="c ne">पहिले के गर्ने — क्रम</span></li>
+<li><span class="t">2. Deciding, and changing the decision</span> <span class="c">&middot; 15 phrases</span><br><span class="c ne">निर्णय र निर्णय फेर्ने</span></li>
+<li><span class="t">3. Asking, advising, offering</span> <span class="c">&middot; 16 phrases</span><br><span class="c ne">अनुरोध, सल्लाह र प्रस्ताव</span></li>
+<li><span class="t">4. Saying no without saying no</span> <span class="c">&middot; 15 phrases</span><br><span class="c ne">&#x27;हुँदैन&#x27; नभनी अस्वीकार</span></li>
+<li><span class="t">5. Reasons — the どうして question</span> <span class="c">&middot; 13 phrases</span><br><span class="c ne">कारण — どうして प्रश्न</span></li>
+<li><span class="t">6. The words that flip the answer</span> <span class="c">&middot; 21 phrases</span><br><span class="c ne">उत्तर पल्टाउने शब्दहरू</span></li>
+<li><span class="t">7. Spoken shapes you must decode live</span> <span class="c">&middot; 16 phrases</span><br><span class="c ne">बोलीचालीका छोटा रूप</span></li>
+<li><span class="t">8. 問題4 即時応答 — answering on the spot</span> <span class="c">&middot; 20 phrases</span><br><span class="c ne">問題4 तत्काल जवाफ</span></li>
+<li><span class="t">9. Office, phone and keigo</span> <span class="c">&middot; 20 phrases</span><br><span class="c ne">कार्यालय, फोन र आदरवाची</span></li>
+<li><span class="t">10. Announcements and public notices</span> <span class="c">&middot; 17 phrases</span><br><span class="c ne">सूचना र घोषणा</span></li>
+<li><span class="t">11. Feeling and judgement — 問題3 概要理解</span> <span class="c">&middot; 22 phrases</span><br><span class="c ne">भावना र मूल्यांकन — 問題3</span></li>
+<li><span class="t">12. Time, schedule and deadline</span> <span class="c">&middot; 16 phrases</span><br><span class="c ne">समय, तालिका र म्याद</span></li>
+<li><span class="t">13. Amount, price and degree</span> <span class="c">&middot; 18 phrases</span><br><span class="c ne">परिमाण, मूल्य र मात्रा</span></li>
+<li><span class="t">14. Set phrases that carry the point</span> <span class="c">&middot; 26 phrases</span><br><span class="c ne">अर्थ बोक्ने तयारी वाक्यांश</span></li>
+</ol></div></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 1</span><h2 class="chap">What happens first</h2></div>
+<p class="chap-ne ne">पहिले के गर्ने — क्रम</p>
+<p class="chap-blurb">The commonest N2 question is 問題1: &quot;this person will do what first?&quot; The answer is almost never the last thing said. It is the thing marked by one of these words.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">1</td>
+<td class="jp"><b>それから</b><span class="kana">それから</span><span class="freq">66 lines &middot; 26 papers</span></td>
+<td class="mean"><span class="en">And then — the next step.</span><span class="nep ne">त्यसपछि — अर्को पाइला।</span></td>
+<td class="ex"><span class="s">それから、<ruby>製品<rt>せいひん</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby>の<ruby>資料<rt>しりょう</rt></ruby>。<ruby>前回<rt>ぜんかい</rt></ruby>は<ruby>分<rt>わ</rt></ruby>かりにくいって<ruby>言<rt>い</rt></ruby>われた<ruby>部分<rt>ぶぶん</rt></ruby>があったじゃない?</span><span class="cite">December 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">2</td>
+<td class="jp"><b>まず</b><span class="kana">まず</span><span class="freq">52 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">First of all — before anything else.</span><span class="nep ne">सबभन्दा पहिले।</span></td>
+<td class="ex"><span class="s"><ruby>大事<rt>だいじ</rt></ruby>なところだから、まずはここだけなおして、すぐ<ruby>見<rt>み</rt></ruby>せてください。</span><span class="cite">July 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">3</td>
+<td class="jp"><b><ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby></b><span class="kana">いちど</span><span class="freq">47 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">Once; one time through.</span><span class="nep ne">एक पटक।</span></td>
+<td class="ex"><span class="s"><ruby>私<rt>わたし</rt></ruby>は、ドラマで<ruby>見<rt>み</rt></ruby>てからここのお<ruby>城<rt>しろ</rt></ruby><ruby>気<rt>き</rt></ruby>になってて、<ruby>一度<rt>いちど</rt></ruby><ruby>見<rt>み</rt></ruby>てみたかったんだ。</span><span class="cite">July 2010 &middot; Q31</span></td></tr>
+<tr class="row"><td class="num">4</td>
+<td class="jp"><b>すぐに</b><span class="kana">すぐに</span><span class="freq">46 lines &middot; 21 papers</span></td>
+<td class="mean"><span class="en">At once, right away.</span><span class="nep ne">तुरुन्तै।</span></td>
+<td class="ex"><span class="s">あ、<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>資料<rt>しりょう</rt></ruby>をすぐに<ruby>作<rt>つく</rt></ruby>らなきゃ。</span><span class="cite">December 2010 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">5</td>
+<td class="jp"><b>〜てから</b><span class="kana">〜てから</span><span class="freq">39 lines &middot; 21 papers</span></td>
+<td class="mean"><span class="en">After doing ~ . Fixes the order of two actions.</span><span class="nep ne">~ गरेपछि। दुई कामको क्रम तोक्छ।</span></td>
+<td class="ex"><span class="s"><ruby>私<rt>わたし</rt></ruby>は、ドラマで<ruby>見<rt>み</rt></ruby>てからここのお<ruby>城<rt>しろ</rt></ruby><ruby>気<rt>き</rt></ruby>になってて、<ruby>一度<rt>いちど</rt></ruby><ruby>見<rt>み</rt></ruby>てみたかったんだ。</span><span class="cite">July 2010 &middot; Q31</span></td></tr>
+<tr class="row"><td class="num">6</td>
+<td class="jp"><b><ruby>後<rt>あと</rt></ruby>で</b><span class="kana">あとで</span><span class="freq">29 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">Later.</span><span class="nep ne">पछि।</span></td>
+<td class="ex"><span class="s"><ruby>後<rt>あと</rt></ruby>で<ruby>見<rt>み</rt></ruby>ておくよ。<ruby>飛行機<rt>ひこうき</rt></ruby>のチッケトは<ruby>取<rt>と</rt></ruby>れてるよね。</span><span class="cite">December 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">7</td>
+<td class="jp"><b><ruby>先<rt>さき</rt></ruby>に</b><span class="kana">さきに</span><span class="freq">23 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">Ahead of the other thing; first.</span><span class="nep ne">अगाडि, पहिले।</span></td>
+<td class="ex"><span class="s"><ruby>先<rt>ま</rt></ruby>ず、ポットやカップを<ruby>先<rt>さき</rt></ruby>に<ruby>暖<rt>あたた</rt></ruby>めておいてください。</span><span class="cite">December 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">8</td>
+<td class="jp"><b><ruby>早<rt>はや</rt></ruby>めに</b><span class="kana">はやめに</span><span class="freq">14 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Early, sooner rather than later.</span><span class="nep ne">चाँडै, ढिलो नगरी।</span></td>
+<td class="ex"><span class="s">ただし、<ruby>毎年<rt>まいとし</rt></ruby><ruby>人気<rt>にんき</rt></ruby>の<ruby>野菜<rt>やさい</rt></ruby><ruby>天<rt>てん</rt></ruby>ぷらは<ruby>残<rt>のこ</rt></ruby>り<ruby>僅<rt>わず</rt></ruby>かとなっておりますので、お<ruby>早<rt>はや</rt></ruby>めにお<ruby>越<rt>こ</rt></ruby>しください。</span><span class="cite">December 2013 &middot; Q31</span></td></tr>
+<tr class="row"><td class="num">9</td>
+<td class="jp"><b>もう<ruby>一度<rt>いちど</rt></ruby></b><span class="kana">もういちど</span><span class="freq">13 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">One more time, again.</span><span class="nep ne">फेरि एक पटक।</span></td>
+<td class="ex"><span class="s">すみませんが、ご<ruby>自宅<rt>じたく</rt></ruby>の<ruby>方<rt>ほう</rt></ruby>でももう<ruby>一度<rt>いちど</rt></ruby>お<ruby>探<rt>さが</rt></ruby>しになってみてください。</span><span class="cite">December 2012 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">10</td>
+<td class="jp"><b><ruby>終<rt>お</rt></ruby>わらせる</b><span class="kana">おわらせる</span><span class="freq">11 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Finish it off.</span><span class="nep ne">सक्नु, पूरा गर्नु।</span></td>
+<td class="ex"><span class="s"><ruby>一番<rt>いちばん</rt></ruby>の<ruby>学校<rt>がっこう</rt></ruby>は<ruby>首都<rt>しゅと</rt></ruby>にあって<ruby>交通<rt>こうつう</rt></ruby>も<ruby>便利<rt>べんり</rt></ruby>なので、<ruby>授業<rt>じゅぎょう</rt></ruby>が<ruby>終<rt>お</rt></ruby>わってからいろいろな<ruby>活動<rt>かつどう</rt></ruby>ができると<ruby>四<rt>よっ</rt></ruby>つのなかでは<ruby>最<rt>もっと</rt></ruby>も<ruby>人気<rt>にんき</rt></ruby>があります。</span><span class="cite">July 2016 &middot; Q31</span></td></tr>
+<tr class="row"><td class="num">11</td>
+<td class="jp"><b>とりあえず</b><span class="kana">とりあえず</span><span class="freq">9 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">For now, for the time being. Signals a first step, not the final one.</span><span class="nep ne">अहिलेलाई, फिलहाल। पहिलो कदम जनाउँछ, अन्तिम होइन।</span></td>
+<td class="ex"><span class="s">うん、とりあえず、これを<ruby>聞<rt>き</rt></ruby>いたら、<ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>し<ruby>僕<rt>ぼく</rt></ruby>のほうにかけてくれない?</span><span class="cite">December 2013 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">12</td>
+<td class="jp"><b><ruby>取<rt>と</rt></ruby>りかかる</b><span class="kana">とりかかる</span><span class="freq">9 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Set about it, start work on it.</span><span class="nep ne">काम सुरु गर्नु।</span></td>
+<td class="ex"><span class="s"><ruby>長期<rt>ちょうき</rt></ruby><ruby>的<rt>てき</rt></ruby>には<ruby>運転<rt>うんてん</rt></ruby><ruby>手<rt>て</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>や<ruby>能力<rt>のうりょく</rt></ruby>を<ruby>磨<rt>みが</rt></ruby>いてく<ruby>必要<rt>ひつよう</rt></ruby>があるけど、<ruby>今回<rt>こんかい</rt></ruby>はすぐ<ruby>取<rt>と</rt></ruby>り<ruby>掛<rt>か</rt></ruby>かれて、<ruby>需要<rt>じゅよう</rt></ruby>の<ruby>広<rt>ひろ</rt></ruby>がりが<ruby>期待<rt>きたい</rt></ruby>できるものにしよう。</span><span class="cite">December 2014 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">13</td>
+<td class="jp"><b><ruby>最後<rt>さいご</rt></ruby>に</b><span class="kana">さいごに</span><span class="freq">7 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Last of all.</span><span class="nep ne">सबभन्दा अन्तिममा।</span></td>
+<td class="ex"><span class="s">えー、この<ruby>授業<rt>じゅぎょう</rt></ruby>では<ruby>最後<rt>さいご</rt></ruby>にグループ<ruby>発表<rt>はっぴょう</rt></ruby>をしてもらいます。</span><span class="cite">July 2014 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">14</td>
+<td class="jp"><b><ruby>今<rt>いま</rt></ruby>のうちに / 〜うちに</b><span class="kana">〜うちに</span><span class="freq">7 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">While the chance lasts; while ~ is still true. Do it now, not later.</span><span class="nep ne">मौका छँदै; ~ हुँदै। पछि होइन, अहिल्यै।</span></td>
+<td class="ex"><span class="s"><ruby>運<rt>うん</rt></ruby>がよければ、<ruby>歩<rt>ある</rt></ruby>いているうちによさそうなアパートが<ruby>見<rt>み</rt></ruby>つかるかもしれないし。</span><span class="cite">July 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">15</td>
+<td class="jp"><b>その<ruby>前<rt>まえ</rt></ruby>に</b><span class="kana">そのまえに</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Before that. Almost always introduces the real answer.</span><span class="nep ne">त्यो भन्दा पहिले। प्रायः यहीँ साँचो उत्तर हुन्छ।</span></td>
+<td class="ex"><span class="s">あしたの<ruby>東<rt>ひがし</rt></ruby><ruby>事務所<rt>じむしょ</rt></ruby>との<ruby>打<rt>う</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせのことなんけれど、<ruby>僕<rt>ぼく</rt></ruby>、その<ruby>前<rt>まえ</rt></ruby>に<ruby>別<rt>べつ</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>が<ruby>入<rt>はい</rt></ruby>ってて、<ruby>少<rt>すこ</rt></ruby>し<ruby>遅<rt>おく</rt></ruby>れるかもしれないんだ。</span><span class="cite">July 2011 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">16</td>
+<td class="jp"><b><ruby>次<rt>つぎ</rt></ruby>に</b><span class="kana">つぎに</span><span class="freq">5 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Next.</span><span class="nep ne">त्यसपछि, दोस्रोमा।</span></td>
+<td class="ex"><span class="s">では<ruby>次<rt>つぎ</rt></ruby>に、<ruby>気<rt>き</rt></ruby>になる<ruby>連休<rt>れんきゅう</rt></ruby>の<ruby>天気<rt>てんき</rt></ruby><ruby>予報<rt>よほう</rt></ruby>をお<ruby>伝<rt>つた</rt></ruby>えします。</span><span class="cite">July 2013 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">17</td>
+<td class="jp"><b>あとにする</b><span class="kana">あとにする</span><span class="freq">4 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Leave it till later. Marks what is NOT the answer.</span><span class="nep ne">पछि गर्ने। यो उत्तर होइन भन्ने संकेत।</span></td>
+<td class="ex"><span class="s">あ、そっちじゃなくて<ruby>自分<rt>じぶん</rt></ruby>たちで<ruby>焼<rt>や</rt></ruby>いて<ruby>食<rt>た</rt></ruby>べられるって<ruby>方<rt>かた</rt></ruby>。<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>は<ruby>最後<rt>さいご</rt></ruby>にしようよ。</span><span class="cite">July 2024 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">18</td>
+<td class="jp"><b><ruby>済<rt>す</rt></ruby>ませる</b><span class="kana">すませる</span><span class="freq">3 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Get it finished, get it out of the way.</span><span class="nep ne">सिध्याउनु, टुंग्याउनु।</span></td>
+<td class="ex"><span class="s">でも、とにかく<ruby>安<rt>やす</rt></ruby>く<ruby>済<rt>す</rt></ruby>ませたいから、まずは<ruby>運<rt>うん</rt></ruby>を<ruby>試<rt>ため</rt></ruby>してみることにします。</span><span class="cite">July 2013 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">19</td>
+<td class="jp"><b>〜たあとで</b><span class="kana">〜たあとで</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">After ~ has happened.</span><span class="nep ne">~ भएपछि।</span></td>
+<td class="ex"><span class="s">これは<ruby>出会<rt>であ</rt></ruby>ったあとで<ruby>分<rt>わ</rt></ruby>かったことなんですが、<ruby>時期<rt>じき</rt></ruby>は<ruby>違<rt>ちが</rt></ruby>うものの、<ruby>同<rt>おな</rt></ruby>じ<ruby>幼稚園<rt>ようちえん</rt></ruby>に<ruby>通<rt>かよ</rt></ruby>われ、そして<ruby>何<rt>なん</rt></ruby>と、<ruby>高校<rt>こうこう</rt></ruby>も<ruby>同<rt>おな</rt></ruby>じだったそうです。</span><span class="cite">December 2011 &middot; Q10</span></td></tr>
+<tr class="row"><td class="num">20</td>
+<td class="jp"><b>〜ついでに</b><span class="kana">〜ついでに</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">While you are at it; on the same trip.</span><span class="nep ne">सोही मौकामा, सँगै।</span></td>
+<td class="ex"><span class="s">ついでに、<ruby>自転車<rt>じてんしゃ</rt></ruby><ruby>置<rt>お</rt></ruby>き<ruby>場<rt>ば</rt></ruby>の<ruby>掃除<rt>そうじ</rt></ruby>もするんです。</span><span class="cite">July 2019 &middot; Q5</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 2</span><h2 class="chap">Deciding, and changing the decision</h2></div>
+<p class="chap-ne ne">निर्णय र निर्णय फेर्ने</p>
+<p class="chap-blurb">Half the N2 listening points turn on one thing: did the speaker decide, or did the decision get made for them, or did they change their mind at the last line? These are the words that tell you.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">21</td>
+<td class="jp"><b>やっぱり</b><span class="kana">やっぱり</span><span class="freq">74 lines &middot; 25 papers</span></td>
+<td class="mean"><span class="en">After all — I am going back to what I first thought. A classic answer-flipper.</span><span class="nep ne">आखिर पनि — पहिलेकै कुरामा फर्कने। उत्तर पल्टाउने शब्द।</span></td>
+<td class="ex"><span class="s">やっぱり<ruby>怖<rt>こわ</rt></ruby>いのは<ruby>家具<rt>かぐ</rt></ruby>が<ruby>倒<rt>たお</rt></ruby>れることだから、<ruby>本棚<rt>ほんだな</rt></ruby>とか<ruby>背<rt>せ</rt></ruby>の<ruby>高<rt>たか</rt></ruby>い<ruby>家具<rt>かぐ</rt></ruby>があったら、かべに<ruby>固定<rt>こてい</rt></ruby>したほうがいいよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">22</td>
+<td class="jp"><b><ruby>決<rt>き</rt></ruby>まる / <ruby>決<rt>き</rt></ruby>める</b><span class="kana">きまる / きめる</span><span class="freq">61 lines &middot; 22 papers</span></td>
+<td class="mean"><span class="en">Be settled / settle it.</span><span class="nep ne">तय हुनु / तय गर्नु।</span></td>
+<td class="ex"><span class="s">あとは、うちの<ruby>人<rt>ひと</rt></ruby>と<ruby>話<rt>はな</rt></ruby>し<ruby>合<rt>あ</rt></ruby>って、<ruby>家族<rt>かぞく</rt></ruby>の<ruby>避難<rt>ひなん</rt></ruby><ruby>場所<rt>ばしょ</rt></ruby>を<ruby>決<rt>き</rt></ruby>めておいたほうがいいよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">23</td>
+<td class="jp"><b>〜ことになる</b><span class="kana">〜ことになる</span><span class="freq">58 lines &middot; 25 papers</span></td>
+<td class="mean"><span class="en">It has been decided that ~ . Decided by circumstances or by someone else.</span><span class="nep ne">~ हुने भयो। परिस्थिति वा अरूले तय गरेको।</span></td>
+<td class="ex"><span class="s"><ruby>直<rt>なお</rt></ruby>ったから、<ruby>明日<rt>あした</rt></ruby><ruby>配達<rt>はいたつ</rt></ruby>してもらうことになったんだ。</span><span class="cite">July 2010 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">24</td>
+<td class="jp"><b>〜<ruby>予定<rt>よてい</rt></ruby></b><span class="kana">〜よてい</span><span class="freq">49 lines &middot; 20 papers</span></td>
+<td class="mean"><span class="en">Scheduled to ~ . Fixed on a calendar.</span><span class="nep ne">~ गर्ने तालिका छ।</span></td>
+<td class="ex"><span class="s"><ruby>先<rt>さき</rt></ruby>ほど<ruby>緑<rt>みどり</rt></ruby>のアパートの<ruby>林<rt>はやし</rt></ruby>さんから<ruby>新<rt>しん</rt></ruby><ruby>商品<rt>しょうひん</rt></ruby>の<ruby>発売<rt>はつばい</rt></ruby>についての<ruby>予定<rt>よてい</rt></ruby><ruby>表<rt>ひょう</rt></ruby>を<ruby>送<rt>おく</rt></ruby>ってほしいと<ruby>連絡<rt>れんらく</rt></ruby>かありました。</span><span class="cite">December 2011 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">25</td>
+<td class="jp"><b><ruby>変更<rt>へんこう</rt></ruby>する</b><span class="kana">へんこうする</span><span class="freq">45 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">Change it (a booking, a date, a plan).</span><span class="nep ne">परिवर्तन गर्नु (बुकिङ, मिति, योजना)।</span></td>
+<td class="ex"><span class="s">ご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>飛行機<rt>ひこうき</rt></ruby>はあいにく<ruby>席<rt>せき</rt></ruby>がいっぱいでして、キャンセル<ruby>待<rt>ま</rt></ruby>ちか<ruby>次<rt>つぎ</rt></ruby>の<ruby>便<rt>びん</rt></ruby>への<ruby>変更<rt>へんこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>となります。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">26</td>
+<td class="jp"><b>〜ことにする</b><span class="kana">〜ことにする</span><span class="freq">38 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">Decide to ~ . The speaker&#x27;s own choice.</span><span class="nep ne">~ गर्ने निर्णय गर्नु। वक्ताकै रोजाइ।</span></td>
+<td class="ex"><span class="s">そこで、<ruby>今回<rt>こんかい</rt></ruby><ruby>所属<rt>しょぞく</rt></ruby>する<ruby>課<rt>か</rt></ruby>や<ruby>仕事<rt>しごと</rt></ruby><ruby>内容<rt>ないよう</rt></ruby>を<ruby>問<rt>と</rt></ruby>わず、<ruby>社内<rt>しゃない</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>から<ruby>新<rt>しん</rt></ruby><ruby>製品<rt>せいひん</rt></ruby>の<ruby>企画<rt>きかく</rt></ruby>を<ruby>募集<rt>ぼしゅう</rt></ruby>することにしました。</span><span class="cite">December 2012 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">27</td>
+<td class="jp"><b>〜ようにする</b><span class="kana">〜ようにする</span><span class="freq">31 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">Make a point of ~ ing; try to do it as a habit.</span><span class="nep ne">~ गर्ने बानी बसाल्नु।</span></td>
+<td class="ex"><span class="s">テレビの<ruby>音<rt>おと</rt></ruby>だって<ruby>小<rt>ちい</rt></ruby>さめにするようにしているんだよね。</span><span class="cite">July 2011 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">28</td>
+<td class="jp"><b>〜のはやめる</b><span class="kana">〜のはやめる</span><span class="freq">26 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">Stop doing ~ ; call it off.</span><span class="nep ne">~ गर्न छोड्नु, रद्द गर्नु।</span></td>
+<td class="ex"><span class="s"><ruby>田中<rt>たなか</rt></ruby>の<ruby>先生<rt>せんせい</rt></ruby>の<ruby>出版<rt>しゅっぱん</rt></ruby><ruby>記念<rt>きねん</rt></ruby>パーティーの<ruby>会場<rt>かいじょう</rt></ruby>、レストランはやめて、ホテルに<ruby>変更<rt>へんこう</rt></ruby>したんだって。</span><span class="cite">July 2011 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">29</td>
+<td class="jp"><b>〜ことにした</b><span class="kana">〜ことにした</span><span class="freq">24 lines &middot; 10 papers</span></td>
+<td class="mean"><span class="en">Decided to ~ (already settled).</span><span class="nep ne">~ गर्ने निर्णय गरिसकेँ।</span></td>
+<td class="ex"><span class="s">そこで、<ruby>今回<rt>こんかい</rt></ruby><ruby>所属<rt>しょぞく</rt></ruby>する<ruby>課<rt>か</rt></ruby>や<ruby>仕事<rt>しごと</rt></ruby><ruby>内容<rt>ないよう</rt></ruby>を<ruby>問<rt>と</rt></ruby>わず、<ruby>社内<rt>しゃない</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>から<ruby>新<rt>しん</rt></ruby><ruby>製品<rt>せいひん</rt></ruby>の<ruby>企画<rt>きかく</rt></ruby>を<ruby>募集<rt>ぼしゅう</rt></ruby>することにしました。</span><span class="cite">December 2012 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">30</td>
+<td class="jp"><b>〜つもり</b><span class="kana">〜つもり</span><span class="freq">24 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">Intend to ~ . An intention, not yet an action.</span><span class="nep ne">~ गर्ने विचार छ। इरादा मात्र।</span></td>
+<td class="ex"><span class="s">うーん、そのつもりだったんだけど、さっきの<ruby>説明<rt>せつめい</rt></ruby><ruby>聞<rt>き</rt></ruby>いてたら、いろいろ<ruby>体験<rt>たいけん</rt></ruby>してみるのも<ruby>悪<rt>わる</rt></ruby>くないかなって。</span><span class="cite">July 2010 &middot; Q31</span></td></tr>
+<tr class="row"><td class="num">31</td>
+<td class="jp"><b><ruby>延期<rt>えんき</rt></ruby>する</b><span class="kana">えんきする</span><span class="freq">19 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Postpone.</span><span class="nep ne">स्थगित गर्नु।</span></td>
+<td class="ex"><span class="s">でも、まあ、<ruby>焦<rt>あせ</rt></ruby>って<ruby>開店<rt>かいてん</rt></ruby>してサービスの<ruby>評判<rt>ひょうばん</rt></ruby>を<ruby>落<rt>お</rt></ruby>とすより、<ruby>延期<rt>えんき</rt></ruby>してでもちゃんと<ruby>準備<rt>じゅんび</rt></ruby>したほうがいいよ。</span><span class="cite">December 2016 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">32</td>
+<td class="jp"><b>そうしよう</b><span class="kana">そうしよう</span><span class="freq">19 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">Let&#x27;s do that — agreement reached. The decision is final here.</span><span class="nep ne">त्यसै गरौँ — सहमति भयो। यहीँ निर्णय टुंगिन्छ।</span></td>
+<td class="ex"><span class="s">じゃあ、そうします。あのう、ちなみに、<ruby>大学<rt>だいがく</rt></ruby>のホームページから<ruby>申<rt>もう</rt></ruby>し<ruby>込<rt>こ</rt></ruby>むことはできないんですよね。</span><span class="cite">December 2018 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">33</td>
+<td class="jp"><b>〜ことになっている</b><span class="kana">〜ことになっている</span><span class="freq">13 lines &middot; 11 papers</span></td>
+<td class="mean"><span class="en">It is the rule that ~ ; that is how it is done here.</span><span class="nep ne">~ गर्ने नियम छ।</span></td>
+<td class="ex"><span class="s">あのう、<ruby>僕<rt>ぼく</rt></ruby>たち<ruby>二<rt>に</rt></ruby><ruby>人<rt>にん</rt></ruby>、<ruby>子供<rt>こども</rt></ruby>たちが<ruby>社会<rt>しゃかい</rt></ruby>をどう<ruby>見<rt>み</rt></ruby>てるのかってテーマで<ruby>調査<rt>ちょうさ</rt></ruby>することになってるんですけど。</span><span class="cite">December 2011 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">34</td>
+<td class="jp"><b>キャンセル</b><span class="kana">キャンセル</span><span class="freq">7 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">Cancel.</span><span class="nep ne">रद्द गर्नु।</span></td>
+<td class="ex"><span class="s">ご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>飛行機<rt>ひこうき</rt></ruby>はあいにく<ruby>席<rt>せき</rt></ruby>がいっぱいでして、キャンセル<ruby>待<rt>ま</rt></ruby>ちか<ruby>次<rt>つぎ</rt></ruby>の<ruby>便<rt>びん</rt></ruby>への<ruby>変更<rt>へんこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>となります。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">35</td>
+<td class="jp"><b>やめておく</b><span class="kana">やめておく</span><span class="freq">4 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">I&#x27;ll pass; better not. A polite cancellation.</span><span class="nep ne">नगर्ने नै ठीक। भद्र अस्वीकार।</span></td>
+<td class="ex"><span class="s">いや、ゆっくり<ruby>見<rt>み</rt></ruby>られそうにないし、<ruby>今日<rt>きょう</rt></ruby>はやめとく。</span><span class="cite">July 2014 &middot; Q31</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 3</span><h2 class="chap">Asking, advising, offering</h2></div>
+<p class="chap-ne ne">अनुरोध, सल्लाह र प्रस्ताव</p>
+<p class="chap-blurb">In 問題1 someone is usually told to do something. Whether it is an order, a favour or a mere suggestion changes what the person actually does next.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">36</td>
+<td class="jp"><b>〜てもらう / 〜てもらえますか</b><span class="kana">〜てもらう</span><span class="freq">167 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Could you ~ for me? (polite request)</span><span class="nep ne">~ गरिदिन सक्नुहुन्छ? (भद्र अनुरोध)</span></td>
+<td class="ex"><span class="s"><ruby>直<rt>なお</rt></ruby>ったから、<ruby>明日<rt>あした</rt></ruby><ruby>配達<rt>はいたつ</rt></ruby>してもらうことになったんだ。</span><span class="cite">July 2010 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">37</td>
+<td class="jp"><b>〜ましょうか</b><span class="kana">〜ましょうか</span><span class="freq">119 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Shall I ~ ? Offering to help.</span><span class="nep ne">म ~ गरिदिऊँ? सहयोगको प्रस्ताव।</span></td>
+<td class="ex"><span class="s">では、<ruby>田中<rt>たなか</rt></ruby>が<ruby>戻<rt>もど</rt></ruby>り<ruby>次第<rt>しだい</rt></ruby>、<ruby>山川<rt>やまかわ</rt></ruby>さんに<ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>しお<ruby>電話<rt>でんわ</rt></ruby><ruby>差<rt>さ</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げるよう<ruby>伝<rt>つた</rt></ruby>えましょうか。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">38</td>
+<td class="jp"><b>〜てくれる?</b><span class="kana">〜てくれる</span><span class="freq">114 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Will you do ~ for me? (casual request)</span><span class="nep ne">मलाई ~ गरिदिन्छौ? (अनौपचारिक अनुरोध)</span></td>
+<td class="ex"><span class="s">それはしょうがないと<ruby>思<rt>おも</rt></ruby>うんだけど、<ruby>電車<rt>でんしゃ</rt></ruby>を<ruby>降<rt>お</rt></ruby>りようとしても、ドアの<ruby>近<rt>ちか</rt></ruby>くにいる<ruby>人<rt>ひと</rt></ruby>が、なかなか<ruby>動<rt>うご</rt></ruby>いてくれなくて。</span><span class="cite">July 2010 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">39</td>
+<td class="jp"><b>お<ruby>願<rt>ねが</rt></ruby>いします</b><span class="kana">おねがいします</span><span class="freq">89 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">Please; I&#x27;m counting on you.</span><span class="nep ne">कृपया; भरोसा गरेँ।</span></td>
+<td class="ex"><span class="s">また、ホテルのご<ruby>予約<rt>よやく</rt></ruby>なども<ruby>承<rt>うけたまわ</rt></ruby>っておりますので、よろしくお<ruby>願<rt>ねが</rt></ruby>いします。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">40</td>
+<td class="jp"><b>〜たほうがいい</b><span class="kana">〜たほうがいい</span><span class="freq">84 lines &middot; 27 papers</span></td>
+<td class="mean"><span class="en">You&#x27;d better ~ ; it would be better to ~ . Advice, not an order.</span><span class="nep ne">~ गरे राम्रो हुन्छ। सल्लाह, आदेश होइन।</span></td>
+<td class="ex"><span class="s">やっぱり<ruby>怖<rt>こわ</rt></ruby>いのは<ruby>家具<rt>かぐ</rt></ruby>が<ruby>倒<rt>たお</rt></ruby>れることだから、<ruby>本棚<rt>ほんだな</rt></ruby>とか<ruby>背<rt>せ</rt></ruby>の<ruby>高<rt>たか</rt></ruby>い<ruby>家具<rt>かぐ</rt></ruby>があったら、かべに<ruby>固定<rt>こてい</rt></ruby>したほうがいいよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">41</td>
+<td class="jp"><b>〜ていただけますか</b><span class="kana">〜ていただけますか</span><span class="freq">74 lines &middot; 25 papers</span></td>
+<td class="mean"><span class="en">Would you be so kind as to ~ ? (the politest everyday request)</span><span class="nep ne">~ गरिदिनुहुन्छ कि? (सबभन्दा भद्र अनुरोध)</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>は、その<ruby>中<rt>なか</rt></ruby>から<ruby>毎日<rt>まいにち</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で、すぐ<ruby>実践<rt>じっせん</rt></ruby>できることを<ruby>紹介<rt>しょうかい</rt></ruby>していただきますので、どうぞ、メモを<ruby>用意<rt>ようい</rt></ruby>してご<ruby>覧<rt>らん</rt></ruby>ください。</span><span class="cite">July 2010 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">42</td>
+<td class="jp"><b>〜てもいい?</b><span class="kana">〜てもいい</span><span class="freq">66 lines &middot; 25 papers</span></td>
+<td class="mean"><span class="en">May I ~ ? Asking permission.</span><span class="nep ne">~ गरे हुन्छ? अनुमति माग्दै।</span></td>
+<td class="ex"><span class="s"><ruby>授業<rt>じゅぎょう</rt></ruby>のノートは<ruby>取<rt>と</rt></ruby>っとくから、<ruby>心配<rt>しんぱい</rt></ruby>しなくてもいいよ。</span><span class="cite">July 2011 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">43</td>
+<td class="jp"><b>〜ておいて</b><span class="kana">〜ておいて</span><span class="freq">63 lines &middot; 23 papers</span></td>
+<td class="mean"><span class="en">Do ~ in advance, and leave it ready.</span><span class="nep ne">अग्रिम रूपमा ~ गरेर राख।</span></td>
+<td class="ex"><span class="s">すぐ<ruby>持<rt>も</rt></ruby>ち<ruby>出<rt>だ</rt></ruby>せるように<ruby>水<rt>みず</rt></ruby>や<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>の<ruby>入<rt>い</rt></ruby>れた<ruby>袋<rt>ふくろ</rt></ruby>は<ruby>必<rt>かなら</rt></ruby>ず<ruby>用意<rt>ようい</rt></ruby>しといたほうがいいって、テレビで<ruby>言<rt>い</rt></ruby>ったよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">44</td>
+<td class="jp"><b>〜てほしい</b><span class="kana">〜てほしい</span><span class="freq">53 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">I want you to ~ .</span><span class="nep ne">मलाई ~ गरिदेओस् भन्ने चाहन्छु।</span></td>
+<td class="ex"><span class="s"><ruby>風邪<rt>かぜ</rt></ruby>をひいたから、バイトを<ruby>代<rt>か</rt></ruby>わってほしいって、<ruby>頼<rt>たの</rt></ruby>まれちゃって。</span><span class="cite">July 2010 &middot; Q10</span></td></tr>
+<tr class="row"><td class="num">45</td>
+<td class="jp"><b>〜たらどう?</b><span class="kana">〜たらどう</span><span class="freq">44 lines &middot; 20 papers</span></td>
+<td class="mean"><span class="en">Why don&#x27;t you ~ ? A soft suggestion.</span><span class="nep ne">~ गरे कस्तो होला? नरम सुझाव।</span></td>
+<td class="ex"><span class="s">いつまでゲームやってんだ、いいかげんにしたらどうだ。</span><span class="cite">July 2012 &middot; Q21</span></td></tr>
+<tr class="row"><td class="num">46</td>
+<td class="jp"><b><ruby>手伝<rt>てつだ</rt></ruby>って</b><span class="kana">てつだって</span><span class="freq">41 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">Give me a hand.</span><span class="nep ne">सहयोग गरिदेऊ।</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>は<ruby>木村<rt>きむら</rt></ruby>さんのお<ruby>世話<rt>せわ</rt></ruby>を<ruby>手伝<rt>てつだ</rt></ruby>ってもらいます。</span><span class="cite">December 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">47</td>
+<td class="jp"><b><ruby>助<rt>たす</rt></ruby>かります</b><span class="kana">たすかります</span><span class="freq">38 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">That would be a great help. Means yes, please do it.</span><span class="nep ne">धेरै सहयोग हुन्छ। अर्थात् — गरिदिनुस्।</span></td>
+<td class="ex"><span class="s">この<ruby>資料<rt>しりょう</rt></ruby><ruby>今日<rt>きょう</rt></ruby><ruby>中<rt>ちゅう</rt></ruby>にコピーしてもらえると<ruby>助<rt>たす</rt></ruby>かるんだけど。</span><span class="cite">December 2010 &middot; Q22</span></td></tr>
+<tr class="row"><td class="num">48</td>
+<td class="jp"><b>〜てみたら?</b><span class="kana">〜てみたら</span><span class="freq">24 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">Try ~ ing and see.</span><span class="nep ne">~ गरेर हेर न।</span></td>
+<td class="ex"><span class="s"><ruby>消費<rt>しょうひ</rt></ruby><ruby>者<rt>しゃ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>も<ruby>大事<rt>だいじ</rt></ruby>だから、<ruby>好感<rt>こうかん</rt></ruby><ruby>度<rt>ど</rt></ruby>とか<ruby>調<rt>しら</rt></ruby>べてみたら?</span><span class="cite">December 2013 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">49</td>
+<td class="jp"><b>〜ないほうがいい</b><span class="kana">〜ないほうがいい</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Better not to ~ .</span><span class="nep ne">~ नगरे राम्रो।</span></td>
+<td class="ex"><span class="s">プライバシーの<ruby>問題<rt>もんだい</rt></ruby>があるから、メールアドレスは<ruby>載<rt>の</rt></ruby>せない<ruby>方<rt>ほう</rt></ruby>がいいんじゃない?</span><span class="cite">December 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">50</td>
+<td class="jp"><b>〜こと</b><span class="kana">〜こと</span><span class="freq">3 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">~ is required. Written-rule instruction, common in announcements.</span><span class="nep ne">~ गर्नुपर्छ। नियमको भाषा, सूचनामा धेरै आउँछ।</span></td>
+<td class="ex"><span class="s">まず、<ruby>金魚<rt>きんぎょ</rt></ruby>の<ruby>世話<rt>せわ</rt></ruby>をちゃんとすること。</span><span class="cite">July 2011 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">51</td>
+<td class="jp"><b>〜なさい</b><span class="kana">〜なさい</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Do ~ . An instruction from above (parent, teacher, boss).</span><span class="nep ne">~ गर। माथिबाटको निर्देशन।</span></td>
+<td class="ex"><span class="s">あ、ごめんなさい、パスタは<ruby>私<rt>わたし</rt></ruby>、<ruby>今日<rt>きょう</rt></ruby>お<ruby>昼<rt>ひる</rt></ruby>に<ruby>食<rt>た</rt></ruby>べちゃったの。</span><span class="cite">December 2013 &middot; Q30</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 4</span><h2 class="chap">Saying no without saying no</h2></div>
+<p class="chap-ne ne">&#x27;हुँदैन&#x27; नभनी अस्वीकार</p>
+<p class="chap-blurb">Japanese refuses by trailing off. If you wait for いいえ you will never hear it. These are the real refusals, and the exam scores them as refusals.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">52</td>
+<td class="jp"><b>いいですよ / いいです</b><span class="kana">いいです</span><span class="freq">50 lines &middot; 20 papers</span></td>
+<td class="mean"><span class="en">Can mean yes please OR no thank you. Listen to the fall of the voice.</span><span class="nep ne">&#x27;हुन्छ&#x27; वा &#x27;पर्दैन&#x27; दुवै हुन सक्छ। स्वरले छुट्याउँछ।</span></td>
+<td class="ex"><span class="s">あ、それはいいです。<ruby>気<rt>き</rt></ruby>に<ruby>入<rt>い</rt></ruby>ってるし、まだ<ruby>使<rt>つか</rt></ruby>いたいから。</span><span class="cite">December 2010 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">53</td>
+<td class="jp"><b><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です</b><span class="kana">だいじょうぶです</span><span class="freq">49 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">&#x27;I&#x27;m fine&#x27; — usually a polite decline of an offer.</span><span class="nep ne">&#x27;हुन्छ/पर्दैन&#x27; — प्रायः प्रस्तावको भद्र अस्वीकार।</span></td>
+<td class="ex"><span class="s">ああ、でも、うちの<ruby>家具<rt>かぐ</rt></ruby>みんな<ruby>背<rt>せ</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>いから、それは<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>かな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">54</td>
+<td class="jp"><b>すみませんが</b><span class="kana">すみませんが</span><span class="freq">36 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">Sorry, but — the &#x27;but&#x27; carries the refusal.</span><span class="nep ne">माफ गर्नुहोस्, तर — अस्वीकार &#x27;तर&#x27; मा छ।</span></td>
+<td class="ex"><span class="s">すみません、そちらのスポーツクラブに<ruby>入会<rt>にゅうかい</rt></ruby>したいんですが。</span><span class="cite">December 2011 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">55</td>
+<td class="jp"><b><ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ありません</b><span class="kana">もうしわけありません</span><span class="freq">31 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">I&#x27;m very sorry. (Formal refusal or apology.)</span><span class="nep ne">धेरै माफी चाहन्छु।</span></td>
+<td class="ex"><span class="s">それが、<ruby>今回<rt>こんかい</rt></ruby>のケースは<ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございませんが、<ruby>保障<rt>ほしょう</rt></ruby>の<ruby>対象<rt>たいしょう</rt></ruby><ruby>外<rt>がい</rt></ruby>となります。</span><span class="cite">December 2010 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">56</td>
+<td class="jp"><b>せっかく〜のに / せっかくですが</b><span class="kana">せっかく</span><span class="freq">27 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">After all that trouble — and as a refusal, &#x27;it is kind of you, but no&#x27;.</span><span class="nep ne">यत्ति गरेर पनि — अस्वीकारमा &#x27;धन्यवाद, तर मिल्दैन&#x27;।</span></td>
+<td class="ex"><span class="s">まあ、せっかくのお<ruby>祝<rt>いわ</rt></ruby>いだから、<ruby>大<rt>おお</rt></ruby>きいところで<ruby>派手<rt>はで</rt></ruby>にやったほうがいいよね。</span><span class="cite">July 2011 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">57</td>
+<td class="jp"><b><ruby>残念<rt>ざんねん</rt></ruby> / <ruby>残念<rt>ざんねん</rt></ruby>ですが</b><span class="kana">ざんねん</span><span class="freq">19 lines &middot; 11 papers</span></td>
+<td class="mean"><span class="en">A pity — and, at the front of a sentence, &#x27;I&#x27;m afraid not&#x27;.</span><span class="nep ne">दुःखको कुरा — वाक्यको सुरुमा भए अस्वीकार।</span></td>
+<td class="ex"><span class="s"><ruby>割<rt>わ</rt></ruby>れちゃうと<ruby>残念<rt>ざんねん</rt></ruby>だし。じゃ、さっそくデパートで<ruby>探<rt>さが</rt></ruby>してみるよ。</span><span class="cite">July 2013 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">58</td>
+<td class="jp"><b>ちょっと…</b><span class="kana">ちょっと</span><span class="freq">18 lines &middot; 13 papers</span></td>
+<td class="mean"><span class="en">Trailed off, this is a refusal, not &#x27;a little&#x27;.</span><span class="nep ne">अधूरो छोडिएको यो &#x27;अलिकति&#x27; होइन — अस्वीकार हो।</span></td>
+<td class="ex"><span class="s">それより、<ruby>会社<rt>かいしゃ</rt></ruby>が<ruby>遠<rt>とお</rt></ruby>くて、<ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しもしなくちゃいけないんだ。それがちょっとね。</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">59</td>
+<td class="jp"><b>ご<ruby>遠慮<rt>えんりょ</rt></ruby>ください</b><span class="kana">ごえんりょください</span><span class="freq">16 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Please refrain from ~ . A prohibition in polite dress.</span><span class="nep ne">कृपया नगर्नुहोस्। भद्र भाषामा निषेध।</span></td>
+<td class="ex"><span class="s">すみませんが、ここでの<ruby>写真<rt>しゃしん</rt></ruby><ruby>撮影<rt>さつえい</rt></ruby>はご<ruby>遠慮<rt>えんりょ</rt></ruby>ください。</span><span class="cite">December 2011 &middot; Q17</span></td></tr>
+<tr class="row"><td class="num">60</td>
+<td class="jp"><b>ちょっと<ruby>都合<rt>つごう</rt></ruby>が</b><span class="kana">ちょっとつごうが</span><span class="freq">12 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">It doesn&#x27;t suit me — a refusal of a time or date.</span><span class="nep ne">मिल्दैन — समय/मितिको अस्वीकार।</span></td>
+<td class="ex"><span class="s">ああ、その<ruby>日<rt>ひ</rt></ruby>はちょっと<ruby>都合<rt>つごう</rt></ruby>がつかないんですが。</span><span class="cite">December 2010 &middot; Q17</span></td></tr>
+<tr class="row"><td class="num">61</td>
+<td class="jp"><b>あいにく</b><span class="kana">あいにく</span><span class="freq">10 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Unfortunately — the thing you wanted is unavailable.</span><span class="nep ne">दुर्भाग्यवश — खोजेको कुरा उपलब्ध छैन।</span></td>
+<td class="ex"><span class="s">ご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>飛行機<rt>ひこうき</rt></ruby>はあいにく<ruby>席<rt>せき</rt></ruby>がいっぱいでして、キャンセル<ruby>待<rt>ま</rt></ruby>ちか<ruby>次<rt>つぎ</rt></ruby>の<ruby>便<rt>びん</rt></ruby>への<ruby>変更<rt>へんこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>となります。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">62</td>
+<td class="jp"><b><ruby>結構<rt>けっこう</rt></ruby>です</b><span class="kana">けっこうです</span><span class="freq">7 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">No thank you — or &#x27;that&#x27;s fine&#x27;. Context decides. A known trap.</span><span class="nep ne">पर्दैन, धन्यवाद — वा &#x27;ठीकै छ&#x27;। सन्दर्भले तय गर्छ। परीक्षाको जाल।</span></td>
+<td class="ex"><span class="s">ただ、<ruby>今日<rt>きょう</rt></ruby>はもうこの<ruby>黒<rt>くろ</rt></ruby>いのは<ruby>塗<rt>ぬ</rt></ruby>ってありますので<ruby>今日<rt>きょう</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>は<ruby>塗<rt>ぬ</rt></ruby>らないで<ruby>結構<rt>けっこう</rt></ruby>です。</span><span class="cite">July 2012 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">63</td>
+<td class="jp"><b>〜わけにはいかない</b><span class="kana">〜わけにはいかない</span><span class="freq">6 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">I can&#x27;t very well ~ (for reasons of duty or decency).</span><span class="nep ne">~ गर्न मिल्दैन (कर्तव्य/नैतिकताका कारण)।</span></td>
+<td class="ex"><span class="s"><ruby>一度<rt>いちど</rt></ruby><ruby>飼<rt>か</rt></ruby>ったら、<ruby>途中<rt>とちゅう</rt></ruby>でやめるわけにはいかないよ。</span><span class="cite">July 2011 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">64</td>
+<td class="jp"><b>ちょっと<ruby>難<rt>むずか</rt></ruby>しい</b><span class="kana">ちょっとむずかしい</span><span class="freq">5 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">&#x27;A bit difficult&#x27; = no.</span><span class="nep ne">&#x27;अलि गाह्रो&#x27; = हुँदैन।</span></td>
+<td class="ex"><span class="s">または、<ruby>今<rt>いま</rt></ruby>までよりちょっと<ruby>難<rt>むずか</rt></ruby>しい<ruby>曲<rt>きょく</rt></ruby>にチャレンジするだけでもいいと<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">July 2018 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">65</td>
+<td class="jp"><b>また<ruby>今度<rt>こんど</rt></ruby></b><span class="kana">またこんど</span><span class="freq">4 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Some other time — i.e. not this time.</span><span class="nep ne">अर्को पटक — अर्थात् यसपटक होइन।</span></td>
+<td class="ex"><span class="s">また、<ruby>次<rt>つぎ</rt></ruby>の<ruby>機会<rt>きかい</rt></ruby>に<ruby>声<rt>こえ</rt></ruby>をかけていただけるよう<ruby>頑張<rt>がんば</rt></ruby>ります。</span><span class="cite">July 2011 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">66</td>
+<td class="jp"><b>〜かねます</b><span class="kana">〜かねます</span><span class="freq">2 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">I am unable to ~ . Formal, absolute refusal.</span><span class="nep ne">म ~ गर्न सक्दिनँ। औपचारिक, पक्का अस्वीकार।</span></td>
+<td class="ex"><span class="s"><ruby>先日<rt>せんじつ</rt></ruby>、ご<ruby>依頼<rt>いらい</rt></ruby>いただいた<ruby>件<rt>けん</rt></ruby>ですが、<ruby>私<rt>わたし</rt></ruby>どもではお<ruby>引<rt>ひ</rt></ruby>き<ruby>受<rt>う</rt></ruby>けしかねます。</span><span class="cite">December 2023 &middot; Q27</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 5</span><h2 class="chap">Reasons — the どうして question</h2></div>
+<p class="chap-ne ne">कारण — どうして प्रश्न</p>
+<p class="chap-blurb">問題2 asks why. Several reasons get mentioned; only one is the speaker&#x27;s own reason. These markers separate the real reason from the scenery.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">67</td>
+<td class="jp"><b>〜んです</b><span class="kana">〜んです</span><span class="freq">1264 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">The explaining ending. When it appears, a reason is coming.</span><span class="nep ne">व्याख्या गर्ने अन्त्य। यो आयो भने कारण आउँदैछ।</span></td>
+<td class="ex"><span class="s"><ruby>今<rt>いま</rt></ruby>アパートを<ruby>探<rt>さが</rt></ruby>してるんだ。そういえば、<ruby>山田<rt>やまだ</rt></ruby><ruby>君<rt>くん</rt></ruby>って<ruby>最近<rt>さいきん</rt></ruby><ruby>引越<rt>ひっこ</rt></ruby>ししたんだよね。</span><span class="cite">July 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">68</td>
+<td class="jp"><b>〜から</b><span class="kana">〜から</span><span class="freq">407 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Because ~ . The plain, spoken reason marker.</span><span class="nep ne">किनभने ~ । बोलचालको सामान्य कारण।</span></td>
+<td class="ex"><span class="s">やっぱり<ruby>怖<rt>こわ</rt></ruby>いのは<ruby>家具<rt>かぐ</rt></ruby>が<ruby>倒<rt>たお</rt></ruby>れることだから、<ruby>本棚<rt>ほんだな</rt></ruby>とか<ruby>背<rt>せ</rt></ruby>の<ruby>高<rt>たか</rt></ruby>い<ruby>家具<rt>かぐ</rt></ruby>があったら、かべに<ruby>固定<rt>こてい</rt></ruby>したほうがいいよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">69</td>
+<td class="jp"><b>〜ので</b><span class="kana">〜ので</span><span class="freq">162 lines &middot; 28 papers</span></td>
+<td class="mean"><span class="en">Since ~ . Softer and politer than から.</span><span class="nep ne">~ भएकाले। からभन्दा नरम र भद्र।</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>は、その<ruby>中<rt>なか</rt></ruby>から<ruby>毎日<rt>まいにち</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で、すぐ<ruby>実践<rt>じっせん</rt></ruby>できることを<ruby>紹介<rt>しょうかい</rt></ruby>していただきますので、どうぞ、メモを<ruby>用意<rt>ようい</rt></ruby>してご<ruby>覧<rt>らん</rt></ruby>ください。</span><span class="cite">July 2010 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">70</td>
+<td class="jp"><b>〜ため</b><span class="kana">〜ため</span><span class="freq">107 lines &middot; 26 papers</span></td>
+<td class="mean"><span class="en">Owing to ~ ; for the purpose of ~ . Formal, common in announcements.</span><span class="nep ne">~ का कारण; ~ का लागि। औपचारिक, सूचनामा धेरै।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">71</td>
+<td class="jp"><b>どうして / なぜ</b><span class="kana">どうして / なぜ</span><span class="freq">69 lines &middot; 22 papers</span></td>
+<td class="mean"><span class="en">Why. The question word to listen for in 問題2.</span><span class="nep ne">किन। 問題2 मा सुन्नुपर्ने प्रश्नवाचक।</span></td>
+<td class="ex"><span class="s">えっ、どうして?<ruby>大<rt>おお</rt></ruby>きな<ruby>音<rt>おと</rt></ruby>で<ruby>音楽<rt>おんがく</rt></ruby>でも<ruby>聴<rt>き</rt></ruby>いてたの?</span><span class="cite">July 2011 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">72</td>
+<td class="jp"><b><ruby>実<rt>じつ</rt></ruby>は</b><span class="kana">じつは</span><span class="freq">31 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">The truth is — the real reason, after the polite cover story.</span><span class="nep ne">साँचो कुरा त — भद्र बहाना पछिको वास्तविक कारण।</span></td>
+<td class="ex"><span class="s">そうですか、<ruby>実<rt>じつ</rt></ruby>は<ruby>先<rt>さき</rt></ruby>ほど、<ruby>私<rt>わたし</rt></ruby>が<ruby>留守<rt>るす</rt></ruby>の<ruby>間<rt>ま</rt></ruby>、<ruby>田中<rt>たなか</rt></ruby>さんからお<ruby>電話<rt>でんわ</rt></ruby>をいただいたようで、<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>件<rt>けん</rt></ruby>だと<ruby>伝言<rt>でんごん</rt></ruby>があったんですが。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">73</td>
+<td class="jp"><b>〜もので</b><span class="kana">〜もので</span><span class="freq">27 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">It&#x27;s just that ~ . A polite excuse.</span><span class="nep ne">कुरा यस्तो हो कि ~ । भद्र बहाना।</span></td>
+<td class="ex"><span class="s">なるべく<ruby>安<rt>やす</rt></ruby>いもので、<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>に<ruby>使<rt>つか</rt></ruby>いたいと<ruby>思<rt>おも</rt></ruby>って。</span><span class="cite">July 2011 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">74</td>
+<td class="jp"><b>〜というのは</b><span class="kana">〜というのは</span><span class="freq">25 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">As for ~ ; and, before a reason, &#x27;the thing is&#x27;.</span><span class="nep ne">~ भन्नु भनेको; कारण अघि &#x27;कुरा यस्तो हो&#x27;।</span></td>
+<td class="ex"><span class="s"><ruby>娘<rt>むすめ</rt></ruby>さんが<ruby>喜<rt>よろこ</rt></ruby>びそうなをプレゼントするっていうのはどう?</span><span class="cite">December 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">75</td>
+<td class="jp"><b>〜せいで / 〜せいか</b><span class="kana">〜せいで</span><span class="freq">14 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Because of ~ (and it was bad). せいか softens it to &#x27;perhaps because&#x27;.</span><span class="nep ne">~ को कारण (नराम्रो नतिजा)। せいか भए &#x27;सायद त्यसैले&#x27;।</span></td>
+<td class="ex"><span class="s">そして、<ruby>葉<rt>は</rt></ruby>の<ruby>量<rt>りょう</rt></ruby>はせいかくに、また、<ruby>必<rt>かなら</rt></ruby>ず<ruby>熱<rt>あつ</rt></ruby>いお<ruby>湯<rt>ゆ</rt></ruby>を<ruby>使<rt>つか</rt></ruby>ってください。</span><span class="cite">December 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">76</td>
+<td class="jp"><b>〜おかげで</b><span class="kana">〜おかげで</span><span class="freq">13 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Thanks to ~ (a good result).</span><span class="nep ne">~ को कारण (राम्रो नतिजा)।</span></td>
+<td class="ex"><span class="s">おかげさまで、<ruby>会場<rt>かいじょう</rt></ruby>の<ruby>座席<rt>ざせき</rt></ruby>が<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>埋<rt>う</rt></ruby>まるほどの<ruby>人<rt>ひと</rt></ruby>で、ポスターを<ruby>掲示<rt>けいじ</rt></ruby>する<ruby>地域<rt>ちいき</rt></ruby>を<ruby>拡大<rt>かくだい</rt></ruby>したのがよかったんでしょうか。</span><span class="cite">July 2018 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">77</td>
+<td class="jp"><b>〜わけだ</b><span class="kana">〜わけだ</span><span class="freq">8 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">That&#x27;s why; no wonder.</span><span class="nep ne">त्यसैले त। अचम्म भएन।</span></td>
+<td class="ex"><span class="s">そこで、<ruby>鼠<rt>ねずみ</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>をしている<ruby>私<rt>わたし</rt></ruby>が<ruby>講演<rt>こうえん</rt></ruby>をしたというわけです。</span><span class="cite">July 2010 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">78</td>
+<td class="jp"><b>〜ことだし</b><span class="kana">〜ことだし</span><span class="freq">7 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">What with ~ and all.</span><span class="nep ne">~ पनि भएकाले।</span></td>
+<td class="ex"><span class="s"><ruby>明日<rt>あした</rt></ruby>も<ruby>早<rt>はや</rt></ruby>いことだし、<ruby>今日<rt>きょう</rt></ruby>の<ruby>作業<rt>さぎょう</rt></ruby>はこれで<ruby>切<rt>き</rt></ruby>り<ruby>上<rt>あ</rt></ruby>げよう。</span><span class="cite">December 2014 &middot; Q19</span></td></tr>
+<tr class="row"><td class="num">79</td>
+<td class="jp"><b>〜ものだから</b><span class="kana">〜ものだから</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Because ~ , you see (defensive).</span><span class="nep ne">~ भएकाले नि (सफाइ दिँदै)।</span></td>
+<td class="ex"><span class="s">5<ruby>時<rt>じ</rt></ruby>には<ruby>会議<rt>かいぎ</rt></ruby><ruby>終<rt>おわ</rt></ruby>って<ruby>戻<rt>もど</rt></ruby>るから、<ruby>特<rt>とく</rt></ruby>に<ruby>報告<rt>ほうこく</rt></ruby><ruby>受<rt>う</rt></ruby>けてなかったものだから、<ruby>気<rt>き</rt></ruby>になっちゃってね。</span><span class="cite">December 2019 &middot; Q2</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 6</span><h2 class="chap">The words that flip the answer</h2></div>
+<p class="chap-ne ne">उत्तर पल्टाउने शब्दहरू</p>
+<p class="chap-blurb">If you learn one page of this book, learn this one. The N2 papers put the wrong answer first and the right one after a reversal word. Hear the reversal and you have the mark.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">80</td>
+<td class="jp"><b>〜けど / 〜けれども</b><span class="kana">〜けど</span><span class="freq">665 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">~ though. The point arrives after it.</span><span class="nep ne">~ तर। मुख्य कुरा यसपछि आउँछ।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">81</td>
+<td class="jp"><b>でも / だけど</b><span class="kana">でも / だけど</span><span class="freq">444 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">But. Everything before it may be discarded.</span><span class="nep ne">तर। यसअघिको कुरा फालिन सक्छ।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">82</td>
+<td class="jp"><b>やっぱり</b><span class="kana">やっぱり</span><span class="freq">74 lines &middot; 25 papers</span></td>
+<td class="mean"><span class="en">After all — reverting to the first idea.</span><span class="nep ne">आखिर — पहिलेकै कुरामा फर्केको।</span></td>
+<td class="ex"><span class="s">やっぱり<ruby>怖<rt>こわ</rt></ruby>いのは<ruby>家具<rt>かぐ</rt></ruby>が<ruby>倒<rt>たお</rt></ruby>れることだから、<ruby>本棚<rt>ほんだな</rt></ruby>とか<ruby>背<rt>せ</rt></ruby>の<ruby>高<rt>たか</rt></ruby>い<ruby>家具<rt>かぐ</rt></ruby>があったら、かべに<ruby>固定<rt>こてい</rt></ruby>したほうがいいよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">83</td>
+<td class="jp"><b>〜のに</b><span class="kana">〜のに</span><span class="freq">72 lines &middot; 22 papers</span></td>
+<td class="mean"><span class="en">Even though ~ (and I&#x27;m annoyed about it).</span><span class="nep ne">~ भए पनि (रिस/गुनासोसहित)।</span></td>
+<td class="ex"><span class="s"><ruby>金魚<rt>きんぎょ</rt></ruby>の<ruby>世話<rt>せわ</rt></ruby>ができないのに、<ruby>犬<rt>いぬ</rt></ruby>の<ruby>世話<rt>せわ</rt></ruby>ができるはずないからな。</span><span class="cite">July 2011 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">84</td>
+<td class="jp"><b>ただ、</b><span class="kana">ただ</span><span class="freq">41 lines &middot; 21 papers</span></td>
+<td class="mean"><span class="en">Only — there is one problem. Always introduces the catch.</span><span class="nep ne">तर एउटा कुरा — समस्या यहीँ आउँछ।</span></td>
+<td class="ex"><span class="s">ただ、<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>問題<rt>もんだい</rt></ruby>があったように<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">July 2010 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">85</td>
+<td class="jp"><b><ruby>実<rt>じつ</rt></ruby>は</b><span class="kana">じつは</span><span class="freq">31 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">Actually — the situation is not what you were told.</span><span class="nep ne">वास्तवमा — भनिएको जस्तो होइन।</span></td>
+<td class="ex"><span class="s">そうですか、<ruby>実<rt>じつ</rt></ruby>は<ruby>先<rt>さき</rt></ruby>ほど、<ruby>私<rt>わたし</rt></ruby>が<ruby>留守<rt>るす</rt></ruby>の<ruby>間<rt>ま</rt></ruby>、<ruby>田中<rt>たなか</rt></ruby>さんからお<ruby>電話<rt>でんわ</rt></ruby>をいただいたようで、<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>件<rt>けん</rt></ruby>だと<ruby>伝言<rt>でんごん</rt></ruby>があったんですが。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">86</td>
+<td class="jp"><b>ところが</b><span class="kana">ところが</span><span class="freq">21 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">But then (contrary to expectation).</span><span class="nep ne">तर त्यसपछि (अपेक्षाविपरीत)।</span></td>
+<td class="ex"><span class="s">やっぱり<ruby>結婚<rt>けっこん</rt></ruby>のお<ruby>祝<rt>いわ</rt></ruby>いだから、ゆっくり<ruby>話<rt>はな</rt></ruby>せるところがいいねえ。</span><span class="cite">December 2012 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">87</td>
+<td class="jp"><b>それより</b><span class="kana">それより</span><span class="freq">18 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">Never mind that — this matters more.</span><span class="nep ne">त्यो छोड — यो बढी महत्त्वको छ।</span></td>
+<td class="ex"><span class="s">それより、<ruby>会社<rt>かいしゃ</rt></ruby>が<ruby>遠<rt>とお</rt></ruby>くて、<ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しもしなくちゃいけないんだ。</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">88</td>
+<td class="jp"><b>〜わけじゃない</b><span class="kana">〜わけじゃない</span><span class="freq">17 lines &middot; 10 papers</span></td>
+<td class="mean"><span class="en">It&#x27;s not that ~ . Cancels what you just assumed.</span><span class="nep ne">~ भनेको होइन। भर्खरको अनुमान रद्द गर्छ।</span></td>
+<td class="ex"><span class="s">うん、<ruby>先月<rt>せんげつ</rt></ruby><ruby>転職<rt>てんしょく</rt></ruby>してきたばかりで、<ruby>営業<rt>えいぎょう</rt></ruby><ruby>経験<rt>けいけん</rt></ruby>が<ruby>豊富<rt>ほうふ</rt></ruby>ってわけじゃないのにね。</span><span class="cite">July 2014 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">89</td>
+<td class="jp"><b>〜からといって</b><span class="kana">〜からといって</span><span class="freq">17 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">Just because ~ doesn&#x27;t mean …</span><span class="nep ne">~ भन्दैमा … हुँदैन।</span></td>
+<td class="ex"><span class="s">まだ<ruby>二<rt>に</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>人<rt>ひと</rt></ruby>に<ruby>移<rt>うつ</rt></ruby>る<ruby>可能<rt>かのう</rt></ruby><ruby>性<rt>せい</rt></ruby>があるからってお<ruby>医者<rt>いしゃ</rt></ruby>さんに<ruby>言<rt>い</rt></ruby>われたんだ。</span><span class="cite">July 2011 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">90</td>
+<td class="jp"><b>〜<ruby>割<rt>わり</rt></ruby>に</b><span class="kana">〜わりに</span><span class="freq">14 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">For a ~ , surprisingly …</span><span class="nep ne">~ को हिसाबमा त …</span></td>
+<td class="ex"><span class="s">この<ruby>店<rt>みせ</rt></ruby>のコーヒー、<ruby>値段<rt>ねだん</rt></ruby>のわりにはおいしいよね。</span><span class="cite">December 2011 &middot; Q26</span></td></tr>
+<tr class="row"><td class="num">91</td>
+<td class="jp"><b>〜より</b><span class="kana">〜より</span><span class="freq">10 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Rather than ~ . Marks the rejected option.</span><span class="nep ne">~ भन्दा। अस्वीकृत विकल्प देखाउँछ।</span></td>
+<td class="ex"><span class="s">たとえば、<ruby>練習<rt>れんしゅう</rt></ruby>でも<ruby>試合<rt>しあい</rt></ruby>でも<ruby>誰<rt>だれ</rt></ruby>よりも、<ruby>声<rt>こえ</rt></ruby>を<ruby>出<rt>だ</rt></ruby>して、<ruby>誰<rt>だれ</rt></ruby>よりも<ruby>走<rt>はし</rt></ruby>る。</span><span class="cite">July 2013 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">92</td>
+<td class="jp"><b><ruby>結局<rt>けっきょく</rt></ruby></b><span class="kana">けっきょく</span><span class="freq">10 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">In the end — this is what actually happened.</span><span class="nep ne">अन्ततः — यही भयो।</span></td>
+<td class="ex"><span class="s">でも、<ruby>結局<rt>けっきょく</rt></ruby><ruby>参加<rt>さんか</rt></ruby><ruby>者<rt>しゃ</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えて、<ruby>百<rt>ひゃく</rt></ruby><ruby>人<rt>にん</rt></ruby><ruby>超<rt>こ</rt></ruby>えちゃったんだ。</span><span class="cite">July 2011 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">93</td>
+<td class="jp"><b>それが</b><span class="kana">それが</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">&#x27;Well, actually…&#x27; — bad news is coming.</span><span class="nep ne">&#x27;भयो के भने…&#x27; — नराम्रो खबर आउँदैछ।</span></td>
+<td class="ex"><span class="s">それが、その<ruby>友達<rt>ともだち</rt></ruby>が<ruby>先週<rt>せんしゅう</rt></ruby><ruby>自転車<rt>じてんしゃ</rt></ruby>で<ruby>転<rt>ころ</rt></ruby>んで、<ruby>足<rt>あし</rt></ruby><ruby>怪我<rt>けが</rt></ruby>しちゃってね。</span><span class="cite">July 2010 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">94</td>
+<td class="jp"><b>〜ないこともない</b><span class="kana">〜ないこともない</span><span class="freq">6 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">It&#x27;s not impossible — a reluctant yes.</span><span class="nep ne">नहुने पनि होइन — अनिच्छुक &#x27;हुन्छ&#x27;।</span></td>
+<td class="ex"><span class="s"><ruby>伊藤<rt>いとう</rt></ruby>さん、<ruby>午後<rt>ごご</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>、<ruby>一緒<rt>いっしょ</rt></ruby>にやることになってたけど、ぼく<ruby>一<rt>いち</rt></ruby><ruby>人<rt>にん</rt></ruby>でできないこともないよ。</span><span class="cite">July 2019 &middot; Q23</span></td></tr>
+<tr class="row"><td class="num">95</td>
+<td class="jp"><b>むしろ</b><span class="kana">むしろ</span><span class="freq">5 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">Rather; if anything, the opposite.</span><span class="nep ne">बरु; उल्टै।</span></td>
+<td class="ex"><span class="s">でも<ruby>若<rt>わか</rt></ruby>い<ruby>男性<rt>だんせい</rt></ruby>の<ruby>食事<rt>しょくじ</rt></ruby>って<ruby>普段<rt>ふだん</rt></ruby>カロリーが<ruby>高<rt>たか</rt></ruby>くなりがちだから、むしろ<ruby>健康<rt>けんこう</rt></ruby><ruby>的<rt>てき</rt></ruby>なものの<ruby>方<rt>ほう</rt></ruby>が<ruby>受<rt>う</rt></ruby>けるんじゃないかな。</span><span class="cite">December 2014 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">96</td>
+<td class="jp"><b>〜<ruby>一方<rt>いっぽう</rt></ruby>で</b><span class="kana">〜いっぽうで</span><span class="freq">3 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">On the other hand.</span><span class="nep ne">अर्कोतर्फ।</span></td>
+<td class="ex"><span class="s">はい、むしろひどくなる<ruby>一方<rt>いっぽう</rt></ruby>ですね。</span><span class="cite">December 2012 &middot; Q25</span></td></tr>
+<tr class="row"><td class="num">97</td>
+<td class="jp"><b>かえって</b><span class="kana">かえって</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">On the contrary; it made things worse.</span><span class="nep ne">उल्टै; झन् बिग्रियो।</span></td>
+<td class="ex"><span class="s">でも、<ruby>細<rt>こま</rt></ruby>かすぎると、かえって<ruby>使<rt>つか</rt></ruby>いにくくなると<ruby>思<rt>おも</rt></ruby>う。</span><span class="cite">December 2012 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">98</td>
+<td class="jp"><b>〜ものの</b><span class="kana">〜ものの</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Although ~ . Written and formal.</span><span class="nep ne">~ भए तापनि। लिखित/औपचारिक।</span></td>
+<td class="ex"><span class="s">これは<ruby>出会<rt>であ</rt></ruby>ったあとで<ruby>分<rt>わ</rt></ruby>かったことなんですが、<ruby>時期<rt>じき</rt></ruby>は<ruby>違<rt>ちが</rt></ruby>うものの、<ruby>同<rt>おな</rt></ruby>じ<ruby>幼稚園<rt>ようちえん</rt></ruby>に<ruby>通<rt>かよ</rt></ruby>われ、そして<ruby>何<rt>なん</rt></ruby>と、<ruby>高校<rt>こうこう</rt></ruby>も<ruby>同<rt>おな</rt></ruby>じだったそうです。</span><span class="cite">December 2011 &middot; Q10</span></td></tr>
+<tr class="row"><td class="num">99</td>
+<td class="jp"><b>〜というより</b><span class="kana">〜というより</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Not so much ~ as …</span><span class="nep ne">~ भन्दा पनि …</span></td>
+<td class="ex"><span class="s"><ruby>社員<rt>しゃいん</rt></ruby><ruby>同士<rt>どうし</rt></ruby>というよりは<ruby>社員<rt>しゃいん</rt></ruby>と<ruby>地域<rt>ちいき</rt></ruby><ruby>住民<rt>じゅうみん</rt></ruby>との<ruby>交流<rt>こうりゅう</rt></ruby>になりますが。</span><span class="cite">July 2017 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">100</td>
+<td class="jp"><b>〜<ruby>反面<rt>はんめん</rt></ruby></b><span class="kana">〜はんめん</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">While on the other side ~ .</span><span class="nep ne">अर्को पक्षमा ~ ।</span></td>
+<td class="ex"><span class="s"><ruby>反面<rt>はんめん</rt></ruby>、つい<ruby>受身<rt>うけみ</rt></ruby>になり、<ruby>主体<rt>しゅたい</rt></ruby><ruby>的<rt>てき</rt></ruby>に<ruby>行動<rt>こうどう</rt></ruby>したり<ruby>意見<rt>いけん</rt></ruby>を<ruby>述<rt>の</rt></ruby>べたりということがあまり<ruby>得意<rt>とくい</rt></ruby>ではないので、その<ruby>点<rt>てん</rt></ruby>に<ruby>気<rt>き</rt></ruby>を<ruby>付<rt>つ</rt></ruby>け、<ruby>仕事<rt>しごと</rt></ruby>ではどんなことにも<ruby>柔軟<rt>じゅうなん</rt></ruby><ruby>性<rt>せい</rt></ruby>を<ruby>持<rt>も</rt></ruby>ちつつ、<ruby>根気<rt>こんき</rt></ruby><ruby>強<rt>つよ</rt></ruby>く<ruby>取<rt>と</rt></ruby>り<ruby>組<rt>く</rt></ruby>んでいきたいと<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">December 2017 &middot; Q11</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 7</span><h2 class="chap">Spoken shapes you must decode live</h2></div>
+<p class="chap-ne ne">बोलीचालीका छोटा रूप</p>
+<p class="chap-blurb">The papers are read at speed and nothing is spelt out. These contractions are not slang; they are the ordinary spoken forms, and if you have to translate them back in your head you will lose the next sentence.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">101</td>
+<td class="jp"><b>〜んだ ← 〜のだ</b><span class="kana">〜んだ</span><span class="freq">1487 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">The explanatory ん. Carries &#x27;the thing is…&#x27;.</span><span class="nep ne">व्याख्यात्मक ん। &#x27;कुरा यस्तो हो…&#x27; भन्ने भाव।</span></td>
+<td class="ex"><span class="s"><ruby>今<rt>いま</rt></ruby>アパートを<ruby>探<rt>さが</rt></ruby>してるんだ。そういえば、<ruby>山田<rt>やまだ</rt></ruby><ruby>君<rt>くん</rt></ruby>って<ruby>最近<rt>さいきん</rt></ruby><ruby>引越<rt>ひっこ</rt></ruby>ししたんだよね。</span><span class="cite">July 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">102</td>
+<td class="jp"><b>〜って ← 〜と / 〜は</b><span class="kana">〜って</span><span class="freq">476 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Quotation, or topic marker, or &#x27;I heard&#x27;.</span><span class="nep ne">उद्धरण, विषय चिन्ह, वा &#x27;सुनेँ&#x27;।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">103</td>
+<td class="jp"><b>〜てる ← 〜ている</b><span class="kana">〜てる</span><span class="freq">403 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Is doing / has done. The い drops in speech.</span><span class="nep ne">~ गरिरहेको। बोलीमा い हराउँछ।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">104</td>
+<td class="jp"><b>〜かな / 〜かなあ</b><span class="kana">〜かな</span><span class="freq">373 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">I wonder ~ . Often a hint the speaker will change plan.</span><span class="nep ne">~ होला कि? प्रायः योजना फेर्ने संकेत।</span></td>
+<td class="ex"><span class="s">ああ、でも、うちの<ruby>家具<rt>かぐ</rt></ruby>みんな<ruby>背<rt>せ</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>いから、それは<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>かな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">105</td>
+<td class="jp"><b>〜ちゃう ← 〜てしまう</b><span class="kana">〜ちゃう</span><span class="freq">174 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">End up ~ ing; do it completely (often regret).</span><span class="nep ne">~ भइहाल्नु; सकिनु (प्रायः पछुतो)।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">106</td>
+<td class="jp"><b>〜とこ ← 〜ところ</b><span class="kana">〜とこ</span><span class="freq">149 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Place / the point where.</span><span class="nep ne">ठाउँ / अवस्था।</span></td>
+<td class="ex"><span class="s"><ruby>大事<rt>だいじ</rt></ruby>なところだから、まずはここだけなおして、すぐ<ruby>見<rt>み</rt></ruby>せてください。</span><span class="cite">July 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">107</td>
+<td class="jp"><b>〜ちょっと ← <ruby>少<rt>すこ</rt></ruby>し</b><span class="kana">ちょっと</span><span class="freq">137 lines &middot; 28 papers</span></td>
+<td class="mean"><span class="en">A bit — and also &#x27;no&#x27;, and also &#x27;hey&#x27;.</span><span class="nep ne">अलिकति — साथै &#x27;हुँदैन&#x27;, साथै &#x27;ए&#x27;।</span></td>
+<td class="ex"><span class="s">いくつかの<ruby>字<rt>じ</rt></ruby>の<ruby>間違<rt>まちが</rt></ruby>いがあったのと、<ruby>参考<rt>さんこう</rt></ruby><ruby>文献<rt>ぶんけん</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>にちょっと<ruby>気<rt>き</rt></ruby>になる<ruby>点<rt>てん</rt></ruby>がありましたけどね。</span><span class="cite">July 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">108</td>
+<td class="jp"><b>〜んじゃない?</b><span class="kana">〜んじゃない</span><span class="freq">112 lines &middot; 28 papers</span></td>
+<td class="mean"><span class="en">Isn&#x27;t it ~ ? A suggestion dressed as a question.</span><span class="nep ne">~ होइन र? प्रश्नको रूपमा सुझाव।</span></td>
+<td class="ex"><span class="s">プライバシーの<ruby>問題<rt>もんだい</rt></ruby>があるから、メールアドレスは<ruby>載<rt>の</rt></ruby>せない<ruby>方<rt>ほう</rt></ruby>がいいんじゃない?</span><span class="cite">December 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">109</td>
+<td class="jp"><b>〜なんて / 〜なんか</b><span class="kana">〜なんて</span><span class="freq">94 lines &middot; 27 papers</span></td>
+<td class="mean"><span class="en">Things like ~ — dismissive.</span><span class="nep ne">~ जस्तो कुरा — हेप्ने भाव।</span></td>
+<td class="ex"><span class="s">メールで<ruby>資料<rt>しりょう</rt></ruby>が<ruby>届<rt>とど</rt></ruby>いてたんだけど、<ruby>特<rt>とく</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby><ruby>点<rt>てん</rt></ruby>なんかはなかったね。</span><span class="cite">July 2011 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">110</td>
+<td class="jp"><b>〜とく ← 〜ておく</b><span class="kana">〜とく</span><span class="freq">59 lines &middot; 20 papers</span></td>
+<td class="mean"><span class="en">Do in advance. 〜ておく contracted.</span><span class="nep ne">अग्रिम गर्नु। 〜ておく को छोटो रूप।</span></td>
+<td class="ex"><span class="s">すぐ<ruby>持<rt>も</rt></ruby>ち<ruby>出<rt>だ</rt></ruby>せるように<ruby>水<rt>みず</rt></ruby>や<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>の<ruby>入<rt>い</rt></ruby>れた<ruby>袋<rt>ふくろ</rt></ruby>は<ruby>必<rt>かなら</rt></ruby>ず<ruby>用意<rt>ようい</rt></ruby>しといたほうがいいって、テレビで<ruby>言<rt>い</rt></ruby>ったよ。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">111</td>
+<td class="jp"><b>〜なきゃ ← 〜なければ</b><span class="kana">〜なきゃ</span><span class="freq">45 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">Must ~ . The ならない is dropped and understood.</span><span class="nep ne">~ गर्नैपर्छ। ならない छुटेको तर बुझिने।</span></td>
+<td class="ex"><span class="s"><ruby>最近<rt>さいきん</rt></ruby>、いろいろと<ruby>責任<rt>せきにん</rt></ruby>の<ruby>重<rt>おも</rt></ruby>い<ruby>仕事<rt>しごと</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えてきたから、<ruby>気<rt>き</rt></ruby>をつけなきゃね。</span><span class="cite">December 2010 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">112</td>
+<td class="jp"><b>〜っけ</b><span class="kana">〜っけ</span><span class="freq">20 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">What was it again? Asking to be reminded.</span><span class="nep ne">के थियो नि? सम्झाउन अनुरोध।</span></td>
+<td class="ex"><span class="s">この<ruby>仕事<rt>しごと</rt></ruby>の<ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>りって、<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>金曜日<rt>きんようび</rt></ruby>でしたっけ。</span><span class="cite">December 2010 &middot; Q25</span></td></tr>
+<tr class="row"><td class="num">113</td>
+<td class="jp"><b>〜なくちゃ ← 〜なくては</b><span class="kana">〜なくちゃ</span><span class="freq">16 lines &middot; 9 papers</span></td>
+<td class="mean"><span class="en">Have to ~ .</span><span class="nep ne">~ गर्नैपर्छ।</span></td>
+<td class="ex"><span class="s"><ruby>地震<rt>じしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>のために、<ruby>何<rt>なに</rt></ruby>かしとかなくちゃって<ruby>思<rt>おも</rt></ruby>ってるんだけど、<ruby>実際<rt>じっさい</rt></ruby>にどういうことをすればいいのかな。</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">114</td>
+<td class="jp"><b>〜ちゃ ← 〜ては</b><span class="kana">〜ちゃ</span><span class="freq">14 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">If you ~ (and that&#x27;s bad): 〜ちゃだめ.</span><span class="nep ne">~ गर्यो भने (नराम्रो): 〜ちゃだめ।</span></td>
+<td class="ex"><span class="s"><ruby>駅前<rt>えきまえ</rt></ruby>は<ruby>駐輪場<rt>ちゅうりんじょう</rt></ruby><ruby>以外<rt>いがい</rt></ruby>には<ruby>停<rt>と</rt></ruby>めちゃいけないんだよ。</span><span class="cite">July 2024 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">115</td>
+<td class="jp"><b>〜じゃう ← 〜でしまう</b><span class="kana">〜じゃう</span><span class="freq">3 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Same as 〜ちゃう after ん/び/み verbs.</span><span class="nep ne">ん/び/み क्रियापछि 〜ちゃう कै रूप।</span></td>
+<td class="ex"><span class="s">お<ruby>父<rt>とう</rt></ruby>さん<ruby>抜<rt>ぬ</rt></ruby>きで、<ruby>空<rt>あ</rt></ruby>いてる<ruby>遊園<rt>ゆうえん</rt></ruby><ruby>地<rt>ち</rt></ruby>で、<ruby>思<rt>おも</rt></ruby>い<ruby>切<rt>き</rt></ruby>り<ruby>楽<rt>たの</rt></ruby>しんじゃう?</span><span class="cite">July 2010 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">116</td>
+<td class="jp"><b>〜たって ← 〜ても</b><span class="kana">〜たって</span><span class="freq">2 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Even if ~ .</span><span class="nep ne">~ गरे पनि।</span></td>
+<td class="ex"><span class="s"><ruby>先<rt>さき</rt></ruby>に<ruby>延<rt>の</rt></ruby>ばしたっていいことないよ。</span><span class="cite">July 2013 &middot; Q18</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 8</span><h2 class="chap">問題4 即時応答 — answering on the spot</h2></div>
+<p class="chap-ne ne">問題4 तत्काल जवाफ</p>
+<p class="chap-blurb">Twelve questions, one line each, no time to think. The line you hear is almost always one of these moves, and the right answer is the natural reply to the move, not to the vocabulary.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">117</td>
+<td class="jp"><b>そうですか</b><span class="kana">そうですか</span><span class="freq">201 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Is that so. Neutral receipt of news.</span><span class="nep ne">ए हो र। खबर बुझेको संकेत।</span></td>
+<td class="ex"><span class="s">そっか。あ、それから、<ruby>避難<rt>ひなん</rt></ruby><ruby>用<rt>よう</rt></ruby>のセットがある?</span><span class="cite">July 2010 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">118</td>
+<td class="jp"><b>そうですね</b><span class="kana">そうですね</span><span class="freq">166 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Agreement — or a pause before disagreeing.</span><span class="nep ne">सहमति — वा असहमत हुनुअघिको रोकाइ।</span></td>
+<td class="ex"><span class="s">そうだね。<ruby>給料<rt>きゅうりょう</rt></ruby>はそんなでもないけど、<ruby>頑張<rt>がんば</rt></ruby>ってみるよ。</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">119</td>
+<td class="jp"><b>よかった</b><span class="kana">よかった</span><span class="freq">146 lines &middot; 27 papers</span></td>
+<td class="mean"><span class="en">Thank goodness; I&#x27;m glad.</span><span class="nep ne">भयो नि त; खुसी लाग्यो।</span></td>
+<td class="ex"><span class="s"><ruby>先生<rt>せんせい</rt></ruby><ruby>方<rt>かた</rt></ruby>や<ruby>保護<rt>ほご</rt></ruby><ruby>者<rt>しゃ</rt></ruby>の<ruby>方<rt>ほう</rt></ruby>も、<ruby>高<rt>たか</rt></ruby>く<ruby>評価<rt>ひょうか</rt></ruby>してくださったようで、よかったです。</span><span class="cite">July 2010 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">120</td>
+<td class="jp"><b>それはよかったですね</b><span class="kana">それはよかったですね</span><span class="freq">45 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">I&#x27;m glad to hear it.</span><span class="nep ne">सुनेर खुसी लाग्यो।</span></td>
+<td class="ex"><span class="s">そう、それはよかったね。</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">121</td>
+<td class="jp"><b><ruby>確<rt>たし</rt></ruby>かに</b><span class="kana">たしかに</span><span class="freq">43 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">You have a point there.</span><span class="nep ne">साँच्चै, ठिकै भन्नुभयो।</span></td>
+<td class="ex"><span class="s"><ruby>確<rt>たし</rt></ruby>かに。たばこは<ruby>吸<rt>す</rt></ruby>う<ruby>人<rt>ひと</rt></ruby>だけじゃなくて、<ruby>周囲<rt>しゅうい</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>にも<ruby>悪<rt>わる</rt></ruby>いって<ruby>言<rt>い</rt></ruby>われているよね。</span><span class="cite">July 2010 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">122</td>
+<td class="jp"><b>なるほど</b><span class="kana">なるほど</span><span class="freq">30 lines &middot; 20 papers</span></td>
+<td class="mean"><span class="en">I see — now it makes sense.</span><span class="nep ne">अहँ, बुझेँ — अब मिल्यो।</span></td>
+<td class="ex"><span class="s">なるほど。じゃあ、<ruby>文学<rt>ぶんがく</rt></ruby>について<ruby>紹介<rt>しょうかい</rt></ruby>する<ruby>時間<rt>じかん</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ったらいいんじゃないかな。</span><span class="cite">July 2012 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">123</td>
+<td class="jp"><b>もちろん</b><span class="kana">もちろん</span><span class="freq">25 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">Of course.</span><span class="nep ne">पक्कै पनि।</span></td>
+<td class="ex"><span class="s">もちろん、はじめからほしい<ruby>本<rt>ほん</rt></ruby>が<ruby>決<rt>き</rt></ruby>まっていれば、インタネットで<ruby>検索<rt>けんさく</rt></ruby>して<ruby>買<rt>か</rt></ruby>ったほうが<ruby>早<rt>はや</rt></ruby>くて<ruby>便利<rt>べんり</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">December 2011 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">124</td>
+<td class="jp"><b>いいですよ</b><span class="kana">いいですよ</span><span class="freq">17 lines &middot; 11 papers</span></td>
+<td class="mean"><span class="en">Sure, go ahead. (Granting a request.)</span><span class="nep ne">हुन्छ नि। (अनुरोध स्वीकार।)</span></td>
+<td class="ex"><span class="s">お<ruby>店<rt>みせ</rt></ruby>で<ruby>好<rt>す</rt></ruby>きな<ruby>紅茶<rt>こうちゃ</rt></ruby>を<ruby>買<rt>か</rt></ruby>ってきて、<ruby>家<rt>いえ</rt></ruby>でゆっくり<ruby>味<rt>あじ</rt></ruby>わう、というのもいいですよね。</span><span class="cite">December 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">125</td>
+<td class="jp"><b>それは<ruby>大変<rt>たいへん</rt></ruby>でしたね</b><span class="kana">それはたいへんでしたね</span><span class="freq">14 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">That must have been hard.</span><span class="nep ne">गाह्रो भयो होला।</span></td>
+<td class="ex"><span class="s">お<ruby>年寄<rt>としよ</rt></ruby>りは<ruby>重<rt>おも</rt></ruby>い<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>持<rt>も</rt></ruby>つのも<ruby>大変<rt>たいへん</rt></ruby>でしょうから。</span><span class="cite">December 2014 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">126</td>
+<td class="jp"><b><ruby>助<rt>たす</rt></ruby>かりました</b><span class="kana">たすかりました</span><span class="freq">13 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">You saved me — thanks.</span><span class="nep ne">ठूलो गुन लाग्यो — धन्यवाद।</span></td>
+<td class="ex"><span class="s">おかげさまで、<ruby>助<rt>たす</rt></ruby>かりました。</span><span class="cite">July 2012 &middot; Q23</span></td></tr>
+<tr class="row"><td class="num">127</td>
+<td class="jp"><b>お<ruby>疲<rt>つか</rt></ruby>れさまです</b><span class="kana">おつかれさまです</span><span class="freq">10 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Said to a colleague, at any hour, for anything.</span><span class="nep ne">सहकर्मीलाई — जुनसुकै बेला, जुनसुकै कुरामा।</span></td>
+<td class="ex"><span class="s"><ruby>土曜日<rt>どようび</rt></ruby>は、<ruby>小学生<rt>しょうがくせい</rt></ruby>との<ruby>交流<rt>こうりゅう</rt></ruby><ruby>会<rt>かい</rt></ruby>、お<ruby>疲<rt>つか</rt></ruby>れ<ruby>様<rt>さま</rt></ruby>でした。</span><span class="cite">July 2010 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">128</td>
+<td class="jp"><b>おかげさまで</b><span class="kana">おかげさまで</span><span class="freq">9 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Thanks to you — standard reply to &#x27;how are things?&#x27;</span><span class="nep ne">तपाईंकै कृपाले — &#x27;कस्तो छ?&#x27; को मानक जवाफ।</span></td>
+<td class="ex"><span class="s">おかげさまで、<ruby>会場<rt>かいじょう</rt></ruby>の<ruby>座席<rt>ざせき</rt></ruby>が<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>埋<rt>う</rt></ruby>まるほどの<ruby>人<rt>ひと</rt></ruby>で、ポスターを<ruby>掲示<rt>けいじ</rt></ruby>する<ruby>地域<rt>ちいき</rt></ruby>を<ruby>拡大<rt>かくだい</rt></ruby>したのがよかったんでしょうか。</span><span class="cite">July 2018 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">129</td>
+<td class="jp"><b>まさか</b><span class="kana">まさか</span><span class="freq">5 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">You don&#x27;t say! Disbelief.</span><span class="nep ne">के भन्नुहुन्छ! अविश्वास।</span></td>
+<td class="ex"><span class="s">まさか<ruby>部長<rt>ぶちょう</rt></ruby>が<ruby>会社<rt>かいしゃ</rt></ruby><ruby>辞<rt>や</rt></ruby>めるとは<ruby>思<rt>おも</rt></ruby>わなかったよね。</span><span class="cite">December 2013 &middot; Q23</span></td></tr>
+<tr class="row"><td class="num">130</td>
+<td class="jp"><b>かしこまりました</b><span class="kana">かしこまりました</span><span class="freq">5 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">Certainly, sir/madam. Service Japanese.</span><span class="nep ne">हवस्, हुन्छ। सेवा क्षेत्रको भाषा।</span></td>
+<td class="ex"><span class="s">かしこまりました。では、チケットは<ruby>全部<rt>ぜんぶ</rt></ruby>で<ruby>四<rt>よん</rt></ruby><ruby>枚<rt>まい</rt></ruby>ですね。</span><span class="cite">July 2011 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">131</td>
+<td class="jp"><b><ruby>失礼<rt>しつれい</rt></ruby>します</b><span class="kana">しつれいします</span><span class="freq">4 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">Excuse me — on entering, leaving, or hanging up.</span><span class="nep ne">अनुमति चाहन्छु — छिर्दा, निस्कँदा, फोन राख्दा।</span></td>
+<td class="ex"><span class="s"><ruby>失礼<rt>しつれい</rt></ruby>いたしました。その<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>申込<rt>もうしこみ</rt></ruby><ruby>書<rt>しょ</rt></ruby>にその<ruby>方<rt>ほう</rt></ruby>のお<ruby>名前<rt>なまえ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いていただければけっこうです。</span><span class="cite">December 2011 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">132</td>
+<td class="jp"><b>こちらこそ</b><span class="kana">こちらこそ</span><span class="freq">4 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">The thanks are mine.</span><span class="nep ne">मैले नै धन्यवाद भन्नुपर्ने।</span></td>
+<td class="ex"><span class="s">こちらこそ、ありがとうございます。</span><span class="cite">December 2011 &middot; Q22</span></td></tr>
+<tr class="row"><td class="num">133</td>
+<td class="jp"><b>さすが</b><span class="kana">さすが</span><span class="freq">4 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Just as one would expect from you — praise.</span><span class="nep ne">तपाईंबाट यस्तै अपेक्षा — प्रशंसा।</span></td>
+<td class="ex"><span class="s"><ruby>店<rt>みせ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>の<ruby>気配<rt>きくば</rt></ruby>りや<ruby>対応<rt>たいおう</rt></ruby>なんかは、さすがだなと<ruby>思<rt>おも</rt></ruby>ったけど。</span><span class="cite">July 2016 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">134</td>
+<td class="jp"><b><ruby>承知<rt>しょうち</rt></ruby>しました</b><span class="kana">しょうちしました</span><span class="freq">4 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">Understood. To a superior at work.</span><span class="nep ne">बुझेँ। कार्यालयमा माथिल्लो व्यक्तिलाई।</span></td>
+<td class="ex"><span class="s"><ruby>承知<rt>しょうち</rt></ruby>しました。じゃ、<ruby>数字<rt>すうじ</rt></ruby>を<ruby>修正<rt>しゅうせい</rt></ruby>しておきます。</span><span class="cite">July 2013 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">135</td>
+<td class="jp"><b>お<ruby>待<rt>ま</rt></ruby>たせしました</b><span class="kana">おまたせしました</span><span class="freq">2 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Sorry to keep you waiting.</span><span class="nep ne">पर्खाएकोमा माफी।</span></td>
+<td class="ex"><span class="s"><ruby>山本<rt>やまもと</rt></ruby>さん、これ、<ruby>頼<rt>たの</rt></ruby>まれてた<ruby>書類<rt>しょるい</rt></ruby>です。お<ruby>待<rt>ま</rt></ruby>たせしました。</span><span class="cite">December 2012 &middot; Q18</span></td></tr>
+<tr class="row"><td class="num">136</td>
+<td class="jp"><b>とんでもないです</b><span class="kana">とんでもないです</span><span class="freq">2 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Not at all — deflecting praise or thanks.</span><span class="nep ne">केही होइन — प्रशंसा/धन्यवाद टार्दै।</span></td>
+<td class="ex"><span class="s">いいえ、とんでもない。</span><span class="cite">July 2021 &middot; Q19</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 9</span><h2 class="chap">Office, phone and keigo</h2></div>
+<p class="chap-ne ne">कार्यालय, फोन र आदरवाची</p>
+<p class="chap-blurb">A third of the N2 conversations happen at work. Keigo is not decoration here: it tells you who outranks whom, and therefore who will end up doing the job.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">137</td>
+<td class="jp"><b><ruby>確認<rt>かくにん</rt></ruby>します</b><span class="kana">かくにんします</span><span class="freq">44 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">I&#x27;ll check.</span><span class="nep ne">जाँच गर्छु।</span></td>
+<td class="ex"><span class="s">メールで<ruby>資料<rt>しりょう</rt></ruby>が<ruby>届<rt>とど</rt></ruby>いてたんだけど、<ruby>特<rt>とく</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby><ruby>点<rt>てん</rt></ruby>なんかはなかったね。でも<ruby>確認<rt>かくにん</rt></ruby>はしといて。</span><span class="cite">July 2011 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">138</td>
+<td class="jp"><b>おります</b><span class="kana">おります</span><span class="freq">42 lines &middot; 20 papers</span></td>
+<td class="mean"><span class="en">Humble for &#x27;be&#x27; — used about yourself and your own company.</span><span class="nep ne">&#x27;हुनु&#x27; को विनम्र — आफ्नो/आफ्नो कम्पनीका लागि।</span></td>
+<td class="ex"><span class="s">それから、サイズは<ruby>大小<rt>だいしょう</rt></ruby>ご<ruby>用意<rt>ようい</rt></ruby>しております。</span><span class="cite">December 2010 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">139</td>
+<td class="jp"><b>いたします</b><span class="kana">いたします</span><span class="freq">41 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">Humble &#x27;do&#x27;.</span><span class="nep ne">&#x27;गर्नु&#x27; को विनम्र।</span></td>
+<td class="ex"><span class="s">あの、お<ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせいただきました、<ruby>韓国<rt>かんこく</rt></ruby><ruby>行<rt>い</rt></ruby>きの<ruby>件<rt>けん</rt></ruby>でご<ruby>連絡<rt>れんらく</rt></ruby>いたします。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">140</td>
+<td class="jp"><b><ruby>担当<rt>たんとう</rt></ruby></b><span class="kana">たんとう</span><span class="freq">28 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">The person in charge of it.</span><span class="nep ne">जिम्मेवार व्यक्ति।</span></td>
+<td class="ex"><span class="s">ええ、でも、この<ruby>件<rt>けん</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>がずっと<ruby>担当<rt>たんとう</rt></ruby>していますので、それこそ<ruby>山田<rt>やまだ</rt></ruby>さんには<ruby>対処<rt>たいしょ</rt></ruby>しきれないかと<ruby>思<rt>おも</rt></ruby>いまして。</span><span class="cite">July 2012 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">141</td>
+<td class="jp"><b><ruby>伺<rt>うかが</rt></ruby>います</b><span class="kana">うかがいます</span><span class="freq">25 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">Humble &#x27;ask / visit / hear&#x27;.</span><span class="nep ne">&#x27;सोध्नु/जानु/सुन्नु&#x27; को विनम्र।</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>は<ruby>映画<rt>えいが</rt></ruby><ruby>監督<rt>かんとく</rt></ruby>の<ruby>田中<rt>たなか</rt></ruby><ruby>拓也<rt>たくや</rt></ruby>さんにお<ruby>話<rt>はなし</rt></ruby>を<ruby>伺<rt>うかが</rt></ruby>います。</span><span class="cite">December 2011 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">142</td>
+<td class="jp"><b><ruby>打<rt>う</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ</b><span class="kana">うちあわせ</span><span class="freq">24 lines &middot; 13 papers</span></td>
+<td class="mean"><span class="en">A planning meeting.</span><span class="nep ne">योजना बैठक।</span></td>
+<td class="ex"><span class="s">あしたの<ruby>東<rt>ひがし</rt></ruby><ruby>事務所<rt>じむしょ</rt></ruby>との<ruby>打<rt>う</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせのことなんけれど、<ruby>僕<rt>ぼく</rt></ruby>、その<ruby>前<rt>まえ</rt></ruby>に<ruby>別<rt>べつ</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>が<ruby>入<rt>はい</rt></ruby>ってて、<ruby>少<rt>すこ</rt></ruby>し<ruby>遅<rt>おく</rt></ruby>れるかもしれないんだ。</span><span class="cite">July 2011 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">143</td>
+<td class="jp"><b>ご<ruby>覧<rt>らん</rt></ruby>ください</b><span class="kana">ごらんください</span><span class="freq">19 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">Please take a look. (Honorific.)</span><span class="nep ne">कृपया हेर्नुहोस्।</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>は、その<ruby>中<rt>なか</rt></ruby>から<ruby>毎日<rt>まいにち</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で、すぐ<ruby>実践<rt>じっせん</rt></ruby>できることを<ruby>紹介<rt>しょうかい</rt></ruby>していただきますので、どうぞ、メモを<ruby>用意<rt>ようい</rt></ruby>してご<ruby>覧<rt>らん</rt></ruby>ください。</span><span class="cite">July 2010 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">144</td>
+<td class="jp"><b>いらっしゃいます</b><span class="kana">いらっしゃいます</span><span class="freq">15 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">Honorific for be / come / go — used about the other side.</span><span class="nep ne">हुनु/आउनु/जानु को आदरवाची — अर्को पक्षका लागि।</span></td>
+<td class="ex"><span class="s"><ruby>田中<rt>たなか</rt></ruby>さんはお<ruby>父<rt>ちち</rt></ruby>さまも<ruby>映画<rt>えいが</rt></ruby><ruby>監督<rt>かんとく</rt></ruby>でいらっしゃいますが、やはり、その<ruby>影響<rt>えいきょう</rt></ruby>で<ruby>映画<rt>えいが</rt></ruby><ruby>監督<rt>かんとく</rt></ruby>を<ruby>目指<rt>めざ</rt></ruby>されたのでしょうか。</span><span class="cite">December 2011 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">145</td>
+<td class="jp"><b>お<ruby>世話<rt>せわ</rt></ruby>になっております</b><span class="kana">おせわになっております</span><span class="freq">15 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">The standard opening of a business call.</span><span class="nep ne">व्यापारिक फोनको मानक सुरुवात।</span></td>
+<td class="ex"><span class="s"><ruby>一<rt>いち</rt></ruby><ruby>ヶ月<rt>かげつ</rt></ruby>もお<ruby>世話<rt>せわ</rt></ruby>になるから、なんかもっと<ruby>形<rt>かたち</rt></ruby>に<ruby>残<rt>のこ</rt></ruby>るものをって<ruby>思<rt>おも</rt></ruby>って。</span><span class="cite">July 2013 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">146</td>
+<td class="jp"><b>よろしいでしょうか</b><span class="kana">よろしいでしょうか</span><span class="freq">12 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Would that be all right? Asking permission upward.</span><span class="nep ne">हुन्छ होला? माथिल्लो व्यक्तिसँग अनुमति।</span></td>
+<td class="ex"><span class="s">あっ、はい、この<ruby>前<rt>まえ</rt></ruby>の<ruby>続<rt>つづ</rt></ruby>きからということでよろしいでしょうか。</span><span class="cite">July 2011 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">147</td>
+<td class="jp"><b>おっしゃいます</b><span class="kana">おっしゃいます</span><span class="freq">10 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Honorific &#x27;say&#x27;.</span><span class="nep ne">&#x27;भन्नु&#x27; को आदरवाची।</span></td>
+<td class="ex"><span class="s"><ruby>先生<rt>せんせい</rt></ruby>がおっしゃってるように、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>考<rt>かんが</rt></ruby>えもちゃんと<ruby>述<rt>の</rt></ruby>べてあると<ruby>思<rt>おも</rt></ruby>うんですが。</span><span class="cite">December 2014 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">148</td>
+<td class="jp"><b><ruby>恐<rt>おそ</rt></ruby>れ<ruby>入<rt>い</rt></ruby>ります / <ruby>恐縮<rt>きょうしゅく</rt></ruby>です</b><span class="kana">おそれいります</span><span class="freq">9 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">I&#x27;m much obliged / excuse me. Before an imposition.</span><span class="nep ne">अलि अप्ठ्यारो पार्दैछु — अनुरोध अघि।</span></td>
+<td class="ex"><span class="s">わざわざおいでくださるなんて、<ruby>恐縮<rt>きょうしゅく</rt></ruby>です。</span><span class="cite">July 2014 &middot; Q26</span></td></tr>
+<tr class="row"><td class="num">149</td>
+<td class="jp"><b><ruby>伝<rt>つた</rt></ruby>えておきます</b><span class="kana">つたえておきます</span><span class="freq">9 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">I&#x27;ll pass the message on.</span><span class="nep ne">सन्देश पुर्‍याइदिन्छु।</span></td>
+<td class="ex"><span class="s">そうですか、<ruby>実<rt>じつ</rt></ruby>は<ruby>先<rt>さき</rt></ruby>ほど、<ruby>私<rt>わたし</rt></ruby>が<ruby>留守<rt>るす</rt></ruby>の<ruby>間<rt>ま</rt></ruby>、<ruby>田中<rt>たなか</rt></ruby>さんからお<ruby>電話<rt>でんわ</rt></ruby>をいただいたようで、<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>件<rt>けん</rt></ruby>だと<ruby>伝言<rt>でんごん</rt></ruby>があったんですが。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">150</td>
+<td class="jp"><b><ruby>少々<rt>しょうしょう</rt></ruby>お<ruby>待<rt>ま</rt></ruby>ちください</b><span class="kana">しょうしょうおまちください</span><span class="freq">7 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">One moment, please.</span><span class="nep ne">एकैछिन पर्खनुहोस्।</span></td>
+<td class="ex"><span class="s"><ruby>今<rt>いま</rt></ruby>、お<ruby>茶<rt>ちゃ</rt></ruby>をご<ruby>用意<rt>ようい</rt></ruby>しますので、ちょっとお<ruby>待<rt>ま</rt></ruby>ちくださいね。</span><span class="cite">December 2013 &middot; Q25</span></td></tr>
+<tr class="row"><td class="num">151</td>
+<td class="jp"><b>させていただきます</b><span class="kana">させていただきます</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">I will (with your permission). Extremely common, means simply &#x27;I will&#x27;.</span><span class="nep ne">अनुमति लिएर गर्छु। धेरै प्रचलित — अर्थ &#x27;म गर्छु&#x27;।</span></td>
+<td class="ex"><span class="s"><ruby>修理<rt>しゅうり</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>かどうかお<ruby>調<rt>しら</rt></ruby>べした<ruby>費用<rt>ひよう</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>千<rt>せん</rt></ruby><ruby>円<rt>えん</rt></ruby>につきましては、<ruby>無料<rt>むりょう</rt></ruby>とさせていただきますが。</span><span class="cite">December 2010 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">152</td>
+<td class="jp"><b><ruby>拝見<rt>はいけん</rt></ruby>します</b><span class="kana">はいけんします</span><span class="freq">5 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Humble &#x27;look at&#x27; — I&#x27;ll take a look at it.</span><span class="nep ne">&#x27;हेर्नु&#x27; को विनम्र।</span></td>
+<td class="ex"><span class="s">ええ、その<ruby>件<rt>けん</rt></ruby>なんですが、<ruby>拝見<rt>はいけん</rt></ruby>したところ、どうもこちらでお<ruby>願<rt>ねが</rt></ruby>いしたものと<ruby>内容<rt>ないよう</rt></ruby>が<ruby>違<rt>ちが</rt></ruby>うようで。</span><span class="cite">July 2016 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">153</td>
+<td class="jp"><b><ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>し</b><span class="kana">おりかえし</span><span class="freq">3 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Call you back.</span><span class="nep ne">फर्काएर फोन गर्ने।</span></td>
+<td class="ex"><span class="s">では、<ruby>田中<rt>たなか</rt></ruby>が<ruby>戻<rt>もど</rt></ruby>り<ruby>次第<rt>しだい</rt></ruby>、<ruby>山川<rt>やまかわ</rt></ruby>さんに<ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>しお<ruby>電話<rt>でんわ</rt></ruby><ruby>差<rt>さ</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げるよう<ruby>伝<rt>つた</rt></ruby>えましょうか。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">154</td>
+<td class="jp"><b>お<ruby>先<rt>さき</rt></ruby>に〜</b><span class="kana">おさきに</span><span class="freq">2 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Before you — leaving the office, or starting to eat, ahead of others.</span><span class="nep ne">अरूभन्दा पहिले — अफिस छोड्दा वा खान थाल्दा।</span></td>
+<td class="ex"><span class="s">じゃあ、お<ruby>先<rt>さき</rt></ruby>にいただきます。</span><span class="cite">July 2015 &middot; Q18</span></td></tr>
+<tr class="row"><td class="num">155</td>
+<td class="jp"><b><ruby>申<rt>もう</rt></ruby>します</b><span class="kana">もうします</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Humble &#x27;say&#x27; — 〜と申します is how you give your name.</span><span class="nep ne">&#x27;भन्नु&#x27; को विनम्र — नाम भन्ने तरिका।</span></td>
+<td class="ex"><span class="s">わたくし、<ruby>斎藤<rt>さいとう</rt></ruby>と<ruby>申<rt>もう</rt></ruby>します。よろしくお<ruby>願<rt>ねが</rt></ruby>いします。</span><span class="cite">July 2016 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">156</td>
+<td class="jp"><b><ruby>席<rt>せき</rt></ruby>をはずしております</b><span class="kana">せきをはずしております</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">He/she is away from the desk — the standard phone excuse.</span><span class="nep ne">अहिले ठाउँमा हुनुहुन्न — फोनको मानक जवाफ।</span></td>
+<td class="ex"><span class="s">あいにく<ruby>田中<rt>たなか</rt></ruby>は<ruby>席<rt>せき</rt></ruby>をはずしておりまして、2<ruby>時<rt>じ</rt></ruby>からミーティングがああるので、その<ruby>前<rt>まえ</rt></ruby>には<ruby>戻<rt>もど</rt></ruby>る<ruby>予定<rt>よてい</rt></ruby>ですが。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 10</span><h2 class="chap">Announcements and public notices</h2></div>
+<p class="chap-ne ne">सूचना र घोषणा</p>
+<p class="chap-blurb">問題1 and 問題3 often use a station, shop, school or in-flight announcement. The register is formal and fixed, so the phrases repeat paper after paper.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">157</td>
+<td class="jp"><b><ruby>会場<rt>かいじょう</rt></ruby></b><span class="kana">かいじょう</span><span class="freq">68 lines &middot; 22 papers</span></td>
+<td class="mean"><span class="en">The venue.</span><span class="nep ne">कार्यक्रम स्थल।</span></td>
+<td class="ex"><span class="s"><ruby>田中<rt>たなか</rt></ruby>の<ruby>先生<rt>せんせい</rt></ruby>の<ruby>出版<rt>しゅっぱん</rt></ruby><ruby>記念<rt>きねん</rt></ruby>パーティーの<ruby>会場<rt>かいじょう</rt></ruby>、レストランはやめて、ホテルに<ruby>変更<rt>へんこう</rt></ruby>したんだって。</span><span class="cite">July 2011 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">158</td>
+<td class="jp"><b>お<ruby>客様<rt>きゃくさま</rt></ruby></b><span class="kana">おきゃくさま</span><span class="freq">61 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">Customers, passengers, guests.</span><span class="nep ne">ग्राहक, यात्रु, पाहुना।</span></td>
+<td class="ex"><span class="s">いや、<ruby>部長<rt>ぶちょう</rt></ruby>に<ruby>頼<rt>たの</rt></ruby>まれてたお<ruby>客様<rt>きゃくさま</rt></ruby>への<ruby>連絡<rt>れんらく</rt></ruby>を<ruby>忘<rt>わす</rt></ruby>れてたんだ。</span><span class="cite">December 2010 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">159</td>
+<td class="jp"><b>〜ております</b><span class="kana">〜ております</span><span class="freq">36 lines &middot; 19 papers</span></td>
+<td class="mean"><span class="en">Formal progressive — &#x27;is currently ~ ing&#x27;.</span><span class="nep ne">औपचारिक निरन्तर रूप।</span></td>
+<td class="ex"><span class="s">また、ホテルのご<ruby>予約<rt>よやく</rt></ruby>なども<ruby>承<rt>うけたまわ</rt></ruby>っておりますので、よろしくお<ruby>願<rt>ねが</rt></ruby>いします。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">160</td>
+<td class="jp"><b>〜<ruby>番<rt>ばん</rt></ruby> / 〜<ruby>番目<rt>ばんめ</rt></ruby></b><span class="kana">〜ばん / 〜ばんめ</span><span class="freq">36 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">Number ~ / the ~ th one.</span><span class="nep ne">नम्बर ~ / ~ औं।</span></td>
+<td class="ex"><span class="s"><ruby>今<rt>いま</rt></ruby>は<ruby>責任<rt>せきにん</rt></ruby>ある<ruby>仕事<rt>しごと</rt></ruby>をさせてもらえるから、それが、<ruby>一番<rt>いちばん</rt></ruby>の<ruby>魅力<rt>みりょく</rt></ruby>かな。</span><span class="cite">July 2010 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">161</td>
+<td class="jp"><b><ruby>皆様<rt>みなさま</rt></ruby></b><span class="kana">みなさま</span><span class="freq">25 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">Ladies and gentlemen.</span><span class="nep ne">सबै महानुभावहरू।</span></td>
+<td class="ex"><span class="s"><ruby>来週<rt>らいしゅう</rt></ruby>には<ruby>皆<rt>みな</rt></ruby>さん、お<ruby>揃<rt>そろ</rt></ruby>いでおいでくださいますようお<ruby>願<rt>ねが</rt></ruby>いいたします。</span><span class="cite">July 2012 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">162</td>
+<td class="jp"><b><ruby>中止<rt>ちゅうし</rt></ruby></b><span class="kana">ちゅうし</span><span class="freq">20 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Called off.</span><span class="nep ne">रद्द।</span></td>
+<td class="ex"><span class="s">イベント<ruby>中止<rt>ちゅうし</rt></ruby>っていう<ruby>今回<rt>こんかい</rt></ruby>の<ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>決定<rt>けってい</rt></ruby>は<ruby>理解<rt>りかい</rt></ruby>しがたいよ。</span><span class="cite">December 2012 &middot; Q23</span></td></tr>
+<tr class="row"><td class="num">163</td>
+<td class="jp"><b>〜となります</b><span class="kana">〜となります</span><span class="freq">19 lines &middot; 13 papers</span></td>
+<td class="mean"><span class="en">Will be ~ . The formal &#x27;is&#x27;.</span><span class="nep ne">~ हुनेछ। औपचारिक &#x27;हो&#x27;।</span></td>
+<td class="ex"><span class="s">ご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>飛行機<rt>ひこうき</rt></ruby>はあいにく<ruby>席<rt>せき</rt></ruby>がいっぱいでして、キャンセル<ruby>待<rt>ま</rt></ruby>ちか<ruby>次<rt>つぎ</rt></ruby>の<ruby>便<rt>びん</rt></ruby>への<ruby>変更<rt>へんこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>となります。</span><span class="cite">July 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">164</td>
+<td class="jp"><b>〜<ruby>階<rt>かい</rt></ruby></b><span class="kana">〜かい</span><span class="freq">18 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">~ th floor. Numbers change sound: 1 いっかい, 3 さんがい, 6 ろっかい.</span><span class="nep ne">~ तल्ला। अंकअनुसार उच्चारण फेरिन्छ।</span></td>
+<td class="ex"><span class="s">それに、とても<ruby>軽<rt>かる</rt></ruby>く、<ruby>段階<rt>だんかい</rt></ruby>でも<ruby>楽<rt>らく</rt></ruby>に<ruby>持<rt>も</rt></ruby>ち<ruby>運<rt>はこ</rt></ruby>べます。</span><span class="cite">July 2012 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">165</td>
+<td class="jp"><b><ruby>開始<rt>かいし</rt></ruby> / <ruby>終了<rt>しゅうりょう</rt></ruby></b><span class="kana">かいし / しゅうりょう</span><span class="freq">13 lines &middot; 10 papers</span></td>
+<td class="mean"><span class="en">Start / end.</span><span class="nep ne">सुरु / अन्त्य।</span></td>
+<td class="ex"><span class="s">なお、<ruby>商品<rt>しょうひん</rt></ruby>が<ruby>売切<rt>うりき</rt></ruby>れ<ruby>次第<rt>しだい</rt></ruby>、セールは<ruby>終了<rt>しゅうりょう</rt></ruby>となりますので、ご<ruby>了承<rt>りょうしょう</rt></ruby>をくださいませ。</span><span class="cite">December 2011 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">166</td>
+<td class="jp"><b>お<ruby>知<rt>し</rt></ruby>らせします</b><span class="kana">おしらせします</span><span class="freq">12 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">This is an announcement.</span><span class="nep ne">सूचना दिँदैछौं।</span></td>
+<td class="ex"><span class="s"><ruby>明日<rt>あした</rt></ruby><ruby>予定<rt>よてい</rt></ruby>しておりました<ruby>桜<rt>さくら</rt></ruby><ruby>通<rt>どお</rt></ruby>りの<ruby>夏<rt>なつ</rt></ruby><ruby>祭<rt>まつ</rt></ruby>りについてお<ruby>知<rt>し</rt></ruby>らせします。</span><span class="cite">July 2012 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">167</td>
+<td class="jp"><b><ruby>変更<rt>へんこう</rt></ruby>になりました</b><span class="kana">へんこうになりました</span><span class="freq">12 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Has been changed. Listen for the new number.</span><span class="nep ne">परिवर्तन भयो। नयाँ अंक सुन्नुहोस्।</span></td>
+<td class="ex"><span class="s"><ruby>場所<rt>ばしょ</rt></ruby>が<ruby>一<rt>いち</rt></ruby><ruby>階<rt>かい</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby><ruby>室<rt>しつ</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby>になったことはもう<ruby>連絡<rt>れんらく</rt></ruby>してくれた?</span><span class="cite">December 2015 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">168</td>
+<td class="jp"><b><ruby>受付<rt>うけつけ</rt></ruby></b><span class="kana">うけつけ</span><span class="freq">10 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Reception; the acceptance of applications.</span><span class="nep ne">स्वागत कक्ष; आवेदन लिने ठाउँ।</span></td>
+<td class="ex"><span class="s">それに、<ruby>新聞<rt>しんぶん</rt></ruby>に<ruby>申込<rt>もうしこみ</rt></ruby><ruby>用紙<rt>ようし</rt></ruby>を<ruby>掲載<rt>けいさい</rt></ruby>して、ファックスでの<ruby>申<rt>もう</rt></ruby>し<ruby>込<rt>こ</rt></ruby>みも<ruby>受<rt>う</rt></ruby>け<ruby>付<rt>つ</rt></ruby>けるようにすれば、応暮しやすいと<ruby>思<rt>おも</rt></ruby>いますし。</span><span class="cite">December 2015 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">169</td>
+<td class="jp"><b>ご<ruby>注意<rt>ちゅうい</rt></ruby>ください / <ruby>注意<rt>ちゅうい</rt></ruby>する</b><span class="kana">ごちゅうい</span><span class="freq">9 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Please take care; watch out for it.</span><span class="nep ne">कृपया ध्यान दिनुहोस्; होसियार हुनु।</span></td>
+<td class="ex"><span class="s">きのうは<ruby>帰<rt>かえ</rt></ruby>りは<ruby>遅<rt>おそ</rt></ruby>くなちゃったから、<ruby>注意<rt>ちゅうい</rt></ruby>して<ruby>閉<rt>し</rt></ruby>めたつもりだったんだけはど。</span><span class="cite">July 2011 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">170</td>
+<td class="jp"><b>ご<ruby>案内<rt>あんない</rt></ruby>します</b><span class="kana">ごあんないします</span><span class="freq">8 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">We will now guide you / inform you.</span><span class="nep ne">जानकारी गराउँदैछौं।</span></td>
+<td class="ex"><span class="s">それじゃ、お<ruby>客<rt>きゃく</rt></ruby>さんをスーパーやデパートまでご<ruby>案内<rt>あんない</rt></ruby>するだけじゃなくて、<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>のお<ruby>手伝<rt>てつだ</rt></ruby>いをするというのは<ruby>需要<rt>じゅよう</rt></ruby>があると<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">December 2014 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">171</td>
+<td class="jp"><b>ただいま</b><span class="kana">ただいま</span><span class="freq">4 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">At this moment (formal register), not &#x27;I&#x27;m home&#x27;.</span><span class="nep ne">अहिले (औपचारिक) — &#x27;घर आएँ&#x27; होइन।</span></td>
+<td class="ex"><span class="s">あいにくただいまお<ruby>出<rt>だ</rt></ruby>しできないんですよ。</span><span class="cite">December 2011 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">172</td>
+<td class="jp"><b>まもなく</b><span class="kana">まもなく</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Shortly, any moment now.</span><span class="nep ne">छिट्टै, अब एकैछिनमा।</span></td>
+<td class="ex"><span class="s">もう<ruby>間<rt>ま</rt></ruby>もなく<ruby>到着<rt>とうちゃく</rt></ruby>する<ruby>予定<rt>よてい</rt></ruby>でして、<ruby>清掃<rt>せいそう</rt></ruby>が<ruby>終<rt>お</rt></ruby>わり<ruby>次第<rt>しだい</rt></ruby>、<ruby>東京<rt>とうきょう</rt></ruby><ruby>行<rt>い</rt></ruby>きのお<ruby>客様<rt>きゃくさま</rt></ruby>をご<ruby>案内<rt>あんない</rt></ruby>いたします。</span><span class="cite">July 2018 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">173</td>
+<td class="jp"><b>ご<ruby>了承<rt>りょうしょう</rt></ruby>ください</b><span class="kana">ごりょうしょうください</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">We ask for your understanding (about an inconvenience).</span><span class="nep ne">कृपया बुझिदिनुहोस् (असुविधाबारे)।</span></td>
+<td class="ex"><span class="s">なお、<ruby>商品<rt>しょうひん</rt></ruby>が<ruby>売切<rt>うりき</rt></ruby>れ<ruby>次第<rt>しだい</rt></ruby>、セールは<ruby>終了<rt>しゅうりょう</rt></ruby>となりますので、ご<ruby>了承<rt>りょうしょう</rt></ruby>をくださいませ。</span><span class="cite">December 2011 &middot; Q11</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 11</span><h2 class="chap">Feeling and judgement — 問題3 概要理解</h2></div>
+<p class="chap-ne ne">भावना र मूल्यांकन — 問題3</p>
+<p class="chap-blurb">問題3 gives you no question in advance. You must hold the speaker&#x27;s attitude in your head. Attitude lives in these words, not in the nouns.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">174</td>
+<td class="jp"><b>〜と<ruby>思<rt>おも</rt></ruby>います</b><span class="kana">〜とおもいます</span><span class="freq">204 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">I think ~ . The speaker&#x27;s own view.</span><span class="nep ne">मलाई ~ लाग्छ। वक्ताको आफ्नै धारणा।</span></td>
+<td class="ex"><span class="s">それはしょうがないと<ruby>思<rt>おも</rt></ruby>うんだけど、<ruby>電車<rt>でんしゃ</rt></ruby>を<ruby>降<rt>お</rt></ruby>りようとしても、ドアの<ruby>近<rt>ちか</rt></ruby>くにいる<ruby>人<rt>ひと</rt></ruby>が、なかなか<ruby>動<rt>うご</rt></ruby>いてくれなくて。</span><span class="cite">July 2010 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">175</td>
+<td class="jp"><b>〜そうだ (<ruby>伝聞<rt>でんぶん</rt></ruby>)</b><span class="kana">〜そうだ</span><span class="freq">101 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">I hear that ~ . Second-hand.</span><span class="nep ne">~ रे। सुनेको कुरा।</span></td>
+<td class="ex"><span class="s"><ruby>就職<rt>しゅうしょく</rt></ruby>、<ruby>決<rt>き</rt></ruby>まったんだって。<ruby>先輩<rt>せんぱい</rt></ruby>に<ruby>紹介<rt>しょうかい</rt></ruby>してもらった、あの<ruby>会社<rt>かいしゃ</rt></ruby>?</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">176</td>
+<td class="jp"><b>〜てしまった</b><span class="kana">〜てしまった</span><span class="freq">93 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">Went and did it — regret or completion.</span><span class="nep ne">गरिहालेँ — पछुतो वा पूर्णता।</span></td>
+<td class="ex"><span class="s"><ruby>明日<rt>あした</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby><ruby>会<rt>かい</rt></ruby>のことなんだけど、<ruby>悪<rt>わる</rt></ruby>いけど、<ruby>急<rt>きゅう</rt></ruby>に<ruby>行<rt>い</rt></ruby>けなくなっちゃったの。</span><span class="cite">July 2010 &middot; Q10</span></td></tr>
+<tr class="row"><td class="num">177</td>
+<td class="jp"><b>〜と<ruby>思<rt>おも</rt></ruby>っている</b><span class="kana">〜とおもっている</span><span class="freq">69 lines &middot; 25 papers</span></td>
+<td class="mean"><span class="en">Has been thinking ~ (a settled opinion).</span><span class="nep ne">~ भन्ने सोचिरहेको (स्थिर धारणा)।</span></td>
+<td class="ex"><span class="s"><ruby>最初<rt>さいしょ</rt></ruby>は<ruby>僕<rt>ぼく</rt></ruby>もインターネットで<ruby>調<rt>しら</rt></ruby>べて<ruby>書<rt>か</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>ってたんだけど、やっぱりうまく<ruby>書<rt>か</rt></ruby>けそうになくて。</span><span class="cite">December 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">178</td>
+<td class="jp"><b>〜かもしれない</b><span class="kana">〜かもしれない</span><span class="freq">69 lines &middot; 26 papers</span></td>
+<td class="mean"><span class="en">Might be ~ . Never the definite answer.</span><span class="nep ne">~ हुन सक्छ। निश्चित उत्तर कहिल्यै होइन।</span></td>
+<td class="ex"><span class="s"><ruby>運<rt>うん</rt></ruby>がよければ、<ruby>歩<rt>ある</rt></ruby>いているうちによさそうなアパートが<ruby>見<rt>み</rt></ruby>つかるかもしれないし。</span><span class="cite">July 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">179</td>
+<td class="jp"><b>〜みたい</b><span class="kana">〜みたい</span><span class="freq">62 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">Seems like ~ ; like a ~ .</span><span class="nep ne">~ जस्तो।</span></td>
+<td class="ex"><span class="s"><ruby>流行<rt>はや</rt></ruby>りにのってるみたいで、<ruby>何<rt>なん</rt></ruby>だか<ruby>恥<rt>は</rt></ruby>ずかしいんだけどね。</span><span class="cite">July 2010 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">180</td>
+<td class="jp"><b>〜てよかった</b><span class="kana">〜てよかった</span><span class="freq">49 lines &middot; 19 papers</span></td>
+<td class="mean"><span class="en">I&#x27;m glad I ~ ed.</span><span class="nep ne">~ गरेर राम्रो भयो।</span></td>
+<td class="ex"><span class="s"><ruby>担当<rt>たんとう</rt></ruby>の<ruby>方<rt>ほう</rt></ruby>にお<ruby>目<rt>め</rt></ruby>にかかれたので、<ruby>来<rt>き</rt></ruby>てよかったです。</span><span class="cite">July 2014 &middot; Q26</span></td></tr>
+<tr class="row"><td class="num">181</td>
+<td class="jp"><b><ruby>気<rt>き</rt></ruby>になる</b><span class="kana">きになる</span><span class="freq">33 lines &middot; 22 papers</span></td>
+<td class="mean"><span class="en">It bothers me; I&#x27;m curious about it.</span><span class="nep ne">मनमा खट्किन्छ; जिज्ञासा छ।</span></td>
+<td class="ex"><span class="s">いくつかの<ruby>字<rt>じ</rt></ruby>の<ruby>間違<rt>まちが</rt></ruby>いがあったのと、<ruby>参考<rt>さんこう</rt></ruby><ruby>文献<rt>ぶんけん</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>にちょっと<ruby>気<rt>き</rt></ruby>になる<ruby>点<rt>てん</rt></ruby>がありましたけどね。</span><span class="cite">July 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">182</td>
+<td class="jp"><b>〜はずだ</b><span class="kana">〜はずだ</span><span class="freq">29 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">It ought to be ~ (by reasoning).</span><span class="nep ne">~ हुनुपर्ने हो (तर्कले)।</span></td>
+<td class="ex"><span class="s"><ruby>直<rt>なお</rt></ruby>したはずだったんですが、<ruby>古<rt>ふる</rt></ruby>いほうのデータです。</span><span class="cite">July 2010 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">183</td>
+<td class="jp"><b>〜らしい</b><span class="kana">〜らしい</span><span class="freq">28 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">Apparently ~ . Based on what&#x27;s around.</span><span class="nep ne">~ रे/जस्तो छ। वरिपरिको आधारमा।</span></td>
+<td class="ex"><span class="s"><ruby>仕事<rt>しごと</rt></ruby>はハードだし、<ruby>帰<rt>かえ</rt></ruby>りも<ruby>遅<rt>おそ</rt></ruby>くなるらしいんだけどね。</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">184</td>
+<td class="jp"><b>〜そうだ (<ruby>見<rt>み</rt></ruby>た<ruby>目<rt>め</rt></ruby>)</b><span class="kana">〜そうだ</span><span class="freq">25 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">It looks ~ . Judgement from appearance.</span><span class="nep ne">~ जस्तो देखिन्छ। देखेर अनुमान।</span></td>
+<td class="ex"><span class="s"><ruby>運<rt>うん</rt></ruby>がよければ、<ruby>歩<rt>ある</rt></ruby>いているうちによさそうなアパートが<ruby>見<rt>み</rt></ruby>つかるかもしれないし。</span><span class="cite">July 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">185</td>
+<td class="jp"><b><ruby>楽<rt>たの</rt></ruby>しみ</b><span class="kana">たのしみ</span><span class="freq">25 lines &middot; 13 papers</span></td>
+<td class="mean"><span class="en">Looking forward to it.</span><span class="nep ne">पर्खिरहेको छु, रमाइलो हुनेछ।</span></td>
+<td class="ex"><span class="s">うん、<ruby>楽<rt>たの</rt></ruby>しみだね。そうそう、<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>何<rt>なに</rt></ruby>か<ruby>持<rt>も</rt></ruby>っていかない?</span><span class="cite">December 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">186</td>
+<td class="jp"><b>〜ばよかった</b><span class="kana">〜ばよかった</span><span class="freq">23 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">I wish I had ~ . Regret — a favourite trap.</span><span class="nep ne">~ गरेको भए हुन्थ्यो। पछुतो — मनपर्ने जाल।</span></td>
+<td class="ex"><span class="s"><ruby>土曜日<rt>どようび</rt></ruby>のハイキング、<ruby>来<rt>く</rt></ruby>ればよかったのに。</span><span class="cite">July 2011 &middot; Q18</span></td></tr>
+<tr class="row"><td class="num">187</td>
+<td class="jp"><b><ruby>困<rt>こま</rt></ruby>る / <ruby>困<rt>こま</rt></ruby>った</b><span class="kana">こまる / こまった</span><span class="freq">21 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">It&#x27;s a problem; I&#x27;m stuck.</span><span class="nep ne">अप्ठ्यारो पर्‍यो।</span></td>
+<td class="ex"><span class="s"><ruby>緊張<rt>きんちょう</rt></ruby>するかもしれないけど、<ruby>一<rt>いち</rt></ruby><ruby>人<rt>にん</rt></ruby>のほうが<ruby>正確<rt>せいかく</rt></ruby>なデータが<ruby>取<rt>と</rt></ruby>れるんじゃないかと<ruby>思<rt>おも</rt></ruby>って、ちょっと<ruby>意見<rt>いけん</rt></ruby>が<ruby>分<rt>わ</rt></ruby>かれて<ruby>困<rt>こま</rt></ruby>ってるんですけど。</span><span class="cite">December 2011 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">188</td>
+<td class="jp"><b><ruby>気<rt>き</rt></ruby>をつける</b><span class="kana">きをつける</span><span class="freq">21 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">Be careful about it.</span><span class="nep ne">होसियार हुनु।</span></td>
+<td class="ex"><span class="s"><ruby>次回<rt>じかい</rt></ruby>、<ruby>来月<rt>らいげつ</rt></ruby>のクリスマスパーティでは、<ruby>内容<rt>ないよう</rt></ruby>だけじゃなく、このような<ruby>点<rt>てん</rt></ruby>についても、<ruby>気<rt>き</rt></ruby>をつけたいと<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">July 2010 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">189</td>
+<td class="jp"><b>しょうがない</b><span class="kana">しょうがない</span><span class="freq">14 lines &middot; 9 papers</span></td>
+<td class="mean"><span class="en">Nothing to be done about it.</span><span class="nep ne">के गर्ने, उपाय छैन।</span></td>
+<td class="ex"><span class="s">それはしょうがないと<ruby>思<rt>おも</rt></ruby>うんだけど、<ruby>電車<rt>でんしゃ</rt></ruby>を<ruby>降<rt>お</rt></ruby>りようとしても、ドアの<ruby>近<rt>ちか</rt></ruby>くにいる<ruby>人<rt>ひと</rt></ruby>が、なかなか<ruby>動<rt>うご</rt></ruby>いてくれなくて。</span><span class="cite">July 2010 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">190</td>
+<td class="jp"><b>びっくり</b><span class="kana">びっくり</span><span class="freq">9 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Surprised.</span><span class="nep ne">छक्क परेँ।</span></td>
+<td class="ex"><span class="s">そうだったんだけど、<ruby>初<rt>はじ</rt></ruby>めて<ruby>仕事<rt>しごと</rt></ruby>と<ruby>関係<rt>かんけい</rt></ruby>ない<ruby>話<rt>はな</rt></ruby>したら、びっくりしちゃって。</span><span class="cite">July 2012 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">191</td>
+<td class="jp"><b>〜に<ruby>違<rt>ちが</rt></ruby>いない</b><span class="kana">〜にちがいない</span><span class="freq">5 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">It must be ~ . Near-certainty.</span><span class="nep ne">पक्कै ~ हो। झन्डै निश्चित।</span></td>
+<td class="ex"><span class="s"><ruby>部長<rt>ぶちょう</rt></ruby>があんなに<ruby>怒<rt>おこ</rt></ruby>るなんて、よっぽどの<ruby>理由<rt>りゆう</rt></ruby>があるに<ruby>違<rt>ちが</rt></ruby>いないよね。</span><span class="cite">December 2014 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">192</td>
+<td class="jp"><b>がっかり</b><span class="kana">がっかり</span><span class="freq">4 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Disappointed.</span><span class="nep ne">निराश।</span></td>
+<td class="ex"><span class="s">そんなにがっかりしないで。</span><span class="cite">July 2015 &middot; Q27</span></td></tr>
+<tr class="row"><td class="num">193</td>
+<td class="jp"><b>〜<ruby>気<rt>き</rt></ruby>がする</b><span class="kana">〜きがする</span><span class="freq">3 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">I get the feeling that ~ .</span><span class="nep ne">~ जस्तो लाग्छ।</span></td>
+<td class="ex"><span class="s">あそこは<ruby>他<rt>た</rt></ruby>にお<ruby>客<rt>きゃく</rt></ruby>さんもいるし、<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>は<ruby>居<rt>い</rt></ruby>づらいような<ruby>気<rt>き</rt></ruby>がするなあ。</span><span class="cite">July 2015 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">194</td>
+<td class="jp"><b>〜ような<ruby>気<rt>き</rt></ruby>がする</b><span class="kana">〜ようなきがする</span><span class="freq">3 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">I somehow feel that ~ .</span><span class="nep ne">कताकता ~ जस्तो लाग्छ।</span></td>
+<td class="ex"><span class="s">あそこは<ruby>他<rt>た</rt></ruby>にお<ruby>客<rt>きゃく</rt></ruby>さんもいるし、<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>は<ruby>居<rt>い</rt></ruby>づらいような<ruby>気<rt>き</rt></ruby>がするなあ。</span><span class="cite">July 2015 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">195</td>
+<td class="jp"><b>〜わけがない</b><span class="kana">〜わけがない</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">Out of the question.</span><span class="nep ne">सम्भवै छैन।</span></td>
+<td class="ex"><span class="s">それはわからなくはないけど、<ruby>漢字<rt>かんじ</rt></ruby><ruby>本来<rt>ほんらい</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>を<ruby>無視<rt>むし</rt></ruby>しているんじゃ<ruby>誰<rt>だれ</rt></ruby>もちゃんと<ruby>読<rt>よ</rt></ruby>めるわけがないよね。</span><span class="cite">December 2014 &middot; Q10</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 12</span><h2 class="chap">Time, schedule and deadline</h2></div>
+<p class="chap-ne ne">समय, तालिका र म्याद</p>
+<p class="chap-blurb">Dates and times are where careless marks are lost. The papers change the appointment at least once, and the change is signalled, never repeated.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">196</td>
+<td class="jp"><b>〜まで</b><span class="kana">〜まで</span><span class="freq">184 lines &middot; 29 papers</span></td>
+<td class="mean"><span class="en">Until ~ (continuously).</span><span class="nep ne">~ सम्म (निरन्तर)।</span></td>
+<td class="ex"><span class="s">いまでは、いろいろと<ruby>工夫<rt>くふう</rt></ruby>するのが<ruby>楽<rt>たの</rt></ruby>しく、すっかり<ruby>節約<rt>せつやく</rt></ruby>が<ruby>趣味<rt>しゅみ</rt></ruby>になっているとのことです。</span><span class="cite">July 2010 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">197</td>
+<td class="jp"><b><ruby>遅<rt>おく</rt></ruby>れる</b><span class="kana">おくれる</span><span class="freq">56 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">Be late; run behind.</span><span class="nep ne">ढिलो हुनु।</span></td>
+<td class="ex"><span class="s"><ruby>仕事<rt>しごと</rt></ruby>はハードだし、<ruby>帰<rt>かえ</rt></ruby>りも<ruby>遅<rt>おそ</rt></ruby>くなるらしいんだけどね。</span><span class="cite">July 2010 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">198</td>
+<td class="jp"><b><ruby>平日<rt>へいじつ</rt></ruby> / <ruby>週末<rt>しゅうまつ</rt></ruby></b><span class="kana">へいじつ / しゅうまつ</span><span class="freq">35 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">Weekday / weekend.</span><span class="nep ne">कार्यदिन / सप्ताहान्त।</span></td>
+<td class="ex"><span class="s"><ruby>今週<rt>こんしゅう</rt></ruby><ruby>末<rt>まつ</rt></ruby><ruby>予定<rt>よてい</rt></ruby>されているコンサートのお<ruby>知<rt>し</rt></ruby>らせです。</span><span class="cite">July 2013 &middot; Q11</span></td></tr>
+<tr class="row"><td class="num">199</td>
+<td class="jp"><b><ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>う</b><span class="kana">まにあう</span><span class="freq">33 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">Be in time for it.</span><span class="nep ne">समयमा भ्याउनु।</span></td>
+<td class="ex"><span class="s"><ruby>会社<rt>かいしゃ</rt></ruby><ruby>帰<rt>がえ</rt></ruby>りに<ruby>行<rt>い</rt></ruby>きたいんで、それだと<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わないですね。</span><span class="cite">December 2011 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">200</td>
+<td class="jp"><b>〜までに</b><span class="kana">〜までに</span><span class="freq">30 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">By ~ (a deadline). Not &#x27;until&#x27;.</span><span class="nep ne">~ सम्ममा (म्याद)। &#x27;सम्म&#x27; होइन।</span></td>
+<td class="ex"><span class="s"><ruby>次回<rt>じかい</rt></ruby>のミーティングまでに、その<ruby>点<rt>てん</rt></ruby>を<ruby>検討<rt>けんとう</rt></ruby>しておいてもらえる?</span><span class="cite">December 2011 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">201</td>
+<td class="jp"><b><ruby>当日<rt>とうじつ</rt></ruby></b><span class="kana">とうじつ</span><span class="freq">24 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">On the day itself.</span><span class="nep ne">सोही दिन।</span></td>
+<td class="ex"><span class="s">プレゼント<ruby>代<rt>だい</rt></ruby>はその<ruby>後<rt>ご</rt></ruby>でみんなから<ruby>集<rt>あつ</rt></ruby>めて、もしお<ruby>金<rt>かね</rt></ruby>が<ruby>余<rt>あま</rt></ruby>ったら、それで<ruby>当日<rt>とうじつ</rt></ruby><ruby>花<rt>はな</rt></ruby>を<ruby>買<rt>か</rt></ruby>おう。</span><span class="cite">December 2011 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">202</td>
+<td class="jp"><b><ruby>延<rt>の</rt></ruby>ばす</b><span class="kana">のばす</span><span class="freq">19 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Put it back, extend it.</span><span class="nep ne">सार्नु, बढाउनु।</span></td>
+<td class="ex"><span class="s">でも、まあ、<ruby>焦<rt>あせ</rt></ruby>って<ruby>開店<rt>かいてん</rt></ruby>してサービスの<ruby>評判<rt>ひょうばん</rt></ruby>を<ruby>落<rt>お</rt></ruby>とすより、<ruby>延期<rt>えんき</rt></ruby>してでもちゃんと<ruby>準備<rt>じゅんび</rt></ruby>したほうがいいよ。</span><span class="cite">December 2016 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">203</td>
+<td class="jp"><b><ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>り</b><span class="kana">しめきり</span><span class="freq">16 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Deadline.</span><span class="nep ne">म्याद, अन्तिम मिति।</span></td>
+<td class="ex"><span class="s">この<ruby>仕事<rt>しごと</rt></ruby>の<ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>りって、<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>金曜日<rt>きんようび</rt></ruby>でしたっけ。</span><span class="cite">December 2010 &middot; Q25</span></td></tr>
+<tr class="row"><td class="num">204</td>
+<td class="jp"><b>〜ごとに</b><span class="kana">〜ごとに</span><span class="freq">10 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Every ~ without exception.</span><span class="nep ne">प्रत्येक ~ मा।</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>、<ruby>隣<rt>となり</rt></ruby>の<ruby>店<rt>みせ</rt></ruby>が<ruby>色<rt>いろ</rt></ruby>ごとに<ruby>分<rt>わ</rt></ruby>けてたのを<ruby>見<rt>み</rt></ruby>て、<ruby>見<rt>み</rt></ruby>た<ruby>目<rt>め</rt></ruby>きれいだから、あんな<ruby>並<rt>なら</rt></ruby>べ<ruby>方<rt>かた</rt></ruby>するのもいいかなって<ruby>思<rt>おも</rt></ruby>ったんだ。</span><span class="cite">December 2021 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">205</td>
+<td class="jp"><b>ぎりぎり</b><span class="kana">ぎりぎり</span><span class="freq">9 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Only just; at the very limit.</span><span class="nep ne">मुस्किलले, ठीक सीमामा।</span></td>
+<td class="ex"><span class="s"><ruby>窓口<rt>まどぐち</rt></ruby>は<ruby>五<rt>ご</rt></ruby><ruby>時<rt>じ</rt></ruby>までだから、<ruby>申請<rt>しんせい</rt></ruby><ruby>書<rt>しょ</rt></ruby>を<ruby>用意<rt>ようい</rt></ruby>して<ruby>予<rt>あらかじ</rt></ruby>め<ruby>記入<rt>きにゅう</rt></ruby>しておけば、ぎりぎり<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>うんじゃない?</span><span class="cite">December 2016 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">206</td>
+<td class="jp"><b><ruby>先<rt>さき</rt></ruby>ほど</b><span class="kana">さきほど</span><span class="freq">6 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">A moment ago (formal).</span><span class="nep ne">भर्खरै (औपचारिक)।</span></td>
+<td class="ex"><span class="s">そうですか、<ruby>実<rt>じつ</rt></ruby>は<ruby>先<rt>さき</rt></ruby>ほど、<ruby>私<rt>わたし</rt></ruby>が<ruby>留守<rt>るす</rt></ruby>の<ruby>間<rt>ま</rt></ruby>、<ruby>田中<rt>たなか</rt></ruby>さんからお<ruby>電話<rt>でんわ</rt></ruby>をいただいたようで、<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>件<rt>けん</rt></ruby>だと<ruby>伝言<rt>でんごん</rt></ruby>があったんですが。</span><span class="cite">July 2010 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">207</td>
+<td class="jp"><b><ruby>前日<rt>ぜんじつ</rt></ruby> / <ruby>翌日<rt>よくじつ</rt></ruby> / <ruby>翌朝<rt>よくあさ</rt></ruby></b><span class="kana">ぜんじつ / よくじつ</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">The day before / the day, week or morning after.</span><span class="nep ne">अघिल्लो दिन / भोलिपल्ट, अर्को हप्ता, भोलि बिहान।</span></td>
+<td class="ex"><span class="s"><ruby>若<rt>わか</rt></ruby>いころは<ruby>仲間<rt>なかま</rt></ruby>と<ruby>一緒<rt>いっしょ</rt></ruby>にサッカーをして、いっぱいやって、<ruby>翌朝<rt>よくあさ</rt></ruby>にはすっきりストレス<ruby>解消<rt>かいしょう</rt></ruby>していました。</span><span class="cite">July 2013 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">208</td>
+<td class="jp"><b>しばらく</b><span class="kana">しばらく</span><span class="freq">4 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">For a while.</span><span class="nep ne">केही समयका लागि।</span></td>
+<td class="ex"><span class="s"><ruby>青<rt>あお</rt></ruby>はしばらく<ruby>使<rt>つか</rt></ruby>わないものというように<ruby>使<rt>つか</rt></ruby>い<ruby>分<rt>わ</rt></ruby>けてください。</span><span class="cite">December 2010 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">209</td>
+<td class="jp"><b>そのうち</b><span class="kana">そのうち</span><span class="freq">3 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Before long, one of these days.</span><span class="nep ne">छिट्टै, कुनै दिन।</span></td>
+<td class="ex"><span class="s">そのうち、おかしの<ruby>店<rt>みせ</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めるので、<ruby>会社<rt>かいしゃ</rt></ruby>をやめますなんて<ruby>言<rt>い</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したりするんじゃないか。</span><span class="cite">December 2013 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">210</td>
+<td class="jp"><b><ruby>早<rt>はや</rt></ruby>める</b><span class="kana">はやめる</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Bring it forward.</span><span class="nep ne">अगाडि सार्नु।</span></td>
+<td class="ex"><span class="s"><ruby>日程<rt>にってい</rt></ruby>が1<ruby>日<rt>にち</rt></ruby><ruby>繰<rt>く</rt></ruby>り<ruby>上<rt>あ</rt></ruby>がったので、これ<ruby>以上<rt>いじょう</rt></ruby><ruby>早<rt>はや</rt></ruby>めると、<ruby>準備<rt>じゅんび</rt></ruby>が<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>いません。</span><span class="cite">December 2019 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">211</td>
+<td class="jp"><b><ruby>再来週<rt>さらいしゅう</rt></ruby> / <ruby>再来月<rt>さらいげつ</rt></ruby> / <ruby>再来年<rt>さらいねん</rt></ruby></b><span class="kana">さらいしゅう / さらいげつ</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">The week, month or year after next.</span><span class="nep ne">अर्को पल्टको पनि पछिको हप्ता/महिना/वर्ष।</span></td>
+<td class="ex"><span class="s"><ruby>山田<rt>やまだ</rt></ruby>くん、<ruby>再来月<rt>さらいげつ</rt></ruby>のコンクールに<ruby>出<rt>だ</rt></ruby>す<ruby>漫画<rt>まんが</rt></ruby>の<ruby>下書<rt>したが</rt></ruby>き、<ruby>読<rt>よ</rt></ruby>んでくれた?</span><span class="cite">December 2017 &middot; Q3</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 13</span><h2 class="chap">Amount, price and degree</h2></div>
+<p class="chap-ne ne">परिमाण, मूल्य र मात्रा</p>
+<p class="chap-blurb">問題1 often ends in a number: how many to order, which price applies, how much to bring. The number you hear first is usually revised.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">212</td>
+<td class="jp"><b><ruby>増<rt>ふ</rt></ruby>える / <ruby>減<rt>へ</rt></ruby>る</b><span class="kana">ふえる / へる</span><span class="freq">117 lines &middot; 28 papers</span></td>
+<td class="mean"><span class="en">Increase / decrease.</span><span class="nep ne">बढ्नु / घट्नु।</span></td>
+<td class="ex"><span class="s">はじめは<ruby>難<rt>むずか</rt></ruby>しいかなって<ruby>思<rt>おも</rt></ruby>ってたんだけど、<ruby>駅<rt>えき</rt></ruby>とか、<ruby>吸<rt>す</rt></ruby>えない<ruby>場所<rt>ばしょ</rt></ruby>も<ruby>増<rt>ふ</rt></ruby>えてきてるし。</span><span class="cite">July 2010 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">213</td>
+<td class="jp"><b>〜くらい / 〜ぐらい</b><span class="kana">〜くらい</span><span class="freq">80 lines &middot; 23 papers</span></td>
+<td class="mean"><span class="en">About ~ .</span><span class="nep ne">करिब ~ ।</span></td>
+<td class="ex"><span class="s">まあ、<ruby>少<rt>すこ</rt></ruby>し<ruby>硬<rt>かた</rt></ruby>い<ruby>表現<rt>ひょうげん</rt></ruby>もあるけど。このぐらいはいいね。</span><span class="cite">July 2011 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">214</td>
+<td class="jp"><b>けっこう</b><span class="kana">けっこう</span><span class="freq">45 lines &middot; 21 papers</span></td>
+<td class="mean"><span class="en">Quite a lot — more than you&#x27;d expect.</span><span class="nep ne">बरु धेरै — अपेक्षाभन्दा बढी।</span></td>
+<td class="ex"><span class="s">はじめは<ruby>難<rt>むずか</rt></ruby>しいかなって<ruby>思<rt>おも</rt></ruby>ってたんだけど、<ruby>駅<rt>えき</rt></ruby>とか、<ruby>吸<rt>す</rt></ruby>えない<ruby>場所<rt>ばしょ</rt></ruby>も<ruby>増<rt>ふ</rt></ruby>えてきてるし。もう、<ruby>結構<rt>けっこう</rt></ruby><ruby>続<rt>つづ</rt></ruby>いてるんだ。</span><span class="cite">July 2010 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">215</td>
+<td class="jp"><b>あまり〜ない</b><span class="kana">あまり〜ない</span><span class="freq">41 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">Not very ~ .</span><span class="nep ne">त्यति ~ होइन।</span></td>
+<td class="ex"><span class="s"><ruby>前<rt>まえ</rt></ruby>の<ruby>会社<rt>かいしゃ</rt></ruby>はあまりいそがしくなかったから、その<ruby>点<rt>てん</rt></ruby>はよかったけど、<ruby>単調<rt>たんちょう</rt></ruby>だし、<ruby>誰<rt>だれ</rt></ruby>でもできる<ruby>仕事<rt>しごと</rt></ruby>だったからねえ。</span><span class="cite">July 2010 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">216</td>
+<td class="jp"><b>〜ほど</b><span class="kana">〜ほど</span><span class="freq">29 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">About ~ ; to the extent of ~ .</span><span class="nep ne">करिब ~ ; ~ जति।</span></td>
+<td class="ex"><span class="s">バスで<ruby>三<rt>さん</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>ふん</rt></ruby>ほどのところにある<ruby>自動車<rt>じどうしゃ</rt></ruby>の<ruby>工場<rt>こうじょう</rt></ruby>でしたら、<ruby>車<rt>くるま</rt></ruby>を<ruby>組<rt>く</rt></ruby>み<ruby>立<rt>た</rt></ruby>てる<ruby>様子<rt>ようす</rt></ruby>が<ruby>見学<rt>けんがく</rt></ruby>できて<ruby>人気<rt>にんき</rt></ruby>です。</span><span class="cite">December 2010 &middot; Q29</span></td></tr>
+<tr class="row"><td class="num">217</td>
+<td class="jp"><b>〜<ruby>以上<rt>いじょう</rt></ruby> / 〜<ruby>以下<rt>いか</rt></ruby></b><span class="kana">〜いじょう / 〜いか</span><span class="freq">26 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">~ or more / ~ or less.</span><span class="nep ne">~ वा बढी / ~ वा कम।</span></td>
+<td class="ex"><span class="s"><ruby>大人<rt>おとな</rt></ruby>が<ruby>一<rt>いち</rt></ruby><ruby>枚<rt>まい</rt></ruby><ruby>千<rt>せん</rt></ruby><ruby>円<rt>えん</rt></ruby>、<ruby>四<rt>よん</rt></ruby><ruby>歳<rt>さい</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>、<ruby>十<rt>じゅう</rt></ruby><ruby>五<rt>ご</rt></ruby><ruby>歳<rt>さい</rt></ruby><ruby>以下<rt>いか</rt></ruby>のお<ruby>子様<rt>こさま</rt></ruby>は<ruby>大人<rt>おとな</rt></ruby>の<ruby>半額<rt>はんがく</rt></ruby>になります。</span><span class="cite">July 2011 &middot; Q4</span></td></tr>
+<tr class="row"><td class="num">218</td>
+<td class="jp"><b><ruby>無料<rt>むりょう</rt></ruby> / <ruby>有料<rt>ゆうりょう</rt></ruby></b><span class="kana">むりょう / ゆうりょう</span><span class="freq">12 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Free / chargeable.</span><span class="nep ne">निःशुल्क / शुल्क लाग्ने।</span></td>
+<td class="ex"><span class="s"><ruby>今日<rt>きょう</rt></ruby>、<ruby>遊園<rt>ゆうえん</rt></ruby><ruby>地<rt>ち</rt></ruby>の<ruby>無料<rt>むりょう</rt></ruby>チケットをもらったのよ。</span><span class="cite">July 2010 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">219</td>
+<td class="jp"><b><ruby>値上<rt>ねあ</rt></ruby>がり / <ruby>値下<rt>ねさ</rt></ruby>げ</b><span class="kana">ねあがり / ねさげ</span><span class="freq">11 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Price rise / price cut.</span><span class="nep ne">मूल्य वृद्धि / छुट।</span></td>
+<td class="ex"><span class="s"><ruby>最近<rt>さいきん</rt></ruby>、たばこも<ruby>値上<rt>ねあ</rt></ruby>がりしてるし、ちょうどいい<ruby>機会<rt>きかい</rt></ruby>かもね。</span><span class="cite">July 2010 &middot; Q9</span></td></tr>
+<tr class="row"><td class="num">220</td>
+<td class="jp"><b><ruby>割引<rt>わりびき</rt></ruby> / 〜<ruby>割<rt>わり</rt></ruby></b><span class="kana">わりびき / 〜わり</span><span class="freq">11 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Discount / ~ tenths off. 2割引 = 20% off.</span><span class="nep ne">छुट / ~ दशांश छुट। 2割引 = २०% छुट।</span></td>
+<td class="ex"><span class="s">じゃあ、<ruby>割引<rt>わりびき</rt></ruby><ruby>券<rt>けん</rt></ruby>か<ruby>何<rt>なに</rt></ruby>か<ruby>用意<rt>ようい</rt></ruby>しておきましょうか。</span><span class="cite">December 2015 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">221</td>
+<td class="jp"><b>〜<ruby>以内<rt>いない</rt></ruby></b><span class="kana">〜いない</span><span class="freq">10 lines &middot; 9 papers</span></td>
+<td class="mean"><span class="en">Within ~ .</span><span class="nep ne">~ भित्र।</span></td>
+<td class="ex"><span class="s">これ、<ruby>千<rt>せん</rt></ruby><ruby>字<rt>じ</rt></ruby><ruby>以内<rt>いない</rt></ruby>だよね。それにしてはちょっと<ruby>短<rt>みじか</rt></ruby>くないかなあ。</span><span class="cite">July 2012 &middot; Q2</span></td></tr>
+<tr class="row"><td class="num">222</td>
+<td class="jp"><b>だいぶ</b><span class="kana">だいぶ</span><span class="freq">10 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Considerably; a good deal.</span><span class="nep ne">निकै।</span></td>
+<td class="ex"><span class="s">いや、お<ruby>店<rt>みせ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>がだいぶ<ruby>値<rt>ね</rt></ruby>引してくれて、<ruby>予算<rt>よさん</rt></ruby><ruby>内<rt>ない</rt></ruby>になんとか<ruby>収<rt>おさ</rt></ruby>まったんだ。</span><span class="cite">July 2011 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">223</td>
+<td class="jp"><b>ほとんど</b><span class="kana">ほとんど</span><span class="freq">8 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Almost all — or, with a negative, almost none.</span><span class="nep ne">झन्डै सबै — नकारात्मकसँग झन्डै कोही पनि होइन।</span></td>
+<td class="ex"><span class="s">いや、<ruby>父<rt>ちち</rt></ruby>と<ruby>映画<rt>えいが</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>はほとんどしたことありませんね。</span><span class="cite">December 2011 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">224</td>
+<td class="jp"><b>いくら</b><span class="kana">いくら</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">How much (price).</span><span class="nep ne">कति (मूल्य)।</span></td>
+<td class="ex"><span class="s"><ruby>堀<rt>ほり</rt></ruby>さん、<ruby>堀<rt>ほり</rt></ruby>さんいくら<ruby>渡<rt>わた</rt></ruby>れてるからって、<ruby>打<rt>う</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせでうとうとしちゃうなんて。</span><span class="cite">July 2017 &middot; Q25</span></td></tr>
+<tr class="row"><td class="num">225</td>
+<td class="jp"><b>さらに</b><span class="kana">さらに</span><span class="freq">6 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">Further still; on top of that.</span><span class="nep ne">अझ थप।</span></td>
+<td class="ex"><span class="s">さらに、この<ruby>商品<rt>しょうひん</rt></ruby>の<ruby>一番<rt>いちばん</rt></ruby>すばらしい<ruby>点<rt>てん</rt></ruby>はですね、<ruby>部屋<rt>へや</rt></ruby>の<ruby>空気<rt>くうき</rt></ruby>を<ruby>汚<rt>よご</rt></ruby>さないことです。</span><span class="cite">July 2012 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">226</td>
+<td class="jp"><b>〜<ruby>前後<rt>ぜんご</rt></ruby></b><span class="kana">〜ぜんご</span><span class="freq">3 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Around ~ (either side).</span><span class="nep ne">~ को हाराहारी।</span></td>
+<td class="ex"><span class="s"><ruby>前後<rt>ぜんご</rt></ruby>のほうがいいでしょうか。</span><span class="cite">December 2018 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">227</td>
+<td class="jp"><b><ruby>少<rt>すく</rt></ruby>なくとも</b><span class="kana">すくなくとも</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">At least.</span><span class="nep ne">कम्तीमा।</span></td>
+<td class="ex"><span class="s">うん、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>専門<rt>せんもん</rt></ruby>が<ruby>生<rt>い</rt></ruby>かせそうな<ruby>会社<rt>かいしゃ</rt></ruby>だったんだけど、<ruby>入社<rt>にゅうしゃ</rt></ruby><ruby>後<rt>ご</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>年<rt>ねん</rt></ruby><ruby>以内<rt>いない</rt></ruby>に<ruby>少<rt>すく</rt></ruby>なくとも<ruby>五<rt>ご</rt></ruby><ruby>年<rt>ねん</rt></ruby>は<ruby>東京<rt>とうきょう</rt></ruby>じゃなくて、<ruby>地方<rt>ちほう</rt></ruby>の<ruby>支店<rt>してん</rt></ruby>に<ruby>転勤<rt>てんきん</rt></ruby>してもらうことになるだろうって、<ruby>面接<rt>めんせつ</rt></ruby>で<ruby>言<rt>い</rt></ruby>われて、<ruby>家庭<rt>かてい</rt></ruby>の<ruby>事情<rt>じじょう</rt></ruby>もあって、<ruby>東京<rt>とうきょう</rt></ruby><ruby>勤務<rt>きんむ</rt></ruby><ruby>以外<rt>いがい</rt></ruby>は<ruby>考<rt>かんが</rt></ruby>えられないんだ。</span><span class="cite">December 2019 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">228</td>
+<td class="jp"><b>わずか</b><span class="kana">わずか</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">A mere ~ .</span><span class="nep ne">नगण्य ~ ।</span></td>
+<td class="ex"><span class="s">ただし、<ruby>毎年<rt>まいとし</rt></ruby><ruby>人気<rt>にんき</rt></ruby>の<ruby>野菜<rt>やさい</rt></ruby><ruby>天<rt>てん</rt></ruby>ぷらは<ruby>残<rt>のこ</rt></ruby>り<ruby>僅<rt>わず</rt></ruby>かとなっておりますので、お<ruby>早<rt>はや</rt></ruby>めにお<ruby>越<rt>こ</rt></ruby>しください。</span><span class="cite">December 2013 &middot; Q31</span></td></tr>
+<tr class="row"><td class="num">229</td>
+<td class="jp"><b>ますます</b><span class="kana">ますます</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">More and more.</span><span class="nep ne">झन्झन्।</span></td>
+<td class="ex"><span class="s"><ruby>定年<rt>ていねん</rt></ruby><ruby>後<rt>ご</rt></ruby>に<ruby>積極<rt>せっきょく</rt></ruby><ruby>的<rt>てき</rt></ruby>に<ruby>地域<rt>ちいき</rt></ruby>の<ruby>活動<rt>かつどう</rt></ruby>に<ruby>関<rt>かか</rt></ruby>わり、<ruby>住民<rt>じゅうみん</rt></ruby><ruby>同士<rt>どうし</rt></ruby>の<ruby>交流<rt>こうりゅう</rt></ruby>を<ruby>図<rt>はか</rt></ruby>ろうというこうした<ruby>動<rt>うご</rt></ruby>きは、<ruby>今後<rt>こんご</rt></ruby>ますます<ruby>増<rt>ふ</rt></ruby>えていくでしょう。</span><span class="cite">December 2014 &middot; Q14</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Group 14</span><h2 class="chap">Set phrases that carry the point</h2></div>
+<p class="chap-ne ne">अर्थ बोक्ने तयारी वाक्यांश</p>
+<p class="chap-blurb">Fixed expressions the papers reuse. Each is one chunk: learn the chunk, not the words inside it.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>From the papers</th></tr></thead><tbody>
+<tr class="row"><td class="num">230</td>
+<td class="jp"><b>〜について</b><span class="kana">〜について</span><span class="freq">108 lines &middot; 24 papers</span></td>
+<td class="mean"><span class="en">About ~ .</span><span class="nep ne">~ बारेमा।</span></td>
+<td class="ex"><span class="s"><ruby>次回<rt>じかい</rt></ruby>、<ruby>来月<rt>らいげつ</rt></ruby>のクリスマスパーティでは、<ruby>内容<rt>ないよう</rt></ruby>だけじゃなく、このような<ruby>点<rt>てん</rt></ruby>についても、<ruby>気<rt>き</rt></ruby>をつけたいと<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">July 2010 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">231</td>
+<td class="jp"><b>〜によって</b><span class="kana">〜によって</span><span class="freq">45 lines &middot; 21 papers</span></td>
+<td class="mean"><span class="en">Depending on ~ ; by means of ~ .</span><span class="nep ne">~ अनुसार; ~ द्वारा।</span></td>
+<td class="ex"><span class="s"><ruby>今<rt>いま</rt></ruby>、リンゴ<ruby>農家<rt>のうか</rt></ruby>では、<ruby>鼠<rt>ねずみ</rt></ruby>による<ruby>被害<rt>ひがい</rt></ruby>が<ruby>問題<rt>もんだい</rt></ruby>になっています。</span><span class="cite">July 2010 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">232</td>
+<td class="jp"><b>〜ようになる</b><span class="kana">〜ようになる</span><span class="freq">27 lines &middot; 17 papers</span></td>
+<td class="mean"><span class="en">Come to be able to ~ ; reach the point of ~ ing.</span><span class="nep ne">~ गर्न सक्ने हुनु।</span></td>
+<td class="ex"><span class="s">そのため、<ruby>家庭<rt>かてい</rt></ruby>の<ruby>収入<rt>しゅうにゅう</rt></ruby>が<ruby>減<rt>へ</rt></ruby>り、<ruby>自然<rt>しぜん</rt></ruby>と<ruby>節約<rt>せつやく</rt></ruby>するようになったそうです。</span><span class="cite">July 2010 &middot; Q14</span></td></tr>
+<tr class="row"><td class="num">233</td>
+<td class="jp"><b>〜たところ</b><span class="kana">〜たところ</span><span class="freq">27 lines &middot; 18 papers</span></td>
+<td class="mean"><span class="en">When I did ~ , it turned out that …</span><span class="nep ne">~ गर्दा, थाहा भयो कि …</span></td>
+<td class="ex"><span class="s"><ruby>実際<rt>じっさい</rt></ruby>に<ruby>作<rt>つく</rt></ruby>れるのか、ボトルのメーカーに<ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせてみたところ、<ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>的<rt>てき</rt></ruby>には<ruby>可能<rt>かのう</rt></ruby>だそうです。</span><span class="cite">December 2011 &middot; Q3</span></td></tr>
+<tr class="row"><td class="num">234</td>
+<td class="jp"><b>〜しかない</b><span class="kana">〜しかない</span><span class="freq">26 lines &middot; 14 papers</span></td>
+<td class="mean"><span class="en">There&#x27;s nothing for it but to ~ .</span><span class="nep ne">~ बाहेक उपाय छैन।</span></td>
+<td class="ex"><span class="s">うーん、<ruby>待<rt>ま</rt></ruby>ち<ruby>時間<rt>じかん</rt></ruby>が<ruby>多少<rt>たしょう</rt></ruby>かかっても<ruby>我慢<rt>がまん</rt></ruby>するしかないか。</span><span class="cite">December 2011 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">235</td>
+<td class="jp"><b>〜ことができる</b><span class="kana">〜ことができる</span><span class="freq">25 lines &middot; 16 papers</span></td>
+<td class="mean"><span class="en">Be able to ~ .</span><span class="nep ne">~ गर्न सक्नु।</span></td>
+<td class="ex"><span class="s">そうすればご<ruby>自宅<rt>じたく</rt></ruby>でも<ruby>専門<rt>せんもん</rt></ruby><ruby>店<rt>てん</rt></ruby>で<ruby>飲<rt>の</rt></ruby>むようなおいしい<ruby>紅茶<rt>こうちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>むことができるでしょう。</span><span class="cite">December 2010 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">236</td>
+<td class="jp"><b>〜としては</b><span class="kana">〜としては</span><span class="freq">22 lines &middot; 15 papers</span></td>
+<td class="mean"><span class="en">As a ~ ; speaking as ~ .</span><span class="nep ne">~ को हैसियतले।</span></td>
+<td class="ex"><span class="s"><ruby>自分<rt>じぶん</rt></ruby>としては<ruby>内容<rt>ないよう</rt></ruby>も<ruby>自信<rt>じしん</rt></ruby>ありましたし、<ruby>文字数<rt>もじすう</rt></ruby>もクリアしてますし、なんでだろうと<ruby>思<rt>おも</rt></ruby>っにて、すみません。</span><span class="cite">December 2014 &middot; Q7</span></td></tr>
+<tr class="row"><td class="num">237</td>
+<td class="jp"><b>〜ところで</b><span class="kana">ところで</span><span class="freq">22 lines &middot; 13 papers</span></td>
+<td class="mean"><span class="en">By the way. The new topic is usually the answer.</span><span class="nep ne">वैसे भने। नयाँ विषय प्रायः उत्तर हुन्छ।</span></td>
+<td class="ex"><span class="s">まあ、せっかくのお<ruby>祝<rt>いわ</rt></ruby>いだから、<ruby>大<rt>おお</rt></ruby>きいところで<ruby>派手<rt>はで</rt></ruby>にやったほうがいいよね。</span><span class="cite">July 2011 &middot; Q8</span></td></tr>
+<tr class="row"><td class="num">238</td>
+<td class="jp"><b>〜たばかり</b><span class="kana">〜たばかり</span><span class="freq">16 lines &middot; 7 papers</span></td>
+<td class="mean"><span class="en">Only just ~ ed.</span><span class="nep ne">भर्खरै ~ गरेको।</span></td>
+<td class="ex"><span class="s">バイトを<ruby>始<rt>はじ</rt></ruby>めたばかりで、スケジュールがまだはっきりわからないんです。</span><span class="cite">December 2012 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">239</td>
+<td class="jp"><b>〜ばかりで</b><span class="kana">〜ばかりで</span><span class="freq">16 lines &middot; 11 papers</span></td>
+<td class="mean"><span class="en">Does nothing but ~ .</span><span class="nep ne">~ बाहेक केही गर्दैन।</span></td>
+<td class="ex"><span class="s">バイトを<ruby>始<rt>はじ</rt></ruby>めたばかりで、スケジュールがまだはっきりわからないんです。</span><span class="cite">December 2012 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">240</td>
+<td class="jp"><b>〜そういえば</b><span class="kana">そういえば</span><span class="freq">15 lines &middot; 12 papers</span></td>
+<td class="mean"><span class="en">Come to think of it — a change of subject that matters.</span><span class="nep ne">अँ, सम्झें — विषय फेर्ने तर महत्त्वपूर्ण।</span></td>
+<td class="ex"><span class="s">そういえば、<ruby>山田<rt>やまだ</rt></ruby><ruby>君<rt>くん</rt></ruby>って<ruby>最近<rt>さいきん</rt></ruby><ruby>引越<rt>ひっこ</rt></ruby>ししたんだよね。</span><span class="cite">July 2010 &middot; Q1</span></td></tr>
+<tr class="row"><td class="num">241</td>
+<td class="jp"><b>〜に<ruby>関<rt>かん</rt></ruby>して</b><span class="kana">〜にかんして</span><span class="freq">12 lines &middot; 9 papers</span></td>
+<td class="mean"><span class="en">Concerning ~ .</span><span class="nep ne">~ सम्बन्धमा।</span></td>
+<td class="ex"><span class="s">みなさんも<ruby>勉強<rt>べんきょう</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>調<rt>しら</rt></ruby>べ<ruby>物<rt>ぶつ</rt></ruby>や<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>などによく<ruby>利用<rt>りよう</rt></ruby>していると<ruby>思<rt>おも</rt></ruby>います。</span><span class="cite">July 2013 &middot; Q13</span></td></tr>
+<tr class="row"><td class="num">242</td>
+<td class="jp"><b>〜に<ruby>対<rt>たい</rt></ruby>して</b><span class="kana">〜にたいして</span><span class="freq">12 lines &middot; 8 papers</span></td>
+<td class="mean"><span class="en">Towards ~ ; in contrast with ~ .</span><span class="nep ne">~ प्रति; ~ को तुलनामा।</span></td>
+<td class="ex"><span class="s">このような<ruby>私<rt>わたし</rt></ruby>たちのちょっとした<ruby>行為<rt>こうい</rt></ruby>が<ruby>動<rt>どう</rt></ruby>をはじめとする<ruby>自然<rt>しぜん</rt></ruby>に<ruby>対<rt>たい</rt></ruby>して<ruby>思<rt>おも</rt></ruby>わぬ<ruby>結果<rt>けっか</rt></ruby>を<ruby>招<rt>まね</rt></ruby>くのです。</span><span class="cite">December 2010 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">243</td>
+<td class="jp"><b>〜ざるを<ruby>得<rt>え</rt></ruby>ない</b><span class="kana">〜ざるをえない</span><span class="freq">11 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Have no choice but to ~ .</span><span class="nep ne">बाध्य भएर ~ गर्नुपर्ने।</span></td>
+<td class="ex"><span class="s">その<ruby>計画<rt>けいかく</rt></ruby>は<ruby>予算<rt>よさん</rt></ruby>を<ruby>考<rt>かんが</rt></ruby>えるとやめざるを<ruby>得<rt>え</rt></ruby>ないなあ。</span><span class="cite">December 2010 &middot; Q26</span></td></tr>
+<tr class="row"><td class="num">244</td>
+<td class="jp"><b>〜に<ruby>限<rt>かぎ</rt></ruby>る</b><span class="kana">〜にかぎる</span><span class="freq">11 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Nothing beats ~ .</span><span class="nep ne">~ भन्दा राम्रो केही छैन।</span></td>
+<td class="ex"><span class="s"><ruby>味<rt>あじ</rt></ruby>もボリュームも、ステーキはこの<ruby>店<rt>みせ</rt></ruby>に<ruby>限<rt>かぎ</rt></ruby>るね。</span><span class="cite">December 2019 &middot; Q26</span></td></tr>
+<tr class="row"><td class="num">245</td>
+<td class="jp"><b>〜に<ruby>決<rt>き</rt></ruby>まっている</b><span class="kana">〜にきまっている</span><span class="freq">10 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">It&#x27;s bound to be ~ .</span><span class="nep ne">~ हुने नै हो।</span></td>
+<td class="ex"><span class="s">そりゃ、やすければ、<ruby>美味<rt>おい</rt></ruby>しくないに<ruby>決<rt>き</rt></ruby>まってるよ。</span><span class="cite">July 2016 &middot; Q26</span></td></tr>
+<tr class="row"><td class="num">246</td>
+<td class="jp"><b>〜において</b><span class="kana">〜において</span><span class="freq">10 lines &middot; 5 papers</span></td>
+<td class="mean"><span class="en">In / at ~ . Formal setting marker.</span><span class="nep ne">~ मा। औपचारिक स्थान/अवसर।</span></td>
+<td class="ex"><span class="s">でも<ruby>日当<rt>ひあ</rt></ruby>たりのいいところにおいてください。</span><span class="cite">July 2014 &middot; Q16</span></td></tr>
+<tr class="row"><td class="num">247</td>
+<td class="jp"><b>〜というと</b><span class="kana">〜というと</span><span class="freq">10 lines &middot; 10 papers</span></td>
+<td class="mean"><span class="en">Speaking of ~ .</span><span class="nep ne">~ भन्ने बित्तिकै।</span></td>
+<td class="ex"><span class="s">あと<ruby>専門<rt>せんもん</rt></ruby><ruby>書<rt>しょ</rt></ruby>が<ruby>充実<rt>じゅうじつ</rt></ruby>してるといえば、<ruby>駅前<rt>えきまえ</rt></ruby>の<ruby>何<rt>なに</rt></ruby>でもブックかな。</span><span class="cite">July 2013 &middot; Q28</span></td></tr>
+<tr class="row"><td class="num">248</td>
+<td class="jp"><b>〜わけだ</b><span class="kana">〜わけだ</span><span class="freq">8 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">That explains it.</span><span class="nep ne">त्यसैले त।</span></td>
+<td class="ex"><span class="s">そこで、<ruby>鼠<rt>ねずみ</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>をしている<ruby>私<rt>わたし</rt></ruby>が<ruby>講演<rt>こうえん</rt></ruby>をしたというわけです。</span><span class="cite">July 2010 &middot; Q12</span></td></tr>
+<tr class="row"><td class="num">249</td>
+<td class="jp"><b>〜ようがない</b><span class="kana">〜ようがない</span><span class="freq">6 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">There is no way to ~ .</span><span class="nep ne">~ गर्ने उपायै छैन।</span></td>
+<td class="ex"><span class="s"><ruby>加藤<rt>かとう</rt></ruby>さん、<ruby>昨日<rt>きのう</rt></ruby>の<ruby>鈴木<rt>すずき</rt></ruby><ruby>君<rt>くん</rt></ruby>のプレゼン、<ruby>文句<rt>もんく</rt></ruby>の<ruby>付<rt>つ</rt></ruby>けようがなかったね。</span><span class="cite">July 2016 &middot; Q25</span></td></tr>
+<tr class="row"><td class="num">250</td>
+<td class="jp"><b>〜ているところ</b><span class="kana">〜ているところ</span><span class="freq">6 lines &middot; 6 papers</span></td>
+<td class="mean"><span class="en">Right in the middle of ~ ing.</span><span class="nep ne">~ गर्दै गरेको बेला।</span></td>
+<td class="ex"><span class="s"><ruby>今<rt>いま</rt></ruby><ruby>大阪<rt>おおさか</rt></ruby>に<ruby>向<rt>む</rt></ruby>かってるとこなんだけど、<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>で<ruby>使<rt>つか</rt></ruby>う<ruby>資料<rt>しりょう</rt></ruby>、<ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>忘<rt>わす</rt></ruby>れちゃって。</span><span class="cite">December 2013 &middot; Q5</span></td></tr>
+<tr class="row"><td class="num">251</td>
+<td class="jp"><b>〜つつある</b><span class="kana">〜つつある</span><span class="freq">4 lines &middot; 3 papers</span></td>
+<td class="mean"><span class="en">Is in the process of ~ ing.</span><span class="nep ne">~ हुँदै गइरहेको छ।</span></td>
+<td class="ex"><span class="s"><ruby>最近<rt>さいきん</rt></ruby>では<ruby>和食<rt>わしょく</rt></ruby>の<ruby>良<rt>よ</rt></ruby>さが<ruby>改<rt>あらた</rt></ruby>めて<ruby>注目<rt>ちゅうもく</rt></ruby>されるなど、<ruby>食<rt>しょく</rt></ruby>に<ruby>対<rt>たい</rt></ruby>する<ruby>意識<rt>いしき</rt></ruby>が<ruby>変<rt>か</rt></ruby>わりつつあるからです。</span><span class="cite">July 2016 &middot; Q15</span></td></tr>
+<tr class="row"><td class="num">252</td>
+<td class="jp"><b>〜に<ruby>比<rt>くら</rt></ruby>べて</b><span class="kana">〜にくらべて</span><span class="freq">4 lines &middot; 4 papers</span></td>
+<td class="mean"><span class="en">Compared with ~ .</span><span class="nep ne">~ को तुलनामा।</span></td>
+<td class="ex"><span class="s">あと、<ruby>以前<rt>いぜん</rt></ruby>に<ruby>比<rt>くら</rt></ruby>べて、<ruby>外国<rt>がいこく</rt></ruby>のお<ruby>客<rt>きゃく</rt></ruby>さんが<ruby>増<rt>ふ</rt></ruby>えています。</span><span class="cite">December 2014 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">253</td>
+<td class="jp"><b>〜<ruby>一方<rt>いっぽう</rt></ruby>だ</b><span class="kana">〜いっぽうだ</span><span class="freq">3 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">Keeps on ~ ing (a one-way trend).</span><span class="nep ne">~ भइरहेको छ (एकोहोरो प्रवृत्ति)।</span></td>
+<td class="ex"><span class="s">このところ<ruby>毎月<rt>まいつき</rt></ruby><ruby>売上<rt>うりあげ</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちている、<ruby>家<rt>いえ</rt></ruby>も<ruby>減<rt>へ</rt></ruby>る<ruby>一方<rt>いっぽう</rt></ruby>だな。</span><span class="cite">July 2016 &middot; Q30</span></td></tr>
+<tr class="row"><td class="num">254</td>
+<td class="jp"><b>〜ば〜ほど</b><span class="kana">〜ば〜ほど</span><span class="freq">2 lines &middot; 2 papers</span></td>
+<td class="mean"><span class="en">The more ~ , the more …</span><span class="nep ne">जति ~ , त्यति …</span></td>
+<td class="ex"><span class="s"><ruby>前<rt>まえ</rt></ruby>はそんなに<ruby>興味<rt>きょうみ</rt></ruby>なかったんだけど、はじめてみたら、<ruby>練習<rt>れんしゅう</rt></ruby>すればするほど<ruby>上<rt>うえ</rt></ruby>に<ruby>達<rt>たっ</rt></ruby>して<ruby>楽<rt>たの</rt></ruby>しいんだよ。</span><span class="cite">July 2015 &middot; Q6</span></td></tr>
+<tr class="row"><td class="num">255</td>
+<td class="jp"><b>〜かねない</b><span class="kana">〜かねない</span><span class="freq">1 lines &middot; 1 papers</span></td>
+<td class="mean"><span class="en">It could well ~ (something bad).</span><span class="nep ne">~ भइहाल्न सक्छ (नराम्रो)।</span></td>
+<td class="ex"><span class="s">このような<ruby>状況<rt>じょうきょう</rt></ruby>が<ruby>続<rt>つづ</rt></ruby>けば、<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>経営<rt>けいえい</rt></ruby>にも<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>出<rt>で</rt></ruby>かねません。</span><span class="cite">December 2012 &middot; Q15</span></td></tr>
+</tbody></table></section>
+<section class="chap"><div class="chap-head"><span class="chap-n">Appendix</span><h2 class="chap">Textbook favourites the listening papers never use</h2></div>
+<p class="chap-ne ne">पाठ्यपुस्तकमा आउने तर श्रवण परीक्षामा नआउने वाक्यांश</p>
+<p class="chap-blurb">These appear in every N2 grammar book. In 202,259 characters of real N2 listening dialogue — 29 papers, 877 questions, 2010 to 2024 — they appear exactly zero times. That is not a reason to skip them: they are worth marks in the reading and grammar paper. It is a reason not to spend listening practice on them.</p>
+<table class="ph"><thead><tr><th></th><th>Phrase</th><th>English &middot; <span class=ne>नेपाली</span></th><th>Where it does belong</th></tr></thead><tbody>
+<tr class="row"><td class="num">1</td>
+<td class="jp"><b>〜のせいにする</b><span class="kana">〜のせいにする</span></td>
+<td class="mean"><span class="en">Blame it on ~ .</span><span class="nep ne">~ लाई दोष दिनु।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">2</td>
+<td class="jp"><b>〜とは<ruby>限<rt>かぎ</rt></ruby>らない</b><span class="kana">〜とはかぎらない</span></td>
+<td class="mean"><span class="en">Not necessarily ~ .</span><span class="nep ne">सधैं ~ नै हुन्छ भन्ने छैन।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">3</td>
+<td class="jp"><b>〜くせに</b><span class="kana">〜くせに</span></td>
+<td class="mean"><span class="en">And yet ~ — said with contempt.</span><span class="nep ne">~ भएर पनि — हेपेर भनिएको।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">4</td>
+<td class="jp"><b>〜じゃん</b><span class="kana">〜じゃん</span></td>
+<td class="mean"><span class="en">Right? / isn&#x27;t it. Very casual confirmation.</span><span class="nep ne">होइन र? एकदम अनौपचारिक।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">5</td>
+<td class="jp"><b>〜ってば</b><span class="kana">〜ってば</span></td>
+<td class="mean"><span class="en">I told you! Impatient repetition.</span><span class="nep ne">भनेको नि! झर्कोसहित दोहोर्‍याइ।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">6</td>
+<td class="jp"><b>お<ruby>手数<rt>てかず</rt></ruby>ですが</b><span class="kana">おてすうですが</span></td>
+<td class="mean"><span class="en">Sorry for the trouble, but —</span><span class="nep ne">दुःख दिएँ, तर —</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">7</td>
+<td class="jp"><b>〜はずがない</b><span class="kana">〜はずがない</span></td>
+<td class="mean"><span class="en">There&#x27;s no way ~ .</span><span class="nep ne">~ हुनै सक्दैन।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">8</td>
+<td class="jp"><b>〜なければよかった</b><span class="kana">〜なければよかった</span></td>
+<td class="mean"><span class="en">I wish I hadn&#x27;t ~ .</span><span class="nep ne">~ नगरेको भए हुन्थ्यो।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">9</td>
+<td class="jp"><b><ruby>期限<rt>きげん</rt></ruby></b><span class="kana">きげん</span></td>
+<td class="mean"><span class="en">Time limit.</span><span class="nep ne">समयसीमा।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">10</td>
+<td class="jp"><b><ruby>後<rt>のち</rt></ruby>ほど</b><span class="kana">のちほど</span></td>
+<td class="mean"><span class="en">Later on (formal).</span><span class="nep ne">पछि (औपचारिक)।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">11</td>
+<td class="jp"><b>〜おきに</b><span class="kana">〜おきに</span></td>
+<td class="mean"><span class="en">At intervals of ~ (every other).</span><span class="nep ne">~ को अन्तरालमा।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">12</td>
+<td class="jp"><b>せいぜい</b><span class="kana">せいぜい</span></td>
+<td class="mean"><span class="en">At most, and that&#x27;s being generous.</span><span class="nep ne">बढीमा त्यति नै।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">13</td>
+<td class="jp"><b>たった</b><span class="kana">たった</span></td>
+<td class="mean"><span class="en">Only ~ (and that is too few).</span><span class="nep ne">मात्र ~ (कमी जनाउँदै)।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">14</td>
+<td class="jp"><b>〜に<ruby>過<rt>す</rt></ruby>ぎない</b><span class="kana">〜にすぎない</span></td>
+<td class="mean"><span class="en">It&#x27;s no more than ~ .</span><span class="nep ne">~ भन्दा बढी होइन।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">15</td>
+<td class="jp"><b>〜だけあって</b><span class="kana">〜だけあって</span></td>
+<td class="mean"><span class="en">As you&#x27;d expect from ~ .</span><span class="nep ne">~ भएकै कारण, अपेक्षा अनुरूप।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+<tr class="row"><td class="num">16</td>
+<td class="jp"><b>〜どころか</b><span class="kana">〜どころか</span></td>
+<td class="mean"><span class="en">Far from ~ ; let alone ~ .</span><span class="nep ne">~ त परै जाओस्।</span></td>
+<td class="ex"><span class="s">Reading and grammar sections — 読解・文法. Zero hits in listening.</span></td></tr>
+</tbody></table></section>
+<footer><p><b>JLPT N2 Listening — The Phrases That Carry the Marks.</b> Built from the listening transcripts of 29 real N2 papers held on <a href="https://nihongomock.com">nihongomock.com</a>, 2010-07 to 2024-12. 255 phrases attested in 6,875 lines of dialogue, 16 documented as absent. Furigana generated from the same per-paper reading tables the site uses. English and Nepali meanings written for this book.</p><p>The transcripts themselves are not reproduced here beyond the single example line quoted under each phrase. Practise the papers at <a href="https://nihongomock.com/level/n2.html">nihongomock.com/level/n2</a>.</p></footer>
+</div></body></html>

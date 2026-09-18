@@ -11,7 +11,6 @@ _raster.html
 # was opened.
 .DS_Store
 
-# Reference PDFs kept beside the project, not part of the site. They are
-# other people's material: a `git add -A` must never sweep them into a
-# public deploy.
-docs/
+# docs/ is tracked. It holds study material this project wrote and generated -
+# the grammar and listening phrase books, and the vocabulary notes. Nothing
+# from anyone else goes in there: no scanned papers, no publisher's material.
