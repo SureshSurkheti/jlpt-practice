@@ -1,0 +1,1425 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>JLPT N2 Grammar — The 86 Core Patterns</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The 86 mid-frequency N2 grammar patterns — the exam's favourite distractors — with English and Nepali meanings, connection rules, two furigana examples each and every trap.">
+<meta name="robots" content="noindex">
+<style>
+:root{--navy:#14213d;--ink:#1b1b1b;--mute:#5c6470;--line:#e3e6ec;--bg:#fff;
+ --panel:#f7f8fb;--red:#c1121f;--gold:#8a6d3b;--teal:#0b4f6c;--soft:#eef1f7;--card:#fff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:14px/1.6 "Helvetica Neue",Helvetica,Arial,"Hiragino Kaku Gothic ProN",
+ "Kohinoor Devanagari","Devanagari Sangam MN","Noto Sans",system-ui,sans-serif;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+ruby{ruby-align:center} ruby rt{font-size:.5em;color:var(--mute);font-weight:400;line-height:1}
+.hero{background:var(--navy);color:#fff;padding:40px 0 32px}
+.hero .kick{letter-spacing:.22em;font-size:10.5px;opacity:.72;margin:0 0 11px;text-transform:uppercase}
+.hero h1{margin:0 0 5px;font-size:31px;line-height:1.18;letter-spacing:-.01em}
+.hero .jp{margin:3px 0 14px;font-size:19px;opacity:.95}
+.hero .jp rt{color:rgba(255,255,255,.62)}
+.hero p{margin:0 0 11px;font-size:13.5px;opacity:.92;max-width:64ch}
+.hero .facts{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0 0;padding:0;list-style:none}
+.hero .facts b{display:block;font-size:21px;font-weight:600}
+.hero .facts span{font-size:10.5px;opacity:.7;letter-spacing:.06em;text-transform:uppercase}
+.note{background:var(--panel);border-left:3px solid var(--gold);padding:14px 16px;margin:22px 0;
+ font-size:13px;border-radius:0 6px 6px 0;break-inside:avoid}
+.note h3{margin:0 0 6px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+.note p{margin:0 0 7px}.note p:last-child{margin:0}
+.note p.ne{color:var(--teal)}
+section.chap{margin:30px 0 0;break-before:page;page-break-before:always}
+section.chap.first{break-before:auto;page-break-before:auto}
+.banner{background:var(--navy);color:#fff;border-radius:11px;padding:15px 17px;margin-bottom:15px;
+ break-inside:avoid;page-break-inside:avoid;break-after:avoid;page-break-after:avoid}
+.banner h2{margin:0;font-size:20px;line-height:1.25}
+.banner .jp{margin:4px 0 0;font-size:16px;opacity:.95}
+.banner .jp rt{color:rgba(255,255,255,.6)}
+.banner .ne{margin:5px 0 0;font-size:12.5px;opacity:.74}
+.banner .n{float:right;font-size:11.5px;opacity:.7;letter-spacing:.05em}
+.card{border:1px solid var(--line);border-radius:11px;background:var(--card);
+ padding:13px 15px;margin:0 0 13px;break-inside:avoid;page-break-inside:avoid}
+.card-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+.num{background:var(--red);color:#fff;border-radius:6px;font-size:11px;font-weight:700;
+ padding:3px 7px;line-height:1}
+.pat{margin:0;font-size:18px;line-height:1.75;color:var(--navy);font-weight:600}
+.level{font-size:10.5px;color:var(--gold);border:1px solid var(--gold);border-radius:999px;
+ padding:2px 8px;white-space:nowrap}
+.ref{font-size:10.5px;color:var(--mute);margin-left:auto;white-space:nowrap}
+.meaning{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0 0 9px}
+.meaning dt{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--red);padding-top:3px}
+.meaning dd{margin:0;line-height:1.7}
+.meaning dd.ne{color:var(--teal);font-size:13px}
+.connect,.howto,.trap{margin:0 0 8px;padding:9px 11px 8px;border-radius:8px;
+ font-size:13px;line-height:1.9}
+.connect{background:var(--soft);border-left:3px solid var(--navy)}
+.howto{background:var(--panel);border-left:3px solid var(--gold)}
+.trap{background:rgba(193,18,31,.06);border-left:3px solid var(--red)}
+.lab{display:block;font-size:9.5px;font-weight:700;letter-spacing:.09em;line-height:1.4;
+ text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+.exs{list-style:none;margin:0 0 8px;padding:0}
+.exs li+li{margin-top:8px}
+.ex{border-left:2px solid var(--line);padding-left:10px}
+.ex .jp{margin:0;font-size:16px;line-height:1.85}
+.ex .en{margin:2px 0 0;font-size:12.5px;color:var(--mute)}
+.ex .ne{margin:1px 0 0;font-size:12.5px;color:var(--teal)}
+.tw{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;vertical-align:top;padding:9px 11px;border-bottom:1px solid var(--line);line-height:1.9}
+th{background:var(--soft);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+ color:var(--mute);font-weight:600}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;color:var(--navy)}
+tr{break-inside:avoid}
+.toc ol{columns:2;column-gap:28px;list-style:none;margin:0;padding:0}
+.toc li{margin:0 0 7px;font-size:13px;break-inside:avoid}
+.toc .c{color:var(--mute);font-size:11.5px}
+footer{margin:38px 0 26px;padding-top:15px;border-top:1px solid var(--line);
+ font-size:11.5px;color:var(--mute)}
+footer a{color:var(--teal)}
+@page{size:A4;margin:12mm 11mm 13mm}
+@media print{
+ body{font-size:9.1pt}
+ .hero,.banner,.note,.card,th,.trap,.connect,.howto{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .card{padding:10px 12px;margin:0 0 10px}
+ .connect,.howto,.trap{line-height:1.65;padding:7px 9px 6px;margin:0 0 6px;font-size:8.6pt}
+ .meaning{margin:0 0 7px}
+ .meaning dd{line-height:1.5}
+ .pat{font-size:11.5pt;line-height:1.6}
+ .ex .jp{font-size:10pt;line-height:1.7}
+ .ex .en,.ex .ne{font-size:8.4pt}
+ .exs li+li{margin-top:6px}
+ .exs{margin:0 0 6px}
+}
+</style></head><body>
+<header class="hero"><div class="wrap">
+<p class="kick">nihongomock.com &middot; JLPT N2 &middot; 文法</p>
+<h1>The 86 core patterns</h1>
+<p class="jp"><ruby>中間<rt>ちゅうかん</rt></ruby><ruby>層<rt>そう</rt></ruby>の<ruby>文法<rt>ぶんぽう</rt></ruby></p>
+<p>The complete N2 grammar book carries 191 patterns. This one carries the <b>86 marked B CORE</b> — the solid middle tier. They appear regularly, but their bigger job is as <b>distractors</b>: the exam sets one of these beside a must-know pattern and hopes you cannot tell them apart.</p>
+<p class="ne">पूरा N2 व्याकरण पुस्तिकामा 191 ढाँचा छन्। यहाँ <b>मध्यम स्तरका 86</b> छन् — नियमित रूपमा आउँछन्, तर प्रायः गलत विकल्पको रूपमा।</p>
+<ul class="facts">
+<li><b>86</b><span>patterns</span></li>
+<li><b>15</b><span>meaning groups</span></li>
+<li><b>172</b><span>examples</span></li>
+<li><b>86</b><span>exam traps</span></li>
+<li><b>EN + ने</b><span>meanings</span></li>
+</ul></div></header>
+<main class="wrap">
+<div class="note"><h3>Why these 86</h3><p>Tier B is where the exam hides its wrong answers. You rarely have to <i>produce</i> these, but you must <b>recognise and eliminate</b> them fast — and to do that you have to know the one thing that separates each from the must-know pattern it imitates. That is almost always the <b>connection form</b>, not the meaning.</p><p>Read each card once, then read the <i>Exam trap</i> line twice. Passive knowledge is enough for most of this book. Work through <i>The 69 You Must Know</i> first; this is the second pass, not the first.</p><p class="ne">Tier B कै ढाँचा प्रायः गलत विकल्प बनेर आउँछन्। चिन्न र हटाउन सक्नु नै मुख्य कुरा हो — र त्यसका लागि जोड्ने नियम थाहा हुनुपर्छ, अर्थ मात्र होइन।</p></div>
+<div class="toc"><ol>
+<li><b>1. Time, Timing &amp; Sequence</b> <span class="c">&middot; 13 patterns</span></li>
+<li><b>2. Cause, Reason &amp; Outcome</b> <span class="c">&middot; 6 patterns</span></li>
+<li><b>3. Purpose, Function &amp; Target</b> <span class="c">&middot; 2 patterns</span></li>
+<li><b>4. Contrast, Concession &amp; &#x27;Although&#x27;</b> <span class="c">&middot; 4 patterns</span></li>
+<li><b>5. Condition &amp; Supposition</b> <span class="c">&middot; 6 patterns</span></li>
+<li><b>6. Limit, Extent &amp; Scope</b> <span class="c">&middot; 4 patterns</span></li>
+<li><b>7. Topic, Relation, Basis &amp; Correlation</b> <span class="c">&middot; 8 patterns</span></li>
+<li><b>8. Emphasis, Degree &amp; Extremes</b> <span class="c">&middot; 7 patterns</span></li>
+<li><b>9. Obligation, Inevitability &amp; Impossibility</b> <span class="c">&middot; 6 patterns</span></li>
+<li><b>10. Judgment, Guessing &amp; Assertion</b> <span class="c">&middot; 8 patterns</span></li>
+<li><b>11. Addition &amp; Parallel Listing</b> <span class="c">&middot; 6 patterns</span></li>
+<li><b>12. Irrelevance, Exclusion &amp; Contradiction</b> <span class="c">&middot; 2 patterns</span></li>
+<li><b>13. Tendency, State &amp; Gradual Change</b> <span class="c">&middot; 6 patterns</span></li>
+<li><b>14. Passive, Causative &amp; Honorific Language</b> <span class="c">&middot; 3 patterns</span></li>
+<li><b>15. Formal Nouns &amp; Sentence-End Nuance</b> <span class="c">&middot; 5 patterns</span></li>
+</ol></div>
+<div class="note" style="border-left-color:#14213d"><h3>Connection rules — read this page first</h3><p>The exam loves to give you a pattern whose <i>meaning</i> fits but whose <i>connection</i> is wrong. Learn this table and you can eliminate two of the four choices before you have finished reading the sentence.</p></div>
+<div class="tw"><table><thead><tr><th>Rule</th><th>Patterns that follow it</th></tr></thead><tbody><tr><td>Nのみ (noun only)</td><td>〜にあたって‧〜に<ruby>先立<rt>さきだ</rt></ruby>って‧〜を<ruby>前<rt>まえ</rt></ruby>に‧〜<ruby>以来<rt>いらい</rt></ruby>‧〜をめぐって‧〜に<ruby>応<rt>おう</rt></ruby>じて‧〜に<ruby>基<rt>もと</rt></ruby>づいて‧〜に<ruby>沿<rt>そ</rt></ruby>って‧〜に<ruby>伴<rt>ともな</rt></ruby>って‧〜につれて‧〜をもとに‧〜だらけ‧〜まみれ‧〜ずくめ‧〜ぬきで‧〜を<ruby>問<rt>と</rt></ruby>わず‧〜にかかわらず‧〜はもとより‧〜に<ruby>加<rt>くわ</rt></ruby>えて‧〜<ruby>向<rt>む</rt></ruby>け‧〜ならでは</td></tr><tr><td>Vます-stem のみ</td><td>〜<ruby>次第<rt>しだい</rt></ruby>‧〜<ruby>得<rt>え</rt></ruby>ない∕〜<ruby>得<rt>う</rt></ruby>る‧〜がち‧〜ぎみ‧〜っぱなし‧〜つつ‧〜つつある‧〜ようがない‧〜かねる∕〜かねない‧〜っこない‧〜<ruby>方<rt>かた</rt></ruby></td></tr><tr><td>Vるのみ</td><td>〜べく‧〜<ruby>一方<rt>いっぽう</rt></ruby>だ‧〜ばかりだ（<ruby>変化<rt>へんか</rt></ruby>）‧〜<ruby>以外<rt>いがい</rt></ruby>にない‧〜べからず‧〜まい（<ruby>一段<rt>いちだん</rt></ruby>は Vるまい）</td></tr><tr><td>Vたのみ</td><td>〜とたん(に)‧〜あげく‧〜きり‧〜っきり‧〜ところで（〜てもの<ruby>意味<rt>いみ</rt></ruby>）‧〜<ruby>末<rt>すえ</rt></ruby>(に)</td></tr><tr><td>Vないのみ</td><td>〜うちに（<ruby>否定<rt>ひてい</rt></ruby>）‧〜ことには‧〜までもないは Vる∕〜ざるを<ruby>得<rt>え</rt></ruby>ないは Vない-stem+ざる</td></tr><tr><td>Plain form（ふつう<ruby>形<rt>けい</rt></ruby>）+ そのまま</td><td>〜ものの‧〜ものだから‧〜だけに‧〜どころか‧〜わけだ‧〜に<ruby>違<rt>ちが</rt></ruby>いない‧〜に<ruby>決<rt>き</rt></ruby>まっている‧〜はずだ‧〜とか‧〜まい</td></tr><tr><td>な-adj は「〜な」/「〜である」、N は「〜の」/「〜である」</td><td>〜<ruby>一方<rt>いっぽう</rt></ruby>で‧〜<ruby>反面<rt>はんめん</rt></ruby>‧〜ものの‧〜ながらも（Nである‧Aな）‧〜<ruby>上<rt>うえ</rt></ruby>に</td></tr><tr><td>な-adj は「〜で」、N は「〜で」</td><td>〜<ruby>一方<rt>いっぽう</rt></ruby>（<ruby>並列<rt>へいれつ</rt></ruby>）‧〜<ruby>上<rt>うえ</rt></ruby>で</td></tr><tr><td>N + な / A + い / V-plain + そのまま + 「のに」型</td><td>〜くせに‧〜のに（<ruby>逆接<rt>ぎゃくせつ</rt></ruby>）は Nな‧Aな</td></tr><tr><td>な-adj + 「〜さ」ではなく「〜であれ」型（<ruby>仮定<rt>かてい</rt></ruby>）</td><td>〜であれ‧〜であろうと‧〜にせよ‧〜にしろ‧〜<ruby>如何<rt>いかん</rt></ruby>にかかわらず</td></tr><tr><td><ruby>両方<rt>りょうほう</rt></ruby>あり：<ruby>意味<rt>いみ</rt></ruby>が<ruby>変<rt>か</rt></ruby>わるもの</td><td>〜ところ（Vる∕Vている∕Vたで<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>意味<rt>いみ</rt></ruby>が<ruby>違<rt>ちが</rt></ruby>う）‧〜ばかり（Vた∕Vる∕Vている）‧〜ものだ（Vる ∕Vた）</td></tr></tbody></table></div>
+<section class="chap first">
+<div class="banner"><span class="n">13 patterns</span><h2>1. Time, Timing &amp; Sequence</h2>
+<p class="jp"><ruby>時間<rt>じかん</rt></ruby>・<ruby>時点<rt>じてん</rt></ruby>・<ruby>順序<rt>じゅんじょ</rt></ruby></p>
+<p class="ne">समय, अवसर र क्रम</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">1</span>
+    <h4 class="pat">〜にあたって∕〜にあたり</h4>
+    <span class="level">very formal / speech</span>
+    
+  <span class="ref">#2 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">on the occasion of; at the time of (starting something big)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्न लाग्दा; ...को अवसरमा (ठूलो कामको सुरुमा)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby>∕N + にあたって∕にあたり</p>
+  <p class="howto"><span class="lab">How to use it</span>Speeches and ceremonies. It always looks <b>forward</b> to something important that is about to start, and it carries a positive, formal, congratulatory tone.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>新<rt>しん</rt></ruby><ruby>事業<rt>じぎょう</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めるにあたって、<ruby>皆様<rt>みなさま</rt></ruby>のご<ruby>協力<rt>きょうりょく</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。</p><p class="en">As we begin this new venture, we ask for everyone&#x27;s cooperation.</p><p class="ne">नयाँ व्यवसाय सुरु गर्न लाग्दा, सबैको सहयोग चाहन्छु।</p></li><li class="ex"><p class="jp"><ruby>卒業<rt>そつぎょう</rt></ruby>にあたり、<ruby>一言<rt>ひとこと</rt></ruby>ご<ruby>挨拶<rt>あいさつ</rt></ruby><ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げます。</p><p class="en">On the occasion of graduation, allow me to say a few words.</p><p class="ne">स्नातक हुने अवसरमा, दुई शब्द भन्न चाहन्छु।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Two things kill students here. First, <b>N</b><b>のみ</b><b> or V</b><b>る</b> — never Vた. Second, it cannot be used for small or negative events. 「<ruby>風邪<rt>かぜ</rt></ruby>をひくにあたって」is wrong.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">2</span>
+    <h4 class="pat">〜に<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>って∕〜に<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>ち</h4>
+    <span class="level">very formal / written</span>
+    
+  <span class="ref">#3 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">prior to; in advance of</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भन्दा अघि; ...अगावै</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + に<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>って（Vのに<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>ってもある）</p>
+  <p class="howto"><span class="lab">How to use it</span>The preparation step of a <b>public, scheduled event</b>. Notice the pattern: the small formal preparation comes first, the big event comes second.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>開店<rt>かいてん</rt></ruby>に<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>って、<ruby>記者<rt>きしゃ</rt></ruby><ruby>会見<rt>かいけん</rt></ruby>が<ruby>行<rt>おこな</rt></ruby>われた。</p><p class="en">Prior to the opening, a press conference was held.</p><p class="ne">पसल खुल्नु अघि पत्रकार सम्मेलन गरियो।</p></li><li class="ex"><p class="jp"><ruby>試合<rt>しあい</rt></ruby>に<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>ち、<ruby>国歌<rt>こっか</rt></ruby>が<ruby>演奏<rt>えんそう</rt></ruby>された。</p><p class="en">Before the match, the national anthem was played.</p><p class="ne">खेल सुरु हुनु अघि राष्ट्रिय गान बजाइयो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜<ruby>前<rt>まえ</rt></ruby>に is for anything. 〜に<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>って needs a <b>planned event</b> and a <b>preparatory action</b>. 「<ruby>食<rt>た</rt></ruby>べるのに<ruby>先<rt>さき</rt></ruby><ruby>立<rt>だ</rt></ruby>って<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>う」is wrong — use <ruby>前<rt>まえ</rt></ruby>に.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">3</span>
+    <h4 class="pat">〜てからでないと∕〜てからでなければ</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#5 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">unless ... first; not until ... is done</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेपछि मात्र; ...नगरी हुँदैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vて + からでないと∕からでなければ ＋ <ruby>否定<rt>ひてい</rt></ruby>∕<ruby>困難<rt>こんなん</rt></ruby>の<ruby>結果<rt>けっか</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>The second half is <b>always negative or shows difficulty</b>: 〜ない∕〜できない∕<ruby>無理<rt>むり</rt></ruby>だ∕<ruby>困<rt>こま</rt></ruby>る.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>上司<rt>じょうし</rt></ruby>に<ruby>確認<rt>かくにん</rt></ruby>してからでないと、お<ruby>答<rt>こた</rt></ruby>えできません。</p><p class="en">I cannot answer until I have checked with my boss.</p><p class="ne">हाकिमसँग सोधेपछि मात्र जवाफ दिन सक्छु।</p></li><li class="ex"><p class="jp">よく<ruby>調<rt>しら</rt></ruby>べてからでなければ、<ruby>結論<rt>けつろん</rt></ruby>は<ruby>出<rt>だ</rt></ruby>せない。</p><p class="en">We cannot reach a conclusion without investigating properly first.</p><p class="ne">राम्ररी अनुसन्धान नगरी निष्कर्ष निकाल्न सकिन्न।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>If the second clause is positive, this pattern is wrong — the exam plants a positive ending as bait. For a neutral sequence use 〜てから: 「<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってから<ruby>食<rt>た</rt></ruby>べる」.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">4</span>
+    <h4 class="pat">〜<ruby>上<rt>うえ</rt></ruby>で(の)</h4>
+    <span class="level">formal / business</span>
+    
+  <span class="ref">#6 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">after doing ...; upon (formally completing)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेपछि (औपचारिक रूपमा)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた∕Nの + <ruby>上<rt>うえ</rt></ruby>で</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>deliberate two-step procedure</b>: first the necessary step (checking, consulting, signing), then the decision. Business and legal Japanese.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>書類<rt>しょるい</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>した<ruby>上<rt>うえ</rt></ruby>で、<ruby>改<rt>あら</rt></ruby>めてご<ruby>連絡<rt>れんらく</rt></ruby>いたします。</p><p class="en">After checking the documents, I will contact you again.</p><p class="ne">कागजात जाँचेपछि, फेरि सम्पर्क गर्नेछु।</p></li><li class="ex"><p class="jp"><ruby>家族<rt>かぞく</rt></ruby>と<ruby>相談<rt>そうだん</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>で<ruby>決<rt>き</rt></ruby>めたいと<ruby>思<rt>おも</rt></ruby>います。</p><p class="en">I would like to decide after discussing it with my family.</p><p class="ne">परिवारसँग परामर्श गरेपछि निर्णय गर्न चाहन्छु।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not mix up the three 〜<ruby>上<rt>うえ</rt></ruby>: (1) Vた<ruby>上<rt>うえ</rt></ruby>で = after doing; (2) 〜<ruby>上<rt>うえ</rt></ruby>に = moreover (addition); (3) 〜<ruby>上<rt>じょう</rt></ruby> = from the standpoint of （<ruby>法律<rt>ほうりつ</rt></ruby><ruby>上<rt>じょう</rt></ruby>）. Same kanji, three grammar points.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">5</span>
+    <h4 class="pat">〜<ruby>最中<rt>さいちゅう</rt></ruby>に∕〜の<ruby>最中<rt>さいちゅう</rt></ruby>だ</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#7 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">right in the middle of ...</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्दै गर्दा; ठीक बीचमा</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vている∕Nの + <ruby>最中<rt>さいちゅう</rt></ruby>に</p>
+  <p class="howto"><span class="lab">How to use it</span>Something <b>interrupts</b> an activity at its peak. The second half is nearly always an unwelcome surprise.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>会議<rt>かいぎ</rt></ruby>の<ruby>最中<rt>さいちゅう</rt></ruby>に<ruby>携帯<rt>けいたい</rt></ruby>が<ruby>鳴<rt>な</rt></ruby>ってしまった。</p><p class="en">My phone rang right in the middle of the meeting.</p><p class="ne">बैठकको बीचमै मेरो मोबाइल बज्यो।</p></li><li class="ex"><p class="jp"><ruby>発表<rt>はっぴょう</rt></ruby>している<ruby>最中<rt>さいちゅう</rt></ruby>に、<ruby>停電<rt>ていでん</rt></ruby>になった。</p><p class="en">The power went out while I was in the middle of presenting.</p><p class="ne">प्रस्तुति गर्दै गर्दा बत्ती गयो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>It needs an <b>ongoing activity</b>, so Vている or a noun of activity. It cannot take a state: 「<ruby>寝<rt>ね</rt></ruby>ている<ruby>最中<rt>さいちゅう</rt></ruby>に」is odd — use 〜<ruby>間<rt>あいだ</rt></ruby>に or 〜ところに.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">6</span>
+    <h4 class="pat">〜ないうちに</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#10 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">before ... happens</dd>
+    <dt class="ne">NE</dt><dd class="ne">...हुनु अघि; ...नहुँदै</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vない + うちに</p>
+  <p class="howto"><span class="lab">How to use it</span>The change has <b>not started yet</b> and you want to finish first. 「〜<ruby>前<rt>まえ</rt></ruby>に」is also possible but ないうちに stresses beating the change.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>暗<rt>くら</rt></ruby>くならないうちに、<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>りましょう。</p><p class="en">Let&#x27;s go home before it gets dark.</p><p class="ne">अँध्यारो हुनु अघि घर जाऊँ।</p></li><li class="ex"><p class="jp"><ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>らないうちに<ruby>洗濯物<rt>せんたくもの</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>込<rt>こ</rt></ruby>んだ。</p><p class="en">I brought the laundry in before it started raining.</p><p class="ne">पानी पर्नु अघि लुगा भित्र ल्याएँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Learners write 「<ruby>暗<rt>くら</rt></ruby>くなるうちに」. Wrong — without ない it means “while it is getting dark”. To mean “before”, you must have ない.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">7</span>
+    <h4 class="pat">〜かと<ruby>思<rt>おも</rt></ruby>うと∕〜かと<ruby>思<rt>おも</rt></ruby>ったら</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#12 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">no sooner ... than; hardly ... when</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेको जस्तो लाग्दा लाग्दै; ...गर्नासाथ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた + かと<ruby>思<rt>おも</rt></ruby>うと∕かと<ruby>思<rt>おも</rt></ruby>ったら</p>
+  <p class="howto"><span class="lab">How to use it</span>Best for a <b>surprising, contradictory</b> switch — especially another person&#x27;s changeable behaviour or sudden weather.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>泣<rt>な</rt></ruby>いていたかと<ruby>思<rt>おも</rt></ruby>うと、もう<ruby>笑<rt>わら</rt></ruby>っている。</p><p class="en">One moment he was crying, and now he is already laughing.</p><p class="ne">रोइरहेको जस्तो लाग्दा लाग्दै, अब हाँसिरहेको छ।</p></li><li class="ex"><p class="jp"><ruby>空<rt>そら</rt></ruby>が<ruby>暗<rt>くら</rt></ruby>くなったかと<ruby>思<rt>おも</rt></ruby>ったら、<ruby>大雨<rt>おおあめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>り<ruby>出<rt>だ</rt></ruby>した。</p><p class="en">Hardly had the sky darkened when it began to pour.</p><p class="ne">आकाश अँध्यारो भएको जस्तो लाग्दा लाग्दै मुसलधारे पानी पर्न थाल्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Like とたん, no volition and no future. And it must describe <b>someone or something else</b>: you cannot be surprised by your own actions, so 「<ruby>私<rt>わたし</rt></ruby>は<ruby>帰<rt>かえ</rt></ruby>ったかと<ruby>思<rt>おも</rt></ruby>うと」is wrong.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">8</span>
+    <h4 class="pat">〜てはじめて</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#17 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">only after ... did I realise / become able</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेपछि मात्र (थाहा भयो/सकियो)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vて + はじめて</p>
+  <p class="howto"><span class="lab">How to use it</span>An experience <b>unlocks</b> understanding you could not have had before. The second clause is usually <ruby>分<rt>わ</rt></ruby>かる‧<ruby>気<rt>き</rt></ruby>づく‧できる.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>親<rt>おや</rt></ruby>になってはじめて、<ruby>親<rt>おや</rt></ruby>の<ruby>気持<rt>きも</rt></ruby>ちが<ruby>分<rt>わ</rt></ruby>かった。</p><p class="en">Only after becoming a parent did I understand how parents feel.</p><p class="ne">आमाबाबु भएपछि मात्र आमाबाबुको मनोभाव बुझेँ।</p></li><li class="ex"><p class="jp"><ruby>病気<rt>びょうき</rt></ruby>になってはじめて、<ruby>健康<rt>けんこう</rt></ruby>の<ruby>大切<rt>たいせつ</rt></ruby>さに<ruby>気<rt>き</rt></ruby>づいた。</p><p class="en">It was only when I fell ill that I realised the value of health.</p><p class="ne">बिरामी भएपछि मात्र स्वास्थ्यको महत्त्व बुझेँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not confuse with 〜てから (plain sequence). はじめて adds “<b>and not before</b>”. Also 〜<ruby>初<rt>はじ</rt></ruby>めて as an adverb (“for the first time”) is different.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">9</span>
+    <h4 class="pat">〜ところに∕〜ところへ∕〜ところを∕〜ところで</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#18 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">just when ... (something intervened)</dd>
+    <dt class="ne">NE</dt><dd class="ne">ठीक ...गर्दै गर्दा (कोही आयो/भयो)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vている∕Vた∕Vる + ところに‧へ‧を‧で</p>
+  <p class="howto"><span class="lab">How to use it</span>に∕へ = someone arrives or something happens <b>into</b> your moment. を = someone <b>affects you</b> during that moment (often 〜を<ruby>呼<rt>よ</rt></ruby>び<ruby>止<rt>と</rt></ruby>める‧<ruby>助<rt>たす</rt></ruby>ける‧<ruby>邪魔<rt>じゃま</rt></ruby>する). で = at that point, so then...</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>出<rt>で</rt></ruby>かけようとしたところに、<ruby>客<rt>きゃく</rt></ruby>が<ruby>来<rt>き</rt></ruby>た。</p><p class="en">Just as I was about to go out, a visitor arrived.</p><p class="ne">बाहिर निस्कन खोज्दै गर्दा पाहुना आइपुग्यो।</p></li><li class="ex"><p class="jp"><ruby>忙<rt>いそが</rt></ruby>しいところを<ruby>手伝<rt>てつだ</rt></ruby>ってくれて、ありがとう。</p><p class="en">Thank you for helping me even though you were busy.</p><p class="ne">व्यस्त हुँदा हुँदै सहयोग गर्नुभएकोमा धन्यवाद।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>The particle carries the whole meaning. Choose を when the following verb is transitive and acts on you; choose に∕へ when the following verb is simply “came / happened”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">10</span>
+    <h4 class="pat">〜まま(に)∕〜ままだ</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#19 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">as it is; leaving it unchanged</dd>
+    <dt class="ne">NE</dt><dd class="ne">...जस्तै छ त्यस्तै; ...अवस्थामा नै</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた∕Vない∕Aい∕Aな∕Nの + まま</p>
+  <p class="howto"><span class="lab">How to use it</span>A state <b>continues unchanged</b> when normally you would expect it to change. Often mildly critical.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>靴<rt>くつ</rt></ruby>を<ruby>履<rt>は</rt></ruby>いたまま<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ってはいけません。</p><p class="en">You must not enter the room with your shoes still on.</p><p class="ne">जुत्ता लगाएको अवस्थामै कोठामा प्रवेश गर्नु हुँदैन।</p></li><li class="ex"><p class="jp">この<ruby>村<rt>むら</rt></ruby>は<ruby>昔<rt>むかし</rt></ruby>の<ruby>姿<rt>すがた</rt></ruby>のままだ。</p><p class="en">This village remains just as it was long ago.</p><p class="ne">यो गाउँ पहिलेको स्वरूपमै छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Compare 〜っぱなし (see next), which specifically means you <b>left something on/open by carelessness</b>. まま is neutral about blame; っぱなし blames.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">11</span>
+    <h4 class="pat">〜っぱなし</h4>
+    <span class="level">casual / spoken</span>
+    
+  <span class="ref">#20 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">leaving ... on / open / undone (carelessly)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेको गरेकै छाड्नु (लापरवाहीले)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem + っぱなし</p>
+  <p class="howto"><span class="lab">How to use it</span>Two flavours: (1) <b>negligence</b> — 〜をつけっぱなし, <ruby>開<rt>あ</rt></ruby>けっぱなし; (2) <b>the same state continuing too long</b> — <ruby>立<rt>た</rt></ruby>ちっぱなし, <ruby>負<rt>ま</rt></ruby>けっぱなし.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>電気<rt>でんき</rt></ruby>をつけっぱなしで<ruby>寝<rt>ね</rt></ruby>てしまった。</p><p class="en">I fell asleep with the light left on.</p><p class="ne">बत्ती बालेको बालेकै सुतिहालेँ।</p></li><li class="ex"><p class="jp"><ruby>一日<rt>いちにち</rt></ruby><ruby>中<rt>じゅう</rt></ruby><ruby>立<rt>た</rt></ruby>ちっぱなしで、<ruby>足<rt>あし</rt></ruby>が<ruby>疲<rt>つか</rt></ruby>れた。</p><p class="en">I was on my feet all day, so my legs got tired.</p><p class="ne">दिनभरि उभिएको उभिएकै भएर खुट्टा थाक्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Connection is <b>V</b><b>ます</b><b>-stem</b>, which trips everyone: つけっぱなし, not つけてっぱなし. Also it is spoken and casual; do not use it in a formal report.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">12</span>
+    <h4 class="pat">〜<ruby>以来<rt>いらい</rt></ruby></h4>
+    <span class="level">formal-ish</span>
+    
+  <span class="ref">#21 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">ever since</dd>
+    <dt class="ne">NE</dt><dd class="ne">...देखि यता (लगातार)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vて∕N + <ruby>以来<rt>いらい</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>From a past starting point <b>right up to now</b>, continuously. The starting point is a single event.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>き</rt></ruby>て<ruby>以来<rt>いらい</rt></ruby>、<ruby>一度<rt>いちど</rt></ruby>も<ruby>国<rt>くに</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>っていない。</p><p class="en">Ever since I came to Japan, I have not been back home even once.</p><p class="ne">जापान आएदेखि यता एकपटक पनि देश फर्केको छैन।</p></li><li class="ex"><p class="jp"><ruby>卒業<rt>そつぎょう</rt></ruby><ruby>以来<rt>いらい</rt></ruby>、<ruby>彼<rt>かれ</rt></ruby>に<ruby>会<rt>あ</rt></ruby>っていない。</p><p class="en">I have not seen him since graduation.</p><p class="ne">स्नातक भएदेखि उनलाई भेटेको छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜てから can be short-term; 〜<ruby>以来<rt>いらい</rt></ruby> needs a <b>long stretch</b> and must connect to the present. 「<ruby>朝<rt>あさ</rt></ruby><ruby>起<rt>お</rt></ruby>きて<ruby>以来<rt>いらい</rt></ruby>」is unnatural — too short.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">13</span>
+    <h4 class="pat">〜ぶり(に∕の)</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#22 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">after an interval of ...; for the first time in ...</dd>
+    <dt class="ne">NE</dt><dd class="ne">...पछि (यति समयपछि)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N（<ruby>期間<rt>きかん</rt></ruby>）+ ぶりに</p>
+  <p class="howto"><span class="lab">How to use it</span>You needed the thing and finally got it after a long gap. Slight feeling of <b>relief or nostalgia</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>十年<rt>じゅうねん</rt></ruby>ぶりに<ruby>故郷<rt>こきょう</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>った。</p><p class="en">I returned to my hometown after ten years.</p><p class="ne">दस वर्षपछि जन्मथलो फर्केँ।</p></li><li class="ex"><p class="jp"><ruby>三日<rt>みっか</rt></ruby>ぶりの<ruby>晴<rt>は</rt></ruby>れで、<ruby>気持<rt>きも</rt></ruby>ちがいい。</p><p class="en">It is sunny for the first time in three days; it feels wonderful.</p><p class="ne">तीन दिनपछि घमाइलो भयो, धेरै राम्रो लाग्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜<ruby>後<rt>ご</rt></ruby> is neutral elapsed time; 〜ぶりに means the gap was <b>unusually long for that thing</b>. Also note ぶり attaches to a <b>period noun</b>, not a verb.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">6 patterns</span><h2>2. Cause, Reason &amp; Outcome</h2>
+<p class="jp"><ruby>原因<rt>げんいん</rt></ruby>・<ruby>理由<rt>りゆう</rt></ruby>・<ruby>結果<rt>けっか</rt></ruby></p>
+<p class="ne">कारण, हेतु र परिणाम</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">14</span>
+    <h4 class="pat">〜ばかりに</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#28 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">simply because ... (and it went badly)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेकै कारण मात्रले (नराम्रो भयो) — पछुतो</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕Nである + ばかりに</p>
+  <p class="howto"><span class="lab">How to use it</span>Strong <b>regret</b>. One small cause led to a disproportionately bad result. Often ends with 〜てしまった.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>一言<rt>ひとこと</rt></ruby><ruby>余計<rt>よけい</rt></ruby>なことを<ruby>言<rt>い</rt></ruby>ったばかりに、<ruby>友人<rt>ゆうじん</rt></ruby>を<ruby>怒<rt>おこ</rt></ruby>らせてしまった。</p><p class="en">Simply because I said one unnecessary thing, I ended up angering my friend.</p><p class="ne">एक शब्द बढी बोलेकै कारण, साथीलाई रिस उठाइदिएँ।</p></li><li class="ex"><p class="jp"><ruby>保証人<rt>ほしょうにん</rt></ruby>になったばかりに、<ruby>大<rt>おお</rt></ruby>きな<ruby>借金<rt>しゃっきん</rt></ruby>を<ruby>背負<rt>せお</rt></ruby>うことになった。</p><p class="en">Just because I became a guarantor, I ended up saddled with a huge debt.</p><p class="ne">जमानी बनेकै कारण, ठूलो ऋण बोक्नु पर्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>せいで just blames; ばかりに adds “<b>if only I hadn&#x27;t</b>”. A neutral bad-result sentence with no regret should be せいで. Also do not confuse with ばかり (only) or ばかりか (not only).</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">15</span>
+    <h4 class="pat">〜もの(だ)から</h4>
+    <span class="level">spoken</span>
+    
+  <span class="ref">#29 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">because ... (I&#x27;m explaining / excusing myself)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भएको हुनाले (बहाना/सफाई दिँदै)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕Nな + ものだから</p>
+  <p class="howto"><span class="lab">How to use it</span>Spoken. You are giving a <b>personal, subjective excuse</b> and asking to be understood.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>道<rt>みち</rt></ruby>が<ruby>込<rt>こ</rt></ruby>んでいたものだから、<ruby>遅<rt>おく</rt></ruby>れてしまいました。</p><p class="en">It was because the roads were congested that I ended up late.</p><p class="ne">बाटो जाम भएको हुनाले, ढिलो भइहालेँ।</p></li><li class="ex"><p class="jp"><ruby>子<rt>こ</rt></ruby>どもがまだ<ruby>小<rt>ちい</rt></ruby>さいものだから、<ruby>夜<rt>よる</rt></ruby>の<ruby>会合<rt>かいごう</rt></ruby>には<ruby>出<rt>で</rt></ruby>られません。</p><p class="en">Because my child is still small, I cannot attend evening gatherings.</p><p class="ne">बच्चा सानै भएको हुनाले, बेलुकीको भेलामा सहभागी हुन सक्दिनँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Because it is an excuse, it does <b>not</b> take commands or invitations. 「<ruby>暑<rt>あつ</rt></ruby>いものだから、<ruby>窓<rt>まど</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けてください」is wrong — use から or ので.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">16</span>
+    <h4 class="pat">〜ことから</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#31 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">from the fact that ...; judging from</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भएको आधारमा; यसबाट</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕Nである + ことから</p>
+  <p class="howto"><span class="lab">How to use it</span><b>Evidence </b><b>→</b><b> conclusion</b>, or the <b>origin of a name</b>. Objective and written.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>窓<rt>まど</rt></ruby>が<ruby>割<rt>わ</rt></ruby>れていたことから、<ruby>泥棒<rt>どろぼう</rt></ruby>が<ruby>入<rt>はい</rt></ruby>ったと<ruby>分<rt>わ</rt></ruby>かった。</p><p class="en">From the fact that the window was broken, we knew a burglar had got in.</p><p class="ne">झ्याल फुटेको आधारमा, चोर पसेको थाहा भयो।</p></li><li class="ex"><p class="jp"><ruby>形<rt>かたち</rt></ruby>が<ruby>富士山<rt>ふじさん</rt></ruby>に<ruby>似<rt>に</rt></ruby>ていることから、この<ruby>山<rt>やま</rt></ruby>は「<ruby>蝦夷<rt>えぞ</rt></ruby><ruby>富士<rt>ふじ</rt></ruby>」と<ruby>呼<rt>よ</rt></ruby>ばれている。</p><p class="en">Because its shape resembles Mt Fuji, this mountain is called “Ezo Fuji”.</p><p class="ne">आकार फुजी हिमालसँग मिल्ने कारणले, यो पहाडलाई &#x27;एजो फुजी&#x27; भनिन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>ことから gives the <b>basis for judging</b>; ことだから gives the <b>reason from known character</b>; ものだから gives an <b>excuse</b>. All three look nearly identical in a multiple-choice list.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">17</span>
+    <h4 class="pat">〜からこそ∕〜こそ〜</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#34 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">it is precisely because ...</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भएकै कारणले नै हो</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Nだ + からこそ</p>
+  <p class="howto"><span class="lab">How to use it</span>You are <b>correcting a misunderstanding</b> about the real reason. Emphatic and often emotional.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>厳<rt>きび</rt></ruby>しいことを<ruby>言<rt>い</rt></ruby>うのは、<ruby>君<rt>きみ</rt></ruby>のことを<ruby>大切<rt>たいせつ</rt></ruby>に<ruby>思<rt>おも</rt></ruby>っているからこそだ。</p><p class="en">The reason I say harsh things is precisely because I care about you.</p><p class="ne">कडा कुरा भन्नु, तिमीलाई महत्त्वपूर्ण ठान्दछु भन्ने कारणले नै हो।</p></li><li class="ex"><p class="jp"><ruby>家族<rt>かぞく</rt></ruby>の<ruby>支<rt>ささ</rt></ruby>えがあったからこそ、ここまで<ruby>頑張<rt>がんば</rt></ruby>れた。</p><p class="en">It is precisely because I had my family&#x27;s support that I could persevere this far.</p><p class="ne">परिवारको साथ भएकै कारणले नै, यहाँसम्म मिहिनेत गर्न सकेँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>から and からこそ both mean because, but からこそ insists “<b>this</b> reason and no other”. It fits sentences where the listener assumed the opposite.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">18</span>
+    <h4 class="pat">〜あげく(に)∕〜あげくの</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#36 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">after a long ... (and then a bad end)</dd>
+    <dt class="ne">NE</dt><dd class="ne">लामो समय ...गरेपछि अन्ततः (नराम्रो नतिजा)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた∕Nの + あげく(に)</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>long, troublesome process</b> ending in a <b>negative</b> outcome. Often with 〜<ruby>結局<rt>けっきょく</rt></ruby>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>何時間<rt>なんじかん</rt></ruby>も<ruby>言<rt>い</rt></ruby>い<ruby>争<rt>あら</rt></ruby>ったあげく、<ruby>結論<rt>けつろん</rt></ruby>は<ruby>出<rt>で</rt></ruby>なかった。</p><p class="en">After arguing for hours, no conclusion was reached.</p><p class="ne">घण्टौँ विवाद गरेपछि, अन्ततः कुनै निष्कर्ष निस्किएन।</p></li><li class="ex"><p class="jp"><ruby>迷<rt>まよ</rt></ruby>ったあげくに、<ruby>留学<rt>りゅうがく</rt></ruby>をあきらめた。</p><p class="en">After much hesitation, I gave up on studying abroad.</p><p class="ne">धेरै अलमलिएपछि, अन्ततः विदेश अध्ययन त्यागिदिएँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜<ruby>末<rt>すえ</rt></ruby>(に) is the neutral or positive twin. If the ending is a success, the answer is 末に, not あげく. 「<ruby>努力<rt>どりょく</rt></ruby>したあげく<ruby>合格<rt>ごうかく</rt></ruby>した」is wrong.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">19</span>
+    <h4 class="pat">〜<ruby>末<rt>すえ</rt></ruby>(に)∕〜<ruby>末<rt>すえ</rt></ruby>の</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#37 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">after a long process, finally</dd>
+    <dt class="ne">NE</dt><dd class="ne">लामो प्रयासपछि अन्ततः</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた∕Nの + <ruby>末<rt>すえ</rt></ruby>(に)</p>
+  <p class="howto"><span class="lab">How to use it</span>Neutral. The point is the <b>length and effort</b> of the process, whatever the outcome.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>長<rt>なが</rt></ruby>い<ruby>議論<rt>ぎろん</rt></ruby>の<ruby>末<rt>すえ</rt></ruby>、<ruby>計画<rt>けいかく</rt></ruby>が<ruby>承認<rt>しょうにん</rt></ruby>された。</p><p class="en">After long discussion, the plan was finally approved.</p><p class="ne">लामो छलफलपछि, योजना स्वीकृत भयो।</p></li><li class="ex"><p class="jp"><ruby>悩<rt>なや</rt></ruby>んだ<ruby>末<rt>すえ</rt></ruby>に、<ruby>転職<rt>てんしょく</rt></ruby>することに<ruby>決<rt>き</rt></ruby>めた。</p><p class="en">After much worry, I decided to change jobs.</p><p class="ne">धेरै सोचविचारपछि, जागिर परिवर्तन गर्ने निर्णय गरेँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Both あげく and <ruby>末<rt>すえ</rt></ruby> take <b>V</b><b>た</b><b> or N</b><b>の</b>. The only difference is the emotional colour of the result, so read the final clause carefully before choosing.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">2 patterns</span><h2>3. Purpose, Function &amp; Target</h2>
+<p class="jp"><ruby>目的<rt>もくてき</rt></ruby>・<ruby>用途<rt>ようと</rt></ruby>・<ruby>対象<rt>たいしょう</rt></ruby></p>
+<p class="ne">उद्देश्य, प्रयोग र लक्ष्य</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">20</span>
+    <h4 class="pat">〜のに（<ruby>用途<rt>ようと</rt></ruby>‧<ruby>評価<rt>ひょうか</rt></ruby>）</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#40 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">for the purpose of; for doing (usefulness)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्न (उपयोगिता जनाउने)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + のに + <ruby>便利<rt>べんり</rt></ruby>だ∕<ruby>必要<rt>ひつよう</rt></ruby>だ∕<ruby>役<rt>やく</rt></ruby>に<ruby>立<rt>た</rt></ruby>つ etc.</p>
+  <p class="howto"><span class="lab">How to use it</span>Always followed by a word of <b>evaluation or cost</b>: <ruby>便利<rt>べんり</rt></ruby>‧<ruby>役<rt>やく</rt></ruby>に<ruby>立<rt>た</rt></ruby>つ‧<ruby>時間<rt>じかん</rt></ruby>がかかる‧<ruby>必要<rt>ひつよう</rt></ruby>だ‧いい.</p>
+  <ol class="exs"><li class="ex"><p class="jp">このアプリは<ruby>漢字<rt>かんじ</rt></ruby>を<ruby>覚<rt>おぼ</rt></ruby>えるのに<ruby>便利<rt>べんり</rt></ruby>だ。</p><p class="en">This app is handy for memorising kanji.</p><p class="ne">यो एप कान्जी सम्झन सजिलो छ।</p></li><li class="ex"><p class="jp"><ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しをするのに<ruby>三十万円<rt>さんじゅうまんえん</rt></ruby>かかった。</p><p class="en">It cost 300,000 yen to move house.</p><p class="ne">घर सर्न तीन लाख येन लाग्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>This のに is <b>not</b> the “although” のに. Tell them apart by what follows: an evaluation word means purpose; a surprising fact means “although”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">21</span>
+    <h4 class="pat">〜<ruby>向<rt>む</rt></ruby>け∕〜<ruby>向<rt>む</rt></ruby>き</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#43 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">aimed at / suited to</dd>
+    <dt class="ne">NE</dt><dd class="ne">...लक्षित / ...लायक</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + <ruby>向<rt>む</rt></ruby>け（<ruby>意図<rt>いと</rt></ruby>）∕N + <ruby>向<rt>む</rt></ruby>き（<ruby>適性<rt>てきせい</rt></ruby>）</p>
+  <p class="howto"><span class="lab">How to use it</span><ruby>向<rt>む</rt></ruby>け = the maker <b>intended</b> that audience. <ruby>向<rt>む</rt></ruby>き = it <b>happens to suit</b> them.</p>
+  <ol class="exs"><li class="ex"><p class="jp">これは<ruby>初心者<rt>しょしんしゃ</rt></ruby><ruby>向<rt>む</rt></ruby>けの<ruby>教科書<rt>きょうかしょ</rt></ruby>です。</p><p class="en">This is a textbook aimed at beginners.</p><p class="ne">यो सुरुवाती स्तरका लागि लक्षित पाठ्यपुस्तक हो।</p></li><li class="ex"><p class="jp">この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>子<rt>こ</rt></ruby>ども<ruby>向<rt>む</rt></ruby>きではない。</p><p class="en">This job is not suited to children.</p><p class="ne">यो काम बच्चाहरूका लायक छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Also learn 〜<ruby>向<rt>む</rt></ruby>かい (facing: <ruby>南<rt>みなみ</rt></ruby><ruby>向<rt>む</rt></ruby>かい) and 〜<ruby>向<rt>む</rt></ruby>き as direction (<ruby>南<rt>みなみ</rt></ruby><ruby>向<rt>む</rt></ruby>きの<ruby>部屋<rt>へや</rt></ruby>). Same kanji, several jobs.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">4 patterns</span><h2>4. Contrast, Concession &amp; &#x27;Although&#x27;</h2>
+<p class="jp"><ruby>逆接<rt>ぎゃくせつ</rt></ruby>・<ruby>対比<rt>たいひ</rt></ruby></p>
+<p class="ne">विरोध, तुलना र &#x27;भए तापनि&#x27;</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">22</span>
+    <h4 class="pat">〜つつ(も)</h4>
+    <span class="level">literary</span>
+    
+  <span class="ref">#46 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">even while; although (literary)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्दागर्दै पनि (साहित्यिक)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem + つつ(も)</p>
+  <p class="howto"><span class="lab">How to use it</span>Written twin of ながらも, usually about an <b>inner conflict</b>: you know better but you do it anyway.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>体<rt>からだ</rt></ruby>に<ruby>悪<rt>わる</rt></ruby>いと<ruby>思<rt>おも</rt></ruby>いつつ、たばこをやめられない。</p><p class="en">Even while thinking it is bad for me, I cannot quit smoking.</p><p class="ne">शरीरलाई हानि हुन्छ भन्ने सोच्दासोच्दै पनि, चुरोट छाड्न सक्दिन।</p></li><li class="ex"><p class="jp"><ruby>反対<rt>はんたい</rt></ruby>しつつも、<ruby>最後<rt>さいご</rt></ruby>には<ruby>協力<rt>きょうりょく</rt></ruby>してくれた。</p><p class="en">Although he objected, in the end he cooperated.</p><p class="ne">विरोध गर्दागर्दै पनि, अन्तमा सहयोग गरिदियो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span><b>V</b><b>ます</b><b>-stem only</b> — no nouns, no adjectives. So 「<ruby>学生<rt>がくせい</rt></ruby>つつ」is impossible, while 「<ruby>学生<rt>がくせい</rt></ruby>ながら」is fine. Also 〜つつある = “is in the process of”, a different point.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">23</span>
+    <h4 class="pat">〜<ruby>反面<rt>はんめん</rt></ruby>∕〜<ruby>半面<rt>はんめん</rt></ruby></h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#56 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">on the other side; conversely</dd>
+    <dt class="ne">NE</dt><dd class="ne">...को विपरीत पक्षमा</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕Nである + <ruby>反面<rt>はんめん</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>Two <b>opposite qualities of the same thing</b> — a merit and a demerit.</p>
+  <ol class="exs"><li class="ex"><p class="jp">この<ruby>薬<rt>くすり</rt></ruby>はよく<ruby>効<rt>き</rt></ruby>く<ruby>反面<rt>はんめん</rt></ruby>、<ruby>副作用<rt>ふくさよう</rt></ruby>も<ruby>強<rt>つよ</rt></ruby>い。</p><p class="en">This medicine works well, but on the other side the side effects are strong.</p><p class="ne">यो औषधि राम्ररी काम गर्छ, तर विपरीत पक्षमा साइड इफेक्ट पनि कडा छ।</p></li><li class="ex"><p class="jp"><ruby>一人暮<rt>ひとりぐ</rt></ruby>らしは<ruby>自由<rt>じゆう</rt></ruby>な<ruby>反面<rt>はんめん</rt></ruby>、<ruby>寂<rt>さび</rt></ruby>しい。</p><p class="en">Living alone is free, but conversely it is lonely.</p><p class="ne">एकल जीवन स्वतन्त्र छ, तर विपरीत पक्षमा एक्लोपन छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span><ruby>一方<rt>いっぽう</rt></ruby>で can compare <b>two different things</b>; <ruby>反面<rt>はんめん</rt></ruby> needs <b>one thing with two faces</b>. Cities versus countryside cannot take <ruby>反面<rt>はんめん</rt></ruby>.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">24</span>
+    <h4 class="pat">〜に<ruby>反<rt>はん</rt></ruby>して∕〜に<ruby>反<rt>はん</rt></ruby>する</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#58 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">contrary to; against</dd>
+    <dt class="ne">NE</dt><dd class="ne">...को विपरीत</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + に<ruby>反<rt>はん</rt></ruby>して</p>
+  <p class="howto"><span class="lab">How to use it</span>Fixed nouns: <ruby>予想<rt>よそう</rt></ruby>‧<ruby>期待<rt>きたい</rt></ruby>‧<ruby>予測<rt>よそく</rt></ruby>‧<ruby>意志<rt>いし</rt></ruby>‧<ruby>命令<rt>めいれい</rt></ruby>‧<ruby>規則<rt>きそく</rt></ruby>. Learn them as a set.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>予想<rt>よそう</rt></ruby>に<ruby>反<rt>はん</rt></ruby>して、チームは<ruby>優勝<rt>ゆうしょう</rt></ruby>した。</p><p class="en">Contrary to expectations, the team won the championship.</p><p class="ne">अनुमानको विपरीत, टिमले च्याम्पियनसिप जित्यो।</p></li><li class="ex"><p class="jp"><ruby>親<rt>おや</rt></ruby>の<ruby>期待<rt>きたい</rt></ruby>に<ruby>反<rt>はん</rt></ruby>する<ruby>進路<rt>しんろ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んだ。</p><p class="en">I chose a path contrary to my parents&#x27; expectations.</p><p class="ne">आमाबाबुको अपेक्षाको विपरीत बाटो छानेँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>It is <b>N</b><b>のみ</b>. Also note the opposite pattern 〜<ruby>通<rt>とお</rt></ruby>りに (“as expected / as instructed”) — the exam often puts them in the same question.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">25</span>
+    <h4 class="pat">〜<ruby>代<rt>か</rt></ruby>わりに</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#61 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">instead of; in exchange for</dd>
+    <dt class="ne">NE</dt><dd class="ne">...को बदलामा; ...को सट्टा</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Nの + <ruby>代<rt>か</rt></ruby>わりに</p>
+  <p class="howto"><span class="lab">How to use it</span>Substitution (someone takes another&#x27;s place) or <b>trade-off</b> (you get A but give B).</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>代<rt>か</rt></ruby>わりに、<ruby>私<rt>わたし</rt></ruby>が<ruby>会議<rt>かいぎ</rt></ruby>に<ruby>出席<rt>しゅっせき</rt></ruby>します。</p><p class="en">I will attend the meeting instead of the department head.</p><p class="ne">विभाग प्रमुखको सट्टा, म बैठकमा उपस्थित हुनेछु।</p></li><li class="ex"><p class="jp"><ruby>車<rt>くるま</rt></ruby>を<ruby>貸<rt>か</rt></ruby>してもらう<ruby>代<rt>か</rt></ruby>わりに、ガソリン<ruby>代<rt>だい</rt></ruby>を<ruby>払<rt>はら</rt></ruby>った。</p><p class="en">In exchange for borrowing the car, I paid for the petrol.</p><p class="ne">गाडी सापटी लिएको बदलामा, पेट्रोलको पैसा तिरेँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not confuse the noun form 「Nの<ruby>代<rt>か</rt></ruby>わりに」with 「Vる<ruby>代<rt>か</rt></ruby>わりに」. Also 〜<ruby>反<rt>はん</rt></ruby>して and 〜<ruby>代<rt>か</rt></ruby>わりに appear together as distractors because both mean “not as expected” loosely.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">6 patterns</span><h2>5. Condition &amp; Supposition</h2>
+<p class="jp"><ruby>条件<rt>じょうけん</rt></ruby>・<ruby>仮定<rt>かてい</rt></ruby></p>
+<p class="ne">सर्त र कल्पना</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">26</span>
+    <h4 class="pat">〜ものなら∕〜(よ)うものなら</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#64 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">if it were possible / if you dare (bad result)</dd>
+    <dt class="ne">NE</dt><dd class="ne">सम्भव भए... / गर्ने साहस गरे (नराम्रो हुन्छ)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>可能<rt>かのう</rt></ruby><ruby>形<rt>けい</rt></ruby> + ものなら ∕ V<ruby>意向<rt>いこう</rt></ruby><ruby>形<rt>けい</rt></ruby> + ものなら</p>
+  <p class="howto"><span class="lab">How to use it</span>With the <b>potential form</b> it is a wistful impossible wish. With the <b>volitional form</b> it is a warning that something terrible would follow.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>戻<rt>もど</rt></ruby>れるものなら、<ruby>学生<rt>がくせい</rt></ruby><ruby>時代<rt>じだい</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>りたい。</p><p class="en">If it were possible to go back, I would like to return to my student days.</p><p class="ne">फर्किन सम्भव भए, विद्यार्थी कालमा फर्किन चाहन्छु।</p></li><li class="ex"><p class="jp"><ruby>父<rt>ちち</rt></ruby>に<ruby>知<rt>し</rt></ruby>られようものなら、<ruby>大変<rt>たいへん</rt></ruby>なことになる。</p><p class="en">If my father were to find out, it would be a disaster.</p><p class="ne">बुबालाई थाहा हुने भए, ठूलो समस्या हुन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>The two forms mean opposite things. <ruby>戻<rt>もど</rt></ruby>れるものなら = “I wish I could”; <ruby>戻<rt>もど</rt></ruby>ろうものなら = “if I dared go back, disaster”. Read the verb form, not the ものなら.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">27</span>
+    <h4 class="pat">〜ないことには</h4>
+    <span class="level">neutral / written</span>
+    
+  <span class="ref">#65 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">unless you ...; without doing</dd>
+    <dt class="ne">NE</dt><dd class="ne">...नगरे केही हुन्न</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vない + ことには + <ruby>否定<rt>ひてい</rt></ruby>∕<ruby>不可能<rt>ふかのう</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>States a <b>necessary first step</b>. The second half is always negative or impossible.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>実物<rt>じつぶつ</rt></ruby>を<ruby>見<rt>み</rt></ruby>ないことには、<ruby>判断<rt>はんだん</rt></ruby>できない。</p><p class="en">Unless I see the actual thing, I cannot judge.</p><p class="ne">वास्तविक वस्तु नहेरे, निर्णय गर्न सक्दिन।</p></li><li class="ex"><p class="jp"><ruby>予算<rt>よさん</rt></ruby>が<ruby>決<rt>き</rt></ruby>まらないことには、<ruby>計画<rt>けいかく</rt></ruby>を<ruby>進<rt>すす</rt></ruby>められない。</p><p class="en">Until the budget is decided, we cannot move the plan forward.</p><p class="ne">बजेट निर्धारण नभए, योजना अगाडि बढाउन सकिन्न।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Same negative-ending rule as 〜てからでないと. The difference: ないことには emphasises the <b>missing condition</b>; てからでないと emphasises the <b>order of steps</b>.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">28</span>
+    <h4 class="pat">〜<ruby>以上<rt>いじょう</rt></ruby>(は)∕〜<ruby>上<rt>うえ</rt></ruby>は</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#67 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">now that; since it has come to this</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भइसकेपछि; अब त</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Nである + <ruby>以上<rt>いじょう</rt></ruby>(は) ∕ Vた∕Vる + <ruby>上<rt>うえ</rt></ruby>は</p>
+  <p class="howto"><span class="lab">How to use it</span>The condition is <b>already settled</b>, so now a duty or resolution follows. Ends with 〜べきだ‧〜なければならない‧〜しかない‧〜つもりだ.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>引<rt>ひ</rt></ruby>き<ruby>受<rt>う</rt></ruby>けた<ruby>以上<rt>いじょう</rt></ruby>、<ruby>最後<rt>さいご</rt></ruby>まで<ruby>責任<rt>せきにん</rt></ruby>を<ruby>持<rt>も</rt></ruby>ちます。</p><p class="en">Now that I have taken it on, I will be responsible to the end.</p><p class="ne">जिम्मा लिइसकेपछि, अन्तिमसम्म जिम्मेवारी लिनेछु।</p></li><li class="ex"><p class="jp">こうなった<ruby>上<rt>うえ</rt></ruby>は、<ruby>正直<rt>しょうじき</rt></ruby>に<ruby>話<rt>はな</rt></ruby>すしかない。</p><p class="en">Now that it has come to this, there is nothing to do but speak honestly.</p><p class="ne">यस्तो भइसकेपछि, इमानदारीसाथ बोल्नुबाहेक विकल्प छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>These are <b>not</b> hypothetical. If the sentence is still an “if”, the answer is たら or なら, not <ruby>以上<rt>いじょう</rt></ruby>は.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">29</span>
+    <h4 class="pat">〜からには∕〜からは</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#68 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">since you are going to ... (then do it properly)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्ने भएपछि (राम्ररी गर्नुपर्छ)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby> + からには</p>
+  <p class="howto"><span class="lab">How to use it</span>A decision has been made, so a <b>determination or requirement</b> follows. Very close to <ruby>以上<rt>いじょう</rt></ruby>は.</p>
+  <ol class="exs"><li class="ex"><p class="jp">やるからには、<ruby>中途半端<rt>ちゅうとはんぱ</rt></ruby>では<ruby>困<rt>こま</rt></ruby>る。</p><p class="en">If you are going to do it, doing it half-heartedly is no good.</p><p class="ne">गर्ने भएपछि, आधा-अधुरो गर्दा हुँदैन।</p></li><li class="ex"><p class="jp"><ruby>留学<rt>りゅうがく</rt></ruby>するからには、<ruby>言葉<rt>ことば</rt></ruby>をしっかり<ruby>勉強<rt>べんきょう</rt></ruby>すべきだ。</p><p class="en">Since you are going to study abroad, you should study the language properly.</p><p class="ne">विदेश अध्ययन गर्ने भएपछि, भाषा राम्ररी पढ्नुपर्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>からといって looks similar but is the opposite — it <b>denies</b> a conclusion and ends negative. からには <b>strengthens</b> a conclusion.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">30</span>
+    <h4 class="pat">〜たところで</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#69 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">even if ...; no matter how much (it&#x27;s pointless)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरे तापनि (व्यर्थ हुन्छ)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた + ところで + <ruby>否定的<rt>ひていてき</rt></ruby>な<ruby>結果<rt>けっか</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>You are saying the effort is <b>futile</b>. Often preceded by いくら∕どんなに.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>今<rt>いま</rt></ruby>から<ruby>走<rt>はし</rt></ruby>ったところで、<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わないだろう。</p><p class="en">Even if you run now, you probably will not make it.</p><p class="ne">अहिले दौडे तापनि, समयमा पुग्ने छैन।</p></li><li class="ex"><p class="jp">いくら<ruby>謝<rt>あやま</rt></ruby>ったところで、<ruby>壊<rt>こわ</rt></ruby>れたものは<ruby>元<rt>もと</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>らない。</p><p class="en">No matter how much you apologise, what is broken will not return to its original state.</p><p class="ne">जति माफी मागे तापनि, भाँचिएको वस्तु पहिलेको अवस्थामा फर्किँदैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Connection is <b>V</b><b>た</b> even though the meaning is hypothetical and future. And the second clause must be <b>negative or pointless</b> — that is the giveaway in a multiple-choice question.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">31</span>
+    <h4 class="pat">〜ては(いられない)∕〜ていては</h4>
+    <span class="level">spoken / neutral</span>
+    
+  <span class="ref">#70 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">if (you keep) doing ..., (it will go badly)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरिरह्यो भने (नराम्रो हुन्छ)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vて + は ∕ Vていて + は</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>repeated bad habit</b> leading to a bad outcome. Common with 〜てしまう and 〜られない.</p>
+  <ol class="exs"><li class="ex"><p class="jp">こんなに<ruby>毎日<rt>まいにち</rt></ruby><ruby>残業<rt>ざんぎょう</rt></ruby>していては、<ruby>体<rt>からだ</rt></ruby>が<ruby>壊<rt>こわ</rt></ruby>れてしまう。</p><p class="en">If I keep working overtime every day like this, my body will break down.</p><p class="ne">यसरी दिनदिनै ओभरटाइम गरिरह्यो भने, शरीर बिग्रिनेछ।</p></li><li class="ex"><p class="jp">いつまでも<ruby>親<rt>おや</rt></ruby>に<ruby>頼<rt>たよ</rt></ruby>っては、<ruby>独立<rt>どくりつ</rt></ruby>できない。</p><p class="en">If you rely on your parents forever, you will never become independent.</p><p class="ne">सधैँभरि आमाबाबुमा भर परिरह्यो भने, स्वतन्त्र हुन सक्दैनौ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>This ては is conditional, not the 〜てはいけない prohibition. Recognise it by the <b>bad consequence</b> in the second clause.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">4 patterns</span><h2>6. Limit, Extent &amp; Scope</h2>
+<p class="jp"><ruby>限定<rt>げんてい</rt></ruby>・<ruby>範囲<rt>はんい</rt></ruby>・<ruby>程度<rt>ていど</rt></ruby></p>
+<p class="ne">सीमा, दायरा र मात्रा</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">32</span>
+    <h4 class="pat">〜のみ∕〜のみならず</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#73 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">only / not only (formal)</dd>
+    <dt class="ne">NE</dt><dd class="ne">मात्र / मात्र नभई (औपचारिक)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby> + のみ</p>
+  <p class="howto"><span class="lab">How to use it</span>The written, formal equivalent of だけ. のみならず is the formal だけでなく.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>当店<rt>とうてん</rt></ruby>では<ruby>現金<rt>げんきん</rt></ruby>のみお<ruby>取<rt>と</rt></ruby>り<ruby>扱<rt>あつか</rt></ruby>いしております。</p><p class="en">Our shop accepts cash only.</p><p class="ne">हाम्रो पसलमा नगद मात्र स्वीकार गरिन्छ।</p></li><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>英語<rt>えいご</rt></ruby>のみならず、<ruby>中国語<rt>ちゅうごくご</rt></ruby>も<ruby>話<rt>はな</rt></ruby>せる。</p><p class="en">He speaks not only English but Chinese as well.</p><p class="ne">उनी अंग्रेजी मात्र नभई, चिनियाँ पनि बोल्न सक्छन्।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>のみ cannot replace だけ in casual speech. And 「〜のみだ」at sentence end can mean “there is nothing left but to”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">33</span>
+    <h4 class="pat">〜に<ruby>限<rt>かぎ</rt></ruby>る∕〜に<ruby>限<rt>かぎ</rt></ruby>られる</h4>
+    <span class="level">neutral / formal</span>
+    
+  <span class="ref">#76 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">nothing beats ...; be limited to</dd>
+    <dt class="ne">NE</dt><dd class="ne">...जत्तिको छैन; ...मा सीमित छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + に<ruby>限<rt>かぎ</rt></ruby>る ∕ N + に<ruby>限<rt>かぎ</rt></ruby>られる</p>
+  <p class="howto"><span class="lab">How to use it</span>に<ruby>限<rt>かぎ</rt></ruby>る = <b>personal recommendation</b>, the best choice. に<ruby>限<rt>かぎ</rt></ruby>られる = <b>objective restriction</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>夏<rt>なつ</rt></ruby>は<ruby>冷<rt>つめ</rt></ruby>たいビールに<ruby>限<rt>かぎ</rt></ruby>る。</p><p class="en">In summer, nothing beats a cold beer.</p><p class="ne">गर्मीमा चिसो बियर जत्तिको छैन।</p></li><li class="ex"><p class="jp"><ruby>応募<rt>おうぼ</rt></ruby><ruby>資格<rt>しかく</rt></ruby>は<ruby>在校生<rt>ざいこうせい</rt></ruby>に<ruby>限<rt>かぎ</rt></ruby>られています。</p><p class="en">Eligibility to apply is limited to current students.</p><p class="ne">आवेदनको योग्यता वर्तमान विद्यार्थीमा सीमित छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Active means “is the best”; passive means “is restricted to”. Very easy to answer backwards under time pressure.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">34</span>
+    <h4 class="pat">〜ならでは(の)</h4>
+    <span class="level">written / advertising</span>
+    
+  <span class="ref">#79 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">unique to; only possible for</dd>
+    <dt class="ne">NE</dt><dd class="ne">...को मात्र विशेषता; ...ले मात्र सम्भव</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + ならでは(の)</p>
+  <p class="howto"><span class="lab">How to use it</span>Always <b>praise</b>. It names the special quality nobody else could produce.</p>
+  <ol class="exs"><li class="ex"><p class="jp">これは<ruby>職人<rt>しょくにん</rt></ruby>ならではの<ruby>技術<rt>ぎじゅつ</rt></ruby>だ。</p><p class="en">This is craftsmanship possible only for a master artisan.</p><p class="ne">यो कारीगरको मात्र सम्भव सीप हो।</p></li><li class="ex"><p class="jp"><ruby>地方<rt>ちほう</rt></ruby>ならではの<ruby>温<rt>あたた</rt></ruby>かいおもてなしに<ruby>感動<rt>かんどう</rt></ruby>した。</p><p class="en">I was moved by the warm hospitality unique to the countryside.</p><p class="ne">ग्रामीण क्षेत्रको मात्र विशेषता भएको हार्दिक आतिथ्यले प्रभावित भएँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Because it is praise, negative nouns do not work. 「<ruby>初心者<rt>しょしんしゃ</rt></ruby>ならではのミス」is acceptable only as gentle humour; the exam expects a positive noun.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">35</span>
+    <h4 class="pat">〜くらい∕〜ぐらい</h4>
+    <span class="level">spoken / neutral</span>
+    
+  <span class="ref">#82 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">about; to the point of (small degree)</dd>
+    <dt class="ne">NE</dt><dd class="ne">करिब; ...गर्ने हदसम्म</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕N + くらい</p>
+  <p class="howto"><span class="lab">How to use it</span>ほど tends to <b>exaggerate upward</b>; くらい often marks a <b>minimum, trivial</b> level (“at least this much”).</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>足<rt>あし</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>くて、<ruby>立<rt>た</rt></ruby>っていられないくらいだった。</p><p class="en">My legs hurt to the point that I could not stay standing.</p><p class="ne">खुट्टा दुखेर, उभिन नसक्ने हदसम्म भयो।</p></li><li class="ex"><p class="jp">せめて<ruby>挨拶<rt>あいさつ</rt></ruby>くらいはしてほしい。</p><p class="en">I would like you to at least say hello.</p><p class="ne">कम्तीमा अभिवादन जति गरे हुन्थ्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>With せめて or a minimum meaning, only <b>くらい</b> works — ほど is wrong. 「せめて<ruby>挨拶<rt>あいさつ</rt></ruby>ほど」is unnatural.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">8 patterns</span><h2>7. Topic, Relation, Basis &amp; Correlation</h2>
+<p class="jp"><ruby>関連<rt>かんれん</rt></ruby>・<ruby>基準<rt>きじゅん</rt></ruby>・<ruby>比例<rt>ひれい</rt></ruby></p>
+<p class="ne">विषय, सम्बन्ध, आधार र समानुपात</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">36</span>
+    <h4 class="pat">〜をめぐって∕〜をめぐる</h4>
+    <span class="level">written / news</span>
+    
+  <span class="ref">#85 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">concerning (a disputed matter)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...लाई लिएर (विवाद/चर्चा)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + をめぐって</p>
+  <p class="howto"><span class="lab">How to use it</span>The noun is a <b>controversy</b>. The verb is nearly always <ruby>議論<rt>ぎろん</rt></ruby>する‧<ruby>争<rt>あらそ</rt></ruby>う‧<ruby>対立<rt>たいりつ</rt></ruby>する‧<ruby>意見<rt>いけん</rt></ruby>が<ruby>分<rt>わ</rt></ruby>かれる.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>新<rt>しん</rt></ruby><ruby>税<rt>ぜい</rt></ruby>をめぐって、<ruby>激<rt>はげ</rt></ruby>しい<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>続<rt>つづ</rt></ruby>いている。</p><p class="en">Fierce debate continues over the new tax.</p><p class="ne">नयाँ करलाई लिएर, चर्को बहस जारी छ।</p></li><li class="ex"><p class="jp"><ruby>遺産<rt>いさん</rt></ruby>をめぐる<ruby>争<rt>あらそ</rt></ruby>いが<ruby>起<rt>お</rt></ruby>きた。</p><p class="en">A dispute arose over the inheritance.</p><p class="ne">सम्पत्तिलाई लिएर विवाद उत्पन्न भयो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>If the sentence is a calm explanation, について is right and をめぐって is wrong. をめぐって <b>requires conflict</b> among multiple parties.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">37</span>
+    <h4 class="pat">〜に<ruby>沿<rt>そ</rt></ruby>って∕〜に<ruby>沿<rt>そ</rt></ruby>った</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#92 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">along; in line with</dd>
+    <dt class="ne">NE</dt><dd class="ne">...सँगसँगै; ...अनुरूप</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + に<ruby>沿<rt>そ</rt></ruby>って</p>
+  <p class="howto"><span class="lab">How to use it</span>Physical: <b>along a line</b> (river, road, coast). Abstract: <b>in line with</b> a policy, plan, guideline, expectation.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>川<rt>かわ</rt></ruby>に<ruby>沿<rt>そ</rt></ruby>って<ruby>桜<rt>さくら</rt></ruby>の<ruby>木<rt>き</rt></ruby>が<ruby>植<rt>う</rt></ruby>えられている。</p><p class="en">Cherry trees are planted along the river.</p><p class="ne">खोलासँगसँगै सकुरा रुख रोपिएका छन्।</p></li><li class="ex"><p class="jp"><ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>方針<rt>ほうしん</rt></ruby>に<ruby>沿<rt>そ</rt></ruby>った<ruby>提案<rt>ていあん</rt></ruby>をしてください。</p><p class="en">Please make a proposal in line with company policy.</p><p class="ne">कम्पनीको नीति अनुरूप प्रस्ताव गर्नुहोस्।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Only certain abstract nouns fit: <ruby>方針<rt>ほうしん</rt></ruby>‧<ruby>計画<rt>けいかく</rt></ruby>‧<ruby>希望<rt>きぼう</rt></ruby>‧マニュアル‧<ruby>期待<rt>きたい</rt></ruby>. Data and laws take に<ruby>基<rt>もと</rt></ruby>づいて instead.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">38</span>
+    <h4 class="pat">〜に<ruby>従<rt>したが</rt></ruby>って∕〜に<ruby>従<rt>したが</rt></ruby>い</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#96 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">in accordance with; as (following)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...अनुसार; ...पछ्याउँदै</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + に<ruby>従<rt>したが</rt></ruby>って</p>
+  <p class="howto"><span class="lab">How to use it</span>Two senses: (1) <b>obeying</b> instructions or rules; (2) <b>proportional change</b>, like につれて.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>係員<rt>かかりいん</rt></ruby>の<ruby>指示<rt>しじ</rt></ruby>に<ruby>従<rt>したが</rt></ruby>って、<ruby>避難<rt>ひなん</rt></ruby>してください。</p><p class="en">Please evacuate in accordance with the staff&#x27;s instructions.</p><p class="ne">कर्मचारीको निर्देशन अनुसार, सुरक्षित स्थानमा जानुहोस्।</p></li><li class="ex"><p class="jp">都<ruby>市<rt>としか</rt></ruby>化が<ruby>進<rt>すす</rt></ruby>むに<ruby>従<rt>したが</rt></ruby>って、<ruby>農地<rt>のうち</rt></ruby>が<ruby>減<rt>へ</rt></ruby>っている。</p><p class="en">As urbanisation advances, farmland is decreasing.</p><p class="ne">सहरीकरण बढ्दै जाँदा, कृषि भूमि घट्दै छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Sense (1) is what separates it from につれて. If the sentence is about following an order, only に<ruby>従<rt>したが</rt></ruby>って works.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">39</span>
+    <h4 class="pat">〜とともに</h4>
+    <span class="level">written / formal</span>
+    
+  <span class="ref">#97 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">together with; at the same time as</dd>
+    <dt class="ne">NE</dt><dd class="ne">...सँगसँगै; ...सँगै एकैसाथ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aである + とともに</p>
+  <p class="howto"><span class="lab">How to use it</span>Three jobs: <b>with a person</b>, <b>two qualities at once</b>, and <b>simultaneous change</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>卒業<rt>そつぎょう</rt></ruby><ruby>式<rt>しき</rt></ruby>は<ruby>喜<rt>よろこ</rt></ruby>びとともに<ruby>寂<rt>さび</rt></ruby>しさも<ruby>感<rt>かん</rt></ruby>じる<ruby>日<rt>ひ</rt></ruby>だ。</p><p class="en">Graduation day is a day of sadness together with joy.</p><p class="ne">स्नातक समारोह खुसीसँगसँगै एक्लोपन पनि महसुस हुने दिन हो।</p></li><li class="ex"><p class="jp"><ruby>気温<rt>きおん</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がるとともに、<ruby>湿度<rt>しつど</rt></ruby>も<ruby>高<rt>たか</rt></ruby>くなった。</p><p class="en">As the temperature rose, the humidity also increased.</p><p class="ne">तापक्रम बढ्दै जानेसँगै, आर्द्रता पनि बढ्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>For the “with a person” meaning, spoken Japanese prefers と<ruby>一緒<rt>いっしょ</rt></ruby>に. とともに is written style.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">40</span>
+    <h4 class="pat">〜をきっかけに(して)∕〜を<ruby>契機<rt>けいき</rt></ruby>に</h4>
+    <span class="level">neutral / formal</span>
+    
+  <span class="ref">#98 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">triggered by; taking ... as an opportunity</dd>
+    <dt class="ne">NE</dt><dd class="ne">...लाई निहुँ बनाएर; ...देखि सुरु भई</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕Vの + をきっかけに</p>
+  <p class="howto"><span class="lab">How to use it</span>A single event <b>starts a lasting change</b>. を<ruby>契機<rt>けいき</rt></ruby>に is the formal version.</p>
+  <ol class="exs"><li class="ex"><p class="jp">けがをしたのをきっかけに、<ruby>食生活<rt>しょくせいかつ</rt></ruby>を<ruby>見直<rt>みなお</rt></ruby>した。</p><p class="en">Prompted by an injury, I reviewed my eating habits.</p><p class="ne">चोट लागेलाई निहुँ बनाएर, खानपानको बानी पुनरावलोकन गरेँ।</p></li><li class="ex"><p class="jp"><ruby>留学<rt>りゅうがく</rt></ruby>を<ruby>契機<rt>けいき</rt></ruby>に、<ruby>将来<rt>しょうらい</rt></ruby>の<ruby>目標<rt>もくひょう</rt></ruby>が<ruby>変<rt>か</rt></ruby>わった。</p><p class="en">Studying abroad became the turning point that changed my future goals.</p><p class="ne">विदेश अध्ययनदेखि सुरु भई, भविष्यको लक्ष्य परिवर्तन भयो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>For a verb you need <b>V</b><b>の</b> + をきっかけに. Learners forget the の. Also it is one-time only — not for continuous processes.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">41</span>
+    <h4 class="pat">〜を<ruby>通<rt>つう</rt></ruby>じて∕〜を<ruby>通<rt>とお</rt></ruby>して</h4>
+    <span class="level">neutral / formal</span>
+    
+  <span class="ref">#99 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">through; throughout</dd>
+    <dt class="ne">NE</dt><dd class="ne">...मार्फत; ...भरि</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + を<ruby>通<rt>つう</rt></ruby>じて∕を<ruby>通<rt>とお</rt></ruby>して</p>
+  <p class="howto"><span class="lab">How to use it</span>Either a <b>medium or intermediary</b> (a person, the internet, an experience), or a <b>whole period</b> with no gap.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>友人<rt>ゆうじん</rt></ruby>を<ruby>通<rt>つう</rt></ruby>じて、その<ruby>話<rt>はなし</rt></ruby>を<ruby>知<rt>し</rt></ruby>った。</p><p class="en">I learned of that story through a friend.</p><p class="ne">साथी मार्फत, त्यो कुरा थाहा पाएँ।</p></li><li class="ex"><p class="jp"><ruby>沖縄<rt>おきなわ</rt></ruby>は<ruby>一年<rt>いちねん</rt></ruby>を<ruby>通<rt>つう</rt></ruby>じて<ruby>暖<rt>あたた</rt></ruby>かい。</p><p class="en">Okinawa is warm throughout the year.</p><p class="ne">ओकिनावा वर्षभरि गर्मी हुन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>を<ruby>通<rt>とお</rt></ruby>して leans toward deliberate effort and direct passage; を<ruby>通<rt>つう</rt></ruby>じて is broader and covers the “throughout” meaning. For time spans, prefer を<ruby>通<rt>つう</rt></ruby>じて.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">42</span>
+    <h4 class="pat">〜にわたって∕〜にわたる</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#100 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">spanning; over a range of</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भरि; ...को दायरामा फैलिएको</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N（<ruby>期間<rt>きかん</rt></ruby>‧<ruby>範囲<rt>はんい</rt></ruby>）+ にわたって</p>
+  <p class="howto"><span class="lab">How to use it</span>Emphasises a <b>large scale</b> — long time, wide area, many fields. Needs a big number or a word like <ruby>広<rt>ひろ</rt></ruby>い<ruby>範囲<rt>はんい</rt></ruby>‧<ruby>全<rt>ぜん</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>工事<rt>こうじ</rt></ruby>は<ruby>三年<rt>さんねん</rt></ruby>にわたって<ruby>続<rt>つづ</rt></ruby>けられた。</p><p class="en">The construction continued over three years.</p><p class="ne">निर्माण कार्य तीन वर्षभरि जारी रह्यो।</p></li><li class="ex"><p class="jp"><ruby>被害<rt>ひがい</rt></ruby>は<ruby>広<rt>ひろ</rt></ruby>い<ruby>範囲<rt>はんい</rt></ruby>にわたっている。</p><p class="en">The damage extends over a wide area.</p><p class="ne">क्षति फराकिलो क्षेत्रको दायरामा फैलिएको छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>For a small span it sounds absurd: 「<ruby>五分<rt>ごふん</rt></ruby>にわたって」is wrong. Also compare 〜<ruby>間<rt>あいだ</rt></ruby> which is neutral about scale.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">43</span>
+    <h4 class="pat">〜から〜にかけて</h4>
+    <span class="level">formal / news</span>
+    
+  <span class="ref">#101 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">from ... to ... (vague span)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...देखि ...सम्म (अस्पष्ट दायरा)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + から + N + にかけて</p>
+  <p class="howto"><span class="lab">How to use it</span>Weather forecasts and news. The boundaries are <b>deliberately vague</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>今夜<rt>こんや</rt></ruby>から<ruby>明日<rt>あす</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>にかけて、<ruby>雪<rt>ゆき</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>る<ruby>見込<rt>みこ</rt></ruby>みです。</p><p class="en">Snow is expected from tonight through tomorrow morning.</p><p class="ne">आज रातिदेखि भोलि बिहानसम्म, हिउँ पर्ने सम्भावना छ।</p></li><li class="ex"><p class="jp"><ruby>関東<rt>かんとう</rt></ruby>から<ruby>東北<rt>とうほく</rt></ruby>にかけて、<ruby>地震<rt>じしん</rt></ruby>が<ruby>観測<rt>かんそく</rt></ruby>された。</p><p class="en">An earthquake was observed from the Kanto region through Tohoku.</p><p class="ne">कान्तोदेखि तोहोकुसम्म, भूकम्प मापन गरियो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>から〜まで gives <b>exact</b> limits; から〜にかけて gives a <b>blurred</b> range. A timetable needs まで, not にかけて.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">7 patterns</span><h2>8. Emphasis, Degree &amp; Extremes</h2>
+<p class="jp"><ruby>強調<rt>きょうちょう</rt></ruby>・<ruby>程度<rt>ていど</rt></ruby></p>
+<p class="ne">जोर, मात्रा र चरम अवस्था</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">44</span>
+    <h4 class="pat">〜すら</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#103 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">even (formal, stronger than さえ)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...समेत (झन् कडा, औपचारिक)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + すら</p>
+  <p class="howto"><span class="lab">How to use it</span>Written and emphatic. Almost always followed by a <b>negative</b>, and often about a serious situation.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>被災地<rt>ひさいち</rt></ruby>では<ruby>水<rt>みず</rt></ruby>すら<ruby>手<rt>て</rt></ruby>に<ruby>入<rt>はい</rt></ruby>らなかった。</p><p class="en">In the disaster area, even water could not be obtained.</p><p class="ne">प्रकोप क्षेत्रमा पानी समेत उपलब्ध हुन सकेन।</p></li><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>挨拶<rt>あいさつ</rt></ruby>すらせずに<ruby>出<rt>で</rt></ruby>て<ruby>行<rt>い</rt></ruby>った。</p><p class="en">He left without even greeting anyone.</p><p class="ne">उनी अभिवादन समेत नगरी बाहिरिए।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>すら cannot form a conditional, so 「すら〜ば」does not exist. If the sentence needs “if only”, the answer must be さえ.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">45</span>
+    <h4 class="pat">〜こそ</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#104 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">precisely; it is exactly this that</dd>
+    <dt class="ne">NE</dt><dd class="ne">...नै; ठीक ...चाहिँ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + こそ ∕ V-plain + からこそ</p>
+  <p class="howto"><span class="lab">How to use it</span>Singles out one item as <b>the</b> right one, correcting or contrasting with another possibility.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>今度<rt>こんど</rt></ruby>こそ<ruby>必<rt>かなら</rt></ruby>ず<ruby>合格<rt>ごうかく</rt></ruby>します。</p><p class="en">This time for sure I will pass.</p><p class="ne">यसपटक नै पक्कै उत्तीर्ण हुनेछु।</p></li><li class="ex"><p class="jp">こちらこそ、ありがとうございました。</p><p class="en">It is I who should be thanking you.</p><p class="ne">मैले नै धन्यवाद भन्नुपर्ने हो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Learn the set phrases: <ruby>今度<rt>こんど</rt></ruby>こそ‧こちらこそ‧<ruby>今<rt>いま</rt></ruby>こそ‧これこそ. Also 〜からこそ (reason) and 〜こそすれ (N1) build on it.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">46</span>
+    <h4 class="pat">〜まで(も)</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#105 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">even; going as far as</dd>
+    <dt class="ne">NE</dt><dd class="ne">...सम्म पनि; ...त्यहाँसम्म</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕Vて + まで(も)</p>
+  <p class="howto"><span class="lab">How to use it</span>With Vて + まで it means “going to the extreme of doing X”, and usually implies <b>that is going too far</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>親<rt>おや</rt></ruby>に<ruby>借金<rt>しゃっきん</rt></ruby>をしてまで、<ruby>車<rt>くるま</rt></ruby>を<ruby>買<rt>か</rt></ruby>う<ruby>必要<rt>ひつよう</rt></ruby>はない。</p><p class="en">There is no need to buy a car even by borrowing from your parents.</p><p class="ne">आमाबाबुसँग ऋण लिएर सम्म, कार किन्ने आवश्यकता छैन।</p></li><li class="ex"><p class="jp"><ruby>子<rt>こ</rt></ruby>どもまでもその<ruby>話<rt>はなし</rt></ruby>を<ruby>知<rt>し</rt></ruby>っていた。</p><p class="en">Even the children knew that story.</p><p class="ne">बालबालिकासम्म पनि त्यो कुरा जान्दथे।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>さえ points at the <b>minimum</b> (“not even this”); まで points at the <b>maximum</b> (“as far as this”). Opposite directions on the same scale.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">47</span>
+    <h4 class="pat">〜など∕〜なんて∕〜なんか</h4>
+    <span class="level">spoken / neutral</span>
+    
+  <span class="ref">#106 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">such a thing as (dismissive)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...जस्तो कुरा (तुच्छ ठान्दै)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby> + など∕なんて∕なんか</p>
+  <p class="howto"><span class="lab">How to use it</span>Expresses <b>contempt, modesty or disbelief</b>. など is written, なんて and なんか are spoken.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>謝<rt>あやま</rt></ruby>るなんて、<ruby>彼<rt>かれ</rt></ruby>らしくない。</p><p class="en">Apologising is not like him at all.</p><p class="ne">माफी माग्ने जस्तो कुरा, उनको स्वभाव जस्तो होइन।</p></li><li class="ex"><p class="jp">そんな<ruby>高<rt>たか</rt></ruby>いものなど<ruby>買<rt>か</rt></ruby>えません。</p><p class="en">I cannot afford such an expensive thing.</p><p class="ne">त्यस्तो महँगो कुरा किन्न सक्दिनँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>なんて also means “how ...!” in exclamations (「なんてきれいな<ruby>花<rt>はな</rt></ruby>」) and can replace という. Three uses, so read the whole sentence.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">48</span>
+    <h4 class="pat">〜ほど〜はない∕〜くらい〜はない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#108 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">nothing is as ... as</dd>
+    <dt class="ne">NE</dt><dd class="ne">...जत्तिको अरु छैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + ほど + A + はない</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>superlative</b> built out of a negative. Very natural for expressing personal conviction.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>健康<rt>けんこう</rt></ruby>ほど<ruby>大切<rt>たいせつ</rt></ruby>なものはない。</p><p class="en">Nothing is as precious as health.</p><p class="ne">स्वास्थ्य जत्तिको महत्त्वपूर्ण अरु केही छैन।</p></li><li class="ex"><p class="jp"><ruby>国<rt>くに</rt></ruby>の<ruby>母<rt>はは</rt></ruby>の<ruby>料理<rt>りょうり</rt></ruby>ほどおいしいものはない。</p><p class="en">Nothing tastes as good as my mother&#x27;s cooking back home.</p><p class="ne">देशमा आमाको खाना जत्तिको मिठो अरु छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Keep the word order: <b>N </b><b>ほど</b><b> A </b><b>はない</b>. Learners write 「<ruby>健康<rt>けんこう</rt></ruby>は<ruby>大切<rt>たいせつ</rt></ruby>ほどない」— wrong.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">49</span>
+    <h4 class="pat">〜からして</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#109 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">judging from; even starting with</dd>
+    <dt class="ne">NE</dt><dd class="ne">...बाटै; ...देखि नै हेर्दा</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + からして</p>
+  <p class="howto"><span class="lab">How to use it</span>One <b>small detail</b> is enough evidence for a whole judgment. Often mildly critical.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>話<rt>はな</rt></ruby>し<ruby>方<rt>かた</rt></ruby>からして、<ruby>彼<rt>かれ</rt></ruby>は<ruby>関西<rt>かんさい</rt></ruby><ruby>出身<rt>しゅっしん</rt></ruby>だろう。</p><p class="en">Judging from the way he speaks, he is probably from Kansai.</p><p class="ne">बोल्ने शैलीबाटै, उनी कान्साइका होलान्।</p></li><li class="ex"><p class="jp">この<ruby>店<rt>みせ</rt></ruby>は<ruby>名前<rt>なまえ</rt></ruby>からしておかしい。</p><p class="en">This shop is strange even starting with its name.</p><p class="ne">यो पसल नामदेखि नै अनौठो छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>から alone is a plain reason; からして presents <b>one representative clue</b>. Also 〜からすると∕からすれば means “from the standpoint of”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">50</span>
+    <h4 class="pat">〜どころではない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#111 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">this is no time for; out of the question</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्ने अवस्था छैन; ...त कहाँ हो र</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + どころではない</p>
+  <p class="howto"><span class="lab">How to use it</span>Circumstances make the activity <b>impossible or inappropriate</b> right now.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>仕事<rt>しごと</rt></ruby>が<ruby>山積<rt>やまづ</rt></ruby>みで、<ruby>旅行<rt>りょこう</rt></ruby>どころではない。</p><p class="en">Work is piled high; a trip is out of the question.</p><p class="ne">काम थुप्रिएको छ, यात्रा गर्ने अवस्था छैन।</p></li><li class="ex"><p class="jp"><ruby>試験<rt>しけん</rt></ruby>が<ruby>近<rt>ちか</rt></ruby>いので、テレビを<ruby>見<rt>み</rt></ruby>るどころではない。</p><p class="en">The exam is near, so watching TV is out of the question.</p><p class="ne">परीक्षा नजिक भएकाले, टिभी हेर्ने अवस्था छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜どころか is different: it means “far from A, actually B”. どころではない = no room for it; どころか = the opposite is true.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">6 patterns</span><h2>9. Obligation, Inevitability &amp; Impossibility</h2>
+<p class="jp"><ruby>義務<rt>ぎむ</rt></ruby>・<ruby>必然<rt>ひつぜん</rt></ruby>・<ruby>不可能<rt>ふかのう</rt></ruby></p>
+<p class="ne">कर्तव्य, अनिवार्यता र असम्भवता</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">51</span>
+    <h4 class="pat">〜ないわけにはいかない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#115 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">cannot avoid doing; must</dd>
+    <dt class="ne">NE</dt><dd class="ne">...नगरी हुँदैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vない + わけにはいかない</p>
+  <p class="howto"><span class="lab">How to use it</span>Strong obligation coming from a <b>social situation</b>, not from a rule.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>招待<rt>しょうたい</rt></ruby>されたから、<ruby>出席<rt>しゅっせき</rt></ruby>しないわけにはいかない。</p><p class="en">I was invited, so I cannot get out of attending.</p><p class="ne">निमन्त्रणा पाएकाले, उपस्थित नभई हुँदैन।</p></li><li class="ex"><p class="jp"><ruby>約束<rt>やくそく</rt></ruby>したので、やらないわけにはいかない。</p><p class="en">I promised, so I cannot not do it.</p><p class="ne">वाचा गरेकाले, नगरी हुँदैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Compare with なければならない (rule-based duty) and 〜ざるを<ruby>得<rt>え</rt></ruby>ない (forced by circumstances). All three translate as “must”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">52</span>
+    <h4 class="pat">〜てはいられない∕〜てばかりはいられない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#116 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">cannot afford to keep doing</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरिरहन सक्दिनँ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vて + はいられない</p>
+  <p class="howto"><span class="lab">How to use it</span>A situation is <b>too urgent</b> to continue the current state. Often self-encouragement.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>りが<ruby>近<rt>ちか</rt></ruby>いので、<ruby>寝<rt>ね</rt></ruby>てはいられない。</p><p class="en">The deadline is near, so I cannot afford to sleep.</p><p class="ne">म्याद नजिक भएकाले, सुतिरहन सक्दिनँ।</p></li><li class="ex"><p class="jp"><ruby>泣<rt>な</rt></ruby>いてばかりはいられない。<ruby>前<rt>まえ</rt></ruby>に<ruby>進<rt>すす</rt></ruby>まなければ。</p><p class="en">I cannot just keep crying. I have to move forward.</p><p class="ne">रोइरहन मात्र सक्दिनँ। अगाडि बढ्नुपर्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>This is the negative potential of 〜ている, so the meaning is “<b>continuing</b> is impossible”, not “doing it once is impossible”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">53</span>
+    <h4 class="pat">〜てしかたがない∕〜てしようがない</h4>
+    <span class="level">spoken / neutral</span>
+    
+  <span class="ref">#120 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">cannot be helped; extremely</dd>
+    <dt class="ne">NE</dt><dd class="ne">...लागेर सकिँदैन; अत्यन्तै</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vて∕Aくて∕Aで + しかたがない</p>
+  <p class="howto"><span class="lab">How to use it</span>Close to てたまらない, slightly more colloquial. しょうがない is the casual spoken form.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>気<rt>き</rt></ruby>になってしかたがない。</p><p class="en">I cannot stop thinking about it.</p><p class="ne">मनमा लागेर सकिँदैन।</p></li><li class="ex"><p class="jp">この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>退屈<rt>たいくつ</rt></ruby>でしようがない。</p><p class="en">This job is unbearably boring.</p><p class="ne">यो काम अत्यन्तै बोरिङ छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>These three (たまらない‧ならない‧しかたがない) are frequently offered as four choices together. Decide by whether the word is a <b>sensation</b>, an <b>emotion</b>, or a <b>general state</b>.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">54</span>
+    <h4 class="pat">〜かねる</h4>
+    <span class="level">very formal / business</span>
+    
+  <span class="ref">#122 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">cannot bring oneself to; be unable to</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्न सक्दिनँ (औपचारिक अस्वीकार)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem + かねる</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>polite formal refusal</b> in business Japanese. It softens “no”.</p>
+  <ol class="exs"><li class="ex"><p class="jp">ご<ruby>事情<rt>じじょう</rt></ruby>は<ruby>分<rt>わ</rt></ruby>かりますが、その<ruby>要求<rt>ようきゅう</rt></ruby>には<ruby>応<rt>おう</rt></ruby>じかねます。</p><p class="en">I understand your situation, but I am unable to meet that request.</p><p class="ne">तपाईंको परिस्थिति बुझ्छु, तर त्यो माग पूरा गर्न सक्दिनँ।</p></li><li class="ex"><p class="jp"><ruby>責任<rt>せきにん</rt></ruby>については、<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げかねます。</p><p class="en">Regarding responsibility, I am not in a position to say.</p><p class="ne">जिम्मेवारीबारे, भन्न सक्दिनँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Because it is a refusal, the verb is usually a speech or response verb. And remember the form is <b>V</b><b>ます</b><b>-stem</b>, not Vる.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">55</span>
+    <h4 class="pat">〜ようがない∕〜ようもない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#123 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">there is no way to; impossible</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्ने उपाय छैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem + ようがない</p>
+  <p class="howto"><span class="lab">How to use it</span>Not “I lack the skill” but “<b>no method exists</b>”. Often used with a reason clause.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>連絡先<rt>れんらくさき</rt></ruby>が<ruby>分<rt>わ</rt></ruby>からないので、<ruby>知<rt>し</rt></ruby>らせようがない。</p><p class="en">I do not know the contact details, so there is no way to inform them.</p><p class="ne">सम्पर्क विवरण थाहा नभएकाले, जानकारी गराउने उपाय छैन।</p></li><li class="ex"><p class="jp">こんなに<ruby>壊<rt>こわ</rt></ruby>れていては、<ruby>直<rt>なお</rt></ruby>しようがない。</p><p class="en">Broken this badly, there is no way to fix it.</p><p class="ne">यति बिग्रेको अवस्थामा, मर्मत गर्ने उपाय छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Compare 〜きれない (cannot finish) and 〜られない (plain cannot). ようがない stresses the <b>absence of any means</b>.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">56</span>
+    <h4 class="pat">〜までもない∕〜までのことはない</h4>
+    <span class="level">neutral / written</span>
+    
+  <span class="ref">#125 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">there is no need to go so far as</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्नुसम्म पर्दैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + までもない</p>
+  <p class="howto"><span class="lab">How to use it</span>The action would be <b>excessive</b> for the situation. Memorise 「<ruby>言<rt>い</rt></ruby>うまでもなく」= needless to say.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>近<rt>ちか</rt></ruby>いから、タクシーを<ruby>使<rt>つか</rt></ruby>うまでもない。</p><p class="en">It is close, so there is no need to go as far as taking a taxi.</p><p class="ne">नजिक भएकाले, ट्याक्सी प्रयोग गर्नुसम्म पर्दैन।</p></li><li class="ex"><p class="jp"><ruby>言<rt>い</rt></ruby>うまでもなく、<ruby>健康<rt>けんこう</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby><ruby>大切<rt>たいせつ</rt></ruby>だ。</p><p class="en">Needless to say, health is the most important thing.</p><p class="ne">भन्नुसम्म पर्दैन, स्वास्थ्य सबैभन्दा महत्त्वपूर्ण छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜ないまでも is different: “even if not to the extent of A, at least B”. Watch for the ない.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">8 patterns</span><h2>10. Judgment, Guessing &amp; Assertion</h2>
+<p class="jp"><ruby>判断<rt>はんだん</rt></ruby>・<ruby>推量<rt>すいりょう</rt></ruby>・<ruby>主張<rt>しゅちょう</rt></ruby></p>
+<p class="ne">निर्णय, अनुमान र दावी</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">57</span>
+    <h4 class="pat">〜に<ruby>決<rt>き</rt></ruby>まっている</h4>
+    <span class="level">spoken / emphatic</span>
+    
+  <span class="ref">#127 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">is bound to be; obviously</dd>
+    <dt class="ne">NE</dt><dd class="ne">निश्चित रूपमा ...हुन्छ; स्पष्ट छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕N + に<ruby>決<rt>き</rt></ruby>まっている</p>
+  <p class="howto"><span class="lab">How to use it</span>Even stronger and more <b>emotional</b> than に<ruby>違<rt>ちが</rt></ruby>いない, with a hint of “obviously, why are you asking”.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>今<rt>いま</rt></ruby>から<ruby>行<rt>い</rt></ruby>っても、<ruby>席<rt>せき</rt></ruby>はもう<ruby>満席<rt>まんせき</rt></ruby>に<ruby>決<rt>き</rt></ruby>まっている。</p><p class="en">Even if we go now, the seats are bound to be full.</p><p class="ne">अहिले गए पनि, सिट भरिसकेको निश्चित छ।</p></li><li class="ex"><p class="jp">そんなうそはすぐばれるに<ruby>決<rt>き</rt></ruby>まっている。</p><p class="en">A lie like that is bound to be found out immediately.</p><p class="ne">त्यस्तो झूट तुरुन्तै खुल्ने निश्चित छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Too blunt for formal writing or polite conversation with superiors. In a business context, the answer is に<ruby>違<rt>ちが</rt></ruby>いない or でしょう.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">58</span>
+    <h4 class="pat">〜ようだ∕〜みたいだ</h4>
+    <span class="level">neutral / spoken</span>
+    
+  <span class="ref">#129 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">it seems (from what I observe)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...जस्तो देखिन्छ (आफैले देखेको आधारमा)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕Nの + ようだ ∕ ふつう<ruby>形<rt>けい</rt></ruby>∕N + みたいだ</p>
+  <p class="howto"><span class="lab">How to use it</span>You <b>saw the evidence yourself</b> and are inferring. みたいだ is the casual spoken form.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>道<rt>みち</rt></ruby>が<ruby>濡<rt>ぬ</rt></ruby>れている。<ruby>夜中<rt>よなか</rt></ruby>に<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>ったようだ。</p><p class="en">The road is wet. It seems it rained during the night.</p><p class="ne">बाटो भिजेको छ। रातिमा पानी परेको जस्तो देखिन्छ।</p></li><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>風邪<rt>かぜ</rt></ruby>をひいたみたいだね。</p><p class="en">He seems to have caught a cold.</p><p class="ne">उनलाई रुघा लागेको जस्तो देखिन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Nの + ようだ but N + みたいだ. Also ようだ has a second meaning — <b>comparison</b> (「<ruby>夢<rt>ゆめ</rt></ruby>のようだ」= like a dream).</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">59</span>
+    <h4 class="pat">〜らしい</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#130 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">apparently (I heard / it is said)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...रहेछ; सुनेअनुसार</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕N + らしい</p>
+  <p class="howto"><span class="lab">How to use it</span>The information came <b>from outside</b> — hearsay, rumour, the news. You take no responsibility.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>隣<rt>となり</rt></ruby>のご<ruby>主人<rt>しゅじん</rt></ruby>は<ruby>来月<rt>らいげつ</rt></ruby><ruby>転勤<rt>てんきん</rt></ruby>するらしい。</p><p class="en">Apparently the neighbour&#x27;s husband is being transferred next month.</p><p class="ne">छिमेकीको श्रीमान् अर्को महिना सरुवा हुँदैछन् रहेछ।</p></li><li class="ex"><p class="jp">あの<ruby>店<rt>みせ</rt></ruby>のラーメンはおいしいらしいよ。</p><p class="en">Apparently the ramen at that place is delicious.</p><p class="ne">त्यो पसलको रामेन मिठो छ रहेछ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>らしい has a second meaning: <b>typical of</b> (「<ruby>彼<rt>かれ</rt></ruby>らしい<ruby>答<rt>こた</rt></ruby>え」= an answer just like him). NらしいN is the “typical” use; N + らしい at sentence end is hearsay.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">60</span>
+    <h4 class="pat">〜そうだ（<ruby>伝聞<rt>でんぶん</rt></ruby>∕<ruby>様態<rt>ようたい</rt></ruby>）</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#131 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">I hear that / it looks like</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भन्ने सुनेको छु / ...जस्तो देखिन्छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span><ruby>伝聞<rt>でんぶん</rt></ruby>：ふつう<ruby>形<rt>けい</rt></ruby> + そうだ ∕ <ruby>様態<rt>ようたい</rt></ruby>：Vます-stem∕Aい∕Aな + そうだ</p>
+  <p class="howto"><span class="lab">How to use it</span>Hearsay そうだ reports words; appearance そうだ reports what your <b>eyes</b> tell you about the near future.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>天気<rt>てんき</rt></ruby><ruby>予報<rt>よほう</rt></ruby>によると、<ruby>明日<rt>あした</rt></ruby>は<ruby>雪<rt>ゆき</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るそうだ。</p><p class="en">According to the forecast, it will snow tomorrow.</p><p class="ne">मौसम पूर्वानुमान अनुसार, भोलि हिउँ पर्ने भन्ने सुनेको छु।</p></li><li class="ex"><p class="jp"><ruby>空<rt>そら</rt></ruby>が<ruby>暗<rt>くら</rt></ruby>い。<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りそうだ。</p><p class="en">The sky is dark. It looks like it will rain.</p><p class="ne">आकाश अँध्यारो छ। पानी पर्ने जस्तो देखिन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>The connection tells them apart: <ruby>降<rt>ふ</rt></ruby>るそうだ = I heard; <ruby>降<rt>ふ</rt></ruby>りそうだ = it looks like. One syllable, two grammar points. Also note <ruby>様態<rt>ようたい</rt></ruby>そうだ cannot attach to a noun.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">61</span>
+    <h4 class="pat">〜ことだ∕〜ことはない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#133 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">the best thing is to / there is no need to</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्नु राम्रो / ...गर्नु पर्दैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Vない + ことだ</p>
+  <p class="howto"><span class="lab">How to use it</span>ことだ gives <b>direct advice</b> from a senior to a junior. ことはない dismisses an unnecessary worry.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>上手<rt>じょうず</rt></ruby>になりたければ、<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>することだ。</p><p class="en">If you want to get good, the thing to do is practise every day.</p><p class="ne">सिपालु बन्न चाहन्छौ भने, दिनदिनै अभ्यास गर्नु राम्रो।</p></li><li class="ex"><p class="jp">そんなに<ruby>心配<rt>しんぱい</rt></ruby>することはないよ。</p><p class="en">There is no need to worry that much.</p><p class="ne">त्यति चिन्ता गर्नु पर्दैन नि।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not use ことだ to a superior — it sounds like an order. Also 〜ことだ at the end of a sentence can express emotion (「<ruby>嬉<rt>うれ</rt></ruby>しいことだ」).</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">62</span>
+    <h4 class="pat">〜というものだ∕〜というものではない</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#135 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">that is what ... is / it is not simply that</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भनेको यही हो / ...भन्ने होइन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕N + というものだ</p>
+  <p class="howto"><span class="lab">How to use it</span>Makes a <b>general definition or philosophical statement</b>. The negative form rejects an oversimplification.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>人生<rt>じんせい</rt></ruby>とは、<ruby>思<rt>おも</rt></ruby>い<ruby>通<rt>どお</rt></ruby>りにいかないというものだ。</p><p class="en">Life is a thing that does not go as you plan.</p><p class="ne">जीवन भनेको सोचेजस्तो नहुने कुरा हो।</p></li><li class="ex"><p class="jp">お<ruby>金<rt>かね</rt></ruby>があれば<ruby>幸<rt>しあわ</rt></ruby>せというものではない。</p><p class="en">It is not simply the case that having money makes you happy.</p><p class="ne">पैसा भए खुसी हुन्छ भन्ने होइन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>というものではない and わけではない overlap, but というものではない rejects a <b>general principle</b>, while わけではない corrects a <b>specific assumption</b> <b>about this case</b>.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">63</span>
+    <h4 class="pat">〜に<ruby>越<rt>こ</rt></ruby>したことはない</h4>
+    <span class="level">neutral / written</span>
+    
+  <span class="ref">#136 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">there is nothing better than</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भन्दा राम्रो कुरा छैन</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕N + に<ruby>越<rt>こ</rt></ruby>したことはない</p>
+  <p class="howto"><span class="lab">How to use it</span>“Better safe than sorry”. States a <b>mild preference</b>, not an absolute demand.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>安全<rt>あんぜん</rt></ruby>であるに<ruby>越<rt>こ</rt></ruby>したことはないから、ヘルメットをかぶろう。</p><p class="en">Nothing beats being safe, so let&#x27;s wear helmets.</p><p class="ne">सुरक्षित हुनुभन्दा राम्रो कुरा छैन, त्यसैले हेल्मेट लगाऊँ।</p></li><li class="ex"><p class="jp"><ruby>健康<rt>けんこう</rt></ruby>なら、それに<ruby>越<rt>こ</rt></ruby>したことはない。</p><p class="en">If you are healthy, there is nothing better than that.</p><p class="ne">स्वस्थ छौ भने, त्यसभन्दा राम्रो कुरा छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>It implies the thing is <b>desirable but not essential</b>. If the sentence demands something absolutely, the answer is べきだ or なければならない.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">64</span>
+    <h4 class="pat">〜のではないか∕〜ではないだろうか</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#138 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">isn&#x27;t it that ...? (soft assertion)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...होइन र? (नम्र दावी)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕Nな + のではないか</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>polite way to state an opinion</b> without sounding pushy. Very common in academic writing and meetings.</p>
+  <ol class="exs"><li class="ex"><p class="jp">この<ruby>計画<rt>けいかく</rt></ruby>には<ruby>無理<rt>むり</rt></ruby>があるのではないだろうか。</p><p class="en">Isn&#x27;t there something unrealistic about this plan?</p><p class="ne">यो योजनामा अव्यावहारिकता छ होइन र?</p></li><li class="ex"><p class="jp">もう<ruby>少<rt>すこ</rt></ruby>し<ruby>時間<rt>じかん</rt></ruby>をかけたほうがいいのではないか。</p><p class="en">Wouldn&#x27;t it be better to spend a little more time?</p><p class="ne">अलिकति बढी समय दिनु राम्रो होइन र?</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Grammatically a question, functionally an <b>assertion</b>. If the exam asks for the writer&#x27;s opinion, this pattern <i>is</i> the opinion.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">6 patterns</span><h2>11. Addition &amp; Parallel Listing</h2>
+<p class="jp"><ruby>添加<rt>てんか</rt></ruby>・<ruby>並列<rt>へいれつ</rt></ruby></p>
+<p class="ne">थपिने र समानान्तर सूची</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">65</span>
+    <h4 class="pat">〜のみならず</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#141 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">not only ... but also (formal)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...मात्र नभई (औपचारिक)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Nである + のみならず</p>
+  <p class="howto"><span class="lab">How to use it</span>The formal written twin of だけでなく. Standard in reports and news.</p>
+  <ol class="exs"><li class="ex"><p class="jp">この<ruby>制度<rt>せいど</rt></ruby>は<ruby>日本<rt>にほん</rt></ruby>のみならず、<ruby>他<rt>た</rt></ruby>の<ruby>国<rt>くに</rt></ruby>でも<ruby>採用<rt>さいよう</rt></ruby>されている。</p><p class="en">This system has been adopted not only in Japan but in other countries too.</p><p class="ne">यो प्रणाली जापानमा मात्र नभई, अन्य देशमा पनि लागू भएको छ।</p></li><li class="ex"><p class="jp"><ruby>被害<rt>ひがい</rt></ruby>は<ruby>農業<rt>のうぎょう</rt></ruby>のみならず<ruby>観光業<rt>かんこうぎょう</rt></ruby>にも<ruby>及<rt>およ</rt></ruby>んだ。</p><p class="en">The damage extended not only to agriculture but to tourism as well.</p><p class="ne">क्षति कृषिमा मात्र नभई पर्यटन उद्योगमा पनि फैलियो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>For nouns the connection is <b>N</b><b>である</b>のみならず in careful writing, though a bare noun is common. Also 〜のみならず〜も is the expected pairing.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">66</span>
+    <h4 class="pat">〜に<ruby>加<rt>くわ</rt></ruby>えて∕〜に<ruby>加<rt>くわ</rt></ruby>え</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#143 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">in addition to</dd>
+    <dt class="ne">NE</dt><dd class="ne">...का अतिरिक्त</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + に<ruby>加<rt>くわ</rt></ruby>えて</p>
+  <p class="howto"><span class="lab">How to use it</span>Formal and neutral addition, common in business and news. <b>N</b><b>のみ</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>台風<rt>たいふう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>に<ruby>加<rt>くわ</rt></ruby>えて、<ruby>地震<rt>じしん</rt></ruby>の<ruby>被害<rt>ひがい</rt></ruby>も<ruby>重<rt>かさ</rt></ruby>なった。</p><p class="en">In addition to the typhoon&#x27;s effects, earthquake damage was compounded.</p><p class="ne">आँधीको प्रभावका अतिरिक्त, भूकम्पको क्षति पनि थपियो।</p></li><li class="ex"><p class="jp"><ruby>基本<rt>きほん</rt></ruby><ruby>給<rt>きゅう</rt></ruby>に<ruby>加<rt>くわ</rt></ruby>え、<ruby>交通費<rt>こうつうひ</rt></ruby>も<ruby>支給<rt>しきゅう</rt></ruby>されます。</p><p class="en">In addition to the base salary, transport costs are also provided.</p><p class="ne">आधारभूत तलबका अतिरिक्त, यातायात खर्च पनि प्रदान गरिन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Because it takes nouns only, a verb in the choices rules it out at once. Use <ruby>上<rt>うえ</rt></ruby>に for verbs and adjectives.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">67</span>
+    <h4 class="pat">〜も〜ば〜も∕〜も〜なら〜も</h4>
+    <span class="level">written / neutral</span>
+    
+  <span class="ref">#145 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">there are both ... and ...</dd>
+    <dt class="ne">NE</dt><dd class="ne">...पनि छ ...पनि छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + も + V<ruby>条件<rt>じょうけん</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aければ∕Nなら + N + も</p>
+  <p class="howto"><span class="lab">How to use it</span>Lists <b>two examples of the same kind</b> to suggest variety or completeness.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>世界<rt>せかい</rt></ruby>には<ruby>金持<rt>かねも</rt></ruby>ちもいれば、<ruby>貧<rt>まず</rt></ruby>しい<ruby>人<rt>ひと</rt></ruby>もいる。</p><p class="en">In the world there are both rich people and poor people.</p><p class="ne">संसारमा धनी पनि छन्, गरिब पनि छन्।</p></li><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>頭<rt>あたま</rt></ruby>もよければ、<ruby>性格<rt>せいかく</rt></ruby>もいい。</p><p class="en">He is both intelligent and good-natured.</p><p class="ne">उनी बुद्धिमान् पनि छन्, स्वभाव पनि राम्रो छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Both halves must be the <b>same polarity</b>. Also remember the conditional form in the middle: 「いれば」「よければ」「<ruby>学生<rt>がくせい</rt></ruby>なら」.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">68</span>
+    <h4 class="pat">〜であれ〜であれ∕〜であろうと</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#147 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">whether ... or ...; no matter</dd>
+    <dt class="ne">NE</dt><dd class="ne">...होस् वा ...होस्; जे भए पनि</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + であれ + N + であれ</p>
+  <p class="howto"><span class="lab">How to use it</span>Two <b>opposite categories</b>, and the conclusion applies to both. Formal.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>大人<rt>おとな</rt></ruby>であれ<ruby>子<rt>こ</rt></ruby>どもであれ、ルールは<ruby>守<rt>まも</rt></ruby>らなければならない。</p><p class="en">Whether adult or child, the rules must be followed.</p><p class="ne">वयस्क होस् वा बालक होस्, नियम पालन गर्नुपर्छ।</p></li><li class="ex"><p class="jp">どんな<ruby>理由<rt>りゆう</rt></ruby>であろうと、<ruby>暴力<rt>ぼうりょく</rt></ruby>は<ruby>許<rt>ゆる</rt></ruby>されない。</p><p class="en">Whatever the reason, violence cannot be permitted.</p><p class="ne">जुनसुकै कारण भए पनि, हिंसा स्वीकार्य छैन।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>The second clause must be a <b>universal statement</b>. A specific one-off fact does not work here.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">69</span>
+    <h4 class="pat">〜やら〜やら</h4>
+    <span class="level">spoken / written</span>
+    
+  <span class="ref">#149 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">what with ... and ... (messy list)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...अनि ...अनि (अस्तव्यस्त सूची)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + やら + N∕V + やら</p>
+  <p class="howto"><span class="lab">How to use it</span>Suggests <b>too many things at once</b>, hence confusion or fatigue. Usually negative or hectic.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しの<ruby>準備<rt>じゅんび</rt></ruby>やら<ruby>手続<rt>てつづ</rt></ruby>きやらで、<ruby>毎日<rt>まいにち</rt></ruby><ruby>忙<rt>いそが</rt></ruby>しい。</p><p class="en">What with moving preparations and paperwork, I am busy every day.</p><p class="ne">सर्ने तयारी अनि प्रक्रिया अनि गर्दा, दिनदिनै व्यस्त छु।</p></li><li class="ex"><p class="jp"><ruby>嬉<rt>うれ</rt></ruby>しいやら<ruby>恥<rt>は</rt></ruby>ずかしいやら、<ruby>複雑<rt>ふくざつ</rt></ruby>な<ruby>気持<rt>きも</rt></ruby>ちだった。</p><p class="en">Happy and embarrassed at once — my feelings were complicated.</p><p class="ne">खुसी अनि लाज अनि, जटिल भावना थियो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>や lists neutrally; やら〜やら adds <b>overwhelm</b>. It is not for tidy lists like 「<ruby>赤<rt>あか</rt></ruby>やら<ruby>青<rt>あお</rt></ruby>やらの<ruby>三色<rt>さんしょく</rt></ruby>」.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">70</span>
+    <h4 class="pat">〜なり〜なり</h4>
+    <span class="level">spoken / neutral</span>
+    
+  <span class="ref">#150 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">either ... or ... (your choice)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...होस् वा ...होस् (तिम्रो छनोट)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N∕V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + なり + N∕V + なり</p>
+  <p class="howto"><span class="lab">How to use it</span>Offers the listener <b>options</b>, so the second half is usually a request, suggestion or command.</p>
+  <ol class="exs"><li class="ex"><p class="jp">メールなり<ruby>電話<rt>でんわ</rt></ruby>なり、<ruby>早<rt>はや</rt></ruby>めに<ruby>連絡<rt>れんらく</rt></ruby>してください。</p><p class="en">Please contact me soon, by email or phone or whatever.</p><p class="ne">इमेल होस् वा फोन होस्, चाँडै सम्पर्क गर्नुहोस्।</p></li><li class="ex"><p class="jp"><ruby>休<rt>やす</rt></ruby>むなり<ruby>医者<rt>いしゃ</rt></ruby>に<ruby>行<rt>い</rt></ruby>くなり、<ruby>何<rt>なに</rt></ruby>か<ruby>対策<rt>たいさく</rt></ruby>を<ruby>取<rt>と</rt></ruby>りなさい。</p><p class="en">Rest or see a doctor — take some kind of measure.</p><p class="ne">आराम होस् वा डाक्टरकहाँ जाने होस्, कुनै उपाय अपनाउनुहोस्।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>This is completely different from 〜なり (“as soon as”) and 〜なりに (“in one&#x27;s own way”). The doubled form is the giveaway.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">2 patterns</span><h2>12. Irrelevance, Exclusion &amp; Contradiction</h2>
+<p class="jp"><ruby>無関係<rt>むかんけい</rt></ruby>・<ruby>除外<rt>じょがい</rt></ruby>・<ruby>反対<rt>はんたい</rt></ruby></p>
+<p class="ne">असम्बन्धित, बहिष्करण र विपरीतता</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">71</span>
+    <h4 class="pat">〜はともかく(として)</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#155 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">setting ... aside; leaving that aside</dd>
+    <dt class="ne">NE</dt><dd class="ne">...लाई छाडेर; अहिले त्यो कुरा पर राखौँ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + はともかく(として)</p>
+  <p class="howto"><span class="lab">How to use it</span>Postpones a <b>less important issue</b> so you can focus on the main point.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>見<rt>み</rt></ruby>た<ruby>目<rt>め</rt></ruby>はともかく、<ruby>味<rt>あじ</rt></ruby>は<ruby>最高<rt>さいこう</rt></ruby>だ。</p><p class="en">Setting appearance aside, the taste is superb.</p><p class="ne">देखिने रूप छाडेर, स्वाद सर्वोत्तम छ।</p></li><li class="ex"><p class="jp"><ruby>結果<rt>けっか</rt></ruby>はともかくとして、よく<ruby>頑張<rt>がんば</rt></ruby>ったと<ruby>思<rt>おも</rt></ruby>う。</p><p class="en">Leaving the result aside, I think you did well.</p><p class="ne">नतिजा छाडेर, राम्रो मिहिनेत गरे जस्तो लाग्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>はさておき is nearly identical but more formal. And do not confuse with 〜にしても: ともかく <b>drops</b> the topic, にしても <b>concedes</b> it.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">72</span>
+    <h4 class="pat">〜というより</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#160 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">rather than; more like</dd>
+    <dt class="ne">NE</dt><dd class="ne">...भन्दा बरु</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Aい∕Aな∕N + というより</p>
+  <p class="howto"><span class="lab">How to use it</span>You <b>correct a label</b>: the second description fits better than the first.</p>
+  <ol class="exs"><li class="ex"><p class="jp">これは<ruby>趣味<rt>しゅみ</rt></ruby>というより、もう<ruby>仕事<rt>しごと</rt></ruby>だね。</p><p class="en">This is not so much a hobby as a job at this point.</p><p class="ne">यो शोख भन्दा बरु काम भइसक्यो।</p></li><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>優<rt>やさ</rt></ruby>しいというより、<ruby>気<rt>き</rt></ruby>が<ruby>弱<rt>よわ</rt></ruby>いのだ。</p><p class="en">Rather than kind, he is timid.</p><p class="ne">उनी दयालु भन्दा बरु कमजोर मनका छन्।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not confuse with 〜より (comparison of degree). というより replaces the <b>whole description</b>, not the amount.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">6 patterns</span><h2>13. Tendency, State &amp; Gradual Change</h2>
+<p class="jp"><ruby>傾向<rt>けいこう</rt></ruby>・<ruby>状態<rt>じょうたい</rt></ruby>・<ruby>変化<rt>へんか</rt></ruby></p>
+<p class="ne">प्रवृत्ति, अवस्था र क्रमिक परिवर्तन</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">73</span>
+    <h4 class="pat">〜<ruby>気味<rt>ぎみ</rt></ruby>(だ)</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#164 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">a touch of; slightly</dd>
+    <dt class="ne">NE</dt><dd class="ne">अलिकति ...जस्तो</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem∕N + <ruby>気味<rt>ぎみ</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>slight, early sign</b> of something, usually mildly unwelcome. Set phrases: <ruby>風邪<rt>かぜ</rt></ruby><ruby>気味<rt>ぎみ</rt></ruby>‧<ruby>疲<rt>つか</rt></ruby>れ<ruby>気味<rt>ぎみ</rt></ruby>‧<ruby>太<rt>ふと</rt></ruby>り<ruby>気味<rt>ぎみ</rt></ruby>‧<ruby>上<rt>あ</rt></ruby>がり<ruby>気味<rt>ぎみ</rt></ruby>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>風邪<rt>かぜ</rt></ruby><ruby>気味<rt>ぎみ</rt></ruby>なので、<ruby>今日<rt>きょう</rt></ruby>は<ruby>早<rt>はや</rt></ruby>く<ruby>帰<rt>かえ</rt></ruby>ります。</p><p class="en">I have a touch of a cold, so I will go home early today.</p><p class="ne">अलिकति रुघा जस्तो भएकाले, आज चाँडै घर जान्छु।</p></li><li class="ex"><p class="jp"><ruby>今月<rt>こんげつ</rt></ruby>は<ruby>売上<rt>うりあげ</rt></ruby>が<ruby>下<rt>さ</rt></ruby>がり<ruby>気味<rt>ぎみ</rt></ruby>だ。</p><p class="en">Sales are slightly on the decline this month.</p><p class="ne">यो महिना बिक्री अलिकति घट्दो छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>がち = <b>repeated tendency over time</b>; <ruby>気味<rt>ぎみ</rt></ruby> = <b>current slight condition</b>. 「<ruby>風邪<rt>かぜ</rt></ruby>がち」means “often catches colds”; 「<ruby>風邪<rt>かぜ</rt></ruby><ruby>気味<rt>ぎみ</rt></ruby>」means “coming down with one now”.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">74</span>
+    <h4 class="pat">〜っぽい</h4>
+    <span class="level">casual</span>
+    
+  <span class="ref">#165 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">-ish; has a lot of that quality</dd>
+    <dt class="ne">NE</dt><dd class="ne">...जस्तो; ...को स्वभाव भएको</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem∕N∕Aい-stem + っぽい</p>
+  <p class="howto"><span class="lab">How to use it</span>Casual. Set phrases: <ruby>子<rt>こ</rt></ruby>どもっぽい‧<ruby>安<rt>やす</rt></ruby>っぽい‧<ruby>怒<rt>おこ</rt></ruby>りっぽい‧<ruby>白<rt>しろ</rt></ruby>っぽい (whitish) ‧<ruby>飽<rt>あ</rt></ruby>きっぽい.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>最近<rt>さいきん</rt></ruby><ruby>忘<rt>わす</rt></ruby>れっぽくなった。</p><p class="en">He has become forgetful lately.</p><p class="ne">उनी हिजोआज बिर्सिने जस्तो भएका छन्।</p></li><li class="ex"><p class="jp">この<ruby>味<rt>あじ</rt></ruby>は<ruby>水<rt>みず</rt></ruby>っぽくて<ruby>薄<rt>うす</rt></ruby>い。</p><p class="en">This tastes watery and weak.</p><p class="ne">यो स्वाद पानी जस्तो र फिका छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>It nearly always carries a <b>negative or dismissive</b> tone. 「<ruby>大人<rt>おとな</rt></ruby>っぽい」is a rare positive exception. Also it is casual, so avoid it in formal writing.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">75</span>
+    <h4 class="pat">〜<ruby>傾向<rt>けいこう</rt></ruby>がある∕〜<ruby>傾向<rt>けいこう</rt></ruby>にある</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#166 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">there is a tendency for</dd>
+    <dt class="ne">NE</dt><dd class="ne">...को प्रवृत्ति छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby>∕Nの + <ruby>傾向<rt>けいこう</rt></ruby>がある</p>
+  <p class="howto"><span class="lab">How to use it</span>The <b>objective, statistical</b> version of がち. Used in reports and academic writing.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>若者<rt>わかもの</rt></ruby>の<ruby>読書<rt>どくしょ</rt></ruby><ruby>量<rt>りょう</rt></ruby>は<ruby>減<rt>へ</rt></ruby>る<ruby>傾向<rt>けいこう</rt></ruby>にある。</p><p class="en">The amount young people read is on a declining trend.</p><p class="ne">युवाको पठन परिमाण घट्ने प्रवृत्तिमा छ।</p></li><li class="ex"><p class="jp">この<ruby>地域<rt>ちいき</rt></ruby>は<ruby>冬<rt>ふゆ</rt></ruby>に<ruby>雨<rt>あめ</rt></ruby>が<ruby>多<rt>おお</rt></ruby>い<ruby>傾向<rt>けいこう</rt></ruby>がある。</p><p class="en">This region tends to have a lot of rain in winter.</p><p class="ne">यो क्षेत्रमा हिउँदमा पानी बढी पर्ने प्रवृत्ति छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>がち is subjective and negative; <ruby>傾向<rt>けいこう</rt></ruby>がある is neutral and data-based. Choose by the <b>register of the passage</b>.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">76</span>
+    <h4 class="pat">〜つつある</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#167 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">is in the process of ...ing</dd>
+    <dt class="ne">NE</dt><dd class="ne">...हुँदै छ (क्रमिक प्रक्रिया)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vます-stem + つつある</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>slow, ongoing directional change</b>. Written, formal. Common verbs: <ruby>増<rt>ふ</rt></ruby>える‧<ruby>減<rt>へ</rt></ruby>る‧<ruby>変<rt>か</rt></ruby>わる‧<ruby>回復<rt>かいふく</rt></ruby>する‧<ruby>消<rt>き</rt></ruby>える.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>景気<rt>けいき</rt></ruby>は<ruby>回復<rt>かいふく</rt></ruby>しつつある。</p><p class="en">The economy is in the process of recovering.</p><p class="ne">अर्थतन्त्र सुधार हुँदै छ।</p></li><li class="ex"><p class="jp">この<ruby>伝統<rt>でんとう</rt></ruby><ruby>芸能<rt>げいのう</rt></ruby>は<ruby>消<rt>き</rt></ruby>えつつある。</p><p class="en">This traditional art is gradually disappearing.</p><p class="ne">यो परम्परागत कला लोप हुँदै छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>〜ている describes a state or an action now; つつある stresses the <b>direction of change</b>. Momentary verbs do not work: 「<ruby>死<rt>し</rt></ruby>につつある」is odd.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">77</span>
+    <h4 class="pat">〜ばかりだ（<ruby>変化<rt>へんか</rt></ruby>）</h4>
+    <span class="level">written</span>
+    
+  <span class="ref">#169 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">only gets worse and worse</dd>
+    <dt class="ne">NE</dt><dd class="ne">झन् ...मात्र हुँदै छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby> + ばかりだ</p>
+  <p class="howto"><span class="lab">How to use it</span>Same as <ruby>一方<rt>いっぽう</rt></ruby>だ but almost always <b>negative</b>, and often more emotional.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>事態<rt>じたい</rt></ruby>は<ruby>悪<rt>わる</rt></ruby>くなるばかりだ。</p><p class="en">The situation is only getting worse.</p><p class="ne">स्थिति झन् बिग्रँदै मात्र छ।</p></li><li class="ex"><p class="jp"><ruby>待<rt>ま</rt></ruby>っていても、<ruby>不安<rt>ふあん</rt></ruby>が<ruby>増<rt>ま</rt></ruby>すばかりだった。</p><p class="en">Even waiting, my anxiety only grew.</p><p class="ne">पर्खिरहँदा पनि, चिन्ता झन् बढ्दै मात्र गयो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Distinguish the three ばかり: <b>V</b><b>た</b>ばかり = just did; <b>V</b><b>ている</b>ばかり = doing nothing but; <b>V</b><b>る</b>ばかりだ = keeps worsening. Only the verb form tells you which.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">78</span>
+    <h4 class="pat">〜きり∕〜たきり</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#170 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">since ... and nothing since; only</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेपछि त्यसै; ...मात्र</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた + きり ∕ N + きり</p>
+  <p class="howto"><span class="lab">How to use it</span>Vた + きり means the state has <b>not changed since</b>. Set phrase: <ruby>寝<rt>ね</rt></ruby>たきり (bedridden).</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>彼<rt>かれ</rt></ruby>は<ruby>去年<rt>きょねん</rt></ruby><ruby>国<rt>くに</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>ったきり、<ruby>連絡<rt>れんらく</rt></ruby>がない。</p><p class="en">He went home last year and there has been no contact since.</p><p class="ne">उनी गत वर्ष देश फर्केपछि त्यसै, कुनै सम्पर्क छैन।</p></li><li class="ex"><p class="jp"><ruby>祖父<rt>そふ</rt></ruby>は<ruby>三年<rt>さんねん</rt></ruby><ruby>前<rt>まえ</rt></ruby>から<ruby>寝<rt>ね</rt></ruby>たきりだ。</p><p class="en">My grandfather has been bedridden for three years.</p><p class="ne">हजुरबुबा तीन वर्षदेखि ओछ्यानमै छन्।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Nきり means “only” (「<ruby>二人<rt>ふたり</rt></ruby>きり」= just the two of us). Two very different uses of the same word.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">3 patterns</span><h2>14. Passive, Causative &amp; Honorific Language</h2>
+<p class="jp"><ruby>受<rt>う</rt></ruby>け<ruby>身<rt>み</rt></ruby>・<ruby>使役<rt>しえき</rt></ruby>・<ruby>敬語<rt>けいご</rt></ruby></p>
+<p class="ne">कर्मवाच्य, प्रेरणार्थक र सम्मानित भाषा</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">79</span>
+    <h4 class="pat"><ruby>受<rt>う</rt></ruby>け<ruby>身<rt>み</rt></ruby>（〜(ら)れる）</h4>
+    <span class="level">all levels</span>
+    
+  <span class="ref">#174 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">passive; be done to (often unwanted)</dd>
+    <dt class="ne">NE</dt><dd class="ne">कर्मवाच्य; ...गरिनु (प्रायः अनिच्छित)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>I<ruby>類<rt>るい</rt></ruby>：<ruby>書<rt>か</rt></ruby>く→<ruby>書<rt>か</rt></ruby>かれる∕II<ruby>類<rt>るい</rt></ruby>：<ruby>見<rt>み</rt></ruby>る→<ruby>見<rt>み</rt></ruby>られる∕III<ruby>類<rt>るい</rt></ruby>：する→される‧<ruby>来<rt>く</rt></ruby>る→<ruby>来<rt>こ</rt></ruby>られる</p>
+  <p class="howto"><span class="lab">How to use it</span>Three flavours: <b>direct</b> passive, <b>adversative</b> passive (something annoying happened to you), and <b>neutral description</b> of facts, common in writing.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>電車<rt>でんしゃ</rt></ruby>で<ruby>足<rt>あし</rt></ruby>を<ruby>踏<rt>ふ</rt></ruby>まれてしまった。</p><p class="en">I got my foot stepped on in the train.</p><p class="ne">रेलमा खुट्टा कुल्चिइयो।</p></li><li class="ex"><p class="jp">この<ruby>寺<rt>てら</rt></ruby>は<ruby>千年<rt>せんねん</rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>建<rt>た</rt></ruby>てられた。</p><p class="en">This temple was built a thousand years ago.</p><p class="ne">यो मन्दिर हजार वर्ष अघि निर्माण गरिएको थियो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>For the adversative passive the pattern is 「<ruby>私<rt>わたし</rt></ruby>は + <ruby>誰<rt>だれ</rt></ruby>かに + <ruby>体<rt>からだ</rt></ruby>の<ruby>部分<rt>ぶぶん</rt></ruby>を + <ruby>受<rt>う</rt></ruby>け<ruby>身<rt>み</rt></ruby>」. Learners drop the を. Also note 〜れる can be passive, potential or honorific — context decides.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">80</span>
+    <h4 class="pat"><ruby>使役<rt>しえき</rt></ruby>（〜させる）</h4>
+    <span class="level">all levels</span>
+    
+  <span class="ref">#175 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">make / let someone do</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गर्न लगाउनु; अनुमति दिनु</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span><ruby>自動詞<rt>じどうし</rt></ruby>：Nを + させる ∕ 他<ruby>動詞<rt>たどうし</rt></ruby>：Nに + Nを + させる</p>
+  <p class="howto"><span class="lab">How to use it</span>Force or permission. With a <b>transitive</b> verb the person takes <b>に</b>; with an <b>intransitive</b> verb the person takes <b>を</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>先生<rt>せんせい</rt></ruby>は<ruby>学生<rt>がくせい</rt></ruby>に<ruby>漢字<rt>かんじ</rt></ruby>を<ruby>書<rt>か</rt></ruby>かせた。</p><p class="en">The teacher had the students write kanji.</p><p class="ne">शिक्षकले विद्यार्थीलाई कान्जी लेख्न लगाउनुभयो।</p></li><li class="ex"><p class="jp"><ruby>子<rt>こ</rt></ruby>どもを<ruby>公園<rt>こうえん</rt></ruby>で<ruby>遊<rt>あそ</rt></ruby>ばせた。</p><p class="en">I let the child play in the park.</p><p class="ne">बच्चालाई पार्कमा खेल्न दिएँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>This particle rule is examined directly. 「<ruby>学生<rt>がくせい</rt></ruby>を<ruby>漢字<rt>かんじ</rt></ruby>を<ruby>書<rt>か</rt></ruby>かせる」has two を and is impossible. Fix it to 「<ruby>学生<rt>がくせい</rt></ruby>に」.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">81</span>
+    <h4 class="pat">お〜ください∕ご〜ください</h4>
+    <span class="level">honorific</span>
+    
+  <span class="ref">#181 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">please do (polite request)</dd>
+    <dt class="ne">NE</dt><dd class="ne">कृपया ...गर्नुहोस्</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>お + Vます-stem + ください ∕ ご + <ruby>漢語<rt>かんご</rt></ruby> + ください</p>
+  <p class="howto"><span class="lab">How to use it</span>The standard polite request in shops, stations and announcements.</p>
+  <ol class="exs"><li class="ex"><p class="jp">こちらでお<ruby>待<rt>ま</rt></ruby>ちください。</p><p class="en">Please wait over here.</p><p class="ne">कृपया यहाँ प्रतीक्षा गर्नुहोस्।</p></li><li class="ex"><p class="jp">ご<ruby>注意<rt>ちゅうい</rt></ruby>ください。</p><p class="en">Please be careful.</p><p class="ne">कृपया सावधान रहनुहोस्।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>It cannot be used with certain verbs, and 「お<ruby>見<rt>み</rt></ruby>てください」is wrong — the correct honorific is 「ご<ruby>覧<rt>らん</rt></ruby>ください」. Special verbs override the pattern.</p></article>
+</section>
+<section class="chap">
+<div class="banner"><span class="n">5 patterns</span><h2>15. Formal Nouns &amp; Sentence-End Nuance</h2>
+<p class="jp"><ruby>形式名詞<rt>けいしきめいし</rt></ruby>・<ruby>文末表現<rt>ぶんまつひょうげん</rt></ruby></p>
+<p class="ne">औपचारिक नाम र वाक्यान्तको भाव</p>
+</div>
+<article class="card"><header class="card-head">
+    <span class="num">82</span>
+    <h4 class="pat">〜ところだ（3つの<ruby>形<rt>かたち</rt></ruby>）</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#183 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">about to / in the middle of / have just</dd>
+    <dt class="ne">NE</dt><dd class="ne">गर्न लाग्दै / गर्दै छु / भर्खरै गरेँ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>しょ</rt></ruby><ruby>形<rt>けい</rt></ruby>+ところだ（<ruby>直前<rt>ちょくぜん</rt></ruby>）∕Vている+ところだ（<ruby>進行<rt>しんこう</rt></ruby>）∕Vた+ところだ（<ruby>直後<rt>ちょくご</rt></ruby>）</p>
+  <p class="howto"><span class="lab">How to use it</span>Three points in time around one action: <b>just before</b>, <b>during</b>, <b>just after</b>.</p>
+  <ol class="exs"><li class="ex"><p class="jp">ちょうど<ruby>今<rt>いま</rt></ruby>、<ruby>家<rt>いえ</rt></ruby>を<ruby>出<rt>で</rt></ruby>るところです。</p><p class="en">I am just about to leave the house right now.</p><p class="ne">ठीक अहिले, घरबाट निस्कन लाग्दै छु।</p></li><li class="ex"><p class="jp"><ruby>今<rt>いま</rt></ruby>ちょうど<ruby>駅<rt>えき</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたところです。</p><p class="en">I have just arrived at the station.</p><p class="ne">ठीक अहिले स्टेशनमा भर्खरै आइपुगेँ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Vたところだ (just now, a moment ago) versus Vたばかりだ (recently, could be days ago). ところ is <b>immediate</b>; ばかり allows a wider window.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">83</span>
+    <h4 class="pat">〜たところ</h4>
+    <span class="level">formal / written</span>
+    
+  <span class="ref">#184 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">when I did ..., (I found that)</dd>
+    <dt class="ne">NE</dt><dd class="ne">...गरेपछि, (यो पत्ता लाग्यो)</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vた + ところ + <ruby>結果<rt>けっか</rt></ruby></p>
+  <p class="howto"><span class="lab">How to use it</span>A formal written 〜たら. You <b>did something and discovered a result</b>. Business reports use this a lot.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>担当者<rt>たんとうしゃ</rt></ruby>に<ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせたところ、まだ<ruby>在庫<rt>ざいこ</rt></ruby>があるそうだ。</p><p class="en">When I enquired with the person in charge, it seems there is still stock.</p><p class="ne">जिम्मेवार व्यक्तिलाई सोध्दा, अझै स्टक छ भन्ने सुनियो।</p></li><li class="ex"><p class="jp"><ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んだところ、<ruby>痛<rt>いた</rt></ruby>みがすぐに<ruby>消<rt>き</rt></ruby>えた。</p><p class="en">When I took the medicine, the pain disappeared at once.</p><p class="ne">औषधि खाएपछि, दुखाइ तुरुन्तै हराइहाल्यो।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not confuse with Vたところで (“even if”, pointless) or Vたところが (“but unexpectedly”). One extra syllable, entirely different meaning.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">84</span>
+    <h4 class="pat">〜ないことはない∕〜ないでもない</h4>
+    <span class="level">neutral</span>
+    
+  <span class="ref">#185 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">it is not that ... cannot; possible in a way</dd>
+    <dt class="ne">NE</dt><dd class="ne">...नसक्ने भन्ने होइन; सक्छु तर...</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>Vない∕Aくない∕Aでない + ことはない</p>
+  <p class="howto"><span class="lab">How to use it</span>A <b>reluctant, hedged yes</b>. Softens a refusal or a lukewarm agreement.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>辛<rt>から</rt></ruby>い<ruby>物<rt>もの</rt></ruby>は<ruby>食<rt>た</rt></ruby>べないことはないが、あまり<ruby>好<rt>す</rt></ruby>きではない。</p><p class="en">It is not that I cannot eat spicy food, but I do not much like it.</p><p class="ne">पिरो खाना नखाने भन्ने होइन, तर धेरै मन पर्दैन।</p></li><li class="ex"><p class="jp"><ruby>手伝<rt>てつだ</rt></ruby>えないでもないが、<ruby>時間<rt>じかん</rt></ruby>が<ruby>限<rt>かぎ</rt></ruby>られている。</p><p class="en">I could help, in a way, but my time is limited.</p><p class="ne">सहयोग गर्न नसक्ने होइन, तर समय सीमित छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Double negative, so the overall meaning is <b>positive but weak</b>. The exam checks whether you can tell it apart from a plain negative.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">85</span>
+    <h4 class="pat">〜ということだ∕〜とのことだ</h4>
+    <span class="level">formal / business</span>
+    
+  <span class="ref">#186 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">it means that; I hear that</dd>
+    <dt class="ne">NE</dt><dd class="ne">अर्थात्; ...भन्ने खबर छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>V∕A∕N<ruby>普通<rt>ふつう</rt></ruby><ruby>形<rt>けい</rt></ruby> + ということだ</p>
+  <p class="howto"><span class="lab">How to use it</span>Two jobs: <b>reporting</b> information you received (とのことだ is the business form), and <b>restating a conclusion</b> in clearer words.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>明日<rt>あす</rt></ruby><ruby>出張<rt>しゅっちょう</rt></ruby>とのことです。</p><p class="en">I hear the department head is on a business trip tomorrow.</p><p class="ne">विभाग प्रमुख भोलि व्यापार-यात्रामा हुनुहुन्छ भन्ने खबर छ।</p></li><li class="ex"><p class="jp">つまり、<ruby>申<rt>もう</rt></ruby>し<ruby>込<rt>こ</rt></ruby>みは<ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>られたということだ。</p><p class="en">In other words, it means applications have closed.</p><p class="ne">अर्थात्, आवेदन बन्द भइसक्यो भन्ने अर्थ हुन्छ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>For hearsay it competes with そうだ and らしい. とのことだ is <b>business-formal</b>, そうだ neutral, らしい casual and vaguer.</p></article>
+<article class="card"><header class="card-head">
+    <span class="num">86</span>
+    <h4 class="pat">〜<ruby>次第<rt>しだい</rt></ruby>だ∕〜<ruby>次第<rt>しだい</rt></ruby>で</h4>
+    <span class="level">neutral / formal</span>
+    
+  <span class="ref">#188 in the complete book</span></header>
+  <dl class="meaning">
+    <dt>EN</dt><dd class="en">depends on</dd>
+    <dt class="ne">NE</dt><dd class="ne">...मा निर्भर छ</dd>
+  </dl>
+  <p class="connect"><span class="lab">Connects like this</span>N + <ruby>次第<rt>しだい</rt></ruby>だ∕<ruby>次第<rt>しだい</rt></ruby>で</p>
+  <p class="howto"><span class="lab">How to use it</span>States the <b>deciding factor</b>. Nのみ, and the noun is a variable condition.</p>
+  <ol class="exs"><li class="ex"><p class="jp"><ruby>開催<rt>かいさい</rt></ruby>するかどうかは<ruby>天気<rt>てんき</rt></ruby><ruby>次第<rt>しだい</rt></ruby>だ。</p><p class="en">Whether we hold it depends on the weather.</p><p class="ne">आयोजना गर्ने नगर्ने मौसममा निर्भर छ।</p></li><li class="ex"><p class="jp"><ruby>結果<rt>けっか</rt></ruby>は<ruby>君<rt>きみ</rt></ruby>の<ruby>努力<rt>どりょく</rt></ruby><ruby>次第<rt>しだい</rt></ruby>で<ruby>変<rt>か</rt></ruby>わる。</p><p class="en">The result will change depending on your effort.</p><p class="ne">नतिजा तिम्रो प्रयासमा निर्भर रहेर फेरिनेछ।</p></li></ol>
+  <p class="trap"><span class="lab">Exam trap</span>Do not confuse with Vます-stem + <ruby>次第<rt>しだい</rt></ruby> = “as soon as”. 「<ruby>分<rt>わ</rt></ruby>かり<ruby>次第<rt>しだい</rt></ruby>」= as soon as I know; 「<ruby>天気<rt>てんき</rt></ruby><ruby>次第<rt>しだい</rt></ruby>」= depends on the weather.</p></article>
+</section>
+<footer><p><b>JLPT N2 Grammar — The 86 Core Patterns.</b> 
+The Tier B patterns of the complete 191-pattern guide, with English and Nepali meanings, connection rules, two furigana examples each and an exam trap for every one. Practise the papers at <a href="https://nihongomock.com/level/n2.html">nihongomock.com/level/n2</a>.</p></footer>
+</main></body></html>
